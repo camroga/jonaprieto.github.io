@@ -5,10 +5,10 @@ date: "2018-02-09 21:58"
 ---
 
 Leibniz characterised the notion of equality as follows:
-Given any $$x$$ and $$y$$, $$x = y$$ if and only if, given any
-predicate $$P$$, $$P(x)$$ if and only if $$P(y)$$.
+Given any x and y, x = y if and only if, given any
+predicate P, P(x) if and only if P(y).
 
-∀x ∀y (x = y → ∀P (P x ↔ Py)]
+  ∀x ∀y (x = y → ∀P (P x ↔ Py)]
 
 \begin{code}
 Eq : ∀ {A : Set} → (x y : A) → Set₁
@@ -34,6 +34,7 @@ trans {A} x y z x≡y P₁ y≡z P₂ = P₁ y≡z (x≡y y≡z P₂)
 \end{code}
 
 * Symmetry
+
 \begin{code}
 sym : ∀ {A : Set} → (x y : A) → Eq x y → Eq y x
 sym {A} x y x≡y P = x≡y p₁ (λ z → z)
@@ -43,7 +44,6 @@ sym {A} x y x≡y P = x≡y p₁ (λ z → z)
 \end{code}
 
 ## Related
-
 
   > The principle of identity of indiscernibles states that two objects
   are identical if they have all the same properties.
