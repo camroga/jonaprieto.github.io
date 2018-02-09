@@ -4,8 +4,11 @@ title: "Experiments"
 date: "2018-02-09 22:20"
 ---
 
+Consider the following type:
 
-(Πx:A.Πy:A.(Px ⟶ Qxy)) → Πx:A.(Px → Πy:A.Qxy)
+  (Πx:A.Πy:A.(Px ⟶ Qxy)) → Πx:A.(Px → Πy:A.Qxy)
+
+In Agda, we can show an inhabitant of this type:
 
 \begin{code}
 exchange : ∀ {A : Set} {P : A → Set} {Q : A → A → Set}
