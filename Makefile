@@ -9,9 +9,10 @@ _posts/%.md: src/%.lagda
 	mkdir -p _posts
 	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@
 
+observ:
+	observr .observr
 # serve website using jekyll
 serve:
-	observr .observr &
 	ruby -S bundle exec jekyll liveserve --watch
 
 .phony: serve
