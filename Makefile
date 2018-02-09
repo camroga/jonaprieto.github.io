@@ -13,7 +13,7 @@ _posts/%.md: src/%.lagda _posts/
 # serve website using jekyll
 serve: 
 	observr .observr &
-	ruby -S bundle exec jekyll serve
+	ruby -S bundle exec jekyll liveserve
 
 .phony: serve
 

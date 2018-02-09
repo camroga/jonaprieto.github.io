@@ -8,7 +8,7 @@ Leibniz characterized the notion of equality as follows:
 Given any $$x$$ and $$y$$, $$x = y$$ if and only if, given any
 predicate P, P(x) if and only if P(y).
 
-a
+as
 
 \begin{code}
 Eq : ∀ {A : Set} → (x y : A) → Set₁
