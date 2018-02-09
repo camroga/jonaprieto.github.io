@@ -5,8 +5,8 @@ permalink:           pretty
 
 # Setup
 title:               jonaprieto
-tagline:             'Logs'
-description:         'Enjoy'
+tagline:             'notes'
+description:         'Links'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
 paginate:            100

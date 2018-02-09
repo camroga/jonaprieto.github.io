@@ -4,16 +4,15 @@ markdown := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
 
 all: $(markdown)
 
-_posts/:
+_posts/%.md: src/%.lagda
+	rm -Rf _post
 	mkdir -p _posts
-
-_posts/%.md: src/%.lagda _posts/
 	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@
 
 # serve website using jekyll
-serve: 
+serve:
 	observr .observr &
-	ruby -S bundle exec jekyll liveserve
+	ruby -S bundle exec jekyll liveserve --watch
 
 .phony: serve
 
@@ -71,4 +70,4 @@ $(HOME)/agda2html-master/:
 	curl -L https://github.com/wenkokke/agda2html/archive/master.zip -o $(HOME)/agda2html-master.zip
 	unzip -qq $(HOME)/agda2html-master.zip -d $(HOME)
 	cd $(HOME)/agda2html-master;\
-		stack install	
+		stack install
