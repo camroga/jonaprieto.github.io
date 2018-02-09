@@ -1,10 +1,10 @@
 ---
-layout: page
-title: Leibniz's equality
-date: 2018-02-09
+layout: "post"
+title: "Leibniz's equality"
+date: "2018-02-09 21:58"
 ---
 
-Leibniz characterized the notion of equality as follows:
+Leibniz characterised the notion of equality as follows:
 Given any $$x$$ and $$y$$, $$x = y$$ if and only if, given any
 predicate $$P$$, $$P(x)$$ if and only if $$P(y)$$.
 
@@ -17,9 +17,10 @@ Eq {A} x y = (P : A → Set) → (P x → P y)
 
 We can think about this equality definition saying that
 x is equal to y if and only if every property (unary predicate variable P)
-that x satifies, y satifies as well.
+that x satisfies, y satisfies as well.
 
 * Reflexivity
+
 \begin{code}
 refl : ∀ {A : Set} → (x : A) → Eq x x
 refl {A} x = λ P Px₁ → Px₁
@@ -41,7 +42,8 @@ sym {A} x y x≡y P = x≡y p₁ (λ z → z)
     p₁ = λ z → P z → P x
 \end{code}
 
-Related:
+## Related
+
 
   > The principle of identity of indiscernibles states that two objects
   are identical if they have all the same properties.
