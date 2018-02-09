@@ -5,12 +5,13 @@ permalink:           pretty
 
 # Setup
 title:               jonaprieto
-tagline:             'blog'
-description:         'repository of some ideas'
+tagline:             'Logs'
+description:         'Enjoy'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
-paginate:            5
+paginate:            100
 markdown: kramdown
+
 plugins:
   - jekyll-feed
 exclude:
