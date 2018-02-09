@@ -7,10 +7,16 @@ permalink:           pretty
 title:               jonaprieto
 tagline:             'blog'
 description:         'repository of some ideas'
-url:                 http://jonaprieto.github.io'
+url:                 'http://jonaprieto.github.io'
 baseurl:             ''
 paginate:            5
-
+markdown: kramdown
+plugins:
+  - jekyll-feed
+exclude:
+  - src/
+  - Gemfile
+  - Gemfile.lock
 # About/contact
 author:
   name:              Jonathan Prieto-Cubides

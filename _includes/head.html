@@ -15,6 +15,8 @@
   </title>
 
   <!-- CSS -->
+  
+  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="stylesheet" href="{{ site.baseurl }}/public/css/poole.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/public/css/syntax.css">
   <link rel="stylesheet" href="{{ site.baseurl }}/public/css/lanyon.css">
@@ -26,4 +28,15 @@
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
 </head>
