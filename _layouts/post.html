@@ -17,6 +17,9 @@ layout: default
           <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
             <small>{{ post.date | date_to_string }}</small>
+            {% if post.updated %}
+            <small>{{ post.updated | date_to_string }}</small>
+            {% endif %}
           </a>
         </h3>
       </li>

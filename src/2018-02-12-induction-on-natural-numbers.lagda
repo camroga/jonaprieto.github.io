@@ -2,6 +2,7 @@
 layout: "post"
 title: "Induction on Natural Numbers"
 date: "2018-02-12 13:25"
+updated: 2018-02-12
 ---
 
 We define the natural numbers by following its
@@ -28,7 +29,7 @@ bigNumber : ℕ
 bigNumber = 123456789
 \end{code}
 
-#### Recursion
+### Recursion
 
 Now let us define the principle of primitive recursion for natural numbers:
 
@@ -44,6 +45,11 @@ recℕ
   → (ℕ → C → C)  -- recursion call
   → ℕ            -- the number in the input
   → C            -- outcome
+\end{code}
+
+With the following equations:
+
+\begin{code}
 recℕ C c₀ cₛ zero = c₀
 recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
 \end{code}
@@ -72,7 +78,7 @@ double : ℕ → ℕ
 double = recℕ ℕ 0 (λ n y → suc (suc y))
 \end{code}
 
-Instead of
+Instead of:
 
 \begin{code}
 double₂ : ℕ → ℕ
@@ -80,17 +86,13 @@ double₂ zero = zero
 double₂ n    = suc (suc n)
 \end{code}
 
-Before unpacking these definition, let test some examples. To this purpose we
-import the equality definition type (_≡_) and its introduction rule (refl).
+
+Now, just for testing the definitions above. We import the equality definition
+type (_≡_) and its rule (refl).
 
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
-\end{code}
 
-Then testing the definitional equality for some sums, we certaintly start to
-believe.
-
-\begin{code}
 2+5 : add 2 5 ≡ 7
 2+5 = refl
 
@@ -98,11 +100,11 @@ believe.
 25+25 = refl
 \end{code}
 
-In the definition of `add` we have the following:
+It's time to unpacking the the definition of `add`:
 
-  + By [curryfication](https://en.wikipedia.org/wiki/Currying), the `add` function can
-  be seen as a function that returns a function. How is this possible? just fix
-  the first argument, and then you have an unary function, and that's why C : ℕ → ℕ.
+  + By [Currying](https://en.wikipedia.org/wiki/Currying), the `add`
+  function can be seen as a function that returns a function. That happens if we
+  fix the first argument to have an unary function. That's why C  has ℕ → ℕ type.
 
   ```agda
   add : ℕ → (ℕ → ℕ)
@@ -115,14 +117,61 @@ In the definition of `add` we have the following:
   add zero m = m
   ```
 
-  + To understand the last argument, ((λ n g m → suc (g m))), remember that
-  this is indeed cₛ : ℕ → C → C, and by the equation of recℕ:
+  + Question: why `((λ n g m → suc (g m)))`?
 
-  ```
-  recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
-  ```
+Let us try with another function, the multiplication, but this time
+use a nice name for this function (_*_).
 
-  Question: why the n variable is not present in the returned value?
+\begin{code}
+_*_ : ℕ → ℕ → ℕ
+_*_ = recℕ (ℕ → ℕ) (λ m → zero) λ n g m → add m (g m)
+\end{code}
 
+\begin{code}
+m₁ : 2 * 0 ≡ 0
+m₁ = refl
+
+m₂ : 2 * 3 ≡ 6
+m₂ = refl
+
+m₃ : 10 * 3 ≡ 30
+m₃ = refl
+\end{code}
 
 #### Induction
+
+The induction here is a generalization of the priniciple of recursion.
+In first-order we can write the induction schema or the principle of mathematical induction.
+
+```
+C 0 ∧ (∀ n. C n → C (suc n)) → ∀n. C n
+```
+
+
+  > In particular, a property of natural numbers is represented by a family of types
+  P : N → U. From this point of view, the above induction principle says that if
+  we can prove P(0), and if for any n we can prove P(succ(n)) assuming P(n), then
+  we have P(n) for all n. (HoTT Book. Pag.50-51.)
+
+By using a *dependent* function to obtain its version in type theory we have the
+following
+
+\begin{code}
+indℕ
+  : ∀ (C : ℕ → Set)
+  → C 0
+  → (∀ (n : ℕ) → C n → C (suc n))
+  → (∀ (n : ℕ) → C n)
+\end{code}
+
+with the defining equations
+
+\begin{code}
+indℕ C c₀ cₛ zero    = c₀
+indℕ C c₀ cₛ (suc n) = cₛ n (indℕ C c₀ cₛ n)
+\end{code}
+
+* Remark: the usage of forall symbol is not necessary but it makes more
+likely to the schemata presented above.
+
+Then, we can define other functions:
