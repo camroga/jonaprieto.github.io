@@ -7,8 +7,5 @@ layout: default
   {% if page.date %}
   <span class="post-date">{{ page.date | date_to_string }}</span>
   {% endif %}
-  {% if page.updated %}
-  <small>{{ page.updated | date_to_string }}</small>
-  {% endif %}
   {{ content }}
 </div>

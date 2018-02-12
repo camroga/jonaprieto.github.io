@@ -1,6 +1,6 @@
 ---
 title: TT Summary
-layout: page
+layout: "post"
 ---
 
 Type theory
