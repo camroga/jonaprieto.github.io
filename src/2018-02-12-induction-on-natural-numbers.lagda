@@ -14,8 +14,8 @@ data ℕ : Set where
   suc  : ℕ → ℕ
 \end{code}
 
-* Remark: to be more comfortable with the usual notation let use the following
-* pragma:
+* Remark: to be more comfortable with the usual notation we can use the following
+pragma in Agda
 
 \begin{code}
 {-# BUILTIN NATURAL ℕ #-}
@@ -41,8 +41,8 @@ recℕ is the so-called *recursor* for natural numbers. In Agda,
 recℕ
   : (C : Set)    -- type for the outcome
   → C            -- base case
-  → (ℕ → C → C)  -- recursion call
-  → ℕ            -- the number in the input
+  → (ℕ → C → C)  -- recursion
+  → ℕ            -- the natural number as the argument
   → C            -- outcome
 \end{code}
 
@@ -186,27 +186,62 @@ indℕ C c₀ cₛ (suc n) = cₛ n (indℕ C c₀ cₛ n)
 * Remark: the usage of forall symbol is not necessary but it makes more
 likely to the schemata presented above.
 
-Now, we have the power of induction to prove some properties. Let us begin
-proving associativity.
+Now, we have the power of induction to prove some properties.
+
++ *Associativity*
 
 \begin{code}
 assoc : (i j k : ℕ) → i + (j + k) ≡ (i + j) + k
 assoc = {!  !}
 \end{code}
 
-To prove by induction we need first to provide assoc₀ as the base case
+To prove this property by induction we need first to provide the term assoc₀, that
+is the base case and then build a inhabitant of the hypotesis of induction.
 
 \begin{code}
 assoc₀ : ∀ (j k : ℕ) → 0 + (j + k) ≡ (0 + j) + k
 assoc₀ = {!   !}
 \end{code}
 
-and the hypotesis of induction
-
 \begin{code}
 assoc₁
   : ∀ (i : ℕ)
   → ∀ (j k : ℕ) → i + (j + k) ≡ (i + j) + k
-  → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k  
+  → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k
 assoc₁ = {!   !}
+\end{code}
+
++ *Commutatity*
+
+\begin{code}
++-comm : ∀ (n m : ℕ) → n + m ≡ m + n
++-comm = indℕ {!   !} {!   !} {!   !}
+\end{code}
+
++ *Congruence*
+
+\begin{code}
++-cong : ∀ (n m : ℕ) → n ≡ m → suc n ≡ suc m
++-cong = indℕ {!   !} {!   !} {!   !}
+\end{code}
+
++ Exercise 1
+
+\begin{code}
+0+n : ∀ (n : ℕ) → 0 + n ≡ 0
+0+n = indℕ {!   !} {!   !} {!   !}
+\end{code}
+
++ Exercise 2
+
+\begin{code}
+p₂ : ∀ (n : ℕ) → double (n + 1) ≡ (suc (suc (double n)))
+p₂ = indℕ {!   !} {!   !} {!   !}
+\end{code}
+
++ Exercise 3
+
+\begin{code}
+p₃ : ∀ (n : ℕ) → double (n + 1) ≡ (suc (suc (double n)))
+p₃ = indℕ {!   !} {!   !} {!   !}
 \end{code}
