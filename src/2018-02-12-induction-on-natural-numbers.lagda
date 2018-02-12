@@ -70,6 +70,14 @@ add₂ zero m = m
 add₂ (suc n) m = suc (add₂ n m)
 \end{code}
 
+For comodity we use the usual symbol for adding numbers,
+and also we declare the precedence of this symbol.
+
+\begin{code}
+_+_ = add
+infix 6 _+_
+\end{code}
+
 + Doubling a number.
 
 \begin{code}
@@ -84,7 +92,6 @@ double₂ : ℕ → ℕ
 double₂ zero = zero
 double₂ n    = suc (suc n)
 \end{code}
-
 
 Now, just for testing the definitions above. We import the equality definition
 type (_≡_) and its rule (refl).
@@ -126,6 +133,12 @@ _*_ : ℕ → ℕ → ℕ
 _*_ = recℕ (ℕ → ℕ) (λ m → zero) λ n g m → add m (g m)
 \end{code}
 
+With the binding for this operation more tighly than (_+_)
+
+\begin{code}
+infix 7 _*_
+\end{code}
+
 \begin{code}
 m₁ : 2 * 0 ≡ 0
 m₁ = refl
@@ -158,7 +171,7 @@ following
 \begin{code}
 indℕ
   : ∀ (C : ℕ → Set)
-  → C 0
+  → C zero
   → (∀ (n : ℕ) → C n → C (suc n))
   → (∀ (n : ℕ) → C n)
 \end{code}
@@ -173,4 +186,25 @@ indℕ C c₀ cₛ (suc n) = cₛ n (indℕ C c₀ cₛ n)
 * Remark: the usage of forall symbol is not necessary but it makes more
 likely to the schemata presented above.
 
-Then, we can define other functions:
+Now, we have the power of induction to prove some properties. Let us begin
+proving associativity.
+
+\begin{code}
+assoc : (i j k : ℕ) → i + (j + k) ≡ (i + j) + k
+assoc = {!  !}
+\end{code}
+
+To prove by induction we need first to provide assoc₀
+
+\begin{code}
+assoc₀ : ∀ (j k : ℕ) → 0 + (j + k) ≡ (0 + j) + k
+assoc₀ = {!   !}
+\end{code}
+
+\begin{code}
+assoc₁
+  : ∀ (i : ℕ)                                            -- Πn:ℕ
+  → ∀ (j k : ℕ) → i + (j + k) ≡ (i + j) + k              -- (C n →
+  → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k  -- C (suc n))
+assoc₁ = {!   !}
+\end{code}

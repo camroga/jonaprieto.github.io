@@ -9,7 +9,7 @@ date: "2018-02-09 21:58"
   predicate P, P(x) if and only if P(y).
 
   ```
-  ∀x ∀y (x = y → ∀P (P x ↔ Py))
+  ∀x ∀y (x = y → ∀P (P x ↔ P y))
   ```
 
 \begin{code}
