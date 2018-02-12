@@ -4,11 +4,13 @@ title: "Leibniz's Equality"
 date: "2018-02-09 21:58"
 ---
 
-Leibniz characterised the notion of equality as follows:
-Given any x and y, x = y if and only if, given any
-predicate P, P(x) if and only if P(y).
+  > Leibniz characterised the notion of equality as follows:
+  Given any x and y, x = y if and only if, given any
+  predicate P, P(x) if and only if P(y).
 
+  ```
   ∀x ∀y (x = y → ∀P (P x ↔ Py))
+  ```
 
 \begin{code}
 Eq : ∀ {A : Set} → (x y : A) → Set₁

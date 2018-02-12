@@ -5,9 +5,8 @@ date: "2018-02-12 13:25"
 updated: 2018-02-12
 ---
 
-We define the natural numbers by following its
-algorithmic or finite definition, that is, using a
-rule to construct the zero and a successor for any number.
+We define the natural numbers by following its algorithmic or finite definition,
+that is, using a rule to construct the zero and a successor for any number.
 
 \begin{code}
 data ℕ : Set where
@@ -15,8 +14,8 @@ data ℕ : Set where
   suc  : ℕ → ℕ
 \end{code}
 
-* Remark: to be more comfortable with the usual notation let use
-the following pragma:
+* Remark: to be more comfortable with the usual notation let use the following
+* pragma:
 
 \begin{code}
 {-# BUILTIN NATURAL ℕ #-}
@@ -140,8 +139,9 @@ m₃ = refl
 
 #### Induction
 
-The induction here is a generalization of the priniciple of recursion.
-In first-order we can write the induction schema or the principle of mathematical induction.
+The induction here is a generalization of the priniciple of recursion. In
+first-order we can write the induction schema or the principle of mathematical
+induction.
 
 ```
 P 0 ∧ (∀ n. P n → P (suc n)) → ∀n. P n
