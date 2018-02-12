@@ -1,12 +1,21 @@
 agda := $(wildcard src/*.lagda)
 agdai := $(wildcard src/*.agdai)
-markdown := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
+originalmd := $(wildcard src/*.md)
 
-all: $(markdown)
+markdownOrig := $(subst src/,_posts/,$(originalmd))
+markdownAgda := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
 
-_posts/%.md: src/%.lagda
-	rm -Rf _post
+
+all: _posts/ $(markdownOrig) $(markdownAgda)
+
+_posts/ :
+	rm -Rf -d _post
 	mkdir -p _posts
+
+_posts/%.md : src/%.md
+	cp $< $@
+
+_posts/%.md : src/%.lagda
 	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@
 
 observr:
@@ -33,7 +42,7 @@ clobber: clean
 ifneq ($(strip $(markdown)),)
 	rm $(markdown)
 endif
-	rmdir _posts/
+	rm -Rf _posts/
 
 .phony: clobber
 

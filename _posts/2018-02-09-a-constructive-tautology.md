@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "A constructive tautology"
+title: "A Constructive Tautology"
 date: "2018-02-09 22:20"
 ---
 

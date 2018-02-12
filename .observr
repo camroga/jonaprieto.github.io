@@ -1,1 +1,1 @@
-watch( 'src/.*' )  {|md| system("make") }
+watch( 'src/.*' )  {|md| system("make all") }

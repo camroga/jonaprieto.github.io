@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "functions in type theory"
+title: "Function Type"
 date: "2018-02-10 14:12"
 ---
 

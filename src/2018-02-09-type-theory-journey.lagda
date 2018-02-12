@@ -1,5 +1,5 @@
 ---
-title: Type theory journey
+title: TT Summary
 layout: page
 ---
 

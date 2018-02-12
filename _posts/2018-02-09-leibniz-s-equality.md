@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Leibniz's equality"
+title: "Leibniz's Equality"
 date: "2018-02-09 21:58"
 ---
 
@@ -8,7 +8,7 @@ Leibniz characterised the notion of equality as follows:
 Given any x and y, x = y if and only if, given any
 predicate P, P(x) if and only if P(y).
 
-  ∀x ∀y (x = y → ∀P (P x ↔ Py)]
+  ∀x ∀y (x = y → ∀P (P x ↔ Py))
 
 <pre class="Agda">{% raw %}<a id="Eq" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#Eq" class="Function">Eq</a> <a id="275" class="Symbol">:</a> <a id="277" class="Symbol">∀</a> <a id="279" class="Symbol">{</a><a id="280" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#280" class="Bound">A</a> <a id="282" class="Symbol">:</a> <a id="284" class="PrimitiveType">Set</a><a id="287" class="Symbol">}</a> <a id="289" class="Symbol">→</a> <a id="291" class="Symbol">(</a><a id="292" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#292" class="Bound">x</a> <a id="294" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#294" class="Bound">y</a> <a id="296" class="Symbol">:</a> <a id="298" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#280" class="Bound">A</a><a id="299" class="Symbol">)</a> <a id="301" class="Symbol">→</a> <a id="303" class="PrimitiveType">Set₁</a>
 <a id="308" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#Eq" class="Function">Eq</a> <a id="311" class="Symbol">{</a><a id="312" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#312" class="Bound">A</a><a id="313" class="Symbol">}</a> <a id="315" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#315" class="Bound">x</a> <a id="317" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#317" class="Bound">y</a> <a id="319" class="Symbol">=</a> <a id="321" class="Symbol">(</a><a id="322" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#322" class="Bound">P</a> <a id="324" class="Symbol">:</a> <a id="326" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#312" class="Bound">A</a> <a id="328" class="Symbol">→</a> <a id="330" class="PrimitiveType">Set</a><a id="333" class="Symbol">)</a> <a id="335" class="Symbol">→</a> <a id="337" class="Symbol">(</a><a id="338" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#322" class="Bound">P</a> <a id="340" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#315" class="Bound">x</a> <a id="342" class="Symbol">→</a> <a id="344" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#322" class="Bound">P</a> <a id="346" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#317" class="Bound">y</a><a id="347" class="Symbol">)</a>{% endraw %}</pre>
