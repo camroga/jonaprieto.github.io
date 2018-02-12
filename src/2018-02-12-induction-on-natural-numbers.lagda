@@ -120,7 +120,7 @@ It's time to unpacking the the definition of `add`:
   + Question: why `((λ n g m → suc (g m)))`?
 
 Let us try with another function, the multiplication, but this time
-use a nice name for this function (_*_).
+let use a better name for this function (_*_).
 
 \begin{code}
 _*_ : ℕ → ℕ → ℕ
@@ -144,14 +144,13 @@ The induction here is a generalization of the priniciple of recursion.
 In first-order we can write the induction schema or the principle of mathematical induction.
 
 ```
-C 0 ∧ (∀ n. C n → C (suc n)) → ∀n. C n
+P 0 ∧ (∀ n. P n → P (suc n)) → ∀n. P n
 ```
 
-
-  > In particular, a property of natural numbers is represented by a family of types
-  P : N → U. From this point of view, the above induction principle says that if
-  we can prove P(0), and if for any n we can prove P(succ(n)) assuming P(n), then
-  we have P(n) for all n. (HoTT Book. Pag.50-51.)
+  > In particular, a property of natural numbers is represented by a family of
+  types P : ℕ → 𝒰. From this point of view, the above induction principle says
+  that if we can prove P(0), and if for any n we can prove P(succ(n)) assuming
+  P(n), then we have P(n) for all n. (HoTT Book. Pag.50-51.)
 
 By using a *dependent* function to obtain its version in type theory we have the
 following
