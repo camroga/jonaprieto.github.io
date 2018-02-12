@@ -194,12 +194,14 @@ assoc : (i j k : ℕ) → i + (j + k) ≡ (i + j) + k
 assoc = {!  !}
 \end{code}
 
-To prove by induction we need first to provide assoc₀
+To prove by induction we need first to provide assoc₀ as the base case
 
 \begin{code}
 assoc₀ : ∀ (j k : ℕ) → 0 + (j + k) ≡ (0 + j) + k
 assoc₀ = {!   !}
 \end{code}
+
+and the hypotesis of induction
 
 \begin{code}
 assoc₁
