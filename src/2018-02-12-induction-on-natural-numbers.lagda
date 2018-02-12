@@ -205,8 +205,8 @@ and the hypotesis of induction
 
 \begin{code}
 assoc₁
-  : ∀ (i : ℕ)                                            -- Πn:ℕ
-  → ∀ (j k : ℕ) → i + (j + k) ≡ (i + j) + k              -- (C n →
-  → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k  -- C (suc n))
+  : ∀ (i : ℕ)
+  → ∀ (j k : ℕ) → i + (j + k) ≡ (i + j) + k
+  → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k  
 assoc₁ = {!   !}
 \end{code}
