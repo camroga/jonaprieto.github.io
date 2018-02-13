@@ -234,7 +234,7 @@ assoc₁ = {!   !}
 
 As we can see in the type of `+-cong` we used implicit
 arguments for the numbers n and m. That's pretty convenient to get
-some help by letting infer Agda about the implicit argument.
+some help by letting infer Agda about those implicit argument.
 
 + Exercise 1
 
