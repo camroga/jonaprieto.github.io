@@ -3,9 +3,13 @@ layout: default
 ---
 
 <div class="post">
+  {%if page.date %}
   <span class="post-date">Created on {{ page.date | date_to_string }}
+  {% endif %}
   <h2 class="post-title">{{ page.title }}</h2>
+  {%if page.last_modified_at %}
   <span class="post-date">Updated on {{ page.last_modified_at | date_to_string }}</span>
+  {% endif %}
   </span>
   {{ content }}
 </div>
@@ -19,9 +23,6 @@ layout: default
           <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
             <small>{{ post.date | date_to_string }}</small>
-            {% if post.updated %}
-            <small>{{ post.updated | date_to_string }}</small>
-            {% endif %}
           </a>
         </h3>
       </li>
