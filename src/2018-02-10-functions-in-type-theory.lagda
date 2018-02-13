@@ -1,7 +1,7 @@
 ---
-layout: "post"
 title: "Function Type"
-date: "2018-02-10 14:12"
+layout: "post"
+date: "2018-02-10"
 ---
 
 

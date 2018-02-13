@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "A Constructive Tautology"
-date: "2018-02-09 22:20"
+date: "2018-02-09"
 ---
 
 Consider the following type:

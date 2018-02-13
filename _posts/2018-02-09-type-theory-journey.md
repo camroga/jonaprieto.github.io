@@ -1,6 +1,7 @@
 ---
-title: TT Summary
-layout: page
+layout: "post"
+title: "Type theories"
+date: "2018-02-09"
 ---
 
 Type theory

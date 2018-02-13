@@ -1,8 +1,7 @@
 ---
 layout: "post"
 title: "Induction on Natural Numbers"
-date: "2018-02-12 13:25"
-updated: 2018-02-12
+date: "2018-02-12"
 ---
 
 In this note, all will be about the type of the natural numbers, but
@@ -271,4 +270,4 @@ n+0≡n₂ zero = refl
 n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 \end{code}
 
-As we can see recursion and induction has here pretty in common.   
+As we can see recursion and induction has here pretty in common.

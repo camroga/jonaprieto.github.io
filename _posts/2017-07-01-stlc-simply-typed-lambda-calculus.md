@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Simply Typed Lambda Calculus"
-date: "2017-07-01 14:48"
+date: "2017-07-01"
 ---
 
 *This is unfinished as everything in this website.*

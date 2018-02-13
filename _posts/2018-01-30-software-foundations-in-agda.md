@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Software Foundations in Agda"
-date: "2018-01-30 13:53"
+date: "2018-01-30"
 ---
 
 Just to mention that this year I found a new tutorial using Agda to show
