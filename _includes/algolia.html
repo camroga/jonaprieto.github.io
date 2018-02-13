@@ -13,14 +13,17 @@ const search = instantsearch({
     restrictSearchableAttributes: [
       'title',
       'content'
-    ]
-  }
+    ],
+    facetFilters: ['type:post']
+  },
 });
 
 const hitTemplate = function(hit) {
   let date = '';
   if (hit.date) {
-    date = moment.unix(hit.date).format('MMM D, YYYY');
+    date = moment.unix(hit.date).format('L');
+    // date = moment.unix(hit.date).format('MMM Do YY');
+    modifiedDate = moment.unix(hit.last_modified_at).format('MMM Do YY');
   }
   const url = hit.url;
   const title = hit._highlightResult.title.value;
@@ -28,18 +31,36 @@ const hitTemplate = function(hit) {
 
   return `
     <div class="post-list">
-      <span class="post-date-list">${date}</span>
-      <h2><a class="post-title" href=".${url}">${title}</a></h2>
-      <div class="post-snippet">${content}</div>
+      <span class="post-date-list-wrap">
+      <span class="post-date-list">${date}
+      <span class="post-title"><a href=".${url}"> ${title} </a> </span>
+      </span>
     </div>
   `;
 }
 
+const hitTemplateTrans = function(hit) {
+  let date = '';
+  if (hit.date) {
+    date = moment.unix(hit.date).format('MMM DD YYYY');
+  }
+  const url = hit.url;
+  const title = hit._highlightResult.title.value;
+  const content = hit._highlightResult.html.value;
+
+  return `
+    <div class="post-list">
+      <span class="post-date-list">${date}
+        <span class="post-title"><a href=".${url}"> ${title} </a> </span>
+       </span>
+    </div>
+  `;
+}
 
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search-searchbar',
-    placeholder: 'Search into posts...'
+    placeholder: 'search notes'
   })
 );
 
@@ -47,8 +68,9 @@ search.addWidget(
   instantsearch.widgets.hits({
     container: '#search-hits',
     templates: {
+      empty: 'No results',
       item: hitTemplate
-    }
+    },
   })
 );
 
@@ -60,9 +82,7 @@ search.start();
   max-width: 100%;
   margin-bottom: 15px;
 }
-.post-item {
-  margin-bottom: 30px;
-}
+
 .post-link .ais-Highlight {
   color: #111;
   font-style: normal;

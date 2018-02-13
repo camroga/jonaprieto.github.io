@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Projects
+title: About
 ---
 
 
@@ -8,7 +8,7 @@ title: Projects
 
 
 - [Athena](athena) for proof-reconstruction in propositional logic (CPL)
-	
+
 	- [agda-prop](agda-prop) library for CPL
 
 	- [agda-metis](agda-prop) library to reconstruct Metis reasoning in CPL

@@ -3,9 +3,9 @@ layout: default
 ---
 
 <div class="post">
+  <span class="post-date">Created on {{ page.date | date_to_string }}
   <h2 class="post-title">{{ page.title }}</h2>
-  <span class="post-date">{{ page.date | date_to_string }}
-  <span class="post-date-update">Updated on {{ page.last_modified_at | date_to_string }}</span>
+  <span class="post-date">Updated on {{ page.last_modified_at | date_to_string }}</span>
   </span>
   {{ content }}
 </div>

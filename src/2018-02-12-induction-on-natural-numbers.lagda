@@ -5,11 +5,19 @@ date: "2018-02-12 13:25"
 updated: 2018-02-12
 ---
 
-We define the natural numbers by following its algorithmic or finite definition,
-that is, using a rule to construct the zero and a successor for any number.
+In this note, all will be about the type of the natural numbers, but
+first let us use in Agda a synonymous for the universe of types.
 
 \begin{code}
-data ℕ : Set where
+Type = Set
+\end{code}
+
+We can define the natural numbers by following its algorithmic or finite
+definition, that is, using a rule to construct the zero number and the successor
+for the other numbers.
+
+\begin{code}
+data ℕ : Type where
   zero : ℕ
   suc  : ℕ → ℕ
 \end{code}
@@ -39,7 +47,7 @@ recℕ is the so-called *recursor* for natural numbers. In Agda,
 
 \begin{code}
 recℕ
-  : (C : Set)    -- type for the outcome
+  : (C : Type)    -- type for the outcome
   → C            -- base case
   → (ℕ → C → C)  -- recursion
   → ℕ            -- the natural number as the argument
@@ -170,7 +178,7 @@ following
 
 \begin{code}
 indℕ
-  : ∀ (C : ℕ → Set)
+  : ∀ {C : ℕ → Type}
   → C zero
   → (∀ (n : ℕ) → C n → C (suc n))
   → (∀ (n : ℕ) → C n)
@@ -179,8 +187,8 @@ indℕ
 with the defining equations
 
 \begin{code}
-indℕ C c₀ cₛ zero    = c₀
-indℕ C c₀ cₛ (suc n) = cₛ n (indℕ C c₀ cₛ n)
+indℕ c₀ cₛ zero    = c₀
+indℕ c₀ cₛ (suc n) = cₛ n (indℕ c₀ cₛ n)
 \end{code}
 
 * Remark: the usage of forall symbol is not necessary but it makes more
@@ -215,33 +223,52 @@ assoc₁ = {!   !}
 
 \begin{code}
 +-comm : ∀ (n m : ℕ) → n + m ≡ m + n
-+-comm = indℕ {!   !} {!   !} {!   !}
++-comm = indℕ {!   !} {!   !}
 \end{code}
 
 + *Congruence*
 
 \begin{code}
-+-cong : ∀ (n m : ℕ) → n ≡ m → suc n ≡ suc m
-+-cong = indℕ {!   !} {!   !} {!   !}
++-cong : ∀ {n m : ℕ} → n ≡ m → suc n ≡ suc m
++-cong refl = refl
 \end{code}
+
+As we can see in the type of `+-cong` we used implicit
+arguments for the numbers n and m. That's pretty convenient to get
+some help by letting infer Agda about the implicit argument.
 
 + Exercise 1
 
 \begin{code}
-0+n : ∀ (n : ℕ) → 0 + n ≡ 0
-0+n = indℕ {!   !} {!   !} {!   !}
+0+n≡n : ∀ (n : ℕ) → 0 + n ≡ n
+0+n≡n = indℕ refl (λ n p → +-cong p)
 \end{code}
 
 + Exercise 2
 
 \begin{code}
 p₂ : ∀ (n : ℕ) → double (n + 1) ≡ (suc (suc (double n)))
-p₂ = indℕ {!   !} {!   !} {!   !}
+p₂ = indℕ refl (λ n indHyp → +-cong (+-cong indHyp))
 \end{code}
+
+In the above definition may it's worth to notice that indHyp
+is actually our induction hypotesis.
+
+    indHyp : double (n + 1) ≡ suc (suc (double n))
 
 + Exercise 3
 
 \begin{code}
-p₃ : ∀ (n : ℕ) → double (n + 1) ≡ (suc (suc (double n)))
-p₃ = indℕ {!   !} {!   !} {!   !}
+n+0≡n : ∀ (n : ℕ) → n + 0 ≡ n
+n+0≡n = indℕ refl (λ n indHyp → +-cong indHyp)
 \end{code}
+
+But this time, lets try proving this without using indℕ but pattern matching.
+
+\begin{code}
+n+0≡n₂ : ∀ (n : ℕ) → n + 0 ≡ n
+n+0≡n₂ zero = refl
+n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
+\end{code}
+
+As we can see recursion and induction has here pretty in common.   

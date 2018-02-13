@@ -6,26 +6,13 @@ layout: default
 
   {{ content }}
 
-  <h1 class="page-heading">Notes</h1>
+  <h2 class="page-heading">Notes
+    <a class="rss-subscribe"href="{{ "/feed.xml" | relative_url }}">rss</a></h2>
 
   <div id="search-searchbar"></div>
 
   <div class="posts" id="search-hits">
-    {% for post in site.posts %}
-      <div class="post-list">
-        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        <span class="post-date-list">{{ post.date | date: date_format }}</span>
-
-        <h2>
-          <a class="post-title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2>
-        <!-- <div class="post-snippet">{{ post.excerpt }}</div> -->
-      </div>
-    {% endfor %}
   </div>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-
 </div>
 
 {% include algolia.html %}
