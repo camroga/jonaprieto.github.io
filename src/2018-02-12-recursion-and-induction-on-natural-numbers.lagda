@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Induction on Natural Numbers"
+title: "Recursion and Induction on Natural Numbers"
 date: "2018-02-12"
 ---
 
@@ -46,9 +46,9 @@ recℕ is the so-called *recursor* for natural numbers. In Agda,
 
 \begin{code}
 recℕ
-  : (C : Type)    -- type for the outcome
+  : (C : Type)   -- type for the outcome
   → C            -- base case
-  → (ℕ → C → C)  -- recursion
+  → (ℕ → C → C)  -- recursion step?
   → ℕ            -- the natural number as the argument
   → C            -- outcome
 \end{code}
@@ -56,7 +56,7 @@ recℕ
 With the following equations:
 
 \begin{code}
-recℕ C c₀ cₛ zero = c₀
+recℕ C c₀ cₛ zero    = c₀
 recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
 \end{code}
 
@@ -69,7 +69,7 @@ add : ℕ → ℕ → ℕ
 add = recℕ (ℕ → ℕ) (λ m → m) (λ n g m → suc (g m))
 \end{code}
 
-Instead of the usual add function:
+Instead of using the following definition:
 
 \begin{code}
 add₂ : ℕ → ℕ → ℕ
@@ -157,7 +157,7 @@ m₃ : 10 * 3 ≡ 30
 m₃ = refl
 \end{code}
 
-#### Induction
+### Induction
 
 The induction here is a generalization of the priniciple of recursion. In
 first-order we can write the induction schema or the principle of mathematical
@@ -236,6 +236,17 @@ As we can see in the type of `+-cong` we used implicit
 arguments for the numbers n and m. That's pretty convenient to get
 some help by letting infer Agda about those implicit argument.
 
+Using congruence we can now prove that both definitions above
+for the add function are indeed equal using ι-,β- reductions:
+
+\begin{code}
+add≡add₂ : ∀ (n m : ℕ) → add n m ≡ add₂ n m
+add≡add₂ zero    m = refl
+add≡add₂ (suc n) m = +-cong (add≡add₂ n m)
+\end{code}
+
+### Other exercises
+
 + Exercise 1
 
 \begin{code}
@@ -271,8 +282,13 @@ n+0≡n₂ zero    = refl
 n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 \end{code}
 
-As we can see above, we might start thinking that pattern matching
-is indeed induction, don't you?
+Conclusions:
+
+  + Induction as it was presented here is stronger than recursion.
+    We can say this because the recursor recℕ is the *independent* version
+    of indℕ.
+
+  + Pattern matching is powerful, and it coinci
 
 Related:
 
