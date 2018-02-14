@@ -288,7 +288,7 @@ Conclusions:
     We can say this because the recursor recℕ is the *independent* version
     of indℕ.
 
-  + Pattern matching is powerful, and it coinci
+  + Pattern matching is powerful.
 
 References:
 
