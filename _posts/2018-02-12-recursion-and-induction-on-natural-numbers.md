@@ -236,7 +236,11 @@ Conclusions:
 
   + Pattern matching is powerful, and it coinci
 
-Related:
+References:
+
+* Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent
+Foundations of Mathematics. Institute for Advanced Study:
+https://homotopytypetheory.org/book.
 
 * Coquand, T. (1992). Pattern matching with dependent types. Informal Proceedings
 of Logical Frameworks. https://doi.org/10.1.1.37.9541
