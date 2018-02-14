@@ -262,12 +262,19 @@ n+0≡n : ∀ (n : ℕ) → n + 0 ≡ n
 n+0≡n = indℕ refl (λ n indHyp → +-cong indHyp)
 \end{code}
 
-But this time, lets try proving this without using indℕ but pattern matching.
+But this time, lets try proving this without using indℕ but pattern matching
+capability of Agda.
 
 \begin{code}
 n+0≡n₂ : ∀ (n : ℕ) → n + 0 ≡ n
-n+0≡n₂ zero = refl
+n+0≡n₂ zero    = refl
 n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 \end{code}
 
-As we can see recursion and induction has here pretty in common.
+As we can see above, we might start thinking that pattern matching
+is indeed induction, don't you?
+
+Related:
+
+* Coquand, T. (1992). Pattern matching with dependent types. Informal Proceedings
+of Logical Frameworks. https://doi.org/10.1.1.37.9541
