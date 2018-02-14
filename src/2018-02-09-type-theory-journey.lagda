@@ -34,3 +34,13 @@ We mostly refers to type theories using the following abbreviations:
     - [*Identity types*](https://ncatlab.org/nlab/show/identity+type) are not necessary propositions
 
     - It fails to satisfy [*function extensionality*](https://ncatlab.org/nlab/show/function+extensionality)
+
+
+Type Zoo:
+
+  * Functions  (_→_)
+  * Products   (_×_)
+  * Coproducts (_+_)
+  * Π-types    (Π_._)
+  * Σ-types    (Σ_._)
+  * Identity   (_≡_)

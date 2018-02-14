@@ -8,7 +8,7 @@ In this note, all will be about the type of the natural numbers, but
 first let us use in Agda a synonymous for the universe of types.
 
 \begin{code}
-Type = Set
+𝒰 = Set
 \end{code}
 
 We can define the natural numbers by following its algorithmic or finite
@@ -16,7 +16,7 @@ definition, that is, using a rule to construct the zero number and the successor
 for the other numbers.
 
 \begin{code}
-data ℕ : Type where
+data ℕ : 𝒰 where
   zero : ℕ
   suc  : ℕ → ℕ
 \end{code}
@@ -46,7 +46,7 @@ recℕ is the so-called *recursor* for natural numbers. In Agda,
 
 \begin{code}
 recℕ
-  : (C : Type)   -- type for the outcome
+  : (C : 𝒰)   -- type for the outcome
   → C            -- base case
   → (ℕ → C → C)  -- recursion step?
   → ℕ            -- the natural number as the argument
@@ -177,7 +177,7 @@ following
 
 \begin{code}
 indℕ
-  : ∀ {C : ℕ → Type}
+  : ∀ {C : ℕ → 𝒰}
   → C zero
   → (∀ (n : ℕ) → C n → C (suc n))
   → (∀ (n : ℕ) → C n)

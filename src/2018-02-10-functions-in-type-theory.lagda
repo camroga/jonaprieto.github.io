@@ -60,7 +60,7 @@ f≡f₁ = refl
 
 Related:
 
-+ Two functions are **judgementally* equal if they are equal by α-conversion,
++ Two functions are *judgemental* equal if they are equal by α-conversion,
 that is, if after renaming the variable names they are definitionally equal.
 
 \begin{code}
@@ -71,8 +71,9 @@ h : A → A → A
 h =  λ w z → z
 \end{code}
 
-But g and h functions producing the same, then if que sustitute in h, w by x,
-and z by y, we get the definition of g, so at the end, g and h are **judgementally* equal.
+Both g and h function produce the same result, then if que sustitute in h, w by
+x, and z by y, we get the definition of g, so at the end, g and h are
+*judgemental* equal.
 
 \begin{code}
 g≡h : g ≡ h
@@ -80,3 +81,4 @@ g≡h = refl
 \end{code}
 
 + Currying.
+  ...
