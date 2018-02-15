@@ -31,24 +31,26 @@ With a low precedence:
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 
-pi : ∀ {A : 𝒰}
-    → (C : (x y : A) → x ≡ y → 𝒰)
-    → ((x : A) → C x x (refl))
-    → ∀ (x y : A) (p : x ≡ y) → C x y p
+pi
+  : ∀ {A : 𝒰}
+  → (C : (x y : A) → x ≡ y → 𝒰)
+  → ((x : A) → C x x (refl))
+  → ∀ (x y : A) (p : x ≡ y) → C x y p
 pi {A} C c x .x refl = c x
 \end{code}
 
 #### Path based induction
 
 \begin{code}
-bpi : ∀ {A : 𝒰}
-    → (a : A)
-    → (C : (y : A) → a ≡ y → 𝒰)
-    → C a refl
-    → ∀ (y : A) (p : a ≡ y) → C y p
+bpi
+  : ∀ {A : 𝒰} → (a : A)
+  → (C : (y : A) → a ≡ y → 𝒰)
+  → C a refl
+  → (y : A) (p : a ≡ y) → C y p
 bpi a C c .a refl = c
 \end{code}
 
+Path-Induction follows Path based induction.
 
 \begin{code}
 bpi-pi
@@ -63,9 +65,33 @@ bpi-pi {A} C c x = g
 
     c′ : C x x refl
     c′  = c x
+
     g : ∀ (y : A) (p : x ≡ y) → C′ y p
     g = bpi x C′ c′
 \end{code}
+
+The other direction:
+
+
+\begin{code}
+pi-bpi
+  : ∀ {A : 𝒰}
+  → (a : A)
+  → (C : (y : A) → a ≡ y → 𝒰)
+  → (c : C a refl)
+  → ∀ (y : A) (p : a ≡ y) → C y p
+pi-bpi {A} a C c y relf = f a y relf
+  where
+    D : ∀ (x y : A) → x ≡ y → Set₁
+    D x y p = (K : (z : A) → x ≡ z → 𝒰) → K x refl → K y p
+
+    d : ∀ (x : A) → D x x refl
+    d = λ x C c → c
+
+    f : ∀ (x y : A) (p : x ≡ y) → D x y p
+    f = pi D d
+\end{code}
+
 
 ## References
 
