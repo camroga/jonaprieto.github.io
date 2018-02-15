@@ -29,9 +29,8 @@ With a low precedence:
 #### Path induction
 
 \begin{code}
--- test : ∀ {A : 𝒰} → (x y : A) → Id A x y → 𝒰
--- test = {!   !}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
+
 pi : ∀ {A : 𝒰}
     → (C : (x y : A) → x ≡ y → 𝒰)
     → ((x : A) → C x x (refl))
@@ -64,7 +63,6 @@ bpi-pi {A} C c x = g
 
     c′ : C x x refl
     c′  = c x
-    --
     g : ∀ (y : A) (p : x ≡ y) → C′ y p
     g = bpi x C′ c′
 \end{code}
