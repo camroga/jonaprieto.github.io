@@ -80,10 +80,11 @@ pi-bpi
   → (C : (y : A) → a ≡ y → 𝒰)
   → (c : C a refl)
   → ∀ (y : A) (p : a ≡ y) → C y p
-pi-bpi {A} a C c y relf = f a y relf
+pi-bpi {A} a C c = {!   !} -- f a
   where
-    D : ∀ (x y : A) → x ≡ y → Set₁
-    D x y p = (K : (z : A) → x ≡ z → 𝒰) → K x refl → K y p
+    D : ∀ (x y : A) → x ≡ y → 𝒰
+    D x y p = (K : ∀ (z : A) → x ≡ z → Set₁ ) → K x refl → K y p
+    -- (K : (z : A) → x ≡ z → 𝒰) → K x refl → K y p
 
     d : ∀ (x : A) → D x x refl
     d = λ x C c → c
