@@ -46,6 +46,9 @@ pi
   → (C : (x y : A) → x ≡ y → Set i)
   → ((x : A) → C x x refl)
   → ∀ (x y : A) (p : x ≡ y) → C x y p
+\end{code}
+Defined by the equation:
+\begin{code}
 pi {A} C c x .x refl = c x
 \end{code}
 
@@ -57,6 +60,9 @@ bpi
   → (C : (y : A) → a ≡ y → Set i)
   → C a refl
   → (y : A) (p : a ≡ y) → C y p
+\end{code}
+Defined by the equation:
+\begin{code}
 bpi a C c .a refl = c
 \end{code}
 
