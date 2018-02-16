@@ -62,7 +62,6 @@ f≡f₁ = refl
 
 Related:
 
-
 + Two functions are *judgemental* equal if they are equal by α-conversion,
 that is, if after renaming the variable names they are definitionally equal.
 
@@ -83,7 +82,9 @@ g≡h : g ≡ h
 g≡h = refl
 \end{code}
 
-Very related to this matter is the [*functional extensionality*](https://ncatlab.org/nlab/show/function+extensionality),
+### Functional extensionality
+
+Very related to the above matter is the [*functional extensionality*](https://ncatlab.org/nlab/show/function+extensionality)
 axiom that establishes the pointwise equality between two functions.
 This axiom has the following type:
 
