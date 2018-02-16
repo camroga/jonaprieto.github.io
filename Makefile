@@ -91,6 +91,8 @@ deploy :
 	- make serve
 
 .phony : push
-push :	
+push :
+	- make clobber
+	- make
 	- @git commit -am "[ test-$(shell date +"%Y-%m-%d_%H%M%S") ] added."
 	- @git push origin master
