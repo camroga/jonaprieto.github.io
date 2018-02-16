@@ -8,10 +8,6 @@ date: "2018-02-14 17:41"
 Here, there is a new type former to introduce identities.
 The identity or equality type is defined as follows:
 
-Remember that since we are using Agda, there are universes
-and levels. But for now, we just talk about
-\AgdaDatatype{Set}, the level zero.
-
 ```
 data Id (A : Set) (x y : A) : Set where
   refl : Id A x y
@@ -29,11 +25,19 @@ x ≡ y = refl
 However, there are many things already proved about this type
 in the Agda, so let use the common import for such a purpose:
 
-#### Path induction
-
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
+\end{code}
 
+#### Path induction
+
+Before continue, remember that since we are using Agda, there are universes and
+its levels to handle the
+[hierarchie](https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/).
+We mention that because in the following we use these levels for the first time
+in these notes.
+
+\begin{code}
 pi
   : ∀ {i} {A : Set}
   → (C : (x y : A) → x ≡ y → Set i)
@@ -53,15 +57,18 @@ bpi
 bpi a C c .a refl = c
 \end{code}
 
-Path-Induction follows Path based induction.
+#### Equivalence between pi and bpi
+
+Path-induction follows from path based induction.
 
 \begin{code}
-bpi-pi
-    : ∀ {A : Set}
-    → (C : (x y : A) → x ≡ y → Set)
-    → (c : (x : A) → C x x refl)
-    → (x y : A) (p : x ≡ y) → C x y p
-bpi-pi {A} C c x = g
+bpi⇒pi
+  : ∀ {A : Set}
+  → (C : (x y : A) → x ≡ y → Set)
+  → (c : (x : A) → C x x refl)
+  → (x y : A) (p : x ≡ y) → C x y p
+
+bpi⇒pi {A} C c x = g
   where
     C′ : (y : A) → x ≡ y → Set
     C′ = C x
@@ -75,15 +82,15 @@ bpi-pi {A} C c x = g
 
 The other direction:
 
-
 \begin{code}
-pi-bpi
+pi⇒bpi
   : ∀ {A : Set}
   → (a : A)
   → (C : (y : A) → a ≡ y → Set)
   → (c : C a refl)
   → ∀ (y : A) (p : a ≡ y) → C y p
-pi-bpi {A} a C c y p = f a y p C c
+
+pi⇒bpi {A} a C c y p = f a y p C c
   where
     D : ∀ (x y : A) → x ≡ y → Set₁
     D x y p = (K : (z : A) → x ≡ z → Set) → K x refl → K y p
