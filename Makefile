@@ -94,5 +94,5 @@ deploy :
 push :
 	- make clobber
 	- make
-	- @git commit -am "[ test-$(shell date +"%Y-%m-%d_%H%M%S") ] added."
+	- @git commit -am "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")."
 	- @git push origin master
