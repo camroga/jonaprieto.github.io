@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Recursion and Induction on Natural Numbers"
+title: "Induction on Natural Numbers"
 date: "2018-02-12"
 ---
 
