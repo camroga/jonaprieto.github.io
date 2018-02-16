@@ -81,3 +81,12 @@ $(HOME)/agda2html-master/:
 	unzip -qq $(HOME)/agda2html-master.zip -d $(HOME)
 	cd $(HOME)/agda2html-master;\
 		stack install
+
+
+.PHONY : deploy
+deploy :
+	- jekyll algolia
+	- make clobber
+	- make
+	- @git commit -am "[ test-$(shell date +"%Y-%m-%d_%H%M%S") ] added."
+	- @git push origin master

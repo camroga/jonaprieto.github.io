@@ -4,27 +4,30 @@ title: "Induction on Identity Types"
 date: "2018-02-14 17:41"
 ---
 
-## Identity type
 
-\begin{code}
-𝒰 = Set
--- data Id (A : 𝒰) (x y : A) : 𝒰 where
---   refl : Id A x y
-\end{code}
-We can use another notation:
+Here, there is a new type former to introduce identities.
+The identity or equality type is defined as follows:
 
-\begin{code}
--- _≡_ : ∀ {A : 𝒰} → (x y : A) → Id A x y
--- x ≡ y = refl
-\end{code}
+Remember that since we are using Agda, there are universes
+and levels. But for now, we just talk about
+\AgdaDatatype{Set}, the level zero.
 
-With a low precedence:
+```
+data Id (A : Set) (x y : A) : Set where
+  refl : Id A x y
+```
 
-\begin{code}
--- infix 3 _≡_
-\end{code}
+To use another notation for Id,
+we can use the equality symbol (_≡_):
 
-### Elimination rules
+```
+infix 3 _≡_
+_≡_ : ∀ {A : Set} → (x y : A) → Id A x y
+x ≡ y = refl
+```
+
+However, there are many things already proved about this type
+in the Agda, so let use the common import for such a purpose:
 
 #### Path induction
 
@@ -32,9 +35,9 @@ With a low precedence:
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 
 pi
-  : ∀ {A : 𝒰}
-  → (C : (x y : A) → x ≡ y → 𝒰)
-  → ((x : A) → C x x (refl))
+  : ∀ {i} {A : Set}
+  → (C : (x y : A) → x ≡ y → Set i)
+  → ((x : A) → C x x refl)
   → ∀ (x y : A) (p : x ≡ y) → C x y p
 pi {A} C c x .x refl = c x
 \end{code}
@@ -43,8 +46,8 @@ pi {A} C c x .x refl = c x
 
 \begin{code}
 bpi
-  : ∀ {A : 𝒰} → (a : A)
-  → (C : (y : A) → a ≡ y → 𝒰)
+  : ∀ {i} {A : Set} → (a : A)
+  → (C : (y : A) → a ≡ y → Set i)
   → C a refl
   → (y : A) (p : a ≡ y) → C y p
 bpi a C c .a refl = c
@@ -54,13 +57,13 @@ Path-Induction follows Path based induction.
 
 \begin{code}
 bpi-pi
-    : ∀ {A : 𝒰}
-    → (C : (x y : A) → x ≡ y → 𝒰)
+    : ∀ {A : Set}
+    → (C : (x y : A) → x ≡ y → Set)
     → (c : (x : A) → C x x refl)
     → (x y : A) (p : x ≡ y) → C x y p
 bpi-pi {A} C c x = g
   where
-    C′ : (y : A) → x ≡ y → 𝒰
+    C′ : (y : A) → x ≡ y → Set
     C′ = C x
 
     c′ : C x x refl
@@ -75,15 +78,15 @@ The other direction:
 
 \begin{code}
 pi-bpi
-  : ∀ {A : 𝒰}
+  : ∀ {A : Set}
   → (a : A)
-  → (C : (y : A) → a ≡ y → 𝒰)
+  → (C : (y : A) → a ≡ y → Set)
   → (c : C a refl)
   → ∀ (y : A) (p : a ≡ y) → C y p
-pi-bpi {A} a C c y relf = f a y relf
+pi-bpi {A} a C c y p = f a y p C c
   where
     D : ∀ (x y : A) → x ≡ y → Set₁
-    D x y p = (K : (z : A) → x ≡ z → 𝒰) → K x refl → K y p
+    D x y p = (K : (z : A) → x ≡ z → Set) → K x refl → K y p
 
     d : ∀ (x : A) → D x x refl
     d = λ x C c → c
