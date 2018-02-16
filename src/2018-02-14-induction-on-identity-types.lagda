@@ -4,7 +4,6 @@ title: "Induction on Identity Types"
 date: "2018-02-14 17:41"
 ---
 
-
 We present here a new type former to introduce identities.
 The identity or equality type is defined as follows:
 
@@ -32,7 +31,7 @@ in the Agda, so let use the common import for such a purpose:
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 \end{code}
 
-#### Path induction
+### Path induction
 
 Before continue, remember that since we are using Agda, there are universes and
 its levels to handle the
@@ -52,7 +51,7 @@ Defined by the equation:
 pi {A} C c x .x refl = c x
 \end{code}
 
-#### Path based induction
+### Path based induction
 
 \begin{code}
 bpi
@@ -66,7 +65,7 @@ Defined by the equation:
 bpi a C c .a refl = c
 \end{code}
 
-#### Equivalence between pi and bpi
+### Equivalence between pi and bpi
 
 Path-induction follows from path based induction.
 
