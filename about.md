@@ -3,11 +3,12 @@ layout: page
 title: About
 ---
 
+Nothing here!
 
-## 2017
+<!-- ## 2017
+ -->
 
-
-- [Athena](athena) for proof-reconstruction in propositional logic (CPL)
+<!-- - [Athena](athena) for proof-reconstruction in propositional logic (CPL)
 
 	- [agda-prop](agda-prop) library for CPL
 
@@ -17,4 +18,4 @@ title: About
 
 [athena]: http://github.com/jonaprieto/athena
 [agda-prop]: http://github.com/jonaprieto/agda-prop
-[agda-metis]: http://github.com/jonaprieto/agda-metis
+[agda-metis]: http://github.com/jonaprieto/agda-metis -->
