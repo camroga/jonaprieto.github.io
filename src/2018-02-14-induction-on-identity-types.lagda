@@ -5,13 +5,16 @@ date: "2018-02-14 17:41"
 ---
 
 
-Here, there is a new type former to introduce identities.
+We present here a new type former to introduce identities.
 The identity or equality type is defined as follows:
 
 ```
 data Id (A : Set) (x y : A) : Set where
   refl : Id A x y
 ```
+
+The only rule/constructor is `refl` that represents the reflexivity property of
+the inductive types.
 
 To use another notation for Id,
 we can use the equality symbol (_≡_):
