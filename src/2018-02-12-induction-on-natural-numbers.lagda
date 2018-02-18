@@ -4,8 +4,11 @@ title: "Induction on Natural Numbers"
 date: "2018-02-12"
 ---
 
-In this note, all will be about the type of the natural numbers, but
-first let us use in Agda a synonymous for the universe of types.
+In this note, we expose the type for the natural numbers.
+We show how to define the recursion principle and its extension,
+the induction principle.
+
+First let us use in Agda a synonymous for the universe of types.
 
 \begin{code}
 𝒰 = Set
@@ -309,15 +312,19 @@ n+0≡n₂ zero    = refl
 n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 \end{code}
 
-Conclusions:
+## Conclusion:
 
-  + Induction as it was presented here is stronger than recursion.
-    We can say this because the recursor recℕ is the *independent* version
-    of indℕ.
+Induction as it was presented here is stronger than recursion.
+We can say this because the recursor recℕ is the *independent* version
+of indℕ.
 
-  + Pattern matching is powerful.
+The recursor recℕ allows to define a function f : ℕ → C by defining
+two equations:
 
-References:
++ f(0) ≡ c₀ for c₀ : C
++ f(suc n) ≡ cₛ(n, f(n)) for cₛ : ℕ → C → C
+
+## References:
 
 * Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent
 Foundations of Mathematics. Institute for Advanced Study:

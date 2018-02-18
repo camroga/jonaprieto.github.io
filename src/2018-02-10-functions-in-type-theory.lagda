@@ -138,7 +138,9 @@ add≡add₂ = FunExt (λ n → FunExt λ m → helper n m)
     helper (suc n) m = +-cong (helper n m)
 \end{code}
 
-In the [Agda standard library there is a section for function
++ *Agda standard library*
+
+In the the library `stdlib`, there is a section for function
 extensionality](https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#4385
 ):
 
