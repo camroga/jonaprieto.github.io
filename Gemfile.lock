@@ -24,6 +24,8 @@ GEM
     commonmarker (0.17.7.1)
       ruby-enum (~> 0.5)
     concurrent-ruby (1.0.5)
+    disqus-for-jekyll (1.0.1)
+      jekyll (~> 3.6.2)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -267,6 +269,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  disqus-for-jekyll
   github-pages
   hawkins
   jekyll-algolia

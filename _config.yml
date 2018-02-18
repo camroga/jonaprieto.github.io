@@ -16,7 +16,9 @@ plugins:
   - jekyll-feed
   - jekyll-last-modified-at
   - jekyll-algolia
-  - 'jekyll-analytics'
+  - jekyll-analytics
+  - disqus-for-jekyll
+
 exclude:
   - src/
   - Gemfile
@@ -32,6 +34,10 @@ jekyll_analytics:
     id: UA-114360791-1      # Required - replace with your tracking id
     anonymizeIp: false      # Optional - Default: false - set to true for anonymized tracking
 
+disqus:
+  name: "jonaprieto-blog" # required
+  noscript: "Your noscript tag message." # optional
+  
 # About/contact
 author:
   name:              Jonathan Prieto-Cubides
