@@ -35,6 +35,8 @@ const hitTemplate = function(hit) {
       <span class="post-date-list">${date}
       <span class="post-title"><a href=".${url}"> ${title} </a> </span>
       </span>
+      <p>${content}</p>
+
     </div>
   `;
 }
@@ -53,6 +55,7 @@ const hitTemplateTrans = function(hit) {
       <span class="post-date-list">${date}
         <span class="post-title"><a href=".${url}"> ${title} </a> </span>
        </span>
+       <p>${content}</p>
     </div>
   `;
 }
@@ -60,7 +63,8 @@ const hitTemplateTrans = function(hit) {
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search-searchbar',
-    placeholder: 'search notes'
+    placeholder: 'search notes',
+    autofocus: true
   })
 );
 

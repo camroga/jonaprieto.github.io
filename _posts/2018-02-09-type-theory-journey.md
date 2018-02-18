@@ -35,6 +35,10 @@ We mostly refers to type theories using the following abbreviations:
 
     - It fails to satisfy [*function extensionality*](https://ncatlab.org/nlab/show/function+extensionality)
 
+- Homotopy type theory
+- Cubical type theory
+- Observational type theory
+- [Computational higher type theory](https://github.com/CHTT-s18/lecture-notes)
 
 Type Zoo:
 

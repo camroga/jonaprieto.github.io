@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Path Algebra "
+title: "Path Algebra"
 date: "2018-02-16 21:57"
 ---
 
@@ -20,4 +20,8 @@ properties
 
 Show the Equivalence relation.
 
-### Mention the path induction 
+### Mention the path induction again
+
+### Lemmas but with INTUITION!!!
+
+Can I put here some pictures!?
