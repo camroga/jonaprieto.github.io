@@ -43,7 +43,7 @@ in these notes to appropriate define some types.
 pi
   : ∀ {i} {A : Set}
   → (C : (x y : A) → x ≡ y → Set i)
-  → ((x : A) → C x x refl)
+  → (∀ (x : A) → C x x refl)
   → ∀ (x y : A) (p : x ≡ y) → C x y p
 \end{code}
 Defined by the equation:
@@ -51,11 +51,20 @@ Defined by the equation:
 pi {A} C c x .x refl = c x
 \end{code}
 
+Idea: `pi` is the induction principle for the identity type.
+We have:
+
++ from the hypothesis if we have x ≡ y varying x and y with type A, but also +
+if the property C holds in the *diagonal* (for all x)
+
+Then we have the property C for all paths! (all identifications of x with y).
+
 ### Path based induction
 
 \begin{code}
 bpi
-  : ∀ {i} {A : Set} → (a : A)
+  : ∀ {i} {A : Set}
+  → (a : A)
   → (C : (y : A) → a ≡ y → Set i)
   → C a refl
   → (y : A) (p : a ≡ y) → C y p
@@ -64,6 +73,17 @@ Defined by the equation:
 \begin{code}
 bpi a C c .a refl = c
 \end{code}
+
+A differente or more customized version of path induction is the based
+path induction. We have
+
++ With a fixed endpoint a
+
++ if we consider all paths whiches start with a
+
++ to have the property for all y:A and for all paths a ≡ y the only
+necessary is to have C a refl, that is, holds C for the *base case*.
+
 
 ### Equivalence between path induction and base path induction
 
