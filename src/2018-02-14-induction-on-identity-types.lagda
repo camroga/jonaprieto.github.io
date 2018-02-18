@@ -54,10 +54,11 @@ pi {A} C c x .x refl = c x
 Idea: `pi` is the induction principle for the identity type.
 We have:
 
-+ from the hypothesis if we have x ≡ y varying x and y with type A, but also +
-if the property C holds in the *diagonal* (for all x)
++ from the hypothesis if we have x ≡ y varying x and y with type A, but also
 
-Then we have the property C for all paths! (all identifications of x with y).
++ if the property C holds in the *diagonal* (for all x)
+
++ then the property C holds for all paths! (all identifications of x with y).
 
 ### Path based induction
 
