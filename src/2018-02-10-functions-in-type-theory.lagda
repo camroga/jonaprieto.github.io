@@ -142,29 +142,36 @@ In the [Agda standard library there is a section for function
 extensionality](https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#4385
 ):
 
+Some imports:
 \begin{code}
 open import Level
 open import Relation.Binary.PropositionalEquality using (cong)
 open import Function using (_∘_; _$_)
+\end{code}
 
+\begin{code}
 Extensionality : (a b : Level) → Set _
 Extensionality a b =
   {A : Set a} {B : A → Set b} {f g : (x : A) → B x} →
   (∀ x → f x ≡ g x) → f ≡ g
+\end{code}
 
--- If extensionality holds for a given universe level, then it also
--- holds for lower ones.
+If extensionality holds for a given universe level, then it also
+holds for lower ones.
 
+\begin{code}
 extensionality-for-lower-levels :
   ∀ {a₁ b₁} a₂ b₂ →
   Extensionality (a₁ ⊔ a₂) (b₁ ⊔ b₂) → Extensionality a₁ b₁
 extensionality-for-lower-levels a₂ b₂ ext f≡g =
   cong (λ h → lower ∘ h ∘ lift) $
     ext (cong (lift {ℓ = b₂}) ∘ f≡g ∘ lower {ℓ = a₂})
+\end{code}
 
--- Functional extensionality implies a form of extensionality for
--- Π-types.
+Functional extensionality implies a form of extensionality for
+Π-types.
 
+\begin{code}
 ∀-extensionality :
   ∀ {a b} →
   Extensionality a (Level.suc b) →
