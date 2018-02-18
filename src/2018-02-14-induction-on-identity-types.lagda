@@ -36,8 +36,8 @@ open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 Before continue, remember that since we are using Agda, there are universes and
 its levels to handle the
 [hierarchie](https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/).
-We mention that because in the following we use these levels for the first time
-in these notes.
+We mention this because in the following we have to use these levels for the first time
+in these notes to appropriate define some types.
 
 \begin{code}
 pi
@@ -65,7 +65,7 @@ Defined by the equation:
 bpi a C c .a refl = c
 \end{code}
 
-### Equivalence between pi and bpi
+### Equivalence between path induction and base path induction
 
 Path-induction follows from path based induction.
 

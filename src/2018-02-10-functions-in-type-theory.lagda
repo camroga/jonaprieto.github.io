@@ -140,11 +140,12 @@ add≡add₂ = FunExt (λ n → FunExt λ m → helper n m)
 
 + *Agda standard library*
 
-In the the library `stdlib`, there is a section for function
+In the the library `stdlib`, there is a section for [function
 extensionality](https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#4385
-):
+) showed in the following excerpts.
 
 Some imports:
+
 \begin{code}
 open import Level
 open import Relation.Binary.PropositionalEquality using (cong)
@@ -162,9 +163,11 @@ If extensionality holds for a given universe level, then it also
 holds for lower ones.
 
 \begin{code}
-extensionality-for-lower-levels :
-  ∀ {a₁ b₁} a₂ b₂ →
-  Extensionality (a₁ ⊔ a₂) (b₁ ⊔ b₂) → Extensionality a₁ b₁
+extensionality-for-lower-levels
+  : ∀ {a₁ b₁} a₂ b₂
+  → Extensionality (a₁ ⊔ a₂) (b₁ ⊔ b₂)
+  → Extensionality a₁ b₁
+
 extensionality-for-lower-levels a₂ b₂ ext f≡g =
   cong (λ h → lower ∘ h ∘ lift) $
     ext (cong (lift {ℓ = b₂}) ∘ f≡g ∘ lower {ℓ = a₂})
@@ -174,11 +177,17 @@ Functional extensionality implies a form of extensionality for
 Π-types.
 
 \begin{code}
-∀-extensionality :
-  ∀ {a b} →
-  Extensionality a (Level.suc b) →
-  {A : Set a} (B₁ B₂ : A → Set b) →
-  (∀ x → B₁ x ≡ B₂ x) → (∀ x → B₁ x) ≡ (∀ x → B₂ x)
+∀-extensionality
+  : ∀ {a b}
+  → Extensionality a (Level.suc b)
+  → {A : Set a} (B₁ B₂ : A → Set b)
+  → (∀ x → B₁ x ≡ B₂ x) → (∀ x → B₁ x) ≡ (∀ x → B₂ x)
+
 ∀-extensionality ext B₁ B₂ B₁≡B₂ with ext B₁≡B₂
 ∀-extensionality ext B .B  B₁≡B₂ | refl = refl
 \end{code}
+
++ HoTT
+
+** Univalance implies function extensionality and the uniqueness principle for
+functions**
