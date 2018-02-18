@@ -4,14 +4,13 @@ title: "Software Foundations in Agda"
 date: "2018-01-30"
 ---
 
-Just to mention that this year I had lucky finding a new tutorial using Agda to show concepts of logic and PLT.
+New tutorial using Agda to show concepts of logic and programming theory.
 
 The **official repository** and website is the following:
 
   [https://wenkokke.github.io/sf/](https://wenkokke.github.io/sf/)
 
-However, I have **my own fork** where I put somethings that are missed in the
-original or just fixing some typos.
+However, I maintain **my own fork**:
 
   [https://jonaprieto.github.io/sf](https://jonaprieto.github.io/sf)
 

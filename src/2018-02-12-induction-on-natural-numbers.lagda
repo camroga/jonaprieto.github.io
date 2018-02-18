@@ -195,36 +195,6 @@ likely to the schemata presented above.
 
 Now, we have the power of induction to prove some properties.
 
-+ *Associativity*
-
-\begin{code}
-assoc : (i j k : ℕ) → i + (j + k) ≡ (i + j) + k
-assoc = {!  !}
-\end{code}
-
-To prove this property by induction we need first to provide the term assoc₀, that
-is the base case and then build a inhabitant of the hypotesis of induction.
-
-\begin{code}
-assoc₀ : ∀ (j k : ℕ) → 0 + (j + k) ≡ (0 + j) + k
-assoc₀ = {!   !}
-\end{code}
-
-\begin{code}
-assoc₁
-  : ∀ (i : ℕ)
-  → ∀ (j k : ℕ) → i + (j + k) ≡ (i + j) + k
-  → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k
-assoc₁ = {!   !}
-\end{code}
-
-+ *Commutatity*
-
-\begin{code}
-+-comm : ∀ (n m : ℕ) → n + m ≡ m + n
-+-comm = indℕ {!   !} {!   !}
-\end{code}
-
 + *Congruence*
 
 \begin{code}
@@ -245,6 +215,63 @@ add≡add₂ zero    m = refl
 add≡add₂ (suc n) m = +-cong (add≡add₂ n m)
 \end{code}
 
+
++ *Associativity*
+
+\begin{code}
+assoc : (i j k : ℕ) → i + (j + k) ≡ (i + j) + k
+\end{code}
+
+To prove this property by induction we need first to provide the term `assoc₀`, that
+is the base case and then build an inhabitant of the induction hypothesis.
+
+\begin{code}
+assoc₀ : ∀ (j k : ℕ) → 0 + (j + k) ≡ (0 + j) + k
+assoc₀ j k = refl
+\end{code}
+
+\begin{code}
+assoc₁
+  : ∀ (i : ℕ)
+  → (∀ (j k : ℕ) → i + (j + k) ≡ (i + j) + k)
+  → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k
+assoc₁ i p j₁ k₁ = +-cong (p j₁ k₁)
+\end{code}
+
+Then, by indℕ:
+
+\begin{code}
+assoc = indℕ assoc₀ assoc₁
+\end{code}
+
++ *Commutatity*
+
+\begin{code}
++-comm₀ : ∀ (m : ℕ) → zero + m ≡ m + zero
++-comm₀ = indℕ refl λ n indHyp → +-cong indHyp
+
+postulate
+  +-identity : ∀ (n : ℕ) → n + zero ≡ n
+  +-suc : ∀ (m n : ℕ) → m + suc n ≡ suc (m + n)
+
++-commₛ
+  : ∀ (m : ℕ)
+  → (∀ (n : ℕ) → m + n ≡ n + m)
+  → ∀ (n : ℕ)  → suc m + n ≡ n + suc m
++-commₛ m indHyp zero = +-identity (suc m)
+\end{code}
+
+Instead of using `rewrite` in Agda, we can use transitivity
+of the identity.
+
+\begin{code}
+trans : ∀ {m n p : ℕ} → m ≡ n → n ≡ p → m ≡ p
+trans refl refl = refl
+
++-comm : ∀ (m n : ℕ) → m + n ≡ n + m
++-comm = indℕ +-comm₀ +-commₛ
+\end{code}
+
 ### Other exercises
 
 + Exercise 1
@@ -262,7 +289,7 @@ p₂ = indℕ refl (λ n indHyp → +-cong (+-cong indHyp))
 \end{code}
 
 In the above definition may it's worth to notice that indHyp
-is actually our induction hypotesis.
+is actually our induction hypothesis.
 
     indHyp : double (n + 1) ≡ suc (suc (double n))
 
