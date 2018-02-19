@@ -42,11 +42,10 @@ in these notes to define in an appropriate way some types.
 
 ### Path induction
 
-We call *path* to the inhabitant of the identity type, that is,
-p : x ≡ y for some x and y of type A. We can probably think that
-there is only one p, but there are many identifications between x and y
-from the HoTT perspective. That's the reason we talk about one path, and the set of paths
-as the *path space*.
+We call *path* to the inhabitant of the identity type, that is, p : x ≡ y for
+some x and y of type A. We can probably think that there is only one p, but
+there are many identifications between x and y from the HoTT perspective. That's
+the reason we talk about one path and one set of paths, the *path space*.
 
 ![path](/assets/images/path.png)
 
@@ -61,22 +60,29 @@ pi
   → ∀ (x y : A) (p : x ≡ y) → C x y p
 \end{code}
 
-Defined by the equation:
+defined by the equation
+
 \begin{code}
 pi {A} C c x .x refl = c x
 \end{code}
 
-Let us unpackage this type:
+Let us unpackage this:
 
-We have:
+To contruct something of the type (∀ (x y : A) (p : x ≡ y) → C x y p) we need that:
 
-+ from the hypothesis if we have x ≡ y varying x and y with type A, but also
++ [1] C can construct types from three arguments: two endpoints and one path.
 
-+ if the property C holds in the *diagonal* (for all x)
++ [2] C holds in the *diagonal*, that is, there is a proof for C x x refl for all x.
 
-+ then the property C holds for all paths! (all identifications of x with y).
+Then, as result, the property C holds for all paths! (all identifications of x with y).
+
+We can think in the diagonal requeriment as the base case on an ordinary
+induction.
 
 ### Path based induction
+
+A differente or more customized version of path induction is the based
+path induction abbreviated as `bpi`.
 
 \begin{code}
 bpi
@@ -86,13 +92,13 @@ bpi
   → C a refl
   → (y : A) (p : a ≡ y) → C y p
 \end{code}
-Defined by the equation:
+
+defined by the equation
 \begin{code}
 bpi a C c .a refl = c
 \end{code}
 
-A differente or more customized version of path induction is the based
-path induction. We have
+Let us unpackage this:
 
 + With a fixed endpoint a
 
