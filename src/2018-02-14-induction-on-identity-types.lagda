@@ -43,7 +43,7 @@ in these notes to define in an appropriate way some types.
 ### Path induction
 
 We call *path* to the inhabitant of the identity type, that is,
-$$p : x ≡ y$$ for some x and y of type A. We can probably think that
+p : x ≡ y for some x and y of type A. We can probably think that
 there is only one p, but there are many identifications between x and y
 from the HoTT perspective. That's the reason we talk about one path, and the set of paths
 as the *path space*.
