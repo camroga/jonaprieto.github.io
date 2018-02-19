@@ -1,12 +1,14 @@
 agda := $(wildcard src/*.lagda)
 agdai := $(wildcard src/*.agdai)
 originalmd := $(wildcard src/*.md)
+images := $(wildcard src/images/*.ipe)
 
 markdownOrig := $(subst src/,_posts/,$(originalmd))
 markdownAgda := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
+imagesPNG    := $(subst src/images/,assets/images/,$(subst .ipe,.png,$(images)))
 
-
-all: _posts/ $(markdownOrig) $(markdownAgda)
+#
+all: _posts/ $(markdownOrig) $(markdownAgda) $(imagesPNG)
 
 _posts/ :
 	rm -Rf -d _post
@@ -17,6 +19,9 @@ _posts/%.md : src/%.md
 
 _posts/%.md : src/%.lagda
 	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@
+
+assets/images/%.png : src/images/%.ipe
+	iperender -png -resolution 200 $< $@
 
 observr:
 	observr .observr

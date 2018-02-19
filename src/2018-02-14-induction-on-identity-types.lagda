@@ -13,10 +13,14 @@ data Id (A : Set) (x y : A) : Set where
 ```
 
 The only rule/constructor is `refl` that represents the reflexivity property of
-the inductive types.
+the inductive types. Sometimes we can another definition for refl, that is
+similar as the presented above but using the equality symbol (_≡_) and Π-type.
 
-To use another notation for Id,
-we can use the equality symbol (_≡_):
+```
+refl: Π x:A. x ≡ x
+```
+
+where
 
 ```
 infix 3 _≡_
@@ -24,20 +28,30 @@ _≡_ : ∀ {A : Set} → (x y : A) → Id A x y
 x ≡ y = refl
 ```
 
-However, there are many things already proved about this type
-in the Agda, so let use the common import for such a purpose:
+However, since this an important type many things are already proved for this type
+in the Agda standard library, so let use that:
 
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 \end{code}
 
+Before continue, remember that since we are using Agda, there are *universes* of types and
+there are some [levels](https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/) associated to them.
+We mention this because in the following we have to use these levels for the first time
+in these notes to define in an appropriate way some types.
+
 ### Path induction
 
-Before continue, remember that since we are using Agda, there are universes and
-its levels to handle the
-[hierarchie](https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/).
-We mention this because in the following we have to use these levels for the first time
-in these notes to appropriate define some types.
+We call *path* to the inhabitant of the identity type, that is,
+$$p : x ≡ y$$ for some x and y of type A. We can probably think that
+there is only one p, but there are many identifications between x and y
+from the HoTT perspective. That's the reason we talk about one path, and the set of paths
+as the *path space*.
+
+![path](/assets/images/path.png)
+
+Now, we introduce the induction principle for the identity type with `pi`,
+abbreviation of path induction.
 
 \begin{code}
 pi
@@ -46,12 +60,14 @@ pi
   → (∀ (x : A) → C x x refl)
   → ∀ (x y : A) (p : x ≡ y) → C x y p
 \end{code}
+
 Defined by the equation:
 \begin{code}
 pi {A} C c x .x refl = c x
 \end{code}
 
-Idea: `pi` is the induction principle for the identity type.
+Let us unpackage this type:
+
 We have:
 
 + from the hypothesis if we have x ≡ y varying x and y with type A, but also
