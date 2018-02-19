@@ -49,7 +49,7 @@ recℕ is the so-called *recursor* for natural numbers. In Agda,
 
 \begin{code}
 recℕ
-  : (C : 𝒰)   -- type for the outcome
+  : (C : 𝒰)     -- type for the outcome
   → C            -- base case
   → (ℕ → C → C)  -- recursion step?
   → ℕ            -- the natural number as the argument
@@ -140,7 +140,7 @@ let use a better name for this function (_*_).
 
 \begin{code}
 _*_ : ℕ → ℕ → ℕ
-_*_ = recℕ (ℕ → ℕ) (λ m → zero) λ n g m → add m (g m)
+_*_ = recℕ (ℕ → ℕ) (λ m → zero) (λ n g m → add m (g m))
 \end{code}
 
 With the binding for this operation more tighly than (_+_)
@@ -253,15 +253,17 @@ assoc = indℕ assoc₀ assoc₁
 +-comm₀ : ∀ (m : ℕ) → zero + m ≡ m + zero
 +-comm₀ = indℕ refl λ n indHyp → +-cong indHyp
 
-postulate
+postulate  -- TODO
   +-identity : ∀ (n : ℕ) → n + zero ≡ n
   +-suc : ∀ (m n : ℕ) → m + suc n ≡ suc (m + n)
 
-+-commₛ
-  : ∀ (m : ℕ)
-  → (∀ (n : ℕ) → m + n ≡ n + m)
-  → ∀ (n : ℕ)  → suc m + n ≡ n + suc m
-+-commₛ m indHyp zero = +-identity (suc m)
+postulate  -- TODO
+  +-commₛ
+    : ∀ (m : ℕ)
+    → (∀ (n : ℕ) → m + n ≡ n + m)
+    → ∀ (n : ℕ)  → suc m + n ≡ n + suc m
+-- +-commₛ m indHyp zero = +-identity (suc m)
+-- +-commₛ m indHyp (suc n) = {!   !}
 \end{code}
 
 Instead of using `rewrite` in Agda, we can use transitivity
