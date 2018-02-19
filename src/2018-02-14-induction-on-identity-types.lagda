@@ -70,16 +70,14 @@ Let us unpackage this:
 
 To contruct something of the type (∀ (x y : A) (p : x ≡ y) → C x y p) we need that:
 
-+ [1] C can construct types from three arguments: two endpoints and one path.
++ C should construct types from three arguments: two endpoints and one path.
 
-+ [2] C holds in the *diagonal*, that is, there is a proof for C x x refl for all x.
++ C should hold in the *diagonal*, that is, we need to prove or find an
+inhabitant of C x x refl for all x.
 
-Then, as result, the property C holds for all paths! (all identifications of x with y).
+Then, as result, the property C holds for all paths in general.
 
-We can think in the diagonal requeriment as the base case on an ordinary
-induction.
-
-### Path based induction
+### Based path induction
 
 A differente or more customized version of path induction is the based
 path induction abbreviated as `bpi`.
@@ -94,9 +92,14 @@ bpi
 \end{code}
 
 defined by the equation
+
 \begin{code}
 bpi a C c .a refl = c
 \end{code}
+
+*Remark*: we can not repeat in Agda a name variable in an equation. But using
+the dot accompanying as a prefix of a variable, it tells the typechecker that
+there is only one possible value and it corresponds to that variable.
 
 Let us unpackage this:
 
