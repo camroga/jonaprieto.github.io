@@ -70,9 +70,9 @@ Let us unpackage this:
 
 To contruct something of the type (∀ (x y : A) (p : x ≡ y) → C x y p) we need that:
 
-+ C should construct types from three arguments: two endpoints and one path.
++ C can construct types from three arguments: two endpoints and one path.
 
-+ C should hold in the *diagonal*, that is, we need to prove or find an
++ C holds in the *diagonal*, that is, we need to prove or find an
 inhabitant of C x x refl for all x.
 
 Then, as result, the property C holds for all paths in general.
