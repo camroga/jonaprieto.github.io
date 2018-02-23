@@ -120,7 +120,6 @@ GEM
       json (~> 2.0)
       nokogiri (~> 1.6)
       verbal_expressions (~> 0.1.5)
-    jekyll-analytics (0.1.9)
     jekyll-avatar (0.5.0)
       jekyll (~> 3.0)
     jekyll-coffeescript (1.0.2)
@@ -273,7 +272,6 @@ DEPENDENCIES
   github-pages
   hawkins
   jekyll-algolia
-  jekyll-analytics
   jekyll-feed (~> 0.6)
   jekyll-last-modified-at
   minima (~> 2.0)
