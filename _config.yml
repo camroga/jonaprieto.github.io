@@ -16,7 +16,6 @@ plugins:
   - jekyll-feed
   - jekyll-last-modified-at
   - jekyll-algolia
-  - disqus-for-jekyll
 
 exclude:
   - src/
@@ -28,10 +27,6 @@ algolia:
   index_name:     'notes'
   search_only_api_key: '038508bea0ee72e992b18935df862622'
 
-disqus:
-  name: "jonaprieto-blog" # required
-  noscript: "Your noscript tag message." # optional
-  
 # About/contact
 author:
   name:              Jonathan Prieto-Cubides
