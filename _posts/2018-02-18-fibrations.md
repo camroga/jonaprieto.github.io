@@ -9,6 +9,8 @@ date: "2018-02-18 23:49"
 
 A diagram for type family P : A → 𝒰.
 
+![path](/assets/images/type-family.png)
+
 what'total space?
 
 what is a fibration

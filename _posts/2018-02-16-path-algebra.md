@@ -20,6 +20,8 @@ properties
 
 Show the Equivalence relation.
 
+![path](/assets/images/trans.png)
+
 ### Mention the path induction again
 
 ### Lemmas but with INTUITION!!!
