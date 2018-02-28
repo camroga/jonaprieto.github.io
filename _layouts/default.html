@@ -3,6 +3,17 @@
 
   {% include head.html %}
 
+{% if page.title contains 'timeline' %}
+    <style>
+      html, body {
+        height:100%;
+        width:100%;
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
+{% endif %}
+
   <body>
 
     {% include sidebar.html %}
@@ -19,11 +30,14 @@
           </h3>
         </div>
       </div>
-
+      {% if page.title contains 'timeline' %}
+        {{ content }}
+      {% else %}
       <div class="container content">
         Every post is in progress.
         {{ content }}
       </div>
+      {% endif %}
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>

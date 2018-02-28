@@ -2,6 +2,9 @@
 layout: default
 ---
 
+{% if page.title contains "timeline" %}
+  {{ content }}
+{% else %}
 <div class="page">
   <h2 class="page-title">{{ page.title }}</h2>
   {% if page.date %}
@@ -9,3 +12,4 @@ layout: default
   {% endif %}
   {{ content }}
 </div>
+{% endif %}
