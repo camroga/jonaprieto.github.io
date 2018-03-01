@@ -1,6 +1,6 @@
 ---
 layout: page
-title: timeline graph
+title: experiment timeline
 ---
 
 <div id="timeline"></div>
