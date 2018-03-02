@@ -97,6 +97,7 @@ deploy :
 
 .phony : push
 push :
+	- jekyll algolia
 	- make clobber
 	- make
 	- @git add .
