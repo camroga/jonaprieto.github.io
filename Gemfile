@@ -8,5 +8,4 @@ group :jekyll_plugins do
    gem 'hawkins'
    gem 'jekyll-last-modified-at'
    gem 'jekyll-algolia'
-   gem 'jekyll-scholar'
 end
