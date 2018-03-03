@@ -8,5 +8,10 @@ group :jekyll_plugins do
    gem 'hawkins'
    gem 'jekyll-last-modified-at'
    gem 'jekyll-algolia'
+
+   gem 'unicode'
+   gem 'citeproc-ruby'
+   gem 'csl-styles'
    gem 'jekyll-scholar'
+
 end

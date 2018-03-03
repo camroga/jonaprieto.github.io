@@ -10,6 +10,8 @@ description:         'This is my blog, everything is in progress, if you found
                       something useful good for you.'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
+destination:         'docs'
+
 # paginate:            100
 markdown: kramdown
 highlighter: rouge
@@ -17,11 +19,21 @@ plugins:
   - jekyll-feed
   - jekyll-last-modified-at
   - jekyll-algolia
+  - jekyll/scholar
+  - citeproc-ruby
+  - csl/styles
 
 exclude:
   - src/
   - Gemfile
   - Gemfile.lock
+
+scholar:
+  # style: mla
+  bibliography: library.bib
+  source: ./_bibliography
+  locale: en
+  use_raw_bibtex_entry: true
 
 algolia:
   application_id: '6LC140UUTA'
