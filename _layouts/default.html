@@ -3,7 +3,7 @@
 
   {% include head.html %}
 
-{% if page.title contains 'timeline' %}
+{% if page.title contains "Timeline" %}
     <style>
       html, body {
         height:100%;
@@ -29,11 +29,13 @@
             <small>{{ site.tagline }}</small>
           </h3>
         </div>
-      {% if page.title contains 'timeline' %}
+      {% if page.title contains 'Timeline' %}
         {{ content }}
       {% else %}
       <div class="container content">
+        {% if page.title != 'Categories' %}
         Every post is in progress.
+        {% endif %}
         {{ content }}
       </div>
       {% endif %}

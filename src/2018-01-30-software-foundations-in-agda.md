@@ -2,6 +2,7 @@
 layout: "post"
 title: "Software Foundations in Agda"
 date: "2018-01-30"
+categories: type-theory
 ---
 
 New tutorial using Agda to show concepts of logic and programming theory.

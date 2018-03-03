@@ -2,6 +2,7 @@
 layout: "post"
 title: "Induction on Natural Numbers"
 date: "2018-02-12"
+categories: type-theory
 ---
 
 In this note, we expose the type for the natural numbers.

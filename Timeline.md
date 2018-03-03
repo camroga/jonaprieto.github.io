@@ -1,13 +1,13 @@
 ---
 layout: page
-title: experiment timeline
+title: Timeline example
 ---
 
 <div id="timeline"></div>
 
 <script>
 
-var events = 
+var events =
 {
   "title": {
     "text": {

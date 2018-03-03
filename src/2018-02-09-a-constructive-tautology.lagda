@@ -2,6 +2,7 @@
 layout: "post"
 title: "A Constructive Tautology"
 date: "2018-02-09"
+categories: type-theory
 ---
 
 Consider the following type:

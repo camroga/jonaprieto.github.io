@@ -2,8 +2,8 @@
 layout: "post"
 title: "Fibrations"
 date: "2018-02-18 23:49"
+categories: type-theory
 ---
-
 
 ## Type families
 

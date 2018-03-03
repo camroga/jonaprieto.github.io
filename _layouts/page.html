@@ -2,13 +2,15 @@
 layout: default
 ---
 
-{% if page.title contains "timeline" %}
+{% if page.title contains "Timeline" %}
   {{ content }}
 {% else %}
 <div class="page">
-  <h2 class="page-title">{{ page.title }}</h2>
-  {% if page.date %}
-  <span class="post-date">{{ page.date | date_to_string }}</span>
+  {% if page.title != "Categories" %}
+    <h2 class="page-title">{{ page.title }}</h2>
+    {% if page.date %}
+    <span class="post-date">{{ page.date | date_to_string }}</span>
+    {% endif %}
   {% endif %}
   {{ content }}
 </div>

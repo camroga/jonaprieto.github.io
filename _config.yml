@@ -6,7 +6,8 @@ permalink:           pretty
 # Setup
 title:               jonaprieto
 tagline:             'log'
-description:         'Links'
+description:         'This is my blog, everything is in progress, if you found
+                      something useful good for you.'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
 # paginate:            100
@@ -37,4 +38,4 @@ author:
   email:             prieto.jona@gmail.com
 
 # Custom vars
-version:             0.0.1
+version:             0.0.2

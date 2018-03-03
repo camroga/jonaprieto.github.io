@@ -2,6 +2,7 @@
 layout: "post"
 title: "Simply Typed Lambda Calculus"
 date: "2017-07-01"
+categories: type-theory
 ---
 
 *This is unfinished as everything in this website.*

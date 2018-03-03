@@ -2,6 +2,7 @@
 layout: "post"
 title: "Path Algebra"
 date: "2018-02-16 21:57"
+categories: type-theory
 ---
 
 Continuing with identity types, we introduce

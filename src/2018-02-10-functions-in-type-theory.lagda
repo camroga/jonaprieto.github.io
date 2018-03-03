@@ -2,6 +2,7 @@
 title: "Function Type and Functional Extensionality"
 layout: "post"
 date: "2018-02-10"
+categories: type-theory
 ---
 
 
