@@ -6,19 +6,20 @@ toc: true
 categories: type-theory
 ---
 
-In this note, we expose the type for the natural numbers.
-We show how to define the recursion principle and its extension,
-the induction principle.
+The induction principle comes from a generalization of a dependent function
+that makes recursion on natural numbers. We first define what is a natural number
+then we show how to define functions on natural numbers using a *recursor*
+in pro to show induction schemata.
 
-First let us use in Agda a synonymous for the universe of types.
+First let's use in Agda a synonymous for the universe of types.
 
 \begin{code}
 𝒰 = Set
 \end{code}
 
-We can define the natural numbers by following its algorithmic or finite
-definition, that is, using a rule to construct the zero number and the successor
-for the other numbers.
+We can define the natural numbers by following its algorithmic or also called finite
+definition, that is, finite rules to construct them, one for the zero number and
+another, the successor, for the rest of numbers.
 
 \begin{code}
 data ℕ : 𝒰 where
@@ -26,14 +27,13 @@ data ℕ : 𝒰 where
   suc  : ℕ → ℕ
 \end{code}
 
-* Remark: to be more comfortable with the usual notation we can use the following
-pragma in Agda
+* Remark: we can write down numbers as usual if we use the following Agda pragma.
 
 \begin{code}
 {-# BUILTIN NATURAL ℕ #-}
 \end{code}
 
-Then, we can now write numbers like usual:
+Then, we can now type big numbers like usual instead of `suc (suc (...))`:
 
 \begin{code}
 bigNumber : ℕ
@@ -279,7 +279,7 @@ trans refl refl = refl
 +-comm = indℕ +-comm₀ +-commₛ
 \end{code}
 
-### Other exercises
+### Exercises
 
 + Exercise 1
 
@@ -316,7 +316,7 @@ n+0≡n₂ zero    = refl
 n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 \end{code}
 
-## Conclusion:
+### Conclusion
 
 Induction as it was presented here is stronger than recursion.
 We can say this because the recursor recℕ is the *independent* version
@@ -328,7 +328,7 @@ two equations:
 + f(0) ≡ c₀ for c₀ : C
 + f(suc n) ≡ cₛ(n, f(n)) for cₛ : ℕ → C → C
 
-## References:
+### References
 
 * Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent
 Foundations of Mathematics. Institute for Advanced Study:

@@ -5,14 +5,18 @@ comments: true
 
 <div class="post">
   {%if page.date %}
-  <span class="post-date">Created on {{ page.date | date_to_string }}
   {% endif %}
   <h2 class="post-title">{{ page.title }}</h2>
-  {%if page.last_modified_at %}
-  <span class="post-date">Updated on {{ page.last_modified_at | date_to_string }}</span>
-  {% endif %}
+  <small><span class="post-date">Created on {{ page.date | date_to_string }}</small>
   </span>
+  {% if page.toc %}
+  <div class="toc">
+    <h2 class="table-of-contents"> Table of Contents </h2>
+    {{ content | toc }}
+  </div>
+  {% else %}
   {{ content }}
+  {% endif %}
 </div>
 
 <div class="related">
@@ -51,4 +55,3 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
