@@ -7,7 +7,9 @@ layout: default
   {{ content }}
 
   <h2 class="page-heading">Notes
-    <a class="rss-subscribe"href="{{ "/feed.xml" | relative_url }}">rss</a></h2>
+    <a class="rss-subscribe"href="{{ "/feed.xml" | relative_url }}">
+      (last update on {{ site.time | date_to_string  }})
+    </a></h2>
 
   <div id="search-searchbar"></div>
 

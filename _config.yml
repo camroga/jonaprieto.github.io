@@ -5,11 +5,12 @@ permalink:           pretty
 
 # Setup
 title:               jonaprieto
-tagline:             'log'
+tagline:             'log-in-progress'
 description:         'This is my blog, everything is in progress, if you found
-                      something useful good for you.'
+                      something interesting/useful good for you. Let me know and cheers!'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
+timezone:            'Europe/Oslo'
 # paginate:            100
 markdown: kramdown
 highlighter: rouge
@@ -17,6 +18,7 @@ plugins:
   - jekyll-feed
   - jekyll-last-modified-at
   - jekyll-algolia
+  - jekyll-toc
 
 exclude:
   - src/
