@@ -16,3 +16,5 @@ what'total space?
 what is a fibration
 
 a secrion and fiberwise
+what
+⊙ es por definicion algo diferente

@@ -8,7 +8,7 @@ layout: default
 
   <h2 class="page-heading">Notes
     <a class="rss-subscribe"href="{{ "/feed.xml" | relative_url }}">
-      (last update on {{ site.time | date_to_string  }})
+      last update on {{ site.time | date_to_string  }} revision {{site.github.build_revision | slice: -7, 7}}
     </a></h2>
 
   <div id="search-searchbar"></div>
