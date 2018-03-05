@@ -6,10 +6,10 @@ toc: true
 categories: type-theory
 ---
 
-The induction principle comes from a generalization of a dependent function
-that makes recursion on natural numbers. We first define what is a natural number
-then we show how to define functions on natural numbers using a *recursor*
-in pro to show induction schemata.
+The induction principle comes from a generalization of a dependent function that
+makes recursion on natural numbers. We first define what is a natural number
+then we show how to define functions on natural numbers using a *recursor* in
+pro to show induction schemata.
 
 First let's use in Agda a synonymous for the universe of types.
 
@@ -272,9 +272,11 @@ two equations:
 
 ### References
 
-* Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent
-Foundations of Mathematics. Institute for Advanced Study:
-https://homotopytypetheory.org/book.
+* [Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study][HoTT]
 
-* Coquand, T. (1992). Pattern matching with dependent types. Informal Proceedings
-of Logical Frameworks. https://doi.org/10.1.1.37.9541
+* [Coquand, T. (1992). Pattern matching with dependent types. Informal Proceedings
+of Logical Frameworks.][Coquand]
+
+[HoTT]:https://homotopytypetheory.org/book.
+[Grayson]:http://arxiv.org/abs/1711.01477
+[Coquand]:https://doi.org/10.1.1.37.9541

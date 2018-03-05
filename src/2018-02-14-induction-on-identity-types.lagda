@@ -15,13 +15,21 @@ data Id (A : Set) (x y : A) : Set where
 
 The only rule/constructor is `refl` that represents the reflexivity property of
 the inductive types. Sometimes we can another definition for refl, that is
-similar as the presented above but using the equality symbol (_≡_) and Π-type.
+similar as the presented above but using the equality symbol (`_≡_`) and Π-type.
 
 ```
 refl: Π x:A. x ≡ x
 ```
 
-where
+In Agda we will write this
+
+```
+infix 4 _≡_
+data _≡_ {a} {A : Set a} (x : A) : A → Set a where
+  instance refl : x ≡ x
+```
+
+instead of
 
 ```
 infix 3 _≡_
@@ -29,17 +37,43 @@ _≡_ : ∀ {A : Set} → (x y : A) → Id A x y
 x ≡ y = refl
 ```
 
-However, since this an important type many things are already proved for this type
-in the Agda standard library, so let use that:
+However, this type is already present in the Agda standard library, so let's use it
 
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 \end{code}
 
-Before continue, remember that since we are using Agda, there are *universes* of types and
-there are some [levels](https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/) associated to them.
-We mention this because in the following we have to use these levels for the first time
-in these notes to define in an appropriate way some types.
+### Martin-Löf's rules about identity type
+
+- ML1. For any type `X`, for each `a` and `b` of it, there is a type `a = b`
+
+- ML2. There is an element `refl x : x = x` for each `x : X`
+
+- ML3. Induction for equality:
+
+    > For any type $$X$$ and for any element $$a$$ of it, given a family of types $$P(b,e)$$
+    depending on parameters $$b$$ of type $$X$$ and $$e$$ of type $$a=b$$, in order to
+    define elements $$f(b,e) : P(b,e)$$ of all of them it suffices to provide an
+    element $$p$$ of $$P(a, refl\ a)$$.  The resulting function $$f$$ may be regarded as
+    having been completely defined by the single definition $$f(a, refl\ a) := p$$.
+
+
+    > Intuitively, the induction principle for equality amounts to saying that the
+    element $$refl a$$ ``generates'' the system of types $$a=b$$, as $$b$$ ranges
+    over elements of $$A$$.
+    <cite>[Daniel Grayson](http://arxiv.org/abs/1711.01477)</cite>
+
+We will show in a moment more about ML3 rule from the univalance perspective,
+that is, the homotopy type theory perspective. The main diference up to now, we
+give another meaning of `a = b`, insteaf of thinking about it as a proof of such
+a equality, we are going to think as a `path space` in a topological space
+associated to `A`
+
+
+In the following, we may encounter with [levels](https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/) in Agda.
+The small types are those that belongs to the first level 0, types of level 1 are
+those formed by using small types, and so on. The small types in Agda has `Set` type ,
+types formed by these small types have `Set 1` type, and so on with `Set i` type.
 
 ### Path induction
 
@@ -160,6 +194,9 @@ pi⇒bpi {A} a C c y p = f a y p C c
 
 ## References
 
-* Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent
-Foundations of Mathematics. Institute for Advanced Study:
-https://homotopytypetheory.org/book.
+* [Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study][HoTT]
+* [Grayson, D. R. (2017). An introduction to univalent foundations for mathematicians.][Grayson]
+
+
+[HoTT]:https://homotopytypetheory.org/book.
+[Grayson]:http://arxiv.org/abs/1711.01477
