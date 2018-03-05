@@ -97,9 +97,9 @@ deploy :
 
 .phony : push
 push :
-	- jekyll algolia
 	- make clobber
 	- make
 	- @git add .
 	- @git commit -am "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")."
 	- @git push origin master
+	- jekyll algolia
