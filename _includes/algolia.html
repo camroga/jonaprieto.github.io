@@ -19,12 +19,14 @@ const search = instantsearch({
   searchFunction: function(helper) {
     if (helper.getState().query === '') {
       additionalClass = 'post-item__empty-query';
+      hitBoxClass = '';
     } else {
       additionalClass = '';
+      hitBoxClass = 'hit-box';
     }
     helper.search()
   }
-});\
+});
 
 const hitTemplate = function(hit) {
   let date = '';
@@ -38,13 +40,15 @@ const hitTemplate = function(hit) {
   const content = hit._highlightResult.html.value;
 
   return `
+  <div class="${hitBoxClass}">
     <div class="post-list">
       <span class="post-date-list-wrap">
       <span class="post-date-list">${date}
       <span class="post-title"><a href=".${url}"> ${title} </a> <small class="rss-subscribe">(modified ${modifiedDate})</small> </span>
       </span>
-      <div class="${additionalClass}">
-      ${content}
+        <div class="${additionalClass}">
+        ${content}
+        </div>
       </div>
     </div>
   `;
@@ -109,7 +113,8 @@ search.start();
 
 .ais-Highlight{
   color: #000;
-  background: yellow;
+  background: lightskyblue;
+
 }
 
 .post-link .ais-Highlight {
@@ -122,5 +127,13 @@ search.start();
 }
 .post-snippet img {
   display: none;
+}
+
+.hit-box {
+  border-width: 1px;
+  border-color: #f3f3f3;
+  border-style: outset;
+  padding: 5px 15px 5px 15px;
+  margin-bottom: 10px;
 }
 </style>
