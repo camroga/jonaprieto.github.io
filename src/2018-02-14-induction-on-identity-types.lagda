@@ -23,7 +23,7 @@ refl: Π x:A. x ≡ x
 
 In Agda we will write this
 
-```
+```agda
 infix 4 _≡_
 data _≡_ {a} {A : Set a} (x : A) : A → Set a where
   instance refl : x ≡ x
@@ -31,7 +31,7 @@ data _≡_ {a} {A : Set a} (x : A) : A → Set a where
 
 instead of
 
-```
+```agda
 infix 3 _≡_
 _≡_ : ∀ {A : Set} → (x y : A) → Id A x y
 x ≡ y = refl

@@ -8,7 +8,7 @@ baseurl:             ''
 timezone:            'Europe/Oslo'
 # paginate:            100
 
-highlighter: true
+highlighter: rouge
 markdown: kramdown
 permalink: pretty
 
