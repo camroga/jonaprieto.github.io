@@ -16,6 +16,14 @@ const search = instantsearch({
     ],
     facetFilters: ['type:post']
   },
+  searchFunction: function(helper) {
+    if (helper.getState().query === '') {
+      additionalClass = 'post-item__empty-query';
+    } else {
+      additionalClass = '';
+    }
+    helper.search()
+  }
 });
 
 const hitTemplate = function(hit) {
@@ -35,6 +43,9 @@ const hitTemplate = function(hit) {
       <span class="post-date-list">${date}
       <span class="post-title"><a href=".${url}"> ${title} </a> </span>
       </span>
+      <div class="${additionalClass}">
+      ${content}
+      </div>
     </div>
   `;
 }
@@ -81,6 +92,9 @@ search.start();
 </script>
 
 <style>
+.post-item__empty-query {
+  display: none;
+}
 .ais-search-box {
   max-width: 100%;
   margin-bottom: 15px;
