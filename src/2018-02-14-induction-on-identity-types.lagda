@@ -8,7 +8,7 @@ categories: type-theory
 We present here a new type former to introduce identities.
 The identity or equality type is defined as follows:
 
-```
+```agda
 data Id (A : Set) (x y : A) : Set where
   refl : Id A x y
 ```

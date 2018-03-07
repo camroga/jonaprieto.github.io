@@ -24,14 +24,14 @@ const search = instantsearch({
     }
     helper.search()
   }
-});
+});\
 
 const hitTemplate = function(hit) {
   let date = '';
   if (hit.date) {
     date = moment.unix(hit.date).format('L');
     // date = moment.unix(hit.date).format('MMM Do YY');
-    modifiedDate = moment.unix(hit.last_modified_at).format('MMM Do YY');
+    modifiedDate = hit.last_modified_at;
   }
   const url = hit.url;
   const title = hit._highlightResult.title.value;
@@ -41,7 +41,7 @@ const hitTemplate = function(hit) {
     <div class="post-list">
       <span class="post-date-list-wrap">
       <span class="post-date-list">${date}
-      <span class="post-title"><a href=".${url}"> ${title} </a> </span>
+      <span class="post-title"><a href=".${url}"> ${title} </a> <small class="rss-subscribe">(modified ${modifiedDate})</small> </span>
       </span>
       <div class="${additionalClass}">
       ${content}
