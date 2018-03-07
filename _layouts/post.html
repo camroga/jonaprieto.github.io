@@ -7,7 +7,7 @@ comments: true
   {%if page.date %}
   {% endif %}
   <h2 class="post-title">{{ page.title }}</h2>
-  <small><span class="post-date">Created on {{ page.date | date_to_string }} and modified on {{ page.last_modified_at  | date_to_string}} </small>
+  <small><span class="post-date">Created on {{ page.date | date_to_string }} {%if page.last_modified_at %} and modified on {{ page.last_modified_at  | date_to_string}}{% endif %} </small>
   </span>
   {% if page.toc %}
   <div class="toc">
