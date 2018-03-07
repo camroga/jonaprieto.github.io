@@ -40,7 +40,6 @@ that x satisfies, y satisfies as well.
 
 ## Related
 
-  > The principle of identity of indiscernibles states that two objects
-  are identical if they have all the same properties.
-  This is also known as “Leibniz’s Law”
-  + [https://ncatlab.org/nlab/show/identity+of+indiscernibles](https://ncatlab.org/nlab/show/identity+of+indiscernibles)
+> The principle of identity of indiscernibles states that two objects
+are identical if they have all the same properties.
+This is also known as “Leibniz’s Law”... in [https://ncatlab.org/nlab/show/identity+of+indiscernibles](https://ncatlab.org/nlab/show/identity+of+indiscernibles)
