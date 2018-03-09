@@ -191,7 +191,6 @@ pi⇒bpi {A} a C c y p = f a y p C c
     f = pi D d
 \end{code}
 
-
 ## References
 
 * [Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study][HoTT]
