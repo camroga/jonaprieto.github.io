@@ -58,7 +58,8 @@ _⁻¹ {i}{A}{x}{y} path = pi (λ x y p → y ≡ x) (λ x → refl) x y path
 + `(refl x) ⁻¹ ≡ refl x`
 \begin{code}
 l1 : ∀ {i} {A : Set i} {x : A} → (refl ⁻¹) ≡ refl
-l1 {i}{A}{x} = pi (λ x y p → _≡_  (refl ⁻¹) refl) (λ x → refl) x x refl
+l1 {i}{A}{x}
+  = pi (λ x y p → _≡_  (refl ⁻¹) refl) (λ x → refl) x x refl
 \end{code}
 
 \begin{code}
