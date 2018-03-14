@@ -21,7 +21,7 @@ _posts/%.md : src/%.lagda
 	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@
 
 assets/images/%.png : src/images/%.ipe
-	iperender -png -resolution 300 $< $@
+	iperender -png -resolution 400 $< $@
 
 observr:
 	observr .observr

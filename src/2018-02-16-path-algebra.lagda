@@ -25,7 +25,7 @@ We have what we call path algebra for the basic operations like
 
 ![path](/assets/images/path-algebra.png)
 
-### Proofs
+#### Proofs
 
 Let's using identity type from the Agda standard library.
 
