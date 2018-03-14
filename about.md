@@ -12,7 +12,7 @@ I believe in continuous writing, that
 is like maintain a repository working
 as a programmer. Maybe because I am
 always changing to improve the output.
-Every now and again I change some texts,
+Every now and again I will change some texts,
 adding better explanations, pictures or
 references. So, If you find something
 wrong don't hesitate, please feel free
@@ -24,9 +24,9 @@ How I'm building this blog:
 
 - github-pages
 - jekyll with minima theme
-- algolia plus some modifications provide the search engine
+- algolia provides the search engine plus modifications
 - agda to typecheck some experiments
-- agda2html for embedding Agda code in post
+- agda2html for embedding Agda code in html
 - ipe to draw the pictures
-- Timelinejs to show some test timelines
+- timelinejs to show some test timelines
 - more...
