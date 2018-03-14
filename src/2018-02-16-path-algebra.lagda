@@ -38,8 +38,8 @@ our path induction.
 
 \begin{code}
 pi
-  : ∀ {i} {A : Set}
-  → (C : (x y : A) → x ≡ y → Set i)
+  : ∀ {i j} {A : Set i}
+  → (C : (x y : A) → x ≡ y → Set j)
   → (∀ (x : A) → C x x refl)
   → ∀ (x y : A) (p : x ≡ y) → C x y p
 pi {A} C c x .x refl = c x
@@ -51,14 +51,14 @@ To prove our identities we define the concatenation operator and inverse
 operation as follows:
 
 \begin{code}
-_⁻¹ : ∀ {A : Set} {x y : A} → (p : x ≡ y) → y ≡ x
-_⁻¹ {A}{x}{y} p = pi (λ x y p → y ≡ x) (λ x → refl) x y p
+_⁻¹ : ∀ {i}{A : Set i} {x y : A} → x ≡ y → y ≡ x
+_⁻¹ {i}{A}{x}{y} path = pi (λ x y p → y ≡ x) (λ x → refl) x y path
 \end{code}
 
-+ `(refl x) ⁻¹ = refl x`
++ `(refl x) ⁻¹ ≡ refl x`
 \begin{code}
-_ : ∀ {i}{A : Set i} {x : A} → refl ⁻¹ ≡ refl
-_ = {!  !}
+l1 : ∀ {i} {A : Set i} {x : A} → (refl ⁻¹) ≡ refl
+l1 {i}{A}{x} = pi (λ x y p → _≡_  (refl ⁻¹) refl) (λ x → refl) x x refl
 \end{code}
 
 \begin{code}
