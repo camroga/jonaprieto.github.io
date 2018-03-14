@@ -11,23 +11,30 @@ space*. In this interpretation we also replace the notion of an element of `a =
 b`, that is, the proof of such a equality and instead of it we use a new
 concept, *path*, for this element, where `a` is the start of the path, and `b` is
 the endpoint. Then, the identity type, `a = b`, is all paths that start in `a` and
-end in `b` that's why we call this type *path space* for `a : A` and `b : A`.
+end in `b`. We call this type *path space*.
 
-Besides traditional type theory, recall HoTT comes from geometry and the beauty
-of this is we can draw some of its concepts and for sure that will help us to
-strengthen our intuition about paths. For instance, if `p : a = b`, we
-write `p⁻¹ : b = a` for the reversed path. We can join two path that share
-the endpoint of one to the start point of the other, we call this operation,
-concatenation and we use the symbol (`_·_`). For instance we have the path
+HoTT comes from geometry stuff and we can draw some pictures for concepts.
+This can help us to strengthen our intuition. Let's see.
+For instance, if `p : a = b`, we write `p⁻¹ : b = a` for the reversed path.
+We can join two paths that share the endpoint and the start point by
+what we call _concatenation_ and its symbol (`_·_`).
+We have what we call path algebra for the basic operations like
 `p · p⁻¹ : a = a` and `p⁻¹ · p : b = b`.
 
-### Path Algebra
+### Lemma
 
-As always:
+![path](/assets/images/path-algebra.png)
+
+### Proofs
+
+Let's using identity type from the Agda standard library.
 
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 \end{code}
+
+As happen often in HoTT our proofs are by induction therefore let's define
+our path induction.
 
 \begin{code}
 pi
@@ -35,13 +42,44 @@ pi
   → (C : (x y : A) → x ≡ y → Set i)
   → (∀ (x : A) → C x x refl)
   → ∀ (x y : A) (p : x ≡ y) → C x y p
-\end{code}
-
-defined by the equation
-
-\begin{code}
 pi {A} C c x .x refl = c x
 \end{code}
+
+-------------------------------------------------------------------------------
+
+To prove our identities we define the concatenation operator and inverse
+operation as follows:
+
+\begin{code}
+_⁻¹ : ∀ {A : Set} {x y : A} → (p : x ≡ y) → y ≡ x
+_⁻¹ {A}{x}{y} p = pi (λ x y p → y ≡ x) (λ x → refl) x y p
+\end{code}
+
++ `(refl x) ⁻¹ = refl x`
+\begin{code}
+_ : ∀ {i}{A : Set i} {x : A} → refl ⁻¹ ≡ refl
+_ = {!  !}
+\end{code}
+
+\begin{code}
+_·_ : ∀ {A : Set}
+    → (x y z : A)
+    → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
+_·_ {A} = pi {! λ x z p → x ≡ z  !} {!   !} {!   !} {!   !} {!   !}
+\end{code}
+
++ `p · p⁻¹ ≡ refl x`
+
+\begin{code}
+
+\end{code}
+
++ `refl x · p ≡ p`
+
++ `p · refl y ≡ p`
+
++ ` (p  ⁻¹) ⁻¹ ≡ p`
+
 
 -------------------------------------------------------------------------------
 

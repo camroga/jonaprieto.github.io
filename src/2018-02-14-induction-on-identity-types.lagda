@@ -84,8 +84,9 @@ the reason we talk about one path and one set of paths, the *path space*.
 
 ![path](/assets/images/path.png)
 
-Now, we introduce the induction principle for the identity type with `pi`,
-abbreviation of path induction.
+Now, we introduce the induction principle for the identity type with `pi`
+abbreviation of path induction also called elimination identity and noted
+[`J`](https://homotopytypetheory.org/2011/04/10/just-kidding-understanding-identity-elimination-in-homotopy-type-theory/).
 
 \begin{code}
 pi
@@ -105,7 +106,7 @@ Let us unpackage this:
 
 To contruct something of the type (∀ (x y : A) (p : x ≡ y) → C x y p) we need that:
 
-+ C can construct types from three arguments: two endpoints and one path.
++ C can construct types from three arguments: two points and one path.
 
 + C holds in the *diagonal*, that is, we need to prove or find an
 inhabitant of C x x refl for all x.
