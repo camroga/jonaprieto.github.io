@@ -30,6 +30,7 @@ We have what we call path algebra for the basic operations like
 Let's using identity type from the Agda standard library.
 
 \begin{code}
+{-# OPTIONS --without-K #-}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 \end{code}
 
@@ -52,21 +53,21 @@ operation as follows:
 
 \begin{code}
 _⁻¹ : ∀ {i}{A : Set i} {x y : A} → x ≡ y → y ≡ x
-_⁻¹ {i}{A}{x}{y} path = pi (λ x y p → y ≡ x) (λ x → refl) x y path
+-- _⁻¹ {i}{A}{x}{y} path = pi (λ x y p → y ≡ x) (λ x → refl) x y path
+_⁻¹ refl = refl  -- without induction.
 \end{code}
 
 + `(refl x) ⁻¹ ≡ refl x`
 \begin{code}
-l1 : ∀ {i} {A : Set i} {x : A} → (refl ⁻¹) ≡ refl
-l1 {i}{A}{x}
-  = pi (λ x y p → _≡_  (refl ⁻¹) refl) (λ x → refl) x x refl
+l1 : (refl ⁻¹) ≡ refl
+l1 = refl
 \end{code}
 
 \begin{code}
-_·_ : ∀ {A : Set}
-    → (x y z : A)
-    → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
-_·_ {A} = pi {! λ x z p → x ≡ z  !} {!   !} {!   !} {!   !} {!   !}
+-- _·_ : ∀ {A : Set}
+--     → (x y z : A)
+--     → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
+-- _·_ {A} = pi {! λ x z p → x ≡ z  !} {!   !} {!   !} {!   !} {!   !}
 \end{code}
 
 + `p · p⁻¹ ≡ refl x`
