@@ -104,5 +104,6 @@ just-push :
 .phony : push
 push :
 	- make clobber
-	- make just-push
+	- make
+	- make push
 	- jekyll algolia
