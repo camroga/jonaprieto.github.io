@@ -33,8 +33,7 @@ Let's using identity type from the Agda standard library.
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 \end{code}
 
-As happen often in HoTT our proofs are by induction therefore let's define
-our path induction.
+Let's define path induction to prove many things in HoTT:
 
 \begin{code}
 pi
@@ -64,8 +63,8 @@ _·_ {A} {x} {y} {z} p q = D₁ x y p z q
 \end{code}
 
 Surely just using pattern-matching we've could do it in just one-line. What is
-the point? we are walking by the hard way, just learning path induction. See the
-same proof in Chapter 2 in the HoTT book.
+the point? we are walking through the hard way learning path induction. See for
+instance two different proofs in Chapter 2 in the HoTT book.
 
 \begin{code}
 infixl 20 _⁻¹
@@ -75,35 +74,36 @@ _⁻¹ {A}{x}{y} p = pi (λ x y p → y ≡ x) (λ x → refl) x y p
 
 + `(refl x) ⁻¹ ≡ refl x`
 \begin{code}
-l1 : ∀ {A : Set} {x : A} → (refl ⁻¹) ≡ refl {x = x}
+l1 : ∀ {A : Set} {x : A} → (refl ⁻¹) ≡ refl
 l1 {A}{x} = pi (λ x y p → (refl ⁻¹) ≡ refl {x = x}) (λ x → refl) x x refl
 \end{code}
 
 + `p · p ⁻¹ ≡ refl x`
 
 \begin{code}
-
 l2 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p · (p ⁻¹))  ≡ refl
-l2 = {! pi  !}
-
+l2 = pi (λ x y p → (p · (p ⁻¹))  ≡ refl) (λ x → refl)
 \end{code}
 
 + `refl x · p ≡ p`
 
 \begin{code}
-
+l3 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → refl · p ≡ p
+l3 = pi (λ x y p → refl · p ≡ p) (λ x → refl)
 \end{code}
 
 + `p · refl y ≡ p`
 
 \begin{code}
-
+l4 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → refl · p ≡ p
+l4 = pi (λ x y p → refl · p ≡ p) (λ x → refl)
 \end{code}
 
 + ` (p  ⁻¹) ⁻¹ ≡ p`
 
 \begin{code}
-
+l5 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p  ⁻¹) ⁻¹ ≡ p
+l5 = pi (λ x y p → (p  ⁻¹) ⁻¹ ≡ p) (λ x → refl)
 \end{code}
 
 -------------------------------------------------------------------------------
