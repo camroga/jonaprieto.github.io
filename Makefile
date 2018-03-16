@@ -105,5 +105,5 @@ just-push :
 push :
 	- make clobber
 	- make
-	- make push
+	- make just-push
 	- jekyll algolia
