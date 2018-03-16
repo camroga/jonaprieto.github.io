@@ -13,13 +13,12 @@ concept, *path*, for this element, where `a` is the start of the path, and `b` i
 the endpoint. Then, the identity type, `a = b`, is all paths that start in `a` and
 end in `b`. We call this type *path space*.
 
-HoTT comes from geometry stuff and we can draw some pictures for concepts.
-This can help us to strengthen our intuition. Let's see.
-For instance, if `p : a = b`, we write `p⁻¹ : b = a` for the reversed path.
-We can join two paths that share the endpoint and the start point by
-what we call _concatenation_ and its symbol (`_·_`).
-We have what we call path algebra for the basic operations like
-`p · p⁻¹ : a = a` and `p⁻¹ · p : b = b`.
+To help with our intintuion of what happen with certain types, we can draw some
+pictures. Let's see.  For instance, if `p : a = b`, we write `p⁻¹ : b = a` for
+the reversed path. We can join two paths that share the endpoint and the start
+point by what we call _concatenation_ and its symbol (`_·_`). We have what we
+call path algebra for the basic operations like `p · p⁻¹ : a = a` and
+`p⁻¹ · p : b = b`.
 
 ### Lemma
 
@@ -49,25 +48,33 @@ pi {A} C c x .x refl = c x
 -------------------------------------------------------------------------------
 
 To prove our identities we define the concatenation operator and inverse
-operation as follows:
+operation as follows.
+
+\begin{code}
+_·_ : ∀ {A : Set}
+    → (x y z : A) → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
+_·_  {A} x y z p q = D₁ x y p z q
+  where
+    D₂ : (x z : A) (q : x ≡ z) → x ≡ z
+    D₂ = pi (λ x z q → x ≡ z) (λ x → refl)
+
+    D₁ : ∀ (x y : A) → (x ≡ y) → ((z : A) → (q : y ≡ z) → x ≡ z)
+    D₁ = pi (λ x y p → ((z : A) → (q : y ≡ z) → x ≡ z)) (λ x → D₂ x)
+\end{code}
+
+We could do better maybe above by using pattern-matching ending with
+a one line proof. However, we are walking by the hard way, path induction
+as it was presented in Chapter 2 in the HoTT Book.
 
 \begin{code}
 _⁻¹ : ∀ {i}{A : Set i} {x y : A} → x ≡ y → y ≡ x
--- _⁻¹ {i}{A}{x}{y} path = pi (λ x y p → y ≡ x) (λ x → refl) x y path
-_⁻¹ refl = refl  -- without induction.
+_⁻¹ {i}{A}{x}{y} path = pi (λ x y p → y ≡ x) (λ x → refl) x y path
 \end{code}
 
 + `(refl x) ⁻¹ ≡ refl x`
 \begin{code}
-l1 : (refl ⁻¹) ≡ refl
-l1 = refl
-\end{code}
-
-\begin{code}
--- _·_ : ∀ {A : Set}
---     → (x y z : A)
---     → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
--- _·_ {A} = pi {! λ x z p → x ≡ z  !} {!   !} {!   !} {!   !} {!   !}
+l1 : ∀ {A : Set} {x : A} → (refl ⁻¹) ≡ refl {x = x}
+l1 {A}{x} = pi (λ x y p → (refl ⁻¹) ≡ refl {x = x}) (λ x → refl) x x refl
 \end{code}
 
 + `p · p⁻¹ ≡ refl x`
