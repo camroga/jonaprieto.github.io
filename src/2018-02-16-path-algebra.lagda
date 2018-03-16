@@ -54,7 +54,7 @@ operation as follows.
 infixr 20 _·_
 _·_ : ∀ {A : Set}
     → {x y z : A} → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
-_·_  {A} {x} {y} {z} p q = D₁ x y p z q
+_·_ {A} {x} {y} {z} p q = D₁ x y p z q
   where
     D₂ : (x z : A) (q : x ≡ z) → x ≡ z
     D₂ = pi (λ x z q → x ≡ z) (λ x → refl)
@@ -63,9 +63,9 @@ _·_  {A} {x} {y} {z} p q = D₁ x y p z q
     D₁ = pi (λ x y p → ((z : A) → (q : y ≡ z) → x ≡ z)) (λ x → D₂ x)
 \end{code}
 
-Surely just using pattern-matching we've could do this proof in just one-line.
-What is the point?, we are walking by the hard way, learning path induction.
-See the same proof in Chapter 2 in the HoTT Book.
+Surely just using pattern-matching we've could do it in just one-line. What is
+the point? we are walking by the hard way, just learning path induction. See the
+same proof in Chapter 2 in the HoTT book.
 
 \begin{code}
 infixl 20 _⁻¹
@@ -84,16 +84,27 @@ l1 {A}{x} = pi (λ x y p → (refl ⁻¹) ≡ refl {x = x}) (λ x → refl) x x 
 \begin{code}
 
 l2 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p · (p ⁻¹))  ≡ refl
-l2 = {!   !}
+l2 = {! pi  !}
 
 \end{code}
 
 + `refl x · p ≡ p`
 
+\begin{code}
+
+\end{code}
+
 + `p · refl y ≡ p`
+
+\begin{code}
+
+\end{code}
 
 + ` (p  ⁻¹) ⁻¹ ≡ p`
 
+\begin{code}
+
+\end{code}
 
 -------------------------------------------------------------------------------
 
