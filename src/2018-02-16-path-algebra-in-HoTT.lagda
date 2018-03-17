@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Path Algebra"
+title: "Path Algebra in HoTT"
 date: "2018-02-16 21:57"
 categories: type-theory
 ---
