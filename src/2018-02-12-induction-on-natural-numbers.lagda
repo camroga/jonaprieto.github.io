@@ -2,7 +2,6 @@
 layout: "post"
 title: "Induction on Natural Numbers"
 date: "2018-02-12"
-toc: true
 categories: type-theory
 ---
 

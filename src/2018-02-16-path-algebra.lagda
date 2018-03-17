@@ -63,47 +63,60 @@ _·_ {A} {x} {y} {z} p q = D₁ x y p z q
 \end{code}
 
 Surely just using pattern-matching we've could do it in just one-line. What is
-the point? we are walking through the hard way learning path induction. See for
-instance two different proofs in Chapter 2 in the HoTT book.
+the point? well... we are walking through the hard way learning path induction.
+So, I'll try to be the most explicitly as I can. See also these proofs in
+Chapter 2 in the HoTT book.
 
 \begin{code}
 infixl 20 _⁻¹
 _⁻¹ : ∀ {A : Set} {x y : A} → (p : x ≡ y) → y ≡ x
-_⁻¹ {A}{x}{y} p = pi (λ x y p → y ≡ x) (λ x → refl) x y p
+_⁻¹ {A}{x}{y} p =
+  pi (λ x y p → y ≡ x)
+     (λ x → refl {x = x})
+     x y p
 \end{code}
 
 + `(refl x) ⁻¹ ≡ refl x`
 \begin{code}
 l1 : ∀ {A : Set} {x : A} → (refl ⁻¹) ≡ refl
-l1 {A}{x} = pi (λ x y p → (refl ⁻¹) ≡ refl {x = x}) (λ x → refl) x x refl
+l1 {A}{x} =
+  pi (λ x y p → (refl ⁻¹) ≡ refl {x = x})
+     (λ x → refl {x = refl {x = x}})
+     x x refl
 \end{code}
 
 + `p · p ⁻¹ ≡ refl x`
 
 \begin{code}
 l2 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p · (p ⁻¹))  ≡ refl
-l2 = pi (λ x y p → (p · (p ⁻¹))  ≡ refl) (λ x → refl)
+l2 =
+  pi (λ x y p → (p · (p ⁻¹))  ≡ refl)
+     (λ x → refl { x = refl {x = x}})
 \end{code}
 
 + `refl x · p ≡ p`
 
 \begin{code}
 l3 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → refl · p ≡ p
-l3 = pi (λ x y p → refl · p ≡ p) (λ x → refl)
+l3 =
+  pi (λ x y p → refl · p ≡ p)
+     (λ x → refl { x = refl {x = x}})
 \end{code}
 
 + `p · refl y ≡ p`
 
 \begin{code}
 l4 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → refl · p ≡ p
-l4 = pi (λ x y p → refl · p ≡ p) (λ x → refl)
+l4 = pi (λ x y p → refl · p ≡ p)
+        (λ x → refl {x = refl {x = x}})
 \end{code}
 
 + ` (p  ⁻¹) ⁻¹ ≡ p`
 
 \begin{code}
 l5 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p  ⁻¹) ⁻¹ ≡ p
-l5 = pi (λ x y p → (p  ⁻¹) ⁻¹ ≡ p) (λ x → refl)
+l5 = pi (λ x y p → (p  ⁻¹) ⁻¹ ≡ p)
+        (λ x → refl {x = refl {x = x}})
 \end{code}
 
 -------------------------------------------------------------------------------
@@ -117,10 +130,10 @@ data 𝟙 : Set where
 f₁ : ∀ {A : Set} (x y : A) → x ≡ y → 𝟙
 f₁ = pi (λ x y _ → 𝟙) (λ x → *)
 
-_~_ : ∀ {A : Set}{P : A → Set} → ((x : A) → P x) → ((x : A) → P x) → Set
-_~_ {A} f g = (x : A) → f x ≡ g x
-
 infixr 4 _~_
+_~_ : ∀ {A : Set}{P : A → Set}
+    → ((x : A) → P x) → ((x : A) → P x) → Set
+_~_ {A} f g = (x : A) → f x ≡ g x
 
 open import Data.Product
 open import Function hiding (id)
@@ -128,12 +141,12 @@ open import Function hiding (id)
 id : ∀ {A : Set} → A → A
 id = λ z → z
 
-is-equiv : ∀ {A : Set}{B : Set}
-  → (f : A → B)
-  → (g : B → A)
-  → (h : B → A)
-  → (Σ (B → A) (λ _ → B)) × (Σ (B → A) (λ _ → A))
-is-equiv {A}{B} f g h = ((g , {!   !})) , (h , {!   !})
+-- is-equiv : ∀ {A : Set}{B : Set}
+--   → (f : A → B)
+--   → (g : B → A)
+--   → (h : B → A)
+--   → (Σ (B → A) (λ x → ((f (g x)))) × (Σ (B → A) (λ _ → A))
+-- is-equiv {A}{B} f g h = ((g , {!   !})) , (h , {!   !})
 
 -- _≃_ : ∀ {i j} (A : Set i) (B : Set j) → ?
 -- A ≃ B = Σ (A → B) is-equiv
