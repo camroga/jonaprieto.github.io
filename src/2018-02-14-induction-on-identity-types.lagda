@@ -183,7 +183,7 @@ pi⇒bpi
 pi⇒bpi {A} a C c y p = f a y p C c
   where
     D : ∀ (x y : A) → x ≡ y → Set₁
-    D x y p = (K : (z : A) → x ≡ z → Set) → K x refl → K y p
+    D x y p = (L : (z : A) → x ≡ z → Set) → L x refl → L y p
 
     d : ∀ (x : A) → D x x refl
     d = λ x C c → c

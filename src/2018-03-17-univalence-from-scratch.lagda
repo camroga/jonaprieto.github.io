@@ -12,23 +12,32 @@ The author of the following code is the same author's paper, Martín Hötzel
 Escardó. I put the code here for me but I modified it a little for my own
 convenience. For the original version, review the link of the paper.
 
-### Basic definitions
+Basic imports:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
+
 open import Agda.Primitive
   using    (_⊔_)
   renaming (lzero to U₀ ; lsuc to _′ ; Level to Universe)
+\end{code}
 
+### Σ-type and Identity type
+
+\begin{code}
 data Σ {U V : Universe}
-      {X : Set U}
-      (Y : X → Set V)
-    : Set (U ⊔ V) where
+       {X : Set U}
+       (Y : X → Set V)
+     : Set (U ⊔ V) where
   _,_ : (x : X) (y : Y x) → Σ Y
 
 data Id {U : Universe} {X : Set U} : X → X → Set U  where
   refl : (x : X) → Id x x
+\end{code}
 
+### J eliminator
+
+\begin{code}
 J : {U V : Universe} {X : Set U}
   → (A : (x y : X) → Id x y → Set V)  -- type former
   → ((x : X) → A x x (refl x))        -- diagonal proof
@@ -36,18 +45,31 @@ J : {U V : Universe} {X : Set U}
 J A f x .x (refl .x) = f x
 \end{code}
 
-### Fibrations
+### Singleton
+
+A type X is a *singleton* if we have
+an element c : X with Id(c,x) for all x : X.
+
+![path](/assets/images/issinglenton.png)
 
 \begin{code}
 isSingleton : {U : Universe} → Set U → Set U
 isSingleton X = Σ \(c : X) → (x : X) → Id c x
---
--- fiber : {U V : Universe} {X : U ̇} {Y : V ̇} → (X → Y) → Y → U ⊔ V ̇
--- fiber f y = Σ \x → Id (f x) y
---
--- isEquiv : {U V : Universe} {X : U ̇} {Y : V ̇} → (X → Y) → U ⊔ V ̇
--- isEquiv f = (y : _) → isSingleton(fiber f y)
---
+\end{code}
+
+### Fiber
+
+\begin{code}
+fiber : {U V : Universe} {X : Set U} {Y : Set V} → (X → Y) → Y → Set (U ⊔ V)
+fiber f y = Σ \x → Id (f x) y
+\end{code}
+
+### Equivalence
+
+\begin{code}
+isEquiv : {U V : Universe} {X : Set U} {Y : Set V} → (X → Y) → Set (U ⊔ V)
+isEquiv f = (y : _) → isSingleton(fiber f y)
+
 -- Eq : {U V : Universe} → U ̇ → V ̇ → U ⊔ V ̇
 -- Eq X Y = Σ \(f : X → Y) → isEquiv f
 --
