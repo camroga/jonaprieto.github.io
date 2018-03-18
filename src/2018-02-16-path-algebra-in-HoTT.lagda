@@ -5,13 +5,15 @@ date: "2018-02-16 21:57"
 categories: type-theory
 ---
 
++ TODO: replace = by ≡ for consistency?
+
 In univalence we have a different interpreation of type theory. We replace the
-set-theoretical notion of sets for types and we use instead of it the *topological
-space*. In this interpretation we also replace the notion of an element of `a =
-b`, that is, the proof of such a equality and instead of it we use a new
-concept, *path*, for this element, where `a` is the start of the path, and `b` is
-the endpoint. Then, the identity type, `a = b`, is all paths that start in `a` and
-end in `b`. We call this type *path space*.
+set-theoretical notion of sets for types and we use instead of it the
+*topological space*. In this interpretation we abandon the notion of an element
+of type `a = b`, that is, the proof of the equality. Instead of we use *path* to
+refer us to `a = b`, for this element, where `a` is the start of the path, and
+`b` is the endpoint. Then, the identity type, `a = b`, is all paths that start
+in `a` and end in `b`. We call this type *path space*.
 
 To help with our intintuion of what happen with certain types, we can draw some
 pictures. Let's see.  For instance, if `p : a = b`, we write `p⁻¹ : b = a` for
@@ -20,20 +22,18 @@ point by what we call _concatenation_ and its symbol (`_·_`). We have what we
 call path algebra for the basic operations like `p · p⁻¹ : a = a` and
 `p⁻¹ · p : b = b`.
 
-### Lemma
+### Prerequisites
 
-![path](/assets/images/path-algebra.png)
-
-#### Proofs
-
-Let's using identity type from the Agda standard library.
+To work with the identity type let's use the type `(_≡_)` from
+the Agda standard library. 
 
 \begin{code}
 {-# OPTIONS --without-K #-}
-open import Relation.Binary.PropositionalEquality using (refl; _≡_)
+import Relation.Binary.PropositionalEquality as Eq
+open Eq using (refl; _≡_)
 \end{code}
 
-Let's define path induction to prove many things in HoTT:
++ *Path Induction*
 
 \begin{code}
 pi
@@ -44,10 +44,9 @@ pi
 pi {A} C c x .x refl = c x
 \end{code}
 
--------------------------------------------------------------------------------
++ *Path Concatenation*
 
-To prove our identities we define the concatenation operator and inverse
-operation as follows.
+![path](/assets/images/trans.png)
 
 \begin{code}
 infixr 20 _·_
@@ -67,6 +66,8 @@ the point? well... we are walking through the hard way learning path induction.
 So, I'll try to be the most explicitly as I can. See also these proofs in
 Chapter 2 in the HoTT book.
 
++ *Path Inverse*
+
 \begin{code}
 infixl 20 _⁻¹
 _⁻¹ : ∀ {A : Set} {x y : A} → (p : x ≡ y) → y ≡ x
@@ -75,6 +76,14 @@ _⁻¹ {A}{x}{y} p =
      (λ x → refl {x = x})
      x y p
 \end{code}
+
+-----------------------------------------------------------------------------
+
+### Lemma
+
+![path](/assets/images/path-algebra.png)
+
+#### Proofs
 
 + `(refl x) ⁻¹ ≡ refl x`
 \begin{code}
