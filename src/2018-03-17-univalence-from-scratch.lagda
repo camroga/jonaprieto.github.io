@@ -5,18 +5,21 @@ date: "2018-03-17"
 categories: type-theory
 ---
 
-M.H. Escardo. [*A self-contained, brief and complete formulation of Voevodsky's
+This is my reading of the paper:
+
+> M.H. Escardo. [*A self-contained, brief and complete formulation of Voevodsky's
 Univalence Axiom*](https://arxiv.org/abs/1803.02294), March 2018, arXiv:1803.02294.
 
-The author of the following code is the same author's paper, Martín Hötzel
-Escardó. I put the code here for me but I modified it a little for my own
-convenience. For the original version, review the link of the paper.
+For the original version of the Agda code, review the link of the paper.
+The following type-checks in Agda 2.5.3.
+
+\begin{code}
+{-# OPTIONS --without-K #-}
+\end{code}
 
 Basic imports:
 
 \begin{code}
-{-# OPTIONS --without-K #-}
-
 open import Agda.Primitive
   using    (_⊔_)
   renaming (lzero to U₀ ; lsuc to _′ ; Level to Universe)
