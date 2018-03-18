@@ -31,7 +31,7 @@ open import Agda.Primitive
 data Σ {U V : Universe}
        {X : Set U}
        (Y : X → Set V)
-     : Set (U ⊔ V) where
+      : Set (U ⊔ V) where
   _,_ : (x : X) (y : Y x) → Σ Y
 
 data Id {U : Universe} {X : Set U} : X → X → Set U  where
@@ -50,8 +50,8 @@ J A f x .x (refl .x) = f x
 
 ### Singleton
 
-A type X is a *singleton* if we have
-an element c : X with Id(c,x) for all x : X.
+We say that a type `X` is a *singleton* if we have
+an element `c : X` with `Id c x` for all `x : X`.
 
 ![path](/assets/images/issinglenton.png)
 
@@ -63,14 +63,21 @@ isSingleton X = Σ \(c : X) → (x : X) → Id c x
 ### Fiber
 
 \begin{code}
-fiber : {U V : Universe} {X : Set U} {Y : Set V} → (X → Y) → Y → Set (U ⊔ V)
+fiber
+  : {U V : Universe} {X : Set U} {Y : Set V}
+  → (X → Y)
+  → Y
+  → Set (U ⊔ V)
 fiber f y = Σ \x → Id (f x) y
 \end{code}
 
 ### Equivalence
 
 \begin{code}
-isEquiv : {U V : Universe} {X : Set U} {Y : Set V} → (X → Y) → Set (U ⊔ V)
+isEquiv
+  : {U V : Universe} {X : Set U} {Y : Set V}
+  → (X → Y)
+  → Set (U ⊔ V)
 isEquiv f = (y : _) → isSingleton(fiber f y)
 
 -- Eq : {U V : Universe} → U ̇ → V ̇ → U ⊔ V ̇
