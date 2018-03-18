@@ -44,32 +44,6 @@ html {
   font-family: "PT Serif", Georgia, "Times New Roman", serif;
 }
 
-.main-heading {
-  display: table;
-  width: 100%;
-}
-
-.main-title {
-  display: table-cell;
-  width: 400px;
-  float: left;
-}
-
-.main-last-date
-{
-  display: table-cell;
-  float; right !important;
-  text-align: right;
-  width : auto;
-  font-size: 13px;
-  line-height: 20px;
-  color: #586069;
-}
-.main-rss {
-  font-size: 13%;
-  color: #c3c3c3;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-weight: 400;
