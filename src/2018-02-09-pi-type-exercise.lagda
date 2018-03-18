@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "A Constructive Tautology"
+title: "Π-type exercise"
 date: "2018-02-09"
 categories: type-theory
 ---
