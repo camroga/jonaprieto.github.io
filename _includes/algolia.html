@@ -18,7 +18,7 @@ const search = instantsearch({
   },
   searchFunction: function(helper) {
     if (helper.getState().query === '') {
-      additionalClass = 'post-item__empty-query';
+      additionalClass = 'empty-query';
       hitBoxClass = '';
     } else {
       additionalClass = '';
@@ -32,47 +32,46 @@ const hitTemplate = function(hit) {
   let date = '';
   if (hit.date) {
     date = moment.unix(hit.date).format('L');
-    // date = moment.unix(hit.date).format('MMM Do YY');
     modifiedDate = hit.last_modified_at;
+    lastDate = moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
   }
   const url = hit.url;
   const title = hit._highlightResult.title.value;
   const content = hit._highlightResult.html.value;
 
   return `
-  <div class="${hitBoxClass}">
-    <div class="post-list">
-      <span class="post-date-list-wrap">
-      <span class="post-date-list">${date}
-      <span class="post-title"><a href=".${url}"> ${title} </a> <small class="rss-subscribe">(modified ${modifiedDate})</small> </span>
-      </span>
-        <div class="${additionalClass}">
-        ${content}
-        </div>
+<div class="${hitBoxClass}">
+  <div class="post-list">
+      <div class="algolia">
+      <div class="algolia-date">${date}</div>
+        <div class="algolia-title"><a href=".${url}">${title}</a></div>
+        <div class="algolia-modified">${lastDate}</div>
       </div>
-    </div>
+      <div class="${additionalClass}">${content} </div>
+  </div>
+</div>
   `;
 }
 
-const hitTemplateTrans = function(hit) {
-  let date = '';
-  if (hit.date) {
-    date = moment.unix(hit.date).format('MMM DD YYYY');
-  }
-  const url = hit.url;
-  const title = hit._highlightResult.title.value;
-  const content = hit._highlightResult.html.value;
-
-  return `
-    <div class="post-list">
-      <span class="post-date-list-wrap">
-      <span class="post-date-list">${date}
-        <span class="post-title"><a href=".${url}"> ${title}</a></span>
-       </span>
-       </span>
-    </div>
-  `;
-}
+// const hitTemplateTrans = function(hit) {
+//   let date = '';
+//   if (hit.date) {
+//     date = moment.unix(hit.date).format('MMM DD YYYY');
+//   }
+//   const url = hit.url;
+//   const title = hit._highlightResult.title.value;
+//   const content = hit._highlightResult.html.value;
+//
+//   return `
+//     <div class="post-list">
+//       <span class="post-date-list-wrap">
+//       <span class="post-date-list">${date}
+//         <span class="post-title"><a href=".${url}"> ${title}</a></span>
+//        </span>
+//        </span>
+//     </div>
+//   `;
+// }
 
 search.addWidget(
   instantsearch.widgets.searchBox({
@@ -96,7 +95,48 @@ search.start();
 </script>
 
 <style>
-.post-item__empty-query {
+
+.algolia
+{
+  display: table;
+  width: 100%;
+  font-size: 13px;
+  line-height: 20px;
+  border-top: 1px solid #eaecef;
+}
+
+.algolia-date {
+  display: table-cell;
+  float: left;
+  width: 70px;
+  color: #586069;
+  text-align: left;
+}
+.algolia-title {
+  display: table-cell;
+  float: left;
+  padding-left: 10px;
+  width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.algolia-title a {
+  color: #586069;
+}
+
+.algolia-modified {
+  display: table-cell;
+  float: right;
+  width: 100px;
+  white-space: nowrap;
+  text-align: right;
+  color: #586069;
+}
+
+.empty-query {
   display: none;
 }
 .ais-search-box {

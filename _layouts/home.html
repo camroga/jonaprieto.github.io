@@ -5,13 +5,18 @@ layout: default
 <div class="home">
 
   {{ content }}
-
-  <h2 class="page-heading">Notes
-    <a class="rss-subscribe"href="{{ "/feed.xml" | relative_url }}">
-      last update on {{ site.time | date_to_string  }} revision {{site.github.build_revision | slice: -7, 7}}
-    </a></h2>
-
   <div id="search-searchbar"></div>
+
+  <div class="main-heading">
+    <div class="main-title"> Notes
+    <a class="main-rss" href="{{ "/feed.xml" | relative_url }}">
+      rss
+    </a>
+  </div>
+  <div class="main-last-date">
+      Latest commit {{site.github.build_revision | slice: -7, 7}} on  {{ site.time | date_to_string  }}
+  </div>
+</div>
 
   <div class="posts" id="search-hits">
   </div>

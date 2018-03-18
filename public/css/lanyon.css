@@ -45,8 +45,29 @@ html {
 
 }
 
-.rss-subscribe {
-  font-size: 50%;
+.main-heading {
+  display: table;
+  width: 100%;
+}
+
+.main-title {
+  display: table-cell;
+  width: 400px;
+  float: left;
+}
+
+.main-last-date
+{
+  display: table-cell;
+  float; right !important;
+  text-align: right;
+  width : auto;
+  font-size: 13px;
+  line-height: 20px;
+  color: #586069;
+}
+.main-rss {
+  font-size: 13%;
   color: #c3c3c3;
 }
 
@@ -370,23 +391,6 @@ a.sidebar-nav-item:focus {
   font-size: 90%;
 }
 
-.post-date-list
-{
-  display: block;
-  color: #9a9a9a;
-}
-
-.post-date-list .post-title
-{
-  margin-left: 0.5rem;
-}
-
-.post-date-update
-{
-  color: #c2c2c2;
-  font-size: 60%;
-  font-style: italic;
-}
 
 /* Related posts */
 .related {
