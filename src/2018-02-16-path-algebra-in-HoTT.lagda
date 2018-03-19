@@ -25,7 +25,7 @@ call path algebra for the basic operations like `p · p⁻¹ : a = a` and
 ### Prerequisites
 
 To work with the identity type let's use the type `(_≡_)` from
-the Agda standard library. 
+the Agda standard library.
 
 \begin{code}
 {-# OPTIONS --without-K #-}
@@ -77,6 +77,7 @@ _⁻¹ {A}{x}{y} p =
      x y p
 \end{code}
 
+-- dante
 -----------------------------------------------------------------------------
 
 ### Lemma

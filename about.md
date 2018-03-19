@@ -14,11 +14,9 @@ Every now and again I will change some texts,
 adding better explanations, pictures or
 references. So, If you find something
 wrong don't hesitate, please feel free
-to send me an email (prieto.jona@gmail.com),
-I'll fix it and I'll say thanks you!
+to send me an email (prieto.jona@gmail.com).
 
-
-How do I make this blog, well I'm using this:
+How do I make this blog?, well I'm using this:
 
 - github-pages
 - jekyll with minima theme
