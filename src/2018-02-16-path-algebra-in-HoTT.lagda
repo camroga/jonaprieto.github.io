@@ -5,22 +5,17 @@ date: "2018-02-16 21:57"
 categories: type-theory
 ---
 
-+ TODO: replace = by ≡ for consistency?
+In Univalence we have a different interpreation of type theory. We replace the
+set-theoretical notion of sets for types and we use the *topological space*
+notion instead. And the judment `a : A` for a type A, it reads as `the point a in
+topological space A`. We also include the identity type but instead of thinking
+about it as the proof of equality for `a = b`, we refer us to this type as
+the *path* between `a` and `b` where `a` is the starting point and `b` the end
+of the path. We also could have different paths for that path, and its set
+we call it *path space*.
 
-In univalence we have a different interpreation of type theory. We replace the
-set-theoretical notion of sets for types and we use instead of it the
-*topological space*. In this interpretation we abandon the notion of an element
-of type `a = b`, that is, the proof of the equality. Instead of we use *path* to
-refer us to `a = b`, for this element, where `a` is the start of the path, and
-`b` is the endpoint. Then, the identity type, `a = b`, is all paths that start
-in `a` and end in `b`. We call this type *path space*.
-
-To help with our intintuion of what happen with certain types, we can draw some
-pictures. Let's see.  For instance, if `p : a = b`, we write `p⁻¹ : b = a` for
-the reversed path. We can join two paths that share the endpoint and the start
-point by what we call _concatenation_ and its symbol (`_·_`). We have what we
-call path algebra for the basic operations like `p · p⁻¹ : a = a` and
-`p⁻¹ · p : b = b`.
+To help streghten our intintuion of what really happens with this type, we
+will see some pictures next.
 
 ### Prerequisites
 
@@ -35,6 +30,9 @@ open Eq using (refl; _≡_)
 
 + *Path Induction*
 
+This is the elimination principle for the identity type and
+this also called `J` eliminator with some variations.
+
 \begin{code}
 pi
   : ∀ {i j} {A : Set i}
@@ -45,6 +43,10 @@ pi {A} C c x .x refl = c x
 \end{code}
 
 + *Path Concatenation*
+
+We can join two paths when one ends where the other starts.
+We use the _concatenation_ operator for such purposes with its symbol (`_·_`)
+--\centerdot in Latex--. Let's see its picture.
 
 ![path](/assets/images/trans.png)
 
@@ -61,12 +63,11 @@ _·_ {A} {x} {y} {z} p q = D₁ x y p z q
     D₁ = pi (λ x y p → ((z : A) → (q : y ≡ z) → x ≡ z)) (λ x → D₂ x)
 \end{code}
 
-Surely just using pattern-matching we've could do it in just one-line. What is
-the point? well... we are walking through the hard way learning path induction.
-So, I'll try to be the most explicitly as I can. See also these proofs in
-Chapter 2 in the HoTT book.
+*We've could define the same using Agda pattern-matching in just one-line.*
 
 + *Path Inverse*
+
+If `p : a = b`, we write `p⁻¹ : b = a` for the path in the opposite direction.
 
 \begin{code}
 infixl 20 _⁻¹
@@ -127,40 +128,4 @@ l4 = pi (λ x y p → refl · p ≡ p)
 l5 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p  ⁻¹) ⁻¹ ≡ p
 l5 = pi (λ x y p → (p  ⁻¹) ⁻¹ ≡ p)
         (λ x → refl {x = refl {x = x}})
-\end{code}
-
--------------------------------------------------------------------------------
-
-+ A function `f : (x =A y) → 𝟙` where 𝟙 is the unit type with only one constructor.
-
-\begin{code}
-data 𝟙 : Set where
-  * : 𝟙
-
-f₁ : ∀ {A : Set} (x y : A) → x ≡ y → 𝟙
-f₁ = pi (λ x y _ → 𝟙) (λ x → *)
-
-infixr 4 _~_
-_~_ : ∀ {A : Set}{P : A → Set}
-    → ((x : A) → P x) → ((x : A) → P x) → Set
-_~_ {A} f g = (x : A) → f x ≡ g x
-
-open import Data.Product
-open import Function hiding (id)
-
-id : ∀ {A : Set} → A → A
-id = λ z → z
-
--- is-equiv : ∀ {A : Set}{B : Set}
---   → (f : A → B)
---   → (g : B → A)
---   → (h : B → A)
---   → (Σ (B → A) (λ x → ((f (g x)))) × (Σ (B → A) (λ _ → A))
--- is-equiv {A}{B} f g h = ((g , {!   !})) , (h , {!   !})
-
--- _≃_ : ∀ {i j} (A : Set i) (B : Set j) → ?
--- A ≃ B = Σ (A → B) is-equiv
-
--- thm : ∀ (x y : 𝟙) → Equiv (x ≡ y) 𝟙
--- thm = {!   !}
 \end{code}
