@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Equivalences"
-date: "2018-03-17"
+date: "2018-02-20"
 categories: type-theory
 ---
 
