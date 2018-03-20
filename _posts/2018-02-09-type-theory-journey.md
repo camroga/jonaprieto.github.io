@@ -9,6 +9,18 @@ Type theory
 
 - is a *unification theory* about computation and logic
 
+- A theory for constructions:
+
+  - Type Zoo:
+
+    * Functions  (`_→_`)
+    * Products   (`_×_`)
+    * Coproducts (`_+_`)
+    * Π-types    (`Π_._`)
+    * Σ-types    (`Σ_._`)
+    * Id-types   (`_≡_`)
+    * W-types    (`W__`)
+
 - is about **deductive systems**, that are, *collection* of rules that derive things
   called *judgements*
 
@@ -36,16 +48,21 @@ We mostly refers to type theories using the following abbreviations:
 
     - It fails to satisfy [*function extensionality*](https://ncatlab.org/nlab/show/function+extensionality)
 
+- (**ETT*) *Extensional* type theory
+
+  - Can impose axioms to trivialise identity types
+
+  - Force types to conform to our intuition about sets
+
+  - Destroys computational content, decidability of type-checking...
+
 - Homotopy type theory
+
+  - Logic to natively formalise homotopy theory
+  - Intuition for working with Id-types.
+  - *UnivalenceAxiom* : equality between types can be isomorphism.
+    Gives (some) parametricity for free: all constructions on types invariant under iso.
+
 - Cubical type theory
 - Observational type theory
 - [Computational higher type theory](https://github.com/CHTT-s18/lecture-notes)
-
-Type Zoo:
-
-  * Functions  (_→_)
-  * Products   (_×_)
-  * Coproducts (_+_)
-  * Π-types    (Π_._)
-  * Σ-types    (Σ_._)
-  * Identity   (_≡_)

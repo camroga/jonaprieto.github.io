@@ -9,7 +9,7 @@ categories: type-theory
   Equivalence Definitions and intuitions...
 </div>
 
-+ Proof that for all x, y : 𝟙, (x ≡ y  ≃ 𝟙 ).
++ Show that for all x, y : 𝟙, (x ≡ y  ≃ 𝟙 ).
 
 To prove that, we must to exhibit a function `f : (x =A y) → 𝟙`
 to provide an inhabitant of the equivalence type `x ≡ y  ≃ 𝟙`.
