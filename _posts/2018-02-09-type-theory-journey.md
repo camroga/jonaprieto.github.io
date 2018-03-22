@@ -33,10 +33,10 @@ Type theory
 - notation common uses the following symbols
   + the turnstile or vdash in `latex` (⊢), e.g. as a consequence relation
   for *syntax derivability* to separate assumptions from the conclusion like
-      $$ a_{1}, a_{2}, \dots, a_{n} ⊢ c  $$
+      $$ a_{1}, a_{2}, \dots, a_{n} ⊢ c $$
   + the semicolon `:` to denote *judgments* like $$ term : Type $$
 
-We mostly refers to type theories using the following abbreviations:
+We mostly refer to type theories using the following abbreviations:
 
 - (**TT**)  *Intuitionistic* type theory (*Constructive mathematics*).
 
@@ -59,7 +59,9 @@ We mostly refers to type theories using the following abbreviations:
 - Homotopy type theory
 
   - Logic to natively formalise homotopy theory
-  - Intuition for working with Id-types.
+
+  - Intuition for working with Id-types
+
   - *UnivalenceAxiom* : equality between types can be isomorphism.
     Gives (some) parametricity for free: all constructions on types invariant under iso.
 

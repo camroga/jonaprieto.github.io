@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180219165355" modified="D:20180322163446"/>
-<preamble>\usepackage{amsmath}
-\usepackage{amssymb}</preamble>
+<info created="D:20180322162347" modified="D:20180322163513"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -191,8 +189,26 @@ h
 <arrowsize name="large" value="10"/>
 <arrowsize name="small" value="5"/>
 <arrowsize name="tiny" value="3"/>
-<color name="blue" value="0 0 1"/>
+<color name="black" value="0"/>
+<color name="black15" value="0.85"/>
+<color name="black30" value="0.7"/>
+<color name="black50" value="0.5"/>
+<color name="black70" value="0.3"/>
+<color name="blue" value="0.274 0.392 0.666"/>
+<color name="blue15" value="0.891 0.908 0.95"/>
+<color name="blue30" value="0.782 0.817 0.9"/>
+<color name="blue50" value="0.637 0.696 0.833"/>
+<color name="blue70" value="0.492 0.574 0.766"/>
 <color name="brown" value="0.647 0.165 0.165"/>
+<color name="brown15" value="0.944 0.926 0.879"/>
+<color name="brown30" value="0.888 0.852 0.758"/>
+<color name="brown50" value="0.813 0.754 0.598"/>
+<color name="brown70" value="0.739 0.656 0.437"/>
+<color name="cyanblue" value="0.313 0.666 0.901"/>
+<color name="cyanblue15" value="0.897 0.95 0.985"/>
+<color name="cyanblue30" value="0.794 0.9 0.97"/>
+<color name="cyanblue50" value="0.656 0.833 0.95"/>
+<color name="cyanblue70" value="0.519 0.766 0.931"/>
 <color name="darkblue" value="0 0 0.545"/>
 <color name="darkcyan" value="0 0.545 0.545"/>
 <color name="darkgray" value="0.663"/>
@@ -203,20 +219,51 @@ h
 <color name="gold" value="1 0.843 0"/>
 <color name="gray" value="0.745"/>
 <color name="green" value="0 1 0"/>
+<color name="green15" value="0.85 0.938 0.926"/>
+<color name="green30" value="0.7 0.876 0.852"/>
+<color name="green50" value="0.5 0.794 0.754"/>
+<color name="green70" value="0.3 0.711 0.656"/>
 <color name="lightblue" value="0.678 0.847 0.902"/>
 <color name="lightcyan" value="0.878 1 1"/>
 <color name="lightgray" value="0.827"/>
 <color name="lightgreen" value="0.565 0.933 0.565"/>
 <color name="lightyellow" value="1 1 0.878"/>
+<color name="lilac" value="0.627 0 0.47"/>
+<color name="lilac15" value="0.944 0.85 0.92"/>
+<color name="lilac30" value="0.888 0.7 0.841"/>
+<color name="lilac50" value="0.813 0.5 0.735"/>
+<color name="lilac70" value="0.739 0.3 0.629"/>
 <color name="navy" value="0 0 0.502"/>
 <color name="orange" value="1 0.647 0"/>
+<color name="orange15" value="0.979 0.944 0.867"/>
+<color name="orange30" value="0.958 0.888 0.735"/>
+<color name="orange50" value="0.931 0.813 0.558"/>
+<color name="orange70" value="0.903 0.739 0.382"/>
+<color name="palegreen" value="0.509 0.745 0.235"/>
+<color name="palegreen15" value="0.926 0.961 0.885"/>
+<color name="palegreen30" value="0.852 0.923 0.77"/>
+<color name="palegreen50" value="0.754 0.872 0.617"/>
+<color name="palegreen70" value="0.656 0.821 0.464"/>
 <color name="pink" value="1 0.753 0.796"/>
 <color name="purple" value="0.627 0.125 0.941"/>
 <color name="red" value="1 0 0"/>
+<color name="red15" value="0.944 0.867 0.873"/>
+<color name="red30" value="0.888 0.735 0.747"/>
+<color name="red50" value="0.813 0.558 0.578"/>
+<color name="red70" value="0.739 0.382 0.409"/>
+<color name="seablue" value="0.196 0.313 0.549"/>
+<color name="seablue15" value="0.879 0.897 0.932"/>
+<color name="seablue30" value="0.758 0.794 0.864"/>
+<color name="seablue50" value="0.598 0.656 0.774"/>
+<color name="seablue70" value="0.437 0.519 0.684"/>
 <color name="seagreen" value="0.18 0.545 0.341"/>
 <color name="turquoise" value="0.251 0.878 0.816"/>
 <color name="violet" value="0.933 0.51 0.933"/>
 <color name="yellow" value="1 1 0"/>
+<color name="yellow15" value="0.997 0.985 0.861"/>
+<color name="yellow30" value="0.994 0.97 0.723"/>
+<color name="yellow50" value="0.99 0.95 0.539"/>
+<color name="yellow70" value="0.986 0.931 0.354"/>
 <dashstyle name="dashed" value="[4] 0"/>
 <dashstyle name="dotted" value="[1 3] 0"/>
 <dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
@@ -232,6 +279,9 @@ h
 <textstyle name="center" begin="\begin{center}" end="\end{center}"/>
 <textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
 <textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
+<gridsize name="1 pts" value="1"/>
+<gridsize name="2 pts" value="2"/>
+<gridsize name="3 pts" value="3"/>
 <gridsize name="4 pts" value="4"/>
 <gridsize name="8 pts (~3 mm)" value="8"/>
 <gridsize name="16 pts (~6 mm)" value="16"/>
@@ -248,48 +298,56 @@ h
 <anglesize name="22.5 deg" value="22.5"/>
 <opacity name="10%" value="0.1"/>
 <opacity name="30%" value="0.3"/>
+<opacity name="40%" value="0.4"/>
 <opacity name="50%" value="0.5"/>
-<opacity name="75%" value="0.75"/>
+<opacity name="60%" value="0.6"/>
+<opacity name="70%" value="0.75"/>
+<opacity name="80%" value="0.8"/>
+<opacity name="90%" value="0.7"/>
 <tiling name="falling" angle="-60" step="4" width="1"/>
 <tiling name="rising" angle="30" step="4" width="1"/>
 </ipestyle>
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<use layer="alpha" matrix="1 0 0 1 16 -4" name="mark/disk(sx)" pos="192 560" size="normal" stroke="black"/>
-<use matrix="1 0 0 1 -60.9288 -2.6924" name="mark/disk(sx)" pos="336 592" size="normal" stroke="black"/>
-<text matrix="1 0 0 1 29.2128 -28.7324" transformations="translations" pos="176 576" stroke="black" type="label" width="5.694" height="4.289" depth="0" valign="baseline" style="math">x</text>
-<text matrix="1 0 0 1 -61.6742 -26.8095" transformations="translations" pos="336 608" stroke="black" type="label" width="5.242" height="4.297" depth="1.93" valign="baseline" style="math">y</text>
-<text matrix="1 0 0 1 189.421 24.876" transformations="translations" pos="249.704 558.354" stroke="black" type="label" width="37.534" height="4.627" depth="1.93" valign="baseline" style="math">p : x \equiv y</text>
-<text matrix="1 0 0 1 12.3305 12.8827" transformations="translations" pos="336 548" stroke="black" type="label" width="5.071" height="4.289" depth="0" valign="baseline" style="math">z
-</text>
-<use name="mark/disk(sx)" pos="344 564" size="normal" stroke="black"/>
-<text matrix="1 0 0 1 189.604 12.8879" transformations="translations" pos="249.704 558.354" stroke="black" type="label" width="36.704" height="4.627" depth="1.93" valign="baseline" style="math">q : y \equiv z</text>
-<path stroke="black">
-196 588
-244 620
-340 620
-404 556
-308 508
-292 540
-180 524
-174.882 570.033 u
+<path layer="alpha" matrix="0.991462 -0.130398 0.130398 0.991462 -73.3151 46.9437" stroke="black">
+256 580
+166 638
+298 684
+410.996 666.98
+364.021 612.253
+302 610 u
 </path>
-<text matrix="1 0 0 1 176 -84" transformations="translations" pos="176 592" stroke="black" type="label" width="12.636" height="11.764" depth="0" valign="baseline" size="LARGE" style="math">A</text>
+<text transformations="translations" pos="406 598" stroke="black" type="label" width="10.53" height="9.803" depth="0" valign="baseline" size="Large" style="math">A</text>
+<text transformations="translations" pos="232 624" stroke="black" type="label" width="5.694" height="4.289" depth="0" valign="baseline" style="math">x</text>
+<text transformations="translations" pos="348 654" stroke="black" type="label" width="8.489" height="7.49" depth="0" valign="baseline" style="math">x&apos;</text>
+<use name="mark/disk(sx)" pos="244 626" size="normal" stroke="black"/>
+<use name="mark/disk(sx)" pos="342 654" size="normal" stroke="black"/>
 <path stroke="black" pen="heavier" arrow="normal/normal">
-208 556 m
-224 588
-275.071 589.308 c
+244 626 m
+272 650
+302 616
+336 640
+342 654 c
 </path>
-<path stroke="black" pen="heavier" arrow="normal/normal">
-275.071 589.308 m
-304 608
-296 552
-320 532
-344 564 c
+<path stroke="black" dash="dotted">
+244.118 626.101 m
+244 720 l
 </path>
-<text matrix="1 0 0 1 -1.61894 -0.0319101" transformations="translations" pos="428.553 559.83" stroke="black" type="label" width="49.363" height="5.485" depth="1.93" valign="baseline" style="math">p \centerdot q : x \equiv z</text>
-<text transformations="translations" pos="223.178 581.644" stroke="black" type="label" width="5.012" height="4.297" depth="1.93" valign="baseline" style="math">p</text>
-<text transformations="translations" pos="306.942 569.425" stroke="black" type="label" width="4.805" height="4.297" depth="1.93" valign="baseline" style="math">q</text>
+<path stroke="black" dash="dotted">
+342 654 m
+342 720 l
+</path>
+<text matrix="1 0 0 1 2 -2" transformations="translations" pos="236 724" stroke="black" type="label" width="13.751" height="6.808" depth="0" valign="baseline" style="math">B x</text>
+<text matrix="1 0 0 1 -4 -6" transformations="translations" pos="340 730" stroke="black" type="label" width="16.546" height="7.49" depth="0" valign="baseline" style="math">B x&apos;</text>
+<use name="mark/disk(sx)" pos="244.024 700.566" size="normal" stroke="black"/>
+<text matrix="1 0 0 1 18 6" transformations="translations" pos="216 692" stroke="black" type="label" width="5.242" height="4.297" depth="1.93" valign="baseline" style="math">y</text>
+<use name="mark/disk(sx)" pos="342 693.352" size="normal" stroke="black"/>
+<text matrix="1 0 0 1 -8 -2" transformations="translations" pos="354 694" stroke="black" type="label" width="52.565" height="8.431" depth="2.49" valign="baseline" style="math">\mathit{trans}^{B} (y, u)</text>
+<text transformations="translations" pos="296 638" stroke="black" type="label" width="5.703" height="4.289" depth="0" valign="baseline" style="math">u </text>
+<path stroke="black" dash="dashed" arrow="arc/small">
+244.024 700.508 m
+342 693.368 l
+</path>
 </page>
 </ipe>

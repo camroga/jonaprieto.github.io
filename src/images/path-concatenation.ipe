@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180219165355" modified="D:20180322163446"/>
+<info created="D:20180219165355" modified="D:20180319003145"/>
 <preamble>\usepackage{amsmath}
 \usepackage{amssymb}</preamble>
 <ipestyle name="basic">

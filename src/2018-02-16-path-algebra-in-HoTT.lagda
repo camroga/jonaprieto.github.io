@@ -48,7 +48,7 @@ We can join two paths when one ends where the other starts.
 We use the _concatenation_ operator for such purposes with its symbol (`_·_`)
 --\centerdot in Latex--. Let's see its picture.
 
-![path](/assets/images/trans.png)
+![path](/assets/images/path-concatenation.png)
 
 \begin{code}
 infixr 20 _·_
@@ -129,3 +129,7 @@ l5 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p  ⁻¹) ⁻¹ ≡ p
 l5 = pi (λ x y p → (p  ⁻¹) ⁻¹ ≡ p)
         (λ x → refl {x = refl {x = x}})
 \end{code}
+
+### Transport
+
+![path](/assets/images/transport-fiber.png)
