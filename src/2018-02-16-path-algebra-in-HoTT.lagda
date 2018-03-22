@@ -7,8 +7,8 @@ categories: type-theory
 
 In Univalence we have a different interpreation of type theory. We replace the
 set-theoretical notion of sets for types and we use the *topological space*
-notion instead. And the judment `a : A` for a type A, it reads as `the point a in
-topological space A`. We also include the identity type but instead of thinking
+notion instead. And the judment `a : A` for a type A, it reads as the point `a` in
+the topological space `A`. We also include the identity type but instead of thinking
 about it as the proof of equality for `a = b`, we refer us to this type as
 the *path* between `a` and `b` where `a` is the starting point and `b` the end
 of the path. We also could have different paths for that path, and its set
