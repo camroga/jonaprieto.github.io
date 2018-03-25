@@ -55,7 +55,7 @@ recℕ
   → C            -- base case when n = 0
   → (ℕ → C → C)  -- recursion when n > 0
   → ℕ            -- the natural number in the recursion call
-  → C            
+  → C
 \end{code}
 
 With the following equations:
@@ -67,11 +67,16 @@ recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
 
 Now, we can define some common functions using this recursor to see how it works.
 
-+ Adding two numbers.
++ The add function.
 
 \begin{code}
 add : ℕ → ℕ → ℕ
 add = recℕ (ℕ → ℕ) (λ m → m) (λ n g m → suc (g m))
+
+_+_ = add
+infix 6 _+_
+\end{code}
+
 \end{code}
 
 Instead of using the following definition:
@@ -82,15 +87,7 @@ add₂ zero m = m
 add₂ (suc n) m = suc (add₂ n m)
 \end{code}
 
-For comodity we use the usual symbol for adding numbers,
-and also we declare the precedence of this symbol.
-
-\begin{code}
-_+_ = add
-infix 6 _+_
-\end{code}
-
-+ Doubling a number.
++ The double function.
 
 \begin{code}
 double : ℕ → ℕ
@@ -169,7 +166,7 @@ first-order we can write the induction schema or the principle of mathematical
 induction.
 
 ```
-P 0 ∧ (∀ n. P n → P (suc n)) → ∀n. P n
+P 0 ∧ (∀ n . P n → P (suc n)) → ∀ n . P n
 ```
 
   > In particular, a property of natural numbers is represented by a family of
@@ -194,9 +191,6 @@ with the defining equations
 indℕ c₀ cₛ zero    = c₀
 indℕ c₀ cₛ (suc n) = cₛ n (indℕ c₀ cₛ n)
 \end{code}
-
-* Remark: the usage of forall symbol is not necessary but it makes more
-likely to the schemata presented above.
 
 Now, we have the power of induction to prove some properties.
 
@@ -302,13 +296,14 @@ is actually our induction hypothesis.
 
 + Exercise 3
 
+Without pattern-matching:
+
 \begin{code}
 n+0≡n : ∀ (n : ℕ) → n + 0 ≡ n
 n+0≡n = indℕ refl (λ n indHyp → +-cong indHyp)
 \end{code}
 
-But this time, lets try proving this without using indℕ but pattern matching
-capability of Agda.
+With pattern-matching:
 
 \begin{code}
 n+0≡n₂ : ∀ (n : ℕ) → n + 0 ≡ n
@@ -318,9 +313,8 @@ n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 
 ### Conclusion
 
-Induction as it was presented here is stronger than recursion.
-We can say this because the recursor recℕ is the *independent* version
-of indℕ.
+Induction as it was presented here is stronger than recursion. We can say this
+because the recursor recℕ is the *no-dependent* function of indℕ.
 
 The recursor recℕ allows to define a function f : ℕ → C by defining
 two equations:
