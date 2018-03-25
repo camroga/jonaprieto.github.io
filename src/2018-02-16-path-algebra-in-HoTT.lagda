@@ -7,19 +7,17 @@ categories: type-theory
 
 In Univalence we have a different interpreation of type theory. We replace the
 set-theoretical notion of sets for types and we use the *topological space*
-notion instead. And the judment `a : A` for a type A, it reads as the point `a` in
-the topological space `A`. We also include the identity type but instead of thinking
-about it as the proof of equality for `a = b`, we refer us to this type as
-the *path* between `a` and `b` where `a` is the starting point and `b` the end
-of the path. We also could have different paths for that path, and its set
-we call it *path space*.
+notion instead. The judment `a : A` for a type `A` is now the point `a` in the
+topological space `A`. We also include the identity type but instead of thinking
+about this type as the type for a proof of the equality `a = b`, we refer us to
+this type as the *path space*, the all paths with `a` as the starting point and
+`b` as the end point. A inhabitant of this type is called a *path*.
 
-To help streghten our intintuion of what really happens with this type, we
-will see some pictures next.
+To help streghten our intintuion with this type, we will see some pictures next.
 
 ### Prerequisites
 
-To work with the identity type let's use the type `(_≡_)` from
+To work with the identity type let's use the type `(_≡_)` defined in
 the Agda standard library.
 
 \begin{code}
@@ -30,8 +28,8 @@ open Eq using (refl; _≡_)
 
 + *Path Induction*
 
-This is the elimination principle for the identity type and
-this also called `J` eliminator with some variations.
+The following is the elimination principle for the identity type,
+also called `J` eliminator.
 
 \begin{code}
 pi
@@ -44,9 +42,9 @@ pi {A} C c x .x refl = c x
 
 + *Path Concatenation*
 
-We can join two paths when one ends where the other starts.
-We use the _concatenation_ operator for such purposes with its symbol (`_·_`)
---\centerdot in Latex--. Let's see its picture.
+To join two paths when one ends where the other starts, we
+define the _concatenation_ operator between paths denoted by the symbol (`_·_`).
+Let's see its picture.
 
 ![path](/assets/images/path-concatenation.png)
 
@@ -63,11 +61,14 @@ _·_ {A} {x} {y} {z} p q = D₁ x y p z q
     D₁ = pi (λ x y p → ((z : A) → (q : y ≡ z) → x ≡ z)) (λ x → D₂ x)
 \end{code}
 
-*We've could define the same using Agda pattern-matching in just one-line.*
+To make the above code shorter in Agda, we could have defined the function
+by pattern-matching. Nonetheless, the idea hear is to try use the path induction
+--- the pi function---.
 
 + *Path Inverse*
 
-If `p : a = b`, we write `p⁻¹ : b = a` for the path in the opposite direction.
+The path inverse for a given path `p : a = b` is denoted by `p⁻¹ : b = a`.
+This path only change the original direction of the path `p`. Let's see it.
 
 \begin{code}
 infixl 20 _⁻¹
@@ -78,10 +79,18 @@ _⁻¹ {A}{x}{y} p =
      x y p
 \end{code}
 
--- dante
+As you can see, the path inversion is the symmetric property for the
+identity type. Now let's see some algebra.
+
 -----------------------------------------------------------------------------
 
 ### Lemma
+
++ `(refl x) ⁻¹ ≡ refl x`
++ `p · p ⁻¹ ≡ refl x`
++ `refl x · p ≡ p`
++ `p · refl y ≡ p`
++ ` (p  ⁻¹) ⁻¹ ≡ p`
 
 ![path](/assets/images/path-algebra.png)
 
