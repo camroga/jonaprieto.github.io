@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180322162347" modified="D:20180323145400"/>
+<info created="D:20180323150704" modified="D:20180323152436"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -310,44 +310,75 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<path layer="alpha" matrix="0.991462 -0.130398 0.130398 0.991462 -73.3151 46.9437" stroke="black">
-256 580
-166 638
-298 684
-410.996 666.98
-364.021 612.253
-302 610 u
+<use layer="alpha" name="mark/disk(sx)" pos="138 682" size="normal" stroke="black"/>
+<use name="mark/disk(sx)" pos="288 704" size="normal" stroke="black"/>
+<path stroke="black" pen="heavier">
+138 682 m
+166 770
+238 636
+288 704
+288 704 c
 </path>
-<text transformations="translations" pos="406 598" stroke="black" type="label" width="10.53" height="9.803" depth="0" valign="baseline" size="Large" style="math">A</text>
-<text transformations="translations" pos="232 624" stroke="black" type="label" width="5.694" height="4.289" depth="0" valign="baseline" style="math">x</text>
-<text transformations="translations" pos="348 654" stroke="black" type="label" width="8.489" height="7.49" depth="0" valign="baseline" style="math">x&apos;</text>
-<use name="mark/disk(sx)" pos="244 626" size="normal" stroke="black"/>
-<use name="mark/disk(sx)" pos="342 654" size="normal" stroke="black"/>
-<path stroke="black" pen="heavier" arrow="normal/normal">
-244 626 m
-272 650
-302 616
-336 640
-342 654 c
+<path stroke="black" dash="dashed">
+138 682 m
+168 756
+240 622
+288 704
+288 704 c
 </path>
-<path stroke="black" dash="dotted">
-244.118 626.101 m
-244 720 l
+<path stroke="black" dash="dashed">
+138 682 m
+180 730
+250 620
+288 704
+288 704 c
 </path>
-<path stroke="black" dash="dotted">
-342 654 m
-342 720 l
+<path stroke="black" pen="heavier">
+138 682 m
+194 638
+250 620
+288 704
+288 704 c
 </path>
-<text matrix="1 0 0 1 2 -2" transformations="translations" pos="236 724" stroke="black" type="label" width="13.751" height="6.808" depth="0" valign="baseline" style="math">B x</text>
-<text matrix="1 0 0 1 -4 -6" transformations="translations" pos="340 730" stroke="black" type="label" width="16.546" height="7.49" depth="0" valign="baseline" style="math">B x&apos;</text>
-<use name="mark/disk(sx)" pos="244.024 700.566" size="normal" stroke="black"/>
-<text matrix="1 0 0 1 18 6" transformations="translations" pos="216 692" stroke="black" type="label" width="5.242" height="4.297" depth="1.93" valign="baseline" style="math">y</text>
-<use name="mark/disk(sx)" pos="342 693.352" size="normal" stroke="black"/>
-<text matrix="1 0 0 1 -8 -2" transformations="translations" pos="354 694" stroke="black" type="label" width="57.468" height="8.431" depth="2.49" valign="baseline" style="math">\mathit{transp}^{B} (y, u)</text>
-<text transformations="translations" pos="296 638" stroke="black" type="label" width="5.703" height="4.289" depth="0" valign="baseline" style="math">u </text>
-<path stroke="black" dash="dashed" arrow="arc/small">
-244.024 700.508 m
-342 693.368 l
+<path stroke="black" dash="dashed">
+138 682 m
+174 662
+250 620
+288 704
+288 704 c
+</path>
+<path stroke="black" dash="dashed">
+138 682 m
+184 678
+248 624
+288 704
+288 704 c
+</path>
+<path stroke="black" dash="dashed">
+138 682 m
+190 692
+248 624
+288 704
+288 704 c
+</path>
+<path stroke="black" dash="dashed">
+138 682 m
+184 706
+248 624
+288 704
+288 704 c
+</path>
+<text transformations="translations" pos="212 714" stroke="black" type="label" width="5.012" height="4.297" depth="1.93" valign="baseline" style="math">p</text>
+<text transformations="translations" pos="214 632" stroke="black" type="label" width="4.805" height="4.297" depth="1.93" valign="baseline" style="math">q</text>
+<text matrix="1 0 0 1 -2 0" transformations="translations" pos="130 680" stroke="black" type="label" width="5.694" height="4.289" depth="0" valign="baseline" style="math">x</text>
+<text matrix="1 0 0 1 164 24" transformations="translations" pos="130 680" stroke="black" type="label" width="5.242" height="4.297" depth="1.93" valign="baseline" style="math">y</text>
+<text transformations="translations" pos="198 672" stroke="black" type="label" width="15.297" height="11.764" depth="0" valign="baseline" size="LARGE" style="math">H</text>
+<path stroke="black" dash="dashed">
+138 682 m
+174 662
+240 604
+288 704
+288 704 c
 </path>
 </page>
 </ipe>
