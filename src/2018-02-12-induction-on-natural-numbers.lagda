@@ -8,7 +8,7 @@ categories: type-theory
 The induction principle comes from a generalization of a dependent function that
 makes recursion on natural numbers. We first define what is a natural number
 then we show how to define functions on natural numbers using a *recursor* in
-pro to show induction schemata.
+pro to show the induction principle.
 
 First let's use in Agda a synonymous for the universe of types.
 
@@ -44,17 +44,18 @@ bigNumber = 123456789
 Now let us define the principle of primitive recursion for natural numbers:
 
 ```agda
-recℕ : Π(C : 𝒰) C → (ℕ → C → C) → ℕ → C
+recℕ : Π(C : 𝒰). C → (ℕ → C → C) → ℕ → C
 ```
-recℕ is the so-called *recursor* for natural numbers. In Agda,
+recℕ is the so-called *recursor* for natural numbers.
+In Agda, we can define it as follows.
 
 \begin{code}
 recℕ
   : (C : 𝒰)     -- type for the outcome
-  → C            -- base case
-  → (ℕ → C → C)  -- recursion step?
-  → ℕ            -- the natural number as the argument
-  → C            -- outcome
+  → C            -- base case when n = 0
+  → (ℕ → C → C)  -- recursion when n > 0
+  → ℕ            -- the natural number in the recursion call
+  → C            
 \end{code}
 
 With the following equations:
@@ -105,7 +106,7 @@ double₂ n    = suc (suc n)
 \end{code}
 
 Now, just for testing the definitions above. We import the equality definition
-type (_≡_) and its rule (refl).
+type (`_≡_`) and its rule (`refl`).
 
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
