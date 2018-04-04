@@ -78,6 +78,11 @@ fiber f y = Σ \x → Id (f x) y
 
 ### Equivalence
 
+To say two types A and B are equivalent we must to provide
+a pair, that is, a function and a proof to show us
+such a equivalence (see the definition of `Eq`).
+Let's unpackage first `isEquiv` definition.
+
 \begin{code}
 isEquiv
   : {U V : Universe} {X : Set U} {Y : Set V}
