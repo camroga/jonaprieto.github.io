@@ -50,8 +50,13 @@ J A f x .x (refl .x) = f x
 
 ### Singleton
 
-We say that a type `X` is a *singleton* if we have
-an element `c : X` with `Id c x` for all `x : X`.
+We say that a type `X` is a *singleton* (also called *contractable* type)
+if we have an element `c : X` with `Id c x` for all `x : X`.
+
+\begin{code}
+singletonType : {U : Universe} {X : Set U} → X → Set U
+singletonType x = Σ \y → Id y x
+\end{code}
 
 ![path](/assets/images/issinglenton.png)
 
@@ -83,8 +88,6 @@ isEquiv f = (y : _) → isSingleton(fiber f y)
 Eq : {U V : Universe} → Set U → Set V → Set (U ⊔ V)
 Eq X Y = Σ \(f : X → Y) → isEquiv f
 
-singletonType : {U : Universe} {X : Set U} → X → Set U
-singletonType x = Σ \y → Id y x
 
 η : {U : Universe} {X : Set U} (x : X) → singletonType x
 η x = (x , refl x)
