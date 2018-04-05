@@ -39,6 +39,8 @@ bigNumber : ℕ
 bigNumber = 123456789
 \end{code}
 
+-------------------------------------------------------------------------------
+
 ### Recursion
 
 Now let us define the principle of primitive recursion for natural numbers:
@@ -65,9 +67,11 @@ recℕ C c₀ cₛ zero    = c₀
 recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
 \end{code}
 
-Now, we can define some common functions using this recursor to see how it works.
+-------------------------------------------------------------------------------
 
-+ The add function:
+#### Examples:
+
+**Add**
 
 \begin{code}
 add : ℕ → ℕ → ℕ
@@ -81,11 +85,11 @@ Instead of using the following definition:
 
 \begin{code}
 add₂ : ℕ → ℕ → ℕ
-add₂ zero m = m
+add₂ zero    m = m
 add₂ (suc n) m = suc (add₂ n m)
 \end{code}
 
-+ The double function:
+**Double**
 
 \begin{code}
 double : ℕ → ℕ
@@ -100,8 +104,8 @@ double₂ zero = zero
 double₂ n    = suc (suc n)
 \end{code}
 
-Now, just for testing the definitions above. We import the equality definition
-type (`_≡_`) and its rule (`refl`).
+For testing purposes, let's import from the equaility definition
+type (`_≡_`) and its rule (`refl`) from the std-lib library.
 
 \begin{code}
 open import Relation.Binary.PropositionalEquality using (refl; _≡_)
@@ -117,10 +121,10 @@ It's time to unpacking the the definition of `add`:
 
   + By [Currying](https://en.wikipedia.org/wiki/Currying), the binary
   function `add` can be seen as a function that returns a unary function fixing the
-  first argument. Thus, the domain for the `recℕ`, `C` is `ℕ → ℕ`spo (a unary funciton).
+  first argument. Thus, the domain for the `recℕ`, `C` is `ℕ → ℕ` (a unary funciton).
 
   ```
-  add : ℕ → (ℕ → ℕ)
+  add   : ℕ → (ℕ → ℕ)
   add n : ℕ → ℕ
   ```
 
@@ -133,8 +137,8 @@ It's time to unpacking the the definition of `add`:
 
   + Question: why `((λ n g m → suc (g m)))`?
 
-Let us try with another function, the multiplication, but this time
-let use a better name for this function (_*_).
+
+**Multiplication**
 
 \begin{code}
 _*_ : ℕ → ℕ → ℕ
@@ -157,6 +161,8 @@ m₂ = refl
 m₃ : 10 * 3 ≡ 30
 m₃ = refl
 \end{code}
+
+-------------------------------------------------------------------------------
 
 ### Induction
 
@@ -312,14 +318,14 @@ n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 
 ### Conclusion
 
-Induction as it was presented here is stronger than recursion. We can say this
-because the recursor recℕ is the *no-dependent* function of indℕ.
+Induction as it was presented here is stronger than recursion.
+The recursor `recℕ` is the *no-dependent* version of `indℕ` function.
 
-The recursor recℕ allows to define a function f : ℕ → C by defining
-two equations:
+Summing up, the recursor `recℕ` allows to define a function `f : ℕ → C` where `C : 𝒰`
+by defining two equations:
 
-+ f(0) ≡ c₀ for c₀ : C
-+ f(suc n) ≡ cₛ(n, f(n)) for cₛ : ℕ → C → C
++ `f(0) ≡ c₀` for `c₀ : C`
++ `f(suc n) ≡ cₛ(n, f(n))` for `cₛ : ℕ → C → C`
 
 ### References
 
