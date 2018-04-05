@@ -67,7 +67,7 @@ recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
 
 Now, we can define some common functions using this recursor to see how it works.
 
-+ The add function.
++ The add function:
 
 \begin{code}
 add : ℕ → ℕ → ℕ
@@ -75,8 +75,6 @@ add = recℕ (ℕ → ℕ) (λ m → m) (λ n g m → suc (g m))
 
 _+_ = add
 infix 6 _+_
-\end{code}
-
 \end{code}
 
 Instead of using the following definition:
@@ -87,7 +85,7 @@ add₂ zero m = m
 add₂ (suc n) m = suc (add₂ n m)
 \end{code}
 
-+ The double function.
++ The double function:
 
 \begin{code}
 double : ℕ → ℕ
@@ -117,16 +115,17 @@ open import Relation.Binary.PropositionalEquality using (refl; _≡_)
 
 It's time to unpacking the the definition of `add`:
 
-  + By [Currying](https://en.wikipedia.org/wiki/Currying), the `add`
-  function can be seen as a function that returns a function. That happens if we
-  fix the first argument to have an unary function. That's why C  has ℕ → ℕ type.
+  + By [Currying](https://en.wikipedia.org/wiki/Currying), the binary
+  function `add` can be seen as a function that returns a unary function fixing the
+  first argument. Thus, the domain for the `recℕ`, `C` is `ℕ → ℕ`spo (a unary funciton).
 
-  ```agda
+  ```
   add : ℕ → (ℕ → ℕ)
+  add n : ℕ → ℕ
   ```
 
-  + When the first argument in the sum is zero, we just have to return the
-  identity function, that's why c₀ is (λ m → m).
+  + When the first argument is zero, we just return the second argument, that is,
+  `add 0` is the identity function. Thus `c₀` is `(λ m → m)`.
 
   ```agda
   add zero m = m

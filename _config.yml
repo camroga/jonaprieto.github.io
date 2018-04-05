@@ -30,7 +30,7 @@ algolia:
   search_only_api_key: '038508bea0ee72e992b18935df862622'
   extensions_to_index: 'html,md,lagda,agda'
   nodes_to_index:
-    'p,blockquote'
+    'p,blockquote,pre'
   files_to_exclude:
       - src/*
       - index.html
