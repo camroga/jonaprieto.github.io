@@ -15,13 +15,17 @@ adding better explanations, pictures or
 references. So, If you find something
 wrong don't hesitate, please feel free
 to send me an email (prieto.jona@gmail.com).
+Last thing, I'm not a english native speaker as
+you probably already noticed but I'm doing my best
+effort to improve that. Let me know please if you find some
+typo or mistake, I'll appreciate it.
 
-How do I make this blog?, well I'm using this:
+I'm using this technology to run this blog:
 
-- github-pages
-- jekyll with minima theme
-- algolia provides the search engine plus modifications
-- agda to typecheck some experiments
-- agda2html for embedding Agda code in html
-- ipe to draw the pictures
-- timelinejs to show some test timelines
+- `github-pages`
+- `jekyll` with minima theme
+- `algolia` provides the search engine plus modifications
+- `agda` to typecheck some experiments
+- `agda2html` for embedding Agda code in html
+- `ipe` to draw the pictures
+- `timelinejs` to show some test timelines
