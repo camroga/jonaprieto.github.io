@@ -6,7 +6,7 @@ categories: type-theory
 published: false
 ---
 
-This is my reading of the paper:
+Working on this paper:
 
 > M.H. Escardo. [*A self-contained, brief and complete formulation of Voevodsky's
 Univalence Axiom*](https://arxiv.org/abs/1803.02294), March 2018, arXiv:1803.02294.
