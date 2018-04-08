@@ -6,22 +6,29 @@ categories: type-theory
 ---
 
 This is a version self-contained of the [Capriotti's solutions](https://github.com/pcapriotti/hott-exercises).
-The idea is to unpackage all his work to get a better understanding to
-those problems I couldn't solve. Hope it helps someone.
+The idea is to unpackage all his work to get a better understanding.
+Many changes can be appear running this experiment, do not expect the same
+code structure as the original.
 
 TODO:
 
-- [ ] problem text for each problem
-- [ ] requirements: `agda-base`
-- [ ] add a table of contents
+- problem text for each problem
+- remove the requirements: `agda-base`
+- add a table of contents
+
+-------------------------------------------------------------------------------
+
+An Agda pragma for consistency:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
 \end{code}
 
+-------------------------------------------------------------------------------
+
 ## Chapter 1
 
-Equality
+Equality type defintion also called Identity type:
 
 \begin{code}
 infix 4 _≡_
@@ -32,8 +39,6 @@ data _≡_ {a} {A : Set a} (x : A) : A → Set a where
 ### Exercise 1
 
 \begin{code}
-infixl 5 _∘_
-
 _∘_ : ∀ {i j k} {A : Set i}{B : Set j}{C : Set k}
     → (B → C)
     → (A → B)
@@ -56,7 +61,20 @@ open import Agda.Primitive public
   using    (Level; _⊔_; lzero; lsuc)
 \end{code}
 
-Σ-type definition:
+To solve this problem we need:
+
+  - Σ-type definition
+
+  - Product type definition
+
+  - Review the recursion principle, what exactly it consists of. Maybe this refresh our minds:
+    ```
+      rec-T : (C : 𝒰) → ...constructor cases... → (T → C)
+    ```
+
+-------------------------------------------------------------------------------
+
++ Σ-type definition:
 
 \begin{code}
 infixr 2 _×_
@@ -67,22 +85,11 @@ record Σ {a b} (A : Set a) (B : A → Set b) : Set (a ⊔ b) where
     proj₁ : A
     proj₂ : B proj₁
 
+-- _,_ : (proj₁ : A) → B proj₁ → Σ A B.
 open Σ public
-
-_×_ : {l k : Level} (A : Set l) (B : Set k) → Set (l ⊔ k)
-A × B = Σ A λ _ → B
 \end{code}
 
 \begin{code}
-module ×-Rec {i j k}{A : Set i}{B : Set j}{C : Set k}
-             (d : A → B → C) where
-
-  ×-rec : A × B → C
-  ×-rec p = d (proj₁ p) (proj₂ p)
-
-  ×-rec-β : (x : A)(y : B) → ×-rec (x , y) ≡ d x y
-  ×-rec-β x y = refl
-
 module Σ-Rec {i j k}{A : Set i}{B : A → Set j}{C : Set k}
              (d : (x : A) → B x → C) where
 
@@ -91,6 +98,25 @@ module Σ-Rec {i j k}{A : Set i}{B : A → Set j}{C : Set k}
 
   Σ-rec-β : (x : A)(y : B x) → Σ-rec (x , y) ≡ d x y
   Σ-rec-β x y = refl
+\end{code}
+
++ Product type is just a particular case of the sigma type when
+the codomain is not dependent:
+
+\begin{code}
+_×_ : {l k : Level} (A : Set l) (B : Set k) → Set (l ⊔ k)
+A × B = Σ A λ _ → B
+\end{code}
+
+\begin{code}
+module ×-Rec {i j k}{A : Set i}{B : Set j}{C : Set k}
+           (d : A → B → C) where
+
+  ×-rec : A × B → C
+  ×-rec p = d (proj₁ p) (proj₂ p)
+
+  ×-rec-β : (x : A)(y : B) → ×-rec (x , y) ≡ d x y
+  ×-rec-β x y = refl
 \end{code}
 
 ## Chapter 2

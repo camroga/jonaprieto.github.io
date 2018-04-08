@@ -3,6 +3,7 @@ layout: "post"
 title: "Univalence From Scratch"
 date: "2018-03-17"
 categories: type-theory
+published: false
 ---
 
 This is my reading of the paper:
