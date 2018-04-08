@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "HoTT Book Solutions"
-date: "2018-03-17"
+date: "2018-04-08"
 categories: type-theory
 ---
 
