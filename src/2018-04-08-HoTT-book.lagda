@@ -183,7 +183,7 @@ Projections and $$\mathsf{uniq}_{A\times B}$$:
 
 \begin{code}
 module ×-fun₂ {i j}{A : Set i}{B : Set j} where
-  open ×-def₂ public
+  open ×-def₂ using (_×_; _,_)
 
   proj₁ : A × B → A
   proj₁ (a , b) = a
@@ -204,6 +204,7 @@ $$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
 </p>
 \begin{code}
 module ×-Ind {i j}{A : Set i}{B : Set j} where
+  open ×-def₂ public
   open ×-fun₂ public
 
   ×-ind : ∀ {k}(C : A × B → Set k)
@@ -211,24 +212,67 @@ module ×-Ind {i j}{A : Set i}{B : Set j} where
         → (x : A × B) → C x
   ×-ind C g x = subst C (uppt x) (g (proj₁ x) (proj₂ x))
     where
-      -- uppt x : (proj₁ x , proj₂ x) ≡ x
-
       subst : ∀ {i j} {A : Set i}{x y : A}
             → (B : A → Set j) → x ≡ y
             → B x → B y
       subst B refl = λ z → z
 
   ×-ind-β : ∀ {k} (C : A × B → Set k)
-          → (d : (x : A)(y : B) → C (x , y))
+          → (g : (x : A)(y : B) → C (x , y))
           → (x : A)(y : B)
-          → ×-ind C d (x , y) ≡ d x y
-  ×-ind-β C d x y = refl
+          → ×-ind C g (x , y) ≡ g x y
+  ×-ind-β C g x y = refl
 \end{code}
 
 <p class="exercise">
 Generalize $$\mathsf{uniq}_{A\times B}$$ to Σ-types, and do the same for
-$$\Sigma$$-types.
+$$\Sigma$$-types, i.e. show induction and verify the definitional equality
+is valid.
 </p>
+
+Σ-type definition using `data`:
+
+
+\begin{code}
+module Σ-def₂ where
+
+  data Σ {i j}(A : Set i)(B : A → Set j) : Set (i ⊔ j) where
+    _,_ : (x : A) → B x → Σ A B
+\end{code}
+
+\begin{code}
+module Σ-fun₂ {i j } {A : Set i}{B : A → Set j} where
+  open Σ-def₂ using (Σ; _,_ )
+
+  proj₁ : Σ A B → A
+  proj₁ (a , b) = a
+
+  proj₂ : (x : Σ A B) → B (proj₁ x)
+  proj₂ (a , b) = b
+
+  uppt : (x : Σ A B) → (proj₁ x , proj₂ x) ≡ x
+  uppt (a , b) = refl
+\end{code}
+
+Its induction principle:
+
+\begin{code}
+module Σ-Ind {i j}{A : Set i}{B : A → Set j} where
+  open Σ-def₂ public
+  open Σ-fun₂ public
+
+  Σ-ind : (C : Σ A B → Set (i ⊔ j))
+        → ((x : A)(y : B x) → C (x , y))
+        → (x : Σ A B) → C x
+  Σ-ind C g (a , b) = g a b
+
+  Σ-ind-β : (C : Σ A B → Set (i ⊔ j))
+          → (g : (x : A)(y : B x) → C (x , y))
+          → (x : A) (y : B x)
+          → (Σ-ind C g (x , y)) ≡ g x y
+  Σ-ind-β C g x y = refl
+
+\end{code}
 
 ## Chapter 2
 
