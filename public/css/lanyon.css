@@ -139,7 +139,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .equation, .eq, .math {
   text-align: -webkit-center;
-  margin : 0px;
+  margin : 10px;
 }
 .label, .Label {
     display: inline-block;

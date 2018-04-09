@@ -1,8 +1,7 @@
 # Setup
 title:               jonaprieto
 tagline:             'logs in progress'
-description:         'This is my blog, everything is in progress, if you found
-                      something interesting/useful good for you. Let me know and cheers!'
+description:         'Jonathan Prieto-Cubides'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
 timezone:            'Europe/Oslo'

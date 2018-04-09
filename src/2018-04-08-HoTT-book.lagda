@@ -1,14 +1,15 @@
 ---
 layout: "post"
-title: "HoTT Book Solutions"
+title: "HoTT-Book Exercises"
 date: "2018-04-08"
 categories: type-theory
 ---
 
-This is a version self-contained of the [Capriotti's solutions](https://github.com/pcapriotti/hott-exercises).
+This is a self-contained version of the [Capriotti's solutions](https://github.com/pcapriotti/hott-exercises).
 The idea is to unpackage all his work to get a better understanding.
 Many changes can be appear running this experiment, do not expect the same
-code structure as the original.
+code structure as the original. The solutions are type-checked as a whole using
+Agda v2.5.3.
 
 TODO:
 
@@ -63,9 +64,9 @@ Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
 ### Exercise 1.2
 
 <p class="exercise">
-Derive the recursion principle for products
-$$\mathsf{rec}_{A\times B}$$ using only the projections, and verify that the definitional equalities are valid.
-Do the same for $$\Sigma$$-types.
+Derive the recursion principle for products $$\mathsf{rec}_{A\times B}$$
+using only the projections, and verify that the definitional equalities
+are valid. Do the same for $$\Sigma$$-types.
 </p>
 
 Let's add some machinery to handle levels of the universe needed for
@@ -91,19 +92,19 @@ To solve this problem we need:
 
 -------------------------------------------------------------------------------
 
-Σ-type (sigma type) definition (see the definition without projections [here](https://github.com/jonaprieto/hott-book/blob/master/other/prelim.agda#L20)):
+Σ-type (sigma type) definition (see the definition without projections
+[here](https://github.com/jonaprieto/hott-book/blob/master/other/prelim.agda#L20)):
 
 \begin{code}
-infixr 2 _×_
+module Σ-def₁ where
 
-record Σ {a b} (A : Set a) (B : A → Set b) : Set (a ⊔ b) where
-  constructor _,_
-  field
-    proj₁ : A
-    proj₂ : B proj₁
-
+  record Σ {a b} (A : Set a) (B : A → Set b) : Set (a ⊔ b) where
+    constructor _,_
+    field
+      proj₁ : A
+      proj₂ : B proj₁
+  open Σ public
 -- _,_ : (proj₁ : A) → B proj₁ → Σ A B.
-open Σ public
 \end{code}
 
 Its recursor with a function $$g : \prod_{(x : A)} B(x)\rightarrow C$$
@@ -112,6 +113,7 @@ that we provide.
 \begin{code}
 module Σ-Rec {i j k}{A : Set i}{B : A → Set j}{C : Set k}
              (g : (x : A) → B x → C) where
+  open Σ-def₁ using (Σ ; proj₁; proj₂; _,_ )
 
   Σ-rec : Σ A B → C
   Σ-rec p = g (proj₁ p) (proj₂ p)
@@ -122,13 +124,16 @@ module Σ-Rec {i j k}{A : Set i}{B : A → Set j}{C : Set k}
 
 -------------------------------------------------------------------------------
 
-On the other hand, the product type is just a particular case of the sigma type when
-the codomain is not dependent, as we can see next by omitting the
-argument in `(λ _ → B)`.
+On the other hand, the product type is just a particular case of the sigma type
+when the codomain is not dependent, as we can see next by omitting the argument
+in `(λ _ → B)`.
 
 \begin{code}
-_×_ : {l k : Level} (A : Set l) (B : Set k) → Set (l ⊔ k)
-A × B = Σ A (λ _ → B)
+module ×-def₁ where
+  open Σ-def₁ public
+
+  _×_ : {l k : Level} (A : Set l) (B : Set k) → Set (l ⊔ k)
+  A × B = Σ A (λ _ → B)
 \end{code}
 
 Its recursor with a function $$g : A \rightarrow B \rightarrow C$$ that we provide.
@@ -136,6 +141,7 @@ Its recursor with a function $$g : A \rightarrow B \rightarrow C$$ that we provi
 \begin{code}
 module ×-Rec {i j k}{A : Set i}{B : Set j}{C : Set k}
            (g : A → B → C) where
+  open ×-def₁ using (_×_; proj₁; proj₂; _,_)
 
   ×-rec : A × B → C
   ×-rec p = g (proj₁ p) (proj₂ p)
@@ -159,12 +165,69 @@ To solve this problem, recall the uniqueness principle (Pp. 29.)
 every element of $$A\times B$$ is equal to a pair.
 
 <p class="equation">
-$$\mathsf{uniq}_{A\times B} : \prod_{(x : A)} ((pr_{1}(x) , pr_{2}(x)) \equiv_{A\times B} x).$$
+$$\mathsf{uniq}_{A\times B} : \prod_{(x : A \times B)} ((pr_{1}(x) , pr_{2}(x)) \equiv_{A\times B} x).$$
 </p>
+
+Product type definition using `data`:
+
+\begin{code}
+-- this would be trivial in agda due to definitional η for records
+-- so Capriotti defined a product type without η:
+module ×-def₂ where
+
+  data _×_ {i j}(A : Set i)(B : Set j) : Set (i ⊔ j) where
+    _,_ : A → B → A × B
+\end{code}
+
+Projections and $$\mathsf{uniq}_{A\times B}$$:
+
+\begin{code}
+module ×-fun₂ {i j}{A : Set i}{B : Set j} where
+  open ×-def₂ public
+
+  proj₁ : A × B → A
+  proj₁ (a , b) = a
+
+  proj₂ : A × B → B
+  proj₂ (a , b) = b
+
+  -- unique principle *propositional uniqueness principle*
+  uppt : (x : A × B) → (proj₁ x , proj₂ x) ≡ x
+  uppt (a , b) = refl
+\end{code}
+
+Its induction principle:
+
+<p class="equation">
+$$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
+\left( \prod\limits_{x:A}\ \prod\limits_{y:B}\ \,C( (x,y) ) \right) \to \prod\limits_{x:A \times B}\ \,C(x)$$
+</p>
+\begin{code}
+module ×-Ind {i j}{A : Set i}{B : Set j} where
+  open ×-fun₂ public
+
+  ×-ind : ∀ {k}(C : A × B → Set k)
+        → ((x : A)(y : B) → C (x , y))
+        → (x : A × B) → C x
+  ×-ind C g x = subst C (uppt x) (g (proj₁ x) (proj₂ x))
+    where
+      -- uppt x : (proj₁ x , proj₂ x) ≡ x
+
+      subst : ∀ {i j} {A : Set i}{x y : A}
+            → (B : A → Set j) → x ≡ y
+            → B x → B y
+      subst B refl = λ z → z
+
+  ×-ind-β : ∀ {k} (C : A × B → Set k)
+          → (d : (x : A)(y : B) → C (x , y))
+          → (x : A)(y : B)
+          → ×-ind C d (x , y) ≡ d x y
+  ×-ind-β C d x y = refl
+\end{code}
 
 <p class="exercise">
 Generalize $$\mathsf{uniq}_{A\times B}$$ to Σ-types, and do the same for
-$$\Sigma$$-types. \emph{(This requires concepts from \cref{cha:basics}.)}
+$$\Sigma$$-types.
 </p>
 
 ## Chapter 2
