@@ -45,22 +45,19 @@
  });
 </script>
 
-<script type="text/javascript" src="{{ "/assets/katex.js" | prepend: site.baseurl }}"></script>
-
-<!-- Script which renders TeX using KaTeX -->
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
 <script type="text/javascript">
  $("script[type='math/tex']").replaceWith(
      function(){
          var tex = $(this).text();
-         return "<span class=\"inline-equation\">" +
-                katex.renderToString(tex) +
-                "</span>";
+         return "$$" + tex + "$$";
      });
  $("script[type='math/tex; mode=display']").replaceWith(
      function(){
          var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
-         return "<div class=\"equation\">" +
-                katex.renderToString("\\displaystyle "+tex) +
-                "</div>";
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
      });
 </script>

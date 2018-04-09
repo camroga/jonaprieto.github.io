@@ -56,6 +56,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0px;
 
 }
+
+
 .container.content h3:before {content:'❯ '}
 
 .table-of-contents{
@@ -119,10 +121,26 @@ h1, h2, h3, h4, h5, h6 {
 
       color: #735c0f;
       background-color: #fffbdd;
-      border-color: rgba(27, 31, 35, 0.15);
+      border: 1px solid #ffef84;
       margin-bottom: 10px;
 }
 
+.exercise {
+  position: relative;
+  padding: 16px;
+  border-radius: 3px;
+
+  color: #735c0f;
+  background-color: #fffbdd;
+  border: 1px solid #ffef84;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
+.equation, .eq, .math {
+  text-align: -webkit-center;
+  margin : 0px;
+}
 .label, .Label {
     display: inline-block;
     padding: 3px 4px;

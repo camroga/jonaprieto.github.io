@@ -36,7 +36,12 @@ data _≡_ {a} {A : Set a} (x : A) : A → Set a where
   refl : x ≡ x
   \end{code}
 
-### Exercise 1
+### Exercise 1.1
+
+<div class="exercise">
+Given functions $$f : A \to B$$ and $$g:B\to C$$, define
+their composite $$ g\circ f:A\to C$$.
+</div>
 
 \begin{code}
 _∘_ : ∀ {i j k} {A : Set i}{B : Set j}{C : Set k}
@@ -44,16 +49,26 @@ _∘_ : ∀ {i j k} {A : Set i}{B : Set j}{C : Set k}
     → (A → B)
     → A → C
 g ∘ f = λ x → g (f x)
-
+\end{code}
+<div class="exercise">
+Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
+</div>
+\begin{code}
 ∘-assoc : ∀ {i j k l} {A : Set i}{B : Set j}{C : Set k}{D : Set l}
         → (h : C → D)(g : B → C)(f : A → B)
         → h ∘ (g ∘ f) ≡ (h ∘ g) ∘ f
 ∘-assoc f g h = refl
 \end{code}
 
-### Exercise 2
+### Exercise 1.2
 
-Some machinery to handle levels of the universe needed for
+<p class="exercise">
+Derive the recursion principle for products
+$$\mathsf{rec}_{A\times B}$$ using only the projections, and verify that the definitional equalities are valid.
+Do the same for $$\Sigma$$-types.
+</p>
+
+Let's add some machinery to handle levels of the universe needed for
 the following exercises including this one:
 
 \begin{code}
@@ -67,14 +82,16 @@ To solve this problem we need:
 
   - Product type definition
 
-  - Review the recursion principle, what exactly it consists of. Maybe this refresh our minds:
-    ```
-      rec-T : (C : 𝒰) → ...constructor cases... → (T → C)
-    ```
+  - Review the recursion principle, what exactly it consists of.
+    Maybe this refresh our minds (see Pp. 42 in HoTT-Book).
+
+    <p class="equation">
+    $$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)} : \prod\limits_{(C : U)} (\Pi_{(x : A)} B(x) \rightarrow C) \rightarrow \sum_{(x : A)} B(x) \rightarrow C $$
+    </p>
 
 -------------------------------------------------------------------------------
 
-+ Σ-type definition:
+Σ-type (sigma type) definition (see the definition without projections [here](https://github.com/jonaprieto/hott-book/blob/master/other/prelim.agda#L20)):
 
 \begin{code}
 infixr 2 _×_
@@ -89,35 +106,66 @@ record Σ {a b} (A : Set a) (B : A → Set b) : Set (a ⊔ b) where
 open Σ public
 \end{code}
 
+Its recursor with a function $$g : \prod_{(x : A)} B(x)\rightarrow C$$
+that we provide.
+
 \begin{code}
 module Σ-Rec {i j k}{A : Set i}{B : A → Set j}{C : Set k}
-             (d : (x : A) → B x → C) where
+             (g : (x : A) → B x → C) where
 
   Σ-rec : Σ A B → C
-  Σ-rec p = d (proj₁ p) (proj₂ p)
+  Σ-rec p = g (proj₁ p) (proj₂ p)
 
-  Σ-rec-β : (x : A)(y : B x) → Σ-rec (x , y) ≡ d x y
+  Σ-rec-β : (x : A)(y : B x) → Σ-rec (x , y) ≡ g x y
   Σ-rec-β x y = refl
 \end{code}
 
-+ Product type is just a particular case of the sigma type when
-the codomain is not dependent:
+-------------------------------------------------------------------------------
+
+On the other hand, the product type is just a particular case of the sigma type when
+the codomain is not dependent, as we can see next by omitting the
+argument in `(λ _ → B)`.
 
 \begin{code}
 _×_ : {l k : Level} (A : Set l) (B : Set k) → Set (l ⊔ k)
-A × B = Σ A λ _ → B
+A × B = Σ A (λ _ → B)
 \end{code}
+
+Its recursor with a function $$g : A \rightarrow B \rightarrow C$$ that we provide.
 
 \begin{code}
 module ×-Rec {i j k}{A : Set i}{B : Set j}{C : Set k}
-           (d : A → B → C) where
+           (g : A → B → C) where
 
   ×-rec : A × B → C
-  ×-rec p = d (proj₁ p) (proj₂ p)
+  ×-rec p = g (proj₁ p) (proj₂ p)
 
-  ×-rec-β : (x : A)(y : B) → ×-rec (x , y) ≡ d x y
+  ×-rec-β : (x : A)(y : B) → ×-rec (x , y) ≡ g x y
   ×-rec-β x y = refl
 \end{code}
+
+### Exercise 1.3
+
+<p class="exercise">
+Derive the induction principle for products $$\mathsf{ind}_{A\times B}$$,
+using only the projections and the propositional uniqueness principle
+$$\mathsf{uniq}_{A\times B}$$.
+Verify that the definitional equalities are valid.
+</p>
+
+To solve this problem, recall the uniqueness principle (Pp. 29.)
+
+- The **propositional uniqueness principle** says that
+every element of $$A\times B$$ is equal to a pair.
+
+<p class="equation">
+$$\mathsf{uniq}_{A\times B} : \prod_{(x : A)} ((pr_{1}(x) , pr_{2}(x)) \equiv_{A\times B} x).$$
+</p>
+
+<p class="exercise">
+Generalize $$\mathsf{uniq}_{A\times B}$$ to Σ-types, and do the same for
+$$\Sigma$$-types. \emph{(This requires concepts from \cref{cha:basics}.)}
+</p>
 
 ## Chapter 2
 
