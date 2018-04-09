@@ -271,7 +271,6 @@ module Σ-Ind {i j}{A : Set i}{B : A → Set j} where
           → (x : A) (y : B x)
           → (Σ-ind C g (x , y)) ≡ g x y
   Σ-ind-β C g x y = refl
-
 \end{code}
 
 ## Chapter 2
@@ -281,3 +280,12 @@ module Σ-Ind {i j}{A : Set i}{B : A → Set j} where
 ## Chapter 3
 
 ### Exercise 1
+
+
+
+### References
+
+- https://github.com/pcapriotti/hott-exercises/
+- https://github.com/pcapriotti/agda-base/
+- https://github.com/jonaprieto/hott-book/
+-
