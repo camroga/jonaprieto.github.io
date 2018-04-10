@@ -27,7 +27,7 @@ An Agda pragma for consistency:
 
 -------------------------------------------------------------------------------
 
-## Chapter 1
+### Requirements
 
 Equality type defintion also called Identity type:
 
@@ -36,6 +36,50 @@ infix 4 _≡_
 data _≡_ {a} {A : Set a} (x : A) : A → Set a where
   refl : x ≡ x
   \end{code}
+
+Some functions to work with this type:
+
+\begin{code}
+sym : ∀ {i} {A : Set i} {x y : A}
+    → x ≡ y → y ≡ x
+sym refl = refl
+
+_·_ : ∀ {i}{X : Set i}{x y z : X}
+    → x ≡ y → y ≡ z → x ≡ z
+refl · p = p
+infixl 9 _·_
+
+ap : ∀ {i j}{A : Set i}{B : Set j}{x y : A}
+   → (f : A → B) → x ≡ y → f x ≡ f y
+ap f refl = refl
+
+subst : ∀ {i j} {A : Set i}{x y : A}
+      → (B : A → Set j) → x ≡ y
+      → B x → B y
+subst B refl = (λ z → z)
+\end{code}
+
+Path induction:
+
+\begin{code}
+J' : ∀ {i j}{X : Set i}{x : X}
+   → (P : (y : X) → x ≡ y → Set j)
+   → P x refl
+   → (y : X)
+   → (p : x ≡ y)
+   → P y p
+J' P u y refl = u
+
+J : ∀ {i j}{X : Set i}
+  → (P : (x y : X) → x ≡ y → Set j)
+  → ((x : X) → P x x refl)
+  → (x y : X)
+  → (p : x ≡ y)
+  → P x y p
+J P u x y p = J' (P x) (u x) y p
+\end{code}
+
+## Chapter 1
 
 ### Exercise 1.1
 
@@ -63,11 +107,11 @@ Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
 
 ### Exercise 1.2
 
-<p class="exercise">
+<div class="exercise">
 Derive the recursion principle for products $$\mathsf{rec}_{A\times B}$$
 using only the projections, and verify that the definitional equalities
 are valid. Do the same for $$\Sigma$$-types.
-</p>
+</div>
 
 Let's add some machinery to handle levels of the universe needed for
 the following exercises including this one:
@@ -211,11 +255,6 @@ module ×-Ind {i j}{A : Set i}{B : Set j} where
         → ((x : A)(y : B) → C (x , y))
         → (x : A × B) → C x
   ×-ind C g x = subst C (uppt x) (g (proj₁ x) (proj₂ x))
-    where
-      subst : ∀ {i j} {A : Set i}{x y : A}
-            → (B : A → Set j) → x ≡ y
-            → B x → B y
-      subst B refl = λ z → z
 
   ×-ind-β : ∀ {k} (C : A × B → Set k)
           → (g : (x : A)(y : B) → C (x , y))
@@ -273,6 +312,90 @@ module Σ-Ind {i j}{A : Set i}{B : A → Set j} where
   Σ-ind-β C g x y = refl
 \end{code}
 
+### Exercise 1.4
+
+<div class="exercise">
+Assuming as given only the <em>iterator</em> for natural numbers
+<p class="equation">
+$$\mathsf{ite} : \prod\limits_{C:\mathcal{U}} C \to (C \to C) \to \mathbb{N} \to C $$
+</p>
+with the defining equations
+<p class="equation">
+$$
+\begin{align*}
+\mathsf{ite}(C,c_0,c_s,0)               &\equiv c_0, \\
+\mathsf{ite}(C,c_0,c_s,\mathsf{suc}(n)) &\equiv c_s(\mathsf{ite}(C,c_0,c_s,n)),
+\end{align*}
+$$
+</p>
+derive a function having the type of the recursor $$\mathsf{rec}{\mathbb{N}}$$.
+Show that the defining equations of the recursor hold propositionally for this
+function, using the induction principle for $$\mathbb{N}$$.
+</div>
+
+To solve this problem, let us define the recursor and also the induction principle
+for natural numbers. (See more details in
+[Induction on Natural Numbers]({% post_url 2018-02-12-induction-on-natural-numbers %})).
+
+\begin{code}
+module ℕ-def where
+
+  data ℕ : Set where
+    zero : ℕ
+    suc  : ℕ → ℕ
+
+  recℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
+  recℕ C c₀ cₛ zero    = c₀
+  recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
+
+  indℕ : ∀ (C : ℕ → Set) → (C zero) → ((n : ℕ) → C n → C (suc n)) → ((n : ℕ) → C n)
+  indℕ C c₀ cₛ zero    = c₀
+  indℕ C c₀ cₛ (suc n) = cₛ n (indℕ C c₀ cₛ n)
+\end{code}
+
+Now, we define the iterator function:
+
+\begin{code}
+module ℕ-fun where
+  open ℕ-def using ( ℕ; recℕ; zero; suc)
+
+  ite : ∀ (C : Set) → C → (C → C) → ℕ → C
+  ite C c₀ cₛ zero = c₀
+  ite C c₀ cₛ (suc n) = cₛ (ite C c₀ cₛ n)
+\end{code}
+
+Then, we now can define the recursor using this iterator function `ite`
+as follows:
+
+\begin{code}
+  rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
+  rec₂ℕ C c₀ cₛ zero    = ite C c₀ (cₛ zero) zero
+  rec₂ℕ C c₀ cₛ (suc n) = ite C c₀ (cₛ n) n
+\end{code}
+
+Now, we need to establish the propositional equality between these two
+definitions for the recursor, i.e, `recℕ` and `rec₂ℕ`. This can be proved by
+induction.
+
+\begin{code}
+module exC1n4  where
+  open ℕ-def using (ℕ; zero; suc; recℕ; indℕ)
+  open ℕ-fun using (rec₂ℕ)
+
+  case-0 : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
+    → recℕ C c₀ cₛ zero ≡ rec₂ℕ C c₀ cₛ zero
+  case-0 C c₀ cₛ = refl
+
+  proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
+        → ∀ (n : ℕ) → recℕ C c₀ cₛ n ≡ rec₂ℕ C c₀ cₛ n
+  proof C c₀ cₛ =
+    indℕ
+      (λ n → recℕ C c₀ cₛ n ≡ rec₂ℕ C c₀ cₛ n)
+      (case-0 C c₀ cₛ)
+      (λ n indHyp → {!   !})
+\end{code}
+
+
 ## Chapter 2
 
 ### Exercise 1
@@ -285,7 +408,9 @@ module Σ-Ind {i j}{A : Set i}{B : A → Set j} where
 
 ### References
 
+
 - https://github.com/pcapriotti/hott-exercises/
+
 - https://github.com/pcapriotti/agda-base/
+
 - https://github.com/jonaprieto/hott-book/
--
