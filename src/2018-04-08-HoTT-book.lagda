@@ -6,14 +6,16 @@ categories: type-theory
 ---
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.
-It contains some modifications to [Capriotti's solutions](https://github.com/pcapriotti/hott-exercises)
-and some of mine. The idea is to unpackage all as long as possible to get a better understanding.
-Many changes can be appear running this experiment.
-The solutions are type-checked as a whole using Agda v2.5.3.
+The idea is to unpackage all as long as possible to get a better understanding.
+Many changes can be appear running this experiment. The solutions are
+type-checked as a whole using Agda v2.5.3.
+
+
+## Requirements
 
 -------------------------------------------------------------------------------
 
-An Agda pragma for consistency:
+An Agda pragma for consistency with HoTT:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
@@ -21,7 +23,6 @@ An Agda pragma for consistency:
 
 -------------------------------------------------------------------------------
 
-### Requirements
 
 Equality type defintion also called Identity type:
 
@@ -390,21 +391,10 @@ module exC1n4  where
 \end{code}
 
 
-## Chapter 2
-
-### Exercise 1
-
-## Chapter 3
-
-### Exercise 1
-
-
-
 ### References
 
+* [Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study][HoTT]
 
-- https://github.com/pcapriotti/hott-exercises/
+* [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises).
 
-- https://github.com/pcapriotti/agda-base/
-
-- https://github.com/jonaprieto/hott-book/
+* [Capriotti's agda-base](https://github.com/pcapriotti/agda-base/)
