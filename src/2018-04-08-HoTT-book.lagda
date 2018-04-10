@@ -5,8 +5,9 @@ date: "2018-04-08"
 categories: type-theory
 ---
 
-This is a self-contained version of the [Capriotti's solutions](https://github.com/pcapriotti/hott-exercises).
-The idea is to unpackage all his work to get a better understanding.
+This is a self-contained version of some solutions for HoTT-Book's exercise.
+It contains my solutions but also modifications to [Capriotti's solutions](https://github.com/pcapriotti/hott-exercises).
+The idea is to unpackage all to get a better understanding.
 Many changes can be appear running this experiment, do not expect the same
 code structure as the original. The solutions are type-checked as a whole using
 Agda v2.5.3.
@@ -15,7 +16,7 @@ TODO:
 
 - problem text for each problem
 - remove the requirements: `agda-base`
-- add a table of contents
+- add a table of contents at some point
 
 -------------------------------------------------------------------------------
 
@@ -380,7 +381,7 @@ induction.
 \begin{code}
 module exC1n4  where
   open ℕ-def using (ℕ; zero; suc; recℕ; indℕ)
-  open ℕ-fun using (rec₂ℕ)
+  open ℕ-fun using (ite; rec₂ℕ)
 
   case-0 : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
     → recℕ C c₀ cₛ zero ≡ rec₂ℕ C c₀ cₛ zero
