@@ -123,7 +123,7 @@ To solve this problem we need:
   - Product type definition
 
   - Review the recursion principle, what exactly it consists of.
-    Maybe this refresh our minds (see Pp. 42 in HoTT-Book).
+    Maybe this refresh our minds (see Pp. 42 HoTT-Book).
 
     <p class="equation">
     $$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)} : \prod\limits_{(C : U)} (\Pi_{(x : A)} B(x) \rightarrow C) \rightarrow \sum_{(x : A)} B(x) \rightarrow C $$
@@ -198,7 +198,7 @@ $$\mathsf{uniq}_{A\times B}$$.
 Verify that the definitional equalities are valid.
 </p>
 
-To solve this problem, recall the uniqueness principle (Pp. 29.)
+To solve this problem, recall the uniqueness principle (Pp. 29. HoTT-Book)
 
 - The **propositional uniqueness principle** says that
 every element of $$A\times B$$ is equal to a pair.
