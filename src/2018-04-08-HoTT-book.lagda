@@ -363,6 +363,7 @@ Then, we now can define the recursor using this iterator function `ite`
 as follows:
 
 \begin{code}
+-- recursor 
   rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
   rec₂ℕ C c₀ cₛ zero    = ite C c₀ (cₛ zero) zero
   rec₂ℕ C c₀ cₛ (suc n) = ite C c₀ (cₛ n) n
