@@ -355,7 +355,7 @@ module ℕ-fun where
   open ℕ-def using ( ℕ; recℕ; zero; suc)
 
   ite : ∀ (C : Set) → C → (C → C) → ℕ → C
-  ite C c₀ cₛ zero = c₀
+  ite C c₀ cₛ zero    = c₀
   ite C c₀ cₛ (suc n) = cₛ (ite C c₀ cₛ n)
 \end{code}
 
@@ -378,7 +378,7 @@ module exC1n4  where
   open ℕ-fun using (ite; rec₂ℕ)
 
   case-0 : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
-    → recℕ C c₀ cₛ zero ≡ rec₂ℕ C c₀ cₛ zero
+         → recℕ C c₀ cₛ zero ≡ rec₂ℕ C c₀ cₛ zero
   case-0 C c₀ cₛ = refl
 
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
@@ -393,7 +393,7 @@ module exC1n4  where
 
 ### References
 
-* [Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study][HoTT]
+* Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study
 
 * [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises).
 
