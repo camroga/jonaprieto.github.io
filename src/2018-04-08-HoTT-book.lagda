@@ -216,20 +216,21 @@ module ×-def₂ where
 
   data _×_ {i j}(A : Set i)(B : Set j) : Set (i ⊔ j) where
     _,_ : A → B → A × B
+
+  proj₁ : ∀ {i j}{A : Set i}{B : Set j}
+        → A × B → A
+  proj₁ (a , b) = a
+
+  proj₂ : ∀ {i j}{A : Set i}{B : Set j}
+        → A × B → B
+  proj₂ (a , b) = b
 \end{code}
 
 Projections and $$\mathsf{uniq}_{A\times B}$$:
 
 \begin{code}
 module ×-fun₂ {i j}{A : Set i}{B : Set j} where
-  open ×-def₂ using (_×_; _,_)
-
-  proj₁ : A × B → A
-  proj₁ (a , b) = a
-
-  proj₂ : A × B → B
-  proj₂ (a , b) = b
-
+  open ×-def₂
   -- unique principle *propositional uniqueness principle*
   uppt : (x : A × B) → (proj₁ x , proj₂ x) ≡ x
   uppt (a , b) = refl
@@ -241,10 +242,11 @@ Its induction principle:
 $$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
 \left( \prod\limits_{x:A}\ \prod\limits_{y:B}\ \,C( (x,y) ) \right) \to \prod\limits_{x:A \times B}\ \,C(x)$$
 </p>
+
 \begin{code}
 module ×-Ind {i j}{A : Set i}{B : Set j} where
-  open ×-def₂ public
-  open ×-fun₂ public
+  open ×-def₂ using (_×_; _,_;proj₁;proj₂)
+  open ×-fun₂ using (uppt)
 
   ×-ind : ∀ {k}(C : A × B → Set k)
         → ((x : A)(y : B) → C (x , y))
@@ -364,9 +366,16 @@ as follows:
 
 \begin{code}
 -- recursor
+  open ×-def₂ using (_×_; proj₁; proj₂; _,_)
+
   rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
-  rec₂ℕ C c₀ cₛ zero    = ite C c₀ (cₛ zero) zero
-  rec₂ℕ C c₀ cₛ (suc n) = ite C c₀ (cₛ n) n
+  rec₂ℕ C c₀ cₛ n =
+    proj₂
+      (ite (ℕ × C)
+           (zero , c₀)
+           (λ p → (suc (proj₁ p) , cₛ (proj₁ p) (proj₂ p)) ) n)
+
+
 \end{code}
 
 Now, we need to establish the propositional equality between these two
@@ -388,7 +397,7 @@ module exC1n4  where
     indℕ
       (λ n → recℕ C c₀ cₛ n ≡ rec₂ℕ C c₀ cₛ n)
       (case-0 C c₀ cₛ)
-      (λ n indHyp → {!   !})
+      (λ n indHyp → ?)
 \end{code}
 
 
@@ -422,9 +431,18 @@ where
 $$
 \mathsf{isequiv(f)} :\equiv
   \left (\sum\limits_{g : B \to A} (f \circ g \sim \mathsf{id}_{B})\right) \times
-  \left (\sum_\limits{h : B \to A} (h \circ f \sim \mathsf{id}_{A})\right)
+  \left (\sum\limits_{h : B \to A} (h \circ f \sim \mathsf{id}_{A})\right)
 $$
 
+- The homotopy concept:
+
+Let $$f , g : \prod\limits_{(x:A)} P(x)$$ be two sections of a
+type family $$P : A \to \mathcal{U}$$. A **homotopy** from $$f$$ to $$g$$
+is a dependent function of type
+
+$$
+(f \sim g) :\equiv \prod\limits_{x : A} (f(x) ≡ g(x)).
+$$
 
 ### Exercise 3.2
 
