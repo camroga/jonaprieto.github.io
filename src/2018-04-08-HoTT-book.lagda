@@ -363,7 +363,7 @@ Then, we now can define the recursor using this iterator function `ite`
 as follows:
 
 \begin{code}
--- recursor 
+-- recursor
   rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
   rec₂ℕ C c₀ cₛ zero    = ite C c₀ (cₛ zero) zero
   rec₂ℕ C c₀ cₛ (suc n) = ite C c₀ (cₛ n) n
@@ -392,9 +392,64 @@ module exC1n4  where
 \end{code}
 
 
+## Chapter 3
+
+### Exercise 3.1
+
+<div class="exercise">
+Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
+</div>
+To solve this problem, let us recall a few things:
+
+- The *set* definition in HoTT:
+
+A type $$A$$ is a **set** if for all $$x, y : A$$ and
+all $$p, q : x ≡ y$$, we have $$ p \equiv q$$. In a proposition
+we have
+
+$$
+\mathsf{isSet}(A) :\equiv \prod\limits_{(x,y : A)}\prod\limits_{(p,q : x \equiv y)} (p \equiv q).
+$$
+
+- The type for equivalence from $$A$$ to $$B$$
+
+$$
+  (A \simeq B) :\equiv \sum\limits_{f : A \to B} \mathsf{isequiv}(f),
+$$
+
+where
+
+$$
+\mathsf{isequiv(f)} :\equiv
+  \left (\sum\limits_{g : B \to A} (f \circ g \sim \mathsf{id}_{B})\right) \times
+  \left (\sum_\limits{h : B \to A} (h \circ f \sim \mathsf{id}_{A})\right)
+$$
+
+
+### Exercise 3.2
+
+<div class="exercise">
+Prove that if $$A$$ and $$B$$ are sets, then so is $$A+B$$.
+</div>
+
+### Exercise 3.3
+
+<div class="exercise">
+Prove that if $$ A $$ is a set and $$B : A \to \mathcal{U}$$
+is a type family such that $$B(x)$$ is a set for all
+$$x : A$$, then $$\Sigma\limits_{(x:A)}\ B(x)$$ is a set.
+</div>
+
+### Exercise 3.4
+
+<div class="exercise">
+Show that $$A$$ is a mere proposition if and only
+if $$A\to A$$ is contractible.
+</div>
+
 ### References
 
-* Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study
+* Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study.
 
 * [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises).
 
