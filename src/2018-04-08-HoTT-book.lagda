@@ -345,7 +345,10 @@ module ℕ-def where
   recℕ C c₀ cₛ zero    = c₀
   recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
 
-  indℕ : ∀ (C : ℕ → Set) → (C zero) → ((n : ℕ) → C n → C (suc n)) → ((n : ℕ) → C n)
+  indℕ : ∀ (C : ℕ → Set)
+       → (C zero)
+       → (∀ (n : ℕ) → C n → C (suc n))
+       → (∀ (n : ℕ) → C n)
   indℕ C c₀ cₛ zero    = c₀
   indℕ C c₀ cₛ (suc n) = cₛ n (indℕ C c₀ cₛ n)
 \end{code}
@@ -373,9 +376,8 @@ as follows:
     proj₂
       (ite (ℕ × C)
            (zero , c₀)
-           (λ p → (suc (proj₁ p) , cₛ (proj₁ p) (proj₂ p)) ) n)
-
-
+           (λ (p : ℕ × C) → (suc (proj₁ p) , cₛ (proj₁ p) (proj₂ p)))
+           n)
 \end{code}
 
 Now, we need to establish the propositional equality between these two
@@ -397,7 +399,7 @@ module exC1n4  where
     indℕ
       (λ n → recℕ C c₀ cₛ n ≡ rec₂ℕ C c₀ cₛ n)
       (case-0 C c₀ cₛ)
-      (λ n indHyp → ?)
+      (λ n indHyp → {!   !})
 \end{code}
 
 
