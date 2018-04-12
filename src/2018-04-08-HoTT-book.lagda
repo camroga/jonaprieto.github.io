@@ -398,13 +398,6 @@ module exC1n4  where
   open ℕ-fun using (ite; rec₂ℕ)
   open ×-def₂ using (_×_; proj₁; proj₂; _,_)
 
-  up : ∀ {A B : Set} → (u : A × B) → (proj₁ u , proj₂ u) ≡ u
-  up (a , b ) = refl
-
-  lem : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
-      → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ (suc n) ≡ (suc n , cₛ n (proj₂ (rec₂ℕ C c₀ cₛ n)))
-  lem C c₀ cₛ n = {!   !}
-
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
         → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ n ≡ (n , recℕ C c₀ cₛ n)
   proof C c₀ cₛ zero    = refl
