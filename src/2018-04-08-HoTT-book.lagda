@@ -371,9 +371,8 @@ as follows:
 -- recursor
   open ×-def₂ using (_×_; proj₁; proj₂; _,_)
 
-  rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
+  rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → (ℕ × C)
   rec₂ℕ C c₀ cₛ n =
-    proj₂
       (ite (ℕ × C)
            (zero , c₀)
            (λ (p : ℕ × C) → (suc (proj₁ p) , cₛ (proj₁ p) (proj₂ p)))
@@ -385,21 +384,35 @@ definitions for the recursor, i.e, `recℕ` and `rec₂ℕ`. This can be proved 
 induction.
 
 \begin{code}
+open ℕ-def public
+open ℕ-fun public
+postulate
+  C : Set
+  c₀ : C
+  m : ℕ
+  cₛ : ℕ → C → C
+
+n = suc m
 module exC1n4  where
   open ℕ-def using (ℕ; zero; suc; recℕ; indℕ)
   open ℕ-fun using (ite; rec₂ℕ)
+  open ×-def₂ using (_×_; proj₁; proj₂; _,_)
 
-  case-0 : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
-         → recℕ C c₀ cₛ zero ≡ rec₂ℕ C c₀ cₛ zero
-  case-0 C c₀ cₛ = refl
+  up : ∀ {A B : Set} → (u : A × B) → (proj₁ u , proj₂ u) ≡ u
+  up (a , b ) = refl
+
+  lem : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
+      → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ (suc n) ≡ (suc n , cₛ n (proj₂ (rec₂ℕ C c₀ cₛ n)))
+  lem C c₀ cₛ n = {!   !}
 
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
-        → ∀ (n : ℕ) → recℕ C c₀ cₛ n ≡ rec₂ℕ C c₀ cₛ n
-  proof C c₀ cₛ =
-    indℕ
-      (λ n → recℕ C c₀ cₛ n ≡ rec₂ℕ C c₀ cₛ n)
-      (case-0 C c₀ cₛ)
-      (λ n indHyp → {!   !})
+        → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ n ≡ (n , recℕ C c₀ cₛ n)
+  proof C c₀ cₛ zero    = refl
+  proof C c₀ cₛ (suc n) = {!   !} -- ap (cₛ n) (proof C c₀ cₛ n) · helper
+
+
+
+
 \end{code}
 
 
