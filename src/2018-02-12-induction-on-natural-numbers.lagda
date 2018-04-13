@@ -316,6 +316,89 @@ n+0≡n₂ zero    = refl
 n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
 \end{code}
 
+-------------------------------------------------------------------------------
+
+### Another induction principle
+
+<div class="exercise">
+Assuming the ordinary induction principle (i.e., <a href="#induction">indℕ</a>)
+derives the transfinite induction principle.<br/>
+
+For a unary predicate $$P : \mathbb{N} \to \mathcal{U}$$, if
+
+<p class="equation">
+$$
+\prod\limits_{n : \mathbb{N}} \left ( \prod\limits_{k : \mathbb{N}} (k < n \to P(k)) \to P(n) \right)
+$$
+</p>
+
+then for all $$n : \mathbb{N}$$ we have $$P(n)$$.
+</div>
+
+To solve this problem, we need to define a type for the *less than* (`_<_`) relationship
+between natural numbers but we also have to define the disjunction to
+make a case analysis in our proof. Let's see. You may skip this first part.
+
+\begin{code}
+module ℕ-transInd (P : ℕ → 𝒰) where
+
+  data _<_ : ℕ → ℕ → Set where
+    z<s : ∀ {n : ℕ}   → zero < suc n
+    s<s : ∀ {m n : ℕ} → m < n → suc m < suc n
+
+  data _⊎_ : Set → Set → Set where
+    inj₁ : ∀ {A B : Set} → A → A ⊎ B
+    inj₂ : ∀ {A B : Set} → B → A ⊎ B
+
+  ⊎-elim : ∀ {A B C : Set} → (A → C) → (B → C) → (A ⊎ B → C)
+  ⊎-elim f g (inj₁ x) = f x
+  ⊎-elim f g (inj₂ y) = g y
+
+  sym : {k n : ℕ} → k ≡ n → n ≡ k
+  sym refl = refl
+
+  subst : {k n : ℕ} → k ≡ n → P k → P n
+  subst refl pk = pk
+
+  postulate -- TODO
+    <-property : ∀ {k : ℕ} {n : ℕ}
+             → k < suc n
+             → (k < n) ⊎ (k ≡ n)
+\end{code}
+
+**Proof**:
+We use induction to get an inhabitant of the $$G$$ proposition.
+The induction was using pattern matching on $$n$$ in Agda. Later,
+we this inhabitant to apply our hypothesis.
+
+$$
+G : \prod\limits_{(n : \mathbb{N})}\ \left(\prod\limits_{(k : \mathbb{N})}\ ((k < n) \to P (k))\right)
+$$
+
+where $$P : \mathbb{N} \to \mathcal{U}$$.
+
+
+\begin{code}
+-- proof
+  indℕ⇒transFindℕ
+    : (hyp : (n : ℕ) → ((k : ℕ) → (k < n) → P k) → P n)
+    → ((n : ℕ) → P n)
+
+  indℕ⇒transFindℕ hyp zero    = hyp zero (λ k → λ ())
+  indℕ⇒transFindℕ hyp (suc n) = hyp (suc n) (G (suc n))
+    where
+      G : ∀ (n : ℕ) → ((k : ℕ) → (k < n) → P k)
+      G zero    = λ k → λ () -- imposible
+      G (suc n) k k<n+1 =
+        ⊎-elim --
+          -- 1. when k < n
+          (λ k<n → G n k k<n)
+          -- 2. when k ≡ n
+          (λ k≡n → subst (sym k≡n) (hyp n (G n)))
+          -- eliminiting two cases: (k < n) ⊎ (k ≡ n)
+          (<-property k<n+1)
+\end{code}
+
 ### Conclusion
 
 Induction as it was presented here is stronger than recursion.

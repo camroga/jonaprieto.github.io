@@ -402,12 +402,7 @@ module exC1n4  where
         → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ n ≡ (n , recℕ C c₀ cₛ n)
   proof C c₀ cₛ zero    = refl
   proof C c₀ cₛ (suc n) = {!   !} -- ap (cₛ n) (proof C c₀ cₛ n) · helper
-
-
-
-
 \end{code}
-
 
 ## Chapter 3
 
