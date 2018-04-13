@@ -368,8 +368,8 @@ module ℕ-transInd (P : ℕ → 𝒰) where
 
 **Proof**:
 We use induction to get an inhabitant of the $$G$$ proposition.
-The induction was using pattern matching on $$n$$ in Agda. Later,
-we this inhabitant to apply our hypothesis.
+The induction was using pattern matching on $$n$$ in Agda.
+At the end, we use the hypothesis with this inhabitant of $$G$$.
 
 $$
 G : \prod\limits_{(n : \mathbb{N})}\ \left(\prod\limits_{(k : \mathbb{N})}\ ((k < n) \to P (k))\right)
