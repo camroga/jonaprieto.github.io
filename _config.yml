@@ -15,7 +15,7 @@ plugins:
   - jekyll-feed
   - jekyll-last-modified-at
   - jekyll-algolia
-  - jekyll-tocw
+  - jekyll-toc
 
 exclude:
   - src/
