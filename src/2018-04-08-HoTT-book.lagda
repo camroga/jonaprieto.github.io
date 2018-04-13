@@ -386,14 +386,8 @@ induction.
 \begin{code}
 open ℕ-def public
 open ℕ-fun public
-postulate
-  C : Set
-  c₀ : C
-  m : ℕ
-  cₛ : ℕ → C → C
 
-n = suc m
-module exC1n4  where
+module exC1n4 (C : Set) (c₀ : C) (m : ℕ) (cₛ : ℕ → C → C) where
   open ℕ-def using (ℕ; zero; suc; recℕ; indℕ)
   open ℕ-fun using (ite; rec₂ℕ)
   open ×-def₂ using (_×_; proj₁; proj₂; _,_)
@@ -401,7 +395,7 @@ module exC1n4  where
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
         → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ n ≡ (n , recℕ C c₀ cₛ n)
   proof C c₀ cₛ zero    = refl
-  proof C c₀ cₛ (suc n) = {!   !} -- ap (cₛ n) (proof C c₀ cₛ n) · helper
+  proof C c₀ cₛ (suc n) = {!   !} 
 \end{code}
 
 ## Chapter 3
