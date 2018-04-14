@@ -5,22 +5,25 @@ date: "2018-02-09"
 categories: type-theory
 ---
 
-  > Leibniz characterised the notion of equality as follows:
-  Given any x and y, x = y if and only if, given any
-  predicate P, P(x) if and only if P(y).
+*Leibniz characterised the notion of equality as follows:
+  Given any $$x$$ and $$y$$, $$x \equiv y$$ if and only if, given any
+  predicate $$P$$, $$P(x)$$ if and only if $$P(y)$$.*
 
-  ```
-  ∀x ∀y (x = y → ∀P (P x ↔ P y))
-  ```
+$$
+  \forallx \forally (x \equiv y \to \forall P \ (P(x) \Leftrightarrow P(y)))
+$$
+
+To denote the equality between two elements we use the symbol (`_≡_`).
+In Agda we will formalize such a notation of equality with `Eq` type.
 
 \begin{code}
 Eq : ∀ {A : Set} → (x y : A) → Set₁
 Eq {A} x y = (P : A → Set) → (P x → P y)
 \end{code}
 
-We can think about this equality definition saying that
-x is equal to y if and only if every property (unary predicate variable P)
-that x satisfies, y satisfies as well.
+We can think about this equality definition saying that $$x$$ is equal to $$y$$
+if and only if every property (unary predicate variable $$P$$) that $$x$$
+satisfies, $$y$$ satisfies as well.
 
 * Reflexivity
 

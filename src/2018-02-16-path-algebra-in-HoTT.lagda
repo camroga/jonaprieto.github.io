@@ -5,31 +5,34 @@ date: "2018-02-16 21:57"
 categories: type-theory
 ---
 
-In Univalence we have a different interpreation of type theory. We replace the
+In Univalence we have a different interpretation of type theory. We replace the
 set-theoretical notion of sets for types and we use the *topological space*
-notion instead. The judment `a : A` for a type `A` is now the point `a` in the
-topological space `A`. We also include the identity type but instead of thinking
-about this type as the type for a proof of the equality `a = b`, we refer us to
-this type as the *path space*, the all paths with `a` as the starting point and
-`b` as the end point. A inhabitant of this type is called a *path*.
-
-To help streghten our intintuion with this type, we will see some pictures next.
+notion instead. The judgement $$a : A$$ for a type $$A$$ is now the point $$a$$ in the
+topological space $$A$$. We also include the identity type as a primary type.
+Changing the notation of this type about a proof of the equality $$a = b$$ to a
+*path space*. This path space comprehends all paths with $$a$$ as the starting
+point and $$b$$ as the end point. The inhabitant of this type is called a *path*.
 
 ### Prerequisites
 
 To work with the identity type let's use the type `(_≡_)` defined in
-the Agda standard library.
+the Agda standard library but using the following pragma to make our code
+compatible with HoTT.
 
 \begin{code}
 {-# OPTIONS --without-K #-}
-import Relation.Binary.PropositionalEquality as Eq
-open Eq using (refl; _≡_)
 \end{code}
 
-+ *Path Induction*
+\begin{code}
+open import Relation.Binary.PropositionalEquality using (_≡_; refl)
+\end{code}
 
-The following is the elimination principle for the identity type,
-also called `J` eliminator.
+### Path Induction
+
+The elimination principle for the identity type is the path induction.
+It allows us to define an outgoing function from the identity type to
+a dependent type $$C$$ as we see in the `pi` definition. It worths to
+mention this principle is also called `J`.
 
 \begin{code}
 pi
@@ -40,7 +43,7 @@ pi
 pi {A} C c x .x refl = c x
 \end{code}
 
-+ *Path Concatenation*
+### Path Concatenation
 
 To join two paths when one ends where the other starts, we
 define the _concatenation_ operator between paths denoted by the symbol (`_·_`).
@@ -61,11 +64,11 @@ _·_ {A} {x} {y} {z} p q = D₁ x y p z q
     D₁ = pi (λ x y p → ((z : A) → (q : y ≡ z) → x ≡ z)) (λ x → D₂ x)
 \end{code}
 
-To make the above code shorter in Agda, we could have defined the function
-by pattern-matching. Nonetheless, the idea hear is to try use the path induction
---- the pi function---.
+To make the above code shorter in Agda, we could have defined the function by
+pattern-matching. Nonetheless, the idea here was use path induction --- the pi
+function--- entirely.
 
-+ *Path Inverse*
+### Path Inverse
 
 The path inverse for a given path `p : a = b` is denoted by `p⁻¹ : b = a`.
 This path only change the original direction of the path `p`. Let's see it.
@@ -84,19 +87,21 @@ identity type. Now let's see some algebra.
 
 -----------------------------------------------------------------------------
 
-### Lemma
+### Algebra
 
-+ `(refl x) ⁻¹ ≡ refl x`
-+ `p · p ⁻¹ ≡ refl x`
-+ `refl x · p ≡ p`
-+ `p · refl y ≡ p`
-+ ` (p  ⁻¹) ⁻¹ ≡ p`
++ l1 : $$(\mathsf{refl}_{x})^{-1} \equiv \mathsf{refl}_{x}$$
++ l2 : $$p \cdot p^{-1} \equiv \mathsf{refl}_{x}$$
++ l3 : $$\mathsf{refl}_{x} \cdot p \equiv p$$
++ l4 : $$p \cdot \mathsf{refl} y \equiv p$$
++ l5 : $$ (p ^{-1})^{-1} \equiv p$$
 
 ![path](/assets/images/path-algebra.png)
 
-#### Proofs
+-----------------------------------------------------------------------------
 
-+ `(refl x) ⁻¹ ≡ refl x`
+Proofs:
+
++ l1 : $$(\mathsf{refl}_{x})^{-1} \equiv \mathsf{refl}_{x}$$
 \begin{code}
 l1 : ∀ {A : Set} {x : A} → (refl ⁻¹) ≡ refl
 l1 {A}{x} =
@@ -105,7 +110,7 @@ l1 {A}{x} =
      x x refl
 \end{code}
 
-+ `p · p ⁻¹ ≡ refl x`
++ l2 : $$p \cdot p^{-1} \equiv \mathsf{refl}_{x}$$
 
 \begin{code}
 l2 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p · (p ⁻¹))  ≡ refl
@@ -114,7 +119,7 @@ l2 =
      (λ x → refl { x = refl {x = x}})
 \end{code}
 
-+ `refl x · p ≡ p`
++ l3 : $$\mathsf{refl}_{x} \cdot p \equiv p$$
 
 \begin{code}
 l3 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → refl · p ≡ p
@@ -123,7 +128,7 @@ l3 =
      (λ x → refl { x = refl {x = x}})
 \end{code}
 
-+ `p · refl y ≡ p`
++ l4 : $$p \cdot \mathsf{refl} y \equiv p$$
 
 \begin{code}
 l4 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → refl · p ≡ p
@@ -131,7 +136,7 @@ l4 = pi (λ x y p → refl · p ≡ p)
         (λ x → refl {x = refl {x = x}})
 \end{code}
 
-+ ` (p  ⁻¹) ⁻¹ ≡ p`
++ l5 : $$ (p ^{-1})^{-1} \equiv p$$
 
 \begin{code}
 l5 : ∀ {A : Set} (x y : A) → (p : x ≡ y) → (p  ⁻¹) ⁻¹ ≡ p
@@ -140,5 +145,11 @@ l5 = pi (λ x y p → (p  ⁻¹) ⁻¹ ≡ p)
 \end{code}
 
 ### Transport
+
+\begin{code}
+trans : ∀ {A : Set}{x x' : A}
+      → (B : A → Set) → (y : B x) → (u : x ≡ x') → B x'
+trans B y refl  = y
+\end{code}
 
 ![path](/assets/images/transport-fiber.png)

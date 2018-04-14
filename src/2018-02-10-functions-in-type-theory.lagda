@@ -1,22 +1,22 @@
 ---
-title: "Function Type and Functional Extensionality"
+title: "Function Type"
 layout: "post"
 date: "2018-02-10"
 categories: type-theory
 ---
 
+# Function Type Rules
 
-In type theory we do not define a function since this is an undefined concept also
-refer to it as a *primitive notion*. In contrast to set theory where we have
-the function as the relationship between two sets, the domain
-and the codomain.
+In type theory we do not define a function since this is an undefined concept
+also refer to it as a *primitive notion*. In contrast to set theory where we
+have the function as the relationship between two sets, the domain and the
+codomain.
 
 In type theory, the function also called *map* is introduced as follows:
 
 + name of the type or symbol: `(_→_)`
 
 + formation rule:
-
 ```
   Γ ⊢ A  and Γ ⊢ B then Γ ⊢ f : A → B
 ```
@@ -35,8 +35,8 @@ In type theory, the function also called *map* is introduced as follows:
 ```
   Γ ⊢ (λ (x : A) . t) y : B then Γ ⊢ t[ x := y] : B
 ```
-  We use the last notation `t[x := y]` to say that replace every occurrance of
-  x in the term t by y.
+We use the last notation `t[x := y]` to say that replace every occurrance of
+$$x$$ in the term $$t$$ by $$y$$.
 
 + simplication rule (also called η-conversion):
 ```
@@ -74,8 +74,9 @@ h : A → A → A
 h =  λ w z → z
 \end{code}
 
-Both g and h function produce the same result, then if que sustitute in h, w by
-x, and z by y, we get the definition of g, so at the end, g and h are
+Both $$g$$ and $$h$$ function produce the same result.
+Then if we sustitute in $$h$$, $$w$$ by $$x$$, and $$z$$ by $$y$$,
+we get the definition of $$g$$, so at the end, $$g$$ and $$h$$ are
 *judgemental* equal.
 
 \begin{code}
@@ -83,7 +84,7 @@ g≡h : g ≡ h
 g≡h = refl
 \end{code}
 
-### Functional extensionality
+# Functional extensionality
 
 Very related to the above matter is the [*functional extensionality*](https://ncatlab.org/nlab/show/function+extensionality)
 axiom that establishes the pointwise equality between two functions.
@@ -100,7 +101,8 @@ postulate
 
 Then, lets use this axiom in a complete example, proving that two defintions
 of the add function are indeed equal. The example also includes a reference
-to a note presented later about [induction on natural numbers](https://jonaprieto.github.io/2018/02/14/induction-on-identity-types/):
+to a note presented later about
+[induction on natural numbers](https://jonaprieto.github.io/2018/02/14/induction-on-identity-types/):
 
 The definitions:
 
@@ -139,7 +141,9 @@ add≡add₂ = FunExt (λ n → FunExt λ m → helper n m)
     helper (suc n) m = +-cong (helper n m)
 \end{code}
 
-+ *Agda standard library*
+-----------------------------------------------------------------------------
+
++ In *Agda standard library*
 
 In the the library `stdlib`, there is a section for [function
 extensionality](https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#4385
@@ -188,7 +192,10 @@ Functional extensionality implies a form of extensionality for
 ∀-extensionality ext B .B  B₁≡B₂ | refl = refl
 \end{code}
 
-+ HoTT
+-----------------------------------------------------------------------------
 
-** Univalance implies function extensionality and the uniqueness principle for
-functions**
++ Homotopy Type Theory
+
+<div class="todo">
+Univalance implies function extensionality and the uniqueness principle for functions.
+</div>

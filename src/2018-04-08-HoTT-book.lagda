@@ -126,7 +126,10 @@ To solve this problem we need:
     Maybe this refresh our minds (see Pp. 42 HoTT-Book).
 
     <p class="equation">
-    $$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)} : \prod\limits_{(C : U)} (\Pi_{(x : A)} B(x) \rightarrow C) \rightarrow \sum_{(x : A)} B(x) \rightarrow C $$
+    $$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)}
+      : \prod\limits_{(C : U)} (\Pi_{(x : A)} B(x) \rightarrow C) \rightarrow
+        \sum_{(x : A)} B(x) \rightarrow C
+    $$
     </p>
 
 -------------------------------------------------------------------------------
@@ -204,7 +207,10 @@ To solve this problem, recall the uniqueness principle (Pp. 29. HoTT-Book)
 every element of $$A\times B$$ is equal to a pair.
 
 <p class="equation">
-$$\mathsf{uniq}_{A\times B} : \prod_{(x : A \times B)} ((pr_{1}(x) , pr_{2}(x)) \equiv_{A\times B} x).$$
+  $$ \mathsf{uniq}_{A\times B}
+     : \prod_{(x : A \times B)} ((\mathsf{proj}_{1}(x) , \mathsf{proj}_{2}(x))
+       \equiv_{A\times B} x).
+  $$
 </p>
 
 Product type definition using `data`:
@@ -240,7 +246,9 @@ Its induction principle:
 
 <p class="equation">
 $$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
-\left( \prod\limits_{x:A}\ \prod\limits_{y:B}\ \,C( (x,y) ) \right) \to \prod\limits_{x:A \times B}\ \,C(x)$$
+  \left( \prod\limits_{x:A}\ \prod\limits_{y:B}\ \,C( (x,y) ) \right)
+  \to \prod\limits_{x:A \times B}\ \,C(x)
+$$
 </p>
 
 \begin{code}
@@ -395,7 +403,7 @@ module exC1n4 (C : Set) (c₀ : C) (m : ℕ) (cₛ : ℕ → C → C) where
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
         → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ n ≡ (n , recℕ C c₀ cₛ n)
   proof C c₀ cₛ zero    = refl
-  proof C c₀ cₛ (suc n) = {!   !} 
+  proof C c₀ cₛ (suc n) = {!   !}
 \end{code}
 
 ## Chapter 3
