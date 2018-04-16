@@ -357,29 +357,34 @@ for natural numbers. (See more details in
 [Induction on Natural Numbers]({% post_url 2018-02-12-induction-on-natural-numbers %})).
 
 \begin{code}
-module ℕ-Def₁ where
+module ℕ-Def where
 
   data ℕ : Set where
     zero : ℕ
     suc  : ℕ → ℕ
 
-  recℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
-  recℕ C c₀ cₛ zero    = c₀
-  recℕ C c₀ cₛ (suc n) = cₛ n (recℕ C c₀ cₛ n)
+module ℕ-Rec where
+  open ℕ-Def
+  rec : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → C
+  rec C c₀ cₛ zero    = c₀
+  rec C c₀ cₛ (suc n) = cₛ n (rec C c₀ cₛ n)
 
-  indℕ : ∀ (C : ℕ → Set)
+module ℕ-Ind where
+  open ℕ-Def
+  ind : ∀ (C : ℕ → Set)
        → (C zero)
        → (∀ (n : ℕ) → C n → C (suc n))
        → (∀ (n : ℕ) → C n)
-  indℕ C c₀ cₛ zero    = c₀
-  indℕ C c₀ cₛ (suc n) = cₛ n (indℕ C c₀ cₛ n)
+  ind C c₀ cₛ zero    = c₀
+  ind C c₀ cₛ (suc n) = cₛ n (ind C c₀ cₛ n)
 \end{code}
 
 Now, we define the iterator function:
 
 \begin{code}
-module ℕ-Fun₁ where
-  open ℕ-Def₁ using ( ℕ; recℕ; zero; suc)
+module ℕ-Fun where
+  open ℕ-Def using (ℕ; zero; suc)
+  open ℕ-Rec using (rec)
 
   ite : ∀ (C : Set) → C → (C → C) → ℕ → C
   ite C c₀ cₛ zero    = c₀
@@ -393,8 +398,8 @@ as follows:
 -- recursor
   open ×-Def₂ using (_×_; proj₁; proj₂; _,_)
 
-  rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → (ℕ × C)
-  rec₂ℕ C c₀ cₛ n =
+  rec₂ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → (ℕ × C)
+  rec₂ C c₀ cₛ n =
       (ite (ℕ × C)
            (zero , c₀)
            (λ (p : ℕ × C) → (suc (proj₁ p) , cₛ (proj₁ p) (proj₂ p)))
@@ -402,19 +407,21 @@ as follows:
 \end{code}
 
 Now, we need to establish the propositional equality between these two
-definitions for the recursor, i.e, `recℕ` and `rec₂ℕ`. This can be proved by
+definitions for the recursor, i.e, `rec` and `rec₂`. This can be proved by
 induction.
 
 \begin{code}
 module exC1n4 where
 
-  open ℕ-Def₁ using (ℕ; zero; suc; recℕ; indℕ)
-  open ℕ-Fun₁ using (ite; rec₂ℕ)
+  open ℕ-Def using (ℕ; zero; suc)
+  open ℕ-Rec using (rec)
+  open ℕ-Ind using (ind)
+  open ℕ-Fun using (ite; rec₂)
 
   open ×-Def₂ using (_×_; proj₁; proj₂; _,_)
 
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
-        → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ n ≡ (n , recℕ C c₀ cₛ n)
+        → ∀ (n : ℕ) → rec₂ C c₀ cₛ n ≡ (n , rec C c₀ cₛ n)
   proof C c₀ cₛ zero    = refl
   proof C c₀ cₛ (suc n) = {!   !}
 \end{code}
