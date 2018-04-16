@@ -237,10 +237,20 @@ Projections and $$\mathsf{uniq}_{A\times B}$$:
 \begin{code}
 module ×-fun₂ {i j}{A : Set i}{B : Set j} where
   open ×-def₂
+
   -- unique principle *propositional uniqueness principle*
   uppt : (x : A × B) → (proj₁ x , proj₂ x) ≡ x
   uppt (a , b) = refl
+
+  -- some lemmas about transport
+  ap-proj₁ : {A B : Set}{x y : A × B} → (x ≡ y) → (proj₁ x) ≡ (proj₁ y)
+  ap-proj₁ refl = refl
+
+  ap-proj₂ : {A B : Set}{x y : A × B} → (x ≡ y) → (proj₁ x) ≡ (proj₁ y)
+  ap-proj₂ refl = refl
 \end{code}
+
+
 
 Its induction principle:
 
