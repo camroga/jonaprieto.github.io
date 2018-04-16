@@ -8,13 +8,14 @@ layout: default
   <div id="search-searchbar"></div>
 
   <div class="main-heading">
-    <div class="main-title"> Notes
+    <div class="main-title"> Latest change:
+        <span class="commit-message"> <a href="{{site.github.repository_url}}"> {{site.git.last_commit.message}}</a></span>
     <a class="main-rss" href="{{ "/feed.xml" | relative_url }}">
       rss
     </a>
   </div>
   <div class="main-last-date">
-      Latest commit {{site.github.build_revision | slice: -7, 7}} on  {{ site.time | date_to_string  }}
+      Latest commit <a href="{{site.github.repository_url}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }}
   </div>
 </div>
 
