@@ -18,11 +18,6 @@ plugins:
   - jekyll-toc
   - jekyll-git_metadata
 
-exclude:
-  - src/
-  - Gemfile
-  - Gemfile.lock
-
 # ----------------------------------------------------------------------------
 algolia:
   application_id: '6LC140UUTA'
