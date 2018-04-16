@@ -18,6 +18,11 @@ plugins:
   - jekyll-toc
   - jekyll-git_metadata
 
+exclude:
+  - src/
+  - Gemfile
+  - Gemfile.lock
+
 # ----------------------------------------------------------------------------
 algolia:
   application_id: '6LC140UUTA'
@@ -42,4 +47,4 @@ author:
   email:             prieto.jona@gmail.com
 
 # Custom vars
-version:             0.0.2
+version:             0.0.3
