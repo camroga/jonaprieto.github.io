@@ -1,14 +1,16 @@
 agda := $(wildcard src/*.lagda)
 agdai := $(wildcard src/*.agdai)
 originalmd := $(wildcard src/*.md)
-images := $(wildcard src/images/*.ipe)
+ipeImages := $(wildcard src/ipe-images/*.ipe)
+latexitImages := $(wildcard src/latexit-images/*.png)
 
 markdownOrig := $(subst src/,_posts/,$(originalmd))
 markdownAgda := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
-imagesPNG    := $(subst src/images/,assets/images/,$(subst .ipe,.png,$(images)))
+ipeImagesPNG     := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
+latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexitImages))
 
 #
-all: _posts/ $(markdownOrig) $(markdownAgda) $(imagesPNG)
+all: _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG)
 
 _posts/ :
 	rm -Rf -d _post
@@ -20,8 +22,11 @@ _posts/%.md : src/%.md
 _posts/%.md : src/%.lagda
 	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@
 
-assets/images/%.png : src/images/%.ipe
+assets/ipe-images/%.png : src/ipe-images/%.ipe
 	iperender -png -resolution 400 $< $@
+
+assets/latexit-images/%.png : src/latexit-images/%.png
+	cp $< $@
 
 observr:
 	observr .observr

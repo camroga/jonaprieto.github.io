@@ -59,7 +59,7 @@ singletonType : {U : Universe} {X : Set U} → X → Set U
 singletonType x = Σ \y → Id y x
 \end{code}
 
-![path](/assets/images/issinglenton.png)
+![path](/assets/ipe-images/issinglenton.png)
 
 \begin{code}
 isSingleton : {U : Universe} → Set U → Set U

@@ -30,7 +30,7 @@ Equality type defintion also called Identity type:
 infix 4 _≡_
 data _≡_ {a} {A : Set a} (x : A) : A → Set a where
   refl : x ≡ x
-  \end{code}
+\end{code}
 
 Some functions to work with this type:
 
@@ -74,6 +74,8 @@ J : ∀ {i j}{X : Set i}
 J P u x y p = J' (P x) (u x) y p
 \end{code}
 
+-----------------------------------------------------------------------------
+
 ## Chapter 1
 
 ### Exercise 1.1
@@ -113,7 +115,7 @@ the following exercises including this one:
 
 \begin{code}
 open import Agda.Primitive public
-  using    (Level; _⊔_; lzero; lsuc)
+  using (Level; _⊔_; lzero; lsuc)
 \end{code}
 
 To solve this problem we need:
@@ -138,13 +140,14 @@ To solve this problem we need:
 [here](https://github.com/jonaprieto/hott-book/blob/master/other/prelim.agda#L20)):
 
 \begin{code}
-module Σ-def₁ where
+module Σ-Def₁ where
 
   record Σ {a b} (A : Set a) (B : A → Set b) : Set (a ⊔ b) where
     constructor _,_
     field
       proj₁ : A
       proj₂ : B proj₁
+
   open Σ public
 -- _,_ : (proj₁ : A) → B proj₁ → Σ A B.
 \end{code}
@@ -153,15 +156,16 @@ Its recursor with a function $$g : \prod_{(x : A)} B(x)\rightarrow C$$
 that we provide.
 
 \begin{code}
-module Σ-Rec {i j k}{A : Set i}{B : A → Set j}{C : Set k}
+module Σ-Rec₁ {i j k}{A : Set i}{B : A → Set j}{C : Set k}
              (g : (x : A) → B x → C) where
-  open Σ-def₁ using (Σ ; proj₁; proj₂; _,_ )
 
-  Σ-rec : Σ A B → C
-  Σ-rec p = g (proj₁ p) (proj₂ p)
+  open Σ-Def₁ using (Σ ; proj₁; proj₂; _,_ )
 
-  Σ-rec-β : (x : A)(y : B x) → Σ-rec (x , y) ≡ g x y
-  Σ-rec-β x y = refl
+  rec : Σ A B → C
+  rec p = g (proj₁ p) (proj₂ p)
+
+  rec-β : (x : A)(y : B x) → rec (x , y) ≡ g x y
+  rec-β x y = refl
 \end{code}
 
 -------------------------------------------------------------------------------
@@ -171,8 +175,8 @@ when the codomain is not dependent, as we can see next by omitting the argument
 in `(λ _ → B)`.
 
 \begin{code}
-module ×-def₁ where
-  open Σ-def₁ public
+module ×-Def₁ where
+  open Σ-Def₁ public
 
   _×_ : {l k : Level} (A : Set l) (B : Set k) → Set (l ⊔ k)
   A × B = Σ A (λ _ → B)
@@ -181,15 +185,15 @@ module ×-def₁ where
 Its recursor with a function $$g : A \rightarrow B \rightarrow C$$ that we provide.
 
 \begin{code}
-module ×-Rec {i j k}{A : Set i}{B : Set j}{C : Set k}
-           (g : A → B → C) where
-  open ×-def₁ using (_×_; proj₁; proj₂; _,_)
+module ×-Rec₁ {i j k}{A : Set i}{B : Set j}{C : Set k} (g : A → B → C) where
 
-  ×-rec : A × B → C
-  ×-rec p = g (proj₁ p) (proj₂ p)
+  open ×-Def₁ using (_×_; proj₁; proj₂; _,_)
 
-  ×-rec-β : (x : A)(y : B) → ×-rec (x , y) ≡ g x y
-  ×-rec-β x y = refl
+  rec : A × B → C
+  rec p = g (proj₁ p) (proj₂ p)
+
+  rec-β : (x : A)(y : B) → rec (x , y) ≡ g x y
+  rec-β x y = refl
 \end{code}
 
 ### Exercise 1.3
@@ -218,7 +222,7 @@ Product type definition using `data`:
 \begin{code}
 -- this would be trivial in agda due to definitional η for records
 -- so Capriotti defined a product type without η:
-module ×-def₂ where
+module ×-Def₂ where
 
   data _×_ {i j}(A : Set i)(B : Set j) : Set (i ⊔ j) where
     _,_ : A → B → A × B
@@ -235,8 +239,8 @@ module ×-def₂ where
 Projections and $$\mathsf{uniq}_{A\times B}$$:
 
 \begin{code}
-module ×-fun₂ {i j}{A : Set i}{B : Set j} where
-  open ×-def₂
+module ×-Fun₂ {i j}{A : Set i}{B : Set j} where
+  open ×-Def₂ using ( _×_;_,_; proj₁; proj₂)
 
   -- unique principle *propositional uniqueness principle*
   uppt : (x : A × B) → (proj₁ x , proj₂ x) ≡ x
@@ -246,13 +250,13 @@ module ×-fun₂ {i j}{A : Set i}{B : Set j} where
   ap-proj₁ : {A B : Set}{x y : A × B} → (x ≡ y) → (proj₁ x) ≡ (proj₁ y)
   ap-proj₁ refl = refl
 
-  ap-proj₂ : {A B : Set}{x y : A × B} → (x ≡ y) → (proj₁ x) ≡ (proj₁ y)
+  ap-proj₂ : {A B : Set}{x y : A × B} → (x ≡ y) → (proj₂ x) ≡ (proj₂ y)
   ap-proj₂ refl = refl
 \end{code}
 
 
 
-Its induction principle:
+The induction principle for the product type:
 
 <p class="equation">
 $$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
@@ -262,20 +266,20 @@ $$
 </p>
 
 \begin{code}
-module ×-Ind {i j}{A : Set i}{B : Set j} where
-  open ×-def₂ using (_×_; _,_;proj₁;proj₂)
-  open ×-fun₂ using (uppt)
+module ×-Ind₂ {i j}{A : Set i}{B : Set j} where
+  open ×-Def₂ using (_×_; _,_;proj₁;proj₂)
+  open ×-Fun₂ using (uppt)
 
-  ×-ind : ∀ {k}(C : A × B → Set k)
+  ind : ∀ {k}(C : A × B → Set k)
         → ((x : A)(y : B) → C (x , y))
         → (x : A × B) → C x
-  ×-ind C g x = subst C (uppt x) (g (proj₁ x) (proj₂ x))
+  ind C g x = subst C (uppt x) (g (proj₁ x) (proj₂ x))
 
-  ×-ind-β : ∀ {k} (C : A × B → Set k)
+  ind-β : ∀ {k} (C : A × B → Set k)
           → (g : (x : A)(y : B) → C (x , y))
           → (x : A)(y : B)
-          → ×-ind C g (x , y) ≡ g x y
-  ×-ind-β C g x y = refl
+          → ind C g (x , y) ≡ g x y
+  ind-β C g x y = refl
 \end{code}
 
 <p class="exercise">
@@ -288,15 +292,15 @@ is valid.
 
 
 \begin{code}
-module Σ-def₂ where
+module Σ-Def₂ where
 
   data Σ {i j}(A : Set i)(B : A → Set j) : Set (i ⊔ j) where
     _,_ : (x : A) → B x → Σ A B
 \end{code}
 
 \begin{code}
-module Σ-fun₂ {i j } {A : Set i}{B : A → Set j} where
-  open Σ-def₂ using (Σ; _,_ )
+module Σ-Fun₂ {i j } {A : Set i}{B : A → Set j} where
+  open Σ-Def₂ using (Σ; _,_ )
 
   proj₁ : Σ A B → A
   proj₁ (a , b) = a
@@ -311,20 +315,20 @@ module Σ-fun₂ {i j } {A : Set i}{B : A → Set j} where
 Its induction principle:
 
 \begin{code}
-module Σ-Ind {i j}{A : Set i}{B : A → Set j} where
-  open Σ-def₂ public
-  open Σ-fun₂ public
+module Σ-Ind₂ {i j}{A : Set i}{B : A → Set j} where
+  open Σ-Def₂ public
+  open Σ-Fun₂ public
 
-  Σ-ind : (C : Σ A B → Set (i ⊔ j))
+  ind : (C : Σ A B → Set (i ⊔ j))
         → ((x : A)(y : B x) → C (x , y))
         → (x : Σ A B) → C x
-  Σ-ind C g (a , b) = g a b
+  ind C g (a , b) = g a b
 
-  Σ-ind-β : (C : Σ A B → Set (i ⊔ j))
+  ind-β : (C : Σ A B → Set (i ⊔ j))
           → (g : (x : A)(y : B x) → C (x , y))
           → (x : A) (y : B x)
-          → (Σ-ind C g (x , y)) ≡ g x y
-  Σ-ind-β C g x y = refl
+          → (ind C g (x , y)) ≡ g x y
+  ind-β C g x y = refl
 \end{code}
 
 ### Exercise 1.4
@@ -353,7 +357,7 @@ for natural numbers. (See more details in
 [Induction on Natural Numbers]({% post_url 2018-02-12-induction-on-natural-numbers %})).
 
 \begin{code}
-module ℕ-def where
+module ℕ-Def₁ where
 
   data ℕ : Set where
     zero : ℕ
@@ -374,8 +378,8 @@ module ℕ-def where
 Now, we define the iterator function:
 
 \begin{code}
-module ℕ-fun where
-  open ℕ-def using ( ℕ; recℕ; zero; suc)
+module ℕ-Fun₁ where
+  open ℕ-Def₁ using ( ℕ; recℕ; zero; suc)
 
   ite : ∀ (C : Set) → C → (C → C) → ℕ → C
   ite C c₀ cₛ zero    = c₀
@@ -387,7 +391,7 @@ as follows:
 
 \begin{code}
 -- recursor
-  open ×-def₂ using (_×_; proj₁; proj₂; _,_)
+  open ×-Def₂ using (_×_; proj₁; proj₂; _,_)
 
   rec₂ℕ : ∀ (C : Set) → C → (ℕ → C → C) → ℕ → (ℕ × C)
   rec₂ℕ C c₀ cₛ n =
@@ -402,19 +406,147 @@ definitions for the recursor, i.e, `recℕ` and `rec₂ℕ`. This can be proved 
 induction.
 
 \begin{code}
-open ℕ-def public
-open ℕ-fun public
+module exC1n4 where
 
-module exC1n4 (C : Set) (c₀ : C) (m : ℕ) (cₛ : ℕ → C → C) where
-  open ℕ-def using (ℕ; zero; suc; recℕ; indℕ)
-  open ℕ-fun using (ite; rec₂ℕ)
-  open ×-def₂ using (_×_; proj₁; proj₂; _,_)
+  open ℕ-Def₁ using (ℕ; zero; suc; recℕ; indℕ)
+  open ℕ-Fun₁ using (ite; rec₂ℕ)
+
+  open ×-Def₂ using (_×_; proj₁; proj₂; _,_)
 
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
         → ∀ (n : ℕ) → rec₂ℕ C c₀ cₛ n ≡ (n , recℕ C c₀ cₛ n)
   proof C c₀ cₛ zero    = refl
   proof C c₀ cₛ (suc n) = {!   !}
 \end{code}
+
+
+
+### Exercise 1.5
+
+<div class="exercise">
+
+Show that if we define
+
+  $$A+B :\equiv \sum\limits_{(x : \mathbbbold{2})} \mathsf{rec}_{\mathbbbold{2}} (\mathcal{U}, A , B, x),$$
+
+then we can give a definition of $$\ind\limits_{A + B}$$ for which the
+definitional equalities holds.
+
+</div>
+
+To solve this problem, let us introduce the $$\mathcal{2}$$ type, that is, the
+type with two constructors also called **Bool**. The constructors are also called
+false and true respectively.
+
+\begin{code}
+module 𝟚-Def₁ where
+
+  data 𝟚 : Set where
+    𝟘 : 𝟚
+    𝟙 : 𝟚
+\end{code}
+
+
+With the recursor:
+
+\begin{code}
+module 𝟚-Rec₁ where
+
+  open 𝟚-Def₁  using (𝟘;𝟙;𝟚)
+
+  rec : ∀ {i} {C : Set i} (a : C) (b : C ) → 𝟚 → C
+  rec a b 𝟘 = a
+  rec a b 𝟙 = b
+  -- rec is the same if_then_else
+\end{code}
+
+and its induction principle:
+
+\begin{code}
+module 𝟚-Ind₁ where
+
+  open 𝟚-Def₁ using (𝟘;𝟙;𝟚)
+
+  ind : ∀ {i} {C : 𝟚 → Set i} → C 𝟘 → C 𝟙 → (c : 𝟚) → C c
+  ind c₀ c₁ 𝟘 = c₀
+  ind c₀ c₁ 𝟙 = c₁
+\end{code}
+
+
+The we define the **coproduct** $$A+B$$ as follows:
+
+\begin{code}
+module +-Def₁ where
+
+  open Σ-Def₁ using (Σ;_,_;proj₁; proj₂) public
+
+  open 𝟚-Def₁ using (𝟘;𝟙;𝟚)
+  open 𝟚-Rec₁ using (rec)
+
+  _+_ : ∀ {i} (A B : Set i) → Set _
+  A + B = Σ 𝟚 (rec A B) -- if it's 𝟘 return A otherwise returns B
+
+  -- the tradional constructors
+  inl : ∀ {i}{A B : Set i} → A → A + B
+  inl a = (𝟘 , a)
+
+  inr : ∀ {i}{A B : Set i} → B → A + B
+  inr b = (𝟙 , b)
+\end{code}
+
+
+Now, let's try to define the recursor for this coproduct, and later,
+we'll try the dependent version of it to complete the exercise.
+
+\begin{code}
+module +-Rec₁ where
+
+  open +-Def₁ using (_+_; inl;inr;_,_)
+  open 𝟚-Def₁ using (𝟘;𝟙;𝟚)
+
+  rec : ∀ {i j} {A B : Set i} {C : Set j}
+      → (A → C)
+      → (B → C)
+      → A + B → C
+  rec f g (𝟘 , a) = f a
+  rec f g (𝟙 , b) = g b
+\end{code}
+
+
+Notice how the recursor of the coproduct matches with the elimination
+rule of the disjunction conective also called *case analysis*. That's follows from the
+[**propositions-as-types**](https://ncatlab.org/nlab/show/propositions+as+types).
+
+![path](/assets/latexit-images/disj-elimination.png)
+
+Finally, the induction principle for the coproduct:
+
+\begin{code}
+module +-Ind₁ where
+
+  open +-Def₁ using (_+_; inl;inr; _,_)
+  open 𝟚-Def₁ using (𝟘;𝟙;𝟚)
+
+  ind : ∀ {i j} {A B : Set i} {C : A + B → Set j}
+      → ((a : A) → C (inl a))
+      → ((b : B) → C (inr b))
+      → (p : A + B) → C p
+  ind f g (𝟘 , a) = f a -- TODO any reason to not use this definition?
+  ind f g (𝟙 , b) = g b
+
+  ind-β₁ : ∀ {i j} {A B : Set i} {C : A + B → Set j}
+      → (f : (a : A) → C (inl a))
+      → (g : (b : B) → C (inr b))
+      → (x : A) → ind {C = C} f g (inl x) ≡ f x
+  ind-β₁ f g x = refl
+
+  ind-β₂ : ∀ {i j} {A B : Set i} {C : A + B → Set j}
+      → (f : (a : A) → C (inl a))
+      → (g : (b : B) → C (inr b))
+      → (x : B) → ind {C = C} f g (inr x) ≡ g x
+  ind-β₂ f g x = refl
+\end{code}
+
 
 ## Chapter 3
 
@@ -428,7 +560,7 @@ To solve this problem, let us recall a few things:
 - The *set* definition in HoTT:
 
 A type $$A$$ is a **set** if for all $$x, y : A$$ and
-all $$p, q : x ≡ y$$, we have $$ p \equiv q$$. In a proposition
+all $$p, q : x \equiv y$$, we have $$ p \equiv q$$. In a proposition
 we have
 
 $$

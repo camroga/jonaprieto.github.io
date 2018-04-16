@@ -9,7 +9,7 @@ categories: type-theory
 
 A diagram for type family P : A → 𝒰.
 
-![path](/assets/images/type-family.png)
+![path](/assets/ipe-images/type-family.png)
 
 what'total space?
 

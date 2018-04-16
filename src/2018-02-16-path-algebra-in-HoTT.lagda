@@ -49,7 +49,7 @@ To join two paths when one ends where the other starts, we
 define the _concatenation_ operator between paths denoted by the symbol (`_·_`).
 Let's see its picture.
 
-![path](/assets/images/path-concatenation.png)
+![path](/assets/ipe-images/path-concatenation.png)
 
 \begin{code}
 infixr 20 _·_
@@ -95,7 +95,7 @@ identity type. Now let's see some algebra.
 + l4 : $$p \cdot \mathsf{refl} y \equiv p$$
 + l5 : $$ (p ^{-1})^{-1} \equiv p$$
 
-![path](/assets/images/path-algebra.png)
+![path](/assets/ipe-images/path-algebra.png)
 
 -----------------------------------------------------------------------------
 
@@ -152,4 +152,4 @@ trans : ∀ {A : Set}{x x' : A}
 trans B y refl  = y
 \end{code}
 
-![path](/assets/images/transport-fiber.png)
+![path](/assets/ipe-images/transport-fiber.png)

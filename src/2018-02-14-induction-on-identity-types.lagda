@@ -82,7 +82,7 @@ some x and y of type A. We can probably think that there is only one p, but
 there are many identifications between x and y from the HoTT perspective. That's
 the reason we talk about one path and one set of paths, the *path space*.
 
-![path](/assets/images/path.png)
+![path](/assets/ipe-images/path.png)
 
 Now, we introduce the induction principle for the identity type with `pi`
 abbreviation of path induction also called elimination identity and noted
