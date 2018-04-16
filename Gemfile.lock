@@ -282,7 +282,7 @@ DEPENDENCIES
   jekyll-git_metadata
   jekyll-last-modified-at
   jekyll-toc
-  minima (~> 2.4.1)
+  minima (~> 2.4.0)
 
 BUNDLED WITH
    1.16.1
