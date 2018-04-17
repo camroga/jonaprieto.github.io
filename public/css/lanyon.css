@@ -137,6 +137,22 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
 }
 
+.proof::first-line {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.proof {
+  position: relative;
+  padding: 16px;
+  border-radius: 3px;
+
+  color: black;
+  background-color: #f3f3f3;
+  border: 1px solid #c3c3c3;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+
 .equation, .eq, .math {
   text-align: -webkit-center;
   margin : 10px;

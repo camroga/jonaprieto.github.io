@@ -623,6 +623,24 @@ $$
 (f \sim g) :\equiv \prod\limits_{x : A} (f(x) \equiv g(x)).
 $$
 
+<div class="proof">
+Sketch of the proof.<br/>
+Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
+We need to prove $$ p \equiv q$$.<br/>
+Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and
+$$g, h : B \to A$$ such that $$f \circ g \sim id_{B}$$ and $$h \circ f \sim id_{A}$$.
+Using this function $$g$$ we can have that $$\mathsf{ap}_{g} p : g x \equiv_{A} g y$$.
+We do the same but starting witht the path $$q$$. Thus, $$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
+Because of $$A$$ is a set, $$\mathsf{ap}_{g} p \equiv \mathsf{ap}_{g} q$$.
+Again, action over this last path
+using $$f$$ to get $$\mathsf{ap}_{f} (\mathsf{ap}_{g} p \equiv \mathsf{ap}_{g} q) : f (g x) \equiv_{A} f (g y)$$.
+By the lemmas about $$\mathsf{ap}$$,
+$$\mathsf{ap}_{f} (\mathsf{ap}_{g} p \equiv \mathsf{ap}_{g}) = \mathsf{ap}_{(f \circ g)} (p \equiv q)$$.
+By definition of $$f$$ and $$g$$, since $$f \circ g \sim \mathsf{id}_{B}$$, then
+the las equility turns out into the equality: $$\mathsf{ap}_{\mathsf{id}_{B}} p \equiv q$$.
+That is, $$p \equiv q$$.
+</div>
+
 ### Exercise 3.2
 
 <div class="exercise">
