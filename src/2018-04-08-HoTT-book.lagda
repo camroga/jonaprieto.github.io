@@ -48,10 +48,17 @@ ap : ∀ {i j}{A : Set i}{B : Set j}{x y : A}
    → (f : A → B) → x ≡ y → f x ≡ f y
 ap f refl = refl
 
+ap₂ : ∀ {i j} {A B : Set i}{C : Set j}
+      {x₀ x₁ : A}{y₀ y₁ : B}
+    → (f : A → B → C) → (x₀ ≡ x₁) → (y₀ ≡ y₁)
+    → f x₀ y₀ ≡ f x₁ y₁
+ap₂ f refl refl = refl
+
 subst : ∀ {i j} {A : Set i}{x y : A}
       → (B : A → Set j) → x ≡ y
       → B x → B y
 subst B refl = (λ z → z)
+
 \end{code}
 
 Path induction:
@@ -242,19 +249,23 @@ Projections and $$\mathsf{uniq}_{A\times B}$$:
 module ×-Fun₂ {i j}{A : Set i}{B : Set j} where
   open ×-Def₂ using ( _×_;_,_; proj₁; proj₂)
 
-  -- unique principle *propositional uniqueness principle*
+  -- propositional uniqueness principle:
   uppt : (x : A × B) → (proj₁ x , proj₂ x) ≡ x
   uppt (a , b) = refl
 
-  -- some lemmas about transport
-  ap-proj₁ : {A B : Set}{x y : A × B} → (x ≡ y) → (proj₁ x) ≡ (proj₁ y)
+  -- (ap functions): (a)ction over a (p)ath
+  ap-proj₁ : {A B : Set}{x y : A × B}
+           → (x ≡ y) → proj₁ x ≡ proj₁ y
   ap-proj₁ refl = refl
 
-  ap-proj₂ : {A B : Set}{x y : A × B} → (x ≡ y) → (proj₂ x) ≡ (proj₂ y)
+  ap-proj₂ : {A B : Set}{x y : A × B}
+           → (x ≡ y) → proj₂ x ≡ proj₂ y
   ap-proj₂ refl = refl
+
+  pair= : ∀ {A B : Set} {x w : A} {y z : B}
+        → x ≡ w → y ≡ z → (x , y) ≡ (w , z)
+  pair= refl refl = refl
 \end{code}
-
-
 
 The induction principle for the product type:
 
@@ -290,13 +301,14 @@ is valid.
 
 Σ-type definition using `data`:
 
-
 \begin{code}
 module Σ-Def₂ where
 
   data Σ {i j}(A : Set i)(B : A → Set j) : Set (i ⊔ j) where
     _,_ : (x : A) → B x → Σ A B
 \end{code}
+
+Projections and uniqueness propositional principle:
 
 \begin{code}
 module Σ-Fun₂ {i j } {A : Set i}{B : A → Set j} where
@@ -347,13 +359,13 @@ $$
 \end{align*}
 $$
 </p>
-derive a function having the type of the recursor $$\mathsf{rec}{\mathbb{N}}$$.
+derive a function having the type of the recursor $$\mathsf{rec}$$.
 Show that the defining equations of the recursor hold propositionally for this
 function, using the induction principle for $$\mathbb{N}$$.
 </div>
 
 To solve this problem, let us define the recursor and also the induction principle
-for natural numbers. (See more details in
+for natural numbers. (See more details about these functions in
 [Induction on Natural Numbers]({% post_url 2018-02-12-induction-on-natural-numbers %})).
 
 \begin{code}
@@ -379,7 +391,7 @@ module ℕ-Ind where
   ind C c₀ cₛ (suc n) = cₛ n (ind C c₀ cₛ n)
 \end{code}
 
-Now, we define the iterator function:
+Now, we define the iterator following the equations above:
 
 \begin{code}
 module ℕ-Fun where
@@ -391,8 +403,9 @@ module ℕ-Fun where
   ite C c₀ cₛ (suc n) = cₛ (ite C c₀ cₛ n)
 \end{code}
 
-Then, we now can define the recursor using this iterator function `ite`
-as follows:
+Then, we now can define the recursor using this `ite` by iterating over the type
+`ℕ × C` (*reloading recursion*?).
+
 
 \begin{code}
 -- recursor
@@ -407,8 +420,8 @@ as follows:
 \end{code}
 
 Now, we need to establish the propositional equality between these two
-definitions for the recursor, i.e, `rec` and `rec₂`. This can be proved by
-induction.
+definitions of recursor, i.e, between `rec` and `rec₂`. Let's use
+induction to prove that.
 
 \begin{code}
 module exC1n4 where
@@ -419,13 +432,25 @@ module exC1n4 where
   open ℕ-Fun using (ite; rec₂)
 
   open ×-Def₂ using (_×_; proj₁; proj₂; _,_)
+  open ×-Fun₂
 
   proof : (C : Set)(c₀ : C)(cₛ : ℕ → C → C)
         → ∀ (n : ℕ) → rec₂ C c₀ cₛ n ≡ (n , rec C c₀ cₛ n)
-  proof C c₀ cₛ zero    = refl
-  proof C c₀ cₛ (suc n) = {!   !}
-\end{code}
 
+  proof C c₀ cₛ zero    = refl
+  proof C c₀ cₛ (suc n) = pair= {A = ℕ}{B = C} (ap suc v) (ap₂ cₛ v u)
+    where
+      v : proj₁ {A = ℕ}{B = C}
+        (ite
+            (ℕ × C)
+            (zero , c₀)
+            (λ p → suc (proj₁ p) , cₛ (proj₁ p) (proj₂ p)) n)
+         ≡ n
+      v = (ap-proj₁ {A = ℕ}{B = C} (proof C c₀ cₛ n))
+
+      u : proj₂ {A = ℕ}{B = C} (rec₂ C c₀ cₛ n) ≡ rec C c₀ cₛ n
+      u = ap-proj₂  {A = ℕ}{B = C} (proof C c₀ cₛ n)
+\end{code}
 
 
 ### Exercise 1.5
