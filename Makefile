@@ -13,7 +13,7 @@ latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexit
 all: _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG)
 
 _posts/ :
-	rm -Rf -d _post
+	rm -Rf -d _posts
 	mkdir -p _posts
 
 _posts/%.md : src/%.md
@@ -31,8 +31,9 @@ assets/latexit-images/%.png : src/latexit-images/%.png
 observr:
 	observr .observr
 # serve website using jekyll
+
 serve:
-	ruby -S bundle exec jekyll liveserve --watch
+	ruby -S bundle exec jekyll liveserve --force_polling --watch
 
 .phony: serve
 
