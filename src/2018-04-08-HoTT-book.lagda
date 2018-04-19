@@ -424,7 +424,7 @@ definitions of recursor, i.e, between `rec` and `rec₂`. Let's use
 induction to prove that.
 
 \begin{code}
-module exC1n4 where
+module ex1-4 where
 
   open ℕ-Def using (ℕ; zero; suc)
   open ℕ-Rec using (rec)
@@ -631,16 +631,19 @@ Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
 $$g : B \to A$$ such that $$f \circ g \sim id_{B}$$.
 Using this function $$g$$ over the path $$p$$ we get
 $$\mathsf{ap}_{g} p : g x \equiv_{A} g y$$.
-We do the same but this time over the path $$q$$, that is, $$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
-Because of $$A$$ is a set, we have a new path called $$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. <br/>
+We do the same but this time over the path $$q$$, that is,
+$$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
+Because of $$A$$ is a set, we have a new path called
+$$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. <br/>
 
 Now, an action over this path $$m$$
-using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$ will give us
+using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$
+will give us
 
 <p class="equation">
 $$
-\mathsf{ap}_{\mathsf{ap}_{f}} m :\equiv
-(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q)
+\mathsf{ap}_{\mathsf{ap}_{f}} m :
+(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).
 $$
 </p>
 By the lemmas in Chapter 2, we do the following reasoning:
@@ -653,15 +656,129 @@ $$
   &=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
   &= p \equiv q.
 \end{align*}
-$$
+$$<br/>
 </p>
+Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 </div>
+
+Now, let's verify this in Agda.
+
+\begin{code}
+module sets where
+
+  isSet : ∀ {i} (A : Set i) → Set _
+  isSet A = (x y : A) → (p : x ≡ y) → (q : x ≡ y) → p ≡ q
+
+  -- TODO
+\end{code}
 
 ### Exercise 3.2
 
 <div class="exercise">
 Prove that if $$A$$ and $$B$$ are sets, then so is $$A+B$$.
 </div>
+
+To solve this exercise, we should take a look of some results from Chapter 2,
+Section 2.12. But first let's define the empty type:
+
+\begin{code}
+module 𝟘-Def where
+  data 𝟘 : Set where
+
+module 𝟘-Rec where
+  open 𝟘-Def
+  rec : {A : Set} → 𝟘 → A
+  rec = λ ()
+\end{code}
+
+<div class="proof" id="proof-3.2">
+Sketch of the Proof.<br/>
+
+Let be $$x, y : A + B$$, and paths $$p : x \equiv y$$, $$q : x \equiv
+y$$. Let's get a path $$p \equiv q$$.  We proceed by case analysis. If
+$$x :\equiv \mathsf{inl} a$$ and $$y :\equiv \mathsf{inl} b$$, for
+some $$a, b : A$$ then $$\mathsf{ap}_{\mathsf{inl}^{-1}} p : a
+\equiv_{A} b$$ and $$\mathsf{ap}_{\mathsf{inl}^{-1}} q : a \equiv_{A}
+b$$.
+
+Since $$A$$ is a set, there is a path between these last two terms,
+this is, $$m : \mathsf{ap}_{\mathsf{inl}^{-1}} p \equiv
+\mathsf{ap}_{\mathsf{inl}^{-1}} q$$.  Now, an action over this path
+$$m$$ using the $$\mathsf{inl}$$ function give us:
+$$\mathsf{ap}_{\mathsf{inl}} m : \mathsf{ap}_{\mathsf{inl}}
+(\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv \mathsf{ap}_{\mathsf{inl}}
+(\mathsf{ap}_{\mathsf{inl}^{-1}} q)$$.<br/>
+
+We conclude by Lemmas in Chapter 2, that $$\mathsf{ap}_{\mathsf{inl}}
+m : p \equiv q$$ since $$\mathsf{ap}_{\mathsf{inl}}
+(\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv p$$.<br/> Following the
+same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
+:\equiv \mathsf{inr} b$$.  For the latest cases, $$x :\equiv
+\mathsf{inl} a$$ and $$y :\equiv \mathsf{inr} b$$ and $$x :\equiv
+\mathsf{inr} a$$ and $$y :\equiv \mathsf{inl} b$$, we use the
+encode-decode method to derive a proof term for 𝟘 from
+$$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
+\equiv q$$.  </div>
+
+\begin{code}
+module +-Def₂ where
+
+  data _+_ : Set → Set → Set₁ where
+    inl : ∀ {B : Set} → (A : Set) → A + B
+    inr : ∀ {A : Set} → (B : Set) → A + B
+
+module +-Fun₂ where
+
+  open +-Def₂
+  open 𝟘-Def
+  open 𝟘-Rec
+
+  code : {A B : Set}
+       → A + B → Set _
+  code {A}{B} (inl a) = a ≡ a
+  code {A}{B} (inr b) = {!!}
+
+module +-Rec₂ where
+  open +-Def₂
+
+  rec : {A B : Set}
+      → (C : Set)
+      → (A → C)
+      → (B → C)
+      → A + B → C
+  rec C f g (inl A) = f {! a  !}
+  rec C f g (inr B) = g {!   !}
+
+module +-Ind₂ where
+  open +-Def₂
+
+  -- ind : {A B : Set}
+  --     → (C : A + B → Set)
+  --     → ((x : A) → C (inl x))
+  --     → ((x : B) → C (inr x))
+  --     → (x : A + B) → C x
+  -- ind C f g c x = {!   !}
+
+-- module +-Fun₂ where
+
+\end{code}
+
+
+\begin{code}
+module ex3-2 where
+  open +-Def₂
+  open sets using (isSet)
+
+  p : {A B : Set}
+    → isSet A → isSet B → isSet (A + B)
+  p {.A} {B} setA setB (inl A) (inl .A) refl refl = refl
+  p {A} {.B} setA setB (inr B) (inr .B) refl refl = refl
+  p {.A} {.B} setA setB (inl A) (inr B) p q = {!   !}
+  p {.A} {.B} setA setB (inr B) (inl A) p q = {!   !}
+
+
+\end{code}
+
 
 ### Exercise 3.3
 
