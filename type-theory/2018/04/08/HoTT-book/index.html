@@ -117,6 +117,12 @@
         
       
     
+      
+        
+          <a class="sidebar-nav-item" href="/references/">References</a>
+        
+      
+    
 
     <!-- <a class="sidebar-nav-item" href="/archive/v0.0.4.zip">Download</a> -->
     <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
@@ -133,30 +139,52 @@
           <h3 class="masthead-title">
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
-            <small style="text-decoration:left">logs in progress<span class="modifications">(<span class="additions">+93718</span>/<span class="substractions">-71467</span>)</span></small>
+
+            <small style="text-decoration:left">logs in progress</small>
           </h3>
         </div>
       
       <div class="container content">
         <div class="post">
-  <h2 class="post-title">HoTT-Book Exercises</h2>
-  <small><span class="post-date">Created on 08 Apr 2018  and modified on 22 Apr 2018 </small>
-  </span>
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+3522</span>/<span class="substractions">-2774</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> fixing jekyll configuration</a></span>
+    </div>
+    <div class="main-last-date">
+        Latest commit <a href="">ab9939a </a> on  22 Apr 2018
+    </div>
+    </div>
+</div>
+  <h1 class="post-title">HoTT-Book Exercises</h1>
+
+  <!-- <span class="post-date">Created on 08 Apr 2018 -->
+    <!-- <small style="text-decoration:left">Created on 08 Apr 2018 on Latest change on 22 Apr 2018</small> -->
+  <!-- </span> -->
+
   
-  <p>This is a self-contained version of some solutions for HoTT-Book’s exercises.
+  <div class="toc">
+    <h2 class="table-of-contents"> Table of Contents </h2>
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#requirements">Requirements</a></li>
+<li class="toc-entry toc-h2"><a href="#chapter-1">Chapter 1</a></li>
+<li class="toc-entry toc-h2"><a href="#chapter-2">Chapter 2</a></li>
+<li class="toc-entry toc-h2"><a href="#chapter-3">Chapter 3</a></li>
+</ul><p>This is a self-contained version of some solutions for HoTT-Book’s exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
 Many changes can be appear running this experiment. The solutions are
 type-checked as a whole using Agda v2.5.3.</p>
 
-<h2 id="requirements">Requirements</h2>
+<h2 id="requirements">
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
-<hr />
+<hr>
 
 <p>Agda has a pragma to work with HoTT:</p>
 
 <pre class="Agda"><a id="519" class="Symbol">{-#</a> <a id="523" class="Keyword">OPTIONS</a> <a id="531" class="Option">--without-K</a> <a id="543" class="Symbol">#-}</a></pre>
 
-<hr />
+<hr>
 
 <p>Equality type defintion also called Identity type:</p>
 
@@ -192,13 +220,13 @@ type-checked as a whole using Agda v2.5.3.</p>
 
 <p>Path induction:</p>
 
-<pre class="Agda"><a id="J&#39;" href="/type-theory/2018/04/08/HoTT-book/#J%27" class="Function">J&#39;</a> <a id="1428" class="Symbol">:</a> <a id="1430" class="Symbol">∀</a> <a id="1432" class="Symbol">{</a><a id="1433" href="/type-theory/2018/04/08/HoTT-book/#1433" class="Bound">i</a> <a id="1435" href="/type-theory/2018/04/08/HoTT-book/#1435" class="Bound">j</a><a id="1436" class="Symbol">}{</a><a id="1438" href="/type-theory/2018/04/08/HoTT-book/#1438" class="Bound">X</a> <a id="1440" class="Symbol">:</a> <a id="1442" class="PrimitiveType">Set</a> <a id="1446" href="/type-theory/2018/04/08/HoTT-book/#1433" class="Bound">i</a><a id="1447" class="Symbol">}{</a><a id="1449" href="/type-theory/2018/04/08/HoTT-book/#1449" class="Bound">x</a> <a id="1451" class="Symbol">:</a> <a id="1453" href="/type-theory/2018/04/08/HoTT-book/#1438" class="Bound">X</a><a id="1454" class="Symbol">}</a>
+<pre class="Agda"><a id="J'" href="/type-theory/2018/04/08/HoTT-book/#J%27" class="Function">J'</a> <a id="1428" class="Symbol">:</a> <a id="1430" class="Symbol">∀</a> <a id="1432" class="Symbol">{</a><a id="1433" href="/type-theory/2018/04/08/HoTT-book/#1433" class="Bound">i</a> <a id="1435" href="/type-theory/2018/04/08/HoTT-book/#1435" class="Bound">j</a><a id="1436" class="Symbol">}{</a><a id="1438" href="/type-theory/2018/04/08/HoTT-book/#1438" class="Bound">X</a> <a id="1440" class="Symbol">:</a> <a id="1442" class="PrimitiveType">Set</a> <a id="1446" href="/type-theory/2018/04/08/HoTT-book/#1433" class="Bound">i</a><a id="1447" class="Symbol">}{</a><a id="1449" href="/type-theory/2018/04/08/HoTT-book/#1449" class="Bound">x</a> <a id="1451" class="Symbol">:</a> <a id="1453" href="/type-theory/2018/04/08/HoTT-book/#1438" class="Bound">X</a><a id="1454" class="Symbol">}</a>
    <a id="1459" class="Symbol">→</a> <a id="1461" class="Symbol">(</a><a id="1462" href="/type-theory/2018/04/08/HoTT-book/#1462" class="Bound">P</a> <a id="1464" class="Symbol">:</a> <a id="1466" class="Symbol">(</a><a id="1467" href="/type-theory/2018/04/08/HoTT-book/#1467" class="Bound">y</a> <a id="1469" class="Symbol">:</a> <a id="1471" href="/type-theory/2018/04/08/HoTT-book/#1438" class="Bound">X</a><a id="1472" class="Symbol">)</a> <a id="1474" class="Symbol">→</a> <a id="1476" href="/type-theory/2018/04/08/HoTT-book/#1449" class="Bound">x</a> <a id="1478" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="1480" href="/type-theory/2018/04/08/HoTT-book/#1467" class="Bound">y</a> <a id="1482" class="Symbol">→</a> <a id="1484" class="PrimitiveType">Set</a> <a id="1488" href="/type-theory/2018/04/08/HoTT-book/#1435" class="Bound">j</a><a id="1489" class="Symbol">)</a>
    <a id="1494" class="Symbol">→</a> <a id="1496" href="/type-theory/2018/04/08/HoTT-book/#1462" class="Bound">P</a> <a id="1498" href="/type-theory/2018/04/08/HoTT-book/#1449" class="Bound">x</a> <a id="1500" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a>
    <a id="1508" class="Symbol">→</a> <a id="1510" class="Symbol">(</a><a id="1511" href="/type-theory/2018/04/08/HoTT-book/#1511" class="Bound">y</a> <a id="1513" class="Symbol">:</a> <a id="1515" href="/type-theory/2018/04/08/HoTT-book/#1438" class="Bound">X</a><a id="1516" class="Symbol">)</a>
    <a id="1521" class="Symbol">→</a> <a id="1523" class="Symbol">(</a><a id="1524" href="/type-theory/2018/04/08/HoTT-book/#1524" class="Bound">p</a> <a id="1526" class="Symbol">:</a> <a id="1528" href="/type-theory/2018/04/08/HoTT-book/#1449" class="Bound">x</a> <a id="1530" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="1532" href="/type-theory/2018/04/08/HoTT-book/#1511" class="Bound">y</a><a id="1533" class="Symbol">)</a>
    <a id="1538" class="Symbol">→</a> <a id="1540" href="/type-theory/2018/04/08/HoTT-book/#1462" class="Bound">P</a> <a id="1542" href="/type-theory/2018/04/08/HoTT-book/#1511" class="Bound">y</a> <a id="1544" href="/type-theory/2018/04/08/HoTT-book/#1524" class="Bound">p</a>
-<a id="1546" href="/type-theory/2018/04/08/HoTT-book/#J%27" class="Function">J&#39;</a> <a id="1549" href="/type-theory/2018/04/08/HoTT-book/#1549" class="Bound">P</a> <a id="1551" href="/type-theory/2018/04/08/HoTT-book/#1551" class="Bound">u</a> <a id="1553" href="/type-theory/2018/04/08/HoTT-book/#1553" class="Bound">y</a> <a id="1555" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a> <a id="1560" class="Symbol">=</a> <a id="1562" href="/type-theory/2018/04/08/HoTT-book/#1551" class="Bound">u</a>
+<a id="1546" href="/type-theory/2018/04/08/HoTT-book/#J%27" class="Function">J'</a> <a id="1549" href="/type-theory/2018/04/08/HoTT-book/#1549" class="Bound">P</a> <a id="1551" href="/type-theory/2018/04/08/HoTT-book/#1551" class="Bound">u</a> <a id="1553" href="/type-theory/2018/04/08/HoTT-book/#1553" class="Bound">y</a> <a id="1555" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a> <a id="1560" class="Symbol">=</a> <a id="1562" href="/type-theory/2018/04/08/HoTT-book/#1551" class="Bound">u</a>
 
 <a id="J" href="/type-theory/2018/04/08/HoTT-book/#J" class="Function">J</a> <a id="1567" class="Symbol">:</a> <a id="1569" class="Symbol">∀</a> <a id="1571" class="Symbol">{</a><a id="1572" href="/type-theory/2018/04/08/HoTT-book/#1572" class="Bound">i</a> <a id="1574" href="/type-theory/2018/04/08/HoTT-book/#1574" class="Bound">j</a><a id="1575" class="Symbol">}{</a><a id="1577" href="/type-theory/2018/04/08/HoTT-book/#1577" class="Bound">X</a> <a id="1579" class="Symbol">:</a> <a id="1581" class="PrimitiveType">Set</a> <a id="1585" href="/type-theory/2018/04/08/HoTT-book/#1572" class="Bound">i</a><a id="1586" class="Symbol">}</a>
   <a id="1590" class="Symbol">→</a> <a id="1592" class="Symbol">(</a><a id="1593" href="/type-theory/2018/04/08/HoTT-book/#1593" class="Bound">P</a> <a id="1595" class="Symbol">:</a> <a id="1597" class="Symbol">(</a><a id="1598" href="/type-theory/2018/04/08/HoTT-book/#1598" class="Bound">x</a> <a id="1600" href="/type-theory/2018/04/08/HoTT-book/#1600" class="Bound">y</a> <a id="1602" class="Symbol">:</a> <a id="1604" href="/type-theory/2018/04/08/HoTT-book/#1577" class="Bound">X</a><a id="1605" class="Symbol">)</a> <a id="1607" class="Symbol">→</a> <a id="1609" href="/type-theory/2018/04/08/HoTT-book/#1598" class="Bound">x</a> <a id="1611" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="1613" href="/type-theory/2018/04/08/HoTT-book/#1600" class="Bound">y</a> <a id="1615" class="Symbol">→</a> <a id="1617" class="PrimitiveType">Set</a> <a id="1621" href="/type-theory/2018/04/08/HoTT-book/#1574" class="Bound">j</a><a id="1622" class="Symbol">)</a>
@@ -206,11 +234,12 @@ type-checked as a whole using Agda v2.5.3.</p>
   <a id="1653" class="Symbol">→</a> <a id="1655" class="Symbol">(</a><a id="1656" href="/type-theory/2018/04/08/HoTT-book/#1656" class="Bound">x</a> <a id="1658" href="/type-theory/2018/04/08/HoTT-book/#1658" class="Bound">y</a> <a id="1660" class="Symbol">:</a> <a id="1662" href="/type-theory/2018/04/08/HoTT-book/#1577" class="Bound">X</a><a id="1663" class="Symbol">)</a>
   <a id="1667" class="Symbol">→</a> <a id="1669" class="Symbol">(</a><a id="1670" href="/type-theory/2018/04/08/HoTT-book/#1670" class="Bound">p</a> <a id="1672" class="Symbol">:</a> <a id="1674" href="/type-theory/2018/04/08/HoTT-book/#1656" class="Bound">x</a> <a id="1676" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="1678" href="/type-theory/2018/04/08/HoTT-book/#1658" class="Bound">y</a><a id="1679" class="Symbol">)</a>
   <a id="1683" class="Symbol">→</a> <a id="1685" href="/type-theory/2018/04/08/HoTT-book/#1593" class="Bound">P</a> <a id="1687" href="/type-theory/2018/04/08/HoTT-book/#1656" class="Bound">x</a> <a id="1689" href="/type-theory/2018/04/08/HoTT-book/#1658" class="Bound">y</a> <a id="1691" href="/type-theory/2018/04/08/HoTT-book/#1670" class="Bound">p</a>
-<a id="1693" href="/type-theory/2018/04/08/HoTT-book/#J" class="Function">J</a> <a id="1695" href="/type-theory/2018/04/08/HoTT-book/#1695" class="Bound">P</a> <a id="1697" href="/type-theory/2018/04/08/HoTT-book/#1697" class="Bound">u</a> <a id="1699" href="/type-theory/2018/04/08/HoTT-book/#1699" class="Bound">x</a> <a id="1701" href="/type-theory/2018/04/08/HoTT-book/#1701" class="Bound">y</a> <a id="1703" href="/type-theory/2018/04/08/HoTT-book/#1703" class="Bound">p</a> <a id="1705" class="Symbol">=</a> <a id="1707" href="/type-theory/2018/04/08/HoTT-book/#J%27" class="Function">J&#39;</a> <a id="1710" class="Symbol">(</a><a id="1711" href="/type-theory/2018/04/08/HoTT-book/#1695" class="Bound">P</a> <a id="1713" href="/type-theory/2018/04/08/HoTT-book/#1699" class="Bound">x</a><a id="1714" class="Symbol">)</a> <a id="1716" class="Symbol">(</a><a id="1717" href="/type-theory/2018/04/08/HoTT-book/#1697" class="Bound">u</a> <a id="1719" href="/type-theory/2018/04/08/HoTT-book/#1699" class="Bound">x</a><a id="1720" class="Symbol">)</a> <a id="1722" href="/type-theory/2018/04/08/HoTT-book/#1701" class="Bound">y</a> <a id="1724" href="/type-theory/2018/04/08/HoTT-book/#1703" class="Bound">p</a></pre>
+<a id="1693" href="/type-theory/2018/04/08/HoTT-book/#J" class="Function">J</a> <a id="1695" href="/type-theory/2018/04/08/HoTT-book/#1695" class="Bound">P</a> <a id="1697" href="/type-theory/2018/04/08/HoTT-book/#1697" class="Bound">u</a> <a id="1699" href="/type-theory/2018/04/08/HoTT-book/#1699" class="Bound">x</a> <a id="1701" href="/type-theory/2018/04/08/HoTT-book/#1701" class="Bound">y</a> <a id="1703" href="/type-theory/2018/04/08/HoTT-book/#1703" class="Bound">p</a> <a id="1705" class="Symbol">=</a> <a id="1707" href="/type-theory/2018/04/08/HoTT-book/#J%27" class="Function">J'</a> <a id="1710" class="Symbol">(</a><a id="1711" href="/type-theory/2018/04/08/HoTT-book/#1695" class="Bound">P</a> <a id="1713" href="/type-theory/2018/04/08/HoTT-book/#1699" class="Bound">x</a><a id="1714" class="Symbol">)</a> <a id="1716" class="Symbol">(</a><a id="1717" href="/type-theory/2018/04/08/HoTT-book/#1697" class="Bound">u</a> <a id="1719" href="/type-theory/2018/04/08/HoTT-book/#1699" class="Bound">x</a><a id="1720" class="Symbol">)</a> <a id="1722" href="/type-theory/2018/04/08/HoTT-book/#1701" class="Bound">y</a> <a id="1724" href="/type-theory/2018/04/08/HoTT-book/#1703" class="Bound">p</a></pre>
 
-<hr />
+<hr>
 
-<h2 id="chapter-1">Chapter 1</h2>
+<h2 id="chapter-1">
+<a id="chapter-1" class="anchor" href="#chapter-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chapter 1</h2>
 
 <h3 id="exercise-11">Exercise 1.1</h3>
 
@@ -268,7 +297,7 @@ $$
   </li>
 </ul>
 
-<hr />
+<hr>
 
 <p>Σ-type (sigma type) definition (see the definition without projections
 <a href="https://github.com/jonaprieto/hott-book/blob/master/other/prelim.agda#L20">here</a>):</p>
@@ -298,7 +327,7 @@ that we provide.</p>
   <a id="Σ-Rec₁.rec-β" href="/type-theory/2018/04/08/HoTT-book/#%CE%A3-Rec%E2%82%81.rec-%CE%B2" class="Function">rec-β</a> <a id="4049" class="Symbol">:</a> <a id="4051" class="Symbol">(</a><a id="4052" href="/type-theory/2018/04/08/HoTT-book/#4052" class="Bound">x</a> <a id="4054" class="Symbol">:</a> <a id="4056" href="/type-theory/2018/04/08/HoTT-book/#3863" class="Bound">A</a><a id="4057" class="Symbol">)(</a><a id="4059" href="/type-theory/2018/04/08/HoTT-book/#4059" class="Bound">y</a> <a id="4061" class="Symbol">:</a> <a id="4063" href="/type-theory/2018/04/08/HoTT-book/#3874" class="Bound">B</a> <a id="4065" href="/type-theory/2018/04/08/HoTT-book/#4052" class="Bound">x</a><a id="4066" class="Symbol">)</a> <a id="4068" class="Symbol">→</a> <a id="4070" href="/type-theory/2018/04/08/HoTT-book/#%CE%A3-Rec%E2%82%81.rec" class="Function">rec</a> <a id="4074" class="Symbol">(</a><a id="4075" href="/type-theory/2018/04/08/HoTT-book/#4052" class="Bound">x</a> <a id="4077" href="/type-theory/2018/04/08/HoTT-book/#%CE%A3-Def%E2%82%81.%CE%A3._%2C_" class="InductiveConstructor Operator">,</a> <a id="4079" href="/type-theory/2018/04/08/HoTT-book/#4059" class="Bound">y</a><a id="4080" class="Symbol">)</a> <a id="4082" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="4084" href="/type-theory/2018/04/08/HoTT-book/#3914" class="Bound">g</a> <a id="4086" href="/type-theory/2018/04/08/HoTT-book/#4052" class="Bound">x</a> <a id="4088" href="/type-theory/2018/04/08/HoTT-book/#4059" class="Bound">y</a>
   <a id="4092" href="/type-theory/2018/04/08/HoTT-book/#%CE%A3-Rec%E2%82%81.rec-%CE%B2" class="Function">rec-β</a> <a id="4098" href="/type-theory/2018/04/08/HoTT-book/#4098" class="Bound">x</a> <a id="4100" href="/type-theory/2018/04/08/HoTT-book/#4100" class="Bound">y</a> <a id="4102" class="Symbol">=</a> <a id="4104" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a></pre>
 
-<hr />
+<hr>
 
 <p>On the other hand, the product type is just a particular case of the sigma type
 when the codomain is not dependent, as we can see next by omitting the argument
@@ -606,7 +635,7 @@ false and true respectively.</p>
   <a id="12573" class="Keyword">open</a> <a id="12578" href="/type-theory/2018/04/08/HoTT-book/#%F0%9D%9F%9A-Rec%E2%82%81" class="Module">𝟚-Rec₁</a> <a id="12585" class="Keyword">using</a> <a id="12591" class="Symbol">(</a><a id="12592" href="/type-theory/2018/04/08/HoTT-book/#%F0%9D%9F%9A-Rec%E2%82%81.rec" class="Function">rec</a><a id="12595" class="Symbol">)</a>
 
   <a id="+-Def₁._+_" href="/type-theory/2018/04/08/HoTT-book/#%2B-Def%E2%82%81._%2B_" class="Function Operator">_+_</a> <a id="12604" class="Symbol">:</a> <a id="12606" class="Symbol">∀</a> <a id="12608" class="Symbol">{</a><a id="12609" href="/type-theory/2018/04/08/HoTT-book/#12609" class="Bound">i</a><a id="12610" class="Symbol">}</a> <a id="12612" class="Symbol">(</a><a id="12613" href="/type-theory/2018/04/08/HoTT-book/#12613" class="Bound">A</a> <a id="12615" href="/type-theory/2018/04/08/HoTT-book/#12615" class="Bound">B</a> <a id="12617" class="Symbol">:</a> <a id="12619" class="PrimitiveType">Set</a> <a id="12623" href="/type-theory/2018/04/08/HoTT-book/#12609" class="Bound">i</a><a id="12624" class="Symbol">)</a> <a id="12626" class="Symbol">→</a> <a id="12628" class="PrimitiveType">Set</a> <a id="12632" class="Symbol">_</a>
-  <a id="12636" href="/type-theory/2018/04/08/HoTT-book/#12636" class="Bound">A</a> <a id="12638" href="/type-theory/2018/04/08/HoTT-book/#%2B-Def%E2%82%81._%2B_" class="Function Operator">+</a> <a id="12640" href="/type-theory/2018/04/08/HoTT-book/#12640" class="Bound">B</a> <a id="12642" class="Symbol">=</a> <a id="12644" href="/type-theory/2018/04/08/HoTT-book/#%CE%A3-Def%E2%82%81.%CE%A3" class="Record">Σ</a> <a id="12646" href="/type-theory/2018/04/08/HoTT-book/#%F0%9D%9F%9A-Def%E2%82%81.%F0%9D%9F%9A" class="Datatype">𝟚</a> <a id="12648" class="Symbol">(</a><a id="12649" href="/type-theory/2018/04/08/HoTT-book/#%F0%9D%9F%9A-Rec%E2%82%81.rec" class="Function">rec</a> <a id="12653" href="/type-theory/2018/04/08/HoTT-book/#12636" class="Bound">A</a> <a id="12655" href="/type-theory/2018/04/08/HoTT-book/#12640" class="Bound">B</a><a id="12656" class="Symbol">)</a> <a id="12658" class="Comment">-- if it&#39;s 𝟘 return A otherwise returns B</a>
+  <a id="12636" href="/type-theory/2018/04/08/HoTT-book/#12636" class="Bound">A</a> <a id="12638" href="/type-theory/2018/04/08/HoTT-book/#%2B-Def%E2%82%81._%2B_" class="Function Operator">+</a> <a id="12640" href="/type-theory/2018/04/08/HoTT-book/#12640" class="Bound">B</a> <a id="12642" class="Symbol">=</a> <a id="12644" href="/type-theory/2018/04/08/HoTT-book/#%CE%A3-Def%E2%82%81.%CE%A3" class="Record">Σ</a> <a id="12646" href="/type-theory/2018/04/08/HoTT-book/#%F0%9D%9F%9A-Def%E2%82%81.%F0%9D%9F%9A" class="Datatype">𝟚</a> <a id="12648" class="Symbol">(</a><a id="12649" href="/type-theory/2018/04/08/HoTT-book/#%F0%9D%9F%9A-Rec%E2%82%81.rec" class="Function">rec</a> <a id="12653" href="/type-theory/2018/04/08/HoTT-book/#12636" class="Bound">A</a> <a id="12655" href="/type-theory/2018/04/08/HoTT-book/#12640" class="Bound">B</a><a id="12656" class="Symbol">)</a> <a id="12658" class="Comment">-- if it's 𝟘 return A otherwise returns B</a>
 
   <a id="12703" class="Comment">-- the tradional constructors</a>
   <a id="+-Def₁.inl" href="/type-theory/2018/04/08/HoTT-book/#%2B-Def%E2%82%81.inl" class="Function">inl</a> <a id="12739" class="Symbol">:</a> <a id="12741" class="Symbol">∀</a> <a id="12743" class="Symbol">{</a><a id="12744" href="/type-theory/2018/04/08/HoTT-book/#12744" class="Bound">i</a><a id="12745" class="Symbol">}{</a><a id="12747" href="/type-theory/2018/04/08/HoTT-book/#12747" class="Bound">A</a> <a id="12749" href="/type-theory/2018/04/08/HoTT-book/#12749" class="Bound">B</a> <a id="12751" class="Symbol">:</a> <a id="12753" class="PrimitiveType">Set</a> <a id="12757" href="/type-theory/2018/04/08/HoTT-book/#12744" class="Bound">i</a><a id="12758" class="Symbol">}</a> <a id="12760" class="Symbol">→</a> <a id="12762" href="/type-theory/2018/04/08/HoTT-book/#12747" class="Bound">A</a> <a id="12764" class="Symbol">→</a> <a id="12766" href="/type-theory/2018/04/08/HoTT-book/#12747" class="Bound">A</a> <a id="12768" href="/type-theory/2018/04/08/HoTT-book/#%2B-Def%E2%82%81._%2B_" class="Function Operator">+</a> <a id="12770" href="/type-theory/2018/04/08/HoTT-book/#12749" class="Bound">B</a>
@@ -634,7 +663,7 @@ we’ll try the dependent version of it to complete the exercise.</p>
 rule of the disjunction conective also called <em>case analysis</em>. That’s follows from the
 <a href="https://ncatlab.org/nlab/show/propositions+as+types"><strong>propositions-as-types</strong></a>.</p>
 
-<p><img src="/assets/latexit-images/disj-elimination.png" alt="path" /></p>
+<p><img src="/assets/latexit-images/disj-elimination.png" alt="path"></p>
 
 <p>Finally, the induction principle for the coproduct:</p>
 
@@ -662,9 +691,11 @@ rule of the disjunction conective also called <em>case analysis</em>. That’s f
       <a id="14251" class="Symbol">→</a> <a id="14253" class="Symbol">(</a><a id="14254" href="/type-theory/2018/04/08/HoTT-book/#14254" class="Bound">x</a> <a id="14256" class="Symbol">:</a> <a id="14258" href="/type-theory/2018/04/08/HoTT-book/#14146" class="Bound">B</a><a id="14259" class="Symbol">)</a> <a id="14261" class="Symbol">→</a> <a id="14263" href="/type-theory/2018/04/08/HoTT-book/#%2B-Ind%E2%82%81.ind" class="Function">ind</a> <a id="14267" class="Symbol">{</a><a id="14268" class="Argument">C</a> <a id="14270" class="Symbol">=</a> <a id="14272" href="/type-theory/2018/04/08/HoTT-book/#14158" class="Bound">C</a><a id="14273" class="Symbol">}</a> <a id="14275" href="/type-theory/2018/04/08/HoTT-book/#14186" class="Bound">f</a> <a id="14277" href="/type-theory/2018/04/08/HoTT-book/#14220" class="Bound">g</a> <a id="14279" class="Symbol">(</a><a id="14280" href="/type-theory/2018/04/08/HoTT-book/#%2B-Def%E2%82%81.inr" class="Function">inr</a> <a id="14284" href="/type-theory/2018/04/08/HoTT-book/#14254" class="Bound">x</a><a id="14285" class="Symbol">)</a> <a id="14287" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="14289" href="/type-theory/2018/04/08/HoTT-book/#14220" class="Bound">g</a> <a id="14291" href="/type-theory/2018/04/08/HoTT-book/#14254" class="Bound">x</a>
   <a id="14295" href="/type-theory/2018/04/08/HoTT-book/#%2B-Ind%E2%82%81.ind-%CE%B2%E2%82%82" class="Function">ind-β₂</a> <a id="14302" href="/type-theory/2018/04/08/HoTT-book/#14302" class="Bound">f</a> <a id="14304" href="/type-theory/2018/04/08/HoTT-book/#14304" class="Bound">g</a> <a id="14306" href="/type-theory/2018/04/08/HoTT-book/#14306" class="Bound">x</a> <a id="14308" class="Symbol">=</a> <a id="14310" href="/type-theory/2018/04/08/HoTT-book/#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a></pre>
 
-<h2 id="chapter-2">Chapter 2</h2>
+<h2 id="chapter-2">
+<a id="chapter-2" class="anchor" href="#chapter-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chapter 2</h2>
 
-<h2 id="chapter-3">Chapter 3</h2>
+<h2 id="chapter-3">
+<a id="chapter-3" class="anchor" href="#chapter-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chapter 3</h2>
 
 <p>To solve the following exercises, let us recall a few things:</p>
 
@@ -679,7 +710,8 @@ we have</p>
 <script type="math/tex; mode=display">\mathsf{isSet}(A) :\equiv \prod\limits_{(x,y : A)}\prod\limits_{(p,q : x \equiv y)} (p \equiv q).</script>
 
 <ul>
-  <li>The type for equivalence from <script type="math/tex">A</script> to <script type="math/tex">B</script></li>
+  <li>The type for equivalence from <script type="math/tex">A</script> to <script type="math/tex">B</script>
+</li>
 </ul>
 
 <script type="math/tex; mode=display">(A \simeq B) :\equiv \sum\limits_{f : A \to B} \mathsf{isequiv}(f),</script>
@@ -707,9 +739,9 @@ Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
 </div>
 
 <div class="proof" id="proof-3.1">
-Sketch of the proof.<br />
+Sketch of the proof.<br>
 Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
-We need to prove $$ p \equiv q$$.<br />
+We need to prove $$ p \equiv q$$.<br>
 Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
 $$g : B \to A$$ such that $$f \circ g \sim id_{B}$$.
 Using this function $$g$$ over the path $$p$$ we get
@@ -717,7 +749,7 @@ $$\mathsf{ap}_{g} p : g x \equiv_{A} g y$$.
 We do the same but this time over the path $$q$$, that is,
 $$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
 Because of $$A$$ is a set, we have a new path called
-$$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. <br />
+$$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. <br>
 
 Now, an action over this path $$m$$
 using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$
@@ -739,7 +771,7 @@ $$
   &amp;=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
   &amp;= p \equiv q.
 \end{align*}
-$$<br />
+$$<br>
 </p>
 Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 </div>
@@ -763,7 +795,7 @@ Prove that if $$A$$ and $$B$$ are sets, then so is $$A+B$$.
 Section 2.12.</p>
 
 <div class="proof" id="proof-3.2">
-Sketch of the Proof.<br />
+Sketch of the Proof.<br>
 
 Let be $$x, y : A + B$$, and paths $$p : x \equiv y$$, $$q : x \equiv
 y$$. Let's get a path $$p \equiv q$$.  We proceed by case analysis. If
@@ -778,11 +810,11 @@ this is, $$m : \mathsf{ap}_{\mathsf{inl}^{-1}} p \equiv
 $$m$$ using the $$\mathsf{inl}$$ function give us:
 $$\mathsf{ap}_{\mathsf{inl}} m : \mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv \mathsf{ap}_{\mathsf{inl}}
-(\mathsf{ap}_{\mathsf{inl}^{-1}} q)$$.<br />
+(\mathsf{ap}_{\mathsf{inl}^{-1}} q)$$.<br>
 
 We conclude by Lemmas in Chapter 2, that $$\mathsf{ap}_{\mathsf{inl}}
 m : p \equiv q$$ since $$\mathsf{ap}_{\mathsf{inl}}
-(\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv p$$.<br /> Following the
+(\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv p$$.<br> Following the
 same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
 :\equiv \mathsf{inr} b$$.  For the latest cases, $$x :\equiv
 \mathsf{inl} a$$ and $$y :\equiv \mathsf{inr} b$$ and $$x :\equiv
@@ -882,7 +914,13 @@ if $$A\to A$$ is contractible.
   </li>
 </ul>
 
+  </div>
   
+
+  <!-- <h2> References </h2> -->
+  <ol class="bibliography"></ol>
+  <!-- </ -->
+
 </div>
 
 <div class="related">
