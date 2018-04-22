@@ -68,3 +68,8 @@ We mostly refer to type theories using the following abbreviations:
 - Cubical type theory
 - Observational type theory
 - [Computational higher type theory](https://github.com/CHTT-s18/lecture-notes)
+
+
+### References
+
+- {% reference hottbook %}

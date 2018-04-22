@@ -179,3 +179,7 @@ Functional extensionality implies a form of extensionality for
 <div class="todo">
 Univalance implies function extensionality and the uniqueness principle for functions.
 </div>
+
+### References
+
+- {% reference hottbook %}

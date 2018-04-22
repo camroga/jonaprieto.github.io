@@ -41,7 +41,6 @@ satisfies, $$y$$ satisfies as well.
     <a id="1179" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1179" class="Function">p₁</a> <a id="1182" class="Symbol">:</a> <a id="1184" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1135" class="Bound">A</a> <a id="1186" class="Symbol">→</a> <a id="1188" class="PrimitiveType">Set</a>
     <a id="1196" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1179" class="Function">p₁</a> <a id="1199" class="Symbol">=</a> <a id="1201" class="Symbol">λ</a> <a id="1203" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1203" class="Bound">z</a> <a id="1205" class="Symbol">→</a> <a id="1207" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1146" class="Bound">P</a> <a id="1209" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1203" class="Bound">z</a> <a id="1211" class="Symbol">→</a> <a id="1213" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1146" class="Bound">P</a> <a id="1215" href="{% endraw %}{% link _posts/2018-02-09-leibniz-s-equality.md %}{% raw %}#1138" class="Bound">x</a>{% endraw %}</pre>
 
-
 > The principle of identity of indiscernibles states that two objects
 are identical if they have all the same properties.
 This is also known as “Leibniz’s Law”... in [https://ncatlab.org/nlab/show/identity+of+indiscernibles](https://ncatlab.org/nlab/show/identity+of+indiscernibles)
