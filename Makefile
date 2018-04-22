@@ -92,10 +92,6 @@ $(HOME)/agda2html-master/:
 
 .phony : push-sources
 push-sources :
-	- @echo "==================================================================="
-	-	@echo "========================= Jekyll Building ========================="
-	-	@echo "==================================================================="
-	- @jekyll build
 	- @git checkout sources
 	- @git add --all
 	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
@@ -117,6 +113,10 @@ push-sources :
 .phony : push
 push :
 	- make push-sources
+	- @echo "==================================================================="
+	-	@echo "========================= Jekyll Building ========================="
+	-	@echo "==================================================================="
+	- @jekyll build
 	- @if [[ -d "_site/.git" ]]; then \
 			echo "===================================================================" &&\
 	    echo "================ STATICS FILES: Pushing on MASTER =================" &&\
