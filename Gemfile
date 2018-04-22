@@ -9,5 +9,7 @@ group :jekyll_plugins do
    gem 'jekyll-last-modified-at'
    gem 'jekyll-algolia',  "~> 1.3.3"
    gem 'jekyll-toc'
+   gem 'jekyll-github-metadata'
    gem 'jekyll-git_metadata'
+   gem 'netrc'
 end

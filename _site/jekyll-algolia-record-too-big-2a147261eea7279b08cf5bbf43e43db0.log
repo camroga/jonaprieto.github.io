@@ -1,0 +1,104 @@
+{
+  "html": "<pre class=\"Agda\"><a>isEquiv</a>\n  <a>:</a> <a>{</a><a>U</a> <a>V</a> <a>:</a> <a>Universe</a><a>}</a> <a>{</a><a>X</a> <a>:</a> <a>Set</a> <a>U</a><a>}</a> <a>{</a><a>Y</a> <a>:</a> <a>Set</a> <a>V</a><a>}</a>\n  <a>→</a> <a>(</a><a>X</a> <a>→</a> <a>Y</a><a>)</a>\n  <a>→</a> <a>Set</a> <a>(</a><a>U</a> <a>⊔</a> <a>V</a><a>)</a>\n<a>isEquiv</a> <a>f</a> <a>=</a> <a>(</a><a>y</a> <a>:</a> <a>_)</a> <a>→</a> <a>isSingleton</a><a>(</a><a>fiber</a> <a>f</a> <a>y</a><a>)</a>\n\n<a>Eq</a> <a>:</a> <a>{</a><a>U</a> <a>V</a> <a>:</a> <a>Universe</a><a>}</a> <a>→</a> <a>Set</a> <a>U</a> <a>→</a> <a>Set</a> <a>V</a> <a>→</a> <a>Set</a> <a>(</a><a>U</a> <a>⊔</a> <a>V</a><a>)</a>\n<a>Eq</a> <a>X</a> <a>Y</a> <a>=</a> <a>Σ</a> <a>\\(</a><a>f</a> <a>:</a> <a>X</a> <a>→</a> <a>Y</a><a>)</a> <a>→</a> <a>isEquiv</a> <a>f</a>\n\n\n<a>η</a> <a>:</a> <a>{</a><a>U</a> <a>:</a> <a>Universe</a><a>}</a> <a>{</a><a>X</a> <a>:</a> <a>Set</a> <a>U</a><a>}</a> <a>(</a><a>x</a> <a>:</a> <a>X</a><a>)</a> <a>→</a> <a>singletonType</a> <a>x</a>\n<a>η</a> <a>x</a> <a>=</a> <a>(</a><a>x</a> <a>,</a> <a>refl</a> <a>x</a><a>)</a>\n\n<a>singletonTypesAreSingletons</a> <a>:</a> <a>{</a><a>U</a> <a>:</a> <a>Universe</a><a>}</a> <a>{</a><a>X</a> <a>:</a> <a>Set</a> <a>U</a><a>}</a> <a>(</a><a>x</a> <a>:</a> <a>X</a><a>)</a> <a>→</a> <a>isSingleton</a><a>(</a><a>singletonType</a> <a>x</a><a>)</a>\n<a>singletonTypesAreSingletons</a> <a>{</a><a>U</a><a>}</a> <a>{</a><a>X</a><a>}</a> <a>=</a> <a>h</a>\n <a>where</a>\n  <a>A</a> <a>:</a> <a>(</a><a>y</a> <a>x</a> <a>:</a> <a>X</a><a>)</a> <a>→</a> <a>Id</a> <a>y</a> <a>x</a> <a>→</a> <a>Set</a> <a>U</a>\n  <a>A</a> <a>y</a> <a>x</a> <a>p</a> <a>=</a> <a>Id</a> <a>(</a><a>η</a> <a>x</a><a>)</a> <a>(</a><a>y</a> <a>,</a> <a>p</a><a>)</a>\n\n  <a>f</a> <a>:</a> <a>(</a><a>x</a> <a>:</a> <a>X</a><a>)</a> <a>→</a> <a>A</a> <a>x</a> <a>x</a> <a>(</a><a>refl</a> <a>x</a><a>)</a>\n  <a>f</a> <a>x</a> <a>=</a> <a>refl</a> <a>(</a><a>η</a> <a>x</a><a>)</a>\n\n  <a>φ</a> <a>:</a> <a>(</a><a>y</a> <a>x</a> <a>:</a> <a>X</a><a>)</a> <a>(</a><a>p</a> <a>:</a> <a>Id</a> <a>y</a> <a>x</a><a>)</a> <a>→</a> <a>Id</a> <a>(</a><a>η</a> <a>x</a><a>)</a> <a>(</a><a>y</a> <a>,</a> <a>p</a><a>)</a>\n  <a>φ</a> <a>=</a> <a>J</a> <a>A</a> <a>f</a>\n\n  <a>g</a> <a>:</a> <a>(</a><a>x</a> <a>:</a> <a>X</a><a>)</a> <a>(</a><a>σ</a> <a>:</a> <a>singletonType</a> <a>x</a><a>)</a> <a>→</a> <a>Id</a> <a>(</a><a>η</a> <a>x</a><a>)</a> <a>σ</a>\n  <a>g</a> <a>x</a> <a>(</a><a>y</a> <a>,</a> <a>p</a><a>)</a> <a>=</a> <a>φ</a> <a>y</a> <a>x</a> <a>p</a>\n\n  <a>h</a> <a>:</a> <a>(</a><a>x</a> <a>:</a> <a>X</a><a>)</a> <a>→</a> <a>Σ</a> <a>\\(</a><a>c</a> <a>:</a> <a>singletonType</a> <a>x</a><a>)</a> <a>→</a> <a>(</a><a>σ</a> <a>:</a> <a>singletonType</a> <a>x</a><a>)</a> <a>→</a> <a>Id</a> <a>c</a> <a>σ</a>\n  <a>h</a> <a>x</a> <a>=</a> <a>(</a><a>η</a> <a>x</a> <a>,</a> <a>g</a> <a>x</a><a>)</a>\n\n<a>id</a> <a>:</a> <a>{</a><a>U</a> <a>:</a> <a>Universe</a><a>}</a> <a>(</a><a>X</a> <a>:</a> <a>Set</a> <a>U</a><a>)</a> <a>→</a> <a>X</a> <a>→</a> <a>X</a>\n<a>id</a> <a>X</a> <a>x</a> <a>=</a> <a>x</a>\n\n<a>idIsEquiv</a> <a>:</a> <a>{</a><a>U</a> <a>:</a> <a>Universe</a><a>}</a> <a>(</a><a>X</a> <a>:</a> <a>Set</a> <a>U</a><a>)</a> <a>→</a> <a>isEquiv</a><a>(</a><a>id</a> <a>X</a><a>)</a>\n<a>idIsEquiv</a> <a>X</a> <a>=</a> <a>g</a>\n <a>where</a>\n  <a>g</a> <a>:</a> <a>(</a><a>x</a> <a>:</a> <a>X</a><a>)</a> <a>→</a> <a>isSingleton</a> <a>(</a><a>fiber</a> <a>(</a><a>id</a> <a>X</a><a>)</a> <a>x</a><a>)</a>\n  <a>g</a> <a>=</a> <a>singletonTypesAreSingletons</a>\n\n<a>IdToEq</a> <a>:</a> <a>{</a><a>U</a> <a>:</a> <a>Universe</a><a>}</a> <a>(</a><a>X</a> <a>Y</a> <a>:</a> <a>Set</a> <a>U</a><a>)</a> <a>→</a> <a>Id</a> <a>X</a> <a>Y</a> <a>→</a> <a>Eq</a> <a>X</a> <a>Y</a>\n<a>IdToEq</a> <a>{</a><a>U</a><a>}</a> <a>=</a> <a>J</a> <a>A</a> <a>f</a>\n <a>where</a>\n  <a>A</a> <a>:</a> <a>(</a><a>X</a> <a>Y</a> <a>:</a> <a>Set</a> <a>U</a><a>)</a> <a>→</a> <a>Id</a> <a>X</a> <a>Y</a> <a>→</a> <a>Set</a> <a>U</a>\n  <a>A</a> <a>X</a> <a>Y</a> <a>p</a> <a>=</a> <a>Eq</a> <a>X</a> <a>Y</a>\n\n  <a>f</a> <a>:</a> <a>(</a><a>X</a> <a>:</a> <a>Set</a> <a>U</a><a>)</a> <a>→</a> <a>A</a> <a>X</a> <a>X</a> <a>(</a><a>refl</a> <a>X</a><a>)</a>\n  <a>f</a> <a>X</a> <a>=</a> <a>(</a><a>id</a> <a>X</a> <a>,</a> <a>idIsEquiv</a> <a>X</a><a>)</a>\n\n<a>isUnivalent</a> <a>:</a> <a>(</a><a>U</a> <a>:</a> <a>Universe</a><a>)</a> <a>→</a> <a>Set</a> <a>(</a><a>lsuc</a> <a>(</a><a>U</a><a>))</a>\n<a>isUnivalent</a> <a>U</a> <a>=</a> <a>(</a><a>X</a> <a>Y</a> <a>:</a> <a>Set</a> <a>U</a><a>)</a> <a>→</a> <a>isEquiv</a><a>(</a><a>IdToEq</a> <a>X</a> <a>Y</a><a>)</a></pre>",
+  "content": "isEquiv\n  : {U V : Universe} {X : Set U} {Y : Set V}\n  → (X → Y)\n  → Set (U ⊔ V)\nisEquiv f = (y : _) → isSingleton(fiber f y)\n\nEq : {U V : Universe} → Set U → Set V → Set (U ⊔ V)\nEq X Y = Σ \\(f : X → Y) → isEquiv f\n\n\nη : {U : Universe} {X : Set U} (x : X) → singletonType x\nη x = (x , refl x)\n\nsingletonTypesAreSingletons : {U : Universe} {X : Set U} (x : X) → isSingleton(singletonType x)\nsingletonTypesAreSingletons {U} {X} = h\n where\n  A : (y x : X) → Id y x → Set U\n  A y x p = Id (η x) (y , p)\n\n  f : (x : X) → A x x (refl x)\n  f x = refl (η x)\n\n  φ : (y x : X) (p : Id y x) → Id (η x) (y , p)\n  φ = J A f\n\n  g : (x : X) (σ : singletonType x) → Id (η x) σ\n  g x (y , p) = φ y x p\n\n  h : (x : X) → Σ \\(c : singletonType x) → (σ : singletonType x) → Id c σ\n  h x = (η x , g x)\n\nid : {U : Universe} (X : Set U) → X → X\nid X x = x\n\nidIsEquiv : {U : Universe} (X : Set U) → isEquiv(id X)\nidIsEquiv X = g\n where\n  g : (x : X) → isSingleton (fiber (id X) x)\n  g = singletonTypesAreSingletons\n\nIdToEq : {U : Universe} (X Y : Set U) → Id X Y → Eq X Y\nIdToEq {U} = J A f\n where\n  A : (X Y : Set U) → Id X Y → Set U\n  A X Y p = Eq X Y\n\n  f : (X : Set U) → A X X (refl X)\n  f X = (id X , idIsEquiv X)\n\nisUnivalent : (U : Universe) → Set (lsuc (U))\nisUnivalent U = (X Y : Set U) → isEquiv(IdToEq X Y)",
+  "headings": [
+    "Equivalence"
+  ],
+  "anchor": "equivalence",
+  "custom_ranking": {
+    "position": 14,
+    "heading": 70
+  },
+  "last_modified_at": "16-Apr-18",
+  "title": "Univalence From Scratch",
+  "published": true,
+  "git": {
+    "authors": [
+      {
+        "commits": 13,
+        "name": "Jonathan Prieto-Cubides",
+        "email": "jcu043@uib.no"
+      }
+    ],
+    "total_commits": 13,
+    "total_additions": 878,
+    "total_subtractions": 755,
+    "first_commit": {
+      "short_sha": "9228833",
+      "long_sha": "9228833f325adfe69c25cc66993be34c918c2e93",
+      "author_name": "Jonathan Prieto-Cubides",
+      "author_email": "jcu043@uib.no",
+      "author_date": "Sat Mar 17 19:41:24 2018 +0100",
+      "commit_name": "Jonathan Prieto-Cubides",
+      "commit_email": "jcu043@uib.no",
+      "commit_date": "Sat Mar 17 19:41:24 2018 +0100",
+      "message": "[ notes ] changes on 2018-03-17 time:19:41.24.",
+      "changed_files": [
+        "_bibliography/library.bib",
+        "_posts/2018-02-12-induction-on-natural-numbers.md",
+        "_posts/2018-02-16-path-algebra.md",
+        "_posts/2018-03-17-univalence-from-scratch.md",
+        "src/2018-02-12-induction-on-natural-numbers.lagda",
+        "src/2018-02-16-path-algebra.lagda",
+        "src/2018-03-17-univalence-from-scratch.lagda"
+      ]
+    },
+    "last_commit": {
+      "short_sha": "7f3ad01",
+      "long_sha": "7f3ad01bbf7b8a4431fcac3dfb4cb9fecd86a508",
+      "author_name": "Jonathan Prieto-Cubides",
+      "author_email": "jcu043@uib.no",
+      "author_date": "Mon Apr 16 17:32:59 2018 +0200",
+      "commit_name": "Jonathan Prieto-Cubides",
+      "commit_email": "jcu043@uib.no",
+      "commit_date": "Mon Apr 16 17:32:59 2018 +0200",
+      "message": "[ HoTT-Book ] Add solution of the exercise 1.5",
+      "changed_files": [
+        "Makefile",
+        "_bibliography/library.bib",
+        "_posts/2018-02-14-induction-on-identity-types.md",
+        "_posts/2018-02-16-path-algebra-in-HoTT.md",
+        "_posts/2018-03-17-univalence-from-scratch.md",
+        "_posts/2018-04-08-HoTT-book.md",
+        "assets/images/type-family.png",
+        "assets/ipe-images/homotopy.png",
+        "assets/ipe-images/issinglenton.png",
+        "assets/ipe-images/path-algebra.png",
+        "assets/ipe-images/path-concatenation.png",
+        "assets/ipe-images/path.png",
+        "assets/ipe-images/transport-fiber-peano.png",
+        "assets/ipe-images/transport-fiber.png",
+        "assets/ipe-images/type-family.png",
+        "assets/latexit-images/disj-elimination.png",
+        "src/2018-02-14-induction-on-identity-types.lagda",
+        "src/2018-02-16-path-algebra-in-HoTT.lagda",
+        "src/2018-03-17-univalence-from-scratch.lagda",
+        "src/2018-04-08-HoTT-book.lagda",
+        "src/_drafts/2018-02-18-fibrations.lagda",
+        "src/ipe-images/homotopy.ipe",
+        "src/ipe-images/issinglenton.ipe",
+        "src/ipe-images/path-algebra.ipe",
+        "src/ipe-images/path-concatenation.ipe",
+        "src/ipe-images/path.ipe",
+        "src/ipe-images/transport-fiber-peano.ipe",
+        "src/ipe-images/transport-fiber.ipe",
+        "src/ipe-images/type-family.ipe",
+        "src/latexit-images/disj-elimination.png"
+      ]
+    }
+  },
+  "tags": [
+
+  ],
+  "categories": [
+    "type-theory"
+  ],
+  "date": 1521241200,
+  "excerpt_html": "<p>Working on this paper:</p>",
+  "excerpt_text": "Working on this paper:",
+  "slug": "univalence-from-scratch",
+  "type": "post",
+  "url": "/type-theory/2018/03/17/univalence-from-scratch/",
+  "text": "isEquiv\n  : {U V : Universe} {X : Set U} {Y : Set V}\n  → (X → Y)\n  → Set (U ⊔ V)\nisEquiv f = (y : _) → isSingleton(fiber f y)\n\nEq : {U V : Universe} → Set U → Set V → Set (U ⊔ V)\nEq X Y = Σ \\(f : X → Y) → isEquiv f\n\n\nη : {U : Universe} {X : Set U} (x : X) → singletonType x\nη x = (x , refl x)\n\nsingletonTypesAreSingletons : {U : Universe} {X : Set U} (x : X) → isSingleton(singletonType x)\nsingletonTypesAreSingletons {U} {X} = h\n where\n  A : (y x : X) → Id y x → Set U\n  A y x p = Id (η x) (y , p)\n\n  f : (x : X) → A x x (refl x)\n  f x = refl (η x)\n\n  φ : (y x : X) (p : Id y x) → Id (η x) (y , p)\n  φ = J A f\n\n  g : (x : X) (σ : singletonType x) → Id (η x) σ\n  g x (y , p) = φ y x p\n\n  h : (x : X) → Σ \\(c : singletonType x) → (σ : singletonType x) → Id c σ\n  h x = (η x , g x)\n\nid : {U : Universe} (X : Set U) → X → X\nid X x = x\n\nidIsEquiv : {U : Universe} (X : Set U) → isEquiv(id X)\nidIsEquiv X = g\n where\n  g : (x : X) → isSingleton (fiber (id X) x)\n  g = singletonTypesAreSingletons\n\nIdToEq : {U : Universe} (X Y : Set U) → Id X Y → Eq X Y\nIdToEq {U} = J A f\n where\n  A : (X Y : Set U) → Id X Y → Set U\n  A X Y p = Eq X Y\n\n  f : (X : Set U) → A X X (refl X)\n  f X = (id X , idIsEquiv X)\n\nisUnivalent : (U : Universe) → Set (lsuc (U))\nisUnivalent U = (X Y : Set U) → isEquiv(IdToEq X Y)",
+  "objectID": "2a147261eea7279b08cf5bbf43e43db0"
+}

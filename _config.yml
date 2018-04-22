@@ -1,5 +1,6 @@
 # Setup
-title:               jonaprieto
+repository:          'jonaprieto/jonaprieto.github.io'
+title:               'jonaprieto'
 tagline:             'logs in progress'
 description:         'Jonathan Prieto-Cubides'
 url:                 'http://jonaprieto.github.io'
@@ -16,12 +17,14 @@ plugins:
   - jekyll-last-modified-at
   - jekyll-algolia
   - jekyll-toc
+  - jekyll-github-metadata
   - jekyll-git_metadata
+  - netrc
 
-exclude:
-  - src/
-  - Gemfile
-  - Gemfile.lock
+# exclude:
+#   - src/
+#   - Gemfile
+#   - Gemfile.lock
 
 # ----------------------------------------------------------------------------
 algolia:
@@ -47,4 +50,4 @@ author:
   email:             prieto.jona@gmail.com
 
 # Custom vars
-version:             0.0.3
+version:             0.0.4

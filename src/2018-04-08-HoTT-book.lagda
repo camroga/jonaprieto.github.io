@@ -5,6 +5,9 @@ date: "2018-04-08"
 categories: type-theory
 ---
 
+
+<p>This site is open source. {% raw %}{% github_edit_link "Improve this page" %}{% endraw %}</p>
+
 This is a self-contained version of some solutions for HoTT-Book's exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
 Many changes can be appear running this experiment. The solutions are
@@ -15,7 +18,7 @@ type-checked as a whole using Agda v2.5.3.
 
 -------------------------------------------------------------------------------
 
-An Agda pragma for consistency with HoTT:
+Agda pragma for consistency with HoTT:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
@@ -579,6 +582,9 @@ module +-Ind₁ where
   ind-β₂ f g x = refl
 \end{code}
 
+## Chapter 2
+
+
 
 ## Chapter 3
 
@@ -710,7 +716,7 @@ same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
 \mathsf{inr} a$$ and $$y :\equiv \mathsf{inl} b$$, we use the
 encode-decode method to derive a proof term for 𝟘 from
 $$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
-\equiv q$$. 
+\equiv q$$.
 </div>
 
 But first let's define the empty type:
