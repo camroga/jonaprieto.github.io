@@ -113,6 +113,7 @@ push-sources :
 .phony : push-master
 push-master :
 	- git checkout sources
+	- make
 	- jekyll build
 	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
 	- cd _site && \
