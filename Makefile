@@ -60,7 +60,6 @@ endif
 setup:
 	ruby -S gem install bundler --no-ri --no-rdoc
 	ruby -S bundle install
-
 .phony: setup
 
 
@@ -91,21 +90,19 @@ $(HOME)/agda2html-master/:
 	cd $(HOME)/agda2html-master;\
 		stack install
 
-
-.PHONY : deploy
-deploy :
-	- jekyll algolia
-	- make clobber
-	- make
-	- make serve
-
 .phony : push-sources
 push-sources :
+	- @echo "==================================================================="
+	-	@echo "========================= Jekyll Building ========================="
+	-	@echo "==================================================================="
 	- @jekyll build
 	- @git checkout sources
 	- @git add --all
 	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
-	- @git commit -am "$MSG"
+	- @echo "==================================================================="
+	-	@echo "======================= Pushing on SOURCES ========================"
+	-	@echo "==================================================================="
+	- @git commit -am "$(MSG)"
 	- @git push origin sources
 
 .phony: init-master
@@ -117,20 +114,18 @@ push-sources :
 		git remote add origin http://github.com/jonaprieto/jonaprieto.github.io.git && \
 		git pull origin master
 
-
-.phony : push-master
-push-master :
-	- jekyll build
-	- cd _site && \
-		git add --all && \
-		git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
-		git push origin master
-
 .phony : push
 push :
 	- make push-sources
-	- cd _site && \
-		git add --all && \
-		git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
-		git push origin master
-	- jekyll algolia
+	- @if [[ -d "_site/.git" ]]; then \
+			echo "===================================================================" &&\
+	    echo "================ STATICS FILES: Pushing on MASTER =================" &&\
+	    echo "===================================================================" &&\
+	    cd _site && \
+			git add --all && \
+			git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
+			git push origin master;\
+			cd .. && jekyll algolia; \
+		else \
+			echo "[!] run first:\n\t $$ make init-master"; \
+		fi
