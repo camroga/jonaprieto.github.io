@@ -32,22 +32,21 @@ observr:
 	observr .observr
 # serve website using jekyll
 
+.phony: serve
 serve:
 	ruby -S bundle exec jekyll liveserve --force_polling --watch --verbose
 
-.phony: serve
-
-
 # remove all auxiliary files
+.phony: clean
 clean:
 ifneq ($(strip $(agdai)),)
 	rm $(agdai)
 endif
 
-.phony: clean
 
 
 # remove all generated files
+.phony: clobber
 clobber: clean
 	ruby -S bundle exec jekyll clean
 ifneq ($(strip $(markdown)),)
@@ -55,7 +54,6 @@ ifneq ($(strip $(markdown)),)
 endif
 	rm -Rf _posts/
 
-.phony: clobber
 
 
 # install bundler, and gem dependencies
@@ -101,29 +99,28 @@ deploy :
 	- make
 	- make serve
 
-
 .phony : push-sources
 push-sources :
 	- @jekyll build
 	- @git checkout sources
-	- @git add .
-	- @git commit -am "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")."
+	- @git add --all
+	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
+	- @git commit -am "$MSG"
 	- @git push origin sources
 
 .phony : push-master
 push-master :
-	- make
 	- jekyll build
-	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
 	- cd _site && \
 		git add --all && \
-		git commit -m "$(MSG)" && \
+		git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
 		git push origin master
-
 
 .phony : push
 push :
-	- make clobber
-	- make
-	- make just-push
+	- make push-sources
+	- cd _site && \
+		git add --all && \
+		git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
+		git push origin master
 	- jekyll algolia
