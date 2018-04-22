@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Equivalences &middot; jonaprieto
+    
+  </title>
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/public/css/poole.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="/public/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+
+  <!-- TIMELINES -->
+  <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Equivalences</title>
+  <meta name="description" content="Equivalence Definitions and intuitions...">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-114360791-1');
+  </script>
+  <!-- TIMELINE -->
+  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+
+</head>
+
+
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/HoTT-Timeline/">HoTT Timeline</a>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/categories/">Post by category</a>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+
+    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.4.zip">Download</a> -->
+    <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.4</span> -->
+  </nav>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+            <small style="text-decoration:left">logs in progress<span class="modifications">(<span class="additions">+93045</span>/<span class="substractions">-70798</span>)</span></small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        <div class="post">
+  <h2 class="post-title">Equivalences</h2>
+  <small><span class="post-date">Created on 20 Feb 2018  and modified on 20 Mar 2018 </small>
+  </span>
+  
+  <div class="todo">
+  Equivalence Definitions and intuitions...
+</div>
+
+<ul>
+  <li>Show that for all x, y : 𝟙, (x ≡ y  ≃ 𝟙 ).</li>
+</ul>
+
+<p>To prove that, we must to exhibit a function <code class="highlighter-rouge">f : (x =A y) → 𝟙</code>
+to provide an inhabitant of the equivalence type <code class="highlighter-rouge">x ≡ y  ≃ 𝟙</code>.</p>
+
+<p>Imports:</p>
+
+<pre class="Agda"><a id="358" class="Symbol">{-#</a> <a id="362" class="Keyword">OPTIONS</a> <a id="370" class="Option">--without-K</a> <a id="382" class="Symbol">#-}</a>
+<a id="386" class="Keyword">import</a> <a id="393" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="431" class="Symbol">as</a> <a id="434" class="Module">Eq</a>
+<a id="437" class="Keyword">open</a> <a id="442" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Eq</a> <a id="445" class="Keyword">using</a> <a id="451" class="Symbol">(</a><a id="452" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a><a id="456" class="Symbol">;</a> <a id="458" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">_≡_</a><a id="461" class="Symbol">)</a></pre>
+
+<p>Definitions:</p>
+
+<ul>
+  <li>Unit type</li>
+</ul>
+
+<pre class="Agda"><a id="515" class="Keyword">data</a> <a id="𝟙" href="/type-theory/2018/02/20/equivalences/#%F0%9D%9F%99" class="Datatype">𝟙</a> <a id="522" class="Symbol">:</a> <a id="524" class="PrimitiveType">Set</a> <a id="528" class="Keyword">where</a>
+  <a id="𝟙.*" href="/type-theory/2018/02/20/equivalences/#%F0%9D%9F%99.%2A" class="InductiveConstructor">*</a> <a id="538" class="Symbol">:</a> <a id="540" href="/type-theory/2018/02/20/equivalences/#%F0%9D%9F%99" class="Datatype">𝟙</a></pre>
+
+<ul>
+  <li>Path Induction *</li>
+</ul>
+
+<pre class="Agda"><a id="pi" href="/type-theory/2018/02/20/equivalences/#pi" class="Function">pi</a>
+  <a id="592" class="Symbol">:</a> <a id="594" class="Symbol">∀</a> <a id="596" class="Symbol">{</a><a id="597" href="/type-theory/2018/02/20/equivalences/#597" class="Bound">i</a> <a id="599" href="/type-theory/2018/02/20/equivalences/#599" class="Bound">j</a><a id="600" class="Symbol">}</a> <a id="602" class="Symbol">{</a><a id="603" href="/type-theory/2018/02/20/equivalences/#603" class="Bound">A</a> <a id="605" class="Symbol">:</a> <a id="607" class="PrimitiveType">Set</a> <a id="611" href="/type-theory/2018/02/20/equivalences/#597" class="Bound">i</a><a id="612" class="Symbol">}</a>
+  <a id="616" class="Symbol">→</a> <a id="618" class="Symbol">(</a><a id="619" href="/type-theory/2018/02/20/equivalences/#619" class="Bound">C</a> <a id="621" class="Symbol">:</a> <a id="623" class="Symbol">(</a><a id="624" href="/type-theory/2018/02/20/equivalences/#624" class="Bound">x</a> <a id="626" href="/type-theory/2018/02/20/equivalences/#626" class="Bound">y</a> <a id="628" class="Symbol">:</a> <a id="630" href="/type-theory/2018/02/20/equivalences/#603" class="Bound">A</a><a id="631" class="Symbol">)</a> <a id="633" class="Symbol">→</a> <a id="635" href="/type-theory/2018/02/20/equivalences/#624" class="Bound">x</a> <a id="637" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="639" href="/type-theory/2018/02/20/equivalences/#626" class="Bound">y</a> <a id="641" class="Symbol">→</a> <a id="643" class="PrimitiveType">Set</a> <a id="647" href="/type-theory/2018/02/20/equivalences/#599" class="Bound">j</a><a id="648" class="Symbol">)</a>
+  <a id="652" class="Symbol">→</a> <a id="654" class="Symbol">(∀</a> <a id="657" class="Symbol">(</a><a id="658" href="/type-theory/2018/02/20/equivalences/#658" class="Bound">x</a> <a id="660" class="Symbol">:</a> <a id="662" href="/type-theory/2018/02/20/equivalences/#603" class="Bound">A</a><a id="663" class="Symbol">)</a> <a id="665" class="Symbol">→</a> <a id="667" href="/type-theory/2018/02/20/equivalences/#619" class="Bound">C</a> <a id="669" href="/type-theory/2018/02/20/equivalences/#658" class="Bound">x</a> <a id="671" href="/type-theory/2018/02/20/equivalences/#658" class="Bound">x</a> <a id="673" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a><a id="677" class="Symbol">)</a>
+  <a id="681" class="Symbol">→</a> <a id="683" class="Symbol">∀</a> <a id="685" class="Symbol">(</a><a id="686" href="/type-theory/2018/02/20/equivalences/#686" class="Bound">x</a> <a id="688" href="/type-theory/2018/02/20/equivalences/#688" class="Bound">y</a> <a id="690" class="Symbol">:</a> <a id="692" href="/type-theory/2018/02/20/equivalences/#603" class="Bound">A</a><a id="693" class="Symbol">)</a> <a id="695" class="Symbol">(</a><a id="696" href="/type-theory/2018/02/20/equivalences/#696" class="Bound">p</a> <a id="698" class="Symbol">:</a> <a id="700" href="/type-theory/2018/02/20/equivalences/#686" class="Bound">x</a> <a id="702" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="704" href="/type-theory/2018/02/20/equivalences/#688" class="Bound">y</a><a id="705" class="Symbol">)</a> <a id="707" class="Symbol">→</a> <a id="709" href="/type-theory/2018/02/20/equivalences/#619" class="Bound">C</a> <a id="711" href="/type-theory/2018/02/20/equivalences/#686" class="Bound">x</a> <a id="713" href="/type-theory/2018/02/20/equivalences/#688" class="Bound">y</a> <a id="715" href="/type-theory/2018/02/20/equivalences/#696" class="Bound">p</a>
+<a id="717" href="/type-theory/2018/02/20/equivalences/#pi" class="Function">pi</a> <a id="720" class="Symbol">{</a><a id="721" href="/type-theory/2018/02/20/equivalences/#721" class="Bound">A</a><a id="722" class="Symbol">}</a> <a id="724" href="/type-theory/2018/02/20/equivalences/#724" class="Bound">C</a> <a id="726" href="/type-theory/2018/02/20/equivalences/#726" class="Bound">c</a> <a id="728" href="/type-theory/2018/02/20/equivalences/#728" class="Bound">x</a> <a id="730" class="DottedPattern Symbol">.</a><a id="731" href="/type-theory/2018/02/20/equivalences/#728" class="DottedPattern Bound">x</a> <a id="733" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a> <a id="738" class="Symbol">=</a> <a id="740" href="/type-theory/2018/02/20/equivalences/#726" class="Bound">c</a> <a id="742" href="/type-theory/2018/02/20/equivalences/#728" class="Bound">x</a></pre>
+
+<p>Proof :</p>
+
+<pre class="Agda"><a id="f₁" href="/type-theory/2018/02/20/equivalences/#f%E2%82%81" class="Function">f₁</a> <a id="781" class="Symbol">:</a> <a id="783" class="Symbol">∀</a> <a id="785" class="Symbol">{</a><a id="786" href="/type-theory/2018/02/20/equivalences/#786" class="Bound">A</a> <a id="788" class="Symbol">:</a> <a id="790" class="PrimitiveType">Set</a><a id="793" class="Symbol">}</a> <a id="795" class="Symbol">(</a><a id="796" href="/type-theory/2018/02/20/equivalences/#796" class="Bound">x</a> <a id="798" href="/type-theory/2018/02/20/equivalences/#798" class="Bound">y</a> <a id="800" class="Symbol">:</a> <a id="802" href="/type-theory/2018/02/20/equivalences/#786" class="Bound">A</a><a id="803" class="Symbol">)</a> <a id="805" class="Symbol">→</a> <a id="807" href="/type-theory/2018/02/20/equivalences/#796" class="Bound">x</a> <a id="809" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="811" href="/type-theory/2018/02/20/equivalences/#798" class="Bound">y</a> <a id="813" class="Symbol">→</a> <a id="815" href="/type-theory/2018/02/20/equivalences/#%F0%9D%9F%99" class="Datatype">𝟙</a>
+<a id="817" href="/type-theory/2018/02/20/equivalences/#f%E2%82%81" class="Function">f₁</a> <a id="820" class="Symbol">=</a> <a id="822" href="/type-theory/2018/02/20/equivalences/#pi" class="Function">pi</a> <a id="825" class="Symbol">(λ</a> <a id="828" href="/type-theory/2018/02/20/equivalences/#828" class="Bound">x</a> <a id="830" href="/type-theory/2018/02/20/equivalences/#830" class="Bound">y</a> <a id="832" href="/type-theory/2018/02/20/equivalences/#832" class="Bound">_</a> <a id="834" class="Symbol">→</a> <a id="836" href="/type-theory/2018/02/20/equivalences/#%F0%9D%9F%99" class="Datatype">𝟙</a><a id="837" class="Symbol">)</a> <a id="839" class="Symbol">(λ</a> <a id="842" href="/type-theory/2018/02/20/equivalences/#842" class="Bound">x</a> <a id="844" class="Symbol">→</a> <a id="846" href="/type-theory/2018/02/20/equivalences/#%F0%9D%9F%99.%2A" class="InductiveConstructor">*</a><a id="847" class="Symbol">)</a>
+
+<a id="850" class="Keyword">infixr</a> <a id="857" class="Number">4</a> <a id="859" href="/type-theory/2018/02/20/equivalences/#_~_" class="Function Operator">_~_</a>
+<a id="_~_" href="/type-theory/2018/02/20/equivalences/#_~_" class="Function Operator">_~_</a> <a id="867" class="Symbol">:</a> <a id="869" class="Symbol">∀</a> <a id="871" class="Symbol">{</a><a id="872" href="/type-theory/2018/02/20/equivalences/#872" class="Bound">A</a> <a id="874" class="Symbol">:</a> <a id="876" class="PrimitiveType">Set</a><a id="879" class="Symbol">}{</a><a id="881" href="/type-theory/2018/02/20/equivalences/#881" class="Bound">P</a> <a id="883" class="Symbol">:</a> <a id="885" href="/type-theory/2018/02/20/equivalences/#872" class="Bound">A</a> <a id="887" class="Symbol">→</a> <a id="889" class="PrimitiveType">Set</a><a id="892" class="Symbol">}</a>
+    <a id="898" class="Symbol">→</a> <a id="900" class="Symbol">((</a><a id="902" href="/type-theory/2018/02/20/equivalences/#902" class="Bound">x</a> <a id="904" class="Symbol">:</a> <a id="906" href="/type-theory/2018/02/20/equivalences/#872" class="Bound">A</a><a id="907" class="Symbol">)</a> <a id="909" class="Symbol">→</a> <a id="911" href="/type-theory/2018/02/20/equivalences/#881" class="Bound">P</a> <a id="913" href="/type-theory/2018/02/20/equivalences/#902" class="Bound">x</a><a id="914" class="Symbol">)</a> <a id="916" class="Symbol">→</a> <a id="918" class="Symbol">((</a><a id="920" href="/type-theory/2018/02/20/equivalences/#920" class="Bound">x</a> <a id="922" class="Symbol">:</a> <a id="924" href="/type-theory/2018/02/20/equivalences/#872" class="Bound">A</a><a id="925" class="Symbol">)</a> <a id="927" class="Symbol">→</a> <a id="929" href="/type-theory/2018/02/20/equivalences/#881" class="Bound">P</a> <a id="931" href="/type-theory/2018/02/20/equivalences/#920" class="Bound">x</a><a id="932" class="Symbol">)</a> <a id="934" class="Symbol">→</a> <a id="936" class="PrimitiveType">Set</a>
+<a id="940" href="/type-theory/2018/02/20/equivalences/#_~_" class="Function Operator">_~_</a> <a id="944" class="Symbol">{</a><a id="945" href="/type-theory/2018/02/20/equivalences/#945" class="Bound">A</a><a id="946" class="Symbol">}</a> <a id="948" href="/type-theory/2018/02/20/equivalences/#948" class="Bound">f</a> <a id="950" href="/type-theory/2018/02/20/equivalences/#950" class="Bound">g</a> <a id="952" class="Symbol">=</a> <a id="954" class="Symbol">(</a><a id="955" href="/type-theory/2018/02/20/equivalences/#955" class="Bound">x</a> <a id="957" class="Symbol">:</a> <a id="959" href="/type-theory/2018/02/20/equivalences/#945" class="Bound">A</a><a id="960" class="Symbol">)</a> <a id="962" class="Symbol">→</a> <a id="964" href="/type-theory/2018/02/20/equivalences/#948" class="Bound">f</a> <a id="966" href="/type-theory/2018/02/20/equivalences/#955" class="Bound">x</a> <a id="968" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="970" href="/type-theory/2018/02/20/equivalences/#950" class="Bound">g</a> <a id="972" href="/type-theory/2018/02/20/equivalences/#955" class="Bound">x</a>
+
+<a id="975" class="Keyword">open</a> <a id="980" class="Keyword">import</a> <a id="987" href="https://agda.github.io/agda-stdlib/Data.Product.html" class="Module">Data.Product</a>
+<a id="1000" class="Keyword">open</a> <a id="1005" class="Keyword">import</a> <a id="1012" href="https://agda.github.io/agda-stdlib/Function.html" class="Module">Function</a> <a id="1021" class="Keyword">hiding</a> <a id="1028" class="Symbol">(</a><a id="1029" href="https://agda.github.io/agda-stdlib/Function.html#id" class="Function">id</a><a id="1031" class="Symbol">)</a>
+
+<a id="id" href="/type-theory/2018/02/20/equivalences/#id" class="Function">id</a> <a id="1037" class="Symbol">:</a> <a id="1039" class="Symbol">∀</a> <a id="1041" class="Symbol">{</a><a id="1042" href="/type-theory/2018/02/20/equivalences/#1042" class="Bound">A</a> <a id="1044" class="Symbol">:</a> <a id="1046" class="PrimitiveType">Set</a><a id="1049" class="Symbol">}</a> <a id="1051" class="Symbol">→</a> <a id="1053" href="/type-theory/2018/02/20/equivalences/#1042" class="Bound">A</a> <a id="1055" class="Symbol">→</a> <a id="1057" href="/type-theory/2018/02/20/equivalences/#1042" class="Bound">A</a>
+<a id="1059" href="/type-theory/2018/02/20/equivalences/#id" class="Function">id</a> <a id="1062" class="Symbol">=</a> <a id="1064" class="Symbol">λ</a> <a id="1066" href="/type-theory/2018/02/20/equivalences/#1066" class="Bound">z</a> <a id="1068" class="Symbol">→</a> <a id="1070" href="/type-theory/2018/02/20/equivalences/#1066" class="Bound">z</a>
+
+<a id="1073" class="Comment">-- is-equiv : ∀ {A : Set}{B : Set}</a>
+<a id="1108" class="Comment">--   → (f : A → B)</a>
+<a id="1127" class="Comment">--   → (g : B → A)</a>
+<a id="1146" class="Comment">--   → (h : B → A)</a>
+<a id="1165" class="Comment">--   → (Σ (B → A) (λ x → ((f (g x)))) × (Σ (B → A) (λ _ → A))</a>
+<a id="1227" class="Comment">-- is-equiv {A}{B} f g h = ((g , {!   !})) , (h , {!   !})</a>
+
+<a id="1287" class="Comment">-- _≃_ : ∀ {i j} (A : Set i) (B : Set j) → ?</a>
+<a id="1332" class="Comment">-- A ≃ B = Σ (A → B) is-equiv</a>
+
+<a id="1363" class="Comment">-- thm : ∀ (x y : 𝟙) → Equiv (x ≡ y) 𝟙</a>
+<a id="1402" class="Comment">-- thm = {!   !}</a></pre>
+
+  
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/04/08/HoTT-book/">
+            HoTT-Book Exercises
+            <small>08 Apr 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/02/16/path-algebra-in-HoTT/">
+            Path Algebra in HoTT
+            <small>16 Feb 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/02/14/induction-on-identity-types/">
+            Induction on Identity Types
+            <small>14 Feb 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <!-- Import jQuery -->
+<script type="text/javascript" src="/assets/jquery.js"></script>
+
+<!-- Script which allows for foldable code blocks -->
+<script type="text/javascript">
+ $('div.foldable pre').each(function(){
+     var autoHeight = $(this).height();
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+     $(this).height(2.0 * lineHeight);
+     $(this).css('overflow','hidden');
+     $(this).click(function(){
+         if ($(this).height() == autoHeight) {
+             $(this).height(2.0 * lineHeight);
+             plus.show();
+         }
+         else {
+             $(this).height('auto');
+             plus.hide();
+         }
+     });
+ });
+</script>
+
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
+<script type="text/javascript">
+ $("script[type='math/tex']").replaceWith(
+     function(){
+         var tex = $(this).text();
+         return "$$" + tex + "$$";
+     });
+ $("script[type='math/tex; mode=display']").replaceWith(
+     function(){
+         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
+     });
+</script>
+
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
