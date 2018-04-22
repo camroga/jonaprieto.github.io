@@ -101,11 +101,22 @@ deploy :
 	- make
 	- make serve
 
-.phony : just-push
-just-push :
+
+.phony : push-sources
+push-sources :
+	- @git checkout sources
 	- @git add .
 	- @git commit -am "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")."
-	- @git push origin master
+	- @git push origin sources
+
+.phony : push-master
+push-master :
+	- $(eval MSG := $(shell bash -c 'read -p "Comment: " pwd; echo $$pwd'))
+	- cd _site && \
+		git checkout master\
+		git add -A\
+		git commit -am "$(MSG)"\
+		git push origin master
 
 .phony : push
 push :

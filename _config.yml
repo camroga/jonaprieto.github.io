@@ -21,10 +21,10 @@ plugins:
   - jekyll-git_metadata
   - netrc
 
-# exclude:
-#   - src/
-#   - Gemfile
-#   - Gemfile.lock
+exclude:
+  - src/
+  - Gemfile
+  - Gemfile.lock
 
 # ----------------------------------------------------------------------------
 algolia:
