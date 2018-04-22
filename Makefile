@@ -116,8 +116,8 @@ push-master :
 	- jekyll build
 	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
 	- cd _site && \
-		git add .\
-		git commit -m "$(MSG)"\
+		git add --all && \
+		git commit -m "$(MSG)" && \
 		git push origin master
 
 
