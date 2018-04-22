@@ -15,7 +15,7 @@ type-checked as a whole using Agda v2.5.3.
 
 -------------------------------------------------------------------------------
 
-Agda pragma for consistency with HoTT:
+Agda has a pragma to work with HoTT:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
