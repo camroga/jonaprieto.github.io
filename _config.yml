@@ -28,6 +28,8 @@ exclude:
   - Makefile
   - .observr
   - .travis.yml
+  - .gitignore
+  
 # ----------------------------------------------------------------------------
 algolia:
   application_id: '6LC140UUTA'
