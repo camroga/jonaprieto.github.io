@@ -20,6 +20,21 @@ plugins:
   - jekyll-github-metadata
   - jekyll-git_metadata
   - netrc
+  - jekyll/scholar
+
+scholar:
+  style: apa
+  bibliography: library.bib
+  source: ./_bibliography
+  locale: en
+  sort_by: 'year,month'
+  order: 'descending'
+  # group_by: 'year'
+  use_raw_bibtex_entry: true
+
+toc:
+  min_level: 1 # default: 1
+  max_level: 2 # default: 6
 
 exclude:
   - src/

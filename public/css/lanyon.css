@@ -51,6 +51,130 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -.025rem;
 }
 
+.post-changes {
+  background: #fafafa;
+  padding: 5px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid gray;
+  font-size: 85%;
+}
+.main-heading {
+  display: table;
+  width: 100%;
+  line-height: 20px;
+}
+
+.main-title {
+  display: table-cell;
+  /* width: 100px; */
+  float: left;
+}
+
+.main-last-date
+{
+  display: table-cell;
+  float: right !important;
+  text-align: right;
+  width : auto;
+  font-size: 13px;
+  line-height: 20px;
+  color: #586069;
+}
+.main-last-date a {
+  color: #586069;
+}
+.main-rss {
+  font-size: 13%;
+  color: #c3c3c3;
+}
+
+
+.algolia
+{
+  display: table;
+  width: 100%;
+  font-size: 13px;
+  line-height: 20px;
+  border-top: 1px solid #eaecef;
+}
+
+.algolia-date {
+  display: table-cell;
+  float: left;
+  width: 70px;
+  color: #586069;
+  text-align: left;
+}
+.algolia-title {
+  display: table-cell;
+  float: left;
+  padding-left: 5px;
+  /* width: 400px; */
+}
+
+@media all and (max-width: 30em) {
+  .algolia-title {
+    width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* background-color: #000; */
+	/* CSS rules here */
+}
+}
+
+
+.algolia-title a {
+  color: #000;
+  white-space: nowrap;
+  /* word-wrap: break-word; */
+}
+
+.algolia-modified {
+  display: table-cell;
+  float: right;
+  width: auto;
+  white-space: nowrap;
+  text-align: right;
+  color: #586069;
+}
+
+
+.empty-query {
+  display: none;
+}
+
+
+::placeholder {
+  color: #c3c3c3;
+   opacity: .9;
+
+}
+
+.ais-Highlight{
+  color: #000;
+  background: yellow;
+
+}
+
+.post-link .ais-Highlight {
+  font-style: normal;
+  text-decoration: underline;
+}
+.post-snippet .ais-Highlight {
+  font-style: normal;
+  font-weight: bold;
+}
+.post-snippet img {
+  display: none;
+}
+
+.hit-box {
+  border-width: 1px;
+  border-bottom-color: #f3f3f3;
+  padding: 5px 15px 5px 15px;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
 
 #archives h6 {
   margin: 0px;
@@ -61,9 +185,7 @@ h1, h2, h3, h4, h5, h6 {
 .container.content h3:before {content:'❯ '}
 
 .table-of-contents{
-    font-size: 85%;
-    background: antiquewhite;
-    padding: 5px 0px 5px 10px;
+  /* padding: 5px 0px 5px 10px; */
 }
 .section-nav {
   font-size: 75%;
@@ -232,13 +354,23 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bolder;
   float: right;
   width: auto;
-  color: darkgrey.
+  color: darkgrey;
 }
-.modifications .additions {
+
+.post-modifications {
+  font-size: 90%;
+  line-height: 20px;
+  text-align: right;
+  font-weight: bolder;
+  width: auto;
+  color: darkgrey;
+}
+
+.additions {
   color: darkgreen;
 }
 
-.modifications .substractions {
+.substractions {
   color: darkred;
 }
 .commit-message a {

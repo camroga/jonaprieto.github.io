@@ -12,4 +12,8 @@ group :jekyll_plugins do
    gem 'jekyll-github-metadata'
    gem 'jekyll-git_metadata'
    gem 'netrc'
+   gem 'unicode'
+   gem 'citeproc-ruby'
+   gem 'csl-styles'
+   gem 'jekyll-scholar'
 end

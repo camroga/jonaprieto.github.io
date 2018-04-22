@@ -803,7 +803,7 @@ Show that $$A$$ is a mere proposition if and only
 if $$A\to A$$ is contractible.
 </div>
 
-### References
+## Other References
 
 * Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study.
 
