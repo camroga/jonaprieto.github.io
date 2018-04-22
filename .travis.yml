@@ -8,8 +8,8 @@ cache:
   bundler: true
   directories:
   - $HOME/.stack
-  - $HOME/.agda
   - $HOME/.local
+  - $HOME/.agda
   - $HOME/agda-master
   - $HOME/agda-stdlib-master
   - $HOME/agda2html-master

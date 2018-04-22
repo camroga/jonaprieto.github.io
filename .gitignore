@@ -2,4 +2,3 @@ _site/
 .sass-cache/
 *.agdai
 .DS_Store
-.git-metadata/
