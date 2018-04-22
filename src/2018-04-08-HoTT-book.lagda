@@ -7,7 +7,7 @@ categories: type-theory
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
-Many changes can be appear running this experiment. The solutions are
+Many changes can appear running this experiment. The solutions are
 type-checked as a whole using Agda v2.5.3.
 
 
@@ -803,10 +803,14 @@ Show that $$A$$ is a mere proposition if and only
 if $$A\to A$$ is contractible.
 </div>
 
-## Other References
+### References
 
-* Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study.
+- {% reference hottbook %}
 
-* [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises).
+- {% reference Grayson2017 %}
 
-* [Capriotti's agda-base](https://github.com/pcapriotti/agda-base/)
+- {% reference Wadler2015PT %}
+
+- [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises).
+
+- [Capriotti's agda-base](https://github.com/pcapriotti/agda-base/)

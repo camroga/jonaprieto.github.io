@@ -131,3 +131,7 @@ Proofs:
 <a id="4329" href="{% endraw %}{% link _posts/2018-02-16-path-algebra-in-HoTT.md %}{% raw %}#trans" class="Function">trans</a> <a id="4335" href="{% endraw %}{% link _posts/2018-02-16-path-algebra-in-HoTT.md %}{% raw %}#4335" class="Bound">B</a> <a id="4337" href="{% endraw %}{% link _posts/2018-02-16-path-algebra-in-HoTT.md %}{% raw %}#4337" class="Bound">y</a> <a id="4339" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a>  <a id="4345" class="Symbol">=</a> <a id="4347" href="{% endraw %}{% link _posts/2018-02-16-path-algebra-in-HoTT.md %}{% raw %}#4337" class="Bound">y</a>{% endraw %}</pre>
 
 ![path](/assets/ipe-images/transport-fiber.png)
+
+### References
+
+- {% reference hottbook %}

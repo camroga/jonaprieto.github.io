@@ -153,3 +153,7 @@ trans B y refl  = y
 \end{code}
 
 ![path](/assets/ipe-images/transport-fiber.png)
+
+### References
+
+- {% reference hottbook %}

@@ -412,10 +412,9 @@ by defining two equations:
 
 ### References
 
-* [Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study][HoTT]
+- {% reference hottbook %}
 
-* [Coquand, T. (1992). Pattern matching with dependent types. Informal Proceedings
-of Logical Frameworks.][Coquand]
+- {% reference Coquand1992 %}
 
 [HoTT]:https://homotopytypetheory.org/book.
 [Grayson]:http://arxiv.org/abs/1711.01477
