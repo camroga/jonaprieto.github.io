@@ -5,9 +5,6 @@ date: "2018-04-08"
 categories: type-theory
 ---
 
-
-<p>This site is open source. {% raw %}{% github_edit_link "Improve this page" %}{% endraw %}</p>
-
 This is a self-contained version of some solutions for HoTT-Book's exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
 Many changes can be appear running this experiment. The solutions are

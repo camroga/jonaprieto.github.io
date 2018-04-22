@@ -709,7 +709,7 @@ same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
 \mathsf{inr} a$$ and $$y :\equiv \mathsf{inl} b$$, we use the
 encode-decode method to derive a proof term for 𝟘 from
 $$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
-\equiv q$$. 
+\equiv q$$.
 </div>
 
 But first let's define the empty type:
