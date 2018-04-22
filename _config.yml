@@ -25,7 +25,9 @@ exclude:
   - src/
   - Gemfile
   - Gemfile.lock
-
+  - Makefile
+  - .observr
+  - .travis.yml
 # ----------------------------------------------------------------------------
 algolia:
   application_id: '6LC140UUTA'

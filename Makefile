@@ -104,6 +104,7 @@ deploy :
 
 .phony : push-sources
 push-sources :
+	- @jekyll build
 	- @git checkout sources
 	- @git add .
 	- @git commit -am "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")."
@@ -111,12 +112,15 @@ push-sources :
 
 .phony : push-master
 push-master :
-	- $(eval MSG := $(shell bash -c 'read -p "Comment: " pwd; echo $$pwd'))
+	- git checkout sources
+	- jekyll build
+	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
 	- cd _site && \
 		git checkout master\
-		git add -A\
-		git commit -am "$(MSG)"\
+		git add .\
+		git commit -m "$(MSG)"\
 		git push origin master
+
 
 .phony : push
 push :
