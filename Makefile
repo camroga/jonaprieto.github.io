@@ -108,6 +108,16 @@ push-sources :
 	- @git commit -am "$MSG"
 	- @git push origin sources
 
+.phony: init-master
+ init-master :
+	- rm -Rf _site
+	- mkdir  _site
+	- cd _site && \
+		git init && \
+		git remote add origin http://github.com/jonaprieto/jonaprieto.github.io.git && \
+		git pull origin master
+
+
 .phony : push-master
 push-master :
 	- jekyll build
