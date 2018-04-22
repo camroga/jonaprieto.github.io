@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
   background: #fafafa;
   padding: 5px;
   margin-bottom: 30px;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #c2c2c2;
   font-size: 85%;
 }
 .main-heading {

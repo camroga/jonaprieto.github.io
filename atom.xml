@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-04-22T23:47:11+02:00</updated>
+ <updated>2018-04-23T00:58:57+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -746,7 +746,10 @@ if $$A\to A$$ is contractible.
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study.&lt;/p&gt;
+    &lt;p&gt;&lt;span id=&quot;hottbook&quot;&gt;Univalent Foundations Program, T. (2013). &lt;i&gt;Homotopy Type Theory: Univalent Foundations of Mathematics&lt;/i&gt;. Institute for Advanced Study. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf&lt;/span&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;span id=&quot;Grayson2017&quot;&gt;Grayson, D. R. (2017). An introduction to univalent foundations for mathematicians. Retrieved from http://arxiv.org/abs/1711.01477&lt;/span&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;https://github.com/pcapriotti/hott-exercises&quot;&gt;Capriotti’s hott-exercises&lt;/a&gt;.&lt;/p&gt;
@@ -974,6 +977,12 @@ identity type. Now let’s see some algebra.&lt;/p&gt;
 &lt;a id=&quot;4329&quot; href=&quot;/type-theory/2018/02/16/path-algebra-in-HoTT/#trans&quot; class=&quot;Function&quot;&gt;trans&lt;/a&gt; &lt;a id=&quot;4335&quot; href=&quot;/type-theory/2018/02/16/path-algebra-in-HoTT/#4335&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;4337&quot; href=&quot;/type-theory/2018/02/16/path-algebra-in-HoTT/#4337&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4339&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;  &lt;a id=&quot;4345&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4347&quot; href=&quot;/type-theory/2018/02/16/path-algebra-in-HoTT/#4337&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/ipe-images/transport-fiber.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;span id=&quot;hottbook&quot;&gt;Univalent Foundations Program, T. (2013). &lt;i&gt;Homotopy Type Theory: Univalent Foundations of Mathematics&lt;/i&gt;. Institute for Advanced Study. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
@@ -1172,10 +1181,13 @@ necessary is to have C a refl, that is, holds C for the &lt;em&gt;base case&lt;/
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://homotopytypetheory.org/book.&quot;&gt;Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://arxiv.org/abs/1711.01477&quot;&gt;Grayson, D. R. (2017). An introduction to univalent foundations for mathematicians.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;span id=&quot;hottbook&quot;&gt;Univalent Foundations Program, T. (2013). &lt;i&gt;Homotopy Type Theory: Univalent Foundations of Mathematics&lt;/i&gt;. Institute for Advanced Study. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf&lt;/span&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;span id=&quot;Grayson2017&quot;&gt;Grayson, D. R. (2017). An introduction to univalent foundations for mathematicians. Retrieved from http://arxiv.org/abs/1711.01477&lt;/span&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
-
 </content>
  </entry>
  
@@ -1550,11 +1562,10 @@ by defining two equations:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://homotopytypetheory.org/book.&quot;&gt;Univalent Foundations Program, T. (2013). Homotopy Type Theory: Univalent Foundations of Mathematics. Institute for Advanced Study&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;span id=&quot;hottbook&quot;&gt;Univalent Foundations Program, T. (2013). &lt;i&gt;Homotopy Type Theory: Univalent Foundations of Mathematics&lt;/i&gt;. Institute for Advanced Study. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf&lt;/span&gt;&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://doi.org/10.1.1.37.9541&quot;&gt;Coquand, T. (1992). Pattern matching with dependent types. Informal Proceedings
-of Logical Frameworks.&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;span id=&quot;Coquand1992&quot;&gt;Coquand, T. (1992). Pattern matching with dependent types. &lt;i&gt;Informal proceedings of Logical Frameworks&lt;/i&gt;. https://doi.org/10.1.1.37.9541&lt;/span&gt;&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1926,8 +1937,6 @@ satisfies, &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; satisfies as
   &lt;a id=&quot;1169&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
     &lt;a id=&quot;1179&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1179&quot; class=&quot;Function&quot;&gt;p₁&lt;/a&gt; &lt;a id=&quot;1182&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1184&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1135&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1186&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1188&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;
     &lt;a id=&quot;1196&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1179&quot; class=&quot;Function&quot;&gt;p₁&lt;/a&gt; &lt;a id=&quot;1199&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1201&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;1203&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1203&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt; &lt;a id=&quot;1205&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1207&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1146&quot; class=&quot;Bound&quot;&gt;P&lt;/a&gt; &lt;a id=&quot;1209&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1203&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt; &lt;a id=&quot;1211&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1213&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1146&quot; class=&quot;Bound&quot;&gt;P&lt;/a&gt; &lt;a id=&quot;1215&quot; href=&quot;/type-theory/2018/02/09/leibniz-s-equality/#1138&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;/pre&gt;
-
-&lt;h2 id=&quot;related&quot;&gt;Related&lt;/h2&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;The principle of identity of indiscernibles states that two objects
