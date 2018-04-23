@@ -191,17 +191,8 @@ resource to continue learning more about this interesting field.</p>
       <li>
         <h3>
           <a href="/type-theory/2018/04/08/HoTT-book/">
-            HoTT-Book Exercises
+            Solving some exercises of HoTT's book
             <small>08 Apr 2018</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/type-theory/2018/02/20/equivalences/">
-            Equivalences
-            <small>20 Feb 2018</small>
           </a>
         </h3>
       </li>
@@ -211,6 +202,15 @@ resource to continue learning more about this interesting field.</p>
           <a href="/type-theory/2018/02/16/path-algebra-in-HoTT/">
             Path Algebra in HoTT
             <small>16 Feb 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/02/14/induction-on-identity-types/">
+            Induction on Identity Types
+            <small>14 Feb 2018</small>
           </a>
         </h3>
       </li>
@@ -248,48 +248,12 @@ s.setAttribute('data-timestamp', +new Date());
     <!-- Import jQuery -->
 <script type="text/javascript" src="/assets/jquery.js"></script>
 
-<!-- Script which allows for foldable code blocks -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+<script src="/assets/linkify.min.js"></script>
+<script src="/assets/linkify-jquery.min.js"></script>
+
 <script type="text/javascript">
- $('div.foldable pre').each(function(){
-     var autoHeight = $(this).height();
-     var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-     $(this).height(2.0 * lineHeight);
-     $(this).css('overflow','hidden');
-     $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             $(this).height(2.0 * lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
-     });
- });
+$('div.references').linkify();
 </script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->

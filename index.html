@@ -140,7 +140,7 @@
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
 
-            <small style="text-decoration:left">logs in progress<span class="modifications">(<span class="additions">+94300</span>/<span class="substractions">-72728</span>)</span>
+            <small style="text-decoration:left">logs in progress<span class="modifications">(<span class="additions">+94997</span>/<span class="substractions">-73426</span>)</span>
             </small>
           </h3>
         </div>
@@ -153,13 +153,13 @@
 
   <div class="main-heading">
     <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> Fix minor typos</a></span>
+        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> text proofs of ex1.1, 1.2, 3.1, and 3.2.</a></span>
     <a class="main-rss" href="/feed.xml">
       rss
     </a>
   </div>
   <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io">53b322a </a> on  23 Apr 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io">73347b0 </a> on  23 Apr 2018
   </div>
 </div>
 
@@ -283,48 +283,12 @@ search.start();
     <!-- Import jQuery -->
 <script type="text/javascript" src="/assets/jquery.js"></script>
 
-<!-- Script which allows for foldable code blocks -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+<script src="/assets/linkify.min.js"></script>
+<script src="/assets/linkify-jquery.min.js"></script>
+
 <script type="text/javascript">
- $('div.foldable pre').each(function(){
-     var autoHeight = $(this).height();
-     var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-     $(this).height(2.0 * lineHeight);
-     $(this).css('overflow','hidden');
-     $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             $(this).height(2.0 * lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
-     });
- });
+$('div.references').linkify();
 </script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->

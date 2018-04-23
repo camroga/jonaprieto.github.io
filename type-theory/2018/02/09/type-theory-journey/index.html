@@ -148,11 +148,11 @@
         <div class="post">
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+143</span>/<span class="substractions">-68</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> Fix minor typos</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+151</span>/<span class="substractions">-68</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> text proofs of ex1.1, 1.2, 3.1, and 3.2.</a></span>
     </div>
     <div class="main-last-date">
-        Latest commit <a href="">9256060 </a> on  23 Apr 2018
+        Latest commit <a href="">90430f7 </a> on  23 Apr 2018
     </div>
     </div>
 </div>
@@ -182,7 +182,9 @@
           <li>Coproducts (<code class="highlighter-rouge">_+_</code>)</li>
           <li>Π-types    (<code class="highlighter-rouge">Π_._</code>)</li>
           <li>Σ-types    (<code class="highlighter-rouge">Σ_._</code>)</li>
-          <li>Id-types   (<code class="highlighter-rouge">_≡_</code>)</li>
+          <li>
+            <p>Id-types   (<code class="highlighter-rouge">_≡_</code>)</p>
+          </li>
           <li>W-types    (<code class="highlighter-rouge">W__</code>)</li>
         </ul>
       </li>
@@ -267,6 +269,12 @@ Gives (some) parametricity for free: all constructions on types invariant under 
   <li><a href="https://github.com/CHTT-s18/lecture-notes">Computational higher type theory</a></li>
 </ul>
 
+<h4 id="questions">Questions</h4>
+
+<p>About HoTT:</p>
+
+<ol class="bibliography"><li><span id="1861540">doofin (https://math.stackexchange.com/users/354484/doofin). (2016, July). transport functions ,lemmas between isomorphic structures using univalence. Mathematics Stack Exchange. Retrieved from https://math.stackexchange.com/q/1861540</span></li></ol>
+
 <h3 id="references">References</h3>
 
 <ul>
@@ -288,17 +296,8 @@ Gives (some) parametricity for free: all constructions on types invariant under 
       <li>
         <h3>
           <a href="/type-theory/2018/04/08/HoTT-book/">
-            HoTT-Book Exercises
+            Solving some exercises of HoTT's book
             <small>08 Apr 2018</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/type-theory/2018/02/20/equivalences/">
-            Equivalences
-            <small>20 Feb 2018</small>
           </a>
         </h3>
       </li>
@@ -308,6 +307,15 @@ Gives (some) parametricity for free: all constructions on types invariant under 
           <a href="/type-theory/2018/02/16/path-algebra-in-HoTT/">
             Path Algebra in HoTT
             <small>16 Feb 2018</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/02/14/induction-on-identity-types/">
+            Induction on Identity Types
+            <small>14 Feb 2018</small>
           </a>
         </h3>
       </li>
@@ -345,48 +353,12 @@ s.setAttribute('data-timestamp', +new Date());
     <!-- Import jQuery -->
 <script type="text/javascript" src="/assets/jquery.js"></script>
 
-<!-- Script which allows for foldable code blocks -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+<script src="/assets/linkify.min.js"></script>
+<script src="/assets/linkify-jquery.min.js"></script>
+
 <script type="text/javascript">
- $('div.foldable pre').each(function(){
-     var autoHeight = $(this).height();
-     var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-     $(this).height(2.0 * lineHeight);
-     $(this).css('overflow','hidden');
-     $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             $(this).height(2.0 * lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
-     });
- });
+$('div.references').linkify();
 </script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->
