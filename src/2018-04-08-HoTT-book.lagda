@@ -1,15 +1,15 @@
 ---
 layout: "post"
-title: "HoTT-Book Exercises"
+title: "Solving some exercises of HoTT's book"
 date: "2018-04-08"
 categories: type-theory
+toc: true
 ---
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
 Many changes can appear running this experiment. The solutions are
 type-checked as a whole using Agda v2.5.3.
-
 
 ## Requirements
 
@@ -22,7 +22,6 @@ Agda has a pragma to work with HoTT:
 \end{code}
 
 -------------------------------------------------------------------------------
-
 
 Equality type defintion also called Identity type:
 
@@ -90,7 +89,10 @@ J P u x y p = J' (P x) (u x) y p
 <div class="exercise">
 Given functions $$f : A \to B$$ and $$g:B\to C$$, define
 their composite $$ g\circ f:A\to C$$.
+Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
 </div>
+
+We define the composition operation in Agda as follows.
 
 \begin{code}
 _∘_ : ∀ {i j k} {A : Set i}{B : Set j}{C : Set k}
@@ -99,9 +101,9 @@ _∘_ : ∀ {i j k} {A : Set i}{B : Set j}{C : Set k}
     → A → C
 g ∘ f = λ x → g (f x)
 \end{code}
-<div class="exercise">
-Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
-</div>
+
+Then, the `∘-assoc` shows us that associativity of this composition holds.
+
 \begin{code}
 ∘-assoc : ∀ {i j k l} {A : Set i}{B : Set j}{C : Set k}{D : Set l}
         → (h : C → D)(g : B → C)(f : A → B)
@@ -117,22 +119,17 @@ using only the projections, and verify that the definitional equalities
 are valid. Do the same for $$\Sigma$$-types.
 </div>
 
-Let's add some machinery to handle levels of the universe needed for
-the following exercises including this one:
+To solve this problem we need to know:
 
-\begin{code}
-open import Agda.Primitive public
-  using (Level; _⊔_; lzero; lsuc)
-\end{code}
+  - The recursion principle for Σ-types:
 
-To solve this problem we need:
+    <p class="equation">
+    $$ \mathsf{rec}_{ A \times B}
+      : \prod\limits_{C : \mathcal{U}} (A \to B \to C) → A \times B \to C.
+    $$
+    </p>
 
-  - Σ-type definition
-
-  - Product type definition
-
-  - Review the recursion principle, what exactly it consists of.
-    Maybe this refresh our minds (see Pp. 42 HoTT-Book).
+  - The recursion principle for Σ-types:
 
     <p class="equation">
     $$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)}
@@ -141,7 +138,51 @@ To solve this problem we need:
     $$
     </p>
 
+<div class="proof" id="proof-1.2">
+Proof.<br/>
+For products:<br/>
+If we have the projections,
+$$\mathsf{proj}_1 : A \times B \to \mathsf{A}$$ and $$\mathsf{proj}_2 : A \times B \to \mathsf{B}$$,
+then $$\mathsf{rec}_2$$ is another inhabitant where
+
+<p class="equation">
+$$
+\begin{align*}
+&\mathsf{rec}_1 : \prod\limits_{C : \mathcal{U}} (A \to B \to C) \to A \times B \to C\\
+&\mathsf{rec}_1~C~g~c~:\equiv~g~(\mathsf{proj}_1 c,~\mathsf{proj}_2 c).
+\end{align*}
+$$
+</p>
+By reflexivity, we prove the equality between $$\mathsf{rec}_{ A \times B}$$ and $$\mathsf{rec}_1$$.
+<br/>
+<br/>
+For sums:<br/>
+The projections are $$\mathsf{proj}_1 : \sum_{x : A}  Bx \to \mathsf{A}$$ and
+$$\mathsf{proj}_2 :  \prod_{(p : \sum_{x : A}  Bx)} \to \mathsf{B} (\mathsf{proj}_1 p)$$.<br/>
+By using these projections, we got another recursor defined as follows:
+<p class="equation">
+$$
+\begin{aling*}
+&\mathsf{rec}_2 : \prod\limits_{C : \mathcal{U}}  (\prod_{x : A} Bx \to C) \to \sum\limits_{x : A} B x \to C\\
+&\mathsf{rec}_2~C~g~c~=~g~(\mathsf{proj}_1 c)~(\mathsf{proj}_2 c)
+\end{align*}
+$$
+</p>
+
+By reflexivity, we prove the equality between $$\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}$$ and $$\mathsf{rec}_2$$.
+</div>
+
 -------------------------------------------------------------------------------
+
+In Agda.<br>
+
+Let's add some machinery to handle levels of the universe needed for
+the following exercises including this one:
+
+\begin{code}
+open import Agda.Primitive public
+  using (Level; _⊔_; lzero; lsuc)
+\end{code}
 
 Σ-type (sigma type) definition (see the definition without projections
 [here](https://github.com/jonaprieto/hott-book/blob/master/other/prelim.agda#L20)):
@@ -629,7 +670,7 @@ Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
 
 
 <div class="proof" id="proof-3.1">
-Sketch of the proof.<br/>
+Proof.<br/>
 Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
 We need to prove $$ p \equiv q$$.<br/>
 Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
@@ -687,7 +728,7 @@ To solve this exercise, we should take a look of some results from Chapter 2,
 Section 2.12.
 
 <div class="proof" id="proof-3.2">
-Sketch of the Proof.<br/>
+Proof.<br/>
 
 Let be $$x, y : A + B$$, and paths $$p : x \equiv y$$, $$q : x \equiv
 y$$. Let's get a path $$p \equiv q$$.  We proceed by case analysis. If
@@ -783,10 +824,7 @@ module ex3-2 where
   p {A} {.B} setA setB (inr B) (inr .B) refl refl = refl
   p {.A} {.B} setA setB (inl A) (inr B) p q = {!   !}
   p {.A} {.B} setA setB (inr B) (inl A) p q = {!   !}
-
-
 \end{code}
-
 
 ### Exercise 3.3
 
@@ -805,12 +843,17 @@ if $$A\to A$$ is contractible.
 
 ### References
 
-- {% reference hottbook %}
+{::options parse_block_html="true" /}
+<div class="references">
 
-- {% reference Grayson2017 %}
+  - {% reference hottbook %}
 
-- {% reference Wadler2015PT %}
+  - {% reference Grayson2017 %}
 
-- [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises).
+  - {% reference Wadler2015PT %}
 
-- [Capriotti's agda-base](https://github.com/pcapriotti/agda-base/)
+  - [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises)
+
+  - [Capriotti's agda-base](https://github.com/pcapriotti/agda-base/)
+</div>
+{::options parse_block_html="false" /}

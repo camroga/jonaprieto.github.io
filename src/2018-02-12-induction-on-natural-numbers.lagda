@@ -45,9 +45,10 @@ bigNumber = 123456789
 
 Now let us define the principle of primitive recursion for natural numbers:
 
-```agda
-recℕ : Π(C : 𝒰). C → (ℕ → C → C) → ℕ → C
-```
+$$
+\mathsf{rec_{\mathbb{N}}} : \prod\limits_{C : \mathcal{U}}\, C \to (\mathbb{N} \to C \to C) \to \mathbb{N} \to C
+$$
+
 recℕ is the so-called *recursor* for natural numbers.
 In Agda, we can define it as follows.
 
@@ -170,9 +171,9 @@ The induction here is a generalization of the priniciple of recursion. In
 first-order we can write the induction schema or the principle of mathematical
 induction.
 
-```
-P 0 ∧ (∀ n . P n → P (suc n)) → ∀ n . P n
-```
+$$
+P\,0 \wedge (\forall n . P n \to P (\mathsf{suc} n)) \to \forall n . P n
+$$
 
   > In particular, a property of natural numbers is represented by a family of
   types P : ℕ → 𝒰. From this point of view, the above induction principle says
@@ -332,12 +333,12 @@ $$
 $$
 </p>
 
-then for all $$n : \mathbb{N}$$ we have $$P(n)$$.
+then for all $$n : \mathbb{N}$$, $$P(n)$$.
 </div>
 
-To solve this problem, we need to define a type for the *less than* (`_<_`) relationship
-between natural numbers but we also have to define the disjunction to
-make a case analysis in our proof. Let's see. You may skip this first part.
+To solve this problem, we need to define a type for the *less than* relationship
+(`_<_`) between natural numbers but we also have to define the disjunction to
+make a case analysis that we need for our proof. Let's see. You may skip this first part.
 
 \begin{code}
 module ℕ-transInd (P : ℕ → 𝒰) where

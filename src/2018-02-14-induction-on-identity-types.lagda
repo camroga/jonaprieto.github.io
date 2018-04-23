@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Induction on Identity Types"
-date: "2018-02-14 17:41"
+date: "2018-02-14"
 categories: type-theory
 ---
 

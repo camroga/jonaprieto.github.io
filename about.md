@@ -33,6 +33,7 @@ I'm using these tools to run this blog:
 - `ipe` to draw all my pictures
 - Since April 2018 I changed to [https://tex.s2cms.com/](https://tex.s2cms.com/) to render `Latex` instead of `KaTeX`
 - `timelinejs` to show some test timelines
+- `linkify` to replace any url address to anchor tags
 
 ### License
 ----

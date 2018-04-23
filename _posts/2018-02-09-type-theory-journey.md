@@ -19,6 +19,8 @@ Type theory
     * Π-types    (`Π_._`)
     * Σ-types    (`Σ_._`)
     * Id-types   (`_≡_`)
+
+
     * W-types    (`W__`)
 
 - is about **deductive systems**, that are, *collection* of rules that derive things
@@ -69,6 +71,12 @@ We mostly refer to type theories using the following abbreviations:
 - Observational type theory
 - [Computational higher type theory](https://github.com/CHTT-s18/lecture-notes)
 
+
+#### Questions
+
+About HoTT:
+
+{% bibliography --file stack-questions-hott %}
 
 ### References
 

@@ -34,7 +34,7 @@ scholar:
 
 toc:
   min_level: 1 # default: 1
-  max_level: 2 # default: 6
+  max_level: 4 # default: 6
 
 exclude:
   - src/
