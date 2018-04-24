@@ -707,14 +707,14 @@ $$<br/>
 Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 </div>
 
-Now, let's verify this in Agda.
+
+In Agda:
 
 \begin{code}
 module sets where
 
   isSet : ∀ {i} (A : Set i) → Set _
   isSet A = (x y : A) → (p : x ≡ y) → (q : x ≡ y) → p ≡ q
-
   -- TODO
 \end{code}
 
@@ -757,7 +757,7 @@ $$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
 \equiv q$$.
 </div>
 
-But first let's define the empty type:
+In Agda.
 
 \begin{code}
 module 𝟘-Def where
@@ -809,7 +809,6 @@ module +-Ind₂ where
   -- ind C f g c x = {!   !}
 
 -- module +-Fun₂ where
-
 \end{code}
 
 
