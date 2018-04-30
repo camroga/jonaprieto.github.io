@@ -90,6 +90,17 @@ $(HOME)/agda2html-master/:
 	cd $(HOME)/agda2html-master;\
 		stack install
 
+.PHONY : ref
+ref : _bibliography/library.bib
+	- biber --tool --output_align --output_indent=2 \
+		--output_fieldcase=lower -w \
+		-O=_bibliography/library.bib.new _bibliography/library.bib
+	- mv _bibliography/library.bib.new _bibliography/library.bib
+	- rm -f _bibliography/library.bib.blg
+	- sh _bibliography/fix-references.sh
+	- cp _bibliography/library.bib _bibliography/ref.bib
+	- rm -f _bibliography/library.bib-r
+
 .phony : push-sources
 push-sources :
 	- @git checkout sources

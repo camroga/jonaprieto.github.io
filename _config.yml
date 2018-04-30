@@ -24,7 +24,7 @@ plugins:
 
 scholar:
   style: apa
-  bibliography: library.bib
+  bibliography: ref.bib
   source: ./_bibliography
   locale: en
   sort_by: 'year,month'
@@ -43,6 +43,7 @@ exclude:
   - Makefile
   - .observr
   - .travis.yml
+  - fix-references.sh
 
 include:
   - .nojekyll
