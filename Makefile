@@ -10,7 +10,7 @@ ipeImagesPNG     := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png
 latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexitImages))
 
 #
-all: _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG) _bibliography/ref.bib
+all: _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG)
 
 _posts/ :
 	rm -Rf -d _posts
@@ -90,19 +90,27 @@ $(HOME)/agda2html-master/:
 	cd $(HOME)/agda2html-master;\
 		stack install
 
-.PHONY : _bibliography/ref.bib
-_bibliography/ref.bib : _bibliography/library.bib
+.PHONY : references
+references : _bibliography/library.bib
 	- @echo "==================================================================="
 	-	@echo "====================== Generating References ======================"
 	-	@echo "==================================================================="
+	- @rm _bibliography/ref.bib
 	- @cp  _bibliography/library.bib  _bibliography/library-temp.bib
+	- sh _bibliography/fix-references.sh
 	- biber --tool --output_align --output_indent=2 \
 		--output_fieldcase=lower -w \
+		--output-encoding=UTF-8 \
+		--input-encoding=UTF-8 \
+		--sortupper=true\
+		--output-format=bibtex\
+		--debug \
 		-O=_bibliography/library-temp.bib _bibliography/library-temp.bib
-	- sh _bibliography/fix-references.sh
+		- sh _bibliography/fix-references.sh
 	- @mv _bibliography/library-temp.bib _bibliography/ref.bib
 	- @rm -f _bibliography/library-temp.bib.blg
 	- @rm -f _bibliography/library-temp.bib-r
+	-	@echo "========================== END ==================================="
 
 .phony : push-sources
 push-sources :

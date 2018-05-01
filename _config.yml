@@ -47,6 +47,7 @@ exclude:
 
 include:
   - .nojekyll
+future: true
 # ----------------------------------------------------------------------------
 algolia:
   application_id: '6LC140UUTA'
@@ -71,4 +72,4 @@ author:
   email:             prieto.jona@gmail.com
 
 # Custom vars
-version:             0.0.4
+version:             0.0.1
