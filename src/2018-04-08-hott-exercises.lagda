@@ -1,9 +1,8 @@
 ---
 layout: "post"
-title: "Solving some exercises of HoTT's book"
+title: "HoTT exercises"
 date: "2018-04-08"
 categories: type-theory
-toc: true
 ---
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.
@@ -23,7 +22,7 @@ Agda has a pragma to work with HoTT:
 
 -------------------------------------------------------------------------------
 
-Equality type defintion also called Identity type:
+Equality type definition also called Identity type:
 
 \begin{code}
 infix 4 _≡_
@@ -545,7 +544,6 @@ module 𝟚-Ind₁ where
   ind c₀ c₁ 𝟙 = c₁
 \end{code}
 
-
 The we define the **coproduct** $$A+B$$ as follows:
 
 \begin{code}
@@ -585,7 +583,6 @@ module +-Rec₁ where
   rec f g (𝟙 , b) = g b
 \end{code}
 
-
 Notice how the recursor of the coproduct matches with the elimination
 rule of the disjunction conective also called *case analysis*. That's follows from the
 [**propositions-as-types**](https://ncatlab.org/nlab/show/propositions+as+types).
@@ -622,7 +619,59 @@ module +-Ind₁ where
 
 ## Chapter 2
 
+### Exercise 2.10
 
+<div class="exercise">
+Prove that ∑-types are associative, in that for any $$A : \mathcal{U}$$
+and families $$B : A  \to U$$ and $$C : \sum_{(x : A)} B(x) \to \mathcal{U}$$,
+we have
+<p class="equation">
+$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \simeq \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
+</p>
+</div>
+
+<div class="proof" id="proof-2.10">
+Solution.<br/>
+We can prove that the following functions $$f$$ and $$g$$ are inverses.
+
+<p class="equation">
+$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
+</p>
+defined by $$f(a,b,c) :\equiv ((a,b),c)$$, $$g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)$$.<br/>
+Indeed,
+<p class="equation">
+$$
+\begin{align*}
+(f \circ g) (z, c) &:\equiv f (g (z,c))\\
+&:\equiv f\,(\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)\\
+&:\equiv ((\mathsf{proj}_1 z,\mathsf{proj}_{2} z), c)
+\end{align*}
+$$
+</p>
+</div>
+
+\begin{code}
+module Σ-Fun₁ where
+  open Σ-Def₁ using (proj₁; proj₂; _,_;Σ)
+
+  f : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
+    → Σ A (λ a → Σ (B a) (λ z → C (a , z))) → Σ (Σ A B) C
+  f (a , (b , c)) = (a , b) , c
+
+  g : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
+     → Σ (Σ A B) C → Σ A (λ a → Σ (B a) (λ z → C (a , z)))
+  g {A}{B}{C} (z , c) = (proj₁ z , (proj₂ z , c))
+
+  proof→ : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
+        → (x : Σ (Σ A B) C)
+        → f {A = A}{B = B}{C = C} (g x) ≡ x
+  proof→ x = refl
+
+  proof← : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
+        → (x : Σ A (λ a → Σ (B a) (λ b → C (a , b))))
+        → g {A = A}{B = B}{C = C} (f x) ≡ x
+  proof← x = refl
+\end{code}
 
 ## Chapter 3
 

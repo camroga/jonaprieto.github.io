@@ -15,7 +15,7 @@ $('div.references').linkify();
  $("script[type='math/tex']").replaceWith(
      function(){
          var tex = $(this).text();
-         return "$$" + tex + "$$";
+         return "&zwnj;$$" + tex + "$$&zwnj;";
      });
  $("script[type='math/tex; mode=display']").replaceWith(
      function(){

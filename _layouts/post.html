@@ -4,21 +4,20 @@ comments: true
 ---
 
 <div class="post">
+  {% if page.github and page.git %}
   <div class="post-changes">
     <div class="main-heading">
       <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+{{page.git.total_additions}}</span>/<span class="substractions">-{{page.git.total_subtractions}}</span>)</span>:
           <span class="commit-message"> <a href="{{site.github.repository_url}}"> {{page.git.last_commit.message}}</a></span>
-    </div>
+      </div>
     <div class="main-last-date">
         Latest commit <a href="{{page.github.repository_url}}">{{page.git.last_commit.short_sha}} </a> on  {{ page.git.last_commit.commit_date | date_to_string  }}
     </div>
     </div>
-</div>
-  <h1 class="post-title">{{ page.title }}</h1>
+  </div>
+  {% endif %}
 
-  <!-- <span class="post-date">Created on {{ page.date | date_to_string }} -->
-    <!-- <small style="text-decoration:left">Created on {{ page.date | date_to_string }} on Latest change on {{ page.last_modified_at | date_to_string}}</small> -->
-  <!-- </span> -->
+  <h1 class="post-title">{{ page.title }}</h1>
 
   {% if page.toc %}
   <div class="toc">
@@ -43,7 +42,9 @@ comments: true
         <h3>
           <a href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
+            {% if post.date %}
             <small>{{ post.date | date_to_string }}</small>
+            {% endif %}
           </a>
         </h3>
       </li>

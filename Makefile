@@ -17,6 +17,7 @@ _posts/ :
 	mkdir -p _posts
 
 _posts/%.md : src/%.md
+	rm -f $@
 	cp $< $@
 
 _posts/%.md : src/%.lagda
@@ -34,7 +35,7 @@ observr:
 
 .phony: serve
 serve:
-	ruby -S bundle exec jekyll liveserve --force_polling --watch --verbose
+	ruby -S bundle exec jekyll liveserve --force_polling --watch --incremental
 
 # remove all auxiliary files
 .phony: clean
