@@ -55,8 +55,6 @@ ifneq ($(strip $(markdown)),)
 endif
 	rm -Rf _posts/
 
-
-
 # install bundler, and gem dependencies
 setup:
 	ruby -S gem install bundler --no-ri --no-rdoc

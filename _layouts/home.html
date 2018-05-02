@@ -6,7 +6,7 @@ layout: default
 
   {{ content }}
   <div id="search-searchbar"></div>
-
+  {% if site.github %}
   <div class="main-heading">
     <div class="main-title"> Latest change:
         <span class="commit-message"> <a href="{{site.github.repository_url}}"> {{site.git.last_commit.message}}</a></span>
@@ -17,7 +17,8 @@ layout: default
   <div class="main-last-date">
       Latest commit <a href="{{site.github.repository_url}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }}
   </div>
-</div>
+  </div>
+  {% endif %}
 
   <div class="posts" id="search-hits">
   </div>

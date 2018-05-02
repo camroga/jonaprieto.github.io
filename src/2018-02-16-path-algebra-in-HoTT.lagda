@@ -147,13 +147,38 @@ l5 = pi (λ x y p → (p  ⁻¹) ⁻¹ ≡ p)
 ### Transport
 
 \begin{code}
-trans : ∀ {A : Set}{x x' : A}
+transp : ∀ {A : Set}{x x' : A}
       → (B : A → Set) → (y : B x) → (u : x ≡ x') → B x'
-trans B y refl  = y
+transp B y refl  = y
 \end{code}
 
 ![path](/assets/ipe-images/transport-fiber.png)
 
+Transport is the *path* version of the Leibniz's Law in one direction:
+
+$$
+  \forallx \forally (x \equiv y \to \forall P \ (P(x) \Leftrightarrow P(y))
+$$
+
+We should also say, we're already familiar with its type since it
+shows up as the susbstitution of equals in type theory. Actually,
+in the Agda standard library, we found `subst` that follows from the same principle:
+
+\begin{code}
+open import Relation.Binary.PropositionalEquality using (subst)
+
+trans' : ∀ {A : Set}{x x' : A}
+      → (B : A → Set) → (y : B x) → (u : x ≡ x') → B x'
+trans' B y u = subst B u y
+\end{code}
+
 ### References
 
-- {% reference hottbook %}
+{::options parse_block_html="true" /}
+<div class="references">
+
+  - {% reference hottbook %}
+  - {% reference agdateam %}
+
+</div>
+{::options parse_block_html="false" /}

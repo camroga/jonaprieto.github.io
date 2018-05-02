@@ -343,7 +343,7 @@ h
 <use name="mark/disk(sx)" pos="244.024 700.566" size="normal" stroke="black"/>
 <text matrix="1 0 0 1 18 6" transformations="translations" pos="216 692" stroke="black" type="label" width="5.242" height="4.297" depth="1.93" valign="baseline" style="math">y</text>
 <use name="mark/disk(sx)" pos="342 693.352" size="normal" stroke="black"/>
-<text matrix="1 0 0 1 -8 -2" transformations="translations" pos="354 694" stroke="black" type="label" width="57.468" height="8.431" depth="2.49" valign="baseline" style="math">\mathit{transp}^{B} (y, u)</text>
+<text matrix="1 0 0 1 -8 -2" transformations="translations" pos="354 694" stroke="black" type="label" width="57.468" height="8.431" depth="2.49" valign="baseline" style="math">\mathsf{transp}^{B} (y, u)</text>
 <text transformations="translations" pos="296 638" stroke="black" type="label" width="5.703" height="4.289" depth="0" valign="baseline" style="math">u </text>
 <path stroke="black" dash="dashed" arrow="arc/small">
 244.024 700.508 m
