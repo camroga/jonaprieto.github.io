@@ -2,40 +2,6 @@
 <html lang="en-us">
 
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
-    
-       &middot; jonaprieto
-    
-  </title>
-
-  <!-- CSS -->
-
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-
-  <!-- TIMELINES -->
-  <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
-
-
-<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,18 +9,24 @@
   <title>jonaprieto</title>
   <meta name="description" content="Jonathan Prieto-Cubides">
 
+  <link rel="stylesheet" href="/assets/main.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-114360791-1');
   </script>
-  <!-- TIMELINE -->
-  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
+  
 </head>
 
 
@@ -124,9 +96,9 @@
       
     
 
-    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.4.zip">Download</a> -->
+    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.1.zip">Download</a> -->
     <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
-    <!-- <span class="sidebar-nav-item">Currently v0.0.4</span> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
   </nav>
 </div>
 
@@ -140,7 +112,7 @@
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
 
-            <small style="text-decoration:left">logs in progress<span class="modifications">(<span class="additions">+103259</span>/<span class="substractions">-77894</span>)</span>
+            <small style="text-decoration:left">logs in progress<span class="modifications">(<span class="additions">+108722</span>/<span class="substractions">-84779</span>)</span>
             </small>
           </h3>
         </div>
@@ -150,27 +122,30 @@
 
   
   <div id="search-searchbar"></div>
-
+  
   <div class="main-heading">
     <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> references</a></span>
+        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> gitignore</a></span>
     <a class="main-rss" href="/feed.xml">
       rss
     </a>
   </div>
   <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io">b97f605 </a> on  01 May 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io">6a73d5b </a> on  02 May 2018
   </div>
-</div>
+  </div>
+  
 
   <div class="posts" id="search-hits">
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch-theme-algolia.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch-theme-algolia.min.css">
+
 <base href="">
 
 <script src="/assets/latex-to-unicode-converter.min.js"></script>
@@ -269,7 +244,6 @@ search.start();
 .ais-search-box {
   max-width: 100%;
   margin-bottom: 15px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 </style>
 
@@ -281,9 +255,9 @@ search.start();
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
     <!-- Import jQuery -->
-<script type="text/javascript" src="/assets/jquery.js"></script>
+<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/assets/linkify.min.js"></script>
 <script src="/assets/linkify-jquery.min.js"></script>
 
@@ -297,7 +271,7 @@ $('div.references').linkify();
  $("script[type='math/tex']").replaceWith(
      function(){
          var tex = $(this).text();
-         return "$$" + tex + "$$";
+         return "&zwnj;$$" + tex + "$$&zwnj;";
      });
  $("script[type='math/tex; mode=display']").replaceWith(
      function(){
@@ -306,6 +280,17 @@ $('div.references').linkify();
                  "$$" + tex + "$$" +
                 "</p>";
      });
+</script>
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
 </script>
 
 

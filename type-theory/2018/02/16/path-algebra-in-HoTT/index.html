@@ -2,40 +2,6 @@
 <html lang="en-us">
 
   <head>
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-  <title>
-    
-      Path Algebra in HoTT &middot; jonaprieto
-    
-  </title>
-
-  <!-- CSS -->
-
-  <link rel="stylesheet" href="/assets/main.css">
-  <link rel="stylesheet" href="/public/css/poole.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="/public/css/lanyon.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
-
-  <!-- TIMELINES -->
-  <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.ico">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
-
-
-<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,18 +9,24 @@
   <title>Path Algebra in HoTT</title>
   <meta name="description" content="In Univalence we have a different interpretation of type theory. We replace the set-theoretical notion of sets for types and we use the topological space not...">
 
+  <link rel="stylesheet" href="/assets/main.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-114360791-1');
   </script>
-  <!-- TIMELINE -->
-  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 
+  
 </head>
 
 
@@ -124,9 +96,9 @@
       
     
 
-    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.4.zip">Download</a> -->
+    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.1.zip">Download</a> -->
     <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
-    <!-- <span class="sidebar-nav-item">Currently v0.0.4</span> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
   </nav>
 </div>
 
@@ -146,21 +118,9 @@
       
       <div class="container content">
         <div class="post">
-  <div class="post-changes">
-    <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+671</span>/<span class="substractions">-534</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> text proofs of ex1.1, 1.2, 3.1, and 3.2.</a></span>
-    </div>
-    <div class="main-last-date">
-        Latest commit <a href="">90430f7 </a> on  23 Apr 2018
-    </div>
-    </div>
-</div>
-  <h1 class="post-title">Path Algebra in HoTT</h1>
+  
 
-  <!-- <span class="post-date">Created on 16 Feb 2018 -->
-    <!-- <small style="text-decoration:left">Created on 16 Feb 2018 on Latest change on 23 Apr 2018</small> -->
-  <!-- </span> -->
+  <h1 class="post-title">Path Algebra in HoTT</h1>
 
   
   <p>In Univalence we have a different interpretation of type theory. We replace the
@@ -296,17 +256,36 @@ identity type. Now let’s see some algebra.</p>
 
 <h3 id="transport">Transport</h3>
 
-<pre class="Agda"><a id="trans" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#trans" class="Function">trans</a> <a id="4243" class="Symbol">:</a> <a id="4245" class="Symbol">∀</a> <a id="4247" class="Symbol">{</a><a id="4248" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4248" class="Bound">A</a> <a id="4250" class="Symbol">:</a> <a id="4252" class="PrimitiveType">Set</a><a id="4255" class="Symbol">}{</a><a id="4257" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4257" class="Bound">x</a> <a id="4259" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4259" class="Bound">x&#39;</a> <a id="4262" class="Symbol">:</a> <a id="4264" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4248" class="Bound">A</a><a id="4265" class="Symbol">}</a>
-      <a id="4273" class="Symbol">→</a> <a id="4275" class="Symbol">(</a><a id="4276" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4276" class="Bound">B</a> <a id="4278" class="Symbol">:</a> <a id="4280" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4248" class="Bound">A</a> <a id="4282" class="Symbol">→</a> <a id="4284" class="PrimitiveType">Set</a><a id="4287" class="Symbol">)</a> <a id="4289" class="Symbol">→</a> <a id="4291" class="Symbol">(</a><a id="4292" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4292" class="Bound">y</a> <a id="4294" class="Symbol">:</a> <a id="4296" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4276" class="Bound">B</a> <a id="4298" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4257" class="Bound">x</a><a id="4299" class="Symbol">)</a> <a id="4301" class="Symbol">→</a> <a id="4303" class="Symbol">(</a><a id="4304" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4304" class="Bound">u</a> <a id="4306" class="Symbol">:</a> <a id="4308" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4257" class="Bound">x</a> <a id="4310" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="4312" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4259" class="Bound">x&#39;</a><a id="4314" class="Symbol">)</a> <a id="4316" class="Symbol">→</a> <a id="4318" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4276" class="Bound">B</a> <a id="4320" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4259" class="Bound">x&#39;</a>
-<a id="4323" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#trans" class="Function">trans</a> <a id="4329" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4329" class="Bound">B</a> <a id="4331" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4331" class="Bound">y</a> <a id="4333" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a>  <a id="4339" class="Symbol">=</a> <a id="4341" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4331" class="Bound">y</a></pre>
+<pre class="Agda"><a id="transp" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#transp" class="Function">transp</a> <a id="4244" class="Symbol">:</a> <a id="4246" class="Symbol">∀</a> <a id="4248" class="Symbol">{</a><a id="4249" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4249" class="Bound">A</a> <a id="4251" class="Symbol">:</a> <a id="4253" class="PrimitiveType">Set</a><a id="4256" class="Symbol">}{</a><a id="4258" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4258" class="Bound">x</a> <a id="4260" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4260" class="Bound">x&#39;</a> <a id="4263" class="Symbol">:</a> <a id="4265" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4249" class="Bound">A</a><a id="4266" class="Symbol">}</a>
+      <a id="4274" class="Symbol">→</a> <a id="4276" class="Symbol">(</a><a id="4277" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4277" class="Bound">B</a> <a id="4279" class="Symbol">:</a> <a id="4281" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4249" class="Bound">A</a> <a id="4283" class="Symbol">→</a> <a id="4285" class="PrimitiveType">Set</a><a id="4288" class="Symbol">)</a> <a id="4290" class="Symbol">→</a> <a id="4292" class="Symbol">(</a><a id="4293" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4293" class="Bound">y</a> <a id="4295" class="Symbol">:</a> <a id="4297" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4277" class="Bound">B</a> <a id="4299" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4258" class="Bound">x</a><a id="4300" class="Symbol">)</a> <a id="4302" class="Symbol">→</a> <a id="4304" class="Symbol">(</a><a id="4305" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4305" class="Bound">u</a> <a id="4307" class="Symbol">:</a> <a id="4309" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4258" class="Bound">x</a> <a id="4311" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="4313" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4260" class="Bound">x&#39;</a><a id="4315" class="Symbol">)</a> <a id="4317" class="Symbol">→</a> <a id="4319" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4277" class="Bound">B</a> <a id="4321" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4260" class="Bound">x&#39;</a>
+<a id="4324" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#transp" class="Function">transp</a> <a id="4331" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4331" class="Bound">B</a> <a id="4333" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4333" class="Bound">y</a> <a id="4335" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_.refl" class="InductiveConstructor">refl</a>  <a id="4341" class="Symbol">=</a> <a id="4343" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4333" class="Bound">y</a></pre>
 
 <p><img src="/assets/ipe-images/transport-fiber.png" alt="path" /></p>
 
+<p>Transport is the <em>path</em> version of the Leibniz’s Law in one direction:</p>
+
+<script type="math/tex; mode=display">\forallx \forally (x \equiv y \to \forall P \ (P(x) \Leftrightarrow P(y))</script>
+
+<p>We should also say, we’re already familiar with its type since it
+shows up as the susbstitution of equals in type theory. Actually,
+in the Agda standard library, we found <code class="highlighter-rouge">subst</code> that follows from the same principle:</p>
+
+<pre class="Agda"><a id="4792" class="Keyword">open</a> <a id="4797" class="Keyword">import</a> <a id="4804" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="4842" class="Keyword">using</a> <a id="4848" class="Symbol">(</a><a id="4849" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.Core.html#subst" class="Function">subst</a><a id="4854" class="Symbol">)</a>
+
+<a id="trans&#39;" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#trans%27" class="Function">trans&#39;</a> <a id="4864" class="Symbol">:</a> <a id="4866" class="Symbol">∀</a> <a id="4868" class="Symbol">{</a><a id="4869" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4869" class="Bound">A</a> <a id="4871" class="Symbol">:</a> <a id="4873" class="PrimitiveType">Set</a><a id="4876" class="Symbol">}{</a><a id="4878" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4878" class="Bound">x</a> <a id="4880" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4880" class="Bound">x&#39;</a> <a id="4883" class="Symbol">:</a> <a id="4885" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4869" class="Bound">A</a><a id="4886" class="Symbol">}</a>
+      <a id="4894" class="Symbol">→</a> <a id="4896" class="Symbol">(</a><a id="4897" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4897" class="Bound">B</a> <a id="4899" class="Symbol">:</a> <a id="4901" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4869" class="Bound">A</a> <a id="4903" class="Symbol">→</a> <a id="4905" class="PrimitiveType">Set</a><a id="4908" class="Symbol">)</a> <a id="4910" class="Symbol">→</a> <a id="4912" class="Symbol">(</a><a id="4913" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4913" class="Bound">y</a> <a id="4915" class="Symbol">:</a> <a id="4917" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4897" class="Bound">B</a> <a id="4919" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4878" class="Bound">x</a><a id="4920" class="Symbol">)</a> <a id="4922" class="Symbol">→</a> <a id="4924" class="Symbol">(</a><a id="4925" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4925" class="Bound">u</a> <a id="4927" class="Symbol">:</a> <a id="4929" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4878" class="Bound">x</a> <a id="4931" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#_%E2%89%A1_" class="Datatype Operator">≡</a> <a id="4933" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4880" class="Bound">x&#39;</a><a id="4935" class="Symbol">)</a> <a id="4937" class="Symbol">→</a> <a id="4939" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4897" class="Bound">B</a> <a id="4941" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4880" class="Bound">x&#39;</a>
+<a id="4944" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#trans%27" class="Function">trans&#39;</a> <a id="4951" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4951" class="Bound">B</a> <a id="4953" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4953" class="Bound">y</a> <a id="4955" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4955" class="Bound">u</a> <a id="4957" class="Symbol">=</a> <a id="4959" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.Core.html#subst" class="Function">subst</a> <a id="4965" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4951" class="Bound">B</a> <a id="4967" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4955" class="Bound">u</a> <a id="4969" href="/type-theory/2018/02/16/path-algebra-in-HoTT/#4953" class="Bound">y</a></pre>
+
 <h3 id="references">References</h3>
 
-<ul>
-  <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
-</ul>
+<div class="references">
+
+  <ul>
+    <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
+    <li><span id="agdateam">Team, T. A. D. (2015). Agda 2.4.2.3. Retrieved from http://wiki.portal.chalmers.se/agda/pmwiki.php</span></li>
+  </ul>
+
+</div>
 
   
 
@@ -322,9 +301,22 @@ identity type. Now let’s see some algebra.</p>
     
       <li>
         <h3>
-          <a href="/type-theory/2018/04/08/HoTT-book/">
-            Solving some exercises of HoTT's book
+          <a href="/type-theory/2018/05/01/circle-puzzle/">
+            Circle puzzle
+            
+            <small>01 May 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/04/08/hott-exercises/">
+            HoTT exercises
+            
             <small>08 Apr 2018</small>
+            
           </a>
         </h3>
       </li>
@@ -333,16 +325,9 @@ identity type. Now let’s see some algebra.</p>
         <h3>
           <a href="/type-theory/2018/02/14/induction-on-identity-types/">
             Induction on Identity Types
+            
             <small>14 Feb 2018</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/type-theory/2018/02/12/induction-on-natural-numbers/">
-            Induction on Natural Numbers
-            <small>12 Feb 2018</small>
+            
           </a>
         </h3>
       </li>
@@ -378,9 +363,9 @@ s.setAttribute('data-timestamp', +new Date());
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
     <!-- Import jQuery -->
-<script type="text/javascript" src="/assets/jquery.js"></script>
+<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/assets/linkify.min.js"></script>
 <script src="/assets/linkify-jquery.min.js"></script>
 
@@ -394,7 +379,7 @@ $('div.references').linkify();
  $("script[type='math/tex']").replaceWith(
      function(){
          var tex = $(this).text();
-         return "$$" + tex + "$$";
+         return "&zwnj;$$" + tex + "$$&zwnj;";
      });
  $("script[type='math/tex; mode=display']").replaceWith(
      function(){
@@ -403,6 +388,17 @@ $('div.references').linkify();
                  "$$" + tex + "$$" +
                 "</p>";
      });
+</script>
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
 </script>
 
 
