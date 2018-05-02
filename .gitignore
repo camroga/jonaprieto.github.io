@@ -2,3 +2,4 @@ _site/
 .sass-cache/
 *.agdai
 .DS_Store
+.jekyll-metadata
