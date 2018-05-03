@@ -1,0 +1,23 @@
+.toc{
+  float: right;
+  position: fixed;
+  width: 250px;
+  top: 0px;
+  right: 9px;
+  margin: 0 auto;
+  height: auto;
+  font-size: 11px;
+  overflow: scroll;
+  height: -webkit-fill-available;
+}
+
+.toc .table-of-contents {
+  font-size: 16px;
+}
+.toc a
+{
+  color: gray;
+  &:hover {
+     color: black;
+   }
+}

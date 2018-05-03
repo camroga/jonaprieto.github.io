@@ -10,13 +10,16 @@ timezone:            'Europe/Oslo'
 
 highlighter: rouge
 markdown: kramdown
+
+# parse_block_html: true
+
 permalink: pretty
 
 plugins:
   - jekyll-feed
   - jekyll-last-modified-at
   - jekyll-algolia
-  - jekyll-toc
+  # - jekyll-toc
   - jekyll-github-metadata
   - jekyll-git_metadata
   - netrc

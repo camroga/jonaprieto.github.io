@@ -29,8 +29,6 @@ assets/ipe-images/%.png : src/ipe-images/%.ipe
 assets/latexit-images/%.png : src/latexit-images/%.png
 	cp $< $@
 
-observr:
-	observr .observr
 # serve website using jekyll
 
 .phony: serve
@@ -150,3 +148,11 @@ push :
 		else \
 			echo "[!] run first:\n\t $$ make init-master"; \
 		fi
+
+.phony: watch-agda
+watch-agda:
+	- watchmedo shell-command \
+    --patterns="*" \
+    --recursive \
+    --command='echo "${watch_src_path}" && make' \
+    src

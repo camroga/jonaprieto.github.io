@@ -4,7 +4,7 @@ comments: true
 ---
 
 <div class="post">
-  {% if page.github and page.git %}
+  {% if page.git %}
   <div class="post-changes">
     <div class="main-heading">
       <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+{{page.git.total_additions}}</span>/<span class="substractions">-{{page.git.total_subtractions}}</span>)</span>:
@@ -21,12 +21,13 @@ comments: true
 
   {% if page.toc %}
   <div class="toc">
+    <nav>
     <h2 class="table-of-contents"> Table of Contents </h2>
-    {{ content | toc }}
+      {% include toc.html html=content %}
+    </nav>
   </div>
-  {% else %}
-  {{ content }}
   {% endif %}
+  {{ content }}
 
   <!-- <h2> References </h2> -->
   {% bibliography --cited %}

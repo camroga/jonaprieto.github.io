@@ -3,11 +3,12 @@ layout: "post"
 title: "HoTT exercises"
 date: "2018-04-08"
 categories: type-theory
+toc: true
 ---
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
-Many changes can appear running this experiment. The solutions are
+Many changes can appear running this experiment. Solutions are
 type-checked as a whole using Agda v2.5.3.
 
 ## Requirements
@@ -601,7 +602,7 @@ module +-Ind₁ where
       → ((a : A) → C (inl a))
       → ((b : B) → C (inr b))
       → (p : A + B) → C p
-  ind f g (𝟘 , a) = f a -- TODO any reason to not use this definition?
+  ind f g (𝟘 , a) = f a
   ind f g (𝟙 , b) = g b
 
   ind-β₁ : ∀ {i j} {A B : Set i} {C : A + B → Set j}
@@ -617,11 +618,125 @@ module +-Ind₁ where
   ind-β₂ f g x = refl
 \end{code}
 
+### Exercise 1.6
+
+<div class="exercise" id="ex-1.6">
+Show that if we define $$A \times B :≡ \prod_{x:\mathbf{2}}\mathsf{rec}_{\mathbf{2}}\ (\mathcal{U}\, A\, B\, x)$$,
+then we can give a definition of $$\mathsf{ind}_{A\times B}$$ for which the definitional
+equalities propositionally (i.e. using equality types).
+</div>
+
+\begin{code}
+module ×-Def₃ where
+  open 𝟚-Def₁ using (𝟘;𝟙;𝟚) public
+  open 𝟚-Rec₁ using (rec)
+
+  _×_ : (A B : Set) → Set
+  A × B = (x : 𝟚) → rec A B x
+
+  _,_ : ∀ {A B} → A → B → A × B
+  (a , b) 𝟘 = a
+  (a , b) 𝟙 = b
+
+  proj₁ : ∀ {A B : Set} → A × B → A
+  proj₁ x = x 𝟘
+
+  proj₂ : ∀ {A B : Set} → A × B → B
+  proj₂ x = x 𝟙
+
+module ×-Fun₃ where
+  open ×-Def₃
+
+  pair= : ∀  {A}{B} {x y : A}{a b : B}
+        → x ≡ y → a ≡ b → (x , a) ≡ (y , b)
+  pair= = ap₂ _,_
+
+  postulate
+    Extensionality
+      : {A : Set} {B : A → Set} {f g : (x : A) → B x}
+      → (∀ x → f x ≡ g x) → f ≡ g
+
+  uniq : ∀ {A B} → (c : A × B) → (proj₁ c , proj₂ c) ≡ c
+  uniq {A}{B} c = Extensionality helper
+    where
+      helper : ∀ (x : 𝟚) → (proj₁ c , proj₂ c) x ≡ c x
+      helper 𝟘 = refl
+      helper 𝟙 = refl
+
+module ×-Ind₃ where
+  open ×-Def₃
+  open ×-Fun₃
+
+  ind : ∀ {A B} (C : A × B → Set)
+      → ((a : A)(b : B) → C (a , b))
+      → (c : A × B) → C c
+  ind {A}{B} C f c = subst C (uniq c) (f (c 𝟘) (c 𝟙))
+
+  ind-β : ∀ {A B} (C : A × B → Set)
+        → (g : (a : A)(b : B) → C (a , b))
+        → ((a : A)(b : B) → ind C g (a , b) ≡ g a b)
+  ind-β {A}{B} C g a b = {!!}
+    where
+      helper :  (u : A × B) → (proj₁ u , proj₂ u) ≡ u
+      helper u =  sym (uniq (proj₁ u , proj₂ u)) · uniq u
+
+      uniq-compute : (x : A)(y : B) → helper (x , y) ≡ refl
+      uniq-compute x y = right-inverse (uniq (x , y))
+        where
+          right-inverse : ∀ {i}{X : Set i}{x y : X}
+                        → (p : x ≡ y)
+                        → (sym p) · p ≡ refl
+          right-inverse refl = refl
+\end{code}
+
+### Exercise 1.8
+
+<div class="exercise" id="exercise-1.8">
+
+Define multiplication and exponentiation using $$\mathsf{rec}{\mathbb{N}}$$.
+Verify that $$(\mathbb{N},+,0,\times,1)$$ is a semiring using only
+$$\ind{\mathbb{N}}$$.
+
+</div>
+
+### Exercise 1.9
+
+<div class="exercise" id="exercise-1.9">
+
+Define the type family $$\mathsf{Fin} : \mathbb{N} \to \mathcal{U}$$ mentioned
+at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
+\prod_{n:\mathbb{N}} \mathsf{Fin}(n+1)$$ mentioned in Section 1.4.
+</div>
+
+### Exercise 1.11
+
+<div class="exercise" id="exercise-1.11">
+Show that for any type $$A$$, we have $$\neg\neg\neg A \to \neg A$$.
+</div>
+
+### Exercise 1.16
+
+<div class="exercise" id="exercise-1.16">
+Show that addition of natural numbers is commutative:
+<p class="equation">
+$$
+\prod\limits_{i,j : \mathbb{N}}\ (i + j = j + i).
+$$
+</p>
+</div>
+
 ## Chapter 2
+
+### Exercise 2.6
+
+<div class="exercise" id="exercise-2.6">
+Prove that if $$p : x \equiv y$$, then the function
+$$(p \cdot -) : (y \equiv z) \to (x \equiv z)$$ is an equivalence.
+</div>
 
 ### Exercise 2.10
 
-<div class="exercise">
+<div class="exercise" id="exercise-2.10">
 Prove that ∑-types are associative, in that for any $$A : \mathcal{U}$$
 and families $$B : A  \to U$$ and $$C : \sum_{(x : A)} B(x) \to \mathcal{U}$$,
 we have
@@ -673,6 +788,35 @@ module Σ-Fun₁ where
   proof← x = refl
 \end{code}
 
+
+### Exercise 2.13
+
+<div class="exercise" id="exercise-2.13">
+Show that $$(2 \simeq 2) \simeq 2$$.
+</div>
+
+
+
+### Exercise 2.14
+
+<div class="exercise" id="exercise-2.14">
+Suppose we add to type theory the equality reflection rule which says
+that if there is an element $$p : x \equiv y$$, then in fact $$ x \equiv y$$.
+Prove that for any $$p : x \equiv x$$ we have $$p \equiv \mathsf{refl}_x$$.
+</div>
+
+### Exercise 2.17
+
+<div class="exercise">
+<ul>
+  <li> Show that if $$A \simeq A$$  and $$B \simeq B'$$, then $$(A\times B) \simeq (A'\times B')$$. </li>
+  <li> Give two proofs of this fact, one using univalence and one not using it, and show that the two proofs are equal.</li>
+  <li> Formulate and prove analogous results for the other type formers: $$\Sigma$$, $$\to$$, $$\Pi$$, and $$+$$. </li>
+</ul>
+</div>
+
+
+
 ## Chapter 3
 
 To solve the following exercises, let us recall a few things:
@@ -719,7 +863,7 @@ Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
 
 
 <div class="proof" id="proof-3.1">
-Proof.<br/>
+Proof 1.<br/>
 Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
 We need to prove $$ p \equiv q$$.<br/>
 Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
@@ -748,16 +892,21 @@ $$
 \begin{align*}
 (\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &=
   \mathsf{ap}_{f \circ g} p \equiv \mathsf{ap}_{f \circ g} q\\
+  &=(\text{transporting by using} f \sim g)\\
   &=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
-  &= p \equiv q.
+  &=p \equiv q.
 \end{align*}
 $$<br/>
 </p>
 Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 </div>
 
+<!-- <div class="proof" id="proof=3.1b"> -->
+<!-- Proof 2.<br/> -->
+<!-- Exhibit an equivalence. -->
+<!-- </div> -->
 
-In Agda:
+In Agda, we can define the predicate `isSet` as follows:
 
 \begin{code}
 module sets where
@@ -794,7 +943,7 @@ $$\mathsf{ap}_{\mathsf{inl}} m : \mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv \mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} q)$$.<br/>
 
-We conclude by Lemmas in Chapter 2, that $$\mathsf{ap}_{\mathsf{inl}}
+By path algebra we get $$\mathsf{ap}_{\mathsf{inl}}
 m : p \equiv q$$ since $$\mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv p$$.<br/> Following the
 same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
@@ -889,7 +1038,7 @@ Show that $$A$$ is a mere proposition if and only
 if $$A\to A$$ is contractible.
 </div>
 
-### References
+## References
 
 {::options parse_block_html="true" /}
 <div class="references">
