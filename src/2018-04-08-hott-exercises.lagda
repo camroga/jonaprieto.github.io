@@ -86,11 +86,11 @@ J P u x y p = J' (P x) (u x) y p
 
 ### Exercise 1.1
 
-<div class="exercise">
-Given functions $$f : A \to B$$ and $$g:B\to C$$, define
-their composite $$ g\circ f:A\to C$$.
-Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
-</div>
+{: .exercise}
+  Given functions $$f : A \to B$$ and $$g:B\to C$$, define
+  their composite $$ g\circ f:A\to C$$.
+  Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
+
 
 We define the composition operation in Agda as follows.
 
@@ -796,14 +796,25 @@ Show that $$(2 \simeq 2) \simeq 2$$.
 </div>
 
 
-
 ### Exercise 2.14
 
-<div class="exercise" id="exercise-2.14">
-Suppose we add to type theory the equality reflection rule which says
-that if there is an element $$p : x \equiv y$$, then in fact $$ x \equiv y$$.
-Prove that for any $$p : x \equiv x$$ we have $$p \equiv \mathsf{refl}_x$$.
-</div>
+{: .exercise}
+
+  Suppose we add to type theory [the equality reflection
+  rule](https://www.youtube.com/watch?v=IlfQjWqrK6I) which says that if there is
+  an element $$p : \mathsf{Id}(x,y) $$, then in fact $$ x :\equiv y$$. Prove
+  that for any $$p : \mathsf{Id}(x,x)$$ we have $$p :\equiv \mathsf{refl}_x$$.
+
+{: .proof}
+  Proof.<br/>
+  By means of base path induction, we show that
+  $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$a : A$$ and $$C :\equiv
+  \prod_{x : A} \prod_{p : a \equiv x }\ p \equiv \mathsf{refl}_{x}$$. It
+  sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and it is,
+  $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x \equiv \mathsf{refl}_x$$.
+  By equation reflection rule, since que got an inhabitant of $$p \equiv
+  \mathsf{refl}_x$$, these are judgemental equal, $$p :\equiv \mathsf{refl}_x$$.
+  
 
 ### Exercise 2.17
 
@@ -879,15 +890,15 @@ Now, an action over this path $$m$$
 using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$
 will give us
 
-<p class="equation">
+
 $$
 \mathsf{ap}_{\mathsf{ap}_{f}} m :
 (\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).
 $$
-</p>
+
+
 By the lemmas in Chapter 2, we do the following reasoning:
 
-<p class="equation">
 $$
 \begin{align*}
 (\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &=
@@ -896,8 +907,8 @@ $$
   &=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
   &=p \equiv q.
 \end{align*}
-$$<br/>
-</p>
+$$
+
 Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 </div>
 

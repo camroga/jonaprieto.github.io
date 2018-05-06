@@ -1,14 +1,23 @@
 .toc{
   float: right;
   position: fixed;
-  width: 250px;
-  top: 0px;
+  width: 200px;
+  top: 5px;
   right: 9px;
   margin: 0 auto;
   height: auto;
   font-size: 11px;
   overflow: scroll;
   height: -webkit-fill-available;
+  padding-left: 2em;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+@media all and (max-width: 72em){
+  .toc {
+    display: none;
+  }
 }
 
 .toc .table-of-contents {
