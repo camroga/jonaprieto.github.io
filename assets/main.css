@@ -279,7 +279,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; f
 
 .todo { position: relative; padding: 16px; border-radius: 3px; color: #735c0f; background-color: #fffbdd; border: 1px solid #ffef84; margin-bottom: 10px; }
 
-.exercise { position: relative; padding: 16px; border-radius: 3px; color: #735c0f; background-color: #fffbdd; border: 1px solid #ffef84; margin-top: 10px; margin-bottom: 10px; }
+.exercise { position: relative; padding: 10px 0px 5px 10px; border-radius: 3px; color: #735c0f; background-color: #fffbdd; border: 1px solid #ffef84; margin-top: 10px; margin-bottom: 10px; }
 
 .proof::first-line { font-weight: bold; text-transform: capitalize; }
 
@@ -651,8 +651,9 @@ a.pagination-item:hover { background-color: #f5f5f5; }
 /* Literal.Number.Integer.Long */
 .css .o, .css .o + .nt, .css .nt + .nt { color: #999; }
 
-.toc { float: right; position: fixed; width: 250px; top: 0px; right: 9px; margin: 0 auto; height: auto; font-size: 11px; overflow: scroll; height: -webkit-fill-available; }
+.toc { float: right; position: fixed; width: 200px; top: 5px; right: 9px; margin: 0 auto; height: auto; font-size: 11px; overflow: scroll; height: -webkit-fill-available; padding-left: 2em; overflow-x: hidden; text-overflow: ellipsis; }
 
+@media all and (max-width: 72em) { .toc { display: none; } }
 .toc .table-of-contents { font-size: 16px; }
 
 .toc a { color: gray; }
