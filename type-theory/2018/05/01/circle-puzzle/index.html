@@ -121,11 +121,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+95</span>/<span class="substractions">-3</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> Add refactoring in some parts of the html</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+101</span>/<span class="substractions">-11</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> circle progress</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="">a9d88b2 </a> on  02 May 2018
+        Latest commit <a href="">c74375d </a> on  11 May 2018
     </div>
     </div>
   </div>
@@ -137,15 +137,17 @@
   <p>Moebius type family:</p>
 
 <p class="equation">
-<script type="math/tex">\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
-\mathbb{S}^1 \to \mathcal{U}.</script>
+$$
+\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
+\mathbb{S}^1 \to \mathcal{U}.
+$$
 </p>
 
 <div class="exercise">
-  <p>Prove the equivalence of</p>
+Prove the equivalence of
 
-  <p class="equation">
-<script type="math/tex">\sum\,{\mathbb{S}^1}}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.</script>
+<p class="equation">
+$$\sum\,{\mathbb{S}^1}}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.$$
 </p>
 </div>
 
@@ -156,7 +158,9 @@
 </ul>
 
 <p class="equation">
-<script type="math/tex">\mathsf{ua} : A\simeq B \to A =_{\mathcal{U}} B.</script>
+$$
+\mathsf{ua} : A\simeq B \to A =_{\mathcal{U}} B.
+$$
 </p>
 
 <ul>
@@ -181,14 +185,12 @@
       <li>
         <p>Recursion principle <script type="math/tex">\mathsf{rec}</script>:</p>
 
-        <p class="equation">
-  <script type="math/tex">% <![CDATA[
+        <script type="math/tex; mode=display">% <![CDATA[
 \begin{align*}
-  &\mathsf{ref} : (f : \mathbb{S}^1 \to \mathsf{A}) \to (\mathbb{S}^1 \to \mathcal{U})\\
-  &\mathsf{ref}~\mathsf{base}~=~f~\mathsf{base}\\
-  &\mathsf{ref}~\mathsf{loop}~=~\mathsf{ap}_{f}~\mathsf{loop}
-  \end{align*} %]]></script>
-</p>
+&\mathsf{ref} : (f : \mathbb{S}^1 \to \mathsf{A}) \to (\mathbb{S}^1 \to \mathcal{U})\\
+&\mathsf{ref}~f~\mathsf{base}~=~f~\mathsf{base}\\
+&\mathsf{ref}~f~\mathsf{loop}~=~\mathsf{ap}_{f}~\mathsf{loop}
+\end{align*} %]]></script>
       </li>
     </ul>
   </li>

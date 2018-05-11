@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-05-07T14:20:34+02:00</updated>
+ <updated>2018-05-11T19:15:32+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -20,15 +20,17 @@
    <content type="html">&lt;p&gt;Moebius type family:&lt;/p&gt;
 
 &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
-\mathbb{S}^1 \to \mathcal{U}.&lt;/script&gt;
+$$
+\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
+\mathbb{S}^1 \to \mathcal{U}.
+$$
 &lt;/p&gt;
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Prove the equivalence of&lt;/p&gt;
+Prove the equivalence of
 
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\sum\,{\mathbb{S}^1}}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.&lt;/script&gt;
+&lt;p class=&quot;equation&quot;&gt;
+$$\sum\,{\mathbb{S}^1}}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.$$
 &lt;/p&gt;
 &lt;/div&gt;
 
@@ -39,7 +41,9 @@
 &lt;/ul&gt;
 
 &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ua} : A\simeq B \to A =_{\mathcal{U}} B.&lt;/script&gt;
+$$
+\mathsf{ua} : A\simeq B \to A =_{\mathcal{U}} B.
+$$
 &lt;/p&gt;
 
 &lt;ul&gt;
@@ -64,14 +68,12 @@
       &lt;li&gt;
         &lt;p&gt;Recursion principle &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}&lt;/script&gt;:&lt;/p&gt;
 
-        &lt;p class=&quot;equation&quot;&gt;
-  &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+        &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align*}
-  &amp;\mathsf{ref} : (f : \mathbb{S}^1 \to \mathsf{A}) \to (\mathbb{S}^1 \to \mathcal{U})\\
-  &amp;\mathsf{ref}~\mathsf{base}~=~f~\mathsf{base}\\
-  &amp;\mathsf{ref}~\mathsf{loop}~=~\mathsf{ap}_{f}~\mathsf{loop}
-  \end{align*} %]]&gt;&lt;/script&gt;
-&lt;/p&gt;
+&amp;\mathsf{ref} : (f : \mathbb{S}^1 \to \mathsf{A}) \to (\mathbb{S}^1 \to \mathcal{U})\\
+&amp;\mathsf{ref}~f~\mathsf{base}~=~f~\mathsf{base}\\
+&amp;\mathsf{ref}~f~\mathsf{loop}~=~\mathsf{ap}_{f}~\mathsf{loop}
+\end{align*} %]]&gt;&lt;/script&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -204,9 +206,9 @@ type-checked as a whole using Agda v2.5.3.&lt;/p&gt;
 &lt;h3 id=&quot;exercise-12&quot;&gt;Exercise 1.2&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Derive the recursion principle for products &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_{A\times B}&lt;/script&gt;
+Derive the recursion principle for products $$\mathsf{rec}_{A\times B}$$
 using only the projections, and verify that the definitional equalities
-are valid. Do the same for &lt;script type=&quot;math/tex&quot;&gt;\Sigma&lt;/script&gt;-types.&lt;/p&gt;
+are valid. Do the same for $$\Sigma$$-types.
 &lt;/div&gt;
 
 &lt;p&gt;To solve this problem we need to know:&lt;/p&gt;
@@ -216,51 +218,55 @@ are valid. Do the same for &lt;script type=&quot;math/tex&quot;&gt;\Sigma&lt;/sc
     &lt;p&gt;The recursion principle for Σ-types:&lt;/p&gt;
 
     &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_{ A \times B}
-  : \prod\limits_{C : \mathcal{U}} (A \to B \to C) → A \times B \to C.&lt;/script&gt;
+$$ \mathsf{rec}_{ A \times B}
+  : \prod\limits_{C : \mathcal{U}} (A \to B \to C) → A \times B \to C.
+$$
 &lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;The recursion principle for Σ-types:&lt;/p&gt;
 
     &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}
+$$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)}
   : \prod\limits_{(C : U)} (\Pi_{(x : A)} B(x) \rightarrow C) \rightarrow
-    \sum_{(x : A)} B(x) \rightarrow C&lt;/script&gt;
+    \sum_{(x : A)} B(x) \rightarrow C
+$$
 &lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;proof&quot; id=&quot;proof-1.2&quot;&gt;
-  &lt;p&gt;Proof.&lt;br /&gt;
+Proof.&lt;br /&gt;
 For products:&lt;br /&gt;
 If we have the projections,
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{proj}_1 : A \times B \to \mathsf{A}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\mathsf{proj}_2 : A \times B \to \mathsf{B}&lt;/script&gt;,
-then &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_2&lt;/script&gt; is another inhabitant where&lt;/p&gt;
+$$\mathsf{proj}_1 : A \times B \to \mathsf{A}$$ and $$\mathsf{proj}_2 : A \times B \to \mathsf{B}$$,
+then $$\mathsf{rec}_2$$ is another inhabitant where
 
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+&lt;p class=&quot;equation&quot;&gt;
+$$
 \begin{align*}
-&amp;\mathsf{rec}_1 : \prod\limits_{C : \mathcal{U}} (A \to B \to C) \to A \times B \to C\\
-&amp;\mathsf{rec}_1~C~g~c~:\equiv~g~(\mathsf{proj}_1 c,~\mathsf{proj}_2 c).
-\end{align*} %]]&gt;&lt;/script&gt;
+&amp;amp;\mathsf{rec}_1 : \prod\limits_{C : \mathcal{U}} (A \to B \to C) \to A \times B \to C\\
+&amp;amp;\mathsf{rec}_1~C~g~c~:\equiv~g~(\mathsf{proj}_1 c,~\mathsf{proj}_2 c).
+\end{align*}
+$$
 &lt;/p&gt;
-  &lt;p&gt;By reflexivity, we prove the equality between &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_{ A \times B}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_1&lt;/script&gt;.
+By reflexivity, we prove the equality between $$\mathsf{rec}_{ A \times B}$$ and $$\mathsf{rec}_1$$.
 &lt;br /&gt;
 &lt;br /&gt;
 For sums:&lt;br /&gt;
-The projections are &lt;script type=&quot;math/tex&quot;&gt;\mathsf{proj}_1 : \sum_{x : A}  Bx \to \mathsf{A}&lt;/script&gt; and
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{proj}_2 :  \prod_{(p : \sum_{x : A}  Bx)} \to \mathsf{B} (\mathsf{proj}_1 p)&lt;/script&gt;.&lt;br /&gt;
-By using these projections, we got another recursor defined as follows:&lt;/p&gt;
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+The projections are $$\mathsf{proj}_1 : \sum_{x : A}  Bx \to \mathsf{A}$$ and
+$$\mathsf{proj}_2 :  \prod_{(p : \sum_{x : A}  Bx)} \to \mathsf{B} (\mathsf{proj}_1 p)$$.&lt;br /&gt;
+By using these projections, we got another recursor defined as follows:
+&lt;p class=&quot;equation&quot;&gt;
+$$
 \begin{aling*}
-&amp;\mathsf{rec}_2 : \prod\limits_{C : \mathcal{U}}  (\prod_{x : A} Bx \to C) \to \sum\limits_{x : A} B x \to C\\
-&amp;\mathsf{rec}_2~C~g~c~=~g~(\mathsf{proj}_1 c)~(\mathsf{proj}_2 c)
-\end{align*} %]]&gt;&lt;/script&gt;
+&amp;amp;\mathsf{rec}_2 : \prod\limits_{C : \mathcal{U}}  (\prod_{x : A} Bx \to C) \to \sum\limits_{x : A} B x \to C\\
+&amp;amp;\mathsf{rec}_2~C~g~c~=~g~(\mathsf{proj}_1 c)~(\mathsf{proj}_2 c)
+\end{align*}
+$$
 &lt;/p&gt;
 
-  &lt;p&gt;By reflexivity, we prove the equality between &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}_2&lt;/script&gt;.&lt;/p&gt;
+By reflexivity, we prove the equality between $$\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}$$ and $$\mathsf{rec}_2$$.
 &lt;/div&gt;
 
 &lt;hr /&gt;
@@ -328,9 +334,9 @@ in &lt;code class=&quot;highlighter-rouge&quot;&gt;(λ _ → B)&lt;/code&gt;.&lt
 &lt;h3 id=&quot;exercise-13&quot;&gt;Exercise 1.3&lt;/h3&gt;
 
 &lt;p class=&quot;exercise&quot;&gt;
-Derive the induction principle for products &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ind}_{A\times B}&lt;/script&gt;,
+Derive the induction principle for products $$\mathsf{ind}_{A\times B}$$,
 using only the projections and the propositional uniqueness principle
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{uniq}_{A\times B}&lt;/script&gt;.
+$$\mathsf{uniq}_{A\times B}$$.
 Verify that the definitional equalities are valid.
 &lt;/p&gt;
 
@@ -342,9 +348,10 @@ every element of &lt;script type=&quot;math/tex&quot;&gt;A\times B&lt;/script&gt
 &lt;/ul&gt;
 
 &lt;p class=&quot;equation&quot;&gt;
-  &lt;script type=&quot;math/tex&quot;&gt;\mathsf{uniq}_{A\times B}
+  $$ \mathsf{uniq}_{A\times B}
      : \prod_{(x : A \times B)} ((\mathsf{proj}_{1}(x) , \mathsf{proj}_{2}(x))
-       \equiv_{A\times B} x).&lt;/script&gt;
+       \equiv_{A\times B} x).
+  $$
 &lt;/p&gt;
 
 &lt;p&gt;Product type definition using &lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;:&lt;/p&gt;
@@ -389,9 +396,10 @@ every element of &lt;script type=&quot;math/tex&quot;&gt;A\times B&lt;/script&gt
 &lt;p&gt;The induction principle for the product type:&lt;/p&gt;
 
 &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
+$$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
   \left( \prod\limits_{x:A}\ \prod\limits_{y:B}\ \,C( (x,y) ) \right)
-  \to \prod\limits_{x:A \times B}\ \,C(x)&lt;/script&gt;
+  \to \prod\limits_{x:A \times B}\ \,C(x)
+$$
 &lt;/p&gt;
 
 &lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;8250&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;×-Ind₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%C3%97-Ind%E2%82%82&quot; class=&quot;Module&quot;&gt;×-Ind₂&lt;/a&gt; &lt;a id=&quot;8264&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;8265&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8265&quot; class=&quot;Bound&quot;&gt;i&lt;/a&gt; &lt;a id=&quot;8267&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8267&quot; class=&quot;Bound&quot;&gt;j&lt;/a&gt;&lt;a id=&quot;8268&quot; class=&quot;Symbol&quot;&gt;}{&lt;/a&gt;&lt;a id=&quot;8270&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8270&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;8272&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;8274&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;8278&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8265&quot; class=&quot;Bound&quot;&gt;i&lt;/a&gt;&lt;a id=&quot;8279&quot; class=&quot;Symbol&quot;&gt;}{&lt;/a&gt;&lt;a id=&quot;8281&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8281&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;8283&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;8285&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;8289&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8267&quot; class=&quot;Bound&quot;&gt;j&lt;/a&gt;&lt;a id=&quot;8290&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;8292&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
@@ -410,8 +418,8 @@ every element of &lt;script type=&quot;math/tex&quot;&gt;A\times B&lt;/script&gt
   &lt;a id=&quot;8671&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%C3%97-Ind%E2%82%82.ind-%CE%B2&quot; class=&quot;Function&quot;&gt;ind-β&lt;/a&gt; &lt;a id=&quot;8677&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8677&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;8679&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8679&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;8681&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8681&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;8683&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#8683&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;8685&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;8687&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p class=&quot;exercise&quot;&gt;
-Generalize &lt;script type=&quot;math/tex&quot;&gt;\mathsf{uniq}_{A\times B}&lt;/script&gt; to Σ-types, and do the same for
-&lt;script type=&quot;math/tex&quot;&gt;\Sigma&lt;/script&gt;-types, i.e. show induction and verify the definitional equality
+Generalize $$\mathsf{uniq}_{A\times B}$$ to Σ-types, and do the same for
+$$\Sigma$$-types, i.e. show induction and verify the definitional equality
 is valid.
 &lt;/p&gt;
 
@@ -456,21 +464,22 @@ is valid.
 &lt;h3 id=&quot;exercise-14&quot;&gt;Exercise 1.4&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Assuming as given only the &lt;em&gt;iterator&lt;/em&gt; for natural numbers&lt;/p&gt;
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ite} : \prod\limits_{C:\mathcal{U}} C \to (C \to C) \to \mathbb{N} \to C&lt;/script&gt;
+Assuming as given only the &lt;em&gt;iterator&lt;/em&gt; for natural numbers
+&lt;p class=&quot;equation&quot;&gt;
+$$\mathsf{ite} : \prod\limits_{C:\mathcal{U}} C \to (C \to C) \to \mathbb{N} \to C $$
 &lt;/p&gt;
-  &lt;p&gt;with the defining equations&lt;/p&gt;
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+with the defining equations
+&lt;p class=&quot;equation&quot;&gt;
+$$
 \begin{align*}
-\mathsf{ite}(C,c_0,c_s,0)               &amp;\equiv c_0, \\
-\mathsf{ite}(C,c_0,c_s,\mathsf{suc}(n)) &amp;\equiv c_s(\mathsf{ite}(C,c_0,c_s,n)),
-\end{align*} %]]&gt;&lt;/script&gt;
+\mathsf{ite}(C,c_0,c_s,0)               &amp;amp;\equiv c_0, \\
+\mathsf{ite}(C,c_0,c_s,\mathsf{suc}(n)) &amp;amp;\equiv c_s(\mathsf{ite}(C,c_0,c_s,n)),
+\end{align*}
+$$
 &lt;/p&gt;
-  &lt;p&gt;derive a function having the type of the recursor &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}&lt;/script&gt;.
+derive a function having the type of the recursor $$\mathsf{rec}$$.
 Show that the defining equations of the recursor hold propositionally for this
-function, using the induction principle for &lt;script type=&quot;math/tex&quot;&gt;\mathbb{N}&lt;/script&gt;.&lt;/p&gt;
+function, using the induction principle for $$\mathbb{N}$$.
 &lt;/div&gt;
 
 &lt;p&gt;To solve this problem, let us define the recursor and also the induction principle
@@ -556,12 +565,12 @@ induction to prove that.&lt;/p&gt;
 
 &lt;div class=&quot;exercise&quot;&gt;
 
-  &lt;p&gt;Show that if we define&lt;/p&gt;
+Show that if we define
 
-  &lt;script type=&quot;math/tex; mode=display&quot;&gt;A+B :\equiv \sum\limits_{(x : \mathbbbold{2})} \mathsf{rec}_{\mathbbbold{2}} (\mathcal{U}, A , B, x),&lt;/script&gt;
+  $$A+B :\equiv \sum\limits_{(x : \mathbbbold{2})} \mathsf{rec}_{\mathbbbold{2}} (\mathcal{U}, A , B, x),$$
 
-  &lt;p&gt;then we can give a definition of &lt;script type=&quot;math/tex&quot;&gt;\ind\limits_{A + B}&lt;/script&gt; for which the
-definitional equalities holds.&lt;/p&gt;
+then we can give a definition of $$\ind\limits_{A + B}$$ for which the
+definitional equalities holds.
 
 &lt;/div&gt;
 
@@ -665,9 +674,9 @@ rule of the disjunction conective also called &lt;em&gt;case analysis&lt;/em&gt;
 &lt;h3 id=&quot;exercise-16&quot;&gt;Exercise 1.6&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot; id=&quot;ex-1.6&quot;&gt;
-  &lt;p&gt;Show that if we define &lt;script type=&quot;math/tex&quot;&gt;A \times B :≡ \prod_{x:\mathbf{2}}\mathsf{rec}_{\mathbf{2}}\ (\mathcal{U}\, A\, B\, x)&lt;/script&gt;,
-then we can give a definition of &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ind}_{A\times B}&lt;/script&gt; for which the definitional
-equalities propositionally (i.e. using equality types).&lt;/p&gt;
+Show that if we define $$A \times B :≡ \prod_{x:\mathbf{2}}\mathsf{rec}_{\mathbf{2}}\ (\mathcal{U}\, A\, B\, x)$$,
+then we can give a definition of $$\mathsf{ind}_{A\times B}$$ for which the definitional
+equalities propositionally (i.e. using equality types).
 &lt;/div&gt;
 
 &lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;15990&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;×-Def₃&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%C3%97-Def%E2%82%83&quot; class=&quot;Module&quot;&gt;×-Def₃&lt;/a&gt; &lt;a id=&quot;16004&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
@@ -735,9 +744,9 @@ equalities propositionally (i.e. using equality types).&lt;/p&gt;
 
 &lt;div class=&quot;exercise&quot; id=&quot;exercise-1.8&quot;&gt;
 
-  &lt;p&gt;Define multiplication and exponentiation using &lt;script type=&quot;math/tex&quot;&gt;\mathsf{rec}{\mathbb{N}}&lt;/script&gt;.
-Verify that &lt;script type=&quot;math/tex&quot;&gt;(\mathbb{N},+,0,\times,1)&lt;/script&gt; is a semiring using only
-&lt;script type=&quot;math/tex&quot;&gt;\ind{\mathbb{N}}&lt;/script&gt;.&lt;/p&gt;
+Define multiplication and exponentiation using $$\mathsf{rec}{\mathbb{N}}$$.
+Verify that $$(\mathbb{N},+,0,\times,1)$$ is a semiring using only
+$$\ind{\mathbb{N}}$$.
 
 &lt;/div&gt;
 
@@ -745,23 +754,25 @@ Verify that &lt;script type=&quot;math/tex&quot;&gt;(\mathbb{N},+,0,\times,1)&lt
 
 &lt;div class=&quot;exercise&quot; id=&quot;exercise-1.9&quot;&gt;
 
-  &lt;p&gt;Define the type family &lt;script type=&quot;math/tex&quot;&gt;\mathsf{Fin} : \mathbb{N} \to \mathcal{U}&lt;/script&gt; mentioned
-at the end of Section 1.3, and the dependent function &lt;script type=&quot;math/tex&quot;&gt;\mathsf{fmax} :
-\prod_{n:\mathbb{N}} \mathsf{Fin}(n+1)&lt;/script&gt; mentioned in Section 1.4.&lt;/p&gt;
+Define the type family $$\mathsf{Fin} : \mathbb{N} \to \mathcal{U}$$ mentioned
+at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
+\prod_{n:\mathbb{N}} \mathsf{Fin}(n+1)$$ mentioned in Section 1.4.
 &lt;/div&gt;
 
 &lt;h3 id=&quot;exercise-111&quot;&gt;Exercise 1.11&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot; id=&quot;exercise-1.11&quot;&gt;
-  &lt;p&gt;Show that for any type &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;, we have &lt;script type=&quot;math/tex&quot;&gt;\neg\neg\neg A \to \neg A&lt;/script&gt;.&lt;/p&gt;
+Show that for any type $$A$$, we have $$\neg\neg\neg A \to \neg A$$.
 &lt;/div&gt;
 
 &lt;h3 id=&quot;exercise-116&quot;&gt;Exercise 1.16&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot; id=&quot;exercise-1.16&quot;&gt;
-  &lt;p&gt;Show that addition of natural numbers is commutative:&lt;/p&gt;
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\prod\limits_{i,j : \mathbb{N}}\ (i + j = j + i).&lt;/script&gt;
+Show that addition of natural numbers is commutative:
+&lt;p class=&quot;equation&quot;&gt;
+$$
+\prod\limits_{i,j : \mathbb{N}}\ (i + j = j + i).
+$$
 &lt;/p&gt;
 &lt;/div&gt;
 
@@ -770,37 +781,38 @@ at the end of Section 1.3, and the dependent function &lt;script type=&quot;math
 &lt;h3 id=&quot;exercise-26&quot;&gt;Exercise 2.6&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot; id=&quot;exercise-2.6&quot;&gt;
-  &lt;p&gt;Prove that if &lt;script type=&quot;math/tex&quot;&gt;p : x \equiv y&lt;/script&gt;, then the function
-&lt;script type=&quot;math/tex&quot;&gt;(p \cdot -) : (y \equiv z) \to (x \equiv z)&lt;/script&gt; is an equivalence.&lt;/p&gt;
+Prove that if $$p : x \equiv y$$, then the function
+$$(p \cdot -) : (y \equiv z) \to (x \equiv z)$$ is an equivalence.
 &lt;/div&gt;
 
 &lt;h3 id=&quot;exercise-210&quot;&gt;Exercise 2.10&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot; id=&quot;exercise-2.10&quot;&gt;
-  &lt;p&gt;Prove that ∑-types are associative, in that for any &lt;script type=&quot;math/tex&quot;&gt;A : \mathcal{U}&lt;/script&gt;
-and families &lt;script type=&quot;math/tex&quot;&gt;B : A  \to U&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;C : \sum_{(x : A)} B(x) \to \mathcal{U}&lt;/script&gt;,
-we have&lt;/p&gt;
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \simeq \sum\limits_{p : \sum_{x:A} B(x)} C(p)&lt;/script&gt;.
+Prove that ∑-types are associative, in that for any $$A : \mathcal{U}$$
+and families $$B : A  \to U$$ and $$C : \sum_{(x : A)} B(x) \to \mathcal{U}$$,
+we have
+&lt;p class=&quot;equation&quot;&gt;
+$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \simeq \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
 &lt;/p&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;proof&quot; id=&quot;proof-2.10&quot;&gt;
-  &lt;p&gt;Solution.&lt;br /&gt;
-We can prove that the following functions &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt; are inverses.&lt;/p&gt;
+Solution.&lt;br /&gt;
+We can prove that the following functions $$f$$ and $$g$$ are inverses.
 
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)&lt;/script&gt;.
+&lt;p class=&quot;equation&quot;&gt;
+$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
 &lt;/p&gt;
-  &lt;p&gt;defined by &lt;script type=&quot;math/tex&quot;&gt;f(a,b,c) :\equiv ((a,b),c)&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)&lt;/script&gt;.&lt;br /&gt;
-Indeed,&lt;/p&gt;
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+defined by $$f(a,b,c) :\equiv ((a,b),c)$$, $$g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)$$.&lt;br /&gt;
+Indeed,
+&lt;p class=&quot;equation&quot;&gt;
+$$
 \begin{align*}
-(f \circ g) (z, c) &amp;:\equiv f (g (z,c))\\
-&amp;:\equiv f\,(\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)\\
-&amp;:\equiv ((\mathsf{proj}_1 z,\mathsf{proj}_{2} z), c)
-\end{align*} %]]&gt;&lt;/script&gt;
+(f \circ g) (z, c) &amp;amp;:\equiv f (g (z,c))\\
+&amp;amp;:\equiv f\,(\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)\\
+&amp;amp;:\equiv ((\mathsf{proj}_1 z,\mathsf{proj}_{2} z), c)
+\end{align*}
+$$
 &lt;/p&gt;
 &lt;/div&gt;
 
@@ -828,109 +840,149 @@ Indeed,&lt;/p&gt;
 &lt;h3 id=&quot;exercise-213&quot;&gt;Exercise 2.13&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot; id=&quot;exercise-2.13&quot;&gt;
-  &lt;p&gt;Show that &lt;script type=&quot;math/tex&quot;&gt;(2 \simeq 2) \simeq 2&lt;/script&gt;.&lt;/p&gt;
+Show that $$(2 \simeq 2) \simeq 2$$.
 &lt;/div&gt;
 
 &lt;h3 id=&quot;exercise-214&quot;&gt;Exercise 2.14&lt;/h3&gt;
 
-&lt;p class=&quot;exercise&quot;&gt;Suppose we add to type theory &lt;a href=&quot;https://www.youtube.com/watch?v=IlfQjWqrK6I&quot;&gt;the equality reflection
-  rule&lt;/a&gt; which says that if there is
-  an element &lt;script type=&quot;math/tex&quot;&gt;p : \mathsf{Id}(x,y)&lt;/script&gt;, then in fact &lt;script type=&quot;math/tex&quot;&gt;x :\equiv y&lt;/script&gt;. Prove
-  that for any &lt;script type=&quot;math/tex&quot;&gt;p : \mathsf{Id}(x,x)&lt;/script&gt; we have &lt;script type=&quot;math/tex&quot;&gt;p :\equiv \mathsf{refl}_x&lt;/script&gt;.&lt;/p&gt;
+&lt;div class=&quot;exercise&quot;&gt;
 
-&lt;p class=&quot;proof&quot;&gt;Proof.&lt;br /&gt;
-  By means of base path induction, we show that
-  &lt;script type=&quot;math/tex&quot;&gt;\mathsf{Id}(p,\mathsf{refl_{x}})&lt;/script&gt;. Let be &lt;script type=&quot;math/tex&quot;&gt;a : A&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;C :\equiv
-  \prod_{x : A} \prod_{p : a \equiv x }\ p \equiv \mathsf{refl}_{x}&lt;/script&gt;. It
-  sufficies to show and inhabitant of &lt;script type=&quot;math/tex&quot;&gt;C(x, \mathsf{refl}_{x})&lt;/script&gt;, and it is,
-  &lt;script type=&quot;math/tex&quot;&gt;\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x \equiv \mathsf{refl}_x&lt;/script&gt;.
-  By equation reflection rule, since que got an inhabitant of &lt;script type=&quot;math/tex&quot;&gt;p \equiv
-  \mathsf{refl}_x&lt;/script&gt;, these are judgemental equal, &lt;script type=&quot;math/tex&quot;&gt;p :\equiv \mathsf{refl}_x&lt;/script&gt;.&lt;/p&gt;
+  Suppose we add to type theory [the equality reflection
+  rule](https://www.youtube.com/watch?v=IlfQjWqrK6I) which says that if there is
+  an element $$p : \mathsf{Id}(x,y) $$, then in fact $$ x :\equiv y$$. Prove
+  that for any $$p : \mathsf{Id}(x,x)$$ we have $$p :\equiv \mathsf{refl}_x$$.\\
 
-&lt;h3 id=&quot;exercise-217&quot;&gt;Exercise 2.17&lt;/h3&gt;
+  &lt;p class=&quot;equation&quot;&gt;
+  $$
+    \begin{prooftree}
+    \AxiomC{$\vdash p : \mathsf{Id}(x, y)$}
+    \RightLabel{$\mathsf{Eq}$}
+    \UnaryInfC{$\vdash x \equiv y.$}
+    \end{prooftree}
+    $$
+
+  &lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&quot;proof&quot;&gt;
+  Proof.&lt;br /&gt;
+  We first fix the type of $$\mathsf{refl}_x$$ in order to apply effectively
+  path induction.&lt;br /&gt;
+
+  &lt;p class=&quot;equation&quot;&gt;
+    $$
+    \begin{prooftree}
+    \AxiomC{$x : A, y : A, p : x = y ⊢ p : x = y$}
+    \RightLabel{$\mathsf{Eq}$}
+    \UnaryInfC{$x : A, y : A, p : x = y ⊢ x ≡ y$}
+    \AxiomC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = x$}
+    \BinaryInfC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = y.$}
+    \end{prooftree}
+    $$
+    &lt;/p&gt;
+  Now, $$\mathsf{refl}_x$$ and $$p : x = y$$ in the formulation of path induction
+  is well-typed. Therefore, by path induction, we show that
+  $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
+  \prod_{y : A} \prod_{p : x \equiv y }\ p \equiv \mathsf{refl}_{x}$$.
+  It sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and it is,
+  $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x = \mathsf{refl}_x$$.
+  By equation reflection rule, since we have an inhabitant of $$p \equiv
+  \mathsf{refl}_x$$, these are judgemental equal,i.e., $$p \equiv \mathsf{refl}_x$$.
+
+### Exercise 2.17
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;ul&gt;
+&lt;ul&gt;
   &lt;li&gt; Show that if $$A \simeq A$$  and $$B \simeq B'$$, then $$(A\times B) \simeq (A'\times B')$$. &lt;/li&gt;
   &lt;li&gt; Give two proofs of this fact, one using univalence and one not using it, and show that the two proofs are equal.&lt;/li&gt;
   &lt;li&gt; Formulate and prove analogous results for the other type formers: $$\Sigma$$, $$\to$$, $$\Pi$$, and $$+$$. &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;chapter-3&quot;&gt;Chapter 3&lt;/h2&gt;
 
-&lt;p&gt;To solve the following exercises, let us recall a few things:&lt;/p&gt;
+## Chapter 3
 
-&lt;ul&gt;
-  &lt;li&gt;The &lt;em&gt;set&lt;/em&gt; definition in HoTT:&lt;/li&gt;
-&lt;/ul&gt;
+To solve the following exercises, let us recall a few things:
 
-&lt;p&gt;A type &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is a &lt;strong&gt;set&lt;/strong&gt; if for all &lt;script type=&quot;math/tex&quot;&gt;x, y : A&lt;/script&gt; and
-all &lt;script type=&quot;math/tex&quot;&gt;p, q : x \equiv y&lt;/script&gt;, we have &lt;script type=&quot;math/tex&quot;&gt;p \equiv q&lt;/script&gt;. In a proposition
-we have&lt;/p&gt;
+- The *set* definition in HoTT:
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathsf{isSet}(A) :\equiv \prod\limits_{(x,y : A)}\prod\limits_{(p,q : x \equiv y)} (p \equiv q).&lt;/script&gt;
+A type $$A$$ is a **set** if for all $$x, y : A$$ and
+all $$p, q : x \equiv y$$, we have $$ p \equiv q$$. In a proposition
+we have
 
-&lt;ul&gt;
-  &lt;li&gt;The type for equivalence from &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
+$$
+\mathsf{isSet}(A) :\equiv \prod\limits_{(x,y : A)}\prod\limits_{(p,q : x \equiv y)} (p \equiv q).
+$$
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;(A \simeq B) :\equiv \sum\limits_{f : A \to B} \mathsf{isequiv}(f),&lt;/script&gt;
+- The type for equivalence from $$A$$ to $$B$$
 
-&lt;p&gt;where&lt;/p&gt;
+$$
+  (A \simeq B) :\equiv \sum\limits_{f : A \to B} \mathsf{isequiv}(f),
+$$
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathsf{isequiv(f)} :\equiv
+where
+
+$$
+\mathsf{isequiv(f)} :\equiv
   \left (\sum\limits_{g : B \to A} (f \circ g \sim \mathsf{id}_{B})\right) \times
-  \left (\sum\limits_{h : B \to A} (h \circ f \sim \mathsf{id}_{A})\right)&lt;/script&gt;
+  \left (\sum\limits_{h : B \to A} (h \circ f \sim \mathsf{id}_{A})\right)
+$$
 
-&lt;ul&gt;
-  &lt;li&gt;The homotopy concept:&lt;/li&gt;
-&lt;/ul&gt;
+- The homotopy concept:
 
-&lt;p&gt;Let &lt;script type=&quot;math/tex&quot;&gt;f , g : \prod\limits_{(x:A)} P(x)&lt;/script&gt; be two sections of a
-type family &lt;script type=&quot;math/tex&quot;&gt;P : A \to \mathcal{U}&lt;/script&gt;. A &lt;strong&gt;homotopy&lt;/strong&gt; from &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt;
-is a dependent function of type&lt;/p&gt;
+Let $$f , g : \prod\limits_{(x:A)} P(x)$$ be two sections of a
+type family $$P : A \to \mathcal{U}$$. A **homotopy** from $$f$$ to $$g$$
+is a dependent function of type
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;(f \sim g) :\equiv \prod\limits_{x : A} (f(x) \equiv g(x)).&lt;/script&gt;
+$$
+(f \sim g) :\equiv \prod\limits_{x : A} (f(x) \equiv g(x)).
+$$
 
-&lt;h3 id=&quot;exercise-31&quot;&gt;Exercise 3.1&lt;/h3&gt;
+### Exercise 3.1
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Prove that if &lt;script type=&quot;math/tex&quot;&gt;A\simeq B&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is a set, then so is &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt;.&lt;/p&gt;
+Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
 &lt;/div&gt;
 
+
 &lt;div class=&quot;proof&quot; id=&quot;proof-3.1&quot;&gt;
-  &lt;p&gt;Proof 1.&lt;br /&gt;
-Let be &lt;script type=&quot;math/tex&quot;&gt;x,y : B&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;p : x \equiv_{B} y&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;q : x \equiv_{B} y&lt;/script&gt;.
-We need to prove &lt;script type=&quot;math/tex&quot;&gt;p \equiv q&lt;/script&gt;.&lt;br /&gt;
-Since &lt;script type=&quot;math/tex&quot;&gt;A\simeq B&lt;/script&gt; then there is a function &lt;script type=&quot;math/tex&quot;&gt;f : A \to B&lt;/script&gt; and some
-&lt;script type=&quot;math/tex&quot;&gt;g : B \to A&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;f \circ g \sim id_{B}&lt;/script&gt;.
-Using this function &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt; over the path &lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt; we get
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{g} p : g x \equiv_{A} g y&lt;/script&gt;.
-We do the same but this time over the path &lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;, that is,
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{g} q : g x \equiv_{A} g y&lt;/script&gt;.
-Because of &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is a set, we have a new path called
-&lt;script type=&quot;math/tex&quot;&gt;m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q&lt;/script&gt;. &lt;br /&gt;&lt;/p&gt;
+Proof 1.&lt;br /&gt;
+Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
+We need to prove $$ p \equiv q$$.&lt;br /&gt;
+Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
+$$g : B \to A$$ such that $$f \circ g \sim id_{B}$$.
+Using this function $$g$$ over the path $$p$$ we get
+$$\mathsf{ap}_{g} p : g x \equiv_{A} g y$$.
+We do the same but this time over the path $$q$$, that is,
+$$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
+Because of $$A$$ is a set, we have a new path called
+$$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. &lt;br /&gt;
 
-  &lt;p&gt;Now, an action over this path &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;
-using the function &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y&lt;/script&gt;
-will give us&lt;/p&gt;
+Now, an action over this path $$m$$
+using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$
+will give us
 
-  &lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathsf{ap}_{\mathsf{ap}_{f}} m :
-(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).&lt;/script&gt;
 
-  &lt;p&gt;By the lemmas in Chapter 2, we do the following reasoning:&lt;/p&gt;
+$$
+\mathsf{ap}_{\mathsf{ap}_{f}} m :
+(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).
+$$
 
-  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+
+By the lemmas in Chapter 2, we do the following reasoning:
+
+$$
 \begin{align*}
-(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &amp;=
+(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &amp;amp;=
   \mathsf{ap}_{f \circ g} p \equiv \mathsf{ap}_{f \circ g} q\\
-  &amp;=(\text{transporting by using} f \sim g)\\
-  &amp;=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
-  &amp;=p \equiv q.
-\end{align*} %]]&gt;&lt;/script&gt;
+  &amp;amp;=(\text{transporting by using} f \sim g)\\
+  &amp;amp;=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
+  &amp;amp;=p \equiv q.
+\end{align*}
+$$
 
-  &lt;p&gt;Then, we have the inhabitant, &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q&lt;/script&gt;.&lt;/p&gt;
+Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 &lt;/div&gt;
 
 &lt;!-- &lt;div class=&quot;proof&quot; id=&quot;proof=3.1b&quot;&gt; --&gt;
@@ -938,150 +990,146 @@ will give us&lt;/p&gt;
 &lt;!-- Exhibit an equivalence. --&gt;
 &lt;!-- &lt;/div&gt; --&gt;
 
-&lt;p&gt;In Agda, we can define the predicate &lt;code class=&quot;highlighter-rouge&quot;&gt;isSet&lt;/code&gt; as follows:&lt;/p&gt;
+In Agda, we can define the predicate `isSet` as follows:
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;24295&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;sets&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets&quot; class=&quot;Module&quot;&gt;sets&lt;/a&gt; &lt;a id=&quot;24307&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;25066&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;sets&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets&quot; class=&quot;Module&quot;&gt;sets&lt;/a&gt; &lt;a id=&quot;25078&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
 
-  &lt;a id=&quot;sets.isSet&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;24322&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;24324&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;24326&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;24327&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24327&quot; class=&quot;Bound&quot;&gt;i&lt;/a&gt;&lt;a id=&quot;24328&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;24330&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;24331&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24331&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;24333&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;24335&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;24339&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24327&quot; class=&quot;Bound&quot;&gt;i&lt;/a&gt;&lt;a id=&quot;24340&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;24342&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;24344&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;24348&quot; class=&quot;Symbol&quot;&gt;_&lt;/a&gt;
-  &lt;a id=&quot;24352&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;24358&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24358&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;24360&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;24362&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;24363&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24363&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;24365&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24365&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;24367&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;24369&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24358&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;24370&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;24372&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;24374&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;24375&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24375&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;24377&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;24379&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24363&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;24381&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;24383&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24365&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;24384&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;24386&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;24388&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;24389&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24389&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt; &lt;a id=&quot;24391&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;24393&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24363&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;24395&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;24397&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24365&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;24398&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;24400&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;24402&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24375&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;24404&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;24406&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#24389&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt;
-  &lt;a id=&quot;24410&quot; class=&quot;Comment&quot;&gt;-- TODO&lt;/a&gt;&lt;/pre&gt;
+  &lt;a id=&quot;sets.isSet&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;25093&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;25095&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;25097&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;25098&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25098&quot; class=&quot;Bound&quot;&gt;i&lt;/a&gt;&lt;a id=&quot;25099&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;25101&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;25102&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25102&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;25104&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;25106&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;25110&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25098&quot; class=&quot;Bound&quot;&gt;i&lt;/a&gt;&lt;a id=&quot;25111&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;25113&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;25115&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;25119&quot; class=&quot;Symbol&quot;&gt;_&lt;/a&gt;
+  &lt;a id=&quot;25123&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;25129&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25129&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;25131&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;25133&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;25134&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25134&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;25136&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25136&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;25138&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;25140&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25129&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;25141&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;25143&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;25145&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;25146&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25146&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;25148&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;25150&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25134&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;25152&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;25154&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25136&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;25155&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;25157&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;25159&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;25160&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25160&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt; &lt;a id=&quot;25162&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;25164&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25134&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;25166&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;25168&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25136&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;25169&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;25171&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;25173&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25146&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;25175&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;25177&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#25160&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt;
+  &lt;a id=&quot;25181&quot; class=&quot;Comment&quot;&gt;-- TODO&lt;/a&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;exercise-32&quot;&gt;Exercise 3.2&lt;/h3&gt;
+### Exercise 3.2
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Prove that if &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;B&lt;/script&gt; are sets, then so is &lt;script type=&quot;math/tex&quot;&gt;A+B&lt;/script&gt;.&lt;/p&gt;
+Prove that if $$A$$ and $$B$$ are sets, then so is $$A+B$$.
 &lt;/div&gt;
 
-&lt;p&gt;To solve this exercise, we should take a look of some results from Chapter 2,
-Section 2.12.&lt;/p&gt;
+To solve this exercise, we should take a look of some results from Chapter 2,
+Section 2.12.
 
 &lt;div class=&quot;proof&quot; id=&quot;proof-3.2&quot;&gt;
-  &lt;p&gt;Proof.&lt;br /&gt;&lt;/p&gt;
+Proof.&lt;br /&gt;
 
-  &lt;p&gt;Let be &lt;script type=&quot;math/tex&quot;&gt;x, y : A + B&lt;/script&gt;, and paths &lt;script type=&quot;math/tex&quot;&gt;p : x \equiv y&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;q : x \equiv
-y&lt;/script&gt;. Let’s get a path &lt;script type=&quot;math/tex&quot;&gt;p \equiv q&lt;/script&gt;.  We proceed by case analysis. If
-&lt;script type=&quot;math/tex&quot;&gt;x :\equiv \mathsf{inl} a&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y :\equiv \mathsf{inl} b&lt;/script&gt;, for
-some &lt;script type=&quot;math/tex&quot;&gt;a, b : A&lt;/script&gt; then &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{\mathsf{inl}^{-1}} p : a
-\equiv_{A} b&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{\mathsf{inl}^{-1}} q : a \equiv_{A}
-b&lt;/script&gt;.&lt;/p&gt;
+Let be $$x, y : A + B$$, and paths $$p : x \equiv y$$, $$q : x \equiv
+y$$. Let's get a path $$p \equiv q$$.  We proceed by case analysis. If
+$$x :\equiv \mathsf{inl} a$$ and $$y :\equiv \mathsf{inl} b$$, for
+some $$a, b : A$$ then $$\mathsf{ap}_{\mathsf{inl}^{-1}} p : a
+\equiv_{A} b$$ and $$\mathsf{ap}_{\mathsf{inl}^{-1}} q : a \equiv_{A}
+b$$.
 
-  &lt;p&gt;Since &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is a set, there is a path between these last two terms,
-this is, &lt;script type=&quot;math/tex&quot;&gt;m : \mathsf{ap}_{\mathsf{inl}^{-1}} p \equiv
-\mathsf{ap}_{\mathsf{inl}^{-1}} q&lt;/script&gt;.  Now, an action over this path
-&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; using the &lt;script type=&quot;math/tex&quot;&gt;\mathsf{inl}&lt;/script&gt; function give us:
-&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{\mathsf{inl}} m : \mathsf{ap}_{\mathsf{inl}}
+Since $$A$$ is a set, there is a path between these last two terms,
+this is, $$m : \mathsf{ap}_{\mathsf{inl}^{-1}} p \equiv
+\mathsf{ap}_{\mathsf{inl}^{-1}} q$$.  Now, an action over this path
+$$m$$ using the $$\mathsf{inl}$$ function give us:
+$$\mathsf{ap}_{\mathsf{inl}} m : \mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv \mathsf{ap}_{\mathsf{inl}}
-(\mathsf{ap}_{\mathsf{inl}^{-1}} q)&lt;/script&gt;.&lt;br /&gt;&lt;/p&gt;
+(\mathsf{ap}_{\mathsf{inl}^{-1}} q)$$.&lt;br /&gt;
 
-  &lt;p&gt;By path algebra we get &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{\mathsf{inl}}
-m : p \equiv q&lt;/script&gt; since &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{\mathsf{inl}}
-(\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv p&lt;/script&gt;.&lt;br /&gt; Following the
-same reasoning, we prove the case &lt;script type=&quot;math/tex&quot;&gt;x :\equiv \mathsf{inr} a&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y
-:\equiv \mathsf{inr} b&lt;/script&gt;.  For the latest cases, &lt;script type=&quot;math/tex&quot;&gt;x :\equiv
-\mathsf{inl} a&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y :\equiv \mathsf{inr} b&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;x :\equiv
-\mathsf{inr} a&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;y :\equiv \mathsf{inl} b&lt;/script&gt;, we use the
+By path algebra we get $$\mathsf{ap}_{\mathsf{inl}}
+m : p \equiv q$$ since $$\mathsf{ap}_{\mathsf{inl}}
+(\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv p$$.&lt;br /&gt; Following the
+same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
+:\equiv \mathsf{inr} b$$.  For the latest cases, $$x :\equiv
+\mathsf{inl} a$$ and $$y :\equiv \mathsf{inr} b$$ and $$x :\equiv
+\mathsf{inr} a$$ and $$y :\equiv \mathsf{inl} b$$, we use the
 encode-decode method to derive a proof term for 𝟘 from
-&lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;. Then, we may conclude anything we wish, that is, &lt;script type=&quot;math/tex&quot;&gt;p
-\equiv q&lt;/script&gt;.&lt;/p&gt;
+$$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
+\equiv q$$.
 &lt;/div&gt;
 
-&lt;p&gt;In Agda.&lt;/p&gt;
+In Agda.
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;26044&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;𝟘-Def&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def&quot; class=&quot;Module&quot;&gt;𝟘-Def&lt;/a&gt; &lt;a id=&quot;26057&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-  &lt;a id=&quot;26065&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;𝟘-Def.𝟘&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def.%F0%9D%9F%98&quot; class=&quot;Datatype&quot;&gt;𝟘&lt;/a&gt; &lt;a id=&quot;26072&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26074&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;26078&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;26815&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;𝟘-Def&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def&quot; class=&quot;Module&quot;&gt;𝟘-Def&lt;/a&gt; &lt;a id=&quot;26828&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+  &lt;a id=&quot;26836&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;𝟘-Def.𝟘&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def.%F0%9D%9F%98&quot; class=&quot;Datatype&quot;&gt;𝟘&lt;/a&gt; &lt;a id=&quot;26843&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26845&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;26849&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
 
-&lt;a id=&quot;26085&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;𝟘-Rec&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec&quot; class=&quot;Module&quot;&gt;𝟘-Rec&lt;/a&gt; &lt;a id=&quot;26098&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-  &lt;a id=&quot;26106&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26111&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def&quot; class=&quot;Module&quot;&gt;𝟘-Def&lt;/a&gt;
-  &lt;a id=&quot;𝟘-Rec.rec&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;26123&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26125&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26126&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26126&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26128&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26130&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26133&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;26135&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26137&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def.%F0%9D%9F%98&quot; class=&quot;Datatype&quot;&gt;𝟘&lt;/a&gt; &lt;a id=&quot;26139&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26141&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26126&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;
-  &lt;a id=&quot;26145&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;26149&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;26151&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;26153&quot; class=&quot;Symbol&quot;&gt;()&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;26856&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;𝟘-Rec&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec&quot; class=&quot;Module&quot;&gt;𝟘-Rec&lt;/a&gt; &lt;a id=&quot;26869&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+  &lt;a id=&quot;26877&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26882&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def&quot; class=&quot;Module&quot;&gt;𝟘-Def&lt;/a&gt;
+  &lt;a id=&quot;𝟘-Rec.rec&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;26894&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26896&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26897&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26897&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26899&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26901&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26904&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;26906&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26908&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def.%F0%9D%9F%98&quot; class=&quot;Datatype&quot;&gt;𝟘&lt;/a&gt; &lt;a id=&quot;26910&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26912&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26897&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;
+  &lt;a id=&quot;26916&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;26920&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;26922&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;26924&quot; class=&quot;Symbol&quot;&gt;()&lt;/a&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;26181&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Def₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt; &lt;a id=&quot;26195&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;26952&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Def₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt; &lt;a id=&quot;26966&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
 
-  &lt;a id=&quot;26204&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;+-Def₂._+_&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;_+_&lt;/a&gt; &lt;a id=&quot;26213&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26215&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;26219&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26221&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;26225&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26227&quot; class=&quot;PrimitiveType&quot;&gt;Set₁&lt;/a&gt; &lt;a id=&quot;26232&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-    &lt;a id=&quot;+-Def₂._+_.inl&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;26246&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26248&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;26250&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26251&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26251&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;26253&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26255&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26258&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;26260&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26262&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26263&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26263&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26265&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26267&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26270&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;26272&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26274&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26263&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26276&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;26278&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26251&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;
-    &lt;a id=&quot;+-Def₂._+_.inr&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;26288&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26290&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;26292&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26293&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26293&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26295&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26297&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26300&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;26302&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26304&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26305&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26305&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;26307&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26309&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26312&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;26314&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26316&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26293&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26318&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;26320&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26305&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;
+  &lt;a id=&quot;26975&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;+-Def₂._+_&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;_+_&lt;/a&gt; &lt;a id=&quot;26984&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26986&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;26990&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26992&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;26996&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26998&quot; class=&quot;PrimitiveType&quot;&gt;Set₁&lt;/a&gt; &lt;a id=&quot;27003&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+    &lt;a id=&quot;+-Def₂._+_.inl&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27017&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27019&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;27021&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27022&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27022&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27024&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27026&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27029&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27031&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27033&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27034&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27034&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27036&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27038&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27041&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27043&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27045&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27034&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27047&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;27049&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27022&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;
+    &lt;a id=&quot;+-Def₂._+_.inr&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27059&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27061&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;27063&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27064&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27064&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27066&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27068&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27071&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27073&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27075&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27076&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27076&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27078&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27080&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27083&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27085&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27087&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27064&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27089&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;27091&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27076&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;
 
-&lt;a id=&quot;26323&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Fun₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Fun₂&lt;/a&gt; &lt;a id=&quot;26337&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+&lt;a id=&quot;27094&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Fun₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Fun₂&lt;/a&gt; &lt;a id=&quot;27108&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
 
-  &lt;a id=&quot;26346&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26351&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
-  &lt;a id=&quot;26360&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26365&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def&quot; class=&quot;Module&quot;&gt;𝟘-Def&lt;/a&gt;
-  &lt;a id=&quot;26373&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26378&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec&quot; class=&quot;Module&quot;&gt;𝟘-Rec&lt;/a&gt;
+  &lt;a id=&quot;27117&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;27122&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
+  &lt;a id=&quot;27131&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;27136&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Def&quot; class=&quot;Module&quot;&gt;𝟘-Def&lt;/a&gt;
+  &lt;a id=&quot;27144&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;27149&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%F0%9D%9F%98-Rec&quot; class=&quot;Module&quot;&gt;𝟘-Rec&lt;/a&gt;
 
-  &lt;a id=&quot;+-Fun₂.code&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82.code&quot; class=&quot;Function&quot;&gt;code&lt;/a&gt; &lt;a id=&quot;26392&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26394&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26395&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26395&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26397&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26397&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;26399&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26401&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26404&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-       &lt;a id=&quot;26413&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26415&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26395&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26417&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;26419&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26397&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;26421&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26423&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;26427&quot; class=&quot;Symbol&quot;&gt;_&lt;/a&gt;
-  &lt;a id=&quot;26431&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82.code&quot; class=&quot;Function&quot;&gt;code&lt;/a&gt; &lt;a id=&quot;26436&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26437&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26437&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;26438&quot; class=&quot;Symbol&quot;&gt;}{&lt;/a&gt;&lt;a id=&quot;26440&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26440&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;26441&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;26443&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26444&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;26448&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26448&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;26449&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;26451&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;26453&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26448&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;26455&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;26457&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26448&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;
-  &lt;a id=&quot;26461&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82.code&quot; class=&quot;Function&quot;&gt;code&lt;/a&gt; &lt;a id=&quot;26466&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26467&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26467&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;26468&quot; class=&quot;Symbol&quot;&gt;}{&lt;/a&gt;&lt;a id=&quot;26470&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26470&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;26471&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;26473&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26474&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;26478&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26478&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;26479&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;26481&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;26483&quot; class=&quot;Symbol&quot;&gt;{!!}&lt;/a&gt;
+  &lt;a id=&quot;+-Fun₂.code&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82.code&quot; class=&quot;Function&quot;&gt;code&lt;/a&gt; &lt;a id=&quot;27163&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27165&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27166&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27166&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27168&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27168&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27170&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27172&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27175&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+       &lt;a id=&quot;27184&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27186&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27166&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27188&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;27190&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27168&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27192&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27194&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;27198&quot; class=&quot;Symbol&quot;&gt;_&lt;/a&gt;
+  &lt;a id=&quot;27202&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82.code&quot; class=&quot;Function&quot;&gt;code&lt;/a&gt; &lt;a id=&quot;27207&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27208&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27208&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27209&quot; class=&quot;Symbol&quot;&gt;}{&lt;/a&gt;&lt;a id=&quot;27211&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27211&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27212&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27214&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27215&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27219&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27219&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;27220&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27222&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27224&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27219&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;27226&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;27228&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27219&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;
+  &lt;a id=&quot;27232&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Fun%E2%82%82.code&quot; class=&quot;Function&quot;&gt;code&lt;/a&gt; &lt;a id=&quot;27237&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27238&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27238&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27239&quot; class=&quot;Symbol&quot;&gt;}{&lt;/a&gt;&lt;a id=&quot;27241&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27241&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27242&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27244&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27245&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27249&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27249&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;27250&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27252&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27254&quot; class=&quot;Symbol&quot;&gt;{!!}&lt;/a&gt;
 
-&lt;a id=&quot;26489&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Rec₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Rec₂&lt;/a&gt; &lt;a id=&quot;26503&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-  &lt;a id=&quot;26511&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26516&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
+&lt;a id=&quot;27260&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Rec₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Rec₂&lt;/a&gt; &lt;a id=&quot;27274&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+  &lt;a id=&quot;27282&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;27287&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
 
-  &lt;a id=&quot;+-Rec₂.rec&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;26530&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26532&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;26533&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26533&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26535&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26535&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;26537&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26539&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26542&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-      &lt;a id=&quot;26550&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26552&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26553&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26553&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;26555&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;26557&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;26560&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-      &lt;a id=&quot;26568&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26570&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26571&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26533&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26573&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26575&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26553&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;&lt;a id=&quot;26576&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-      &lt;a id=&quot;26584&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26586&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26587&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26535&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;26589&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26591&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26553&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;&lt;a id=&quot;26592&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-      &lt;a id=&quot;26600&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26602&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26533&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;26604&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;26606&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26535&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;26608&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;26610&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26553&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;
-  &lt;a id=&quot;26614&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;26618&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26618&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;26620&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26620&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;26622&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26622&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;26624&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26625&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;26629&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26629&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;26630&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;26632&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;26634&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26620&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;26636&quot; class=&quot;Symbol&quot;&gt;{! a  !}&lt;/a&gt;
-  &lt;a id=&quot;26647&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;26651&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26651&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;26653&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26653&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;26655&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26655&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;26657&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26658&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;26662&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26662&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;26663&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;26665&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;26667&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#26655&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;26669&quot; class=&quot;Symbol&quot;&gt;{!   !}&lt;/a&gt;
+  &lt;a id=&quot;+-Rec₂.rec&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;27301&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27303&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27304&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27304&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27306&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27306&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27308&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27310&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27313&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+      &lt;a id=&quot;27321&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27323&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27324&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27324&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;27326&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27328&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27331&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+      &lt;a id=&quot;27339&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27341&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27342&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27304&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27344&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27346&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27324&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;&lt;a id=&quot;27347&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+      &lt;a id=&quot;27355&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27357&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27358&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27306&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27360&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27362&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27324&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;&lt;a id=&quot;27363&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+      &lt;a id=&quot;27371&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27373&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27304&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27375&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;27377&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27306&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27379&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27381&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27324&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;
+  &lt;a id=&quot;27385&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;27389&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27389&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;27391&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27391&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;27393&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27393&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;27395&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27396&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27400&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27400&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27401&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27403&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27405&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27391&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;27407&quot; class=&quot;Symbol&quot;&gt;{! a  !}&lt;/a&gt;
+  &lt;a id=&quot;27418&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Rec%E2%82%82.rec&quot; class=&quot;Function&quot;&gt;rec&lt;/a&gt; &lt;a id=&quot;27422&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27422&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;27424&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27424&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;27426&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27426&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;27428&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27429&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27433&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27433&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27434&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27436&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27438&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27426&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;27440&quot; class=&quot;Symbol&quot;&gt;{!   !}&lt;/a&gt;
 
-&lt;a id=&quot;26678&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Ind₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Ind%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Ind₂&lt;/a&gt; &lt;a id=&quot;26692&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-  &lt;a id=&quot;26700&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26705&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
+&lt;a id=&quot;27449&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;+-Ind₂&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Ind%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Ind₂&lt;/a&gt; &lt;a id=&quot;27463&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+  &lt;a id=&quot;27471&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;27476&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
 
-  &lt;a id=&quot;26715&quot; class=&quot;Comment&quot;&gt;-- ind : {A B : Set}&lt;/a&gt;
-  &lt;a id=&quot;26738&quot; class=&quot;Comment&quot;&gt;--     → (C : A + B → Set)&lt;/a&gt;
-  &lt;a id=&quot;26767&quot; class=&quot;Comment&quot;&gt;--     → ((x : A) → C (inl x))&lt;/a&gt;
-  &lt;a id=&quot;26800&quot; class=&quot;Comment&quot;&gt;--     → ((x : B) → C (inr x))&lt;/a&gt;
-  &lt;a id=&quot;26833&quot; class=&quot;Comment&quot;&gt;--     → (x : A + B) → C x&lt;/a&gt;
-  &lt;a id=&quot;26862&quot; class=&quot;Comment&quot;&gt;-- ind C f g c x = {!   !}&lt;/a&gt;
+  &lt;a id=&quot;27486&quot; class=&quot;Comment&quot;&gt;-- ind : {A B : Set}&lt;/a&gt;
+  &lt;a id=&quot;27509&quot; class=&quot;Comment&quot;&gt;--     → (C : A + B → Set)&lt;/a&gt;
+  &lt;a id=&quot;27538&quot; class=&quot;Comment&quot;&gt;--     → ((x : A) → C (inl x))&lt;/a&gt;
+  &lt;a id=&quot;27571&quot; class=&quot;Comment&quot;&gt;--     → ((x : B) → C (inr x))&lt;/a&gt;
+  &lt;a id=&quot;27604&quot; class=&quot;Comment&quot;&gt;--     → (x : A + B) → C x&lt;/a&gt;
+  &lt;a id=&quot;27633&quot; class=&quot;Comment&quot;&gt;-- ind C f g c x = {!   !}&lt;/a&gt;
 
-&lt;a id=&quot;26890&quot; class=&quot;Comment&quot;&gt;-- module +-Fun₂ where&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;27661&quot; class=&quot;Comment&quot;&gt;-- module +-Fun₂ where&lt;/a&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;26939&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;ex3-2&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2&quot; class=&quot;Module&quot;&gt;ex3-2&lt;/a&gt; &lt;a id=&quot;26952&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-  &lt;a id=&quot;26960&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26965&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
-  &lt;a id=&quot;26974&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;26979&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets&quot; class=&quot;Module&quot;&gt;sets&lt;/a&gt; &lt;a id=&quot;26984&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;26990&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;26991&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt;&lt;a id=&quot;26996&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-  &lt;a id=&quot;ex3-2.p&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27003&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27005&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27006&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27006&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27008&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27008&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27010&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27012&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27015&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-    &lt;a id=&quot;27021&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27023&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;27029&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27006&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27031&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27033&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;27039&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27008&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27041&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27043&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;27049&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27050&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27006&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27052&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;27054&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27008&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27055&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-  &lt;a id=&quot;27059&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27061&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27062&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27063&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27085&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27064&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27066&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27067&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27067&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27068&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27070&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27070&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;27075&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27075&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;27080&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27081&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27085&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27085&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27086&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27088&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27089&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27093&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27094&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27085&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27095&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27097&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27102&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27107&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27109&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
-  &lt;a id=&quot;27116&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27118&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27119&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27119&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27120&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27122&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27123&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27124&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27142&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27125&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27127&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27127&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;27132&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27132&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;27137&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27138&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27142&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27142&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27143&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27145&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27146&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27150&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27151&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27142&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27152&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27154&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27159&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27164&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27166&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
-  &lt;a id=&quot;27173&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27175&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27176&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27177&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27200&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27178&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27180&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27181&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27182&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27208&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27183&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27185&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27185&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;27190&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27190&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;27195&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27196&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27200&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27200&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27201&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27203&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27204&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27208&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27208&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27209&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27211&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27211&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27213&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27213&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt; &lt;a id=&quot;27215&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27217&quot; class=&quot;Symbol&quot;&gt;{!   !}&lt;/a&gt;
-  &lt;a id=&quot;27227&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27229&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27230&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27231&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27262&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27232&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27234&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27235&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27236&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27254&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27237&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27239&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27239&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;27244&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27244&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;27249&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27250&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27254&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27254&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27255&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27257&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27258&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27262&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27262&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27263&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27265&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27265&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27267&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27267&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt; &lt;a id=&quot;27269&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27271&quot; class=&quot;Symbol&quot;&gt;{!   !}&lt;/a&gt;&lt;/pre&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;27710&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;ex3-2&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2&quot; class=&quot;Module&quot;&gt;ex3-2&lt;/a&gt; &lt;a id=&quot;27723&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+  &lt;a id=&quot;27731&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;27736&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82&quot; class=&quot;Module&quot;&gt;+-Def₂&lt;/a&gt;
+  &lt;a id=&quot;27745&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;27750&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets&quot; class=&quot;Module&quot;&gt;sets&lt;/a&gt; &lt;a id=&quot;27755&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;27761&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27762&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt;&lt;a id=&quot;27767&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-&lt;h3 id=&quot;exercise-33&quot;&gt;Exercise 3.3&lt;/h3&gt;
+  &lt;a id=&quot;ex3-2.p&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27774&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27776&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27777&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27777&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27779&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27779&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27781&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;27783&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;27786&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+    &lt;a id=&quot;27792&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27794&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;27800&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27777&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27802&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27804&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;27810&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27779&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;27812&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;27814&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#sets.isSet&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;27820&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27821&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27777&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;27823&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;27825&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27779&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27826&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+  &lt;a id=&quot;27830&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27832&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27833&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27834&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27856&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27835&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27837&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27838&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27838&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27839&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27841&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27841&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;27846&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27846&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;27851&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27852&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27856&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27856&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27857&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27859&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27860&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27864&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27865&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27856&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27866&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27868&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27873&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27878&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27880&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
+  &lt;a id=&quot;27887&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27889&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27890&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27890&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27891&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27893&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27894&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27895&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27913&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27896&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27898&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27898&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;27903&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27903&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;27908&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27909&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27913&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27913&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27914&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27916&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27917&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27921&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27922&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27913&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27923&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27925&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27930&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;27935&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27937&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#_%E2%89%A1_.refl&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
+  &lt;a id=&quot;27944&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27946&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27947&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27948&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27971&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27949&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27951&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;27952&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;27953&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27979&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27954&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;27956&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27956&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;27961&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27961&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;27966&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27967&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;27971&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27971&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;27972&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27974&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;27975&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;27979&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27979&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;27980&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;27982&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27982&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;27984&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#27984&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt; &lt;a id=&quot;27986&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;27988&quot; class=&quot;Symbol&quot;&gt;{!   !}&lt;/a&gt;
+  &lt;a id=&quot;27998&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#ex3-2.p&quot; class=&quot;Function&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;28000&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;28001&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;28002&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28033&quot; class=&quot;DottedPattern Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;28003&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;28005&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;28006&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;28007&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28025&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;28008&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;28010&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28010&quot; class=&quot;Bound&quot;&gt;setA&lt;/a&gt; &lt;a id=&quot;28015&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28015&quot; class=&quot;Bound&quot;&gt;setB&lt;/a&gt; &lt;a id=&quot;28020&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;28021&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inr&quot; class=&quot;InductiveConstructor&quot;&gt;inr&lt;/a&gt; &lt;a id=&quot;28025&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28025&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;28026&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;28028&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;28029&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#%2B-Def%E2%82%82._%2B_.inl&quot; class=&quot;InductiveConstructor&quot;&gt;inl&lt;/a&gt; &lt;a id=&quot;28033&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28033&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;28034&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;28036&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28036&quot; class=&quot;Bound&quot;&gt;p&lt;/a&gt; &lt;a id=&quot;28038&quot; href=&quot;/type-theory/2018/04/08/hott-exercises/#28038&quot; class=&quot;Bound&quot;&gt;q&lt;/a&gt; &lt;a id=&quot;28040&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;28042&quot; class=&quot;Symbol&quot;&gt;{!   !}&lt;/a&gt;&lt;/pre&gt;
+
+### Exercise 3.3
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Prove that if &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is a set and &lt;script type=&quot;math/tex&quot;&gt;B : A \to \mathcal{U}&lt;/script&gt;
-is a type family such that &lt;script type=&quot;math/tex&quot;&gt;B(x)&lt;/script&gt; is a set for all
-&lt;script type=&quot;math/tex&quot;&gt;x : A&lt;/script&gt;, then &lt;script type=&quot;math/tex&quot;&gt;\Sigma\limits_{(x:A)}\ B(x)&lt;/script&gt; is a set.&lt;/p&gt;
+Prove that if $$ A $$ is a set and $$B : A \to \mathcal{U}$$
+is a type family such that $$B(x)$$ is a set for all
+$$x : A$$, then $$\Sigma\limits_{(x:A)}\ B(x)$$ is a set.
 &lt;/div&gt;
 
-&lt;h3 id=&quot;exercise-34&quot;&gt;Exercise 3.4&lt;/h3&gt;
+### Exercise 3.4
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Show that &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is a mere proposition if and only
-if &lt;script type=&quot;math/tex&quot;&gt;A\to A&lt;/script&gt; is contractible.&lt;/p&gt;
+Show that $$A$$ is a mere proposition if and only
+if $$A\to A$$ is contractible.
 &lt;/div&gt;
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
+{::options parse_block_html=&quot;true&quot; /}
 &lt;div class=&quot;references&quot;&gt;
 
-  &lt;ul&gt;
-    &lt;li&gt;
-      &lt;p&gt;&lt;span id=&quot;hottbook&quot;&gt;Univalent Foundations Program, T. (2013). &lt;i&gt;Homotopy Type Theory: Univalent Foundations of Mathematics&lt;/i&gt;. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf&lt;/span&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;p&gt;&lt;span id=&quot;Grayson2017&quot;&gt;Grayson, D. R. (2017). An introduction to univalent foundations for mathematicians. Retrieved from http://arxiv.org/abs/1711.01477&lt;/span&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;p&gt;&lt;span id=&quot;Wadler2015PT&quot;&gt;Wadler, P. (2015). Propositions As Types. &lt;i&gt;Commun. ACM&lt;/i&gt;, &lt;i&gt;58&lt;/i&gt;(12), 75–84. https://doi.org/10.1145/2699407&lt;/span&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;p&gt;&lt;a href=&quot;https://github.com/pcapriotti/hott-exercises&quot;&gt;Capriotti’s hott-exercises&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-      &lt;p&gt;&lt;a href=&quot;https://github.com/pcapriotti/agda-base/&quot;&gt;Capriotti’s agda-base&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
+  - &lt;span id=&quot;hottbook&quot;&gt;Univalent Foundations Program, T. (2013). &lt;i&gt;Homotopy Type Theory: Univalent Foundations of Mathematics&lt;/i&gt;. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf&lt;/span&gt;
+
+  - &lt;span id=&quot;Grayson2017&quot;&gt;Grayson, D. R. (2017). An introduction to univalent foundations for mathematicians. Retrieved from http://arxiv.org/abs/1711.01477&lt;/span&gt;
+
+  - &lt;span id=&quot;Wadler2015PT&quot;&gt;Wadler, P. (2015). Propositions As Types. &lt;i&gt;Commun. ACM&lt;/i&gt;, &lt;i&gt;58&lt;/i&gt;(12), 75–84. https://doi.org/10.1145/2699407&lt;/span&gt;
+
+  - [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises)
+
+  - [Capriotti's agda-base](https://github.com/pcapriotti/agda-base/)
+&lt;/div&gt;
+{::options parse_block_html=&quot;false&quot; /}
 &lt;/div&gt;
 </content>
  </entry>
@@ -1743,17 +1791,18 @@ is actually our induction hypothesis.&lt;/p&gt;
 &lt;h3 id=&quot;another-induction-principle&quot;&gt;Another induction principle&lt;/h3&gt;
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Assuming the ordinary induction principle (i.e., &lt;a href=&quot;#induction&quot;&gt;indℕ&lt;/a&gt;)
-derives the transfinite induction principle.&lt;br /&gt;&lt;/p&gt;
+Assuming the ordinary induction principle (i.e., &lt;a href=&quot;#induction&quot;&gt;indℕ&lt;/a&gt;)
+derives the transfinite induction principle.&lt;br /&gt;
 
-  &lt;p&gt;For a unary predicate &lt;script type=&quot;math/tex&quot;&gt;P : \mathbb{N} \to \mathcal{U}&lt;/script&gt;, if&lt;/p&gt;
+For a unary predicate $$P : \mathbb{N} \to \mathcal{U}$$, if
 
-  &lt;p class=&quot;equation&quot;&gt;
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\prod\limits_{n : \mathbb{N}} \left ( \prod\limits_{k : \mathbb{N}} (k &lt; n \to P(k)) \to P(n) \right) %]]&gt;&lt;/script&gt;
+&lt;p class=&quot;equation&quot;&gt;
+$$
+\prod\limits_{n : \mathbb{N}} \left ( \prod\limits_{k : \mathbb{N}} (k &amp;lt; n \to P(k)) \to P(n) \right)
+$$
 &lt;/p&gt;
 
-  &lt;p&gt;then for all &lt;script type=&quot;math/tex&quot;&gt;n : \mathbb{N}&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;P(n)&lt;/script&gt;.&lt;/p&gt;
+then for all $$n : \mathbb{N}$$, $$P(n)$$.
 &lt;/div&gt;
 
 &lt;p&gt;To solve this problem, we need to define a type for the &lt;em&gt;less than&lt;/em&gt; relationship
@@ -2022,7 +2071,7 @@ holds for lower ones.&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;todo&quot;&gt;
-  &lt;p&gt;Univalance implies function extensionality and the uniqueness principle for functions.&lt;/p&gt;
+Univalance implies function extensionality and the uniqueness principle for functions.
 &lt;/div&gt;
 
 &lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;

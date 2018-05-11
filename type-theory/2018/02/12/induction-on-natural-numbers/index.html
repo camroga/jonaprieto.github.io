@@ -410,17 +410,18 @@ is actually our induction hypothesis.</p>
 <h3 id="another-induction-principle">Another induction principle</h3>
 
 <div class="exercise">
-  <p>Assuming the ordinary induction principle (i.e., <a href="#induction">indℕ</a>)
-derives the transfinite induction principle.<br /></p>
+Assuming the ordinary induction principle (i.e., <a href="#induction">indℕ</a>)
+derives the transfinite induction principle.<br />
 
-  <p>For a unary predicate <script type="math/tex">P : \mathbb{N} \to \mathcal{U}</script>, if</p>
+For a unary predicate $$P : \mathbb{N} \to \mathcal{U}$$, if
 
-  <p class="equation">
-<script type="math/tex">% <![CDATA[
-\prod\limits_{n : \mathbb{N}} \left ( \prod\limits_{k : \mathbb{N}} (k < n \to P(k)) \to P(n) \right) %]]></script>
+<p class="equation">
+$$
+\prod\limits_{n : \mathbb{N}} \left ( \prod\limits_{k : \mathbb{N}} (k &lt; n \to P(k)) \to P(n) \right)
+$$
 </p>
 
-  <p>then for all <script type="math/tex">n : \mathbb{N}</script>, <script type="math/tex">P(n)</script>.</p>
+then for all $$n : \mathbb{N}$$, $$P(n)$$.
 </div>
 
 <p>To solve this problem, we need to define a type for the <em>less than</em> relationship
