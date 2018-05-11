@@ -10,8 +10,9 @@ timezone:            'Europe/Oslo'
 
 highlighter: rouge
 markdown: kramdown
-kramdown:
-  parse_block_html: true
+# kramdown:
+#   parse_block_html: true
+excerpt_separator: "\n\n"
 
 permalink: pretty
 

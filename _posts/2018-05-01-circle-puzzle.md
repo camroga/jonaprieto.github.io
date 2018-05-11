@@ -49,14 +49,12 @@ $$
 
     - Recursion principle $$\mathsf{rec}$$:
 
-      <p class="equation">
-        $$\begin{align*}
-        &\mathsf{ref} : (f : \mathbb{S}^1 \to \mathsf{A}) \to (\mathbb{S}^1 \to \mathcal{U})\\
-        &\mathsf{ref}~\mathsf{base}~=~f~\mathsf{base}\\
-        &\mathsf{ref}~\mathsf{loop}~=~\mathsf{ap}_{f}~\mathsf{loop}
-        \end{align*}
-        $$
-      </p>
+      $$\begin{align*}
+      &\mathsf{ref} : (f : \mathbb{S}^1 \to \mathsf{A}) \to (\mathbb{S}^1 \to \mathcal{U})\\
+      &\mathsf{ref}~f~\mathsf{base}~=~f~\mathsf{base}\\
+      &\mathsf{ref}~f~\mathsf{loop}~=~\mathsf{ap}_{f}~\mathsf{loop}
+      \end{align*}
+      $$
 
 - The type for equivalence from $$A$$ to $$B$$
 

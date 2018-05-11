@@ -4,13 +4,18 @@ originalmd := $(wildcard src/*.md)
 ipeImages := $(wildcard src/ipe-images/*.ipe)
 latexitImages := $(wildcard src/latexit-images/*.png)
 
+# no for publishing in the website
+dotlagda := $(wildcard src/latex-agda/*.lagda)
+texlagda := $(subst src/latex-agda/,assets/latex-agda/,$(subst .lagda,.tex,$(dotlagda)))
+pdflagda := $(subst src/latex-agda/,assets/latex-agda/,$(subst .lagda,.pdf,$(dotlagda)))
+
 markdownOrig := $(subst src/,_posts/,$(originalmd))
 markdownAgda := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
 ipeImagesPNG     := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
 latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexitImages))
 
 #
-all: _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG)
+all:  _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG) $(pdflagda)
 
 _posts/ :
 	rm -Rf -d _posts
@@ -28,6 +33,13 @@ assets/ipe-images/%.png : src/ipe-images/%.ipe
 
 assets/latexit-images/%.png : src/latexit-images/%.png
 	cp $< $@
+
+assets/latex-agda/%.tex : src/latex-agda/%.lagda
+	- cd src/latex-agda && agda --latex --latex-dir=./../../assets/latex-agda $(notdir $<)
+
+assets/latex-agda/%.pdf : assets/latex-agda/%.tex
+	- latexmk -cd -e -f -silent -pdf -interaction=nonstopmode -synctex=1 $<
+
 
 # serve website using jekyll
 
@@ -149,8 +161,8 @@ push :
 			echo "[!] run first:\n\t $$ make init-master"; \
 		fi
 
-.phony: watch-agda
-watch-agda:
+.phony: watch-src
+watch-src:
 	- watchmedo shell-command \
     --patterns="*" \
     --recursive \

@@ -798,23 +798,50 @@ Show that $$(2 \simeq 2) \simeq 2$$.
 
 ### Exercise 2.14
 
-{: .exercise}
+<div class="exercise">
 
   Suppose we add to type theory [the equality reflection
   rule](https://www.youtube.com/watch?v=IlfQjWqrK6I) which says that if there is
   an element $$p : \mathsf{Id}(x,y) $$, then in fact $$ x :\equiv y$$. Prove
-  that for any $$p : \mathsf{Id}(x,x)$$ we have $$p :\equiv \mathsf{refl}_x$$.
+  that for any $$p : \mathsf{Id}(x,x)$$ we have $$p :\equiv \mathsf{refl}_x$$.\\
 
-{: .proof}
+  <p class="equation">
+  $$
+    \begin{prooftree}
+    \AxiomC{$\vdash p : \mathsf{Id}(x, y)$}
+    \RightLabel{$\mathsf{Eq}$}
+    \UnaryInfC{$\vdash x \equiv y.$}
+    \end{prooftree}
+    $$
+
+  </p>
+
+</div>
+
+<div class="proof">
   Proof.<br/>
-  By means of base path induction, we show that
-  $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$a : A$$ and $$C :\equiv
-  \prod_{x : A} \prod_{p : a \equiv x }\ p \equiv \mathsf{refl}_{x}$$. It
-  sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and it is,
-  $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x \equiv \mathsf{refl}_x$$.
-  By equation reflection rule, since que got an inhabitant of $$p \equiv
-  \mathsf{refl}_x$$, these are judgemental equal, $$p :\equiv \mathsf{refl}_x$$.
-  
+  We first fix the type of $$\mathsf{refl}_x$$ in order to apply effectively
+  path induction.<br/>
+
+  <p class="equation">
+    $$
+    \begin{prooftree}
+    \AxiomC{$x : A, y : A, p : x = y ⊢ p : x = y$}
+    \RightLabel{$\mathsf{Eq}$}
+    \UnaryInfC{$x : A, y : A, p : x = y ⊢ x ≡ y$}
+    \AxiomC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = x$}
+    \BinaryInfC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = y.$}
+    \end{prooftree}
+    $$
+    </p>
+  Now, $$\mathsf{refl}_x$$ and $$p : x = y$$ in the formulation of path induction
+  is well-typed. Therefore, by path induction, we show that
+  $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
+  \prod_{y : A} \prod_{p : x \equiv y }\ p \equiv \mathsf{refl}_{x}$$.
+  It sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and it is,
+  $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x = \mathsf{refl}_x$$.
+  By equation reflection rule, since we have an inhabitant of $$p \equiv
+  \mathsf{refl}_x$$, these are judgemental equal,i.e., $$p \equiv \mathsf{refl}_x$$.
 
 ### Exercise 2.17
 
@@ -825,7 +852,6 @@ Show that $$(2 \simeq 2) \simeq 2$$.
   <li> Formulate and prove analogous results for the other type formers: $$\Sigma$$, $$\to$$, $$\Pi$$, and $$+$$. </li>
 </ul>
 </div>
-
 
 
 ## Chapter 3
