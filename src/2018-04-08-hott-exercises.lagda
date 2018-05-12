@@ -180,7 +180,7 @@ Let's add some machinery to handle levels of the universe needed for
 the following exercises including this one:
 
 \begin{code}
-open import Agda.Primitive public
+open import Agda.Primitive
   using (Level; _⊔_; lzero; lsuc)
 \end{code}
 
@@ -675,7 +675,7 @@ module ×-Ind₃ where
   ind-β : ∀ {A B} (C : A × B → Set)
         → (g : (a : A)(b : B) → C (a , b))
         → ((a : A)(b : B) → ind C g (a , b) ≡ g a b)
-  ind-β {A}{B} C g a b = {!!}
+  ind-β {A}{B} C g a b = {! !}
     where
       helper :  (u : A × B) → (proj₁ u , proj₂ u) ≡ u
       helper u =  sym (uniq (proj₁ u , proj₂ u)) · uniq u
@@ -708,11 +708,77 @@ at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
 \prod_{n:\mathbb{N}} \mathsf{Fin}(n+1)$$ mentioned in Section 1.4.
 </div>
 
+\begin{code}
+module Ex1-19 where
+
+  open ℕ-Def
+
+  data _<_ : ℕ → ℕ → Set where
+    z<n : (n : ℕ) → zero < n
+    s<s : (n : ℕ) (m : ℕ) → n < m → suc n < suc m
+
+  data _≤_ : ℕ → ℕ → Set where
+    z≤n : (n : ℕ) → zero ≤ n
+    s≤s : (n : ℕ) (m : ℕ) → n ≤ m → suc n ≤ suc m
+
+  open Σ-Def₁
+
+  Fin : ℕ → Set
+  Fin = λ (n : ℕ) → (Σ ℕ (λ m → (suc m ≤ n)))
+
+  _+_ : ℕ → ℕ → ℕ
+  zero    + n = n
+  (suc n) + m = suc (n + m)
+
+
+  fmax : (n : ℕ) → Fin (suc n)
+  fmax zero    = (zero , s≤s zero zero (z≤n zero))
+  fmax (suc n) = (suc n , s≤s (suc n) (suc n) (s≤s n n (helper n)))
+    where
+      helper : ∀ (n : ℕ) → n ≤ n
+      helper zero    = z≤n zero
+      helper (suc n) = s≤s n n (helper n)
+
+  fmax-well : ∀ (n : ℕ)
+            → (m : Fin (suc n))
+            → proj₁ m ≤ proj₁ (fmax n)
+  fmax-well zero (zero , p) = z≤n zero
+  fmax-well zero (suc n , s≤s .(suc n) .zero p) = p
+  fmax-well (suc n) (m , s≤s .m .(suc n) p) = p
+\end{code}
+
 ### Exercise 1.11
 
 <div class="exercise" id="exercise-1.11">
 Show that for any type $$A$$, we have $$\neg\neg\neg A \to \neg A$$.
 </div>
+
+A propositional logic proof using [Agda-Prop](http://github.com/jonaprieto/agda-prop)
+library:
+
+\begin{code}
+module Ex1-11 where
+  open import Data.PropFormula 1
+
+  proof : ∀ {Γ} {A}
+        → Γ ⊢ ¬ ¬ ¬ A ⊃ ¬ A
+  proof {Γ}{A} =
+    ⊃-intro
+      (¬-intro
+          (¬-elim
+              (weaken A (assume {Γ = Γ} (¬ (¬ (¬ A)))))
+              (¬-intro
+                (¬-elim
+                  (assume {Γ = Γ , ¬ ¬ ¬ A , A} (¬ A))
+                  (weaken (¬ A) (assume {Γ = Γ , ¬ ¬ ¬ A} A))))))
+\end{code}
+
+In type theory, the term is:
+
+$$
+λ (x : ((A → ⊥) → ⊥) → ⊥) (a : A) . x ((λ h : A → ⊥) . ha) :
+((A → ⊥) → ⊥) → ⊥) → (A → ⊥)
+$$
 
 ### Exercise 1.16
 
@@ -1020,7 +1086,7 @@ module +-Fun₂ where
   code : {A B : Set}
        → A + B → Set _
   code {A}{B} (inl a) = a ≡ a
-  code {A}{B} (inr b) = {!!}
+  code {A}{B} (inr b) = {! !}
 
 module +-Rec₂ where
   open +-Def₂

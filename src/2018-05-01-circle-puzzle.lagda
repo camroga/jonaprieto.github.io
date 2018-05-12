@@ -116,22 +116,27 @@ B = S¹-rec Bool (ua neg-equiv)
 
 module RR = S¹Rec {A = Type₀} Bool (ua neg-equiv)
 
+postulate
+  eq1 : B base == Bool
 
-_ : B base == Bool
-_ = ua (equiv f g {!!} {!!})
-  where
-    f : B base → Bool
-    f x = true
+-- _ : B base == Bool
+-- _ = ua (equiv f g {!!} {!!})
+--   where
+--     f : B base → Bool
+--     f x = true
 
-    g : Bool → B base
-    g true  = {!!}
-    g false = {!!}
+--     g : Bool → B base
+--     g true  = {!!}
+--     g false = {!!}
+
+a_ : _
+a_ = transport
 
 s : S¹ ≃ Σ S¹ B
 s = equiv f g f-g g-f
   where
     f : S¹ → Σ S¹ B
-    f base = (base , {!!})
+    f base = (base , coe! {! !} {!!})
 
     g : Σ S¹ B → S¹
     g (b , _) = b
