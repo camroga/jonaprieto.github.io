@@ -1,0 +1,98 @@
+{
+  "html": "<pre class=\"Agda\"><a>module</a> <a>×-Def₃</a> <a>where</a>\n  <a>open</a> <a>𝟚-Def₁</a> <a>using</a> <a>(</a><a>𝟘</a><a>;</a><a>𝟙</a><a>;</a><a>𝟚</a><a>)</a> <a>public</a>\n  <a>open</a> <a>𝟚-Rec₁</a> <a>using</a> <a>(</a><a>rec</a><a>)</a>\n\n  <a>_×_</a> <a>:</a> <a>(</a><a>A</a> <a>B</a> <a>:</a> <a>Set</a><a>)</a> <a>→</a> <a>Set</a>\n  <a>A</a> <a>×</a> <a>B</a> <a>=</a> <a>(</a><a>x</a> <a>:</a> <a>𝟚</a><a>)</a> <a>→</a> <a>rec</a> <a>A</a> <a>B</a> <a>x</a>\n\n  <a>_,_</a> <a>:</a> <a>∀</a> <a>{</a><a>A</a> <a>B</a><a>}</a> <a>→</a> <a>A</a> <a>→</a> <a>B</a> <a>→</a> <a>A</a> <a>×</a> <a>B</a>\n  <a>(</a><a>a</a> <a>,</a> <a>b</a><a>)</a> <a>𝟘</a> <a>=</a> <a>a</a>\n  <a>(</a><a>a</a> <a>,</a> <a>b</a><a>)</a> <a>𝟙</a> <a>=</a> <a>b</a>\n\n  <a>proj₁</a> <a>:</a> <a>∀</a> <a>{</a><a>A</a> <a>B</a> <a>:</a> <a>Set</a><a>}</a> <a>→</a> <a>A</a> <a>×</a> <a>B</a> <a>→</a> <a>A</a>\n  <a>proj₁</a> <a>x</a> <a>=</a> <a>x</a> <a>𝟘</a>\n\n  <a>proj₂</a> <a>:</a> <a>∀</a> <a>{</a><a>A</a> <a>B</a> <a>:</a> <a>Set</a><a>}</a> <a>→</a> <a>A</a> <a>×</a> <a>B</a> <a>→</a> <a>B</a>\n  <a>proj₂</a> <a>x</a> <a>=</a> <a>x</a> <a>𝟙</a>\n\n<a>module</a> <a>×-Fun₃</a> <a>where</a>\n  <a>open</a> <a>×-Def₃</a>\n\n  <a>pair=</a> <a>:</a> <a>∀</a>  <a>{</a><a>A</a><a>}{</a><a>B</a><a>}</a> <a>{</a><a>x</a> <a>y</a> <a>:</a> <a>A</a><a>}{</a><a>a</a> <a>b</a> <a>:</a> <a>B</a><a>}</a>\n        <a>→</a> <a>x</a> <a>≡</a> <a>y</a> <a>→</a> <a>a</a> <a>≡</a> <a>b</a> <a>→</a> <a>(</a><a>x</a> <a>,</a> <a>a</a><a>)</a> <a>≡</a> <a>(</a><a>y</a> <a>,</a> <a>b</a><a>)</a>\n  <a>pair=</a> <a>=</a> <a>ap₂</a> <a>_,_</a>\n\n  <a>postulate</a>\n    <a>Extensionality</a>\n      <a>:</a> <a>{</a><a>A</a> <a>:</a> <a>Set</a><a>}</a> <a>{</a><a>B</a> <a>:</a> <a>A</a> <a>→</a> <a>Set</a><a>}</a> <a>{</a><a>f</a> <a>g</a> <a>:</a> <a>(</a><a>x</a> <a>:</a> <a>A</a><a>)</a> <a>→</a> <a>B</a> <a>x</a><a>}</a>\n      <a>→</a> <a>(∀</a> <a>x</a> <a>→</a> <a>f</a> <a>x</a> <a>≡</a> <a>g</a> <a>x</a><a>)</a> <a>→</a> <a>f</a> <a>≡</a> <a>g</a>\n\n  <a>uniq</a> <a>:</a> <a>∀</a> <a>{</a><a>A</a> <a>B</a><a>}</a> <a>→</a> <a>(</a><a>c</a> <a>:</a> <a>A</a> <a>×</a> <a>B</a><a>)</a> <a>→</a> <a>(</a><a>proj₁</a> <a>c</a> <a>,</a> <a>proj₂</a> <a>c</a><a>)</a> <a>≡</a> <a>c</a>\n  <a>uniq</a> <a>{</a><a>A</a><a>}{</a><a>B</a><a>}</a> <a>c</a> <a>=</a> <a>Extensionality</a> <a>helper</a>\n    <a>where</a>\n      <a>helper</a> <a>:</a> <a>∀</a> <a>(</a><a>x</a> <a>:</a> <a>𝟚</a><a>)</a> <a>→</a> <a>(</a><a>proj₁</a> <a>c</a> <a>,</a> <a>proj₂</a> <a>c</a><a>)</a> <a>x</a> <a>≡</a> <a>c</a> <a>x</a>\n      <a>helper</a> <a>𝟘</a> <a>=</a> <a>refl</a>\n      <a>helper</a> <a>𝟙</a> <a>=</a> <a>refl</a>\n\n<a>module</a> <a>×-Ind₃</a> <a>where</a>\n  <a>open</a> <a>×-Def₃</a>\n  <a>open</a> <a>×-Fun₃</a>\n\n  <a>ind</a> <a>:</a> <a>∀</a> <a>{</a><a>A</a> <a>B</a><a>}</a> <a>(</a><a>C</a> <a>:</a> <a>A</a> <a>×</a> <a>B</a> <a>→</a> <a>Set</a><a>)</a>\n      <a>→</a> <a>((</a><a>a</a> <a>:</a> <a>A</a><a>)(</a><a>b</a> <a>:</a> <a>B</a><a>)</a> <a>→</a> <a>C</a> <a>(</a><a>a</a> <a>,</a> <a>b</a><a>))</a>\n      <a>→</a> <a>(</a><a>c</a> <a>:</a> <a>A</a> <a>×</a> <a>B</a><a>)</a> <a>→</a> <a>C</a> <a>c</a>\n  <a>ind</a> <a>{</a><a>A</a><a>}{</a><a>B</a><a>}</a> <a>C</a> <a>f</a> <a>c</a> <a>=</a> <a>subst</a> <a>C</a> <a>(</a><a>uniq</a> <a>c</a><a>)</a> <a>(</a><a>f</a> <a>(</a><a>c</a> <a>𝟘</a><a>)</a> <a>(</a><a>c</a> <a>𝟙</a><a>))</a>\n\n  <a>ind-β</a> <a>:</a> <a>∀</a> <a>{</a><a>A</a> <a>B</a><a>}</a> <a>(</a><a>C</a> <a>:</a> <a>A</a> <a>×</a> <a>B</a> <a>→</a> <a>Set</a><a>)</a>\n        <a>→</a> <a>(</a><a>g</a> <a>:</a> <a>(</a><a>a</a> <a>:</a> <a>A</a><a>)(</a><a>b</a> <a>:</a> <a>B</a><a>)</a> <a>→</a> <a>C</a> <a>(</a><a>a</a> <a>,</a> <a>b</a><a>))</a>\n        <a>→</a> <a>((</a><a>a</a> <a>:</a> <a>A</a><a>)(</a><a>b</a> <a>:</a> <a>B</a><a>)</a> <a>→</a> <a>ind</a> <a>C</a> <a>g</a> <a>(</a><a>a</a> <a>,</a> <a>b</a><a>)</a> <a>≡</a> <a>g</a> <a>a</a> <a>b</a><a>)</a>\n  <a>ind-β</a> <a>{</a><a>A</a><a>}{</a><a>B</a><a>}</a> <a>C</a> <a>g</a> <a>a</a> <a>b</a> <a>=</a> <a>{!!}</a>\n    <a>where</a>\n      <a>helper</a> <a>:</a>  <a>(</a><a>u</a> <a>:</a> <a>A</a> <a>×</a> <a>B</a><a>)</a> <a>→</a> <a>(</a><a>proj₁</a> <a>u</a> <a>,</a> <a>proj₂</a> <a>u</a><a>)</a> <a>≡</a> <a>u</a>\n      <a>helper</a> <a>u</a> <a>=</a>  <a>sym</a> <a>(</a><a>uniq</a> <a>(</a><a>proj₁</a> <a>u</a> <a>,</a> <a>proj₂</a> <a>u</a><a>))</a> <a>·</a> <a>uniq</a> <a>u</a>\n\n      <a>uniq-compute</a> <a>:</a> <a>(</a><a>x</a> <a>:</a> <a>A</a><a>)(</a><a>y</a> <a>:</a> <a>B</a><a>)</a> <a>→</a> <a>helper</a> <a>(</a><a>x</a> <a>,</a> <a>y</a><a>)</a> <a>≡</a> <a>refl</a>\n      <a>uniq-compute</a> <a>x</a> <a>y</a> <a>=</a> <a>right-inverse</a> <a>(</a><a>uniq</a> <a>(</a><a>x</a> <a>,</a> <a>y</a><a>))</a>\n        <a>where</a>\n          <a>right-inverse</a> <a>:</a> <a>∀</a> <a>{</a><a>i</a><a>}{</a><a>X</a> <a>:</a> <a>Set</a> <a>i</a><a>}{</a><a>x</a> <a>y</a> <a>:</a> <a>X</a><a>}</a>\n                        <a>→</a> <a>(</a><a>p</a> <a>:</a> <a>x</a> <a>≡</a> <a>y</a><a>)</a>\n                        <a>→</a> <a>(</a><a>sym</a> <a>p</a><a>)</a> <a>·</a> <a>p</a> <a>≡</a> <a>refl</a>\n          <a>right-inverse</a> <a>refl</a> <a>=</a> <a>refl</a></pre>",
+  "content": "module ×-Def₃ where\n  open 𝟚-Def₁ using (𝟘;𝟙;𝟚) public\n  open 𝟚-Rec₁ using (rec)\n\n  _×_ : (A B : Set) → Set\n  A × B = (x : 𝟚) → rec A B x\n\n  _,_ : ∀ {A B} → A → B → A × B\n  (a , b) 𝟘 = a\n  (a , b) 𝟙 = b\n\n  proj₁ : ∀ {A B : Set} → A × B → A\n  proj₁ x = x 𝟘\n\n  proj₂ : ∀ {A B : Set} → A × B → B\n  proj₂ x = x 𝟙\n\nmodule ×-Fun₃ where\n  open ×-Def₃\n\n  pair= : ∀  {A}{B} {x y : A}{a b : B}\n        → x ≡ y → a ≡ b → (x , a) ≡ (y , b)\n  pair= = ap₂ _,_\n\n  postulate\n    Extensionality\n      : {A : Set} {B : A → Set} {f g : (x : A) → B x}\n      → (∀ x → f x ≡ g x) → f ≡ g\n\n  uniq : ∀ {A B} → (c : A × B) → (proj₁ c , proj₂ c) ≡ c\n  uniq {A}{B} c = Extensionality helper\n    where\n      helper : ∀ (x : 𝟚) → (proj₁ c , proj₂ c) x ≡ c x\n      helper 𝟘 = refl\n      helper 𝟙 = refl\n\nmodule ×-Ind₃ where\n  open ×-Def₃\n  open ×-Fun₃\n\n  ind : ∀ {A B} (C : A × B → Set)\n      → ((a : A)(b : B) → C (a , b))\n      → (c : A × B) → C c\n  ind {A}{B} C f c = subst C (uniq c) (f (c 𝟘) (c 𝟙))\n\n  ind-β : ∀ {A B} (C : A × B → Set)\n        → (g : (a : A)(b : B) → C (a , b))\n        → ((a : A)(b : B) → ind C g (a , b) ≡ g a b)\n  ind-β {A}{B} C g a b = {!!}\n    where\n      helper :  (u : A × B) → (proj₁ u , proj₂ u) ≡ u\n      helper u =  sym (uniq (proj₁ u , proj₂ u)) · uniq u\n\n      uniq-compute : (x : A)(y : B) → helper (x , y) ≡ refl\n      uniq-compute x y = right-inverse (uniq (x , y))\n        where\n          right-inverse : ∀ {i}{X : Set i}{x y : X}\n                        → (p : x ≡ y)\n                        → (sym p) · p ≡ refl\n          right-inverse refl = refl",
+  "headings": [
+    "Chapter 1",
+    "Exercise 1.6"
+  ],
+  "anchor": "exercise-16",
+  "custom_ranking": {
+    "position": 72,
+    "heading": 70
+  },
+  "last_modified_at": "11-May-18",
+  "title": "HoTT exercises",
+  "toc": true,
+  "git": {
+    "authors": [
+      {
+        "commits": 4,
+        "name": "Jonathan Prieto-Cubides",
+        "email": "jcu043@uib.no"
+      }
+    ],
+    "total_commits": 4,
+    "total_additions": 1736,
+    "total_subtractions": 710,
+    "first_commit": {
+      "short_sha": "e5ef336",
+      "long_sha": "e5ef336a5779ddfd07223c1e3a0cab2e47c51e7f",
+      "author_name": "Jonathan Prieto-Cubides",
+      "author_email": "jcu043@uib.no",
+      "author_date": "Tue May 1 23:57:10 2018 +0200",
+      "commit_name": "Jonathan Prieto-Cubides",
+      "commit_email": "jcu043@uib.no",
+      "commit_date": "Tue May 1 23:57:10 2018 +0200",
+      "message": "circle puzzle",
+      "changed_files": [
+        ".git-metadata/14b3a5d7bec6e98aed1a6360df9719a9f52fc054.json",
+        ".jekyll-metadata",
+        "Makefile",
+        "_includes/footer.html",
+        "_layouts/post.html",
+        "_plugins/watch.rb",
+        "_posts/2018-04-08-HoTT-book.md",
+        "_posts/2018-04-08-hott-exercises.md",
+        "_posts/2018-05-01-circle-puzzle.md",
+        "_posts/2018-05-01-puzzle-in-hott.md",
+        "src/2018-04-08-hott-exercises.lagda",
+        "src/2018-05-01-circle-puzzle.md",
+        "src/2018-05-01-puzzle-in-hott.lagda"
+      ]
+    },
+    "last_commit": {
+      "short_sha": "c74375d",
+      "long_sha": "c74375d562b15ee5b37a64097ca165cbbe3b471c",
+      "author_name": "Jonathan Prieto-Cubides",
+      "author_email": "jcu043@uib.no",
+      "author_date": "Fri May 11 19:15:26 2018 +0200",
+      "commit_name": "Jonathan Prieto-Cubides",
+      "commit_email": "jcu043@uib.no",
+      "commit_date": "Fri May 11 19:15:26 2018 +0200",
+      "message": "circle progress",
+      "changed_files": [
+        ".git-metadata/7d3accabbd1ef550245e6df2f6b0d377cc8f7e7c.json",
+        "Makefile",
+        "_bibliography/library.bib",
+        "_config.yml",
+        "_posts/2018-04-08-hott-exercises.md",
+        "_posts/2018-05-01-circle-puzzle.md",
+        "assets/latex-agda/.gitignore",
+        "assets/latex-agda/agda.sty",
+        "assets/latex-agda/cleveref.sty",
+        "assets/latex-agda/hott-exercises.pdf",
+        "assets/latex-agda/hott-exercises.tex",
+        "assets/latex-agda/main.labels",
+        "jekyll-algolia-record-too-big-bfe9e7fb497d03bc8695ca92491712b7.log",
+        "src/2018-04-08-hott-exercises.lagda",
+        "src/2018-05-01-circle-puzzle.lagda",
+        "src/_drafts/2018-04-23-Questions-Found-About-HoTT.lagda",
+        "src/latex-agda/hott-exercises.lagda"
+      ]
+    }
+  },
+  "tags": [
+
+  ],
+  "categories": [
+    "type-theory"
+  ],
+  "date": 1523138400,
+  "excerpt_html": "<p>This is a self-contained version of some solutions for HoTT-Book’s exercises.\nThe idea is to unpackage all as long as possible to get a better understanding.\nMany changes can appear running this experiment. Solutions are\ntype-checked as a whole using Agda v2.5.3.</p>",
+  "excerpt_text": "This is a self-contained version of some solutions for HoTT-Book’s exercises. The idea is to unpackage all as long as possible to get a better understanding. Many changes can appear running this experiment. Solutions are type-checked as a whole using Agda v2.5.3.",
+  "slug": "hott-exercises",
+  "type": "post",
+  "url": "/type-theory/2018/04/08/hott-exercises/",
+  "text": "module ×-Def₃ where\n  open 𝟚-Def₁ using (𝟘;𝟙;𝟚) public\n  open 𝟚-Rec₁ using (rec)\n\n  _×_ : (A B : Set) → Set\n  A × B = (x : 𝟚) → rec A B x\n\n  _,_ : ∀ {A B} → A → B → A × B\n  (a , b) 𝟘 = a\n  (a , b) 𝟙 = b\n\n  proj₁ : ∀ {A B : Set} → A × B → A\n  proj₁ x = x 𝟘\n\n  proj₂ : ∀ {A B : Set} → A × B → B\n  proj₂ x = x 𝟙\n\nmodule ×-Fun₃ where\n  open ×-Def₃\n\n  pair= : ∀  {A}{B} {x y : A}{a b : B}\n        → x ≡ y → a ≡ b → (x , a) ≡ (y , b)\n  pair= = ap₂ _,_\n\n  postulate\n    Extensionality\n      : {A : Set} {B : A → Set} {f g : (x : A) → B x}\n      → (∀ x → f x ≡ g x) → f ≡ g\n\n  uniq : ∀ {A B} → (c : A × B) → (proj₁ c , proj₂ c) ≡ c\n  uniq {A}{B} c = Extensionality helper\n    where\n      helper : ∀ (x : 𝟚) → (proj₁ c , proj₂ c) x ≡ c x\n      helper 𝟘 = refl\n      helper 𝟙 = refl\n\nmodule ×-Ind₃ where\n  open ×-Def₃\n  open ×-Fun₃\n\n  ind : ∀ {A B} (C : A × B → Set)\n      → ((a : A)(b : B) → C (a , b))\n      → (c : A × B) → C c\n  ind {A}{B} C f c = subst C (uniq c) (f (c 𝟘) (c 𝟙))\n\n  ind-β : ∀ {A B} (C : A × B → Set)\n        → (g : (a : A)(b : B) → C (a , b))\n        → ((a : A)(b : B) → ind C g (a , b) ≡ g a b)\n  ind-β {A}{B} C g a b = {!!}\n    where\n      helper :  (u : A × B) → (proj₁ u , proj₂ u) ≡ u\n      helper u =  sym (uniq (proj₁ u , proj₂ u)) · uniq u\n\n      uniq-compute : (x : A)(y : B) → helper (x , y) ≡ refl\n      uniq-compute x y = right-inverse (uniq (x , y))\n        where\n          right-inverse : ∀ {i}{X : Set i}{x y : X}\n                        → (p : x ≡ y)\n                        → (sym p) · p ≡ refl\n          right-inverse refl = refl",
+  "objectID": "9f667703538e90a269f643b5ca4bac0e"
+}
