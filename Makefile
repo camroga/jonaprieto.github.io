@@ -17,6 +17,13 @@ latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexit
 #
 all:  _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG) $(pdflagda)
 
+_posts/ :
+	rm -Rf -d _posts
+	mkdir -p _posts
+
+_posts/%.md : src/%.md
+	rm -f $@
+	cp $< $@
 
 _posts/%.md : src/%.lagda
 	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@

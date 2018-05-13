@@ -41,6 +41,8 @@ sym refl = refl
 _·_ : ∀ {i}{X : Set i}{x y z : X}
     → x ≡ y → y ≡ z → x ≡ z
 refl · p = p
+trans = _·_
+
 infixl 9 _·_
 
 ap : ∀ {i j}{A : Set i}{B : Set j}{x y : A}
@@ -709,7 +711,7 @@ at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
 </div>
 
 \begin{code}
-module Ex1-19 where
+module Ex1-9 where
 
   open ℕ-Def
 
@@ -790,6 +792,41 @@ $$
 $$
 </p>
 </div>
+
+Hint: by induction twice.
+
+\begin{code}
+module Ex1-16 where
+  open ℕ-Def
+  open ℕ-Ind
+  open Ex1-9 using (_+_)
+
+  proof : (i : ℕ) → ((j : ℕ) → i + j ≡ j + i)
+  proof =
+    ind (λ (i : ℕ) → ((j : ℕ) → i + j ≡ j + i))
+      sproof₁
+      sproof₂
+    where
+      sproof₁ : (j : ℕ) → j ≡ (j + zero)
+      sproof₁ =
+        ind (λ (j : ℕ) → j ≡ (j + zero))
+            refl
+            (λ n n≡n+zero → ap suc n≡n+zero)
+
+      sproof₂ : (n : ℕ)
+              → ((j : ℕ) → (n + j) ≡ (j + n))
+              → ((j : ℕ) → suc (n + j) ≡ (j + suc n))
+      sproof₂ n hyp₁ =
+          ind (λ (j : ℕ) → suc (n + j) ≡ (j + suc n))
+            (ap suc (sym (sproof₁ n)))
+            (λ m hyp₂ →
+                ap suc
+                  (trans
+                      (hyp₁ (suc m))
+                  (trans
+                      (ap suc (sym (hyp₁ m)))
+                      hyp₂)))
+\end{code}
 
 ## Chapter 2
 
