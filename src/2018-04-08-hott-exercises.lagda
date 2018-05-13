@@ -837,6 +837,61 @@ Prove that if $$p : x \equiv y$$, then the function
 $$(p \cdot -) : (y \equiv z) \to (x \equiv z)$$ is an equivalence.
 </div>
 
+![path-triangle](/assets/ipe-images/path-triangle.png)
+
+<div class="proof">
+Solution. <br/>
+
+To show the equivalence, it sufficies to show a function
+$$g : x \equiv z \to y \equiv z$$ such that we can prove
+$$ (p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$ and
+$$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$.
+
+Let's define the function $g$.
+<p class="equation">
+$$
+\begin{align*}
+&g : x ≡ z → y ≡ z\\
+&g~m~=~\mathsf{trans}~(\mathsf{sym}~p)~m
+\end{align*}
+$$
+</p>
+<br/>
+
+($$(p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$).
+Let be $$m : x ≡ z$$, we have,
+
+<p class="equation">
+$$
+\begin{align*}
+(p \cdot -) \circ g (m) &= (p \cdot -)~(g m)\\
+                        &= (p \cdot -)~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
+                        &= \mathsf{trans}~p (\mathsf{trans}~(\mathsf{sym}~p) m)\\
+                        &= \mathsf{trans}~(\mathsf{trans}~p~(\mathsf{sym}~p)) m\\
+                        &= \mathsf{trans}~\mathsf{refl}_{x≡z} m\\
+                        &= m
+\end{align*}
+$$
+</p>
+<br/>
+($$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$).
+Let be $$n : y ≡ z$$, we have,
+
+<p class="equation">
+$$
+\begin{align*}
+g \circ (p \cdot -) n &= g (\mathsf{trans}~p~n)\\
+                      &= (\mathsf{trans}~(\mathsf{sym}~p)~(\mathsf{trans}~p~n)\\
+                      &= (\mathsf{trans}~(\mathsf{trans}~(\mathsf{sym}~p)~p)~n\\
+                      &= \mathsf{trans}~\mathsf{refl}_{y ≡ z} n\\
+                      &= n.
+\end{align*}
+$$
+</p>
+
+</div>
+
+
 ### Exercise 2.10
 
 <div class="exercise" id="exercise-2.10">
