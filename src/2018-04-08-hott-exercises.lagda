@@ -847,7 +847,7 @@ $$g : x \equiv z \to y \equiv z$$ such that we can prove
 $$ (p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$ and
 $$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$.
 
-Let's define the function $g$.
+Let's define the function $$g$$.
 <p class="equation">
 $$
 \begin{align*}
