@@ -124,7 +124,7 @@ references : _bibliography/library.bib
 .phony : push-sources
 push-sources :
 	- @git checkout sources
-	- @git add --all
+	- @git add .
 	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
 	- @echo "==================================================================="
 	-	@echo "======================= Pushing on SOURCES ========================"
