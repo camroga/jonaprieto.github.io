@@ -864,11 +864,11 @@ Let be $$m : x ≡ z$$, we have,
 <p class="equation">
 $$
 \begin{align*}
-(p \cdot -) \circ g (m) &= (p \cdot -)~(g m)\\
+(p \cdot -) \circ g (m) &= (p \cdot -)~(g~m)\\
                         &= (p \cdot -)~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
-                        &= \mathsf{trans}~p (\mathsf{trans}~(\mathsf{sym}~p) m)\\
-                        &= \mathsf{trans}~(\mathsf{trans}~p~(\mathsf{sym}~p)) m\\
-                        &= \mathsf{trans}~\mathsf{refl}_{x≡z} m\\
+                        &= \mathsf{trans}~p~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
+                        &= \mathsf{trans}~(\mathsf{trans}~p~(\mathsf{sym}~p))~m\\
+                        &= \mathsf{trans}~\mathsf{refl}_{x≡z}~m\\
                         &= m
 \end{align*}
 $$
@@ -883,7 +883,7 @@ $$
 g \circ (p \cdot -) n &= g (\mathsf{trans}~p~n)\\
                       &= (\mathsf{trans}~(\mathsf{sym}~p)~(\mathsf{trans}~p~n)\\
                       &= (\mathsf{trans}~(\mathsf{trans}~(\mathsf{sym}~p)~p)~n\\
-                      &= \mathsf{trans}~\mathsf{refl}_{y ≡ z} n\\
+                      &= \mathsf{trans}~\mathsf{refl}_{y ≡ z}~n\\
                       &= n.
 \end{align*}
 $$
