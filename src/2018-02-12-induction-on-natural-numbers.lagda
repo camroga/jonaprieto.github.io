@@ -203,11 +203,11 @@ Now, we have the power of induction to prove some properties.
 + *Congruence*
 
 \begin{code}
-+-cong : ∀ {n m : ℕ} → n ≡ m → suc n ≡ suc m
-+-cong refl = refl
+suc-cong : ∀ {n m : ℕ} → n ≡ m → suc n ≡ suc m
+suc-cong refl = refl
 \end{code}
 
-As we can see in the type of `+-cong` we used implicit
+As we can see in the type of `suc-cong` we used implicit
 arguments for the numbers n and m. That's pretty convenient to get
 some help by letting infer Agda about those implicit argument.
 
@@ -217,7 +217,7 @@ for the add function are indeed equal using ι-,β- reductions:
 \begin{code}
 add≡add₂ : ∀ (n m : ℕ) → add n m ≡ add₂ n m
 add≡add₂ zero    m = refl
-add≡add₂ (suc n) m = +-cong (add≡add₂ n m)
+add≡add₂ (suc n) m = suc-cong (add≡add₂ n m)
 \end{code}
 
 
@@ -240,7 +240,7 @@ assoc₁
   : ∀ (i : ℕ)
   → (∀ (j k : ℕ) → i + (j + k) ≡ (i + j) + k)
   → ∀ (j k : ℕ) → (suc i) + (j + k) ≡ ((suc i) + j) + k
-assoc₁ i p j₁ k₁ = +-cong (p j₁ k₁)
+assoc₁ i p j₁ k₁ = suc-cong (p j₁ k₁)
 \end{code}
 
 Then, by indℕ:
@@ -253,30 +253,53 @@ assoc = indℕ assoc₀ assoc₁
 
 \begin{code}
 +-comm₀ : ∀ (m : ℕ) → zero + m ≡ m + zero
-+-comm₀ = indℕ refl λ n indHyp → +-cong indHyp
++-comm₀ = indℕ refl (λ n indHyp → suc-cong indHyp)
 
-postulate  -- TODO
-  +-identity : ∀ (n : ℕ) → n + zero ≡ n
-  +-suc : ∀ (m n : ℕ) → m + suc n ≡ suc (m + n)
 
-postulate  -- TODO
-  +-commₛ
-    : ∀ (m : ℕ)
-    → (∀ (n : ℕ) → m + n ≡ n + m)
-    → ∀ (n : ℕ)  → suc m + n ≡ n + suc m
--- +-commₛ m indHyp zero = +-identity (suc m)
--- +-commₛ m indHyp (suc n) = {!   !}
++-identity : ∀ (n : ℕ) → n + zero ≡ n
++-identity = indℕ refl (λ n indHyp → suc-cong indHyp)
+
+-- TODO
+-- +-suc : ∀ (m n : ℕ) → m + suc n ≡ suc (m + n)
+-- +-suc = indℕ
+--     (indℕ refl λ n indHyp → refl)
+--     (indℕ (λ _ n → refl) λ m indHyp → {!   !})
 \end{code}
 
-Instead of using `rewrite` in Agda, we can use transitivity
-of the identity.
+Let's define the transitivity and symmetric property of the equality.
 
 \begin{code}
 trans : ∀ {m n p : ℕ} → m ≡ n → n ≡ p → m ≡ p
 trans refl refl = refl
 
+≡sym : ∀ {m n p : ℕ} → m ≡ n → n ≡ m
+≡sym refl = refl
+
 +-comm : ∀ (m n : ℕ) → m + n ≡ n + m
-+-comm = indℕ +-comm₀ +-commₛ
++-comm =
+  indℕ
+    sproof₁
+    sproof₂
+  where
+    sproof₁ : (n : ℕ) → n ≡ (n + zero)
+    sproof₁ =
+      indℕ
+        refl
+        (λ n n≡n+zero → suc-cong n≡n+zero)
+
+    sproof₂ : (n : ℕ)
+            → ((m : ℕ) → (n + m) ≡ (m + n))
+            → ((m : ℕ) → suc (n + m) ≡ (m + suc n))
+    sproof₂ n hyp₁ =
+        indℕ
+          (suc-cong (hyp₁ zero) )
+          (λ m hyp₂ →
+              suc-cong
+                (trans
+                    (hyp₁ (suc m))
+                (trans
+                    (suc-cong (≡sym (hyp₁ m)))
+                    hyp₂)))
 \end{code}
 
 ### Exercises
@@ -285,14 +308,14 @@ trans refl refl = refl
 
 \begin{code}
 0+n≡n : ∀ (n : ℕ) → 0 + n ≡ n
-0+n≡n = indℕ refl (λ n p → +-cong p)
+0+n≡n = indℕ refl (λ n p → suc-cong p)
 \end{code}
 
 + Exercise 2
 
 \begin{code}
 p₂ : ∀ (n : ℕ) → double (n + 1) ≡ (suc (suc (double n)))
-p₂ = indℕ refl (λ n indHyp → +-cong (+-cong indHyp))
+p₂ = indℕ refl (λ n indHyp → suc-cong (suc-cong indHyp))
 \end{code}
 
 In the above definition may it's worth to notice that indHyp
@@ -306,7 +329,7 @@ Without pattern-matching:
 
 \begin{code}
 n+0≡n : ∀ (n : ℕ) → n + 0 ≡ n
-n+0≡n = indℕ refl (λ n indHyp → +-cong indHyp)
+n+0≡n = indℕ refl (λ n indHyp → suc-cong indHyp)
 \end{code}
 
 With pattern-matching:
@@ -314,7 +337,7 @@ With pattern-matching:
 \begin{code}
 n+0≡n₂ : ∀ (n : ℕ) → n + 0 ≡ n
 n+0≡n₂ zero    = refl
-n+0≡n₂ (suc n) = +-cong (n+0≡n₂ n)
+n+0≡n₂ (suc n) = suc-cong (n+0≡n₂ n)
 \end{code}
 
 -------------------------------------------------------------------------------
@@ -361,13 +384,24 @@ module ℕ-transInd (P : ℕ → 𝒰) where
   subst : {k n : ℕ} → k ≡ n → P k → P n
   subst refl pk = pk
 
-  postulate -- TODO
-    <-property : ∀ {k : ℕ} {n : ℕ}
-             → k < suc n
-             → (k < n) ⊎ (k ≡ n)
+  split-k<sucn
+    : ∀ {k : ℕ} {n : ℕ}
+    → k < suc n
+    → (k < n) ⊎ (k ≡ n)
+
+  split-k<sucn {zero}  {zero}  k<sucn = inj₂ refl
+  split-k<sucn {zero}  {suc n} k<sucn = inj₁ z<s
+  split-k<sucn {suc k} {zero}  (s<s ())
+  split-k<sucn {suc k} {suc n} (s<s k<sucn) =
+    ⊎-elim
+      (λ k<n → inj₁ (s<s k<n))
+      (λ k≡n → inj₂ (suc-cong k≡n))
+      (split-k<sucn k<sucn)
+
 \end{code}
 
-**Proof**:
+<div class="proof">
+Proof.<br/>
 We use induction to get an inhabitant of the $$G$$ proposition.
 The induction was using pattern matching on $$n$$ in Agda.
 At the end, we use the hypothesis with this inhabitant of $$G$$.
@@ -378,9 +412,11 @@ $$
 
 where $$P : \mathbb{N} \to \mathcal{U}$$.
 
+<br/>
+<br/>
 
 \begin{code}
--- proof
+-- proof:
   indℕ⇒transFindℕ
     : (hyp : (n : ℕ) → ((k : ℕ) → (k < n) → P k) → P n)
     → ((n : ℕ) → P n)
@@ -389,7 +425,7 @@ where $$P : \mathbb{N} \to \mathcal{U}$$.
   indℕ⇒transFindℕ hyp (suc n) = hyp (suc n) (G (suc n))
     where
       G : ∀ (n : ℕ) → ((k : ℕ) → (k < n) → P k)
-      G zero    = λ k → λ () -- imposible
+      G zero    k = λ () -- imposible
       G (suc n) k k<n+1 =
         ⊎-elim --
           -- 1. when k < n
@@ -397,8 +433,9 @@ where $$P : \mathbb{N} \to \mathcal{U}$$.
           -- 2. when k ≡ n
           (λ k≡n → subst (sym k≡n) (hyp n (G n)))
           -- eliminiting two cases: (k < n) ⊎ (k ≡ n)
-          (<-property k<n+1)
+          (split-k<sucn k<n+1)
 \end{code}
+</div>
 
 ### Conclusion
 

@@ -69,6 +69,7 @@ $$
 (f \sim g) :\equiv \prod\limits_{x : A} (f(x) \equiv g(x)).
 $$
 
+![path-triangle](/assets/ipe-images/Bid.png)
 
 ## Experiment in Agda
 
@@ -136,17 +137,54 @@ s : S¹ ≃ Σ S¹ B
 s = equiv f g f-g g-f
   where
     f : S¹ → Σ S¹ B
-    f base = (base , coe! {! !} {!!})
+    f base = (base , {!   !})
 
     g : Σ S¹ B → S¹
     g (b , _) = b
 
     f-g : (b₁ : Σ S¹ B) → f (g b₁) == b₁
-    f-g = {!!}
+    f-g = {! !}
 
     g-f : (a : S¹) → g (f a) == a
-    g-f = {!!}
+    g-f = {! !}
 
+\end{code}
+
+<div class="exercise" id="exercise-2.13">
+Show that $$(2 \simeq 2) \simeq 2$$.
+</div>
+
+\begin{code}
+module Ex2-13 where
+  baby-step
+    : Bool
+    → ((x : S¹) → B x)
+  baby-step true  = {! λ x → true  !}
+  baby-step false = {! λ x → B x   !}
+
+  proof : (Bool ≃ Bool) ≃ Bool
+  proof = equiv h f
+    h-f
+    {! f-h  !}
+    where
+      h : Bool ≃ Bool → Bool
+      h (f , _) = f true
+
+      f : Bool → Bool ≃ Bool
+      f false = neg-equiv
+      f true  = id-equiv
+
+      h-f : (b : Bool) → h (f b) == b
+      h-f false = idp
+      h-f true  = idp
+
+      f-h : (a : Bool ≃ Bool) → f (h a) == a
+      f-h (g , record
+                  { g = g′
+                  ; f-g = f-g
+                  ; g-f = g-f
+                  ; adj = adj
+                  }) = {! f-g  !}
 \end{code}
 
 

@@ -858,7 +858,7 @@ $$
 </p>
 <br/>
 
-($$(p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$).
+($$(p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$):
 Let be $$m : x ≡ z$$, we have,
 
 <p class="equation">
@@ -874,7 +874,7 @@ $$
 $$
 </p>
 <br/>
-($$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$).
+($$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$):
 Let be $$n : y ≡ z$$, we have,
 
 <p class="equation">
@@ -935,15 +935,15 @@ module Σ-Fun₁ where
      → Σ (Σ A B) C → Σ A (λ a → Σ (B a) (λ z → C (a , z)))
   g {A}{B}{C} (z , c) = (proj₁ z , (proj₂ z , c))
 
-  proof→ : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
+  f-g : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
         → (x : Σ (Σ A B) C)
         → f {A = A}{B = B}{C = C} (g x) ≡ x
-  proof→ x = refl
+  f-g x = refl
 
-  proof← : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
+  g-f : ∀ {A : Set} {B : A → Set} {C : Σ A B → Set}
         → (x : Σ A (λ a → Σ (B a) (λ b → C (a , b))))
         → g {A = A}{B = B}{C = C} (f x) ≡ x
-  proof← x = refl
+  g-f x = refl
 \end{code}
 
 
@@ -958,10 +958,11 @@ Show that $$(2 \simeq 2) \simeq 2$$.
 
 <div class="exercise">
 
-  Suppose we add to type theory [the equality reflection
-  rule](https://www.youtube.com/watch?v=IlfQjWqrK6I) which says that if there is
-  an element $$p : \mathsf{Id}(x,y) $$, then in fact $$ x :\equiv y$$. Prove
-  that for any $$p : \mathsf{Id}(x,x)$$ we have $$p :\equiv \mathsf{refl}_x$$.\\
+  Suppose we add to type theory <a
+  href="https://www.youtube.com/watch?v=IlfQjWqrK6I">the equality reflection
+  rule</a> which says that if there is an element $$p : \mathsf{Id}(x,y) $$,
+  then in fact $$ x :\equiv y$$. Prove that for any $$p : \mathsf{Id}(x,x)$$ we
+  have $$p :\equiv \mathsf{refl}_x$$.
 
   <p class="equation">
   $$
@@ -991,7 +992,8 @@ Show that $$(2 \simeq 2) \simeq 2$$.
     \BinaryInfC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = y.$}
     \end{prooftree}
     $$
-    </p>
+  </p>
+
   Now, $$\mathsf{refl}_x$$ and $$p : x = y$$ in the formulation of path induction
   is well-typed. Therefore, by path induction, we show that
   $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
@@ -1000,6 +1002,7 @@ Show that $$(2 \simeq 2) \simeq 2$$.
   $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x = \mathsf{refl}_x$$.
   By equation reflection rule, since we have an inhabitant of $$p \equiv
   \mathsf{refl}_x$$, these are judgemental equal,i.e., $$p \equiv \mathsf{refl}_x$$.
+</div>
 
 ### Exercise 2.17
 
