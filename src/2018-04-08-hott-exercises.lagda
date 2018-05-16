@@ -701,6 +701,41 @@ $$\ind{\mathbb{N}}$$.
 
 </div>
 
+
+<div class="proof" markdown="1">
+Solution.<br/>
+Operation definitions:
+
+\begin{code}
+module Ex1-8 where
+  open ℕ-Def
+  open ℕ-Rec
+
+  _+_ : ℕ → ℕ → ℕ
+  zero    + n = n
+  (suc n) + m = suc (n + m)
+
+  multi : ∀ (n m : ℕ) → ℕ
+  multi = rec ((m : ℕ) → ℕ) (λ n → zero) (λ n f m →  m + f m)
+
+  exp : ∀ (n m : ℕ) → ℕ
+  exp = rec ((m : ℕ) → ℕ) (λ n → suc zero) (λ n g m → multi m (g m))
+\end{code}
+
+On the other hand, a **semiring** is a type? together with two binary operators S(+,*) satisfying the following conditions:
+
+1. Additive associativity: $$\prod_{a,b,c : S} (a+b)+c=a+(b+c)$$.
+
+2. Additive commutativity: $$\prod_{a,b : S}  a+b=b+a$$.
+
+3. Multiplicative associativity: $$\prod_{a,b,c : S} (a*b)*c=a*(b*c)$$.
+
+4. Left and right distributivity:
+
+$$\prod_{a,b,c : S} a*(b+c)=(a*b)+(a*c)\text{  and  } \prod_{a,b,c : S} (b+c)*a=(b*a)+(c*a).$$
+
+</div>
+
 ### Exercise 1.9
 
 <div class="exercise" id="exercise-1.9">
@@ -714,6 +749,7 @@ at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
 module Ex1-9 where
 
   open ℕ-Def
+  open Ex1-8 using (_+_)
 
   data _<_ : ℕ → ℕ → Set where
     z<n : (n : ℕ) → zero < n
@@ -728,11 +764,6 @@ module Ex1-9 where
   Fin : ℕ → Set
   Fin = λ (n : ℕ) → (Σ ℕ (λ m → (suc m ≤ n)))
 
-  _+_ : ℕ → ℕ → ℕ
-  zero    + n = n
-  (suc n) + m = suc (n + m)
-
-
   fmax : (n : ℕ) → Fin (suc n)
   fmax zero    = (zero , s≤s zero zero (z≤n zero))
   fmax (suc n) = (suc n , s≤s (suc n) (suc n) (s≤s n n (helper n)))
@@ -744,9 +775,9 @@ module Ex1-9 where
   fmax-well : ∀ (n : ℕ)
             → (m : Fin (suc n))
             → proj₁ m ≤ proj₁ (fmax n)
-  fmax-well zero (zero , p) = z≤n zero
-  fmax-well zero (suc n , s≤s .(suc n) .zero p) = p
-  fmax-well (suc n) (m , s≤s .m .(suc n) p) = p
+  fmax-well zero    (zero  , p)                    = z≤n zero
+  fmax-well zero    (suc n , s≤s .(suc n) .zero p) = p
+  fmax-well (suc n) (m     , s≤s .m .(suc n) p)    = p
 \end{code}
 
 ### Exercise 1.11
@@ -799,7 +830,7 @@ Hint: by induction twice.
 module Ex1-16 where
   open ℕ-Def
   open ℕ-Ind
-  open Ex1-9 using (_+_)
+  open Ex1-8 using (_+_)
 
   proof : (i : ℕ) → ((j : ℕ) → i + j ≡ j + i)
   proof =
@@ -882,7 +913,7 @@ $$
 \begin{align*}
 g \circ (p \cdot -) n &= g (\mathsf{trans}~p~n)\\
                       &= (\mathsf{trans}~(\mathsf{sym}~p)~(\mathsf{trans}~p~n)\\
-                      &= (\mathsf{trans}~(\mathsf{trans}~(\mathsf{sym}~p)~p)~n\\
+                      &= \mathsf{trans}~(\mathsf{trans}~(\mathsf{sym}~p)~p)~n\\
                       &= \mathsf{trans}~\mathsf{refl}_{y ≡ z}~n\\
                       &= n.
 \end{align*}
@@ -910,7 +941,7 @@ We can prove that the following functions $$f$$ and $$g$$ are inverses.
 <p class="equation">
 $$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
 </p>
-defined by $$f(a,b,c) :\equiv ((a,b),c)$$, $$g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)$$.<br/>
+defined by $$f(a,b,c) :\equiv ((a,b),c)$$ and $$g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)$$.<br/>
 Indeed,
 <p class="equation">
 $$
@@ -953,7 +984,57 @@ module Σ-Fun₁ where
 Show that $$(2 \simeq 2) \simeq 2$$.
 </div>
 
-In my notebook. Pending to put it here.
+<div class="proof" markdown="1">
+Solution.<br/>
+
+The following text is from [jdoughertyii](https://github.com/jdoughertyii/hott-exercises/blob/master/Ch02.v).<br/>
+The result essentially says that $$2$$ is equivalent to itself in two ways:
+the identity provides one equivalence, and negation gives the other.  So we
+first define these.  $$\mathsf{id}_{2}$$ is its own quasi-inverse; we have
+$$\mathsf{id}_{2} \circ \mathsf{id}_{2} \equiv \mathsf{id}_{2}$$, so $$\mathsf{id}_{2}
+\circ \mathsf{id}_{2}
+\sim \mathsf{id}_{2}$$ easily.  $$\lnot$$ is also its own quasi-inverse, since for
+any $$x$$, $$\lnot\lnot x = x$$.
+To show the result, we need to map $$\mathsf{id}_{2}$$ and $$\lnot$$ onto $$2$$ is
+a quasi-invertible way.  But we need to define this map on all of $$2
+\simeq 2$$.  So for any $$h : 2\simeq 2$$, let $$f(h) = h(0_{2})$$,
+and define $$g : 2 \to (2 \simeq 2)$$ by
+
+$$
+  g(0_{2}) = \mathsf{id}_{2}
+  \qquad\qquad
+  g(1_{2}) = \lnot
+$$
+
+To show that these are quasi-inverses,
+note first that whatever else is the case, an equivalence
+$$2 \simeq 2$$ can't be a constant function, which we can prove by a case
+analysis.  Each of $$f(0_{2})$$ and $$f(1_{2})$$ is in $$2$$, so it is
+either $$0_{2}$$ or $$1_{2}$$.  So we have the cases:
+ - $$f(0_{2}) = f(1_{2})$$, in which case we can apply $$f^{-1}$$ to either side to get a contradiction, or
+ - $$f(0_{2}) = \lnot f(1_{2})$$. In which case we have the result
+Showing that $$f \circ g \sim \mathsf{id}_{2}$$ is easy, since we can do it by
+cases.  We have
+
+$$\begin{align*}
+  f(g(0_{2})) &= f(\mathsf{id}_{2}) = \mathsf{id}_{2}(0_{2}) = 0_{2}
+  \\
+  f(g(1_{2})) &= f(\lnot) = \lnot 0_{2} = 1_{2}
+\end{align*}%
+$$
+
+For the other direction, suppose that $$h : 2 \simeq 2$$ and that
+function extensionality holds.
+$$h(0_{2})$$ is either $$0_{2}$$ or $$1_{2}$$.  If the first, then
+because $$h$$ isn't constant we have $$h(1_{2}) = \lnot h(0_{2}) =
+1_{2}$$, hence $$h = \mathsf{id}_{2}$$.  Furthermore,
+$$
+  g(f(h)) = g(h(0_{2})) = g(0_{2}) = \mathsf{id}_{2} = h
+$$
+The same argument works for the other case.  So $$f$$ is an equivalence, and
+$$(2 \simeq 2) \simeq 2$$.
+
+</div>
 
 ### Exercise 2.14
 
@@ -972,8 +1053,7 @@ In my notebook. Pending to put it here.
     \RightLabel{$\mathsf{Eq}$}
     \UnaryInfC{$\vdash x \equiv y.$}
     \end{prooftree}
-    $$
-
+  $$
   </p>
 
 </div>
@@ -1015,7 +1095,49 @@ In my notebook. Pending to put it here.
 </ul>
 </div>
 
-MISSING.
+<div class="proof" markdown="1">
+- Assuming univalence.
+<br/>
+$$
+\begin{prooftree}
+\AxiomC{$f : A \simeq A$}
+\RightLabel{$\mathsf{ua}$}
+\UnaryInfC{$A =_{\mathcal{U}} A$}
+\AxiomC{$g : B \simeq B'$}
+\RightLabel{$\mathsf{ua}$}
+\UnaryInfC{$B =_{\mathcal{U}} B'$}
+\RightLabel{$\mathsf{pair=}$}
+\BinaryInfC{$(A\times B) =_{\mathcal{U}} (A'\times B')$}
+\RightLabel{$\mathsf{idtoequiv}$}
+\UnaryInfC{$(A\times B) \simeq (A'\times B')$}
+\end{prooftree}
+$$
+
+- Without using univalence, it is easy to prove
+that the function $$h$$ defined as follows gives us the
+equivalence that we are looking for.
+
+$$
+\begin{align*}
+&h : (A\times B) \to (A'\times B')\\
+&h (a , b) = (f\, a, g\, b).
+\end{align*}
+$$
+
+With the inverse:
+
+$$
+\begin{align*}
+&h^{-1} : (A'\times B') \to (A\times B)\\
+&h^{-1} (a , b) = (f^{-1}\, a, g^{-1}\, b).
+\end{align*}
+$$
+
+To prove these proofs are equal it is sufficies to
+show these underlyding functions are equal.
+
+
+</div>
 
 ## Chapter 3
 
@@ -1101,21 +1223,6 @@ $$
 Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 </div>
 
-<!-- <div class="proof" id="proof=3.1b"> -->
-<!-- Proof 2.<br/> -->
-<!-- Exhibit an equivalence. -->
-<!-- </div> -->
-
-In Agda, we can define the predicate `isSet` as follows:
-
-\begin{code}
-module sets where
-
-  isSet : ∀ {i} (A : Set i) → Set _
-  isSet A = (x y : A) → (p : x ≡ y) → (q : x ≡ y) → p ≡ q
-  -- TODO
-\end{code}
-
 ### Exercise 3.2
 
 <div class="exercise">
@@ -1125,7 +1232,7 @@ Prove that if $$A$$ and $$B$$ are sets, then so is $$A+B$$.
 To solve this exercise, we should take a look of some results from Chapter 2,
 Section 2.12.
 
-<div class="proof" id="proof-3.2">
+<div class="proof" id="proof-3.2" markdown="1">
 Proof.<br/>
 
 Let be $$x, y : A + B$$, and paths $$p : x \equiv y$$, $$q : x \equiv
@@ -1143,7 +1250,7 @@ $$\mathsf{ap}_{\mathsf{inl}} m : \mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv \mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} q)$$.<br/>
 
-By path algebra we get $$\mathsf{ap}_{\mathsf{inl}}
+By path algebra we have $$\mathsf{ap}_{\mathsf{inl}}
 m : p \equiv q$$ since $$\mathsf{ap}_{\mathsf{inl}}
 (\mathsf{ap}_{\mathsf{inl}^{-1}} p) \equiv p$$.<br/> Following the
 same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
@@ -1155,73 +1262,6 @@ $$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
 \equiv q$$.
 </div>
 
-In Agda.
-
-\begin{code}
-module 𝟘-Def where
-  data 𝟘 : Set where
-
-module 𝟘-Rec where
-  open 𝟘-Def
-  rec : {A : Set} → 𝟘 → A
-  rec = λ ()
-\end{code}
-
-\begin{code}
-module +-Def₂ where
-
-  data _+_ : Set → Set → Set₁ where
-    inl : ∀ {B : Set} → (A : Set) → A + B
-    inr : ∀ {A : Set} → (B : Set) → A + B
-
-module +-Fun₂ where
-
-  open +-Def₂
-  open 𝟘-Def
-  open 𝟘-Rec
-
-  code : {A B : Set}
-       → A + B → Set _
-  code {A}{B} (inl a) = a ≡ a
-  code {A}{B} (inr b) = {! !}
-
-module +-Rec₂ where
-  open +-Def₂
-
-  rec : {A B : Set}
-      → (C : Set)
-      → (A → C)
-      → (B → C)
-      → A + B → C
-  rec C f g (inl A) = f {! a  !}
-  rec C f g (inr B) = g {!   !}
-
-module +-Ind₂ where
-  open +-Def₂
-
-  -- ind : {A B : Set}
-  --     → (C : A + B → Set)
-  --     → ((x : A) → C (inl x))
-  --     → ((x : B) → C (inr x))
-  --     → (x : A + B) → C x
-  -- ind C f g c x = {!   !}
-
--- module +-Fun₂ where
-\end{code}
-
-
-\begin{code}
-module ex3-2 where
-  open +-Def₂
-  open sets using (isSet)
-
-  p : {A B : Set}
-    → isSet A → isSet B → isSet (A + B)
-  p {.A} {B} setA setB (inl A) (inl .A) refl refl = refl
-  p {A} {.B} setA setB (inr B) (inr .B) refl refl = refl
-  p {.A} {.B} setA setB (inl A) (inr B) p q = {!   !}
-  p {.A} {.B} setA setB (inr B) (inl A) p q = {!   !}
-\end{code}
 
 ### Exercise 3.3
 
@@ -1245,19 +1285,19 @@ Proof. <br/>
 - We must to show an inhabitant of the following type:
 
 $$
-? : \mathsf{isProp}(A) \to \sum\limits_{f : A \to A}\, \prod\limits_{g : A \to A } f = g.
+\mathsf{isProp}(A) \to \sum\limits_{f : A \to A}\, \prod\limits_{g : A \to A } f = g.
 $$
 
 This is my proposed term:
 
 $$
-? :\equiv λ \mathsf{Aprop} \to (\mathsf{id}_{A}, λ (g : A \to A) \to \mathsf{funext} (\lambda (x : A) \to \mathsf{Aprop}~(\mathsf{id}~x)~(g~x)).
+t :\equiv λ \mathsf{Aprop} \to (\mathsf{id}_{A}, λ (g : A \to A) \to \mathsf{funext} (\lambda (x : A) \to \mathsf{Aprop}~(\mathsf{id}~x)~(g~x)).
 $$
 
 - If $$A → A$$ is contractible, all functions in this type are equal,
 then in particular given $$x, y : A$$, the constant functions $$f(w) \equiv x$$
 and $$g(w) \equiv y$$ are equal. Then, $$\mathsf{happly} (f =_{A \to A} g, w) : x = y$$.
-Then $$A$$ is a mere proposition.
+Therefore $$A$$ is a mere proposition.
 
 </div>
 

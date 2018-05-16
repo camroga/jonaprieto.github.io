@@ -18,7 +18,7 @@ $$
 Prove the equivalence of
 
 <p class="equation">
-$$\sum\,{\mathbb{S}^1}}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.$$
+$$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.$$
 </p>
 </div>
 
