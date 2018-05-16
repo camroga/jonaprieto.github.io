@@ -953,6 +953,7 @@ module Σ-Fun₁ where
 Show that $$(2 \simeq 2) \simeq 2$$.
 </div>
 
+In my notebook. Pending to put it here.
 
 ### Exercise 2.14
 
@@ -1014,6 +1015,7 @@ Show that $$(2 \simeq 2) \simeq 2$$.
 </ul>
 </div>
 
+MISSING.
 
 ## Chapter 3
 
@@ -1229,12 +1231,36 @@ is a type family such that $$B(x)$$ is a set for all
 $$x : A$$, then $$\Sigma\limits_{(x:A)}\ B(x)$$ is a set.
 </div>
 
+MISSING.
+
 ### Exercise 3.4
 
 <div class="exercise">
 Show that $$A$$ is a mere proposition if and only
 if $$A\to A$$ is contractible.
 </div>
+
+<div class="proof" markdown="1">
+Proof. <br/>
+- We must to show an inhabitant of the following type:
+
+$$
+? : \mathsf{isProp}(A) \to \sum\limits_{f : A \to A}\, \prod\limits_{g : A \to A } f = g.
+$$
+
+This is my proposed term:
+
+$$
+? :\equiv λ \mathsf{Aprop} \to (\mathsf{id}_{A}, λ (g : A \to A) \to \mathsf{funext} (\lambda (x : A) \to \mathsf{Aprop}~(\mathsf{id}~x)~(g~x)).
+$$
+
+- If $$A → A$$ is contractible, all functions in this type are equal,
+then in particular given $$x, y : A$$, the constant functions $$f(w) \equiv x$$
+and $$g(w) \equiv y$$ are equal. Then, $$\mathsf{happly} (f =_{A \to A} g, w) : x = y$$.
+Then $$A$$ is a mere proposition.
+
+</div>
+
 
 ## References
 

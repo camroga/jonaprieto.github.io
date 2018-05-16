@@ -298,7 +298,7 @@ trans refl refl = refl
                 (trans
                     (hyp₁ (suc m))
                 (trans
-                    (suc-cong (≡sym (hyp₁ m)))
+                    (suc-cong (≡sym (hyp₁ m))) --TODO
                     hyp₂)))
 \end{code}
 
