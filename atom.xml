@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-05-20T23:51:10+02:00</updated>
+ <updated>2018-05-21T11:12:34+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -135,68 +135,8 @@ is a dependent function of type&lt;/p&gt;
 &lt;a id=&quot;2638&quot; class=&quot;Keyword&quot;&gt;postulate&lt;/a&gt;
   &lt;a id=&quot;eq1&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#eq1&quot; class=&quot;Postulate&quot;&gt;eq1&lt;/a&gt; &lt;a id=&quot;2654&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2656&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#B&quot; class=&quot;Function&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;2658&quot; href=&quot;lib.types.Circle.html#708&quot; class=&quot;Function&quot;&gt;base&lt;/a&gt; &lt;a id=&quot;2663&quot; href=&quot;lib.Base.html#_%3D%3D_&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;2666&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;
 
-&lt;a id=&quot;2672&quot; class=&quot;Comment&quot;&gt;-- _ : B base == Bool&lt;/a&gt;
-&lt;a id=&quot;2694&quot; class=&quot;Comment&quot;&gt;-- _ = ua (equiv f g {!!} {!!})&lt;/a&gt;
-&lt;a id=&quot;2726&quot; class=&quot;Comment&quot;&gt;--   where&lt;/a&gt;
-&lt;a id=&quot;2737&quot; class=&quot;Comment&quot;&gt;--     f : B base → Bool&lt;/a&gt;
-&lt;a id=&quot;2762&quot; class=&quot;Comment&quot;&gt;--     f x = true&lt;/a&gt;
-
-&lt;a id=&quot;2781&quot; class=&quot;Comment&quot;&gt;--     g : Bool → B base&lt;/a&gt;
-&lt;a id=&quot;2806&quot; class=&quot;Comment&quot;&gt;--     g true  = {!!}&lt;/a&gt;
-&lt;a id=&quot;2828&quot; class=&quot;Comment&quot;&gt;--     g false = {!!}&lt;/a&gt;
-
-&lt;a id=&quot;a_&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#a_&quot; class=&quot;Function Operator&quot;&gt;a_&lt;/a&gt; &lt;a id=&quot;2854&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2856&quot; class=&quot;Symbol&quot;&gt;_&lt;/a&gt;
-&lt;a id=&quot;2858&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#a_&quot; class=&quot;Function Operator&quot;&gt;a_&lt;/a&gt; &lt;a id=&quot;2861&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2863&quot; href=&quot;lib.Base.html#transport&quot; class=&quot;Function&quot;&gt;transport&lt;/a&gt;
-
-&lt;a id=&quot;s&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#s&quot; class=&quot;Function&quot;&gt;s&lt;/a&gt; &lt;a id=&quot;2876&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2878&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt; &lt;a id=&quot;2881&quot; href=&quot;lib.Equivalence.html#_%E2%89%83_&quot; class=&quot;Function Operator&quot;&gt;≃&lt;/a&gt; &lt;a id=&quot;2883&quot; href=&quot;lib.Base.html#%CE%A3&quot; class=&quot;Record&quot;&gt;Σ&lt;/a&gt; &lt;a id=&quot;2885&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt; &lt;a id=&quot;2888&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#B&quot; class=&quot;Function&quot;&gt;B&lt;/a&gt;
-&lt;a id=&quot;2890&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#s&quot; class=&quot;Function&quot;&gt;s&lt;/a&gt; &lt;a id=&quot;2892&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2894&quot; href=&quot;lib.Equivalence.html#4643&quot; class=&quot;Function&quot;&gt;equiv&lt;/a&gt; &lt;a id=&quot;2900&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2924&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2902&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2975&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2904&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3014&quot; class=&quot;Function&quot;&gt;f-g&lt;/a&gt; &lt;a id=&quot;2908&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3072&quot; class=&quot;Function&quot;&gt;g-f&lt;/a&gt;
-  &lt;a id=&quot;2914&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-    &lt;a id=&quot;2924&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2924&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2926&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2928&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt; &lt;a id=&quot;2931&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2933&quot; href=&quot;lib.Base.html#%CE%A3&quot; class=&quot;Record&quot;&gt;Σ&lt;/a&gt; &lt;a id=&quot;2935&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt; &lt;a id=&quot;2938&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#B&quot; class=&quot;Function&quot;&gt;B&lt;/a&gt;
-    &lt;a id=&quot;2944&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2924&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2946&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2946&quot; class=&quot;Bound&quot;&gt;base&lt;/a&gt; &lt;a id=&quot;2951&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2953&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2954&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2946&quot; class=&quot;Bound&quot;&gt;base&lt;/a&gt; &lt;a id=&quot;2959&quot; href=&quot;lib.Base.html#%CE%A3._%2C_&quot; class=&quot;InductiveConstructor Operator&quot;&gt;,&lt;/a&gt; &lt;a id=&quot;2961&quot; class=&quot;Symbol&quot;&gt;{!   !})&lt;/a&gt;
-
-    &lt;a id=&quot;2975&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2975&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2977&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2979&quot; href=&quot;lib.Base.html#%CE%A3&quot; class=&quot;Record&quot;&gt;Σ&lt;/a&gt; &lt;a id=&quot;2981&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt; &lt;a id=&quot;2984&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#B&quot; class=&quot;Function&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;2986&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2988&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt;
-    &lt;a id=&quot;2995&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2975&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2997&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2998&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2998&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;3000&quot; href=&quot;lib.Base.html#%CE%A3._%2C_&quot; class=&quot;InductiveConstructor Operator&quot;&gt;,&lt;/a&gt; &lt;a id=&quot;3002&quot; class=&quot;Symbol&quot;&gt;_)&lt;/a&gt; &lt;a id=&quot;3005&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3007&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2998&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;
-
-    &lt;a id=&quot;3014&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3014&quot; class=&quot;Function&quot;&gt;f-g&lt;/a&gt; &lt;a id=&quot;3018&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3020&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3021&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3021&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt; &lt;a id=&quot;3024&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3026&quot; href=&quot;lib.Base.html#%CE%A3&quot; class=&quot;Record&quot;&gt;Σ&lt;/a&gt; &lt;a id=&quot;3028&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt; &lt;a id=&quot;3031&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#B&quot; class=&quot;Function&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;3032&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3034&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3036&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2924&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3038&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3039&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2975&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3041&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3021&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt;&lt;a id=&quot;3043&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3045&quot; href=&quot;lib.Base.html#_%3D%3D_&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;3048&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3021&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt;
-    &lt;a id=&quot;3055&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3014&quot; class=&quot;Function&quot;&gt;f-g&lt;/a&gt; &lt;a id=&quot;3059&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3061&quot; class=&quot;Symbol&quot;&gt;{! !}&lt;/a&gt;
-
-    &lt;a id=&quot;3072&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3072&quot; class=&quot;Function&quot;&gt;g-f&lt;/a&gt; &lt;a id=&quot;3076&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3078&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3079&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3079&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;3081&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3083&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt;&lt;a id=&quot;3085&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3087&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3089&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2975&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3091&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3092&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2924&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3094&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3079&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;3095&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3097&quot; href=&quot;lib.Base.html#_%3D%3D_&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;3100&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3079&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;
-    &lt;a id=&quot;3106&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3072&quot; class=&quot;Function&quot;&gt;g-f&lt;/a&gt; &lt;a id=&quot;3110&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3112&quot; class=&quot;Symbol&quot;&gt;{! !}&lt;/a&gt;&lt;/pre&gt;
-
-&lt;div class=&quot;exercise&quot; id=&quot;exercise-2.13&quot;&gt;
-Show that $$(2 \simeq 2) \simeq 2$$.
-&lt;/div&gt;
-
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;3231&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;Ex2-13&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#Ex2-13&quot; class=&quot;Module&quot;&gt;Ex2-13&lt;/a&gt; &lt;a id=&quot;3245&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-  &lt;a id=&quot;Ex2-13.baby-step&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#Ex2-13.baby-step&quot; class=&quot;Function&quot;&gt;baby-step&lt;/a&gt;
-    &lt;a id=&quot;3267&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3269&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;
-    &lt;a id=&quot;3278&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3280&quot; class=&quot;Symbol&quot;&gt;((&lt;/a&gt;&lt;a id=&quot;3282&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3282&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3284&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3286&quot; href=&quot;lib.types.IteratedSuspension.html#S%C2%B9&quot; class=&quot;Function&quot;&gt;S¹&lt;/a&gt;&lt;a id=&quot;3288&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3290&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3292&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#B&quot; class=&quot;Function&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;3294&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3282&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;3295&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-  &lt;a id=&quot;3299&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#Ex2-13.baby-step&quot; class=&quot;Function&quot;&gt;baby-step&lt;/a&gt; &lt;a id=&quot;3309&quot; href=&quot;lib.types.Bool.html#true&quot; class=&quot;InductiveConstructor&quot;&gt;true&lt;/a&gt;  &lt;a id=&quot;3315&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3317&quot; class=&quot;Symbol&quot;&gt;{! λ x → true  !}&lt;/a&gt;
-  &lt;a id=&quot;3337&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#Ex2-13.baby-step&quot; class=&quot;Function&quot;&gt;baby-step&lt;/a&gt; &lt;a id=&quot;3347&quot; href=&quot;lib.types.Bool.html#false&quot; class=&quot;InductiveConstructor&quot;&gt;false&lt;/a&gt; &lt;a id=&quot;3353&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3355&quot; class=&quot;Symbol&quot;&gt;{! λ x → B x   !}&lt;/a&gt;
-
-  &lt;a id=&quot;Ex2-13.proof&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#Ex2-13.proof&quot; class=&quot;Function&quot;&gt;proof&lt;/a&gt; &lt;a id=&quot;3382&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3384&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3385&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;3390&quot; href=&quot;lib.Equivalence.html#_%E2%89%83_&quot; class=&quot;Function Operator&quot;&gt;≃&lt;/a&gt; &lt;a id=&quot;3392&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;&lt;a id=&quot;3396&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3398&quot; href=&quot;lib.Equivalence.html#_%E2%89%83_&quot; class=&quot;Function Operator&quot;&gt;≃&lt;/a&gt; &lt;a id=&quot;3400&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;
-  &lt;a id=&quot;3407&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#Ex2-13.proof&quot; class=&quot;Function&quot;&gt;proof&lt;/a&gt; &lt;a id=&quot;3413&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3415&quot; href=&quot;lib.Equivalence.html#4643&quot; class=&quot;Function&quot;&gt;equiv&lt;/a&gt; &lt;a id=&quot;3421&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3464&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;3423&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3519&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt;
-    &lt;a id=&quot;3429&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3600&quot; class=&quot;Function&quot;&gt;h-f&lt;/a&gt;
-    &lt;a id=&quot;3437&quot; class=&quot;Symbol&quot;&gt;{! f-h  !}&lt;/a&gt;
-    &lt;a id=&quot;3452&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-      &lt;a id=&quot;3464&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3464&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;3466&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3468&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;3473&quot; href=&quot;lib.Equivalence.html#_%E2%89%83_&quot; class=&quot;Function Operator&quot;&gt;≃&lt;/a&gt; &lt;a id=&quot;3475&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;3480&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3482&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;
-      &lt;a id=&quot;3493&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3464&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;3495&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3496&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3496&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3498&quot; href=&quot;lib.Base.html#%CE%A3._%2C_&quot; class=&quot;InductiveConstructor Operator&quot;&gt;,&lt;/a&gt; &lt;a id=&quot;3500&quot; class=&quot;Symbol&quot;&gt;_)&lt;/a&gt; &lt;a id=&quot;3503&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3505&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3496&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3507&quot; href=&quot;lib.types.Bool.html#true&quot; class=&quot;InductiveConstructor&quot;&gt;true&lt;/a&gt;
-
-      &lt;a id=&quot;3519&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3519&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3521&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3523&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;3528&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3530&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;3535&quot; href=&quot;lib.Equivalence.html#_%E2%89%83_&quot; class=&quot;Function Operator&quot;&gt;≃&lt;/a&gt; &lt;a id=&quot;3537&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;
-      &lt;a id=&quot;3548&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3519&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3550&quot; href=&quot;lib.types.Bool.html#false&quot; class=&quot;InductiveConstructor&quot;&gt;false&lt;/a&gt; &lt;a id=&quot;3556&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3558&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#neg-equiv&quot; class=&quot;Function&quot;&gt;neg-equiv&lt;/a&gt;
-      &lt;a id=&quot;3574&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3519&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3576&quot; href=&quot;lib.types.Bool.html#true&quot; class=&quot;InductiveConstructor&quot;&gt;true&lt;/a&gt;  &lt;a id=&quot;3582&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3584&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#id-equiv&quot; class=&quot;Function&quot;&gt;id-equiv&lt;/a&gt;
-
-      &lt;a id=&quot;3600&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3600&quot; class=&quot;Function&quot;&gt;h-f&lt;/a&gt; &lt;a id=&quot;3604&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3606&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3607&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3607&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;3609&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3611&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;&lt;a id=&quot;3615&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3617&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3619&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3464&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;3621&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3622&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3519&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3624&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3607&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;3625&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3627&quot; href=&quot;lib.Base.html#_%3D%3D_&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;3630&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3607&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;
-      &lt;a id=&quot;3638&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3600&quot; class=&quot;Function&quot;&gt;h-f&lt;/a&gt; &lt;a id=&quot;3642&quot; href=&quot;lib.types.Bool.html#false&quot; class=&quot;InductiveConstructor&quot;&gt;false&lt;/a&gt; &lt;a id=&quot;3648&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3650&quot; href=&quot;lib.Base.html#_%3D%3D_.idp&quot; class=&quot;InductiveConstructor&quot;&gt;idp&lt;/a&gt;
-      &lt;a id=&quot;3660&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3600&quot; class=&quot;Function&quot;&gt;h-f&lt;/a&gt; &lt;a id=&quot;3664&quot; href=&quot;lib.types.Bool.html#true&quot; class=&quot;InductiveConstructor&quot;&gt;true&lt;/a&gt;  &lt;a id=&quot;3670&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3672&quot; href=&quot;lib.Base.html#_%3D%3D_.idp&quot; class=&quot;InductiveConstructor&quot;&gt;idp&lt;/a&gt;
-
-      &lt;a id=&quot;3683&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3683&quot; class=&quot;Function&quot;&gt;f-h&lt;/a&gt; &lt;a id=&quot;3687&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3689&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3690&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3690&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;3692&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3694&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;3699&quot; href=&quot;lib.Equivalence.html#_%E2%89%83_&quot; class=&quot;Function Operator&quot;&gt;≃&lt;/a&gt; &lt;a id=&quot;3701&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt;&lt;a id=&quot;3705&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3707&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3709&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3519&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3711&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3712&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3464&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;3714&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3690&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;3715&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3717&quot; href=&quot;lib.Base.html#_%3D%3D_&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;3720&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3690&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;
-      &lt;a id=&quot;3728&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3683&quot; class=&quot;Function&quot;&gt;f-h&lt;/a&gt; &lt;a id=&quot;3732&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3733&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3733&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3735&quot; href=&quot;lib.Base.html#%CE%A3._%2C_&quot; class=&quot;InductiveConstructor Operator&quot;&gt;,&lt;/a&gt; &lt;a id=&quot;3737&quot; class=&quot;Keyword&quot;&gt;record&lt;/a&gt;
-                  &lt;a id=&quot;3762&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt; &lt;a id=&quot;3764&quot; class=&quot;Field&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3766&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3768&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3768&quot; class=&quot;Bound&quot;&gt;g′&lt;/a&gt;
-                  &lt;a id=&quot;3789&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;3791&quot; class=&quot;Field&quot;&gt;f-g&lt;/a&gt; &lt;a id=&quot;3795&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3797&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3797&quot; class=&quot;Bound&quot;&gt;f-g&lt;/a&gt;
-                  &lt;a id=&quot;3819&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;3821&quot; class=&quot;Field&quot;&gt;g-f&lt;/a&gt; &lt;a id=&quot;3825&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3827&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3827&quot; class=&quot;Bound&quot;&gt;g-f&lt;/a&gt;
-                  &lt;a id=&quot;3849&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;3851&quot; class=&quot;Field&quot;&gt;adj&lt;/a&gt; &lt;a id=&quot;3855&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3857&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#3857&quot; class=&quot;Bound&quot;&gt;adj&lt;/a&gt;
-                  &lt;a id=&quot;3879&quot; class=&quot;Symbol&quot;&gt;})&lt;/a&gt; &lt;a id=&quot;3882&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3884&quot; class=&quot;Symbol&quot;&gt;{! f-g  !}&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;y&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#y&quot; class=&quot;Function&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;2674&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2676&quot; href=&quot;lib.Base.html#%CE%A3&quot; class=&quot;Record&quot;&gt;Σ&lt;/a&gt; &lt;a id=&quot;2678&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;2683&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2686&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2686&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;2688&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2690&quot; href=&quot;lib.Base.html#%CE%A0&quot; class=&quot;Function&quot;&gt;Π&lt;/a&gt; &lt;a id=&quot;2692&quot; href=&quot;lib.types.Bool.html#Bool&quot; class=&quot;Function&quot;&gt;Bool&lt;/a&gt; &lt;a id=&quot;2697&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2700&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2700&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;2702&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2704&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2686&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;2706&quot; href=&quot;lib.Base.html#_%3D%3D_&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;2709&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#2700&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;2710&quot; class=&quot;Symbol&quot;&gt;))&lt;/a&gt;
+&lt;a id=&quot;2713&quot; href=&quot;/type-theory/2018/05/01/circle-puzzle/#y&quot; class=&quot;Function&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;2715&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2717&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2718&quot; href=&quot;lib.types.Bool.html#true&quot; class=&quot;InductiveConstructor&quot;&gt;true&lt;/a&gt; &lt;a id=&quot;2723&quot; href=&quot;lib.Base.html#%CE%A3._%2C_&quot; class=&quot;InductiveConstructor Operator&quot;&gt;,&lt;/a&gt; &lt;a id=&quot;2725&quot; href=&quot;lib.types.Bool.html#Bool-elim&quot; class=&quot;Function&quot;&gt;Bool-elim&lt;/a&gt; &lt;a id=&quot;2735&quot; href=&quot;lib.Base.html#_%3D%3D_.idp&quot; class=&quot;InductiveConstructor&quot;&gt;idp&lt;/a&gt; &lt;a id=&quot;2739&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2740&quot; href=&quot;lib.Base.html#apd&quot; class=&quot;Function&quot;&gt;apd&lt;/a&gt; &lt;a id=&quot;2744&quot; class=&quot;Symbol&quot;&gt;{!!}&lt;/a&gt; &lt;a id=&quot;2749&quot; class=&quot;Symbol&quot;&gt;{!!}))&lt;/a&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
@@ -1322,42 +1262,37 @@ Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
 &lt;/div&gt;
 
 &lt;div class=&quot;proof&quot; id=&quot;proof-3.1&quot;&gt;
-Proof 1.&lt;br /&gt;
-Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
-We need to prove $$ p \equiv q$$.&lt;br /&gt;
-Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
-$$g : B \to A$$ such that $$f \circ g \sim id_{B}$$.
-Using this function $$g$$ over the path $$p$$ we get
-$$\mathsf{ap}_{g} p : g x \equiv_{A} g y$$.
-We do the same but this time over the path $$q$$, that is,
-$$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
-Because of $$A$$ is a set, we have a new path called
-$$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. &lt;br /&gt;
+  &lt;p&gt;Proof 1.&lt;br /&gt;
+Let be &lt;script type=&quot;math/tex&quot;&gt;x,y : B&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;p : x \equiv_{B} y&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;q : x \equiv_{B} y&lt;/script&gt;.
+We need to prove &lt;script type=&quot;math/tex&quot;&gt;p \equiv q&lt;/script&gt;.&lt;br /&gt;
+Since &lt;script type=&quot;math/tex&quot;&gt;A\simeq B&lt;/script&gt; then there is a function &lt;script type=&quot;math/tex&quot;&gt;f : A \to B&lt;/script&gt; and some
+&lt;script type=&quot;math/tex&quot;&gt;g : B \to A&lt;/script&gt; such that &lt;script type=&quot;math/tex&quot;&gt;f \circ g \sim id_{B}&lt;/script&gt;.
+Using this function &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt; over the path &lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt; we get
+&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{g} p : g x \equiv_{A} g y&lt;/script&gt;.
+We do the same but this time over the path &lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;, that is,
+&lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{g} q : g x \equiv_{A} g y&lt;/script&gt;.
+Because of &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is a set, we have a new path called
+&lt;script type=&quot;math/tex&quot;&gt;m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q&lt;/script&gt;. &lt;br /&gt;&lt;/p&gt;
 
-Now, an action over this path $$m$$
-using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$
-will give us
+  &lt;p&gt;Now, an action over this path &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;
+using the function &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y&lt;/script&gt;
+will give us&lt;/p&gt;
 
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathsf{ap}_{\mathsf{ap}_{f}} m :
+(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).&lt;/script&gt;
 
-$$
-\mathsf{ap}_{\mathsf{ap}_{f}} m :
-(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).
-$$
+  &lt;p&gt;By the lemmas in Chapter 2, we do the following reasoning:&lt;/p&gt;
 
-
-By the lemmas in Chapter 2, we do the following reasoning:
-
-$$
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align*}
-(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &amp;amp;=
+(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &amp;=
   \mathsf{ap}_{f \circ g} p \equiv \mathsf{ap}_{f \circ g} q\\
-  &amp;amp;=(\text{transporting by using} f \sim g)\\
-  &amp;amp;=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
-  &amp;amp;=p \equiv q.
-\end{align*}
-$$
+  &amp;=(\text{transporting by using} f \sim g)\\
+  &amp;=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
+  &amp;=p \equiv q.
+\end{align*} %]]&gt;&lt;/script&gt;
 
-Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
+  &lt;p&gt;Then, we have the inhabitant, &lt;script type=&quot;math/tex&quot;&gt;\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q&lt;/script&gt;.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h3 id=&quot;exercise-32&quot;&gt;Exercise 3.2&lt;/h3&gt;
@@ -1398,16 +1333,6 @@ encode-decode method to derive a proof term for 𝟘 from
 &lt;script type=&quot;math/tex&quot;&gt;p&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;q&lt;/script&gt;. Then, we may conclude anything we wish, that is, &lt;script type=&quot;math/tex&quot;&gt;p
 \equiv q&lt;/script&gt;.&lt;/p&gt;
 &lt;/div&gt;
-
-&lt;h3 id=&quot;exercise-33&quot;&gt;Exercise 3.3&lt;/h3&gt;
-
-&lt;div class=&quot;exercise&quot;&gt;
-Prove that if $$ A $$ is a set and $$B : A \to \mathcal{U}$$
-is a type family such that $$B(x)$$ is a set for all
-$$x : A$$, then $$\Sigma\limits_{(x:A)}\ B(x)$$ is a set.
-&lt;/div&gt;
-
-&lt;p&gt;MISSING.&lt;/p&gt;
 
 &lt;h3 id=&quot;exercise-34&quot;&gt;Exercise 3.4&lt;/h3&gt;
 

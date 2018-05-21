@@ -121,11 +121,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+3030</span>/<span class="substractions">-1777</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> some solutions added</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+3031</span>/<span class="substractions">-1788</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> removed the recursion principle on the circle art</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="">a28911c </a> on  16 May 2018
+        Latest commit <a href="">e9bebf2 </a> on  21 May 2018
     </div>
     </div>
   </div>
@@ -166,7 +166,6 @@
     <ul>
       <li><a href="#exercise-31">Exercise 3.1</a></li>
       <li><a href="#exercise-32">Exercise 3.2</a></li>
-      <li><a href="#exercise-33">Exercise 3.3</a></li>
       <li><a href="#exercise-34">Exercise 3.4</a></li>
     </ul>
   </li>
@@ -1285,42 +1284,37 @@ Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
 </div>
 
 <div class="proof" id="proof-3.1">
-Proof 1.<br />
-Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
-We need to prove $$ p \equiv q$$.<br />
-Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
-$$g : B \to A$$ such that $$f \circ g \sim id_{B}$$.
-Using this function $$g$$ over the path $$p$$ we get
-$$\mathsf{ap}_{g} p : g x \equiv_{A} g y$$.
-We do the same but this time over the path $$q$$, that is,
-$$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
-Because of $$A$$ is a set, we have a new path called
-$$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. <br />
+  <p>Proof 1.<br />
+Let be <script type="math/tex">x,y : B</script> and <script type="math/tex">p : x \equiv_{B} y</script> and <script type="math/tex">q : x \equiv_{B} y</script>.
+We need to prove <script type="math/tex">p \equiv q</script>.<br />
+Since <script type="math/tex">A\simeq B</script> then there is a function <script type="math/tex">f : A \to B</script> and some
+<script type="math/tex">g : B \to A</script> such that <script type="math/tex">f \circ g \sim id_{B}</script>.
+Using this function <script type="math/tex">g</script> over the path <script type="math/tex">p</script> we get
+<script type="math/tex">\mathsf{ap}_{g} p : g x \equiv_{A} g y</script>.
+We do the same but this time over the path <script type="math/tex">q</script>, that is,
+<script type="math/tex">\mathsf{ap}_{g} q : g x \equiv_{A} g y</script>.
+Because of <script type="math/tex">A</script> is a set, we have a new path called
+<script type="math/tex">m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q</script>. <br /></p>
 
-Now, an action over this path $$m$$
-using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$
-will give us
+  <p>Now, an action over this path <script type="math/tex">m</script>
+using the function <script type="math/tex">\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y</script>
+will give us</p>
 
+  <script type="math/tex; mode=display">\mathsf{ap}_{\mathsf{ap}_{f}} m :
+(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).</script>
 
-$$
-\mathsf{ap}_{\mathsf{ap}_{f}} m :
-(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q).
-$$
+  <p>By the lemmas in Chapter 2, we do the following reasoning:</p>
 
-
-By the lemmas in Chapter 2, we do the following reasoning:
-
-$$
+  <script type="math/tex; mode=display">% <![CDATA[
 \begin{align*}
-(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &amp;=
+(\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &=
   \mathsf{ap}_{f \circ g} p \equiv \mathsf{ap}_{f \circ g} q\\
-  &amp;=(\text{transporting by using} f \sim g)\\
-  &amp;=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
-  &amp;=p \equiv q.
-\end{align*}
-$$
+  &=(\text{transporting by using} f \sim g)\\
+  &=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
+  &=p \equiv q.
+\end{align*} %]]></script>
 
-Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
+  <p>Then, we have the inhabitant, <script type="math/tex">\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q</script>.</p>
 </div>
 
 <h3 id="exercise-32">Exercise 3.2</h3>
@@ -1361,16 +1355,6 @@ encode-decode method to derive a proof term for 𝟘 from
 <script type="math/tex">p</script> and <script type="math/tex">q</script>. Then, we may conclude anything we wish, that is, <script type="math/tex">p
 \equiv q</script>.</p>
 </div>
-
-<h3 id="exercise-33">Exercise 3.3</h3>
-
-<div class="exercise">
-Prove that if $$ A $$ is a set and $$B : A \to \mathcal{U}$$
-is a type family such that $$B(x)$$ is a set for all
-$$x : A$$, then $$\Sigma\limits_{(x:A)}\ B(x)$$ is a set.
-</div>
-
-<p>MISSING.</p>
 
 <h3 id="exercise-34">Exercise 3.4</h3>
 
