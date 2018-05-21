@@ -1117,7 +1117,7 @@ Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
 </div>
 
 
-<div class="proof" id="proof-3.1">
+<div class="proof" id="proof-3.1" markdown="1" >
 Proof 1.<br/>
 Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
 We need to prove $$ p \equiv q$$.<br/>
@@ -1195,16 +1195,6 @@ $$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
 \equiv q$$.
 </div>
 
-
-### Exercise 3.3
-
-<div class="exercise">
-Prove that if $$ A $$ is a set and $$B : A \to \mathcal{U}$$
-is a type family such that $$B(x)$$ is a set for all
-$$x : A$$, then $$\Sigma\limits_{(x:A)}\ B(x)$$ is a set.
-</div>
-
-MISSING.
 
 ### Exercise 3.4
 

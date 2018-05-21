@@ -36,15 +36,7 @@ $$
     - a point $$\mathsf{base} : \mathbb{S}^1$$, and
     - a path $$\mathsf{loop} : \mathsf{base} \equiv \mathsf{base}$$
     - Theorem: $$ \mathsf{loop} \not \equiv \mathsf{refl}_{\mathsf{base}}$$
-    - Recursion principle $$\mathsf{rec}$$:
-
-      $$\begin{align*}
-      &\mathsf{ref} : (f : \mathbb{S}^1 \to \mathsf{A}) \to (\mathbb{S}^1 \to \mathcal{U})\\
-      &\mathsf{ref}~f~\mathsf{base}~=~f~\mathsf{base}\\
-      &\mathsf{ref}~f~\mathsf{loop}~=~\mathsf{ap}_{f}~\mathsf{loop}
-      \end{align*}
-      $$
-
+    
 - The type for equivalence from $$A$$ to $$B$$
 
 $$
