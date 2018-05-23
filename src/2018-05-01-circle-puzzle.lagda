@@ -36,7 +36,7 @@ $$
     - a point $$\mathsf{base} : \mathbb{S}^1$$, and
     - a path $$\mathsf{loop} : \mathsf{base} \equiv \mathsf{base}$$
     - Theorem: $$ \mathsf{loop} \not \equiv \mathsf{refl}_{\mathsf{base}}$$
-    
+
 - The type for equivalence from $$A$$ to $$B$$
 
 $$
@@ -116,6 +116,20 @@ y : Σ Bool (λ x → Π Bool (λ a → x == a))
 y = (true , Bool-elim idp (apd {!!} {!!}))
 
 \end{code}
+
+
+### Exercises
+
+<div class="exercise">
+Prove $¬ (\prod\limitis_{(x : S^1)} B(x))$
+</div>
+
+<div class="exercise">
+Fail proving that $(\prod\limitis_{(x : S^1)} x =_{S^1} \mathsf{base}$
+</div>
+
+- The circle is not contractible.
+- B(base) is not contractible despite it's path-connected.
 
 
 ## References
