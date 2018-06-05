@@ -246,6 +246,8 @@ module ×-Rec₁ {i j k}{A : Set i}{B : Set j}{C : Set k} (g : A → B → C) wh
   rec-β x y = refl
 \end{code}
 
+
+
 ### Exercise 1.3
 
 <p class="exercise">
