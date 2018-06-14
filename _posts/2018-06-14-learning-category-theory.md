@@ -16,7 +16,7 @@ some. Maybe could be the starting point for someone else.
 
 - [x] [1 Terminal and initial objects](https://www.youtube.com/watch?v=AqMQXGk_5mg)
 - [x] [2 Products and coproducts](https://www.youtube.com/watch?v=d812RWobDDc)
-- [ ] [3 Pullbacks and pushouts](https://www.youtube.com/watch?v=rkIJLkpHdAE)
+- [x] [3 Pullbacks and pushouts](https://www.youtube.com/watch?v=rkIJLkpHdAE)
 - [ ] [4 Natural transformations](https://www.youtube.com/watch?v=q9kDfAqgBUI)
 - [ ] [5 Representables and yoneda](https://www.youtube.com/watch?v=71OiJrGLGkM)
 - [ ] [6 Adjunctions](https://www.youtube.com/watch?v=pXbJ4Calego)
