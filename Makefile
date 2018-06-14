@@ -34,11 +34,11 @@ assets/ipe-images/%.png : src/ipe-images/%.ipe
 assets/latexit-images/%.png : src/latexit-images/%.png
 	cp $< $@
 
-assets/latex-agda/%.tex : src/latex-agda/%.lagda
-	- cd src/latex-agda && agda --latex --latex-dir=./../../assets/latex-agda $(notdir $<)
-
-assets/latex-agda/%.pdf : assets/latex-agda/%.tex
-	- latexmk -cd -e -f -silent -pdf -interaction=nonstopmode -synctex=1 $<
+# assets/latex-agda/%.tex : src/latex-agda/%.lagda
+# 	- cd src/latex-agda && agda --latex --latex-dir=./../../assets/latex-agda $(notdir $<)
+#
+# assets/latex-agda/%.pdf : assets/latex-agda/%.tex
+# 	- latexmk -cd -e -f -silent -pdf -interaction=nonstopmode -synctex=1 $<
 
 
 # serve website using jekyll
