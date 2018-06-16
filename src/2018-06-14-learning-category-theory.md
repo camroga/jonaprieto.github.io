@@ -72,7 +72,6 @@ some. Maybe could be the starting point for someone else.
 - [ ] [II 9.1: Lenses](https://www.youtube.com/watch?v=9_iYlp8smc8)
 - [ ] [II 9.2: Lenses categorically](https://www.youtube.com/watch?v=rAa3pGp97IM)
 
-
 ## Related Questions
 
 - https://mathoverflow.net/questions/76083/categories-presented-with-arrows-only-no-objects-partial-monoids

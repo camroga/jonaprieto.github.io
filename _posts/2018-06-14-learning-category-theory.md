@@ -17,7 +17,7 @@ some. Maybe could be the starting point for someone else.
 - [x] [1 Terminal and initial objects](https://www.youtube.com/watch?v=AqMQXGk_5mg)
 - [x] [2 Products and coproducts](https://www.youtube.com/watch?v=d812RWobDDc)
 - [x] [3 Pullbacks and pushouts](https://www.youtube.com/watch?v=rkIJLkpHdAE)
-- [ ] [4 Natural transformations](https://www.youtube.com/watch?v=q9kDfAqgBUI)
+- [x] [4 Natural transformations](https://www.youtube.com/watch?v=q9kDfAqgBUI)
 - [ ] [5 Representables and yoneda](https://www.youtube.com/watch?v=71OiJrGLGkM)
 - [ ] [6 Adjunctions](https://www.youtube.com/watch?v=pXbJ4Calego)
 - [ ] [7 Monads](https://www.youtube.com/watch?v=Tl8H2G7W1wc)
@@ -71,3 +71,7 @@ some. Maybe could be the starting point for someone else.
 - [ ] [II 8.2: Catamorphisms and Anamorphisms](https://www.youtube.com/watch?v=PAqzQMzsUU8)
 - [ ] [II 9.1: Lenses](https://www.youtube.com/watch?v=9_iYlp8smc8)
 - [ ] [II 9.2: Lenses categorically](https://www.youtube.com/watch?v=rAa3pGp97IM)
+
+## Related Questions
+
+- https://mathoverflow.net/questions/76083/categories-presented-with-arrows-only-no-objects-partial-monoids
