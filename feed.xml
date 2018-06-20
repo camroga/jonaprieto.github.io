@@ -1,4 +1,162 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-06-19T18:26:42+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Learning Category Theory</title><link href="http://jonaprieto.github.io/category-theory/2018/05/01/learning-category-theory/" rel="alternate" type="text/html" title="Learning Category Theory" /><published>2018-05-01T00:00:00+02:00</published><updated>2018-06-16T22:24:34+02:00</updated><id>http://jonaprieto.github.io/category-theory/2018/05/01/learning-category-theory</id><content type="html" xml:base="http://jonaprieto.github.io/category-theory/2018/05/01/learning-category-theory/">&lt;p&gt;The list of topics that I like and I should know so far is endless.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-06-21T00:39:53+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Emacs militant</title><link href="http://jonaprieto.github.io/utilities/2018/06/15/all-paths-end-in-emacs/" rel="alternate" type="text/html" title="Emacs militant" /><published>2018-06-15T00:00:00+02:00</published><updated>2018-06-21T00:39:47+02:00</updated><id>http://jonaprieto.github.io/utilities/2018/06/15/all-paths-end-in-emacs</id><content type="html" xml:base="http://jonaprieto.github.io/utilities/2018/06/15/all-paths-end-in-emacs/">&lt;p&gt;I’m not dogmatic about which editor is the best. I use at least three different
+text editor depending on what I’m working on: sublime text 3, atom, and emacs.
+This post is about emacs but I must confess that I’m a complete beginner using
+emacs. I’ve never touched my own configuration scripts and the kind of things an
+expert user probably do. My goal in this post is that, becoming a better user of
+this amazing tool/text editor that  many people claim it is. Since I don’t have
+too much time to spend in this kind of task, I will try to learn on the top of
+another configuration. Spacemacs is the first option here. I tested, it works
+pretty well, but I want to have something more humble without too much
+customisation, something with enough space of freedom to play with.&lt;/p&gt;
+
+&lt;p&gt;I’m a OSX user using &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt; to install almost everything that I need.
+My version of emacs at this moment:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GNU Emacs 26.1 (build 1, x86_64-apple-darwin17.5.0)
+ of 2018-05-28
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;cask&quot;&gt;&lt;a href=&quot;http://github.com/cask/cask&quot;&gt;Cask&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.&lt;/p&gt;
+
+&lt;p&gt;Cask can also be used to manage dependencies for your local Emacs configuration.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install cask
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;From graphene repository: https://github.com/rdallasgray/graphene&lt;/p&gt;
+
+&lt;p&gt;Anyway – your default initialisation file is in (old-school) ~/.emacs or (new-school, and where it should be) ~/.emacs.d/init.el. First, you need to set up the Emacs package system and tell it about Melpa, so create one of those files if it doesn’t already exist, and add these lines to the file:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;; Require Emacs' package functionality
+(require 'package)
+
+;; Add the Melpa repository to the list of package sources
+(add-to-list 'package-archives '(&quot;melpa&quot; . &quot;http://melpa.org/packages/&quot;) t)
+
+;; Initialise the package system.
+(package-initialize)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Then either select those lines and do M-x eval-region, or restart Emacs. After that, do M-x list-packages, search for ‘graphene’ (either manually or using C-s), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.&lt;/p&gt;
+
+&lt;h2 id=&quot;agda&quot;&gt;&lt;a href=&quot;http://gitub.com/agda/agda&quot;&gt;Agda&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;Run in the command line &lt;code class=&quot;highlighter-rouge&quot;&gt;agda-mode compile&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;agda-mode setup&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;proof-general&quot;&gt;&lt;a href=&quot;https://proofgeneral.github.io/&quot;&gt;Proof-General&lt;/a&gt;&lt;/h2&gt;
+
+&lt;p&gt;In the home directory run this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
+cd ~/.emacs.d/lisp/PG
+make
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;lookfeel&quot;&gt;Look&amp;amp;feel&lt;/h2&gt;
+
+&lt;p&gt;I think the spacemacs did it very good in this aspect. I searched and
+there its theme available without the need to install all the spacemacs.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;https://github.com/nashamri/spacemacs-theme&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Add this in the &lt;code class=&quot;highlighter-rouge&quot;&gt;init.el&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(load-theme 'spacemacs-light t)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;markdown&quot;&gt;Markdown&lt;/h2&gt;
+
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x package-install which-key&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;keybindings&quot;&gt;Keybindings&lt;/h2&gt;
+
+&lt;p&gt;For keybindings beginner and learners I totally recommend to install the package:
+&lt;a href=&quot;https://github.com/justbur/emacs-which-key&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;which-key&lt;/code&gt;&lt;/a&gt;: &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x package-install
+which-key&lt;/code&gt; and add these lines in the &lt;code class=&quot;highlighter-rouge&quot;&gt;init.el&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(require 'which-key)
+(which-key-mode)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To visualize all the commands, I set up this package to show me on the right
+side the frame with all the commands (add this &lt;code class=&quot;highlighter-rouge&quot;&gt;(which-key-setup-side-window-right)&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;init.el&lt;/code&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;C-h C-h : help&lt;/li&gt;
+  &lt;li&gt;C-g : quit&lt;/li&gt;
+  &lt;li&gt;C-x b : switch buffers&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;C-x k always kills the active buffer, rather than asking you which one you want to kill&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;C-x 1 : close all windows except the active window&lt;/li&gt;
+  &lt;li&gt;C-x 0 : close the active window&lt;/li&gt;
+  &lt;li&gt;C-x 2 : split the active window vertically into two horizontal windows&lt;/li&gt;
+  &lt;li&gt;C-x 3 : split the active window horizontally into two vertical windows&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;files&quot;&gt;Files&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;C-x C-f : open file&lt;/li&gt;
+  &lt;li&gt;C-x C-s : save file&lt;/li&gt;
+  &lt;li&gt;C-x C-w : save file as&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;writing&quot;&gt;Writing&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;C-space : set region mark&lt;/li&gt;
+  &lt;li&gt;C-w : kill region&lt;/li&gt;
+  &lt;li&gt;C-k : kill region between point and end of current line&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;C-y : yank region from kill ring&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;C-_ : undo&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;C-s : search forwards&lt;/li&gt;
+  &lt;li&gt;C-r : search backwards&lt;/li&gt;
+  &lt;li&gt;M-% : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)&lt;/li&gt;
+  &lt;li&gt;M-q : &lt;strong&gt;wrap text&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;graphene&quot;&gt;Graphene&lt;/h3&gt;
+
+&lt;p&gt;Graphene creates some new keybindings, and alters some existing ones:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;C-x C-k kills the default buffer and closes its window&lt;/li&gt;
+  &lt;li&gt;C-c n creates a new buffer&lt;/li&gt;
+  &lt;li&gt;C-c N creates a new instance of Emacs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(Not working for unknown reason):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;C-; adds a semicolon at the end of the line&lt;/li&gt;
+  &lt;li&gt;M-RET creates a newline below the current line and moves to it&lt;/li&gt;
+  &lt;li&gt;C-M-; comments or uncomments the current line&lt;/li&gt;
+  &lt;li&gt;C-&amp;gt; increases the height of the current window&lt;/li&gt;
+  &lt;li&gt;C-&amp;lt; decreases it&lt;/li&gt;
+  &lt;li&gt;C-. increases the width of the current window&lt;/li&gt;
+  &lt;li&gt;C-, decreases it&lt;/li&gt;
+  &lt;li&gt;C-c s selects the Speedbar window&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;projects&quot;&gt;Projects&lt;/h2&gt;
+
+&lt;p&gt;project-persist uses the following keybindings:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;C-c P n to create a new project&lt;/li&gt;
+  &lt;li&gt;C-c P f to find an existing project&lt;/li&gt;
+  &lt;li&gt;C-c P k to close the current project&lt;/li&gt;
+  &lt;li&gt;C-c P d to delete an existing project&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">I’m not dogmatic about which editor is the best. I use at least three different text editor depending on what I’m working on: sublime text 3, atom, and emacs. This post is about emacs but I must confess that I’m a complete beginner using emacs. I’ve never touched my own configuration scripts and the kind of things an expert user probably do. My goal in this post is that, becoming a better user of this amazing tool/text editor that many people claim it is. Since I don’t have too much time to spend in this kind of task, I will try to learn on the top of another configuration. Spacemacs is the first option here. I tested, it works pretty well, but I want to have something more humble without too much customisation, something with enough space of freedom to play with.</summary></entry><entry><title type="html">Learning Category Theory</title><link href="http://jonaprieto.github.io/category-theory/2018/06/15/learning-category-theory/" rel="alternate" type="text/html" title="Learning Category Theory" /><published>2018-06-15T00:00:00+02:00</published><updated>2018-06-21T00:39:47+02:00</updated><id>http://jonaprieto.github.io/category-theory/2018/06/15/learning-category-theory</id><content type="html" xml:base="http://jonaprieto.github.io/category-theory/2018/06/15/learning-category-theory/">&lt;p&gt;The list of topics that I like and I should know so far is endless.
 This is my attempt to capture some resources to learn category theory,
 since I fell more comfortable learning by watching videos, I collected
 some. Maybe could be the starting point for someone else.&lt;/p&gt;
@@ -12,7 +170,7 @@ some. Maybe could be the starting point for someone else.&lt;/p&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=d812RWobDDc&quot;&gt;2 Products and coproducts&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=rkIJLkpHdAE&quot;&gt;3 Pullbacks and pushouts&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=q9kDfAqgBUI&quot;&gt;4 Natural transformations&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=71OiJrGLGkM&quot;&gt;5 Representables and yoneda&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=71OiJrGLGkM&quot;&gt;5 Representables and yoneda&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=pXbJ4Calego&quot;&gt;6 Adjunctions&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Tl8H2G7W1wc&quot;&gt;7 Monads&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=soTuQStXwoo&quot;&gt;8 String diagrams&lt;/a&gt;&lt;/li&gt;
@@ -32,7 +190,7 @@ some. Maybe could be the starting point for someone else.&lt;/p&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=I8LbkfSSR58&quot;&gt;1.1: Motivation and Philosophy&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=p54Hd7AmVFU&quot;&gt;1.2: What is a category?&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=O2lZkr-aAqk&quot;&gt;2.1: Functions, epimorphisms&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=NcT7CGPICzo&quot;&gt;2.2: Monomorphisms, simple types&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=NcT7CGPICzo&quot;&gt;2.2: Monomorphisms, simple types&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=aZjhqkD6k6w&quot;&gt;3.1: Examples of categories, orders, monoids&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=i9CU4CuHADQ&quot;&gt;3.2: Kleisli category&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=zer1aFgj4aU&quot;&gt;4.1: Terminal and initial objects&lt;/a&gt;&lt;/li&gt;
@@ -2444,15 +2602,4 @@ satisfies, &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt; satisfies as
   &lt;p&gt;The principle of identity of indiscernibles states that two objects
 are identical if they have all the same properties.
 This is also known as “Leibniz’s Law”… in &lt;a href=&quot;https://ncatlab.org/nlab/show/identity+of+indiscernibles&quot;&gt;https://ncatlab.org/nlab/show/identity+of+indiscernibles&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Leibniz characterised the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if .</summary></entry><entry><title type="html">Software Foundations in Agda</title><link href="http://jonaprieto.github.io/type-theory/2018/01/30/software-foundations-in-agda/" rel="alternate" type="text/html" title="Software Foundations in Agda" /><published>2018-01-30T00:00:00+01:00</published><updated>2018-03-16T17:02:58+01:00</updated><id>http://jonaprieto.github.io/type-theory/2018/01/30/software-foundations-in-agda</id><content type="html" xml:base="http://jonaprieto.github.io/type-theory/2018/01/30/software-foundations-in-agda/">&lt;p&gt;New tutorial using Agda to show concepts of logic and programming theory.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;official repository&lt;/strong&gt; and website is the following:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://wenkokke.github.io/sf/&quot;&gt;https://wenkokke.github.io/sf/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;However, I maintain &lt;strong&gt;my own fork&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://jonaprieto.github.io/sf&quot;&gt;https://jonaprieto.github.io/sf&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Anyway, thanks to the authors (Wen Kokke and Philip Wadler) for this new
-resource to continue learning more about this interesting field.&lt;/p&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">New tutorial using Agda to show concepts of logic and programming theory.</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Leibniz characterised the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if .</summary></entry></feed>
