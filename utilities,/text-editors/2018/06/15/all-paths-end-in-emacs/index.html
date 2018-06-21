@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Emacs militant</title>
+  <title>Towards an emacs militant</title>
   <meta name="description" content="I’m not dogmatic about which editor is the best. I use at least three different text editor depending on what I’m working on: sublime text 3, atom, and emacs...">
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -121,32 +121,31 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+161</span>/<span class="substractions">-0</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> starting with emacs</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+227</span>/<span class="substractions">-62</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> last updates</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="">2c94d1b </a> on  21 Jun 2018
+        Latest commit <a href="">c94f053 </a> on  21 Jun 2018
     </div>
     </div>
   </div>
   
 
-  <h1 class="post-title">Emacs militant</h1>
+  <h1 class="post-title">Towards an emacs militant</h1>
 
   
   <p>I’m not dogmatic about which editor is the best. I use at least three different
 text editor depending on what I’m working on: sublime text 3, atom, and emacs.
 This post is about emacs but I must confess that I’m a complete beginner using
 emacs. I’ve never touched my own configuration scripts and the kind of things an
-expert user probably do. My goal in this post is that, becoming a better user of
-this amazing tool/text editor that  many people claim it is. Since I don’t have
-too much time to spend in this kind of task, I will try to learn on the top of
+expert user probably do. My goal in this post is that, becoming a real user of
+this amazing tool/text editor that many people claim it is. Since I don’t have
+too much time to spend on this kind of task, I will try to learn on the top of
 another configuration. Spacemacs is the first option here. I tested, it works
 pretty well, but I want to have something more humble without too much
-customisation, something with enough space of freedom to play with.</p>
+customization, something with enough space of freedom to play with.</p>
 
-<p>I’m a OSX user using <code class="highlighter-rouge">brew</code> to install almost everything that I need.
-My version of emacs at this moment:</p>
+<p>My version of emacs at this moment in OSX:</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GNU Emacs 26.1 (build 1, x86_64-apple-darwin17.5.0)
  of 2018-05-28
@@ -154,18 +153,25 @@ My version of emacs at this moment:</p>
 
 <h2 id="cask"><a href="http://github.com/cask/cask">Cask</a></h2>
 
-<p>Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.</p>
+<p>Cask is a project management tool for Emacs that helps automate the package
+development cycle; development, dependencies, testing, building, packaging and
+more.</p>
 
 <p>Cask can also be used to manage dependencies for your local Emacs configuration.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install cask
 </code></pre></div></div>
 
-<p>From graphene repository: https://github.com/rdallasgray/graphene</p>
+<ul>
+  <li>
+    <p><a href="https://github.com/rdallasgray/graphene">Graphene starting kit</a></p>
 
-<p>Anyway – your default initialisation file is in (old-school) ~/.emacs or (new-school, and where it should be) ~/.emacs.d/init.el. First, you need to set up the Emacs package system and tell it about Melpa, so create one of those files if it doesn’t already exist, and add these lines to the file:</p>
+    <ul>
+      <li>your default initialisation file is ~/.emacs.d/init.el.</li>
+      <li>
+        <p>packages repo:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;; Require Emacs' package functionality
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;; Require Emacs' package functionality
 (require 'package)
 
 ;; Add the Melpa repository to the list of package sources
@@ -173,9 +179,15 @@ My version of emacs at this moment:</p>
 
 ;; Initialise the package system.
 (package-initialize)
-</code></pre></div></div>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-<p>Then either select those lines and do M-x eval-region, or restart Emacs. After that, do M-x list-packages, search for ‘graphene’ (either manually or using C-s), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.</p>
+<p>Then either select those lines and do <code class="highlighter-rouge">M-x eval-region</code>, or restart Emacs. After
+that, do <code class="highlighter-rouge">M-x list-packages</code>, search for ‘graphene’ (either manually or using
+<code class="highlighter-rouge">C-s</code>), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.</p>
 
 <h2 id="agda"><a href="http://gitub.com/agda/agda">Agda</a></h2>
 
@@ -204,9 +216,10 @@ there its theme available without the need to install all the spacemacs.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(load-theme 'spacemacs-light t)
 </code></pre></div></div>
 
-<h2 id="markdown">Markdown</h2>
+<h2 id="markdown-and-jekyll">Markdown and Jekyll</h2>
 
-<p>Use <code class="highlighter-rouge">M-x package-install which-key</code></p>
+<p>Use <code class="highlighter-rouge">M-x package-install markdown-mode</code>
+Use <code class="highlighter-rouge">M-x package-install jekyll-modes</code></p>
 
 <h2 id="keybindings">Keybindings</h2>
 
@@ -219,45 +232,46 @@ which-key</code> and add these lines in the <code class="highlighter-rouge">init
 </code></pre></div></div>
 
 <p>To visualize all the commands, I set up this package to show me on the right
-side the frame with all the commands (add this <code class="highlighter-rouge">(which-key-setup-side-window-right)</code> in the <code class="highlighter-rouge">init.el</code>)</p>
+side the frame with all the commands (add this
+<code class="highlighter-rouge">(which-key-setup-side-window-right)</code> in the <code class="highlighter-rouge">init.el</code>)</p>
 
 <ul>
-  <li>C-h C-h : help</li>
-  <li>C-g : quit</li>
-  <li>C-x b : switch buffers</li>
+  <li><code class="highlighter-rouge">C-h</code> : help</li>
+  <li><code class="highlighter-rouge">C-g</code> : quit</li>
+  <li><code class="highlighter-rouge">C-x b</code> : switch buffers</li>
   <li>
-    <p>C-x k always kills the active buffer, rather than asking you which one you want to kill</p>
+    <p><code class="highlighter-rouge">C-x k</code> always kills the active buffer, rather than asking you which one you want to kill</p>
   </li>
-  <li>C-x 1 : close all windows except the active window</li>
-  <li>C-x 0 : close the active window</li>
-  <li>C-x 2 : split the active window vertically into two horizontal windows</li>
-  <li>C-x 3 : split the active window horizontally into two vertical windows</li>
+  <li><code class="highlighter-rouge">C-x 1</code> : close all windows except the active window</li>
+  <li><code class="highlighter-rouge">C-x 0</code> : close the active window</li>
+  <li><code class="highlighter-rouge">C-x 2</code> : split the active window vertically into two horizontal windows</li>
+  <li><code class="highlighter-rouge">C-x 3</code> : split the active window horizontally into two vertical windows</li>
 </ul>
 
 <h3 id="files">Files</h3>
 
 <ul>
-  <li>C-x C-f : open file</li>
-  <li>C-x C-s : save file</li>
-  <li>C-x C-w : save file as</li>
+  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-f</code> : open file</li>
+  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-s</code> : save file</li>
+  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-w</code> : save file as</li>
 </ul>
 
 <h3 id="writing">Writing</h3>
 
 <ul>
-  <li>C-space : set region mark</li>
-  <li>C-w : kill region</li>
-  <li>C-k : kill region between point and end of current line</li>
+  <li><code class="highlighter-rouge">C-space</code> : set region mark</li>
+  <li><code class="highlighter-rouge">C-w</code> : kill region</li>
+  <li><code class="highlighter-rouge">C-k</code> : kill region between point and end of current line</li>
   <li>
-    <p>C-y : yank region from kill ring</p>
+    <p><code class="highlighter-rouge">C-y</code> : yank region from kill ring</p>
   </li>
   <li>
-    <p>C-_ : undo</p>
+    <p><code class="highlighter-rouge">C-_</code> : undo</p>
   </li>
-  <li>C-s : search forwards</li>
-  <li>C-r : search backwards</li>
-  <li>M-% : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)</li>
-  <li>M-q : <strong>wrap text</strong></li>
+  <li><code class="highlighter-rouge">C-s</code> : search forwards</li>
+  <li><code class="highlighter-rouge">C-r</code> : search backwards</li>
+  <li><code class="highlighter-rouge">M-%</code> : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)</li>
+  <li><code class="highlighter-rouge">M-q</code> : <strong>wrap text</strong></li>
 </ul>
 
 <h3 id="graphene">Graphene</h3>
@@ -265,22 +279,22 @@ side the frame with all the commands (add this <code class="highlighter-rouge">(
 <p>Graphene creates some new keybindings, and alters some existing ones:</p>
 
 <ul>
-  <li>C-x C-k kills the default buffer and closes its window</li>
-  <li>C-c n creates a new buffer</li>
-  <li>C-c N creates a new instance of Emacs</li>
+  <li><code class="highlighter-rouge">C-x</code> C-k kills the default buffer and closes its window</li>
+  <li><code class="highlighter-rouge">C-c</code> n creates a new buffer</li>
+  <li><code class="highlighter-rouge">C-c</code> N creates a new instance of Emacs</li>
 </ul>
 
-<p>(Not working for unknown reason):</p>
+<p>(<em>Not working for unknown reason in my laptop</em>):</p>
 
 <ul>
-  <li>C-; adds a semicolon at the end of the line</li>
-  <li>M-RET creates a newline below the current line and moves to it</li>
-  <li>C-M-; comments or uncomments the current line</li>
-  <li>C-&gt; increases the height of the current window</li>
-  <li>C-&lt; decreases it</li>
-  <li>C-. increases the width of the current window</li>
-  <li>C-, decreases it</li>
-  <li>C-c s selects the Speedbar window</li>
+  <li><code class="highlighter-rouge">C-;</code> adds a semicolon at the end of the line</li>
+  <li><code class="highlighter-rouge">M-RET</code> creates a newline below the current line and moves to it</li>
+  <li><code class="highlighter-rouge">C-M-;</code> comments or uncomments the current line</li>
+  <li><code class="highlighter-rouge">C-&gt;</code> increases the height of the current window</li>
+  <li><code class="highlighter-rouge">C-&lt;</code> decreases it</li>
+  <li><code class="highlighter-rouge">C-.</code> increases the width of the current window</li>
+  <li><code class="highlighter-rouge">C-,</code> decreases it</li>
+  <li><code class="highlighter-rouge">C-c</code> s selects the Speedbar window</li>
 </ul>
 
 <h2 id="projects">Projects</h2>

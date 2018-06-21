@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-06-21T15:45:28+02:00</updated>
+ <updated>2018-06-21T15:46:51+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -13,23 +13,22 @@
 
  
  <entry>
-   <title>Emacs militant</title>
-   <link href="http://jonaprieto.github.io/utilities/2018/06/15/all-paths-end-in-emacs/"/>
+   <title>Towards an emacs militant</title>
+   <link href="http://jonaprieto.github.io/utilities,/text-editors/2018/06/15/all-paths-end-in-emacs/"/>
    <updated>2018-06-15T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/utilities/2018/06/15/all-paths-end-in-emacs</id>
+   <id>http://jonaprieto.github.io/utilities,/text-editors/2018/06/15/all-paths-end-in-emacs</id>
    <content type="html">&lt;p&gt;I’m not dogmatic about which editor is the best. I use at least three different
 text editor depending on what I’m working on: sublime text 3, atom, and emacs.
 This post is about emacs but I must confess that I’m a complete beginner using
 emacs. I’ve never touched my own configuration scripts and the kind of things an
-expert user probably do. My goal in this post is that, becoming a better user of
-this amazing tool/text editor that  many people claim it is. Since I don’t have
-too much time to spend in this kind of task, I will try to learn on the top of
+expert user probably do. My goal in this post is that, becoming a real user of
+this amazing tool/text editor that many people claim it is. Since I don’t have
+too much time to spend on this kind of task, I will try to learn on the top of
 another configuration. Spacemacs is the first option here. I tested, it works
 pretty well, but I want to have something more humble without too much
-customisation, something with enough space of freedom to play with.&lt;/p&gt;
+customization, something with enough space of freedom to play with.&lt;/p&gt;
 
-&lt;p&gt;I’m a OSX user using &lt;code class=&quot;highlighter-rouge&quot;&gt;brew&lt;/code&gt; to install almost everything that I need.
-My version of emacs at this moment:&lt;/p&gt;
+&lt;p&gt;My version of emacs at this moment in OSX:&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GNU Emacs 26.1 (build 1, x86_64-apple-darwin17.5.0)
  of 2018-05-28
@@ -37,18 +36,25 @@ My version of emacs at this moment:&lt;/p&gt;
 
 &lt;h2 id=&quot;cask&quot;&gt;&lt;a href=&quot;http://github.com/cask/cask&quot;&gt;Cask&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.&lt;/p&gt;
+&lt;p&gt;Cask is a project management tool for Emacs that helps automate the package
+development cycle; development, dependencies, testing, building, packaging and
+more.&lt;/p&gt;
 
 &lt;p&gt;Cask can also be used to manage dependencies for your local Emacs configuration.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew install cask
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;From graphene repository: https://github.com/rdallasgray/graphene&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://github.com/rdallasgray/graphene&quot;&gt;Graphene starting kit&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Anyway – your default initialisation file is in (old-school) ~/.emacs or (new-school, and where it should be) ~/.emacs.d/init.el. First, you need to set up the Emacs package system and tell it about Melpa, so create one of those files if it doesn’t already exist, and add these lines to the file:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;your default initialisation file is ~/.emacs.d/init.el.&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;packages repo:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;; Require Emacs' package functionality
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;; Require Emacs' package functionality
 (require 'package)
 
 ;; Add the Melpa repository to the list of package sources
@@ -56,9 +62,15 @@ My version of emacs at this moment:&lt;/p&gt;
 
 ;; Initialise the package system.
 (package-initialize)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Then either select those lines and do M-x eval-region, or restart Emacs. After that, do M-x list-packages, search for ‘graphene’ (either manually or using C-s), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.&lt;/p&gt;
+&lt;p&gt;Then either select those lines and do &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x eval-region&lt;/code&gt;, or restart Emacs. After
+that, do &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x list-packages&lt;/code&gt;, search for ‘graphene’ (either manually or using
+&lt;code class=&quot;highlighter-rouge&quot;&gt;C-s&lt;/code&gt;), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.&lt;/p&gt;
 
 &lt;h2 id=&quot;agda&quot;&gt;&lt;a href=&quot;http://gitub.com/agda/agda&quot;&gt;Agda&lt;/a&gt;&lt;/h2&gt;
 
@@ -87,9 +99,10 @@ there its theme available without the need to install all the spacemacs.&lt;/p&g
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(load-theme 'spacemacs-light t)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;markdown&quot;&gt;Markdown&lt;/h2&gt;
+&lt;h2 id=&quot;markdown-and-jekyll&quot;&gt;Markdown and Jekyll&lt;/h2&gt;
 
-&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x package-install which-key&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x package-install markdown-mode&lt;/code&gt;
+Use &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x package-install jekyll-modes&lt;/code&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;keybindings&quot;&gt;Keybindings&lt;/h2&gt;
 
@@ -102,45 +115,46 @@ which-key&lt;/code&gt; and add these lines in the &lt;code class=&quot;highlight
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;To visualize all the commands, I set up this package to show me on the right
-side the frame with all the commands (add this &lt;code class=&quot;highlighter-rouge&quot;&gt;(which-key-setup-side-window-right)&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;init.el&lt;/code&gt;)&lt;/p&gt;
+side the frame with all the commands (add this
+&lt;code class=&quot;highlighter-rouge&quot;&gt;(which-key-setup-side-window-right)&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;init.el&lt;/code&gt;)&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;C-h C-h : help&lt;/li&gt;
-  &lt;li&gt;C-g : quit&lt;/li&gt;
-  &lt;li&gt;C-x b : switch buffers&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-h&lt;/code&gt; : help&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-g&lt;/code&gt; : quit&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x b&lt;/code&gt; : switch buffers&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;C-x k always kills the active buffer, rather than asking you which one you want to kill&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x k&lt;/code&gt; always kills the active buffer, rather than asking you which one you want to kill&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;C-x 1 : close all windows except the active window&lt;/li&gt;
-  &lt;li&gt;C-x 0 : close the active window&lt;/li&gt;
-  &lt;li&gt;C-x 2 : split the active window vertically into two horizontal windows&lt;/li&gt;
-  &lt;li&gt;C-x 3 : split the active window horizontally into two vertical windows&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x 1&lt;/code&gt; : close all windows except the active window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x 0&lt;/code&gt; : close the active window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x 2&lt;/code&gt; : split the active window vertically into two horizontal windows&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x 3&lt;/code&gt; : split the active window horizontally into two vertical windows&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;files&quot;&gt;Files&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;C-x C-f : open file&lt;/li&gt;
-  &lt;li&gt;C-x C-s : save file&lt;/li&gt;
-  &lt;li&gt;C-x C-w : save file as&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;C-f&lt;/code&gt; : open file&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;C-s&lt;/code&gt; : save file&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x&lt;/code&gt; + &lt;code class=&quot;highlighter-rouge&quot;&gt;C-w&lt;/code&gt; : save file as&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;writing&quot;&gt;Writing&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;C-space : set region mark&lt;/li&gt;
-  &lt;li&gt;C-w : kill region&lt;/li&gt;
-  &lt;li&gt;C-k : kill region between point and end of current line&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-space&lt;/code&gt; : set region mark&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-w&lt;/code&gt; : kill region&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-k&lt;/code&gt; : kill region between point and end of current line&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;C-y : yank region from kill ring&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-y&lt;/code&gt; : yank region from kill ring&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;C-_ : undo&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-_&lt;/code&gt; : undo&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;C-s : search forwards&lt;/li&gt;
-  &lt;li&gt;C-r : search backwards&lt;/li&gt;
-  &lt;li&gt;M-% : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)&lt;/li&gt;
-  &lt;li&gt;M-q : &lt;strong&gt;wrap text&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-s&lt;/code&gt; : search forwards&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-r&lt;/code&gt; : search backwards&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;M-%&lt;/code&gt; : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;M-q&lt;/code&gt; : &lt;strong&gt;wrap text&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;graphene&quot;&gt;Graphene&lt;/h3&gt;
@@ -148,22 +162,22 @@ side the frame with all the commands (add this &lt;code class=&quot;highlighter-
 &lt;p&gt;Graphene creates some new keybindings, and alters some existing ones:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;C-x C-k kills the default buffer and closes its window&lt;/li&gt;
-  &lt;li&gt;C-c n creates a new buffer&lt;/li&gt;
-  &lt;li&gt;C-c N creates a new instance of Emacs&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x&lt;/code&gt; C-k kills the default buffer and closes its window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; n creates a new buffer&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; N creates a new instance of Emacs&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;(Not working for unknown reason):&lt;/p&gt;
+&lt;p&gt;(&lt;em&gt;Not working for unknown reason in my laptop&lt;/em&gt;):&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;C-; adds a semicolon at the end of the line&lt;/li&gt;
-  &lt;li&gt;M-RET creates a newline below the current line and moves to it&lt;/li&gt;
-  &lt;li&gt;C-M-; comments or uncomments the current line&lt;/li&gt;
-  &lt;li&gt;C-&amp;gt; increases the height of the current window&lt;/li&gt;
-  &lt;li&gt;C-&amp;lt; decreases it&lt;/li&gt;
-  &lt;li&gt;C-. increases the width of the current window&lt;/li&gt;
-  &lt;li&gt;C-, decreases it&lt;/li&gt;
-  &lt;li&gt;C-c s selects the Speedbar window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-;&lt;/code&gt; adds a semicolon at the end of the line&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;M-RET&lt;/code&gt; creates a newline below the current line and moves to it&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-M-;&lt;/code&gt; comments or uncomments the current line&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-&amp;gt;&lt;/code&gt; increases the height of the current window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-&amp;lt;&lt;/code&gt; decreases it&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-.&lt;/code&gt; increases the width of the current window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-,&lt;/code&gt; decreases it&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; s selects the Speedbar window&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;projects&quot;&gt;Projects&lt;/h2&gt;
