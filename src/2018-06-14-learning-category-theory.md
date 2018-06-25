@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Learning Category Theory"
-date: "2018-06-15"
+date: "2018-06-14"
 categories: category-theory
 ---
 
@@ -37,8 +37,8 @@ some. Maybe could be the starting point for someone else.
 - [x] [1.2: What is a category?](https://www.youtube.com/watch?v=p54Hd7AmVFU)
 - [x] [2.1: Functions, epimorphisms](https://www.youtube.com/watch?v=O2lZkr-aAqk)
 - [x] [2.2: Monomorphisms, simple types](https://www.youtube.com/watch?v=NcT7CGPICzo)
-- [ ] [3.1: Examples of categories, orders, monoids](https://www.youtube.com/watch?v=aZjhqkD6k6w)
-- [ ] [3.2: Kleisli category](https://www.youtube.com/watch?v=i9CU4CuHADQ)
+- [x] [3.1: Examples of categories, orders, monoids](https://www.youtube.com/watch?v=aZjhqkD6k6w)
+- [x] [3.2: Kleisli category](https://www.youtube.com/watch?v=i9CU4CuHADQ)
 - [ ] [4.1: Terminal and initial objects](https://www.youtube.com/watch?v=zer1aFgj4aU)
 - [ ] [4.2: Products](https://www.youtube.com/watch?v=Bsdl_NKbNnU)
 - [ ] [5.1: Coproducts, sum types](https://www.youtube.com/watch?v=LkIRsNj9T-8)

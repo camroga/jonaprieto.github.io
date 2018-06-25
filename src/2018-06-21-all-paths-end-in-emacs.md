@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "Towards an emacs militant"
-date: "2018-06-15"
+date: "2018-06-21"
 categories: utilities, text-editors
 ---
 
