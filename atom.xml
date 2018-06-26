@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-06-26T01:01:55+02:00</updated>
+ <updated>2018-06-26T19:50:22+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Towards an emacs militant</title>
-   <link href="http://jonaprieto.github.io/utilities,/text-editors/2018/06/15/all-paths-end-in-emacs/"/>
-   <updated>2018-06-15T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/utilities,/text-editors/2018/06/15/all-paths-end-in-emacs</id>
+   <link href="http://jonaprieto.github.io/utilities,/text-editors/2018/06/21/all-paths-end-in-emacs/"/>
+   <updated>2018-06-21T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/utilities,/text-editors/2018/06/21/all-paths-end-in-emacs</id>
    <content type="html">&lt;p&gt;I’m not dogmatic about which editor is the best. I use at least three different
 text editor depending on what I’m working on: sublime text 3, atom, and emacs.
 This post is about emacs but I must confess that I’m a complete beginner using
@@ -195,9 +195,9 @@ side the frame with all the commands (add this
  
  <entry>
    <title>Learning Category Theory</title>
-   <link href="http://jonaprieto.github.io/category-theory/2018/06/15/learning-category-theory/"/>
-   <updated>2018-06-15T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/category-theory/2018/06/15/learning-category-theory</id>
+   <link href="http://jonaprieto.github.io/category-theory/2018/06/14/learning-category-theory/"/>
+   <updated>2018-06-14T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/category-theory/2018/06/14/learning-category-theory</id>
    <content type="html">&lt;p&gt;The list of topics that I like and I should know so far is endless.
 This is my attempt to capture some resources to learn category theory,
 since I fell more comfortable learning by watching videos, I collected
@@ -213,8 +213,9 @@ some. Maybe could be the starting point for someone else.&lt;/p&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=rkIJLkpHdAE&quot;&gt;3 Pullbacks and pushouts&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=q9kDfAqgBUI&quot;&gt;4 Natural transformations&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=71OiJrGLGkM&quot;&gt;5 Representables and yoneda&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=pXbJ4Calego&quot;&gt;6 Adjunctions&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=pXbJ4Calego&quot;&gt;6a Adjunctions until 22:00&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Tl8H2G7W1wc&quot;&gt;7 Monads&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://youtu.be/pXbJ4Calego?t=22m24s&quot;&gt;6b Adjunctions after 22:00&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=soTuQStXwoo&quot;&gt;8 String diagrams&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=urol_uP1hwE&quot;&gt;9 General limits and colimits&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=a1Jcbr6vEZg&quot;&gt;10 Slice and comma categories&lt;/a&gt;&lt;/li&gt;
@@ -233,8 +234,8 @@ some. Maybe could be the starting point for someone else.&lt;/p&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=p54Hd7AmVFU&quot;&gt;1.2: What is a category?&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=O2lZkr-aAqk&quot;&gt;2.1: Functions, epimorphisms&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=NcT7CGPICzo&quot;&gt;2.2: Monomorphisms, simple types&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=aZjhqkD6k6w&quot;&gt;3.1: Examples of categories, orders, monoids&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=i9CU4CuHADQ&quot;&gt;3.2: Kleisli category&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=aZjhqkD6k6w&quot;&gt;3.1: Examples of categories, orders, monoids&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=i9CU4CuHADQ&quot;&gt;3.2: Kleisli category&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=zer1aFgj4aU&quot;&gt;4.1: Terminal and initial objects&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Bsdl_NKbNnU&quot;&gt;4.2: Products&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LkIRsNj9T-8&quot;&gt;5.1: Coproducts, sum types&lt;/a&gt;&lt;/li&gt;
