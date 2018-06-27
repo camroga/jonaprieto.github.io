@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-06-27T15:54:20+02:00</updated>
+ <updated>2018-06-27T16:20:47+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -56,7 +56,9 @@
    <link href="http://jonaprieto.github.io/learning-plans/2018/06/27/learning-graph-theory/"/>
    <updated>2018-06-27T00:00:00+02:00</updated>
    <id>http://jonaprieto.github.io/learning-plans/2018/06/27/learning-graph-theory</id>
-   <content type="html">&lt;h3 id=&quot;graph-theory-by-sarada-herke&quot;&gt;Graph Theory by &lt;a href=&quot;https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg&quot;&gt;Sarada Herke&lt;/a&gt;&lt;/h3&gt;
+   <content type="html">&lt;p&gt;My plan to learn about graphs:&lt;/p&gt;
+
+&lt;h3 id=&quot;graph-theory-by-sarada-herke&quot;&gt;Graph Theory by &lt;a href=&quot;https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg&quot;&gt;Sarada Herke&lt;/a&gt;&lt;/h3&gt;
 
 &lt;ul class=&quot;task-list&quot;&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=eIb1cz06UwI&quot;&gt;01. Seven Bridges of Konigsberg&lt;/a&gt;&lt;/li&gt;
@@ -126,6 +128,11 @@
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=UkjJE3bmPV0&quot;&gt;61. Characterisation of Planar Graphs&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=2hkLC2q2wT4&quot;&gt;62. Graph Minors and Wagner’s Theorem&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tdw_ECm8kRE&quot;&gt;63. Petersen Graph is Non-Planar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Considering this as well:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://www.coursera.org/learn/graphs&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
