@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-06-27T15:29:21+02:00</updated>
+ <updated>2018-06-27T15:30:20+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -126,45 +126,6 @@
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=UkjJE3bmPV0&quot;&gt;61. Characterisation of Planar Graphs&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=2hkLC2q2wT4&quot;&gt;62. Graph Minors and Wagner’s Theorem&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tdw_ECm8kRE&quot;&gt;63. Petersen Graph is Non-Planar&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Group Theory Fundamentals</title>
-   <link href="http://jonaprieto.github.io/cs/2018/06/27/group-theory-fundamentals/"/>
-   <updated>2018-06-27T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/cs/2018/06/27/group-theory-fundamentals</id>
-   <content type="html">&lt;p&gt;My plan to learn group theory:&lt;/p&gt;
-
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/symmetry-in-group-theory/?chapter=introduction-4&quot;&gt;practice/symmetry-in-group-theory&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/combining-symmetries-in-group-theory/?chapter=introduction-4&quot;&gt;practice/combining-symmetries-in-group-theory&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/motivating-the-group-axioms/?chapter=introduction-4&quot;&gt;practice/motivating-the-group-axioms&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/rotational-symmetries-of-a-cube/?chapter=introduction-4&quot;&gt;practice/rotational-symmetries-of-a-cube&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/fundamentals/?chapter=group-basics&quot;&gt;practice/fundamentals&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/axioms-and-basic-examples/?chapter=group-basics&quot;&gt;practice/axioms-and-basic-examples&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/additional-group-examples/?chapter=group-basics&quot;&gt;practice/additional-group-examples&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/subgroups/?chapter=group-basics&quot;&gt;practice/subgroups&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/abelian-groups/?chapter=group-basics&quot;&gt;practice/abelian-groups&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/homomorphisms/?chapter=group-basics&quot;&gt;practice/homomorphisms&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/quotient-groups/?chapter=group-basics&quot;&gt;practice/quotient-groups&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applications/?chapter=applications-2&quot;&gt;practice/applications&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-number-theory/?chapter=applications-2&amp;amp;p=1&quot;&gt;practice/applying-group-theory-to-number-theory&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-puzzle-games/?chapter=applications-2&quot;&gt;practice/applying-group-theory-to-puzzle-games&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-the-rubiks-cube/?chapter=applications-2&quot;&gt;practice/applying-group-theory-to-the-rubiks-cube&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/advanced-topics/?chapter=advanced-topics&quot;&gt;practice/advanced-topics&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/properties-of-normal-subgroups/?chapter=advanced-topics&quot;&gt;practice/properties-of-normal-subgroups&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/isomorphism-theorems/?chapter=advanced-topics&quot;&gt;practice/isomorphism-theorems&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/conjugacy-classes/?chapter=advanced-topics&amp;amp;p=6&quot;&gt;practice/conjugacy-classes&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/symmetric-group/?chapter=advanced-topics&quot;&gt;practice/symmetric-group&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/signs-of-permutations/?chapter=advanced-topics&quot;&gt;practice/signs-of-permutations&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/courses/group-theory/group-actions/&quot;&gt;courses/group-theory/group-actions/&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/group-actions-2/?chapter=group-actions&quot;&gt;practice/group-actions-2&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/group-actions/?chapter=group-actions&quot;&gt;practice/group-actions&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/counting-with-burnsides-lemma/?chapter=group-actions&quot;&gt;practice/counting-with-burnsides-lemma&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/semidirect-products/?chapter=group-actions&quot;&gt;practice/semidirect-products&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/sylow-theorems/?chapter=group-actions&quot;&gt;practice/sylow-theorems&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
