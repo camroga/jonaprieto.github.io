@@ -2,7 +2,7 @@
 layout: "post"
 title: "Towards an emacs militant"
 date: "2018-06-21"
-categories: utilities, text-editors
+categories: text-editors
 ---
 
 I’m not dogmatic about which editor is the best. I use at least three different
@@ -139,9 +139,9 @@ side the frame with all the commands (add this
 
 Graphene creates some new keybindings, and alters some existing ones:
 
-- `C-x` C-k kills the default buffer and closes its window
-- `C-c` n creates a new buffer
-- `C-c` N creates a new instance of Emacs
+- `C-x C-k` kills the default buffer and closes its window
+- `C-c n` creates a new buffer
+- `C-c N` creates a new instance of Emacs
 
 (*Not working for unknown reason in my laptop*):
 
@@ -152,14 +152,14 @@ Graphene creates some new keybindings, and alters some existing ones:
 - `C-<` decreases it
 - `C-.` increases the width of the current window
 - `C-,` decreases it
-- `C-c` s selects the Speedbar window
+- `C-c s` selects the Speedbar window
 
 
 ## Projects
 
 project-persist uses the following keybindings:
 
-- C-c P n to create a new project
-- C-c P f to find an existing project
-- C-c P k to close the current project
-- C-c P d to delete an existing project
+- `C-c` `P n` to create a new project
+- `C-c` `P f` to find an existing project
+- `C-c` `P k` to close the current project
+- `C-c` `P d` to delete an existing project
