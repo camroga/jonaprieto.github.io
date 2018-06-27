@@ -6,6 +6,8 @@ categories: learning-plans
 published: true
 ---
 
+My plan to learn about graphs:
+
 ### Graph Theory by [Sarada Herke](https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg)
 
 - [ ] [01. Seven Bridges of Konigsberg](https://www.youtube.com/watch?v=eIb1cz06UwI)
@@ -75,3 +77,7 @@ published: true
 - [ ] [61. Characterisation of Planar Graphs](https://www.youtube.com/watch?v=UkjJE3bmPV0)
 - [ ] [62. Graph Minors and Wagner's Theorem](https://www.youtube.com/watch?v=2hkLC2q2wT4)
 - [ ] [63. Petersen Graph is Non-Planar](https://www.youtube.com/watch?v=tdw_ECm8kRE)
+
+
+Considering this as well:
+  - https://www.coursera.org/learn/graphs
