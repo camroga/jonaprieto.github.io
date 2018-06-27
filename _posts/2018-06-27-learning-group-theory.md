@@ -1,8 +1,8 @@
 ---
 layout: "post"
-title: "Group Theory Fundamentals"
+title: "Learning Graph Theory"
 date: "2018-06-27"
-categories: cs
+categories: learning-plans
 published: true
 ---
 
