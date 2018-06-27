@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-06-26T19:50:22+02:00</updated>
+ <updated>2018-06-27T15:29:21+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -13,10 +13,167 @@
 
  
  <entry>
+   <title>Group Theory Fundamentals</title>
+   <link href="http://jonaprieto.github.io/cs/2018/06/27/learning-group-theory/"/>
+   <updated>2018-06-27T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/cs/2018/06/27/learning-group-theory</id>
+   <content type="html">&lt;p&gt;My plan to learn group theory:&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/symmetry-in-group-theory/?chapter=introduction-4&quot;&gt;practice/symmetry-in-group-theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/combining-symmetries-in-group-theory/?chapter=introduction-4&quot;&gt;practice/combining-symmetries-in-group-theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/motivating-the-group-axioms/?chapter=introduction-4&quot;&gt;practice/motivating-the-group-axioms&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/rotational-symmetries-of-a-cube/?chapter=introduction-4&quot;&gt;practice/rotational-symmetries-of-a-cube&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/fundamentals/?chapter=group-basics&quot;&gt;practice/fundamentals&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/axioms-and-basic-examples/?chapter=group-basics&quot;&gt;practice/axioms-and-basic-examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/additional-group-examples/?chapter=group-basics&quot;&gt;practice/additional-group-examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/subgroups/?chapter=group-basics&quot;&gt;practice/subgroups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/abelian-groups/?chapter=group-basics&quot;&gt;practice/abelian-groups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/homomorphisms/?chapter=group-basics&quot;&gt;practice/homomorphisms&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/quotient-groups/?chapter=group-basics&quot;&gt;practice/quotient-groups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applications/?chapter=applications-2&quot;&gt;practice/applications&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-number-theory/?chapter=applications-2&amp;amp;p=1&quot;&gt;practice/applying-group-theory-to-number-theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-puzzle-games/?chapter=applications-2&quot;&gt;practice/applying-group-theory-to-puzzle-games&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-the-rubiks-cube/?chapter=applications-2&quot;&gt;practice/applying-group-theory-to-the-rubiks-cube&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/advanced-topics/?chapter=advanced-topics&quot;&gt;practice/advanced-topics&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/properties-of-normal-subgroups/?chapter=advanced-topics&quot;&gt;practice/properties-of-normal-subgroups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/isomorphism-theorems/?chapter=advanced-topics&quot;&gt;practice/isomorphism-theorems&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/conjugacy-classes/?chapter=advanced-topics&amp;amp;p=6&quot;&gt;practice/conjugacy-classes&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/symmetric-group/?chapter=advanced-topics&quot;&gt;practice/symmetric-group&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/signs-of-permutations/?chapter=advanced-topics&quot;&gt;practice/signs-of-permutations&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/courses/group-theory/group-actions/&quot;&gt;courses/group-theory/group-actions/&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/group-actions-2/?chapter=group-actions&quot;&gt;practice/group-actions-2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/group-actions/?chapter=group-actions&quot;&gt;practice/group-actions&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/counting-with-burnsides-lemma/?chapter=group-actions&quot;&gt;practice/counting-with-burnsides-lemma&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/semidirect-products/?chapter=group-actions&quot;&gt;practice/semidirect-products&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/sylow-theorems/?chapter=group-actions&quot;&gt;practice/sylow-theorems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Learning Graph Theory</title>
+   <link href="http://jonaprieto.github.io/learning-plans/2018/06/27/learning-graph-theory/"/>
+   <updated>2018-06-27T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/learning-plans/2018/06/27/learning-graph-theory</id>
+   <content type="html">&lt;h3 id=&quot;graph-theory-by-sarada-herke&quot;&gt;Graph Theory by &lt;a href=&quot;https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg&quot;&gt;Sarada Herke&lt;/a&gt;&lt;/h3&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=eIb1cz06UwI&quot;&gt;01. Seven Bridges of Konigsberg&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=S1Zwhz-MhCs&quot;&gt;02. Definition of a Graph&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lLOvB1qFE1E&quot;&gt;03. Examples of Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=71XbdtoG7P8&quot;&gt;04. Families of Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=BEyuUXQs5ko&quot;&gt;05. Connected and Regular Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=YoRhmz_OSBY&quot;&gt;06. Sum of Degrees is ALWAYS Twice the Number of Edges&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LUDNz2bIjWI&quot;&gt;07. Adjacency Matrix and Incidence Matrix&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Qe9e-XcEvlo&quot;&gt;08a. Basic Problem Set (part 1/2)&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=t0UzHk53HjM&quot;&gt;08b. Basic Problem Set (part 2/2)&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=yFpRpxOry-A&quot;&gt;09. Graph Isomorphisms&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=z-GfKbzvtBA&quot;&gt;10. Isomorphic and Non-Isomorphic Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=p67pxeLZXn4&quot;&gt;10b Graph Theory with Sage&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=za_BGCGJzSs&quot;&gt;11. Neighbourhood and Bipartite Test with Colours&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=dPHkyRvLtIU&quot;&gt;12. Spanning and Induced Subgraphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=voD1xLxZvAM&quot;&gt;13. Degrees at Least Two Means a Cycle Exists&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=fFuIMMkIO9Q&quot;&gt;14a. Basic Graph Theory Problem Set 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=3uS6toYt-Dw&quot;&gt;14b. Basic Graph Theory Problem Set 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lPLrNDdJEB0&quot;&gt;14c. Basic Graph Theory Problem Set 2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=flYT0ku1dpQ&quot;&gt;15.There Exists a 3-Regular Graph of All Even Order at least 4&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=koXFopNHE2U&quot;&gt;16. Walks Trails and Paths&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=m14uiz7Bats&quot;&gt;17. Distance Between Vertices and Connected Components&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=vTzZ6jFOemc&quot;&gt;18. Every Walk Contains a Path&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=YiGFhWxtHjQ&quot;&gt;19. Graph is Bipartite iff No Odd Cycle&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=38G5uSxylaY&quot;&gt;20. Edge Weighted Shortest Path Problem&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=8njHSvS_inI&quot;&gt;21. Dijkstra’s Algorithm&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=EHZf1_gM3dM&quot;&gt;22. Dijkstra Algorithm Examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=1V_6nUUNoms&quot;&gt;23. Euler Trails and Euler Tours&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=g929VCcnz5Q&quot;&gt;24. Euler Trail iff 0 or 2 Vertices of Odd Degree&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lGth8VdtU88&quot;&gt;25. Graph Decompositions&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Dvvqs375ax8&quot;&gt;26. Cycle Decomposition iff All Vertices Have Even Degre&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=wh9mZCUf-z4&quot;&gt;27. Hamiltonian Graphs and Problem Set&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=3xeYcRYccro&quot;&gt;28. Hamiltonian Graph Problems&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Bq1u9704csA&quot;&gt;29. Lovasz Conjecture on Hamilton Paths&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=FgHuQw7kb-o&quot;&gt;30. The 5 Known Vertex-Transitive Non-Hamiltonian Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=XA8MDEYNWx8&quot;&gt;31. Lemma on Hamiltonian Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=0ksOKghZKdo&quot;&gt;32. Necessary (not sufficient) Condition for Existence of a Hamilton Cycle&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=AVe-OA-fcV0&quot;&gt;33. Petersen Graph is Not Hamiltonian&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=zxu0dL436gI&quot;&gt;34. Bridge edges&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=SFFEc8DbO0Y&quot;&gt;35. Bridges in Connected Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=QFQlxtz7f6g&quot;&gt;36. Definition of a Tree&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=BptJFixSseM&quot;&gt;37. Which Graphs are Trees&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Yon2ndGQU5s&quot;&gt;38. Three ways to Identify Trees&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=2k_FFB5Rmwo&quot;&gt;39. Types of Trees&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Ve447EOW8ww&quot;&gt;40. Cayley’s Formula and Prufer Sequences part 1/2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=utfW-xsDp3Y&quot;&gt;41. Cayley’s Formula and Prufer Sequences part 2/2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=aNKO4ttWmcU&quot;&gt;42. Degree Sequences and Graphical Sequences&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iQJ1PFZ4gh0&quot;&gt;43. Havel-Hakimi Theorem on Graphical Sequences&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=cCG4_mj9TgM&quot;&gt;44. Degree Sequence of a Tree&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=SzPyRwZJLso&quot;&gt;45. Specific Degrees in a Tree&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=IvLcmazpMPg&quot;&gt;46. Relation Between Minimum Degree and Subtrees&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=KFtPHoaqUaQ&quot;&gt;47. Subgraphs of Regular Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=VTgxv334KSU&quot;&gt;48. Complement of a Graph&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=X8mnQJ5AlTM&quot;&gt;49. Cartesian Product of Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=03PUwWef2Dg&quot;&gt;50. Maximum vs Maximal&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=YbCn8d4Enos&quot;&gt;51. Eccentricity, Radius &amp;amp; Diameter&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=O4LVAGV8tok&quot;&gt;52. Radius and Diameter Examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=BxAgmaLWaq4&quot;&gt;53. Cut-Vertices&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=mPI8_qZm1_8&quot;&gt;54. Number of Cut-Vertices&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iGsxKUzW3cs&quot;&gt;55. Bridges and Blocks&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Wp-2_Paikt8&quot;&gt;56. Central Vertices are in a Single Block&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=wnYtITkWAYA&quot;&gt;57. Planar Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=5ywif1Zpeo4&quot;&gt;58. Euler’s Formula for Plane Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=_d_6JvceAwE&quot;&gt;59. Maximal Planar Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=-m6Dq7v9ToM&quot;&gt;60. Non Planar Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=UkjJE3bmPV0&quot;&gt;61. Characterisation of Planar Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=2hkLC2q2wT4&quot;&gt;62. Graph Minors and Wagner’s Theorem&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=tdw_ECm8kRE&quot;&gt;63. Petersen Graph is Non-Planar&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Group Theory Fundamentals</title>
+   <link href="http://jonaprieto.github.io/cs/2018/06/27/group-theory-fundamentals/"/>
+   <updated>2018-06-27T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/cs/2018/06/27/group-theory-fundamentals</id>
+   <content type="html">&lt;p&gt;My plan to learn group theory:&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/symmetry-in-group-theory/?chapter=introduction-4&quot;&gt;practice/symmetry-in-group-theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/combining-symmetries-in-group-theory/?chapter=introduction-4&quot;&gt;practice/combining-symmetries-in-group-theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/motivating-the-group-axioms/?chapter=introduction-4&quot;&gt;practice/motivating-the-group-axioms&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/rotational-symmetries-of-a-cube/?chapter=introduction-4&quot;&gt;practice/rotational-symmetries-of-a-cube&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/fundamentals/?chapter=group-basics&quot;&gt;practice/fundamentals&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/axioms-and-basic-examples/?chapter=group-basics&quot;&gt;practice/axioms-and-basic-examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/additional-group-examples/?chapter=group-basics&quot;&gt;practice/additional-group-examples&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/subgroups/?chapter=group-basics&quot;&gt;practice/subgroups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/abelian-groups/?chapter=group-basics&quot;&gt;practice/abelian-groups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/homomorphisms/?chapter=group-basics&quot;&gt;practice/homomorphisms&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/quotient-groups/?chapter=group-basics&quot;&gt;practice/quotient-groups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applications/?chapter=applications-2&quot;&gt;practice/applications&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-number-theory/?chapter=applications-2&amp;amp;p=1&quot;&gt;practice/applying-group-theory-to-number-theory&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-puzzle-games/?chapter=applications-2&quot;&gt;practice/applying-group-theory-to-puzzle-games&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/applying-group-theory-to-the-rubiks-cube/?chapter=applications-2&quot;&gt;practice/applying-group-theory-to-the-rubiks-cube&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/advanced-topics/?chapter=advanced-topics&quot;&gt;practice/advanced-topics&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/properties-of-normal-subgroups/?chapter=advanced-topics&quot;&gt;practice/properties-of-normal-subgroups&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/isomorphism-theorems/?chapter=advanced-topics&quot;&gt;practice/isomorphism-theorems&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/conjugacy-classes/?chapter=advanced-topics&amp;amp;p=6&quot;&gt;practice/conjugacy-classes&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/symmetric-group/?chapter=advanced-topics&quot;&gt;practice/symmetric-group&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/signs-of-permutations/?chapter=advanced-topics&quot;&gt;practice/signs-of-permutations&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/courses/group-theory/group-actions/&quot;&gt;courses/group-theory/group-actions/&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/group-actions-2/?chapter=group-actions&quot;&gt;practice/group-actions-2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/group-actions/?chapter=group-actions&quot;&gt;practice/group-actions&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/counting-with-burnsides-lemma/?chapter=group-actions&quot;&gt;practice/counting-with-burnsides-lemma&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/semidirect-products/?chapter=group-actions&quot;&gt;practice/semidirect-products&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/sylow-theorems/?chapter=group-actions&quot;&gt;practice/sylow-theorems&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Towards an emacs militant</title>
-   <link href="http://jonaprieto.github.io/utilities,/text-editors/2018/06/21/all-paths-end-in-emacs/"/>
+   <link href="http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs/"/>
    <updated>2018-06-21T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/utilities,/text-editors/2018/06/21/all-paths-end-in-emacs</id>
+   <id>http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs</id>
    <content type="html">&lt;p&gt;I’m not dogmatic about which editor is the best. I use at least three different
 text editor depending on what I’m working on: sublime text 3, atom, and emacs.
 This post is about emacs but I must confess that I’m a complete beginner using
@@ -162,9 +319,9 @@ side the frame with all the commands (add this
 &lt;p&gt;Graphene creates some new keybindings, and alters some existing ones:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x&lt;/code&gt; C-k kills the default buffer and closes its window&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; n creates a new buffer&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; N creates a new instance of Emacs&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-x C-k&lt;/code&gt; kills the default buffer and closes its window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c n&lt;/code&gt; creates a new buffer&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c N&lt;/code&gt; creates a new instance of Emacs&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;(&lt;em&gt;Not working for unknown reason in my laptop&lt;/em&gt;):&lt;/p&gt;
@@ -177,7 +334,7 @@ side the frame with all the commands (add this
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-&amp;lt;&lt;/code&gt; decreases it&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-.&lt;/code&gt; increases the width of the current window&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-,&lt;/code&gt; decreases it&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; s selects the Speedbar window&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c s&lt;/code&gt; selects the Speedbar window&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;projects&quot;&gt;Projects&lt;/h2&gt;
@@ -185,19 +342,19 @@ side the frame with all the commands (add this
 &lt;p&gt;project-persist uses the following keybindings:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;C-c P n to create a new project&lt;/li&gt;
-  &lt;li&gt;C-c P f to find an existing project&lt;/li&gt;
-  &lt;li&gt;C-c P k to close the current project&lt;/li&gt;
-  &lt;li&gt;C-c P d to delete an existing project&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;P n&lt;/code&gt; to create a new project&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;P f&lt;/code&gt; to find an existing project&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;P k&lt;/code&gt; to close the current project&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;C-c&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;P d&lt;/code&gt; to delete an existing project&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
  
  <entry>
    <title>Learning Category Theory</title>
-   <link href="http://jonaprieto.github.io/category-theory/2018/06/14/learning-category-theory/"/>
+   <link href="http://jonaprieto.github.io/learning-plans/2018/06/14/learning-category-theory/"/>
    <updated>2018-06-14T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/category-theory/2018/06/14/learning-category-theory</id>
+   <id>http://jonaprieto.github.io/learning-plans/2018/06/14/learning-category-theory</id>
    <content type="html">&lt;p&gt;The list of topics that I like and I should know so far is endless.
 This is my attempt to capture some resources to learn category theory,
 since I fell more comfortable learning by watching videos, I collected
