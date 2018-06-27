@@ -42,7 +42,6 @@ const hitTemplate = function(hit) {
   const url = hit.url;
   const title = hit._highlightResult.title.value;
   const content = hit._highlightResult.html.value;
-
   return `
 <div class="${hitBoxClass}">
   <div class="post-list">

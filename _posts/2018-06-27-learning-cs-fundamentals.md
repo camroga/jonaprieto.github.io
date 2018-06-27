@@ -1,12 +1,12 @@
 ---
 layout: "post"
-title: "Learning CS fundamentals"
+title: "Learning CS Fundamentals"
 date: "2018-06-27"
 categories: learning-plans
-published: false
+published: true
 ---
 
-Brilliant! Nice compendium of Fundamentals in computer science.
+[Brilliant](https://brilliant.org)! Nice compendium of Fundamentals in computer science.
 I'm planning to see every lesson, let's see what happen.
 
 ## Computer Science Fundamentals
