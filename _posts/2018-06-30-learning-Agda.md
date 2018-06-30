@@ -6,6 +6,7 @@ categories: learning-plans
 published: true
 ---
 
+Collection of some learning resources for Agda
 
 ### [Advanced Functional Programming CS410-17 by Conor McBride](https://github.com/pigworker/CS410-17/)
 

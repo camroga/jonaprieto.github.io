@@ -143,6 +143,7 @@ push-sources :
 
 .phony : push
 push :
+	- make
 	- make push-sources
 	- @echo "==================================================================="
 	-	@echo "========================= Jekyll Building ========================="
