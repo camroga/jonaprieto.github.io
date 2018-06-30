@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>jonaprieto</title>
-  <meta name="description" content="Jonathan Prieto-Cubides">
+  <title>Learning Agda</title>
+  <meta name="description" content="Advanced Functional Programming CS410-17 by Conor McBride">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -112,140 +112,116 @@
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
 
-            <small style="text-decoration:left">∷ Progress [Log]<span class="modifications">(<span class="additions">+138252</span>/<span class="substractions">-101797</span>)</span>
-            </small>
+            <small style="text-decoration:left">∷ Progress [Log]</small>
           </h3>
         </div>
       
       <div class="container content">
-        <div class="home">
-
+        <div class="post">
   
-  <div id="search-searchbar"></div>
-  
-  <div class="main-heading">
-    <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> agda learning plan added</a></span>
-    <a class="main-rss" href="/feed.xml">
-      rss
-    </a>
-  </div>
-  <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io">10aa4c9 </a> on  30 Jun 2018
-  </div>
-  </div>
-  
-
-  <div class="posts" id="search-hits">
-  </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch-theme-algolia.min.css">
-
-<base href="">
-
-<script src="/assets/latex-to-unicode-converter.min.js"></script>
-
-<script>
-const search = instantsearch({
-  appId: '6LC140UUTA',
-  apiKey: '038508bea0ee72e992b18935df862622',
-  indexName: 'notes',
-  searchParameters: {
-    restrictSearchableAttributes: [
-      'title',
-      'content'
-    ],
-    facetFilters: ['type:post']
-  },
-  searchFunction: function(helper) {
-    if (helper.getState().query === '') {
-      additionalClass = 'empty-query';
-      hitBoxClass = '';
-    } else {
-      additionalClass = '';
-      hitBoxClass = 'hit-box';
-    }
-    helper.search()
-  }
-});
-
-const hitTemplate = function(hit) {
-  let date = '';
-  if (hit.date) {
-    date = moment.unix(hit.date).format('L');
-    modifiedDate = hit.last_modified_at;
-    lastDate = moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
-  }
-  const url = hit.url;
-  const title = hit._highlightResult.title.value;
-  const content = hit._highlightResult.html.value;
-  return `
-<div class="${hitBoxClass}">
-  <div class="post-list">
-      <div class="algolia">
-      <div class="algolia-date">${date}</div>
-        <div class="algolia-title"><a href=".${url}">${title}</a></div>
-        <div class="algolia-modified">${lastDate}</div>
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+29</span>/<span class="substractions">-0</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> agda learning plan added</a></span>
       </div>
-      <div class="${additionalClass}">${content} </div>
+    <div class="main-last-date">
+        Latest commit <a href="">8268e18 </a> on  30 Jun 2018
+    </div>
+    </div>
   </div>
+  
+
+  <h1 class="post-title">Learning Agda</h1>
+
+  
+  <h3 id="advanced-functional-programming-cs410-17-by-conor-mcbride"><a href="https://github.com/pigworker/CS410-17/">Advanced Functional Programming CS410-17 by Conor McBride</a></h3>
+
+<p>-[ ] <a href="https://www.youtube.com/watch?v=O4oczQry9Jw">Programs and Proofs</a>
+-[ ] <a href="https://www.youtube.com/watch?v=qcVZxQTouDk">more Programs and Proofs, Introducing “with”</a>
+-[ ] <a href="https://www.youtube.com/watch?v=8xFT9FPlm18">Proof by Induction</a>
+-[ ] <a href="https://www.youtube.com/watch?v=OZeDRtRmgkw">Sigma, Difference, Vector Take</a>
+-[ ] <a href="https://www.youtube.com/watch?v=b5salYMZoyM">How Rewrite Works</a>
+-[ ] <a href="https://www.youtube.com/watch?v=RW4aC_6n0yQ">A Comedy of (Entirely Non-Deliberate) Errors</a>
+-[ ] <a href="https://www.youtube.com/watch?v=2LxtHeZlaVw">“Dominoes”, no really, this time</a>
+-[ ] <a href="https://www.youtube.com/watch?v=RCRddhYegzI">Functors</a>
+-[ ] <a href="https://www.youtube.com/watch?v=vTmYvoDrBlc">From Functors to Monads</a>
+-[ ] <a href="https://www.youtube.com/watch?v=2sykXdidZVA">Natural Transformations and Monads</a>
+-[ ] <a href="https://www.youtube.com/watch?v=iYegg8Rzhr4">From Monads to Input/Output</a>
+-[ ] <a href="https://www.youtube.com/watch?v=8WUz2HmXBqI">How to Run a Program (and come a-cropper)</a>
+-[ ] <a href="https://www.youtube.com/watch?v=MwtWdiyFJtA">Monads on Indexed Sets (Ex2)</a>
+-[ ] <a href="https://www.youtube.com/watch?v=kX3mvyFHDDU">What is an Application?</a>
+-[ ] <a href="https://www.youtube.com/watch?v=ZCdYIEwcna0">Coinduction and Coalgebras</a>
+-[ ] <a href="https://www.youtube.com/watch?v=AjyUNakYHRs">Polynomial Data and Codata</a>
+-[ ] <a href="https://www.youtube.com/watch?v=E8xIJolKEAI">A Polynomial Universe</a>
+-[ ] <a href="https://www.youtube.com/watch?v=-3MiZ80WldY">The Zipper (Differentiating Polynomial Types)</a></p>
+
+
+  <!-- <h2> References </h2> -->
+  <ol class="bibliography"></ol>
+  <!-- </ -->
+
 </div>
-  `;
-}
 
-// const hitTemplateTrans = function(hit) {
-//   let date = '';
-//   if (hit.date) {
-//     date = moment.unix(hit.date).format('MMM DD YYYY');
-//   }
-//   const url = hit.url;
-//   const title = hit._highlightResult.title.value;
-//   const content = hit._highlightResult.html.value;
-//
-//   return `
-//     <div class="post-list">
-//       <span class="post-date-list-wrap">
-//       <span class="post-date-list">${date}
-//         <span class="post-title"><a href=".${url}"> ${title}</a></span>
-//        </span>
-//        </span>
-//     </div>
-//   `;
-// }
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning-plans/2018/06/27/learning-group-theory/">
+            Learning Group Theory
+            
+            <small>27 Jun 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/learning-plans/2018/06/27/learning-graph-theory/">
+            Learning Graph Theory
+            
+            <small>27 Jun 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/learning-plans/2018/06/27/learning-cs-fundamentals/">
+            Learning CS Fundamentals
+            
+            <small>27 Jun 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
 
-search.addWidget(
-  instantsearch.widgets.searchBox({
-    container: '#search-searchbar',
-    placeholder: 'search notes',
-    autofocus: true
-  })
-);
+<div id="disqus_thread"></div>
+<script>
 
-search.addWidget(
-  instantsearch.widgets.hits({
-    container: '#search-hits',
-    templates: {
-      empty: 'No results',
-      item: hitTemplate
-    },
-  })
-);
-
-search.start();
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
 </script>
-
-<style>
-.ais-search-box {
-  max-width: 100%;
-  margin-bottom: 15px;
-}
-</style>
-
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
       </div>
       
