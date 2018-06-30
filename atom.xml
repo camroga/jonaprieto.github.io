@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-06-30T14:15:51+02:00</updated>
+ <updated>2018-06-30T14:17:32+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -19,24 +19,26 @@
    <id>http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda</id>
    <content type="html">&lt;h3 id=&quot;advanced-functional-programming-cs410-17-by-conor-mcbride&quot;&gt;&lt;a href=&quot;https://github.com/pigworker/CS410-17/&quot;&gt;Advanced Functional Programming CS410-17 by Conor McBride&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;-[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=O4oczQry9Jw&quot;&gt;Programs and Proofs&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=qcVZxQTouDk&quot;&gt;more Programs and Proofs, Introducing “with”&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=8xFT9FPlm18&quot;&gt;Proof by Induction&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=OZeDRtRmgkw&quot;&gt;Sigma, Difference, Vector Take&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=b5salYMZoyM&quot;&gt;How Rewrite Works&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=RW4aC_6n0yQ&quot;&gt;A Comedy of (Entirely Non-Deliberate) Errors&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=2LxtHeZlaVw&quot;&gt;“Dominoes”, no really, this time&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=RCRddhYegzI&quot;&gt;Functors&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=vTmYvoDrBlc&quot;&gt;From Functors to Monads&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=2sykXdidZVA&quot;&gt;Natural Transformations and Monads&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=iYegg8Rzhr4&quot;&gt;From Monads to Input/Output&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=8WUz2HmXBqI&quot;&gt;How to Run a Program (and come a-cropper)&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=MwtWdiyFJtA&quot;&gt;Monads on Indexed Sets (Ex2)&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=kX3mvyFHDDU&quot;&gt;What is an Application?&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=ZCdYIEwcna0&quot;&gt;Coinduction and Coalgebras&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=AjyUNakYHRs&quot;&gt;Polynomial Data and Codata&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=E8xIJolKEAI&quot;&gt;A Polynomial Universe&lt;/a&gt;
--[ ] &lt;a href=&quot;https://www.youtube.com/watch?v=-3MiZ80WldY&quot;&gt;The Zipper (Differentiating Polynomial Types)&lt;/a&gt;&lt;/p&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=O4oczQry9Jw&quot;&gt;Programs and Proofs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=qcVZxQTouDk&quot;&gt;more Programs and Proofs, Introducing “with”&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=8xFT9FPlm18&quot;&gt;Proof by Induction&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=OZeDRtRmgkw&quot;&gt;Sigma, Difference, Vector Take&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=b5salYMZoyM&quot;&gt;How Rewrite Works&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=RW4aC_6n0yQ&quot;&gt;A Comedy of (Entirely Non-Deliberate) Errors&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=2LxtHeZlaVw&quot;&gt;“Dominoes”, no really, this time&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=RCRddhYegzI&quot;&gt;Functors&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=vTmYvoDrBlc&quot;&gt;From Functors to Monads&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=2sykXdidZVA&quot;&gt;Natural Transformations and Monads&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=iYegg8Rzhr4&quot;&gt;From Monads to Input/Output&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=8WUz2HmXBqI&quot;&gt;How to Run a Program (and come a-cropper)&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=MwtWdiyFJtA&quot;&gt;Monads on Indexed Sets (Ex2)&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=kX3mvyFHDDU&quot;&gt;What is an Application?&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=ZCdYIEwcna0&quot;&gt;Coinduction and Coalgebras&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=AjyUNakYHRs&quot;&gt;Polynomial Data and Codata&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=E8xIJolKEAI&quot;&gt;A Polynomial Universe&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=-3MiZ80WldY&quot;&gt;The Zipper (Differentiating Polynomial Types)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
