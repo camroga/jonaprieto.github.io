@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-06-30T14:28:24+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Learning Agda</title><link href="http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda/" rel="alternate" type="text/html" title="Learning Agda" /><published>2018-06-30T00:00:00+02:00</published><updated>2018-06-30T14:28:19+02:00</updated><id>http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda</id><content type="html" xml:base="http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda/">&lt;p&gt;Collection of some learning resources for Agda&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-07-02T15:53:52+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Learning Agda</title><link href="http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda/" rel="alternate" type="text/html" title="Learning Agda" /><published>2018-06-30T00:00:00+02:00</published><updated>2018-06-30T14:28:19+02:00</updated><id>http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda</id><content type="html" xml:base="http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda/">&lt;p&gt;Collection of some learning resources for Agda&lt;/p&gt;
 
 &lt;h3 id=&quot;advanced-functional-programming-cs410-17-by-conor-mcbride&quot;&gt;&lt;a href=&quot;https://github.com/pigworker/CS410-17/&quot;&gt;Advanced Functional Programming CS410-17 by Conor McBride&lt;/a&gt;&lt;/h3&gt;
 
@@ -284,7 +284,7 @@ I’m planning to see every lesson, let’s see what happen.&lt;/p&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Modelling&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Recommendation&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Artificial Neural Networks&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Brilliant! Nice compendium of Fundamentals in computer science. I’m planning to see every lesson, let’s see what happen.</summary></entry><entry><title type="html">Towards an Emacs militant</title><link href="http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs/" rel="alternate" type="text/html" title="Towards an Emacs militant" /><published>2018-06-21T00:00:00+02:00</published><updated>2018-06-27T16:26:01+02:00</updated><id>http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs</id><content type="html" xml:base="http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs/">&lt;p&gt;I’m not dogmatic about which editor is the best. I use at least three different
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Brilliant! Nice compendium of Fundamentals in computer science. I’m planning to see every lesson, let’s see what happen.</summary></entry><entry><title type="html">Towards an Emacs militant</title><link href="http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs/" rel="alternate" type="text/html" title="Towards an Emacs militant" /><published>2018-06-21T00:00:00+02:00</published><updated>2018-07-02T15:53:47+02:00</updated><id>http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs</id><content type="html" xml:base="http://jonaprieto.github.io/text-editors/2018/06/21/all-paths-end-in-emacs/">&lt;p&gt;I’m not dogmatic about which editor is the best. I use at least three different
 text editor depending on what I’m working on: sublime text 3, atom, and emacs.
 This post is about emacs but I must confess that I’m a complete beginner using
 emacs. I’ve never touched my own configuration scripts and the kind of things an
@@ -313,15 +313,17 @@ more.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rdallasgray/graphene&quot;&gt;Graphene starting kit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Good ideas but I prefer to not use it.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;your default initialisation file is ~/.emacs.d/init.el.&lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://github.com/rdallasgray/graphene&quot;&gt;Graphene starting kit&lt;/a&gt;&lt;/p&gt;
+    &lt;p&gt;packages repo:&lt;/p&gt;
 
-    &lt;ul&gt;
-      &lt;li&gt;your default initialisation file is ~/.emacs.d/init.el.&lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;packages repo:&lt;/p&gt;
-
-        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;; Require Emacs' package functionality
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;; Require Emacs' package functionality
 (require 'package)
 
 ;; Add the Melpa repository to the list of package sources
@@ -329,9 +331,7 @@ more.&lt;/p&gt;
 
 ;; Initialise the package system.
 (package-initialize)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -339,9 +339,69 @@ more.&lt;/p&gt;
 that, do &lt;code class=&quot;highlighter-rouge&quot;&gt;M-x list-packages&lt;/code&gt;, search for ‘graphene’ (either manually or using
 &lt;code class=&quot;highlighter-rouge&quot;&gt;C-s&lt;/code&gt;), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.&lt;/p&gt;
 
+&lt;h2 id=&quot;completation&quot;&gt;Completation&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+; (bind-key &quot;\e\e\e&quot; 'company-abort)
+; (bind-key &quot;\C-g&quot; 'company-abort)
+; (bind-key &quot;&quot; 'company-select-next)
+; (bind-key &quot;&quot; 'company-select-previous)
+; (bind-key &quot;&quot; 'company-select-next-or-abort)
+; (bind-key &quot;&quot; 'company-select-previous-or-abort)
+; (bind-key &quot;&quot; 'company-next-page)
+; (bind-key &quot;&quot; 'company-previous-page)
+; (bind-key &quot;&quot; 'company-complete-mouse)
+; (bind-key &quot;&quot; 'company-select-mouse)
+; (bind-key &quot;&quot; 'company-complete-selection)
+(bind-key &quot;TAB&quot; 'company-complete-common)
+; (bind-key &quot;&quot; 'company-show-doc-buffer)
+; (bind-key &quot;&quot; 'company-show-location)
+; (bind-key &quot;&quot; 'company-search-candidates)
+; (bind-key &quot;&quot; 'company-filter-candidates)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h2 id=&quot;agda&quot;&gt;&lt;a href=&quot;http://gitub.com/agda/agda&quot;&gt;Agda&lt;/a&gt;&lt;/h2&gt;
 
-&lt;p&gt;Run in the command line &lt;code class=&quot;highlighter-rouge&quot;&gt;agda-mode compile&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;agda-mode setup&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Run in the command line &lt;code class=&quot;highlighter-rouge&quot;&gt;agda-mode compile&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;agda-mode setup&lt;/code&gt;.
+Since I prefer to maintain the keybindings explicit, this goes in the &lt;code class=&quot;highlighter-rouge&quot;&gt;init.el&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string &quot;agda-mode locate&quot;)))
+
+(require 'bind-key)
+(bind-key &quot;C-c ,&quot;     'agda2-goal-and-context                 )
+(bind-key &quot;C-c .&quot;     'agda2-goal-and-context-and-inferred    )
+(bind-key &quot;C-c ;&quot;     'agda2-goal-and-context-and-checked     )
+(bind-key &quot;C-c =&quot;     'agda2-show-constraints                 )
+(bind-key &quot;C-c ?&quot;     'agda2-show-goals                       )
+(bind-key &quot;C-c C-a&quot;   'agda2-abort                            )
+(bind-key &quot;C-c C-a&quot;   'agda2-auto                             )
+(bind-key &quot;C-c C-b&quot;   'agda2-previous-goal                    )
+(bind-key &quot;C-c C-d&quot;   'agda2-infer-type-maybe-toplevel        )
+(bind-key &quot;C-c C-d&quot;   'agda2-remove-annotations               )
+(bind-key &quot;C-c C-e&quot;   'agda2-show-context                     )
+(bind-key &quot;C-c C-f&quot;   'agda2-next-goal                        )
+(bind-key &quot;C-c C-r&quot;   'agda2-refine                           )
+(bind-key &quot;C-c C-s&quot;   'agda2-solve-maybe-all                  )
+(bind-key &quot;C-c C-w&quot;   'agda2-why-in-scope-maybe-toplevel      )
+(bind-key &quot;C-c C-z&quot;   'agda2-search-about-toplevel            )
+(bind-key &quot;C-c SPC&quot;   'agda2-give                             )
+(bind-key &quot;C-c c&quot;     'agda2-make-case                        )
+(bind-key &quot;C-c h&quot;     'agda2-helper-function-type             )
+(bind-key &quot;C-c l&quot;     'agda2-load                             )
+(bind-key &quot;C-c n&quot;     'agda2-compute-normalised-maybe-toplevel)
+(bind-key &quot;C-c o&quot;     'agda2-module-contents-maybe-toplevel   )
+(bind-key &quot;C-c t&quot;     'agda2-goal-type                        )
+(bind-key &quot;C-c C-g&quot;   'agda2-go-back                          )
+; (bind-key &quot;C-x c&quot;   'agda2-compile                          )
+(bind-key &quot;C-x C-h&quot;   'agda2-display-implicit-argurments      )
+(bind-key &quot;C-x C-q&quot;   'agda2-quit                             )
+(bind-key &quot;C-x C-r&quot;   'agda2-restart                          )
+(bind-key &quot;C-x d&quot;     'agda2-remove-annotations               )
+; (bind-key &quot;C-c C-s&quot;     'agda2-set-program-version         )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;proof-general&quot;&gt;&lt;a href=&quot;https://proofgeneral.github.io/&quot;&gt;Proof-General&lt;/a&gt;&lt;/h2&gt;
 
@@ -352,7 +412,7 @@ cd ~/.emacs.d/lisp/PG
 make
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;lookfeel&quot;&gt;Look&amp;amp;feel&lt;/h2&gt;
+&lt;h2 id=&quot;theme&quot;&gt;Theme&lt;/h2&gt;
 
 &lt;p&gt;I think the spacemacs did it very good in this aspect. I searched and
 there its theme available without the need to install all the spacemacs.&lt;/p&gt;

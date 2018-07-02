@@ -121,11 +121,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+238</span>/<span class="substractions">-73</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> fixed minor typos</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+303</span>/<span class="substractions">-74</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> emacs update keybindings for agda</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="">8366e11 </a> on  27 Jun 2018
+        Latest commit <a href="">7756bd8 </a> on  02 Jul 2018
     </div>
     </div>
   </div>
@@ -163,15 +163,17 @@ more.</p>
 </code></pre></div></div>
 
 <ul>
+  <li><a href="https://github.com/rdallasgray/graphene">Graphene starting kit</a></li>
+</ul>
+
+<p>Good ideas but I prefer to not use it.</p>
+
+<ul>
+  <li>your default initialisation file is ~/.emacs.d/init.el.</li>
   <li>
-    <p><a href="https://github.com/rdallasgray/graphene">Graphene starting kit</a></p>
+    <p>packages repo:</p>
 
-    <ul>
-      <li>your default initialisation file is ~/.emacs.d/init.el.</li>
-      <li>
-        <p>packages repo:</p>
-
-        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;; Require Emacs' package functionality
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;; Require Emacs' package functionality
 (require 'package)
 
 ;; Add the Melpa repository to the list of package sources
@@ -179,9 +181,7 @@ more.</p>
 
 ;; Initialise the package system.
 (package-initialize)
-</code></pre></div>        </div>
-      </li>
-    </ul>
+</code></pre></div>    </div>
   </li>
 </ul>
 
@@ -189,9 +189,69 @@ more.</p>
 that, do <code class="highlighter-rouge">M-x list-packages</code>, search for ‘graphene’ (either manually or using
 <code class="highlighter-rouge">C-s</code>), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.</p>
 
+<h2 id="completation">Completation</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+; (bind-key "\e\e\e" 'company-abort)
+; (bind-key "\C-g" 'company-abort)
+; (bind-key "" 'company-select-next)
+; (bind-key "" 'company-select-previous)
+; (bind-key "" 'company-select-next-or-abort)
+; (bind-key "" 'company-select-previous-or-abort)
+; (bind-key "" 'company-next-page)
+; (bind-key "" 'company-previous-page)
+; (bind-key "" 'company-complete-mouse)
+; (bind-key "" 'company-select-mouse)
+; (bind-key "" 'company-complete-selection)
+(bind-key "TAB" 'company-complete-common)
+; (bind-key "" 'company-show-doc-buffer)
+; (bind-key "" 'company-show-location)
+; (bind-key "" 'company-search-candidates)
+; (bind-key "" 'company-filter-candidates)
+</code></pre></div></div>
+
 <h2 id="agda"><a href="http://gitub.com/agda/agda">Agda</a></h2>
 
-<p>Run in the command line <code class="highlighter-rouge">agda-mode compile</code> and <code class="highlighter-rouge">agda-mode setup</code>.</p>
+<p>Run in the command line <code class="highlighter-rouge">agda-mode compile</code> and <code class="highlighter-rouge">agda-mode setup</code>.
+Since I prefer to maintain the keybindings explicit, this goes in the <code class="highlighter-rouge">init.el</code> file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+
+(require 'bind-key)
+(bind-key "C-c ,"     'agda2-goal-and-context                 )
+(bind-key "C-c ."     'agda2-goal-and-context-and-inferred    )
+(bind-key "C-c ;"     'agda2-goal-and-context-and-checked     )
+(bind-key "C-c ="     'agda2-show-constraints                 )
+(bind-key "C-c ?"     'agda2-show-goals                       )
+(bind-key "C-c C-a"   'agda2-abort                            )
+(bind-key "C-c C-a"   'agda2-auto                             )
+(bind-key "C-c C-b"   'agda2-previous-goal                    )
+(bind-key "C-c C-d"   'agda2-infer-type-maybe-toplevel        )
+(bind-key "C-c C-d"   'agda2-remove-annotations               )
+(bind-key "C-c C-e"   'agda2-show-context                     )
+(bind-key "C-c C-f"   'agda2-next-goal                        )
+(bind-key "C-c C-r"   'agda2-refine                           )
+(bind-key "C-c C-s"   'agda2-solve-maybe-all                  )
+(bind-key "C-c C-w"   'agda2-why-in-scope-maybe-toplevel      )
+(bind-key "C-c C-z"   'agda2-search-about-toplevel            )
+(bind-key "C-c SPC"   'agda2-give                             )
+(bind-key "C-c c"     'agda2-make-case                        )
+(bind-key "C-c h"     'agda2-helper-function-type             )
+(bind-key "C-c l"     'agda2-load                             )
+(bind-key "C-c n"     'agda2-compute-normalised-maybe-toplevel)
+(bind-key "C-c o"     'agda2-module-contents-maybe-toplevel   )
+(bind-key "C-c t"     'agda2-goal-type                        )
+(bind-key "C-c C-g"   'agda2-go-back                          )
+; (bind-key "C-x c"   'agda2-compile                          )
+(bind-key "C-x C-h"   'agda2-display-implicit-argurments      )
+(bind-key "C-x C-q"   'agda2-quit                             )
+(bind-key "C-x C-r"   'agda2-restart                          )
+(bind-key "C-x d"     'agda2-remove-annotations               )
+; (bind-key "C-c C-s"     'agda2-set-program-version         )
+</code></pre></div></div>
 
 <h2 id="proof-general"><a href="https://proofgeneral.github.io/">Proof-General</a></h2>
 
@@ -202,7 +262,7 @@ cd ~/.emacs.d/lisp/PG
 make
 </code></pre></div></div>
 
-<h2 id="lookfeel">Look&amp;feel</h2>
+<h2 id="theme">Theme</h2>
 
 <p>I think the spacemacs did it very good in this aspect. I searched and
 there its theme available without the need to install all the spacemacs.</p>

@@ -1,12 +1,12 @@
 \begin{code}
 {-# OPTIONS --without-K #-}
-
 open import HoTT
 
 module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where
+
   f : {p : x == y}{u : B x}{v : B y}
     → Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p)
-    → PathOver B p u v
+    → u == v [ B ↓ p ] -- PathOver B p u v
   f (idp , idp) = idp
 
   g : {p : x == y}{u : B x}{v : B y}
@@ -21,7 +21,7 @@ module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where
     ap-fst-pair= idp idp = idp
 
   f-g : {p : x == y}{u : B x}{v : B y}
-    →  (r : PathOver B p u v)
+    → (r : PathOver B p u v)
     → f (g r) == r
   f-g {p = idp} idp = idp
 
