@@ -38,6 +38,8 @@ brew install cask
 
 * [Graphene starting kit](https://github.com/rdallasgray/graphene)
 
+Good ideas but I prefer to not use it.
+
   - your default initialisation file is ~/.emacs.d/init.el.
   - packages repo:
 
@@ -56,10 +58,72 @@ Then either select those lines and do `M-x eval-region`, or restart Emacs. After
 that, do `M-x list-packages`, search for 'graphene' (either manually or using
 `C-s`), mark it for installation by pressing 'i', and install it by pressing 'x'.
 
+## Completation
+
+```
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+; (bind-key "\e\e\e" 'company-abort)
+; (bind-key "\C-g" 'company-abort)
+; (bind-key "" 'company-select-next)
+; (bind-key "" 'company-select-previous)
+; (bind-key "" 'company-select-next-or-abort)
+; (bind-key "" 'company-select-previous-or-abort)
+; (bind-key "" 'company-next-page)
+; (bind-key "" 'company-previous-page)
+; (bind-key "" 'company-complete-mouse)
+; (bind-key "" 'company-select-mouse)
+; (bind-key "" 'company-complete-selection)
+(bind-key "TAB" 'company-complete-common)
+; (bind-key "" 'company-show-doc-buffer)
+; (bind-key "" 'company-show-location)
+; (bind-key "" 'company-search-candidates)
+; (bind-key "" 'company-filter-candidates)
+```
 
 ## [Agda](http://gitub.com/agda/agda)
 
 Run in the command line `agda-mode compile` and `agda-mode setup`.
+Since I prefer to maintain the keybindings explicit, this goes in the `init.el` file:
+
+
+```
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+
+(require 'bind-key)
+(bind-key "C-c ,"     'agda2-goal-and-context                 )
+(bind-key "C-c ."     'agda2-goal-and-context-and-inferred    )
+(bind-key "C-c ;"     'agda2-goal-and-context-and-checked     )
+(bind-key "C-c ="     'agda2-show-constraints                 )
+(bind-key "C-c ?"     'agda2-show-goals                       )
+(bind-key "C-c C-a"   'agda2-abort                            )
+(bind-key "C-c C-a"   'agda2-auto                             )
+(bind-key "C-c C-b"   'agda2-previous-goal                    )
+(bind-key "C-c C-d"   'agda2-infer-type-maybe-toplevel        )
+(bind-key "C-c C-d"   'agda2-remove-annotations               )
+(bind-key "C-c C-e"   'agda2-show-context                     )
+(bind-key "C-c C-f"   'agda2-next-goal                        )
+(bind-key "C-c C-r"   'agda2-refine                           )
+(bind-key "C-c C-s"   'agda2-solve-maybe-all                  )
+(bind-key "C-c C-w"   'agda2-why-in-scope-maybe-toplevel      )
+(bind-key "C-c C-z"   'agda2-search-about-toplevel            )
+(bind-key "C-c SPC"   'agda2-give                             )
+(bind-key "C-c c"     'agda2-make-case                        )
+(bind-key "C-c h"     'agda2-helper-function-type             )
+(bind-key "C-c l"     'agda2-load                             )
+(bind-key "C-c n"     'agda2-compute-normalised-maybe-toplevel)
+(bind-key "C-c o"     'agda2-module-contents-maybe-toplevel   )
+(bind-key "C-c t"     'agda2-goal-type                        )
+(bind-key "C-c C-g"   'agda2-go-back                          )
+; (bind-key "C-x c"   'agda2-compile                          )
+(bind-key "C-x C-h"   'agda2-display-implicit-argurments      )
+(bind-key "C-x C-q"   'agda2-quit                             )
+(bind-key "C-x C-r"   'agda2-restart                          )
+(bind-key "C-x d"     'agda2-remove-annotations               )
+; (bind-key "C-c C-s"     'agda2-set-program-version         )
+```
 
 ## [Proof-General](https://proofgeneral.github.io/)
 
@@ -71,7 +135,7 @@ cd ~/.emacs.d/lisp/PG
 make
 ```
 
-## Look&feel
+## Theme
 
 I think the spacemacs did it very good in this aspect. I searched and
 there its theme available without the need to install all the spacemacs.
