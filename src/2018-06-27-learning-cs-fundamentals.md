@@ -14,7 +14,7 @@ I'm planning to see every lesson, let's see what happen.
 ## CS Fundamentals
 
 - [x] [arrays](https://brilliant.org/practice/arrays/?chapter=intro-to-algorithms&p=2)
-- [ ] [searching](https://brilliant.org/practice/searching/?chapter=intro-to-algorithms)
+- [x] [searching](https://brilliant.org/practice/searching/?chapter=intro-to-algorithms)
 - [ ] [insertion-sort](https://brilliant.org/practice/insertion-sort/?chapter=intro-to-algorithms)
 - [ ] [big-o-notation-2](https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms)
 - [ ] [recursion](https://brilliant.org/practice/recursion/?chapter=recursion)

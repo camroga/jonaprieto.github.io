@@ -10,7 +10,7 @@ Collection of some learning resources for Agda
 
 ### [Advanced Functional Programming CS410-17 by Conor McBride](https://github.com/pigworker/CS410-17/)
 
-- [ ] [Programs and Proofs](https://www.youtube.com/watch?v=O4oczQry9Jw)
+- [x] [Programs and Proofs](https://www.youtube.com/watch?v=O4oczQry9Jw)
 - [ ] [more Programs and Proofs, Introducing "with"](https://www.youtube.com/watch?v=qcVZxQTouDk)
 - [ ] [Proof by Induction](https://www.youtube.com/watch?v=8xFT9FPlm18)
 - [ ] [Sigma, Difference, Vector Take](https://www.youtube.com/watch?v=OZeDRtRmgkw)

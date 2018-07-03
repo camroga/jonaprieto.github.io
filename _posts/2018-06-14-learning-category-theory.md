@@ -20,7 +20,7 @@ some. Maybe could be the starting point for someone else.
 - [x] [4 Natural transformations](https://www.youtube.com/watch?v=q9kDfAqgBUI)
 - [x] [5 Representables and yoneda](https://www.youtube.com/watch?v=71OiJrGLGkM)
 - [x] [6a Adjunctions until 22:00](https://www.youtube.com/watch?v=pXbJ4Calego)
-- [ ] [7 Monads](https://www.youtube.com/watch?v=Tl8H2G7W1wc)
+- [x] [7 Monads](https://www.youtube.com/watch?v=Tl8H2G7W1wc)
 - [ ] [6b Adjunctions after 22:00](https://youtu.be/pXbJ4Calego?t=22m24s)
 - [ ] [8 String diagrams](https://www.youtube.com/watch?v=soTuQStXwoo)
 - [ ] [9 General limits and colimits](https://www.youtube.com/watch?v=urol_uP1hwE)
@@ -73,6 +73,10 @@ some. Maybe could be the starting point for someone else.
 - [ ] [II 9.1: Lenses](https://www.youtube.com/watch?v=9_iYlp8smc8)
 - [ ] [II 9.2: Lenses categorically](https://www.youtube.com/watch?v=rAa3pGp97IM)
 
+<div class="references" markdown="1">
+
 ## Related Questions
 
 - https://mathoverflow.net/questions/76083/categories-presented-with-arrows-only-no-objects-partial-monoids
+
+</div>
