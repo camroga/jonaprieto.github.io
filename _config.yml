@@ -9,7 +9,9 @@ timezone:            'Europe/Oslo'
 # paginate:            100
 
 highlighter: rouge
-parse_liquid_in_code_blocks: false
+gist:
+  noscript: false
+
 markdown: kramdown
 # kramdown:
 #   parse_block_html: true
