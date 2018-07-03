@@ -34,4 +34,9 @@ module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where
     → (Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p)) ≃ PathOver B p u v
   e = equiv f g f-g g-f
 
+
+-- Heterogenous equality
+
+--  data HE (A : _) (B : _) : (α : A == B) (a : A) (b : B) → Set where
+--    hidp : HE A A idp a a
 \end{code}
