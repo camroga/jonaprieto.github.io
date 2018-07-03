@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Learning Agda</title>
-  <meta name="description" content="Collection of some learning resources for Agda">
+  <title>Latex tricks</title>
+  <meta name="description" content="">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -121,7 +121,7 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+49</span>/<span class="substractions">-19</span>)</span>:
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+90</span>/<span class="substractions">-34</span>)</span>:
           <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> minor changes</a></span>
       </div>
     <div class="main-last-date">
@@ -131,33 +131,56 @@
   </div>
   
 
-  <h1 class="post-title">Learning Agda</h1>
+  <h1 class="post-title">Latex tricks</h1>
 
   
-  <p>Collection of some learning resources for Agda</p>
+  <div class="references">
 
-<h3 id="advanced-functional-programming-cs410-17-by-conor-mcbride"><a href="https://github.com/pigworker/CS410-17/">Advanced Functional Programming CS410-17 by Conor McBride</a></h3>
+  <p>A collection of useful tricks and snippets to use in Latex.</p>
 
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=O4oczQry9Jw">Programs and Proofs</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=qcVZxQTouDk">more Programs and Proofs, Introducing “with”</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=8xFT9FPlm18">Proof by Induction</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=OZeDRtRmgkw">Sigma, Difference, Vector Take</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=b5salYMZoyM">How Rewrite Works</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=RW4aC_6n0yQ">A Comedy of (Entirely Non-Deliberate) Errors</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=2LxtHeZlaVw">“Dominoes”, no really, this time</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=RCRddhYegzI">Functors</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=vTmYvoDrBlc">From Functors to Monads</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=2sykXdidZVA">Natural Transformations and Monads</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=iYegg8Rzhr4">From Monads to Input/Output</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=8WUz2HmXBqI">How to Run a Program (and come a-cropper)</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=MwtWdiyFJtA">Monads on Indexed Sets (Ex2)</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=kX3mvyFHDDU">What is an Application?</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=ZCdYIEwcna0">Coinduction and Coalgebras</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=AjyUNakYHRs">Polynomial Data and Codata</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=E8xIJolKEAI">A Polynomial Universe</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=-3MiZ80WldY">The Zipper (Differentiating Polynomial Types)</a></li>
-</ul>
+  <h3 id="highlight-undefined-references-and-citation-by-stefan-kottwitz">Highlight undefined references and citation by Stefan Kottwitz</h3>
+
+  <ul>
+    <li>See https://latex.org/forum/viewtopic.php?t=13654</li>
+    <li>See https://tex.stackexchange.com/questions/176297/automatically-highlight-undefined-references</li>
+  </ul>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
+  <span class="k">\usepackage</span><span class="p">{</span>xcolor<span class="p">}</span>
+  <span class="k">\newcommand*</span><span class="p">{</span><span class="k">\missingreference</span><span class="p">}{</span><span class="k">\colorbox</span><span class="p">{</span>red<span class="p">}{</span>?reference?<span class="p">}}</span>
+  <span class="k">\newcommand*</span><span class="p">{</span><span class="k">\missingcitation</span><span class="p">}{</span><span class="k">\colorbox</span><span class="p">{</span>red<span class="p">}{</span>?citation?<span class="p">}}</span>
+  <span class="k">\makeatletter</span>
+  <span class="k">\def\@</span>setref#1#2#3<span class="p">{</span><span class="c">%</span>
+     <span class="k">\ifx</span>#1<span class="k">\relax</span>
+      <span class="k">\protect\G</span>@refundefinedtrue
+      <span class="k">\nfss</span>@text<span class="p">{</span><span class="k">\reset</span>@font<span class="k">\missingreference</span><span class="p">}</span><span class="c">%</span>
+      <span class="k">\@</span>latex@warning<span class="p">{</span>Reference `#3' on page <span class="k">\thepage</span> <span class="k">\space</span>
+                undefined<span class="p">}</span><span class="c">%</span>
+     <span class="k">\else</span>
+      <span class="k">\expandafter</span>#2#1<span class="k">\null</span>
+     <span class="k">\fi</span><span class="p">}</span>
+  <span class="k">\def\@</span>citex[#1]#2<span class="p">{</span><span class="k">\leavevmode</span>
+     <span class="k">\let\@</span>citea<span class="k">\@</span>empty
+     <span class="k">\@</span>cite<span class="p">{</span><span class="k">\@</span>for<span class="k">\@</span>citeb:=#2<span class="k">\do</span>
+       <span class="p">{</span><span class="k">\@</span>citea<span class="k">\def\@</span>citea<span class="p">{</span>,<span class="k">\penalty\@</span>m<span class="k">\ </span><span class="p">}</span><span class="c">%</span>
+        <span class="k">\edef\@</span>citeb<span class="p">{</span><span class="k">\expandafter\@</span>firstofone<span class="k">\@</span>citeb<span class="k">\@</span>empty<span class="p">}</span><span class="c">%</span>
+        <span class="k">\if</span>@filesw<span class="k">\immediate\write\@</span>auxout<span class="p">{</span><span class="k">\string\citation</span><span class="p">{</span><span class="k">\@</span>citeb<span class="p">}}</span><span class="k">\fi</span>
+        <span class="k">\@</span>ifundefined<span class="p">{</span>b@<span class="k">\@</span>citeb<span class="p">}{</span><span class="k">\hbox</span><span class="p">{</span><span class="k">\reset</span>@font<span class="k">\missingcitation</span><span class="p">}</span><span class="c">%</span>
+          <span class="k">\G</span>@refundefinedtrue
+          <span class="k">\@</span>latex@warning
+            <span class="p">{</span>Citation `<span class="k">\@</span>citeb' on page <span class="k">\thepage</span> <span class="k">\space</span> undefined<span class="p">}}</span><span class="c">%</span>
+          <span class="p">{</span><span class="k">\@</span>cite@ofmt<span class="p">{</span><span class="k">\csname</span> b@<span class="k">\@</span>citeb<span class="k">\endcsname</span><span class="p">}}}}{</span>#1<span class="p">}}</span>
+  <span class="k">\makeatother</span>
+  <span class="nt">\begin{document}</span>
+
+  This is a missing reference: <span class="k">\ref</span><span class="p">{</span>somefig<span class="p">}</span>.
+
+  This is a mssing citation: <span class="k">\cite</span><span class="p">{</span>somebib<span class="p">}</span>.
+
+  <span class="nt">\end{document}</span>
+</code></pre></div>  </div>
+
+</div>
 
 
   <!-- <h2> References </h2> -->
@@ -169,6 +192,17 @@
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning-plans/2018/06/30/learning-Agda/">
+            Learning Agda
+            
+            <small>30 Jun 2018</small>
+            
+          </a>
+        </h3>
+      </li>
     
       <li>
         <h3>
@@ -185,17 +219,6 @@
         <h3>
           <a href="/learning-plans/2018/06/27/learning-graph-theory/">
             Learning Graph Theory
-            
-            <small>27 Jun 2018</small>
-            
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/learning-plans/2018/06/27/learning-cs-fundamentals/">
-            Learning CS Fundamentals
             
             <small>27 Jun 2018</small>
             
