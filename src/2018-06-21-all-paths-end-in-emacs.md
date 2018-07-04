@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Towards an Emacs militant"
+title: "Emacs"
 date: "2018-06-21"
 categories: text-editors
 ---

@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Learning Category Theory"
+title: "Categories"
 date: "2018-06-14"
 categories: learning-plans
 ---

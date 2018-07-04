@@ -37,6 +37,7 @@ module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where
 
 -- Heterogenous equality
 
---  data HE (A : _) (B : _) : (α : A == B) (a : A) (b : B) → Set where
---    hidp : HE A A idp a a
+-- data HE (A : _) (B : _) : (α : A == B) (a : A) (b : B) → Set where
+--   hidp : HE A A idp a a
+
 \end{code}

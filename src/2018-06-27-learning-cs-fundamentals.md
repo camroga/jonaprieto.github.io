@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Learning CS Fundamentals"
+title: "CS Fundamentals"
 date: "2018-06-27"
 categories: learning-plans
 published: true

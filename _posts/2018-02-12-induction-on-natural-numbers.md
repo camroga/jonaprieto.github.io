@@ -2,7 +2,7 @@
 layout: "post"
 title: "Induction on Natural Numbers"
 date: "2018-02-12"
-categories: type-theory
+categories: Types
 ---
 
 The induction principle comes from a generalization of a dependent function that

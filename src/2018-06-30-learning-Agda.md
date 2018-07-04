@@ -1,12 +1,13 @@
 ---
 layout: "post"
-title: "Learning Agda"
+title: "Functional Programming"
 date: "2018-06-30"
 categories: learning-plans
 published: true
+search: false
 ---
 
-Collection of some learning resources for Agda
+Collection of some learning resources about Agda
 
 ### [Advanced Functional Programming CS410-17 by Conor McBride](https://github.com/pigworker/CS410-17/)
 

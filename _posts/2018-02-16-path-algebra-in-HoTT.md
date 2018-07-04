@@ -2,7 +2,7 @@
 layout: "post"
 title: "Path Algebra in HoTT"
 date: "2018-02-16"
-categories: type-theory
+categories: Types
 ---
 
 In Univalence we have a different interpretation of type theory. We replace the

@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Learning Graph Theory"
+title: "Graphs"
 date: "2018-06-27"
 categories: learning-plans
 published: true

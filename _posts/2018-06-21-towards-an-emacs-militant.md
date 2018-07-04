@@ -1,8 +1,8 @@
 ---
 layout: "post"
-title: "Emacs"
+title: "Towards an Emacs militant"
 date: "2018-06-21"
-categories: text-editors
+categories: learning
 ---
 
 I’m not dogmatic about which editor is the best. I use at least three different

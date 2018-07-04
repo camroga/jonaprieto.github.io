@@ -1,0 +1,404 @@
+\chapter{Natural isomorphisms}
+\lecturedetails{2 November 2017}{M Fiore, A Ivašković, D Makwana }
+
+%TODO: intro/clarification from start of the lecture?
+
+We still focus our attention on natural transformations, and are moving
+towards introducing \emph{representations}.
+
+\section{Definition and basic properties}
+
+\begin{definition}[Natural isomorphisms]
+Given functors $F, G : \lscat A \to \lscat B$, a natural transformation
+$\varphi: F \natto G$ is a \emph{natural isomorphism} whenever there exists a
+(necessarily unique) natural transformation $\varphi^{-1}: G \natto F$ such
+that: 
+\[ \varphi \comp \varphi^{-1} = \id{G} \]
+\[ \varphi^{-1} \comp \varphi = \id{F} \]
+\end{definition}
+
+\begin{theorem}
+For functors $F, G : \lscat A \to \lscat B$, a natural transformation
+$\varphi: F \natto G$ is a natural isomorphism if and only if:
+\[ \forall\, A \in \lscat A.\ \text{$\varphi_A: FA \to GA$ is an isomorphism} \]
+\end{theorem}
+
+\begin{proof}
+We need to prove both implications of this statement.
+
+\begin{itemize}
+
+\item[($\Rightarrow$)] Let $\varphi$ be an isomorphism. So there exists a
+$\varphi^{-1}$ that satisfies the properties from the definition:
+\[ \varphi \comp \varphi^{-1} = \id{G} \]
+Let $A \in \lscat A$. Then, since
+\[ (\varphi \comp \varphi^{-1})_A = \varphi_A \comp \varphi_A^{-1} \]
+\[ ( \id{G} )_A = \id{GA} \]
+we can conclude:
+\[ \varphi_A \comp \varphi_A^{-1} = \id{GA} \]
+
+Similarly:
+\[ \varphi_A^{-1} \comp \varphi_A = (\varphi^{-1} \comp \varphi)_A = (\id{F})_A
+= \id{FA} \]
+
+\item[($\Leftarrow$)] Suppose $\varphi_A: FA \to GA$ has an inverse
+$\varphi_A^{-1}: GA \to FA$ for all $A \in \lscat A$. Then define:
+\[ \varphi^{-1} \eqdef \setof{\varphi_A^{-1}: GA \to FA}_{A\in\lscat A} \]
+Then it is clear that:
+\[ \varphi \comp \varphi^{-1} = \id{G} \]
+\[ \varphi^{-1} \comp \varphi = \id{F} \]
+It remains to show that the family $\varphi^{-1}$ is a natural transformation.
+That is, we want to prove that the following diagram commutes:
+
+\begin{center}
+\begin{tikzcd}
+    A \arrow{d}{\text{in $\lscat A$}}[swap]{\forall\,f} &
+    GA \arrow{r}{\varphi_A^{-1}} \arrow{d}{Gf} & FA \arrow{d}{Ff} \\
+    A & GA^{\prime} \arrow{r}{\varphi_{A^{\prime}}^{-1}} & FA^{\prime}
+\end{tikzcd}
+\end{center}
+
+This is not difficult: since $\varphi$ is natural, the following diagram
+commutes:
+\begin{center}
+\begin{tikzcd}
+    FA \arrow{r}{\varphi_A} \arrow{d}{Ff} & GA \arrow{d}{Gf} \\
+    FA^{\prime} \arrow{r}{\varphi_{A^{\prime}}} & GA^{\prime}
+\end{tikzcd}
+\end{center}
+for all $f:A\to A'$ in $\lscat A$;
+that is, $Gf \comp \varphi_A = \varphi_{A^{\prime}} \comp Ff$. Left composing
+both sides of the equality with $\varphi_{A^{\prime}}^{-1}$ and right composing
+them with $\varphi_{A}^{-1}$, we have
+\[ \varphi_{A^{\prime}}^{-1} \comp Gf \comp \varphi_A \comp \varphi_A^{-1} =
+\varphi_{A^{\prime}}^{-1} \comp \varphi_{A^{\prime}} \comp Ff
+\comp \varphi_A^{-1} \]
+which is just
+\[ \varphi_{A^{\prime}}^{-1} \comp Gf = Ff \comp \varphi_A^{-1} \]
+which is what we wanted to prove. Therefore $\varphi^{-1}$ is a natural
+isomorphism.
+
+\end{itemize}
+\end{proof}
+
+Intuitively, this means that, for a natural transformation to be an isomorphism,
+it has to be an isomorphism at `every level' or `for every component'.
+
+\begin{exercise}
+Investigate whether the analogous result holds for natural monomorphisms,
+epimorphisms, sections and retractions (which are all defined similarly to
+natural isomorphisms).
+\end{exercise}
+
+\section{Representable functors}
+
+Given a functor $F: \lscat A \times \lscat B \to \lscat C$ (so it is a functor
+`of two variables'), define the functor $F (A, \phold): \lscat B \to \lscat C$
+for a fixed $A$:
+
+\begin{center}
+\begin{tikzcd}
+B \arrow[dd, "g"{name=L, right}] & &
+F (A, B) \arrow[dd, "F(\id{A}{,} g)"{name=R, left}] \\
+\arrow[rr, from=L, to=R, mapsto] & & \\
+B^{\prime} &  & F (A, B^{\prime})
+\end{tikzcd}
+\end{center}
+
+Intuitively, this means that we are performing a `restriction' of the first
+argument.
+
+Similarly, we may for a fixed $B \in \lscat B$ define the functor
+$F (\phold, B) : \lscat A \to \lscat C$ as follows:
+
+\begin{center}
+\begin{tikzcd}
+A \arrow[dd, "f"{name=L, right}] & &
+    F (A, B) \arrow[dd, "F(f{,}\id{B})"{name=R, left}] \\
+\arrow[rr, from=L, to=R, mapsto] & & \\
+A^{\prime} &  & F (A^{\prime}, B)
+\end{tikzcd}
+\end{center}
+
+We want to apply these to the hom functor:
+\[ \lscat C (\phold, \Phold): {\lscat C}^\op \times \lscat C \to \catset \]
+obtaining what is called a (contravariant) \emph{representable functor}: for
+fixed $C \in \lscat C$, this is
+\[
+\lscat{C} (\phold, C): C^\op \to \catset 
+\]
+given by:
+
+\begin{center}
+\begin{tikzcd}
+X & & \lscat C (X, C) \arrow[dd, ""{name=R, left}] & x \arrow[dd, mapsto] \\
+& & & \\
+Y \arrow[uu, "f"{name=L, right}] & & \lscat C (Y, C) & x \comp f
+\arrow[rr, from=L, to=R, mapsto]
+\end{tikzcd}
+\end{center}
+
+\section{Characterising natural isomorphisms between representable functors}
+
+Now consider two fixed $A$ and $B$ in $\lscat C$. We are interested in the
+natural transformations $\varphi$ of the form:
+\[ 
+  \lscat C(\phold, A) \natarr{\varphi} \lscat C(\phold, B) 
+  : {\lscat C}^\op \to \catset 
+\]
+Is it possible to characterise them precisely? The answer is \emph{yes} --
+this is because naturality is a very strong property.\footnote{Naturality for
+  a family of morphisms is a polymorphism-like property of a program in a
+  programming language. Think, for instance, of the polymorphic type
+  $\forall\, \alpha.\ \alpha \to \alpha$ in pure ML or System~F: the only
+  valid expression of this type is the identity function!} 
+It turns out that this is not that difficult. Let $\varphi$ be the natural
+family of functions:
+\[ 
+  \varphi 
+  = 
+  \setof{\varphi_X: \lscat C (X, A) \to \lscat C (X, B)}_{X \in \lscat C} 
+\]
+One of its members is $\varphi_A: \lscat C (A, A) \to \lscat C (A, B)$.
+Define: 
+\[ 
+  \widehat{\varphi} 
+  \,\eqdef\, 
+  \varphi_A (\id{A}) : A \to B \text{ in } \lscat C 
+\]
+We claim that $\widehat{\varphi}$ completely determines all of $\varphi$ (that
+is $\varphi_X$, for each $X\in\lscat C$) 
+\emph{because of the naturality condition}.
+
+This is seen from the following commutative diagram, for any $X$:
+
+\begin{center}
+\begin{tikzcd}
+    A & \lscat C (A, A) \arrow[rrr, "\varphi_A"] \arrow[ddd, "\phold \comp f"]
+    & & & \lscat C (A, B) \arrow[ddd, "\phold \comp f"] & \\
+    & & \id{A} \arrow[lu, phantom, "\rotatebox{135}{$\in$}"] \arrow[rrr, mapsto]
+    \arrow[ddd, mapsto]
+    & & & \widehat{\varphi} \arrow[lu, phantom, "\rotatebox{135}{$\in$}"]
+    \arrow[ddd, mapsto] \\
+    & & & & & \\
+    X \arrow[uuu, "f"] & \lscat C (X, A) \arrow[rrr, "\varphi_X"]
+    & & & \lscat C (X, B) & \\
+    & & \id{A} \comp f & & & \widehat{\varphi} \comp f \\
+    & X \morpharr{f} A \arrow[rrr, mapsto]
+    \arrow[uu, phantom, "\rotatebox{90}{$\in$}"]
+    \arrow[ru, phantom, "\rotatebox{45}{$=$}"] & & &
+    \varphi_X (f) \arrow[ru, phantom, "\rotatebox{45}{$=$}"]
+    \arrow[uu, phantom, "\rotatebox{90}{$\in$}"] &
+\end{tikzcd}
+\end{center}
+
+All the natural transformations 
+$\lscat C(-,A)\Rightarrow\lscat C(-,B):\lscat C^\op\to\catset$ are
+\textit{exactly} characterised by being in bijective correspondence with maps
+$A \to B$ in $\lscat C$. Here we have only shown one direction of this claim.
+
+\begin{exercise}
+Show that every map $f: A \to B$ yields a natural transformation:
+\[ \lscat C (\phold, A) \natarr{\widetilde{f}} \lscat C (\phold, B) \]
+given by:
+\[ \begin{array}{crcl}
+    \widetilde{f}_X: & \lscat C (X, A) & \to & \lscat C (X, B) \\
+    & x & \mapsto & f \comp x
+\end{array} \]
+\end{exercise}
+
+\begin{exercise}
+Show that the constructions $\widehat{(\phold)}$ and $\widetilde{(\phold)}$
+are inverses of each other:
+\[ \varphi \mapsto \widehat{\varphi} \mapsto \widetilde{\widehat{\varphi}} =
+\varphi \]
+\[ f \mapsto \widetilde{f} \mapsto \widehat{\widetilde{f}} = f \]
+\end{exercise}
+
+\subsection{A technique for proving isomorphisms}\label{subsec:proveiso}
+
+Notation: a double-lined fraction is typically used to express a bijective
+correspondence. With this notation, the result proven above, is sometimes
+written as:
+
+\[ 
+  \Efrac
+    {\lscat C (\phold, A) \natarrow \lscat C (\phold, B) }
+    { \lscat C(A, B) }
+\]
+
+Suppose one was trying to show that two objects $A$ and $B$ are isomorphic.
+This will usually involve constructing some isomorphism $ f : A \to B $.  In
+practice, one can sometimes use the above result and instead come up with some
+natural isomorphism $\lscat C (\phold, A) \natarr{\varphi} \lscat C (\phold,
+B)$, which amounts to establishing 
+\[
+  \Efrac{X \to A}{X \to B} \quad\text{`natural in $X$'}
+\]
+and then define $f$ to be $\widehat{\varphi}$.
+
+\section{A binary product construction}
+
+Fix a diagram
+\[
+  A \overset{\alpha}{\longleftarrow} P \morpharr{\beta} B
+\]
+in a category $\lscat C$ and define the functor 
+\[
+  K_{A,B}(-) \eqdef \lscat C (\phold, A) \times \lscat C (\phold, B)
+\]
+(NB: The product of two functors is a functor.)
+
+For every $X \in \lscat C^\op $, define the function 
+\begin{center}
+\begin{tikzcd}
+\lscat C(X, P) \arrow[rr, "{(\alpha \comp \phold, \beta \comp \phold)}_X"]
+& & \lscat C (X, A) \times \lscat C (X, B) 
+\\
+X \arrow[dd, "p", swap]
+& & 
+X \arrow[dd, "\alpha \comp p", end anchor={[xshift=1em]north west}, swap]
+  \arrow[dd, "\beta \comp p", end anchor ={[xshift=-1em]north east}] 
+\\
+\arrow[rr, mapsto, start anchor={[xshift=2em]}, end anchor={[xshift=-4em]}] 
+& & \  
+\\
+P & & A \hskip 4em B
+\end{tikzcd}
+\end{center}
+
+We claim that the family of maps
+\[
+(\alpha \comp \phold, \beta \comp \phold) 
+\ \eqdef \
+\bigsetof{\,
+  {(\alpha \comp \phold, \beta \comp \phold)}_X 
+  :\lscat C(X,P) \to K_{A,B}(X)
+  \,}_{X \in \lscat C^\op}
+\]
+satisifies the naturality condition:
+\begin{center}
+\begin{tikzcd}
+&&&&
+x \arrow[rr,mapsto]
+&&
+(\alpha\comp x,\beta\comp x)
+&
+\\
+X 
+&&&
+p
+\arrow[dd,mapsto]
+& 
+\lscat C(X,P) 
+\arrow[rr, "{(\alpha \comp\;\phold,\;\beta \comp\;\phold)}_X"]
+\arrow[dd, "{C(g,P)}"]
+&& 
+K (X) 
+\arrow[dd, "K_{A,B}(g)"]
+& (a,b) 
+\arrow[dd, mapsto] 
+\\
+& & & & & 
+\\
+Y 
+\arrow[uu, "\forall\, g"] 
+&&
+&
+p\comp g
+& 
+\lscat C (Y, P) 
+\arrow[rr, swap, "{(\alpha \comp\;\phold,\;\beta \comp\;\phold)}_Y"]
+&& 
+K_{A,B}(Y)
+& 
+(a \comp g, b \comp g)
+\\
+&&&&
+y \arrow[rr,mapsto]
+&&
+(\alpha\comp y,\beta\comp y)
+&
+\\
+\end{tikzcd}
+\end{center}
+
+Now, given an arbitrary natural transformation 
+\[
+  \varphi 
+  : \lscat C(-,P) \Longrightarrow K_{A,B}(-)
+  : \lscat C^\op \to \catset
+\]
+one can completely determine it by looking at its component $\varphi_P$ and
+calculating what $id_P$ is mapped to:
+\[
+  \varphi_P 
+  : \lscat C (P, P) \morpharrow \lscat C (P, A) \times \lscat C (P, B) 
+\]
+and 
+\begin{equation}\label{Lecture9Exercise}
+\begin{tabular}{l}
+\text{if}
+\begin{tikzcd}
+id_P 
+\arrow[r,mapsto,"\varphi_P"]
+&
+(\, P \morpharr{\alpha} A \,,\, P \morpharr{\beta} B\,)
+\end{tikzcd}
+\\ 
+\text{then }
+$\varphi \ = \ (\alpha\comp\phold,\beta\comp\phold)
+ : \lscat C(\phold,P)\Longrightarrow K_{A,B}(-)
+ : \lscat C^\op\to\catset$.
+\end{tabular}
+\end{equation}
+
+\begin{exercise}
+Prove~(\ref{Lecture9Exercise}) and further establish
+\[
+  \Efrac
+    {\lscat C(\phold,P)\Longrightarrow K_{A,B}(\phold)}
+    {K_{A,B}(P)}
+  \text{nat.~in $X$}
+\]
+\end{exercise}
+
+We now ask:  When is the natural transformation 
+\[
+(\alpha\comp\phold,\beta\comp\phold)
+: \lscat C(\phold,P)\Longrightarrow\lscat C(\phold,A)\times\lscat C(\phold,B)
+: \lscat C^\op\to\catset
+\]
+an isomorphism?
+\begin{align*}
+& \hspace*{-5.5mm}
+(\alpha\comp\phold,\beta\comp\phold)
+: \lscat C (\phold, P) 
+    \natarrow \lscat C (\phold, A) \times \lscat C (\phold, B) 
+\text{ is a natural isomorphism}
+\\[1mm]
+\text{iff }\ & 
+\forall\, X\in\lscat C.\;
+  (\alpha\comp\phold,\beta\comp\phold)_X
+  : \lscat C (X, P) \morpharrow \lscat C (X, A) \times \lscat C (X, B)
+  \textrm{ is a bijection}
+\\[1mm]
+\text{iff }\ & 
+\forall\, X\in\lscat C.\;
+  \forall\, f: X \to A\text{ in }\lscat C,\;
+            g: X \to B\text{ in }\lscat C.\ 
+    \exists!\, \langle f, g \rangle : X \to P\text{ in }\lscat C.\ 
+      \alpha \comp \langle f, g \rangle = f 
+      \,\wedge\,
+      \beta \comp \langle f, g \rangle = g 
+\\[1mm]
+\textrm{iff }\ & 
+A \overset{\alpha}{\longleftarrow} P \morpharr{\beta} B 
+\text{ is a product diagram in }\lscat C
+\end{align*}
+
+By generalising the proof technique presented in
+Subsection~\ref{subsec:proveiso}, %(using products and projection functors), 
+we have seen that natural isomorphisms are a convenient way to describe
+universal properties.
+

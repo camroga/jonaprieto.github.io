@@ -4,26 +4,16 @@ permalink: /about/
 title: About
 ---
 
-### This blog
+### About me
 
-Hey you, I got something to tell you. If you are reading this blog you may
-notice than everything is unfinished. That's not going to change,
-[sorry](https://open.spotify.com/track/2h6ogDxsZ6Tzy82g16nhFa?si=DXwnhcO5QKG0VpesQmgnyw).
-I believe in continuous writing as same as a programmer maintaining a
-repository. Every now and again I will change some texts, adding better
-explanations, pictures or references. So, If you find something wrong or want to
-share something don't hesitate to email me. Please use this email
-(`prieto.jona@gmail.com`). Include with the message the hash of the commit after
-`Latest commit` in [`Home`](https://jonaprieto.github.io/) in case you need to
-refer some particular post.
+A Ph.D. student at University of Bergen. I'm interested about the connections
+between mathematics and computer science. Enjoy learning about types, functional
+programming and logic. I code in python, mathematica, haskell and nowadays agda.
+For more information, checkout this repository [cv](http://github.com/jonaprieto/curriculum-vitae).
 
-Last thing, I'm not a english native speaker as you probably already noticed but
-I'm doing my best effort to improve that. Let me know please if you find some
-typo or mistake, I'll appreciate it.
+### About this blog
 
-#### Tools
-
-I'm using these tools to run this blog:
+This tool is my repository, it's open source and I hope you enjoy it.
 
 - `github-pages`
 - `jekyll` with minima theme
@@ -36,9 +26,6 @@ I'm using these tools to run this blog:
 - `linkify` to replace any url address to anchor tags
 
 ### License
-----
-
-All my content was released follows the following licensing.
 
 ```
 # Released under MIT License
@@ -51,8 +38,3 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
-
-### ME
-----
-
-A guy 🧔🏻 from 🇨🇴 living now in 🇳🇴 studying 👨‍💻 cs.

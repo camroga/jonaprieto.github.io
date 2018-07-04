@@ -16,9 +16,9 @@ const search = instantsearch({
   searchParameters: {
     restrictSearchableAttributes: [
       'title',
-      'content'
+      'content',
     ],
-    facetFilters: ['type:post']
+    facetFilters: ['type:post', "categories:-learning"]
   },
   searchFunction: function(helper) {
     if (helper.getState().query === '') {
@@ -42,13 +42,19 @@ const hitTemplate = function(hit) {
   const url = hit.url;
   const title = hit._highlightResult.title.value;
   const content = hit._highlightResult.html.value;
+  const category = hit.categories[0];
+  const message = hit.git.last_commit.message;
+  const commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;
   return `
 <div class="${hitBoxClass}">
   <div class="post-list">
       <div class="algolia">
       <div class="algolia-date">${date}</div>
         <div class="algolia-title"><a href=".${url}">${title}</a></div>
-        <div class="algolia-modified">${lastDate}</div>
+        <div class="algolia-message"><small> ${message} </small></div>
+        <div class="algolia-modified">
+        <a href=${commiturl}>${lastDate}</a>
+        </div>
       </div>
       <div class="${additionalClass}">${content} </div>
   </div>

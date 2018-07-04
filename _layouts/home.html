@@ -4,24 +4,52 @@ layout: default
 
 <div class="home">
 
+
   {{ content }}
   <div id="search-searchbar"></div>
   {% if site.github %}
   <div class="main-heading">
     <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="{{site.github.repository_url}}"> {{site.git.last_commit.message}}</a></span>
+        <span class="commit-message"> <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}"> {{site.git.last_commit.message}}</a></span>
     <a class="main-rss" href="{{ "/feed.xml" | relative_url }}">
       rss
     </a>
   </div>
   <div class="main-last-date">
-      Latest commit <a href="{{site.github.repository_url}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }}
+      Latest commit <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }}
   </div>
   </div>
   {% endif %}
-
+  <br/>
+  <div>📝 Posts </div>
   <div class="posts" id="search-hits">
   </div>
+<br/>
+
+
+  <div id="archives">
+  {% for category in site.categories %}
+  {% capture category_name %}{{ category | first }}{% endcapture %}
+    {% if category_name contains "plans" %}
+    <div id="#{{ category_name | slugize }}">📓 {{category_name | capitalize }}</div>
+    <div class="post-list">
+      {% for post in site.categories[category_name] %}
+      <div class="algolia">
+        <div class="algolia-date">{{post.date  | date: '%d/%m/%Y'}} </div>
+        <div class="algolia-title"><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></div>
+        <div class="algolia-message"><small> {{post.git.last_commit.message}}</small></div>
+        <div class="algolia-modified"><a href="{{site.github.repository_url}}/commit/{{post.git.last_commit.long_sha}}">{{post.git.last_commit.commit_date}}</a></div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+  <br>
+  <div> <a href="{{ site.baseurl }}/references" style="color:#515151"> 📚 References List </a></div>
 </div>
+
+<div class="written-by">  Written by <a href="http://github.com/jonaprieto">Jonathan Prieto-Cubides</a> </div>
+
 
 {% include algolia.html %}

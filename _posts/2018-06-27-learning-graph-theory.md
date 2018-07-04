@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Learning Graph Theory"
+title: "Graphs"
 date: "2018-06-27"
 categories: learning-plans
 published: true
@@ -78,7 +78,6 @@ My plan to learn about graphs:
 - [ ] [62. Graph Minors and Wagner's Theorem](https://www.youtube.com/watch?v=2hkLC2q2wT4)
 - [ ] [63. Petersen Graph is Non-Planar](https://www.youtube.com/watch?v=tdw_ECm8kRE)
 
-<div class="references" markdown="1">
+
 Considering this as well:
   - https://www.coursera.org/learn/graphs
-</div>
