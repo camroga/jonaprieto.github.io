@@ -231,16 +231,23 @@ h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; f
 
 .main-rss { font-size: 13%; color: #c3c3c3; }
 
+.written-by { font-size: 13px; line-height: 20px; float: right; margin-top: 10px; }
+
 .algolia { display: table; width: 100%; font-size: 13px; line-height: 20px; border-top: 1px solid #eaecef; }
 
 .algolia-date { display: table-cell; float: left; width: 70px; color: #586069; text-align: left; }
 
-.algolia-title { display: table-cell; float: left; padding-left: 5px; /* width: 400px; */ }
+.algolia-title { display: table-cell; float: left; padding-left: 5px; width: 250px; overflow: hidden; text-overflow: ellipsis; }
 
-@media all and (max-width: 30em) { .algolia-title { width: 190px; overflow: hidden; text-overflow: ellipsis; /* background-color: #000; */ /* CSS rules here */ } }
+@media all and (max-width: 30em) { .algolia-title { width: 190px; overflow: hidden; text-overflow: ellipsis; /* background-color: #000; */ /* CSS rules here */ }
+  .algolia-mesage { width: 0px; } }
 .algolia-title a { color: #000; white-space: nowrap; /* word-wrap: break-word; */ }
 
-.algolia-modified { display: table-cell; float: right; width: auto; white-space: nowrap; text-align: right; color: #586069; }
+.algolia-message { display: table-cell; float: left; padding-left: 5px; width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 3px; font-style: italic; text-transform: lowercase; color: #c2c6cb; }
+
+.algolia-modified { display: table-cell; float: right; width: 80px; white-space: nowrap; text-align: right; color: #586069; }
+.algolia-modified small { margin-right: 3px; font-style: italic; text-transform: lowercase; color: #a6adb4; }
+.algolia-modified a { color: #586069; }
 
 .empty-query { display: none; }
 
@@ -316,7 +323,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; f
 .commit-message a { color: #586069; }
 
 /* Masthead  Super small header above the content for site name and short description. */
-.masthead { padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 3rem; border-bottom: 1px solid #eee; }
+.masthead { padding-top: 1rem; padding-bottom: 1rem; margin-bottom: 3rem; }
 
 .masthead-title { margin-top: 0; margin-bottom: 0; color: #505050; }
 

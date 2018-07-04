@@ -112,7 +112,7 @@
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
 
-            <small style="text-decoration:left">∷ Progress [Log]<span class="modifications">(<span class="additions">+140173</span>/<span class="substractions">-103436</span>)</span>
+            <small style="text-decoration:left">∷ Progress [Log]<span class="modifications">(<span class="additions">+147887</span>/<span class="substractions">-104989</span>)</span>
             </small>
           </h3>
         </div>
@@ -120,25 +120,93 @@
       <div class="container content">
         <div class="home">
 
+
   
   <div id="search-searchbar"></div>
   
   <div class="main-heading">
     <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> references updates</a></span>
+        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bd28c2e374f3c42155c05582c4ef9b36e8354076"> refactoring the blog</a></span>
     <a class="main-rss" href="/feed.xml">
       rss
     </a>
   </div>
   <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io">c54492d </a> on  03 Jul 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bd28c2e374f3c42155c05582c4ef9b36e8354076">8354076 </a> on  04 Jul 2018
   </div>
   </div>
   
-
+  <br/>
+  <div>📝 Posts </div>
   <div class="posts" id="search-hits">
   </div>
+<br/>
+
+
+  <div id="archives">
+  
+  
+    
+  
+  
+    
+  
+  
+    
+    <div id="#learning-plans">📓 Learning-plans</div>
+    <div class="post-list">
+      
+      <div class="algolia">
+        <div class="algolia-date">30/06/2018 </div>
+        <div class="algolia-title"><a href="/learning-plans/2018/06/30/learning-Agda/">Functional Programming</a></div>
+        <div class="algolia-message"><small> refactoring the blog</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bd28c2e374f3c42155c05582c4ef9b36e8354076">Wed Jul 4 18:23:36 2018 +0200</a></div>
+      </div>
+      
+      <div class="algolia">
+        <div class="algolia-date">27/06/2018 </div>
+        <div class="algolia-title"><a href="/learning-plans/2018/06/27/learning-group-theory/">Groups</a></div>
+        <div class="algolia-message"><small> refactoring the blog</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bd28c2e374f3c42155c05582c4ef9b36e8354076">Wed Jul 4 18:23:36 2018 +0200</a></div>
+      </div>
+      
+      <div class="algolia">
+        <div class="algolia-date">27/06/2018 </div>
+        <div class="algolia-title"><a href="/learning-plans/2018/06/27/learning-graph-theory/">Graphs</a></div>
+        <div class="algolia-message"><small> refactoring the blog</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bd28c2e374f3c42155c05582c4ef9b36e8354076">Wed Jul 4 18:23:36 2018 +0200</a></div>
+      </div>
+      
+      <div class="algolia">
+        <div class="algolia-date">27/06/2018 </div>
+        <div class="algolia-title"><a href="/learning-plans/2018/06/27/learning-cs-fundamentals/">CS Fundamentals</a></div>
+        <div class="algolia-message"><small> refactoring the blog</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bd28c2e374f3c42155c05582c4ef9b36e8354076">Wed Jul 4 18:23:36 2018 +0200</a></div>
+      </div>
+      
+      <div class="algolia">
+        <div class="algolia-date">14/06/2018 </div>
+        <div class="algolia-title"><a href="/learning-plans/2018/06/14/learning-category-theory/">Categories</a></div>
+        <div class="algolia-message"><small> refactoring the blog</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bd28c2e374f3c42155c05582c4ef9b36e8354076">Wed Jul 4 18:23:36 2018 +0200</a></div>
+      </div>
+      
+    </div>
+    
+  
+  
+    
+  
+  
+    
+  
+  </div>
+  <br>
+  <div> <a href="/references" style="color:#515151"> 📚 References List </a></div>
 </div>
+
+<div class="written-by">  Written by <a href="http://github.com/jonaprieto">Jonathan Prieto-Cubides</a> </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 
@@ -158,9 +226,9 @@ const search = instantsearch({
   searchParameters: {
     restrictSearchableAttributes: [
       'title',
-      'content'
+      'content',
     ],
-    facetFilters: ['type:post']
+    facetFilters: ['type:post', "categories:-learning"]
   },
   searchFunction: function(helper) {
     if (helper.getState().query === '') {
@@ -184,13 +252,19 @@ const hitTemplate = function(hit) {
   const url = hit.url;
   const title = hit._highlightResult.title.value;
   const content = hit._highlightResult.html.value;
+  const category = hit.categories[0];
+  const message = hit.git.last_commit.message;
+  const commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;
   return `
 <div class="${hitBoxClass}">
   <div class="post-list">
       <div class="algolia">
       <div class="algolia-date">${date}</div>
         <div class="algolia-title"><a href=".${url}">${title}</a></div>
-        <div class="algolia-modified">${lastDate}</div>
+        <div class="algolia-message"><small> ${message} </small></div>
+        <div class="algolia-modified">
+        <a href=${commiturl}>${lastDate}</a>
+        </div>
       </div>
       <div class="${additionalClass}">${content} </div>
   </div>
@@ -262,6 +336,15 @@ search.start();
 
 <script type="text/javascript">
 $('div.references').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    console.log(modifiedDate);
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
 </script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->

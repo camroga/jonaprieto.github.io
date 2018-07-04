@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Learning CS Fundamentals</title>
+  <title>CS Fundamentals</title>
   <meta name="description" content="Brilliant! Nice compendium of Fundamentals in computer science. I’m planning to see every lesson, let’s see what happen.">
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -121,17 +121,17 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+237</span>/<span class="substractions">-87</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> minor changes</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+238</span>/<span class="substractions">-88</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> refactoring the blog</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="">ac85b41 </a> on  03 Jul 2018
+        Latest commit <a href="">bd28c2e </a> on  04 Jul 2018
     </div>
     </div>
   </div>
   
 
-  <h1 class="post-title">Learning CS Fundamentals</h1>
+  <h1 class="post-title">CS Fundamentals</h1>
 
   
   <p><a href="https://brilliant.org">Brilliant</a>! Nice compendium of Fundamentals in computer science.
@@ -306,7 +306,7 @@ I’m planning to see every lesson, let’s see what happen.</p>
       <li>
         <h3>
           <a href="/learning-plans/2018/06/30/learning-Agda/">
-            Learning Agda
+            Functional Programming
             
             <small>30 Jun 2018</small>
             
@@ -317,7 +317,7 @@ I’m planning to see every lesson, let’s see what happen.</p>
       <li>
         <h3>
           <a href="/learning-plans/2018/06/27/learning-group-theory/">
-            Learning Group Theory
+            Groups
             
             <small>27 Jun 2018</small>
             
@@ -328,7 +328,7 @@ I’m planning to see every lesson, let’s see what happen.</p>
       <li>
         <h3>
           <a href="/learning-plans/2018/06/27/learning-graph-theory/">
-            Learning Graph Theory
+            Graphs
             
             <small>27 Jun 2018</small>
             
@@ -375,6 +375,15 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script type="text/javascript">
 $('div.references').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    console.log(modifiedDate);
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
 </script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->

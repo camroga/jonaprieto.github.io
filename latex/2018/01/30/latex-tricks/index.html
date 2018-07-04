@@ -196,7 +196,7 @@
       <li>
         <h3>
           <a href="/learning-plans/2018/06/30/learning-Agda/">
-            Learning Agda
+            Functional Programming
             
             <small>30 Jun 2018</small>
             
@@ -207,7 +207,7 @@
       <li>
         <h3>
           <a href="/learning-plans/2018/06/27/learning-group-theory/">
-            Learning Group Theory
+            Groups
             
             <small>27 Jun 2018</small>
             
@@ -218,7 +218,7 @@
       <li>
         <h3>
           <a href="/learning-plans/2018/06/27/learning-graph-theory/">
-            Learning Graph Theory
+            Graphs
             
             <small>27 Jun 2018</small>
             
@@ -265,6 +265,15 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script type="text/javascript">
 $('div.references').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    console.log(modifiedDate);
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
 </script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->

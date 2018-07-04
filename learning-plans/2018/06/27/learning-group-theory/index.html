@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Learning Group Theory</title>
+  <title>Groups</title>
   <meta name="description" content="My plan to learn some group theory from Brilliant.">
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -121,17 +121,17 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+68</span>/<span class="substractions">-31</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> cosmetics</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+69</span>/<span class="substractions">-32</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> refactoring the blog</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="">a563f47 </a> on  30 Jun 2018
+        Latest commit <a href="">bd28c2e </a> on  04 Jul 2018
     </div>
     </div>
   </div>
   
 
-  <h1 class="post-title">Learning Group Theory</h1>
+  <h1 class="post-title">Groups</h1>
 
   
   <p>My plan to learn some group theory from Brilliant.</p>
@@ -180,7 +180,7 @@
       <li>
         <h3>
           <a href="/learning-plans/2018/06/30/learning-Agda/">
-            Learning Agda
+            Functional Programming
             
             <small>30 Jun 2018</small>
             
@@ -191,7 +191,7 @@
       <li>
         <h3>
           <a href="/learning-plans/2018/06/27/learning-graph-theory/">
-            Learning Graph Theory
+            Graphs
             
             <small>27 Jun 2018</small>
             
@@ -202,7 +202,7 @@
       <li>
         <h3>
           <a href="/learning-plans/2018/06/27/learning-cs-fundamentals/">
-            Learning CS Fundamentals
+            CS Fundamentals
             
             <small>27 Jun 2018</small>
             
@@ -249,6 +249,15 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script type="text/javascript">
 $('div.references').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    console.log(modifiedDate);
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
 </script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->

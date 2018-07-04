@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Functional Programming</title>
-  <meta name="description" content="Collection of some learning resources about Agda">
+  <title>Type theories</title>
+  <meta name="description" content="Type theory">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -121,7 +121,7 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+52</span>/<span class="substractions">-21</span>)</span>:
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+152</span>/<span class="substractions">-69</span>)</span>:
           <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io"> refactoring the blog</a></span>
       </div>
     <div class="main-last-date">
@@ -131,32 +131,128 @@
   </div>
   
 
-  <h1 class="post-title">Functional Programming</h1>
+  <h1 class="post-title">Type theories</h1>
 
   
-  <p>Collection of some learning resources about Agda</p>
+  <p>Type theory</p>
 
-<h3 id="advanced-functional-programming-cs410-17-by-conor-mcbride"><a href="https://github.com/pigworker/CS410-17/">Advanced Functional Programming CS410-17 by Conor McBride</a></h3>
+<ul>
+  <li>
+    <p>is a <em>unification theory</em> about computation and logic</p>
+  </li>
+  <li>
+    <p>A theory for constructions:</p>
 
-<ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=O4oczQry9Jw">Programs and Proofs</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=qcVZxQTouDk">more Programs and Proofs, Introducing “with”</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=8xFT9FPlm18">Proof by Induction</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=OZeDRtRmgkw">Sigma, Difference, Vector Take</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=b5salYMZoyM">How Rewrite Works</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=RW4aC_6n0yQ">A Comedy of (Entirely Non-Deliberate) Errors</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=2LxtHeZlaVw">“Dominoes”, no really, this time</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=RCRddhYegzI">Functors</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=vTmYvoDrBlc">From Functors to Monads</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=2sykXdidZVA">Natural Transformations and Monads</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=iYegg8Rzhr4">From Monads to Input/Output</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=8WUz2HmXBqI">How to Run a Program (and come a-cropper)</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=MwtWdiyFJtA">Monads on Indexed Sets (Ex2)</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=kX3mvyFHDDU">What is an Application?</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=ZCdYIEwcna0">Coinduction and Coalgebras</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=AjyUNakYHRs">Polynomial Data and Codata</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=E8xIJolKEAI">A Polynomial Universe</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=-3MiZ80WldY">The Zipper (Differentiating Polynomial Types)</a></li>
+    <ul>
+      <li>
+        <p>Type Zoo:</p>
+
+        <ul>
+          <li>Functions  (<code class="highlighter-rouge">_→_</code>)</li>
+          <li>Products   (<code class="highlighter-rouge">_×_</code>)</li>
+          <li>Coproducts (<code class="highlighter-rouge">_+_</code>)</li>
+          <li>Π-types    (<code class="highlighter-rouge">Π_._</code>)</li>
+          <li>Σ-types    (<code class="highlighter-rouge">Σ_._</code>)</li>
+          <li>
+            <p>Id-types   (<code class="highlighter-rouge">_≡_</code>)</p>
+          </li>
+          <li>W-types    (<code class="highlighter-rouge">W__</code>)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>is about <strong>deductive systems</strong>, that are, <em>collection</em> of rules that derive things
+called <em>judgements</em></p>
+  </li>
+  <li>is a class of <em>formal systems</em> (also named <em>formalism</em>) that includes
+    <ul>
+      <li>axioms</li>
+      <li>primitive truths</li>
+      <li>rules of inferences</li>
+    </ul>
+  </li>
+  <li>is an <em>alternative</em> to set theory as a foundation for all mathematics</li>
+  <li>notation common uses the following symbols
+    <ul>
+      <li>the turnstile or vdash in <code class="highlighter-rouge">latex</code> (⊢), e.g. as a consequence relation
+for <em>syntax derivability</em> to separate assumptions from the conclusion like
+  <script type="math/tex">a_{1}, a_{2}, \dots, a_{n} ⊢ c</script></li>
+      <li>the semicolon <code class="highlighter-rouge">:</code> to denote <em>judgments</em> like <script type="math/tex">term : Type</script></li>
+    </ul>
+  </li>
+</ul>
+
+<p>We mostly refer to type theories using the following abbreviations:</p>
+
+<ul>
+  <li>
+    <p>(<strong>TT</strong>)  <em>Intuitionistic</em> type theory (<em>Constructive mathematics</em>).</p>
+  </li>
+  <li>
+    <p>(<strong>ITT</strong>) <em>Intensional</em> type theory</p>
+
+    <ul>
+      <li>
+        <p>a intuitionistic type theory</p>
+      </li>
+      <li>
+        <p><a href="https://ncatlab.org/nlab/show/identity+type"><em>Identity types</em></a> are not necessary propositions</p>
+      </li>
+      <li>
+        <p>It fails to satisfy <a href="https://ncatlab.org/nlab/show/function+extensionality"><em>function extensionality</em></a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>(<em>*ETT</em>) <em>Extensional</em> type theory</p>
+
+    <ul>
+      <li>
+        <p>Can impose axioms to trivialise identity types</p>
+      </li>
+      <li>
+        <p>Force types to conform to our intuition about sets</p>
+      </li>
+      <li>
+        <p>Destroys computational content, decidability of type-checking…</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Homotopy type theory</p>
+
+    <ul>
+      <li>
+        <p>Logic to natively formalise homotopy theory</p>
+      </li>
+      <li>
+        <p>Intuition for working with Id-types</p>
+      </li>
+      <li>
+        <p><em>UnivalenceAxiom</em> : equality between types can be isomorphism.
+Gives (some) parametricity for free: all constructions on types invariant under iso.</p>
+      </li>
+    </ul>
+  </li>
+  <li>Cubical type theory</li>
+  <li>Observational type theory</li>
+  <li><a href="https://github.com/CHTT-s18/lecture-notes">Computational higher type theory</a></li>
+</ul>
+
+<h4 id="questions">Questions</h4>
+
+<p>About HoTT:</p>
+
+<ol class="bibliography"><li><span id="1861540">doofin (https://math.stackexchange.com/users/354484/doofin). (2016, July). transport functions ,lemmas between isomorphic structures using univalence. Mathematics Stack Exchange. Retrieved from https://math.stackexchange.com/q/1861540</span></li>
+<li><span id="1718737">(https://math.stackexchange.com/users/305738/derek-elkins), D. E. How am I to interpret induction/recursion in type theory? Mathematics Stack Exchange. Retrieved from https://math.stackexchange.com/q/1718737</span></li>
+<li><span id="169097">(https://mathoverflow.net/users/51644/kromanen), K. A pointless circle in HoTT. MathOverflow. Retrieved from https://mathoverflow.net/q/169097</span></li>
+<li><span id="136236">(https://mathoverflow.net/users/12978/jason-rute), J. R. Prospects for reverse mathematics in Homotopy Type Theory. MathOverflow. Retrieved from https://mathoverflow.net/q/136236</span></li></ol>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
 </ul>
 
 
@@ -169,6 +265,17 @@
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning-plans/2018/06/30/learning-Agda/">
+            Functional Programming
+            
+            <small>30 Jun 2018</small>
+            
+          </a>
+        </h3>
+      </li>
     
       <li>
         <h3>
@@ -185,17 +292,6 @@
         <h3>
           <a href="/learning-plans/2018/06/27/learning-graph-theory/">
             Graphs
-            
-            <small>27 Jun 2018</small>
-            
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/learning-plans/2018/06/27/learning-cs-fundamentals/">
-            CS Fundamentals
             
             <small>27 Jun 2018</small>
             
