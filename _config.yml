@@ -1,7 +1,7 @@
 # Setup
 repository:          'jonaprieto/jonaprieto.github.io'
 title:               'jonaprieto'
-tagline:             '∷ Progress [Log]'
+tagline:             '∷ WorkInProgress Student'
 description:         'Jonathan Prieto-Cubides'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
@@ -23,7 +23,6 @@ plugins:
   - jekyll-feed
   - jekyll-last-modified-at
   - jekyll-algolia
-  # - jekyll-toc
   - jekyll-github-metadata
   - jekyll-git_metadata
   - netrc
