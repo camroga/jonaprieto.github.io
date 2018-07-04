@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-04T18:23:42+02:00</updated>
+ <updated>2018-07-04T18:37:30+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Functional Programming</title>
-   <link href="http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda/"/>
+   <link href="http://jonaprieto.github.io/learning/2018/06/30/learning-Agda/"/>
    <updated>2018-06-30T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/learning-plans/2018/06/30/learning-Agda</id>
+   <id>http://jonaprieto.github.io/learning/2018/06/30/learning-Agda</id>
    <content type="html">&lt;p&gt;Collection of some learning resources about Agda&lt;/p&gt;
 
 &lt;h3 id=&quot;advanced-functional-programming-cs410-17-by-conor-mcbride&quot;&gt;&lt;a href=&quot;https://github.com/pigworker/CS410-17/&quot;&gt;Advanced Functional Programming CS410-17 by Conor McBride&lt;/a&gt;&lt;/h3&gt;
@@ -46,9 +46,9 @@
  
  <entry>
    <title>Groups</title>
-   <link href="http://jonaprieto.github.io/learning-plans/2018/06/27/learning-group-theory/"/>
+   <link href="http://jonaprieto.github.io/learning/2018/06/27/learning-group-theory/"/>
    <updated>2018-06-27T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/learning-plans/2018/06/27/learning-group-theory</id>
+   <id>http://jonaprieto.github.io/learning/2018/06/27/learning-group-theory</id>
    <content type="html">&lt;p&gt;My plan to learn some group theory from Brilliant.&lt;/p&gt;
 
 &lt;ul class=&quot;task-list&quot;&gt;
@@ -85,9 +85,9 @@
  
  <entry>
    <title>Graphs</title>
-   <link href="http://jonaprieto.github.io/learning-plans/2018/06/27/learning-graph-theory/"/>
+   <link href="http://jonaprieto.github.io/learning/2018/06/27/learning-graph-theory/"/>
    <updated>2018-06-27T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/learning-plans/2018/06/27/learning-graph-theory</id>
+   <id>http://jonaprieto.github.io/learning/2018/06/27/learning-graph-theory</id>
    <content type="html">&lt;p&gt;My plan to learn about graphs:&lt;/p&gt;
 
 &lt;h3 id=&quot;graph-theory-by-sarada-herke&quot;&gt;Graph Theory by &lt;a href=&quot;https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg&quot;&gt;Sarada Herke&lt;/a&gt;&lt;/h3&gt;
@@ -171,9 +171,9 @@
  
  <entry>
    <title>CS Fundamentals</title>
-   <link href="http://jonaprieto.github.io/learning-plans/2018/06/27/learning-cs-fundamentals/"/>
+   <link href="http://jonaprieto.github.io/learning/2018/06/27/learning-cs-fundamentals/"/>
    <updated>2018-06-27T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/learning-plans/2018/06/27/learning-cs-fundamentals</id>
+   <id>http://jonaprieto.github.io/learning/2018/06/27/learning-cs-fundamentals</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://brilliant.org&quot;&gt;Brilliant&lt;/a&gt;! Nice compendium of Fundamentals in computer science.
 I’m planning to see every lesson, let’s see what happen.&lt;/p&gt;
 
@@ -818,9 +818,9 @@ side the frame with all the commands (add this
  
  <entry>
    <title>Categories</title>
-   <link href="http://jonaprieto.github.io/learning-plans/2018/06/14/learning-category-theory/"/>
+   <link href="http://jonaprieto.github.io/learning/2018/06/14/learning-category-theory/"/>
    <updated>2018-06-14T00:00:00+02:00</updated>
-   <id>http://jonaprieto.github.io/learning-plans/2018/06/14/learning-category-theory</id>
+   <id>http://jonaprieto.github.io/learning/2018/06/14/learning-category-theory</id>
    <content type="html">&lt;p&gt;The list of topics that I like and I should know so far is endless.
 This is my attempt to capture some resources to learn category theory,
 since I fell more comfortable learning by watching videos, I collected
