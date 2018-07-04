@@ -2,7 +2,7 @@
 layout: "post"
 title: "Functional Programming"
 date: "2018-06-30"
-categories: learning-plans
+categories: learning
 published: true
 search: false
 ---

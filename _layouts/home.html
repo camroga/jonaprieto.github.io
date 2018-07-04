@@ -30,7 +30,7 @@ layout: default
   <div id="archives">
   {% for category in site.categories %}
   {% capture category_name %}{{ category | first }}{% endcapture %}
-    {% if category_name contains "plans" %}
+    {% if category_name contains "learning" %}
     <div id="#{{ category_name | slugize }}">📓 {{category_name | capitalize }}</div>
     <div class="post-list">
       {% for post in site.categories[category_name] %}

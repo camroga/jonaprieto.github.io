@@ -8,10 +8,10 @@ comments: true
   <div class="post-changes">
     <div class="main-heading">
       <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+{{page.git.total_additions}}</span>/<span class="substractions">-{{page.git.total_subtractions}}</span>)</span>:
-          <span class="commit-message"> <a href="{{site.github.repository_url}}"> {{page.git.last_commit.message}}</a></span>
+          <span class="commit-message"> <a href="{{site.github.repository_url}}/commit/{{page.git.last_commit.long_sha}}"> {{page.git.last_commit.message}}</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="{{page.github.repository_url}}">{{page.git.last_commit.short_sha}} </a> on  {{ page.git.last_commit.commit_date | date_to_string  }}
+        Latest commit <a href="{{site.github.repository_url}}/commit/{{page.git.last_commit.long_sha}}">{{page.git.last_commit.short_sha}} </a> on  {{ page.git.last_commit.commit_date | date_to_string  }}
     </div>
     </div>
   </div>

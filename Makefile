@@ -22,7 +22,6 @@ _posts/ :
 	mkdir -p _posts
 
 _posts/%.md : src/%.md
-	rm -f $@
 	cp $< $@
 
 _posts/%.md : src/%.lagda
@@ -50,6 +49,7 @@ serve:
 # remove all auxiliary files
 .phony: clean
 clean:
+	rm -Rf _posts/
 ifneq ($(strip $(agdai)),)
 	rm $(agdai)
 endif

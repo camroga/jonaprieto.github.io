@@ -2,7 +2,7 @@
 layout: "post"
 title: "Graphs"
 date: "2018-06-27"
-categories: learning-plans
+categories: learning
 published: true
 ---
 

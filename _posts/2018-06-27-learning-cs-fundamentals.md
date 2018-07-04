@@ -2,7 +2,7 @@
 layout: "post"
 title: "CS Fundamentals"
 date: "2018-06-27"
-categories: learning-plans
+categories: learning
 published: true
 ---
 

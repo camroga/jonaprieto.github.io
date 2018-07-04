@@ -2,7 +2,7 @@
 layout: "post"
 title: "Categories"
 date: "2018-06-14"
-categories: learning-plans
+categories: learning
 ---
 
 The list of topics that I like and I should know so far is endless.
