@@ -2,7 +2,7 @@
 layout: "post"
 title: "Circle puzzle"
 date: "2018-05-01"
-categories: Types
+categories: type-theory
 ---
 
 Moebius type family:

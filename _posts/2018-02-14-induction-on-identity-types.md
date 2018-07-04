@@ -2,7 +2,7 @@
 layout: "post"
 title: "Induction on Identity Types"
 date: "2018-02-14"
-categories: Types
+categories: type-theory
 ---
 
 We present here a new type former to introduce identities.

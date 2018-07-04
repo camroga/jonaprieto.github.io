@@ -2,7 +2,7 @@
 title: "Function Type"
 layout: "post"
 date: "2018-02-10"
-categories: Types
+categories: type-theory
 ---
 
 # Function Type Rules

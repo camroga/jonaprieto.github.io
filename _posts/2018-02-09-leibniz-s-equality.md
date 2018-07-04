@@ -2,7 +2,7 @@
 layout: "post"
 title: "Leibniz's Equality"
 date: "2018-02-09"
-categories: Types
+categories: type-theory
 ---
 
 *Leibniz characterised the notion of equality as follows:

@@ -2,7 +2,7 @@
 layout: "post"
 title: "HoTT exercises"
 date: "2018-04-08"
-categories: Types
+categories: type-theory
 toc: true
 ---
 
