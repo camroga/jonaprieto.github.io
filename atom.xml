@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-05T23:15:01+02:00</updated>
+ <updated>2018-07-05T23:36:11+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -1256,11 +1256,12 @@ are provided.&lt;/p&gt;
  </entry>
  
  <entry>
-   <title>Functional Programming</title>
+   <title>Programing Languages</title>
    <link href="http://jonaprieto.github.io/learning/2018/06/30/learning-Functional-Programming/"/>
    <updated>2018-06-30T00:00:00+02:00</updated>
    <id>http://jonaprieto.github.io/learning/2018/06/30/learning-Functional-Programming</id>
-   <content type="html">&lt;p&gt;Collection of some learning resources about Agda&lt;/p&gt;
+   <content type="html">&lt;p&gt;Functional programming is abroad and exciting field to learn and combine
+knowledge from other fields, i.e., logic, categories, algebra, among others.&lt;/p&gt;
 
 &lt;h3 id=&quot;advanced-functional-programming-cs410-17-by-conor-mcbride&quot;&gt;&lt;a href=&quot;https://github.com/pigworker/CS410-17/&quot;&gt;Advanced Functional Programming CS410-17 by Conor McBride&lt;/a&gt;&lt;/h3&gt;
 
@@ -1283,6 +1284,39 @@ are provided.&lt;/p&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=AjyUNakYHRs&quot;&gt;Polynomial Data and Codata&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=E8xIJolKEAI&quot;&gt;A Polynomial Universe&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=-3MiZ80WldY&quot;&gt;The Zipper (Differentiating Polynomial Types)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;programming-language-foundations-in-agda-by-wen-kokke-and-philip-wadler&quot;&gt;&lt;a href=&quot;https://plfa.github.io/&quot;&gt;Programming Language Foundations in Agda by Wen Kokke and Philip Wadler&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&quot;part-1-logical-foundations&quot;&gt;Part 1: Logical Foundations&lt;/h3&gt;
+
+&lt;p&gt;(This part is ready for review. Please comment!)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Naturals.md %}&quot;&gt;Naturals: Natural numbers&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Induction.md %}&quot;&gt;Induction: Proof by induction&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Relations.md %}&quot;&gt;Relations: Inductive definition of relations&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Equality.md %}&quot;&gt;Equality: Equality and equational reasoning&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Isomorphism.md %}&quot;&gt;Isomorphism: Isomorphism and embedding&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Connectives.md %}&quot;&gt;Connectives: Conjunction, disjunction, and implication&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Negation.md %}&quot;&gt;Negation: Negation, with intuitionistic and classical Logic&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Quantifiers.md %}&quot;&gt;Quantifiers: Universals and existentials&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Lists.md %}&quot;&gt;Lists: Lists and higher-order functions&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Decidable.md %}&quot;&gt;Decidable: Booleans and decision procedures&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;part-2-programming-language-foundations&quot;&gt;Part 2: Programming Language Foundations&lt;/h3&gt;
+
+&lt;p&gt;(This part is not yet ready for review.)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Lambda.md %}&quot;&gt;Lambda: Lambda: Introduction to Lambda Calculus&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Properties.md %}&quot;&gt;Properties: Progress and Preservation&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/DeBruijn.md %}&quot;&gt;DeBruijn: Inherently typed De Bruijn representation&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/More.md %}&quot;&gt;More: More constructs of simply-typed lambda calculus&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Bisimulation.md %}&quot;&gt;Bisimulation: Relating reductions systems&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Inference.md %}&quot;&gt;Inference: Bidirectional type inference&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://plfa.github.io/Untyped.md %}&quot;&gt;Untyped: Untyped lambda calculus with full normalisation&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
  </entry>
