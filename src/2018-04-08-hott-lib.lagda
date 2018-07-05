@@ -1,18 +1,24 @@
 ---
 layout: "post"
-title: "HoTT in Agda"
+title: "Basic HoTT in Agda"
 date: "2018-04-08"
 categories: type-theory
 toc: true
 ---
 
-Using Agda 2.5.4 with the reference https://mroman42.github.io/ctlc/agda-hott/Total.html
+The following code was type-checked by Agda 2.5.4.
+
+Based on:
+<div class="references" markdown="1">
+- https://github.com/HoTT/HoTT-Agda/
+- https://mroman42.github.io/ctlc/agda-hott/Total.html.
+</div>
 
 ## Requirements
 
 -------------------------------------------------------------------------------
 
-Agda has a pragma to work with HoTT:
+Agda has a pragma to work with HoTT (`--without-K`):
 
 \begin{code}
 {-# OPTIONS --without-K #-}
@@ -21,9 +27,10 @@ open import Agda.Primitive public
 _ = Set -- trick for avoiding Agda module errors (jekyll)
 \end{code}
 
-## Universes
+Universes
+-------------------------------------------------------------------------------
 Type universe hierarchy. It hides Agda primitive
-hierarchy and the keyword Set. It uses Type instead.
+hierarchy and the keyword `Set`. It uses `Type` instead.
 
 \begin{code}
 
@@ -48,115 +55,259 @@ module Universes where
 open Universes
 \end{code}
 
-## Empty Type
+Zoo types
+-------------------------------------------------------------------------------
+
+### Empty Type
 
 The empty type, representing falsehood.
 
 \begin{code}
-module Empty where
+-- A datatype without constructors is the empty type.
+data ⊥ {ℓᵢ} : Type ℓᵢ where
+Empty = ⊥
 
-    -- A datatype without constructors is the empty type.
-    data ⊥ {ℓᵢ} : Type ℓᵢ where
+-- Ex falso quodlibet
+exfalso : ∀{ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
+exfalso ()
 
-    -- Ex falso quodlibet
-    exfalso : ∀{ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
-    exfalso ()
+⊥-elim = exfalso
+Empty-elim = ⊥-elim
 
-    -- Negation
-    ¬ : ∀{ℓ} → Type ℓ → Type ℓ
-    ¬ A = (A → ⊥ {lzero})
-
-open Empty
+-- Negation
+¬ : ∀ {ℓ} → Type ℓ → Type ℓ
+¬ A = (A → ⊥ {lzero})
 \end{code}
 
-## Unit
+### Unit
+
+The unit type is defined as record so that we also get the η-rule definitionally.
 
 \begin{code}
--- Unit.  A type with a single element, representing truth.
-module Unit {ℓ} where
+-- A record without fields is the unit type with a single
+-- constructor.
+record ⊤ : Type0 where
+  constructor ★
 
-  -- A record without fields is the unit type with a single
-  -- constructor.
-  record ⊤ : Type ℓ where
-    constructor ★
+unit = ★
 
-open Unit
+{-# BUILTIN UNIT ⊤ #-}
 \end{code}
-
-## Other basic types
 
 Basic types of Martin-Löf type theory and some basic
 functions.
 
+### Σ-types
+
+Sigma types are a particular case of records, but records can be
+constructed using only sigma types. Note that l ⊔ q is the maximum
+of two hierarchy levels l and q. This way, we define sigma types in
+full generality, at each universe.
+
 \begin{code}
-module Basic where
-
-  -- Sigma types are a particular case of records, but records can be
-  -- constructed using only sigma types. Note that l ⊔ q is the maximum
-  -- of two hierarchy levels l and q. This way, we define sigma types in
-  -- full generality, at each universe.
-  record Σ {ℓᵢ ℓⱼ} (S : Type ℓᵢ)(T : S → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
-    constructor _,_
-    field
-      fst : S
-      snd : T fst
-  open Σ public
-
-  -- Product type as a particular case of the sigma
-  _×_ : ∀{ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
-  A × B = Σ A (λ _ → B)
-
-  -- Sum types as inductive types
-  data _+_ {ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
-    inl : S → S + T
-    inr : T → S + T
-
-  -- Boolean type, two constants true and false
-  data Bool : Type0 where
-    true  : Bool
-    false : Bool
-
-  -- Natural numbers are the initial algebra for a constant and a
-  -- successor function. The BUILTIN declaration allows us to use
-  -- natural numbers in arabic notation.
-  data ℕ : Type0 where
-    zero : ℕ
-    succ : ℕ → ℕ
-  {-# BUILTIN NATURAL ℕ #-}
-
-open Basic
+infixr 60 _,_
+record Σ {ℓᵢ ℓⱼ} (S : Type ℓᵢ)(T : S → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
+  constructor _,_
+  field
+    fst : S
+    snd : T fst
+open Σ public
 \end{code}
 
-## Basic Functions
+### Π-types
+Shorter notation for Π-types.
 
 \begin{code}
+Π : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (P : A → Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+Π A P = (x : A) → P x
+\end{code}
 
--- Identity function
-id : ∀{ℓ} {A : Type ℓ} → A → A
+### Product (×)
+
+Product type as a particular case of the sigma
+
+\begin{code}
+_×_ : ∀{ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+A × B = Σ A (λ _ → B)
+\end{code}
+
+### Coproducts (+)
+
+Sum types as inductive types
+\begin{code}
+infixr 80 _+_
+data _+_ {ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
+  inl : S → S + T
+  inr : T → S + T
+\end{code}
+
+### Boolean
+
+Boolean type, two constants true and false
+
+\begin{code}
+data Bool : Type0 where
+  true  : Bool
+  false : Bool
+\end{code}
+
+* Booleans can be defined by using a coproduct.
+
+### Natural numbers
+
+Natural numbers are the initial algebra for a constant and a
+successor function. The BUILTIN declaration allows us to use
+natural numbers in arabic notation.
+
+\begin{code}
+data ℕ : Type0 where
+  zero : ℕ
+  succ : ℕ → ℕ
+
+Nat = ℕ
+
+{-# BUILTIN NATURAL ℕ #-}
+\end{code}
+
+
+### Common functions
+
+#### Identity function
+The identity function with implicit type.
+\begin{code}
+id : ∀ {ℓ} {A : Type ℓ} → A → A
 id a = a
-
--- Composition
-_∘_ : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}
-      → (B → C) → (A → B) → (A → C)
-(g ∘ f) z = g (f z)
-
 \end{code}
 
-## Identity Type
+The identity function on a type `A` is `idf A`.
+\begin{code}
+idf : ∀ {i} (A : Type i) → (A → A)
+idf A = λ x → x
+\end{code}
+
+#### Constant function
+
+Constant function at some point `b` is `cst b`
+
+\begin{code}
+cst : ∀ {i j} {A : Type i} {B : Type j} (b : B) → (A → B)
+cst b = λ _ → b
+\end{code}
+
+#### Composition
+
+A more sofisticated composition function that can handle dependent functions.
+
+\begin{code}
+infixr 80 _∘_
+_∘_ : ∀{ℓᵢ ℓⱼ ℓₖ}
+    {A : Type ℓᵢ}
+    {B : A → Type ℓⱼ}
+    {C : (a : A) → (B a → Type ℓₖ)}
+    → (g : {a : A} → Π (B a) (C a)) → (f : Π A B) → Π A (λ a → C a (f a))
+g ∘ f = λ x → g (f x)
+\end{code}
+
+#### Application
+
+\begin{code}
+infixr 0 _⟫_
+_⟫_ : ∀ {i j} {A : Type i} {B : A → Type j} → (∀ x → B x) → (∀ x → B x)
+f ⟫ x = f x
+\end{code}
+
+The common symbol use to be dollar sign (\$) but it produces
+some errors for my jekyll configuration.
+
+#### Curryfication
+\begin{code}
+curry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
+ → (∀ s → C s) → (∀ x y → C (x , y))
+curry f x y = f (x , y)
+\end{code}
+
+#### Uncurryfication
+
+\begin{code}
+uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Type k}
+   → (∀ x y → C x y) → (∀ s → C (fst s) (snd s))
+uncurry f (x , y) = f x y
+\end{code}
+
+### Identity Type
 
 \begin{code}
 -- Equality is defined as an inductive type. Its induction principle
 -- is the J-eliminator.
+infix 30 _==_
 data _==_ {ℓ} {A : Type ℓ} : A → A → Type ℓ where
-  refl : (a : A) → a == a
+  refl :(a : A) → a == a
 
--- Composition of paths
+Path = _==_
+{-# BUILTIN EQUALITY _==_ #-}
+\end{code}
+
+#### J eliminator
+
+From [HoTT-Agda](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115) *Paulin-Mohring J rule*
+
+\begin{code}
+J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a == a') → Type ℓⱼ) (d : B a (refl a))
+  {a' : A} (p : a == a') → B a' p
+J {a = a} B d (refl a) = d
+
+J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a' == a) → Type ℓⱼ) (d : B a (refl a))
+  {a' : A} (p : a' == a) → B a' p
+J' {a = a} B d (refl a) = d
+\end{code}
+
+Composition of paths
+\begin{code}
 infixl 50 _·_
-_·_ : ∀{ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
-refl a · q = q
+_·_ : ∀ {ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
+(refl a) · q = q
+\end{code}
+
+### PathOver
+
+(From [`HoTT-Agda`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115)):
+
+If you have a dependent type `B` over `A`, a path `p : x == y` in `A` and two
+points `u : B x` and `v : B y`, there is a **type** `[u == v [ B ↓ p]]` of paths
+from `u` to `v` lying over the path `p`.  By definition, if `p` is a constant
+path, then `[u == v [ B ↓ p ]]` is just an ordinary path in the fiber.
+
+\begin{code}
+PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (B : A → Type ℓⱼ)
+  {x y : A} (p : x == y) (u : B x) (v : B y) → Type ℓⱼ
+PathOver {A = A} B {x} (refl x) u v = u == v
+--
+infix 30 PathOver
+syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
 
 ## Equational Reasoning
+
+(From [`HoTT-Agda`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270))
+
+Equational reasoning is a way to write readable chains of equalities.
+The idea is that you can write the following:
+
+{% raw %}
+```
+  t : a == e
+  t = a =⟨ p ⟩
+      b =⟨ q ⟩
+      c =⟨ r ⟩
+      d =⟨ s ⟩
+      e ∎
+```
+{% endraw %}
+
+where `p` is a path from `a` to `b`, `q` is a path from `b` to `c`, and so on.
+You often have to apply some equality in some context, for instance `p` could be
+`ap ctx thm` where `thm` is the interesting theorem used to prove that `a` is
+equal to `b`, and `ctx` is the context.
 
 \begin{code}
 
@@ -715,9 +866,12 @@ module Sets where
   isSet-prod : ∀{ℓᵢ ℓⱼ}  {A : Type ℓᵢ} → {B : Type ℓⱼ}
              → isSet A → isSet B → isSet (A × B)
   isSet-prod sa sb (a , b) (c , d) p q = begin
-     p                                       ==⟨ inv (prodByCompInverse p) ⟩
-     prodByComponents (prodComponentwise p)  ==⟨ ap prodByComponents (prodByComponents (sa a c _ _ , sb b d _ _)) ⟩
-     prodByComponents (prodComponentwise q)  ==⟨ prodByCompInverse q ⟩
+     p
+      ==⟨ inv (prodByCompInverse p) ⟩
+     prodByComponents (prodComponentwise p)
+      ==⟨ ap prodByComponents (prodByComponents (sa a c _ _ , sb b d _ _)) ⟩
+     prodByComponents (prodComponentwise q)
+      ==⟨ prodByCompInverse q ⟩
      q
     ∎
 

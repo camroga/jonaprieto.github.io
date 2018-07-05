@@ -1,7 +1,7 @@
 .toc{
   float: right;
   position: fixed;
-  width: 200px;
+  width: 300px;
   top: 5px;
   right: 9px;
   margin: 0 auto;
@@ -12,6 +12,11 @@
   padding-left: 2em;
   overflow-x: hidden;
   text-overflow: ellipsis;
+
+  ul {
+    padding-left: 10px;
+    margin-bottom: 0px;
+  }
 }
 
 @media all and (max-width: 72em){

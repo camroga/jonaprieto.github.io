@@ -82,7 +82,7 @@ _⁻¹ {A}{x}{y} p =
      x y p
 \end{code}
 
-As you can see, the path inversion is the symmetric property for the
+As you can see, path inversion is just the symmetric property for this
 identity type. Now let's see some algebra.
 
 -----------------------------------------------------------------------------
