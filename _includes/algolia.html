@@ -41,7 +41,9 @@ const hitTemplate = function(hit) {
   }
   const url = hit.url;
   const title = hit._highlightResult.title.value;
-  const content = hit._highlightResult.html.value;
+  var content = 'No available.';
+  if ( "html"  in hit._highlightResult)
+    {   content = hit._highlightResult.html.value; }
   const category = hit.categories[0];
   const message = hit.git.last_commit.message;
   const commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;

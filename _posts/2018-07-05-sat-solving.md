@@ -15,7 +15,6 @@ This will contain some thoughts about sat solving. See the references.
   such as backjumping (a form of non-chronological backtracking), conflict-driven lemma learning, and restarts.
   - they can solve problems with even *tens of thousands of variables* and *millions of clauses*.
 
-
 ## References
 
 {::options parse_block_html="true" /}
