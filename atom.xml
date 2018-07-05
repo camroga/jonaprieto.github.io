@@ -4,13 +4,44 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-05T22:50:34+02:00</updated>
+ <updated>2018-07-05T23:01:54+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
    <email>prieto.jona@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>SATs solvers</title>
+   <link href="http://jonaprieto.github.io/verification/2018/07/05/sat-solving/"/>
+   <updated>2018-07-05T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/verification/2018/07/05/sat-solving</id>
+   <content type="html">&lt;p&gt;This will contain some thoughts about sat solving. See the references.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Many SATs solvers are based on Davis-Putnam-Logemann-Loveland (DPLL) procedure.&lt;/li&gt;
+  &lt;li&gt;The improvements in these programs are mostly:
+    &lt;ul&gt;
+      &lt;li&gt;better implementation techniques, such as the two-watched literal approach for unit propagation&lt;/li&gt;
+      &lt;li&gt;several conceptual enhancements on the original DPLL procedure, aimed at reducing the amount of explored search space
+such as backjumping (a form of non-chronological backtracking), conflict-driven lemma learning, and restarts.&lt;/li&gt;
+      &lt;li&gt;they can solve problems with even &lt;em&gt;tens of thousands of variables&lt;/em&gt; and &lt;em&gt;millions of clauses&lt;/em&gt;.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;div class=&quot;references&quot;&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;(missing reference)&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/div&gt;
+</content>
+ </entry>
  
  <entry>
    <title>HoTT basics in Agda</title>
@@ -1168,6 +1199,15 @@ are provided.&lt;/p&gt;
 &lt;a id=&quot;38890&quot; class=&quot;Comment&quot;&gt;--   open UnivalenceLemmas public&lt;/a&gt;
 &lt;a id=&quot;38924&quot; class=&quot;Comment&quot;&gt;--&lt;/a&gt;
 &lt;a id=&quot;38927&quot; class=&quot;Comment&quot;&gt;-- open Univalence&lt;/a&gt;&lt;/pre&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Sat Solving</title>
+   <link href="http://jonaprieto.github.io/2018/07/01/sat-solving/"/>
+   <updated>2018-07-01T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/2018/07/01/sat-solving</id>
+   <content type="html">
 </content>
  </entry>
  

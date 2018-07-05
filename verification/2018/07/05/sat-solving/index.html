@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Circle puzzle</title>
-  <meta name="description" content="Moebius type family:">
+  <title>SATs solvers</title>
+  <meta name="description" content="This will contain some thoughts about sat solving. See the references.">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -121,48 +121,41 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+354</span>/<span class="substractions">-318</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/92d1aefe6d32d2ee240bb16eb742f3d865be635a"> working in a hott library</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+27</span>/<span class="substractions">-0</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/16f96bd8512517763c25388f5b541265e88f17d9"> add first comment about SATs solvers</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/92d1aefe6d32d2ee240bb16eb742f3d865be635a">92d1aef </a> on  04 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/16f96bd8512517763c25388f5b541265e88f17d9">16f96bd </a> on  05 Jul 2018
     </div>
     </div>
   </div>
   
 
-  <h1 class="post-title">Circle puzzle</h1>
+  <h1 class="post-title">SATs solvers</h1>
 
   
-  <p>Moebius type family:</p>
-
-<p class="equation">
-$$
-\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
-\mathbb{S}^1 \to \mathcal{U}.
-$$
-</p>
-
-<div class="exercise">
-Prove the equivalence of
-
-<p class="equation">
-$$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.$$
-</p>
-</div>
-
-<p>I gave a talk giving one solution using the flattening lemma:</p>
+  <p>This will contain some thoughts about sat solving. See the references.</p>
 
 <ul>
-  <li><a href="https://github.com/jonaprieto/flattenlem/files/2045561/Jonathan-Prieto-Cubides-The-Flattening-Lemma.pdf"><strong>Direct link PDF</strong></a></li>
+  <li>Many SATs solvers are based on Davis-Putnam-Logemann-Loveland (DPLL) procedure.</li>
+  <li>The improvements in these programs are mostly:
+    <ul>
+      <li>better implementation techniques, such as the two-watched literal approach for unit propagation</li>
+      <li>several conceptual enhancements on the original DPLL procedure, aimed at reducing the amount of explored search space
+such as backjumping (a form of non-chronological backtracking), conflict-driven lemma learning, and restarts.</li>
+      <li>they can solve problems with even <em>tens of thousands of variables</em> and <em>millions of clauses</em>.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="references">References</h2>
 
 <div class="references">
+
   <ul>
-    <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
+    <li>(missing reference)</li>
   </ul>
+
 </div>
 
 
@@ -175,17 +168,6 @@ $$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\math
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/verification/2018/07/05/sat-solving/">
-            SATs solvers
-            
-            <small>05 Jul 2018</small>
-            
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -204,6 +186,17 @@ $$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\math
             Sat Solving
             
             <small>01 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/06/30/geometry-intution-of-pathovers/">
+            Geometry intuition of PathOvers in HoTT
+            
+            <small>30 Jun 2018</small>
             
           </a>
         </h3>
