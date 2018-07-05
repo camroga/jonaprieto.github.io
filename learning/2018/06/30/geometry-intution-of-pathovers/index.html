@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Type theories</title>
-  <meta name="description" content="Type theory">
+  <title>Functional Programming</title>
+  <meta name="description" content="Pathover matters.">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -121,139 +121,58 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+153</span>/<span class="substractions">-70</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/92d1aefe6d32d2ee240bb16eb742f3d865be635a"> working in a hott library</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+48</span>/<span class="substractions">-0</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7c8cf9a0a3af5edc4adf73abba9e38212f3785e8"> cosmetics changes mostly</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/92d1aefe6d32d2ee240bb16eb742f3d865be635a">92d1aef </a> on  04 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7c8cf9a0a3af5edc4adf73abba9e38212f3785e8">7c8cf9a </a> on  05 Jul 2018
     </div>
     </div>
   </div>
   
 
-  <h1 class="post-title">Type theories</h1>
+  <h1 class="post-title">Functional Programming</h1>
 
   
-  <p>Type theory</p>
+  <p>Pathover matters.</p>
 
-<ul>
-  <li>
-    <p>is a <em>unification theory</em> about computation and logic</p>
-  </li>
-  <li>
-    <p>A theory for constructions:</p>
+<p>\begin{code}
+{-# OPTIONS –without-K #-}
+open import HoTT</p>
 
-    <ul>
-      <li>
-        <p>Type Zoo:</p>
+<p>module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where</p>
 
-        <ul>
-          <li>Functions  (<code class="highlighter-rouge">_→_</code>)</li>
-          <li>Products   (<code class="highlighter-rouge">_×_</code>)</li>
-          <li>Coproducts (<code class="highlighter-rouge">_+_</code>)</li>
-          <li>Π-types    (<code class="highlighter-rouge">Π_._</code>)</li>
-          <li>Σ-types    (<code class="highlighter-rouge">Σ_._</code>)</li>
-          <li>
-            <p>Id-types   (<code class="highlighter-rouge">_≡_</code>)</p>
-          </li>
-          <li>W-types    (<code class="highlighter-rouge">W__</code>)</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>is about <strong>deductive systems</strong>, that are, <em>collection</em> of rules that derive things
-called <em>judgements</em></p>
-  </li>
-  <li>is a class of <em>formal systems</em> (also named <em>formalism</em>) that includes
-    <ul>
-      <li>axioms</li>
-      <li>primitive truths</li>
-      <li>rules of inferences</li>
-    </ul>
-  </li>
-  <li>is an <em>alternative</em> to set theory as a foundation for all mathematics</li>
-  <li>notation common uses the following symbols
-    <ul>
-      <li>the turnstile or vdash in <code class="highlighter-rouge">latex</code> (⊢), e.g. as a consequence relation
-for <em>syntax derivability</em> to separate assumptions from the conclusion like
-  <script type="math/tex">a_{1}, a_{2}, \dots, a_{n} ⊢ c</script></li>
-      <li>the semicolon <code class="highlighter-rouge">:</code> to denote <em>judgments</em> like <script type="math/tex">term : Type</script></li>
-    </ul>
-  </li>
-</ul>
+<p>f : {p : x == y}{u : B x}{v : B y}
+    → Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p)
+    → u == v [ B ↓ p ] – PathOver B p u v
+  f (idp , idp) = idp</p>
 
-<p>We mostly refer to type theories using the following abbreviations:</p>
+<p>g : {p : x == y}{u : B x}{v : B y}
+    → (r : PathOver B p u v)
+    → Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p)
+  g {p = p} r = (pair= p r , ap-fst-pair= p r)
+    where
+    ap-fst-pair=
+      : (p : x == y)
+      → {u : B x}{v : B y} (q : PathOver B p u v)
+      → ap fst (pair= p q) == p
+    ap-fst-pair= idp idp = idp</p>
 
-<ul>
-  <li>
-    <p>(<strong>TT</strong>)  <em>Intuitionistic</em> type theory (<em>Constructive mathematics</em>).</p>
-  </li>
-  <li>
-    <p>(<strong>ITT</strong>) <em>Intensional</em> type theory</p>
+<p>f-g : {p : x == y}{u : B x}{v : B y}
+    → (r : PathOver B p u v)
+    → f (g r) == r
+  f-g {p = idp} idp = idp</p>
 
-    <ul>
-      <li>
-        <p>a intuitionistic type theory</p>
-      </li>
-      <li>
-        <p><a href="https://ncatlab.org/nlab/show/identity+type"><em>Identity types</em></a> are not necessary propositions</p>
-      </li>
-      <li>
-        <p>It fails to satisfy <a href="https://ncatlab.org/nlab/show/function+extensionality"><em>function extensionality</em></a></p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>(<em>*ETT</em>) <em>Extensional</em> type theory</p>
+<p>g-f : {p : x == y}{u : B x}{v : B y}
+    → (pair : Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p))
+    → g (f pair) == pair
+  g-f (idp , idp) = idp</p>
 
-    <ul>
-      <li>
-        <p>Can impose axioms to trivialise identity types</p>
-      </li>
-      <li>
-        <p>Force types to conform to our intuition about sets</p>
-      </li>
-      <li>
-        <p>Destroys computational content, decidability of type-checking…</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Homotopy type theory</p>
+<p>e : {p : x == y}{u : B x}{v : B y}
+    → (Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p)) ≃ PathOver B p u v
+  e = equiv f g f-g g-f</p>
 
-    <ul>
-      <li>
-        <p>Logic to natively formalise homotopy theory</p>
-      </li>
-      <li>
-        <p>Intuition for working with Id-types</p>
-      </li>
-      <li>
-        <p><em>UnivalenceAxiom</em> : equality between types can be isomorphism.
-Gives (some) parametricity for free: all constructions on types invariant under iso.</p>
-      </li>
-    </ul>
-  </li>
-  <li>Cubical type theory</li>
-  <li>Observational type theory</li>
-  <li><a href="https://github.com/CHTT-s18/lecture-notes">Computational higher type theory</a></li>
-</ul>
-
-<h4 id="questions">Questions</h4>
-
-<p>About HoTT:</p>
-
-<ol class="bibliography"><li><span id="1861540">doofin (https://math.stackexchange.com/users/354484/doofin). (2016, July). transport functions ,lemmas between isomorphic structures using univalence. Mathematics Stack Exchange. Retrieved from https://math.stackexchange.com/q/1861540</span></li>
-<li><span id="1718737">(https://math.stackexchange.com/users/305738/derek-elkins), D. E. How am I to interpret induction/recursion in type theory? Mathematics Stack Exchange. Retrieved from https://math.stackexchange.com/q/1718737</span></li>
-<li><span id="169097">(https://mathoverflow.net/users/51644/kromanen), K. A pointless circle in HoTT. MathOverflow. Retrieved from https://mathoverflow.net/q/169097</span></li>
-<li><span id="136236">(https://mathoverflow.net/users/12978/jason-rute), J. R. Prospects for reverse mathematics in Homotopy Type Theory. MathOverflow. Retrieved from https://mathoverflow.net/q/136236</span></li></ol>
-
-<h3 id="references">References</h3>
-
-<ul>
-  <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
-</ul>
+<p>\end{code}</p>
 
 
   <!-- <h2> References </h2> -->
@@ -265,17 +184,6 @@ Gives (some) parametricity for free: all constructions on types invariant under 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/learning/2018/06/30/geometry-intution-of-pathovers/">
-            Functional Programming
-            
-            <small>30 Jun 2018</small>
-            
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -292,6 +200,17 @@ Gives (some) parametricity for free: all constructions on types invariant under 
         <h3>
           <a href="/learning/2018/06/27/learning-group-theory/">
             Groups
+            
+            <small>27 Jun 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/learning/2018/06/27/learning-graph-theory/">
+            Graphs
             
             <small>27 Jun 2018</small>
             
