@@ -2,7 +2,7 @@
 layout: "post"
 title: "Emacs"
 date: "2018-06-21"
-categories: learning
+categories: text-editors
 ---
 
 I’m not dogmatic about which editor is the best. I use at least three different

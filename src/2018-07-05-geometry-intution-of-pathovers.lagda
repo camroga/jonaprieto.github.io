@@ -1,10 +1,9 @@
 ---
 layout: "post"
-title: "Functional Programming"
+title: "Geometry intuition of PathOvers in HoTT"
 date: "2018-06-30"
-categories: learning
+categories: type-theory
 published: true
-search: false
 ---
 
 Pathover matters.

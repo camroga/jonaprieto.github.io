@@ -1,22 +1,19 @@
 ---
 layout: "post"
-title: "Basic HoTT in Agda"
-date: "2018-04-08"
+title: "HoTT basics in Agda"
+date: "2018-07-05"
 categories: type-theory
 toc: true
 ---
 
-The following code was type-checked by Agda 2.5.4.
+This is my attempt to collect in just one-file, a basic overview of HoTT in Agda.
+This source code was type-checked by Agda 2.5.4.
 
 Based on:
 <div class="references" markdown="1">
 - https://github.com/HoTT/HoTT-Agda/
 - https://mroman42.github.io/ctlc/agda-hott/Total.html.
 </div>
-
-## Requirements
-
--------------------------------------------------------------------------------
 
 Agda has a pragma to work with HoTT (`--without-K`):
 
@@ -55,7 +52,7 @@ module Universes where
 open Universes
 \end{code}
 
-Zoo types
+Types
 -------------------------------------------------------------------------------
 
 ### Empty Type
@@ -234,6 +231,13 @@ uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Typ
 uncurry f (x , y) = f x y
 \end{code}
 
+#### Instance Searh (review)
+
+\begin{code}
+⟨⟩ : ∀ {i} {A : Type i} {{a : A}} → A
+⟨⟩ {{a}} = a
+\end{code}
+
 ### Identity Type
 
 \begin{code}
@@ -270,12 +274,11 @@ _·_ : ∀ {ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
 
 ### PathOver
 
-(From [`HoTT-Agda`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115)):
-
 If you have a dependent type `B` over `A`, a path `p : x == y` in `A` and two
 points `u : B x` and `v : B y`, there is a **type** `[u == v [ B ↓ p]]` of paths
 from `u` to `v` lying over the path `p`.  By definition, if `p` is a constant
 path, then `[u == v [ B ↓ p ]]` is just an ordinary path in the fiber.
+[`More here`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115).
 
 \begin{code}
 PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (B : A → Type ℓⱼ)
@@ -287,8 +290,6 @@ syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
 
 ## Equational Reasoning
-
-(From [`HoTT-Agda`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270))
 
 Equational reasoning is a way to write readable chains of equalities.
 The idea is that you can write the following:
@@ -307,7 +308,7 @@ The idea is that you can write the following:
 where `p` is a path from `a` to `b`, `q` is a path from `b` to `c`, and so on.
 You often have to apply some equality in some context, for instance `p` could be
 `ap ctx thm` where `thm` is the interesting theorem used to prove that `a` is
-equal to `b`, and `ctx` is the context.
+equal to `b`, and `ctx` is the context. [`More here`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270).
 
 \begin{code}
 
