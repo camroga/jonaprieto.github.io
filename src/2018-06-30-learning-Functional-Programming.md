@@ -1,13 +1,14 @@
 ---
 layout: "post"
-title: "Functional Programming"
+title: "Programing Languages"
 date: "2018-06-30"
 categories: learning
 published: true
-search: false
+toc: true
 ---
 
-Collection of some learning resources about Agda
+Functional programming is abroad and exciting field to learn and combine
+knowledge from other fields, i.e., logic, categories, algebra, among others.
 
 ### [Advanced Functional Programming CS410-17 by Conor McBride](https://github.com/pigworker/CS410-17/)
 
@@ -29,3 +30,33 @@ Collection of some learning resources about Agda
 - [ ] [Polynomial Data and Codata](https://www.youtube.com/watch?v=AjyUNakYHRs)
 - [ ] [A Polynomial Universe](https://www.youtube.com/watch?v=E8xIJolKEAI)
 - [ ] [The Zipper (Differentiating Polynomial Types)](https://www.youtube.com/watch?v=-3MiZ80WldY)
+
+
+## [Programming Language Foundations in Agda by Wen Kokke and Philip Wadler](https://plfa.github.io/)
+
+### Part 1: Logical Foundations
+
+(This part is ready for review. Please comment!)
+
+  - [x] [Naturals: Natural numbers](https://plfa.github.io/Naturals.md %})
+  - [x] [Induction: Proof by induction](https://plfa.github.io/Induction.md %})
+  - [ ] [Relations: Inductive definition of relations](https://plfa.github.io/Relations.md %})
+  - [ ] [Equality: Equality and equational reasoning](https://plfa.github.io/Equality.md %})
+  - [ ] [Isomorphism: Isomorphism and embedding](https://plfa.github.io/Isomorphism.md %})
+  - [ ] [Connectives: Conjunction, disjunction, and implication](https://plfa.github.io/Connectives.md %})
+  - [ ] [Negation: Negation, with intuitionistic and classical Logic](https://plfa.github.io/Negation.md %})
+  - [ ] [Quantifiers: Universals and existentials](https://plfa.github.io/Quantifiers.md %})
+  - [ ] [Lists: Lists and higher-order functions](https://plfa.github.io/Lists.md %})
+  - [ ] [Decidable: Booleans and decision procedures](https://plfa.github.io/Decidable.md %})
+
+### Part 2: Programming Language Foundations
+
+(This part is not yet ready for review.)
+
+  - [ ] [Lambda: Lambda: Introduction to Lambda Calculus](https://plfa.github.io/Lambda.md %})
+  - [ ] [Properties: Progress and Preservation](https://plfa.github.io/Properties.md %})
+  - [ ] [DeBruijn: Inherently typed De Bruijn representation](https://plfa.github.io/DeBruijn.md %})
+  - [ ] [More: More constructs of simply-typed lambda calculus](https://plfa.github.io/More.md %})
+  - [ ] [Bisimulation: Relating reductions systems](https://plfa.github.io/Bisimulation.md %})
+  - [ ] [Inference: Bidirectional type inference](https://plfa.github.io/Inference.md %})
+  - [ ] [Untyped: Untyped lambda calculus with full normalisation](https://plfa.github.io/Untyped.md %})
