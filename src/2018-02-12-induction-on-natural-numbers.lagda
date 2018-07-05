@@ -109,7 +109,7 @@ For testing purposes, let's import from the equaility definition
 type (`_≡_`) and its rule (`refl`) from the std-lib library.
 
 \begin{code}
-open import Relation.Binary.PropositionalEquality using (refl; _≡_)
+open import Relation.Binary.PropositionalEquality using (refl; _≡_; sym)
 
 2+5 : add 2 5 ≡ 7
 2+5 = refl
@@ -259,11 +259,9 @@ assoc = indℕ assoc₀ assoc₁
 +-identity : ∀ (n : ℕ) → n + zero ≡ n
 +-identity = indℕ refl (λ n indHyp → suc-cong indHyp)
 
--- TODO
--- +-suc : ∀ (m n : ℕ) → m + suc n ≡ suc (m + n)
--- +-suc = indℕ
---     (indℕ refl λ n indHyp → refl)
---     (indℕ (λ _ n → refl) λ m indHyp → {!   !})
++-suc : ∀ m n → m + suc n ≡ suc (m + n)
++-suc zero    n = refl
++-suc (suc m) n = suc-cong (+-suc m n)
 \end{code}
 
 Let's define the transitivity and symmetric property of the equality.
@@ -292,13 +290,15 @@ trans refl refl = refl
             → ((m : ℕ) → suc (n + m) ≡ (m + suc n))
     sproof₂ n hyp₁ =
         indℕ
-          (suc-cong (hyp₁ zero) )
+          (suc-cong
+            (hyp₁ zero) )
           (λ m hyp₂ →
               suc-cong
                 (trans
                     (hyp₁ (suc m))
                 (trans
-                    (suc-cong (≡sym (hyp₁ m))) --TODO
+                    (suc-cong
+                        (sym (hyp₁ m)))
                     hyp₂)))
 \end{code}
 
@@ -378,8 +378,8 @@ module ℕ-transInd (P : ℕ → 𝒰) where
   ⊎-elim f g (inj₁ x) = f x
   ⊎-elim f g (inj₂ y) = g y
 
-  sym : {k n : ℕ} → k ≡ n → n ≡ k
-  sym refl = refl
+  -- sym : {k n : ℕ} → k ≡ n → n ≡ k
+  -- sym refl = refl
 
   subst : {k n : ℕ} → k ≡ n → P k → P n
   subst refl pk = pk
@@ -453,6 +453,8 @@ by defining two equations:
 - {% reference hottbook %}
 
 - {% reference Coquand1992 %}
+
+- [Induction in PLAgda](https://plfa.github.io/Induction/)
 
 [HoTT]:https://homotopytypetheory.org/book.
 [Grayson]:http://arxiv.org/abs/1711.01477

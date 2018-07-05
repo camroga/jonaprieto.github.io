@@ -208,9 +208,9 @@ g ∘ f = λ x → g (f x)
 #### Application
 
 \begin{code}
-infixr 0 _⟫_
-_⟫_ : ∀ {i j} {A : Type i} {B : A → Type j} → (∀ x → B x) → (∀ x → B x)
-f ⟫ x = f x
+infixr 0 _$_
+_$_ : ∀ {i j} {A : Type i} {B : A → Type j} → (∀ x → B x) → (∀ x → B x)
+f $ x = f x
 \end{code}
 
 The common symbol use to be dollar sign (\$) but it produces
@@ -317,6 +317,11 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
   -- Common combinators for equational reasoning. They allow us to
   -- write proof in an equational style. These versions have been
   -- adapted from the old version of the HoTT-agda library.
+
+  infixr 2 _==⟨⟩_
+  _==⟨⟩_ : ∀ (x {y} : A) → x == y → x == y
+  _ ==⟨⟩ p = p
+
   infixr 2 _==⟨_⟩_
   _==⟨_⟩_ :  (x : A) {y z : A} → x == y → y == z → x == z
   _ ==⟨ p1 ⟩ p2 = p1 · p2

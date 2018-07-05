@@ -45,3 +45,19 @@ module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where
   e = equiv f g f-g g-f
 
 \end{code}
+
+
+\begin{code}
+-- Heterogeneous equality
+
+  infix 4 _≅_
+
+  data _≅_ {ℓ} {A : Set ℓ} (x : A) : {B : Set ℓ} → B → Set ℓ where
+     refl : x ≅ x
+
+  ------------------------------------------------------------------------
+  -- Conversion
+
+  ≅-to-≡ : ∀ {a} {A : Set a} {x y : A} → x ≅ y → x == y
+  ≅-to-≡ = {!   !}
+\end{code}
