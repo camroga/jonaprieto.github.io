@@ -119,7 +119,7 @@ Shorter notation for Π-types.
 Π A P = (x : A) → P x
 \end{code}
 
-### Product (×)
+### Products (×)
 
 Product type as a particular case of the sigma
 
@@ -278,7 +278,7 @@ If you have a dependent type `B` over `A`, a path `p : x == y` in `A` and two
 points `u : B x` and `v : B y`, there is a **type** `[u == v [ B ↓ p]]` of paths
 from `u` to `v` lying over the path `p`.  By definition, if `p` is a constant
 path, then `[u == v [ B ↓ p ]]` is just an ordinary path in the fiber.
-[`More here`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115).
+[More info here](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115).
 
 \begin{code}
 PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (B : A → Type ℓⱼ)
@@ -308,7 +308,7 @@ The idea is that you can write the following:
 where `p` is a path from `a` to `b`, `q` is a path from `b` to `c`, and so on.
 You often have to apply some equality in some context, for instance `p` could be
 `ap ctx thm` where `thm` is the interesting theorem used to prove that `a` is
-equal to `b`, and `ctx` is the context. [`More here`](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270).
+equal to `b`, and `ctx` is the context. [More info here](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270).
 
 \begin{code}
 
