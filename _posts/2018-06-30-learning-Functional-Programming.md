@@ -36,8 +36,6 @@ knowledge from logic, categories, algebra, among many others.
 
 ### Part 1: Logical Foundations
 
-(This part is ready for review. Please comment!)
-
   - [x] [Naturals: Natural numbers](https://plfa.github.io/Naturals/)
   - [x] [Induction: Proof by induction](https://plfa.github.io/Induction/)
   - [ ] [Relations: Inductive definition of relations](https://plfa.github.io/Relations/)
@@ -50,8 +48,6 @@ knowledge from logic, categories, algebra, among many others.
   - [ ] [Decidable: Booleans and decision procedures](https://plfa.github.io/Decidable/)
 
 ### Part 2: Programming Language Foundations
-
-(This part is not yet ready for review.)
 
   - [ ] [Lambda: Lambda: Introduction to Lambda Calculus](https://plfa.github.io/Lambda/)
   - [ ] [Properties: Progress and Preservation](https://plfa.github.io/Properties/)

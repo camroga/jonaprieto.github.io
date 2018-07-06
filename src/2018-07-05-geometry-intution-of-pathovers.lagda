@@ -1,12 +1,12 @@
 ---
 layout: "post"
-title: "Geometry intuition of PathOvers in HoTT"
+title: "PathOvers in HoTT"
 date: "2018-06-30"
 categories: type-theory
 published: true
 ---
 
-Pathover matters.
+Pathover progress.
 
 \begin{code}
 {-# OPTIONS --without-K #-}

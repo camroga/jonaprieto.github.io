@@ -49,12 +49,12 @@ body {
 
 html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.5;
 }
 @media (min-width: 38em) {
   html {
-    font-size: 16px ;
+    font-size: 15px ;
   }
 }
 
@@ -67,7 +67,7 @@ body {
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color:  darken(#268bd2, 40%);
+  color:  darken(#268bd2, 15%);
   text-decoration: none;
 }
 a strong {
@@ -231,11 +231,15 @@ img {
   margin-left: auto;
   margin-right: auto;
   display: block;
-  /* max-width: -webkit-fill-available; */
+
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
+
+.post img:hover {
+  width: -webkit-fill-available;
+}
 .post img {  padding: 0px 20px 0px 20px; width: 50%;}
 
 body > div.wrap > div.masthead > div > h3 > a:nth-child(1) > img {

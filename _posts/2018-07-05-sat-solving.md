@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "SATs solvers"
+title: "SAT solvers"
 date: "2018-07-05"
 categories: verification
 published: true
