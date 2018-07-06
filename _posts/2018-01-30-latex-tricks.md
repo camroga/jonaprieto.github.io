@@ -16,7 +16,7 @@ A collection of useful tricks and snippets to use in Latex.
 - See https://tex.stackexchange.com/questions/176297/automatically-highlight-undefined-references
 
 {% raw %}
-```latex
+```
   \documentclass{article}
   \usepackage{xcolor}
   \newcommand*{\missingreference}{\colorbox{red}{?reference?}}
