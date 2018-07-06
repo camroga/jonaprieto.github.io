@@ -1,15 +1,14 @@
 ---
 layout: "post"
-title: "CS Fundamentals"
+title: "CS basics"
 date: "2018-06-27"
 categories: learning
 published: true
+toc: true
 ---
 
-[Brilliant](https://brilliant.org)! Nice compendium of Fundamentals in computer science.
-I'm planning to see every lesson, let's see what happen.
-
-## Computer Science Fundamentals
+Just for fun, let's to follow the [Brilliant](https://brilliant.org) chapters
+about computer science.
 
 ## CS Fundamentals
 

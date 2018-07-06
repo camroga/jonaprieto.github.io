@@ -21,7 +21,7 @@ layout: default
   </div>
   {% endif %}
   <br/>
-  <div>📝 Posts </div>
+  <div>🐈 Posts </div>
   <div class="posts" id="search-hits">
   </div>
 <br/>
@@ -31,7 +31,7 @@ layout: default
   {% for category in site.categories %}
   {% capture category_name %}{{ category | first }}{% endcapture %}
     {% if category_name contains "learning" %}
-    <div id="#{{ category_name | slugize }}">📓 {{category_name | capitalize }}</div>
+    <div id="#{{ category_name | slugize }}">🐥 {{category_name | capitalize }}</div>
     <div class="post-list">
       {% for post in site.categories[category_name] %}
       <div class="algolia">
@@ -43,10 +43,26 @@ layout: default
       {% endfor %}
     </div>
     {% endif %}
+
+    {% if category_name contains "thoughts" %}
+    <br/>
+    <div id="#{{ category_name | slugize }}"> 🐿  {{category_name | capitalize }}</div>
+    <div class="post-list">
+      {% for post in site.categories[category_name] %}
+      <div class="algolia">
+        <div class="algolia-date">{{post.date  | date: '%d/%m/%Y'}} </div>
+        <div class="algolia-title"><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></div>
+        <div class="algolia-message"><small> {{post.git.last_commit.message}}</small></div>
+        <div class="algolia-modified"><a href="{{site.github.repository_url}}/commit/{{post.git.last_commit.long_sha}}">{{post.git.last_commit.commit_date}}</a></div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
   {% endfor %}
   </div>
   <br>
-  <div> <a href="{{ site.baseurl }}/references" style="color:#515151"> 📚 References List </a></div>
+  <div> <a href="{{ site.baseurl }}/references" style="color:#515151">🐞 References List </a></div>
 </div>
 
 <div class="written-by">  Written by <a href="http://github.com/jonaprieto">Jonathan Prieto-Cubides</a> </div>

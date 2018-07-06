@@ -3,6 +3,7 @@ agdai := $(wildcard src/*.agdai)
 originalmd := $(wildcard src/*.md)
 ipeImages := $(wildcard src/ipe-images/*.ipe)
 latexitImages := $(wildcard src/latexit-images/*.png)
+copyPasteImages := $(wildcard src/assets/*.png)
 
 # no for publishing in the website
 dotlagda := $(wildcard src/latex-agda/*.lagda)
@@ -13,9 +14,10 @@ markdownOrig := $(subst src/,_posts/,$(originalmd))
 markdownAgda := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
 ipeImagesPNG     := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
 latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexitImages))
+copyPasteImagesPNG := $(subst src/assets/,assets/,$(copyPasteImages))
 
 #
-all:  _posts/ $(markdownOrig) $(markdownAgda) $(ipeImagesPNG) $(latexitImagesPNG) $(pdflagda)
+all:  _posts/ $(markdownOrig) $(markdownAgda) $(copyPasteImagesPNG) $(ipeImagesPNG) $(latexitImagesPNG) $(pdflagda)
 
 _posts/ :
 	rm -Rf -d _posts
@@ -33,6 +35,8 @@ assets/ipe-images/%.png : src/ipe-images/%.ipe
 assets/latexit-images/%.png : src/latexit-images/%.png
 	cp $< $@
 
+assets/%.png : src/assets/%.png
+	cp $< $@
 # assets/latex-agda/%.tex : src/latex-agda/%.lagda
 # 	- cd src/latex-agda && agda --latex --latex-dir=./../../assets/latex-agda $(notdir $<)
 #
