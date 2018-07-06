@@ -63,13 +63,13 @@
 
 html, body { margin: 0; padding: 0; }
 
-html { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.5; }
+html { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 15px; line-height: 1.5; }
 
-@media (min-width: 38em) { html { font-size: 16px; } }
+@media (min-width: 38em) { html { font-size: 15px; } }
 body { color: #515151; background-color: #fff; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
-a { color: #071925; text-decoration: none; }
+a { color: #1a6091; text-decoration: none; }
 
 a strong { color: inherit; }
 
@@ -137,7 +137,9 @@ blockquote { padding: .5rem 1rem; margin: .8rem 0; color: #7a7a7a; border-left: 
 blockquote p:last-child { margin-bottom: 0; }
 
 @media (min-width: 30em) { blockquote { padding-right: 5rem; padding-left: 1.25rem; } }
-img { margin-left: auto; margin-right: auto; display: block; /* max-width: -webkit-fill-available; */ margin-top: 1rem; margin-bottom: 1rem; }
+img { margin-left: auto; margin-right: auto; display: block; margin-top: 1rem; margin-bottom: 1rem; }
+
+.post img:hover { width: -webkit-fill-available; }
 
 .post img { padding: 0px 20px 0px 20px; width: 50%; }
 
@@ -240,10 +242,10 @@ h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; f
 .algolia-title { display: table-cell; float: left; padding-left: 5px; width: 250px; overflow: hidden; text-overflow: ellipsis; }
 
 @media all and (max-width: 30em) { .algolia-title { width: 190px; overflow: hidden; text-overflow: ellipsis; /* background-color: #000; */ /* CSS rules here */ }
-  .algolia-mesage { width: 0px; } }
+  .algolia-message { width: 0px; } }
 .algolia-title a { color: #000; white-space: nowrap; /* word-wrap: break-word; */ }
 
-.algolia-message { display: table-cell; float: left; padding-left: 5px; width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 3px; font-style: italic; text-transform: lowercase; color: #c2c6cb; }
+.algolia-message { display: table-cell; float: left; padding-left: 5px; width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 3px; font-style: italic; text-transform: lowercase; color: #c2c6cb; }
 
 .algolia-modified { display: table-cell; float: right; width: 80px; white-space: nowrap; text-align: right; color: #586069; }
 .algolia-modified small { margin-right: 3px; font-style: italic; text-transform: lowercase; color: #a6adb4; }
