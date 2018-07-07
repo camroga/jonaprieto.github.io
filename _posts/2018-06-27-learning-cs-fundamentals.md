@@ -17,9 +17,34 @@ about computer science.
 - [x] [insertion-sort](https://brilliant.org/practice/insertion-sort/?chapter=intro-to-algorithms)
 - [ ] [insertion-sort verified](https://wenkokke.github.io/2016/insertion-sort-in-agda/)
 - [x] [big-o-notation](https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms)
-- [ ] [recursion](https://brilliant.org/practice/recursion/?chapter=recursion)
-- [ ] [cs-recursion](https://brilliant.org/practice/cs-recursion/?chapter=recursion)
-- [ ] [divide-and-conquer](https://brilliant.org/practice/divide-and-conquer/?chapter=recursion)
+- [x] [recursion](https://brilliant.org/practice/recursion/?chapter=recursion)
+- [x] [cs-recursion](https://brilliant.org/practice/cs-recursion/?chapter=recursion)
+- [x] [divide-and-conquer](https://brilliant.org/practice/divide-and-conquer/?chapter=recursion)
+
+A problem here:
+
+![](/assets/png-images/2018-06-27-learning-cs-fundamentals-b90ce6d8.png)
+
+To solve this I conceive the square NxN divide in four small squares as follows.
+
+```
+[ N/2 ] | [ N/2 ]
+--------@--------
+[ N/2 ] | [ N/2 ]
+```
+
+The symbol (@) represents the origin. If we guess the point as the center we'll get information
+about which is next of these small square we have to visit to find the diamond. Therefore, the next step
+will be to solve the same problem with the half size of the original in case the last guess wasn't correct.
+
+```
+[ N/4 ] | [ N/4 ]
+--------@--------
+[ N/4 ] | [ N/4 ]
+```
+
+As you can see the maximum number of guessing will be depend on how many times we could divide by 2 the number N, that is, 2**#guesses-allowed. With ten guesses, N should be 1024, but we forgot one thing because the answer is 1023. There is a problem about the "center" because when N is odd, there is no such center.
+
 - [ ] [mergesort](https://brilliant.org/practice/mergesort/?chapter=recursion)
 - [ ] [quicksort](https://brilliant.org/practice/quicksort/?chapter=recursion)
 - [ ] [linked-list](https://brilliant.org/practice/linked-list/?chapter=recursion)
