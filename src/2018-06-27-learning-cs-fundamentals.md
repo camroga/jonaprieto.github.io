@@ -43,7 +43,7 @@ will be to solve the same problem with the half size of the original in case the
 [ N/4 ] | [ N/4 ]
 ```
 
-As you can see the maximum number of guessing will be depend on how many times we could divide by 2 the number N, that is, 2**#guesses-allowed. With ten guesses, N should be 1024, but we forgot one thing because the answer is 1023. There is a problem about the "center" because when N is odd, there is no such center.
+As you can see the maximum number of guessing will be depend on how many times we could divide by 2 the number N, that is, 2^#guesses-allowed. With ten guesses, N should be 1024, but we forgot one thing because the answer is 1023. There is a problem about the "center" because when N is odd, there is no such center.
 
 - [ ] [mergesort](https://brilliant.org/practice/mergesort/?chapter=recursion)
 - [ ] [quicksort](https://brilliant.org/practice/quicksort/?chapter=recursion)
