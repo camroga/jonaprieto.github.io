@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+248</span>/<span class="substractions">-98</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7990dea9f1339e5f8598676a6b1c6a718576e2d6"> New folder assets; entry about jekyll; unsorted posted updated</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+276</span>/<span class="substractions">-101</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/38b2b2f48bbed8b773b0bdc5556c72dc1ae8669b"> progress in cs-basics</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7990dea9f1339e5f8598676a6b1c6a718576e2d6">7990dea </a> on  06 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/38b2b2f48bbed8b773b0bdc5556c72dc1ae8669b">38b2b2f </a> on  07 Jul 2018
     </div>
     </div>
   </div>
@@ -171,9 +171,34 @@ about computer science.</p>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://brilliant.org/practice/insertion-sort/?chapter=intro-to-algorithms">insertion-sort</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://wenkokke.github.io/2016/insertion-sort-in-agda/">insertion-sort verified</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms">big-o-notation</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/recursion/?chapter=recursion">recursion</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/cs-recursion/?chapter=recursion">cs-recursion</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/divide-and-conquer/?chapter=recursion">divide-and-conquer</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://brilliant.org/practice/recursion/?chapter=recursion">recursion</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://brilliant.org/practice/cs-recursion/?chapter=recursion">cs-recursion</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://brilliant.org/practice/divide-and-conquer/?chapter=recursion">divide-and-conquer</a></li>
+</ul>
+
+<p>A problem here:</p>
+
+<p><img src="/assets/png-images/2018-06-27-learning-cs-fundamentals-b90ce6d8.png" alt="" /></p>
+
+<p>To solve this I conceive the square NxN divide in four small squares as follows.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ N/2 ] | [ N/2 ]
+--------@--------
+[ N/2 ] | [ N/2 ]
+</code></pre></div></div>
+
+<p>The symbol (@) represents the origin. If we guess the point as the center we’ll get information
+about which is next of these small square we have to visit to find the diamond. Therefore, the next step
+will be to solve the same problem with the half size of the original in case the last guess wasn’t correct.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ N/4 ] | [ N/4 ]
+--------@--------
+[ N/4 ] | [ N/4 ]
+</code></pre></div></div>
+
+<p>As you can see the maximum number of guessing will be depend on how many times we could divide by 2 the number N, that is, 2**#guesses-allowed. With ten guesses, N should be 1024, but we forgot one thing because the answer is 1023. There is a problem about the “center” because when N is odd, there is no such center.</p>
+
+<ul class="task-list">
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/mergesort/?chapter=recursion">mergesort</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/quicksort/?chapter=recursion">quicksort</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/linked-list/?chapter=recursion">linked-list</a></li>
