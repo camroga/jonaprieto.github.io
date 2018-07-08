@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-08T23:25:07+02:00</updated>
+ <updated>2018-07-08T23:33:05+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -1848,22 +1848,33 @@ logic, type theory, categories, algebra, and of course, programming languages.&l
 
     &lt;ul&gt;
       &lt;li&gt;Seven Bridges problem&lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Eulerian walk&lt;/p&gt;
-
-        &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;Degree
-        &lt;ul&gt;
-          &lt;li&gt;Odd for starting or ending points&lt;/li&gt;
-          &lt;li&gt;Even nodes for intermediate points&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Lemma&lt;/strong&gt;&lt;/li&gt;
     &lt;/ul&gt;
 
-    &lt;p&gt;If a graph has an Eulerian walk then the number of odd degree vertices is
-either 0 or 2. 0 when the path starts where it ends. 2 when there is a
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Eulerian walk/path/trail&lt;/strong&gt; in a finite graph is a path which visits &lt;em&gt;every edge&lt;/em&gt; exactly once&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Eulerian circuit/cycle&lt;/strong&gt; is an Eulerian path which starts and ends on the same vertex&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Degree/Valency&lt;/strong&gt;: is the number of edges incident to the vertex, with
+loops counted twice, denoted by &lt;script type=&quot;math/tex&quot;&gt;\deg ⁡ ( v )&lt;/script&gt;&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;Odd degree for starting or ending nodes&lt;/li&gt;
+          &lt;li&gt;Even degree for intermediate nodes&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;Lemma&lt;/strong&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;If a graph has an &lt;strong&gt;Eulerian walk&lt;/strong&gt; then the number of &lt;strong&gt;odd degree vertices&lt;/strong&gt; is
+either &lt;strong&gt;0 or 2&lt;/strong&gt;. 0 when the path starts where it ends. 2 when there is a
 starting point different from the ending point.&lt;/p&gt;
 
     &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-bcb514e9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;

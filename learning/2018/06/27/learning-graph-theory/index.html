@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+123</span>/<span class="substractions">-7</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/d0bf8b4a20b67a9074b85d858215170d74ada932"> two graph videos watched</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+135</span>/<span class="substractions">-14</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/5294e3d601816b09a582f648d52f2352e4bd4629"> fixes some definitions</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/d0bf8b4a20b67a9074b85d858215170d74ada932">d0bf8b4 </a> on  08 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/5294e3d601816b09a582f648d52f2352e4bd4629">5294e3d </a> on  08 Jul 2018
     </div>
     </div>
   </div>
@@ -146,22 +146,33 @@
 
     <ul>
       <li>Seven Bridges problem</li>
-      <li>
-        <p>Eulerian walk</p>
-
-        <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png" alt="" /></p>
-      </li>
-      <li>Degree
-        <ul>
-          <li>Odd for starting or ending points</li>
-          <li>Even nodes for intermediate points</li>
-        </ul>
-      </li>
-      <li><strong>Lemma</strong></li>
     </ul>
 
-    <p>If a graph has an Eulerian walk then the number of odd degree vertices is
-either 0 or 2. 0 when the path starts where it ends. 2 when there is a
+    <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png" alt="" /></p>
+
+    <ul>
+      <li>
+        <p><strong>Eulerian walk/path/trail</strong> in a finite graph is a path which visits <em>every edge</em> exactly once</p>
+      </li>
+      <li>
+        <p><strong>Eulerian circuit/cycle</strong> is an Eulerian path which starts and ends on the same vertex</p>
+      </li>
+      <li>
+        <p><strong>Degree/Valency</strong>: is the number of edges incident to the vertex, with
+loops counted twice, denoted by <script type="math/tex">\deg ⁡ ( v )</script></p>
+
+        <ul>
+          <li>Odd degree for starting or ending nodes</li>
+          <li>Even degree for intermediate nodes</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Lemma</strong></p>
+      </li>
+    </ul>
+
+    <p>If a graph has an <strong>Eulerian walk</strong> then the number of <strong>odd degree vertices</strong> is
+either <strong>0 or 2</strong>. 0 when the path starts where it ends. 2 when there is a
 starting point different from the ending point.</p>
 
     <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-bcb514e9.png" alt="" /></p>
