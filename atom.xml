@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-08T23:33:05+02:00</updated>
+ <updated>2018-07-08T23:34:40+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -1838,7 +1838,7 @@ logic, type theory, categories, algebra, and of course, programming languages.&l
    <link href="http://jonaprieto.github.io/learning/2018/06/27/learning-graph-theory/"/>
    <updated>2018-06-27T00:00:00+02:00</updated>
    <id>http://jonaprieto.github.io/learning/2018/06/27/learning-graph-theory</id>
-   <content type="html">&lt;p&gt;My plan to learn about graphs:&lt;/p&gt;
+   <content type="html">&lt;p&gt;Learning graphs on youtube.&lt;/p&gt;
 
 &lt;h3 id=&quot;graph-theory-by-sarada-herke&quot;&gt;Graph Theory by &lt;a href=&quot;https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg&quot;&gt;Sarada Herke&lt;/a&gt;&lt;/h3&gt;
 
@@ -1886,12 +1886,8 @@ starting point different from the ending point.&lt;/p&gt;
 of the cartesian product &lt;script type=&quot;math/tex&quot;&gt;V \times V&lt;/script&gt;.&lt;/p&gt;
 
     &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;Size of the graph is denoted by |E|&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-        &lt;p&gt;Order of the graph is denoted by |V|&lt;/p&gt;
-      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Size&lt;/strong&gt; of the graph is denoted by |E|&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Order&lt;/strong&gt; of the graph is denoted by |V|&lt;/li&gt;
     &lt;/ul&gt;
 
     &lt;p&gt;Some kind of graphs:&lt;/p&gt;
