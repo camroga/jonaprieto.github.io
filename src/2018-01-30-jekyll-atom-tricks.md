@@ -13,7 +13,7 @@ surprisingly useful:
 I modified the sources to work for my purposes, maybe it can help you too.
 
 {% raw %}
-```
+```javascript
 {CompositeDisposable, Directory, File} = require 'atom'
 fs = require 'fs'
 path = require 'path'
@@ -159,5 +159,3 @@ module.exports = MarkdownImageAssistant =
       @subscriptions.dispose()
 ```
 {% endraw %}
-
-</div>
