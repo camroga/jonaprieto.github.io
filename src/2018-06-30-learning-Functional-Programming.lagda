@@ -7,8 +7,12 @@ published: true
 toc: true
 ---
 
-Functional programming is an exciting field to learn and combine
-knowledge from logic, categories, algebra, among many others.
+Functional programming is an exciting field that combines many disciplines like
+logic, type theory, categories, algebra, and of course, programming languages.
+
+\begin{code}
+_ = Set -- Trick for .lagda in jekyll
+\end{code}
 
 ## [Advanced Functional Programming CS410-17 by Conor McBride](https://github.com/pigworker/CS410-17/)
 
@@ -17,12 +21,10 @@ knowledge from logic, categories, algebra, among many others.
 
 {: .foldable}
 \begin{code}
-_ = Set -- Trick for .lagda in jekyll
 
 module Lec1Done where
 
   -- the -- mark introduces a "comment to end of line"
-
 
   ------------------------------------------------------------------------------
   -- some basic "logical" types
