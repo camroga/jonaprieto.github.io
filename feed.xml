@@ -1,68 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-07-08T21:49:28+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Intervals</title><link href="http://jonaprieto.github.io/learning/2018/07/08/learning-Interval-Analysis/" rel="alternate" type="text/html" title="Intervals" /><published>2018-07-08T00:00:00+02:00</published><updated>2018-07-08T21:49:22+02:00</updated><id>http://jonaprieto.github.io/learning/2018/07/08/learning-Interval-Analysis</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/07/08/learning-Interval-Analysis/">&lt;h2 id=&quot;interval-and-related-software&quot;&gt;Interval and Related Software&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-07-08T22:39:11+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Intervals</title><link href="http://jonaprieto.github.io/learning/2018/07/08/learning-Interval-Analysis/" rel="alternate" type="text/html" title="Intervals" /><published>2018-07-08T00:00:00+02:00</published><updated>2018-07-08T22:39:05+02:00</updated><id>http://jonaprieto.github.io/learning/2018/07/08/learning-Interval-Analysis</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/07/08/learning-Interval-Analysis/">&lt;div class=&quot;references&quot;&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;
-    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;http://www.euler-math-toolbox.de/Programs/08%20-%20Intervals.html&quot;&gt;Euler&lt;/a&gt;&lt;/p&gt;
+  &lt;h2 id=&quot;interval-and-related-software&quot;&gt;Interval and Related Software&lt;/h2&gt;
 
-    &lt;ul&gt;
-      &lt;li&gt;Interval Arithmetic&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://www.euler-math-toolbox.de/reference/numerical.html#Interval_Solvers_and_Guaranteed_Solutions&quot;&gt;Interval Solvers and Guaranteed Solutions&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;
-    &lt;p&gt;&lt;a href=&quot;http://www-sop.inria.fr/coprin/index_english.html&quot;&gt;ALIAS Library&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+  &lt;h3 id=&quot;alias-library&quot;&gt;&lt;a href=&quot;http://www-sop.inria.fr/coprin/index_english.html&quot;&gt;ALIAS Library&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;Algorithms Library of Interval Analysis for Systems; see also this link&lt;/p&gt;
+  &lt;p&gt;Algorithms Library of Interval Analysis for Systems; see also this link&lt;/p&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;ftp://ftp.iam.uni-karlsruhe.de/pub/awa/&quot;&gt;AWA&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;h3 id=&quot;arb&quot;&gt;&lt;a href=&quot;http://arblib.org/&quot;&gt;Arb&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;A software package for verified solution of ordinary differential equations.&lt;/p&gt;
+  &lt;p&gt;Arb is a C library for rigorous real and complex arithmetic with arbitrary precision. Arb tracks numerical errors automatically using ball arithmetic, a form of interval arithmetic based on a midpoint-radius representation&lt;/p&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;http://capd.ii.uj.edu.pl/&quot;&gt;CAPD, Computer-Assisted Proofs in Dynamics&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;h3 id=&quot;awa&quot;&gt;&lt;a href=&quot;ftp://ftp.iam.uni-karlsruhe.de/pub/awa/&quot;&gt;AWA&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;A C++ package for rigorous numerics for dynamical systems, oriented mostly for computer assisted proofs in dynamics.
+  &lt;p&gt;A software package for verified solution of ordinary differential equations.&lt;/p&gt;
+
+  &lt;h3 id=&quot;capd-computer-assisted-proofs-in-dynamics&quot;&gt;&lt;a href=&quot;http://capd.ii.uj.edu.pl/&quot;&gt;CAPD, Computer-Assisted Proofs in Dynamics&lt;/a&gt;&lt;/h3&gt;
+
+  &lt;p&gt;A C++ package for rigorous numerics for dynamical systems, oriented mostly for computer assisted proofs in dynamics.
 This library provides provides rigorous solvers for ODEs, variational equations for ODEs, differential inclusions, automatic computation of Poincare maps and their derivatives, computation of homology of spaces, maps and many other features.&lt;/p&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;http://cosy.pa.msu.edu/&quot;&gt;COSY&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;h3 id=&quot;cosy&quot;&gt;&lt;a href=&quot;http://cosy.pa.msu.edu/&quot;&gt;COSY&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;This software package is based on Taylor model and interval methods. It is intended for verified solution of such problems as ordinary differential equations, quadrature, range bounding, etc. It can either be used as a stand-alone program or via C++ and Fortran 90/95 frontends.&lt;/p&gt;
+  &lt;p&gt;This software package is based on Taylor model and interval methods. It is intended for verified solution of such problems as ordinary differential equations, quadrature, range bounding, etc. It can either be used as a stand-alone program or via C++ and Fortran 90/95 frontends.&lt;/p&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;http://valencia-ivp.com/&quot;&gt;VALENCIA-IVP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;h3 id=&quot;euler&quot;&gt;&lt;a href=&quot;http://www.euler-math-toolbox.de/Programs/08%20-%20Intervals.html&quot;&gt;Euler&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;Software for VALidation of state ENClosures using Interval Arithmetic for Initial Value Problems&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Interval Arithmetic&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.euler-math-toolbox.de/reference/numerical.html#Interval_Solvers_and_Guaranteed_Solutions&quot;&gt;Interval Solvers and Guaranteed Solutions&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;
-    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;http://www.cas.mcmaster.ca/~nedialk/vnodelp/&quot;&gt;VNODE-LP&lt;/a&gt;
-A C++ based Interval Solver for Initial Value Problems in Ordinary Differential Equations&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;
-    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;http://gitorious.org/pytaylor&quot;&gt;Pytaylor&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+  &lt;h3 id=&quot;intlab---interval-laboratory&quot;&gt;&lt;a href=&quot;http://www.ti3.tu-harburg.de/rump/intlab/index.html&quot;&gt;INTLAB - INTerval LABoratory&lt;/a&gt;&lt;/h3&gt;
 
-&lt;p&gt;A Python package implementing Taylor models and associated guaranteed ODE solvers.
-Pytaylor uses mpmath for interval arithmetic and sympy for symbolic manipulation.&lt;/p&gt;
+  &lt;p&gt;An interval toolbox for Matlab; free for non-commercial use.&lt;/p&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;http://www.ti3.tu-harburg.de/rump/intlab/index.html&quot;&gt;INTLAB - INTerval LABoratory&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;http://www.ti3.tuhh.de/rump/intlab/INTLABref.pdf&quot;&gt;INTLAB references&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 
-&lt;p&gt;An interval toolbox for Matlab; free for non-commercial use.&lt;/p&gt;
+  &lt;h3 id=&quot;pytaylor&quot;&gt;&lt;a href=&quot;http://gitorious.org/pytaylor&quot;&gt;Pytaylor&lt;/a&gt;&lt;/h3&gt;
 
-&lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;(INTLAB references](http://www.ti3.tuhh.de/rump/intlab/INTLABref.pdf)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Interval and Related Software</summary></entry><entry><title type="html">Unsorted</title><link href="http://jonaprieto.github.io/thoughts/2018/07/05/unsorted/" rel="alternate" type="text/html" title="Unsorted" /><published>2018-07-05T00:00:00+02:00</published><updated>2018-07-06T17:58:44+02:00</updated><id>http://jonaprieto.github.io/thoughts/2018/07/05/unsorted</id><content type="html" xml:base="http://jonaprieto.github.io/thoughts/2018/07/05/unsorted/">&lt;div class=&quot;references&quot;&gt;
+  &lt;p&gt;A Python package implementing Taylor models and associated guaranteed ODE solvers.
+Pytaylor uses&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;p&gt;&lt;a href=&quot;http://mpmath.org/doc/current/contexts.html#arbitrary-precision-interval-arithmetic-iv&quot;&gt;mpmath&lt;/a&gt; for interval arithmetic. &lt;a href=&quot;https://github.com/fredrik-johansson/mpmath&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+
+      &lt;ul&gt;
+        &lt;li&gt;http://mpmath.org/doc/current/calculus/odes.html&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;p&gt;&lt;a href=&quot;https://docs.sympy.org/0.6.7/modules/mpmath/intervals.html&quot;&gt;sympy&lt;/a&gt; for symbolic manipulation.&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;http://homepages.math.uic.edu/~jan/mcs507f13/intervalarithmetic.pdf&lt;/li&gt;
+    &lt;li&gt;http://homepages.math.uic.edu/~jan/mcs507f13/&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3 id=&quot;valencia-ivp&quot;&gt;&lt;a href=&quot;http://valencia-ivp.com/&quot;&gt;VALENCIA-IVP&lt;/a&gt;&lt;/h3&gt;
+
+  &lt;p&gt;Software for VALidation of state ENClosures using Interval Arithmetic for Initial Value Problems&lt;/p&gt;
+
+  &lt;h3 id=&quot;vnode-lp&quot;&gt;&lt;a href=&quot;http://www.cas.mcmaster.ca/~nedialk/vnodelp/&quot;&gt;VNODE-LP&lt;/a&gt;&lt;/h3&gt;
+  &lt;p&gt;A C++ based Interval Solver for Initial Value Problems in Ordinary Differential Equations&lt;/p&gt;
+
+&lt;/div&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html"></summary></entry><entry><title type="html">Unsorted</title><link href="http://jonaprieto.github.io/thoughts/2018/07/05/unsorted/" rel="alternate" type="text/html" title="Unsorted" /><published>2018-07-05T00:00:00+02:00</published><updated>2018-07-06T17:58:44+02:00</updated><id>http://jonaprieto.github.io/thoughts/2018/07/05/unsorted</id><content type="html" xml:base="http://jonaprieto.github.io/thoughts/2018/07/05/unsorted/">&lt;div class=&quot;references&quot;&gt;
 
   &lt;ul&gt;
     &lt;li&gt;
