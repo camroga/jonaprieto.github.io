@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-08T22:39:11+02:00</updated>
+ <updated>2018-07-08T23:25:07+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -1843,8 +1843,54 @@ logic, type theory, categories, algebra, and of course, programming languages.&l
 &lt;h3 id=&quot;graph-theory-by-sarada-herke&quot;&gt;Graph Theory by &lt;a href=&quot;https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg&quot;&gt;Sarada Herke&lt;/a&gt;&lt;/h3&gt;
 
 &lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=eIb1cz06UwI&quot;&gt;01. Seven Bridges of Konigsberg&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=S1Zwhz-MhCs&quot;&gt;02. Definition of a Graph&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=eIb1cz06UwI&quot;&gt;01. Seven Bridges of Konigsberg&lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Seven Bridges problem&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Eulerian walk&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Degree
+        &lt;ul&gt;
+          &lt;li&gt;Odd for starting or ending points&lt;/li&gt;
+          &lt;li&gt;Even nodes for intermediate points&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Lemma&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;If a graph has an Eulerian walk then the number of odd degree vertices is
+either 0 or 2. 0 when the path starts where it ends. 2 when there is a
+starting point different from the ending point.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-bcb514e9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=S1Zwhz-MhCs&quot;&gt;02. Definition of a Graph&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;A graph is a pair &lt;script type=&quot;math/tex&quot;&gt;G = (V, E)&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;V&lt;/script&gt; is a set of vertices and &lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt; is a subset
+of the cartesian product &lt;script type=&quot;math/tex&quot;&gt;V \times V&lt;/script&gt;.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;Size of the graph is denoted by |E|&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Order of the graph is denoted by |V|&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Some kind of graphs:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Simple graphs&lt;/strong&gt; : No loops, no multiple loops&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Directed graphs&lt;/strong&gt; : each edge has a direction associated to it&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Undirected graphs&lt;/strong&gt; : edges without any direction&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lLOvB1qFE1E&quot;&gt;03. Examples of Graphs&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=71XbdtoG7P8&quot;&gt;04. Families of Graphs&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=BEyuUXQs5ko&quot;&gt;05. Connected and Regular Graphs&lt;/a&gt;&lt;/li&gt;

@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+88</span>/<span class="substractions">-5</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f5e75b968e1e79d8784628bd9165c6972b2fc83f"> changing category name</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+123</span>/<span class="substractions">-7</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/d0bf8b4a20b67a9074b85d858215170d74ada932"> two graph videos watched</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f5e75b968e1e79d8784628bd9165c6972b2fc83f">f5e75b9 </a> on  04 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/d0bf8b4a20b67a9074b85d858215170d74ada932">d0bf8b4 </a> on  08 Jul 2018
     </div>
     </div>
   </div>
@@ -141,8 +141,54 @@
 <h3 id="graph-theory-by-sarada-herke">Graph Theory by <a href="https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg">Sarada Herke</a></h3>
 
 <ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=eIb1cz06UwI">01. Seven Bridges of Konigsberg</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=S1Zwhz-MhCs">02. Definition of a Graph</a></li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=eIb1cz06UwI">01. Seven Bridges of Konigsberg</a></p>
+
+    <ul>
+      <li>Seven Bridges problem</li>
+      <li>
+        <p>Eulerian walk</p>
+
+        <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png" alt="" /></p>
+      </li>
+      <li>Degree
+        <ul>
+          <li>Odd for starting or ending points</li>
+          <li>Even nodes for intermediate points</li>
+        </ul>
+      </li>
+      <li><strong>Lemma</strong></li>
+    </ul>
+
+    <p>If a graph has an Eulerian walk then the number of odd degree vertices is
+either 0 or 2. 0 when the path starts where it ends. 2 when there is a
+starting point different from the ending point.</p>
+
+    <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-bcb514e9.png" alt="" /></p>
+  </li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=S1Zwhz-MhCs">02. Definition of a Graph</a></p>
+
+    <p>A graph is a pair <script type="math/tex">G = (V, E)</script>, where <script type="math/tex">V</script> is a set of vertices and <script type="math/tex">E</script> is a subset
+of the cartesian product <script type="math/tex">V \times V</script>.</p>
+
+    <ul>
+      <li>
+        <p>Size of the graph is denoted by |E|</p>
+      </li>
+      <li>
+        <p>Order of the graph is denoted by |V|</p>
+      </li>
+    </ul>
+
+    <p>Some kind of graphs:</p>
+
+    <ul>
+      <li><strong>Simple graphs</strong> : No loops, no multiple loops</li>
+      <li><strong>Directed graphs</strong> : each edge has a direction associated to it</li>
+      <li><strong>Undirected graphs</strong> : edges without any direction</li>
+    </ul>
+  </li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=lLOvB1qFE1E">03. Examples of Graphs</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=71XbdtoG7P8">04. Families of Graphs</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=BEyuUXQs5ko">05. Connected and Regular Graphs</a></li>
