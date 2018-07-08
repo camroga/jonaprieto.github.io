@@ -6,7 +6,7 @@ categories: learning
 published: true
 ---
 
-My plan to learn about graphs:
+Learning graphs on youtube.
 
 ### Graph Theory by [Sarada Herke](https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg)
 
@@ -39,9 +39,8 @@ My plan to learn about graphs:
   A graph is a pair $$G = (V, E)$$, where $$V$$ is a set of vertices and $$E$$ is a subset
   of the cartesian product $$V \times V$$.
 
-  - Size of the graph is denoted by \|E\|
-
-  - Order of the graph is denoted by \|V\|
+  - **Size** of the graph is denoted by \|E\|
+  - **Order** of the graph is denoted by \|V\|
 
   Some kind of graphs:
 
