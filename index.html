@@ -114,7 +114,7 @@
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
 
-            <small style="text-decoration:left">∷ WorkInProgress Student<span class="modifications">(<span class="additions">+159309</span>/<span class="substractions">-118365</span>)</span>
+            <small style="text-decoration:left">∷ WorkInProgress Student<span class="modifications">(<span class="additions">+159572</span>/<span class="substractions">-118624</span>)</span>
             </small>
           </h3>
         </div>
@@ -128,13 +128,13 @@
   
   <div class="main-heading">
     <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/067518d1e6d87aa3e7224248813d85314d8d638b"> cs410 video watched, more about proofs and programs</a></span>
+        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/8dc9b206b7bb4c0df76bdea3c7533deb32da4b17"> Fix foldable codes</a></span>
     <a class="main-rss" href="/feed.xml">
       rss
     </a>
   </div>
   <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/067518d1e6d87aa3e7224248813d85314d8d638b">d8d638b </a> on  08 Jul 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/8dc9b206b7bb4c0df76bdea3c7533deb32da4b17">2da4b17 </a> on  08 Jul 2018
   </div>
   </div>
   
@@ -167,8 +167,8 @@
       <div class="algolia">
         <div class="algolia-date">30/06/2018 </div>
         <div class="algolia-title"><a href="/learning/2018/06/30/learning-Functional-Programming/">PL</a></div>
-        <div class="algolia-message"><small> cs410 video watched, more about proofs and programs</small></div>
-        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/067518d1e6d87aa3e7224248813d85314d8d638b">Sun Jul 8 17:35:17 2018 +0200</a></div>
+        <div class="algolia-message"><small> Fix foldable codes</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/8dc9b206b7bb4c0df76bdea3c7533deb32da4b17">Sun Jul 8 17:51:32 2018 +0200</a></div>
       </div>
       
       <div class="algolia">
@@ -431,7 +431,7 @@ WebFontConfig = {
  $('pre.foldable').each(function(){
      var autoHeight = $(this).height();
      var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div>OPEN</div>");
+     var plus    = $("<div></div>");
      var horLine = $("<div></div>");
      var verLine = $("<div></div>");
      $(this).prepend(plus);
@@ -455,11 +455,13 @@ WebFontConfig = {
          'background-color' : '#C1E0FF'});
      plus.append(verLine);
      plus.append(horLine);
-     $(this).height(2.0 * lineHeight);
+     $(this).height(lineHeight);
+     // $(this).height(2.0 * lineHeight);
      $(this).css('overflow','hidden');
      $(this).click(function(){
          if ($(this).height() == autoHeight) {
-             $(this).height(2.0 * lineHeight);
+             // $(this).height(2.0 * lineHeight);
+             $(this).height(lineHeight);
              plus.show();
          }
          else {
