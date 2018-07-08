@@ -13,18 +13,23 @@ My plan to learn about graphs:
 - [x] [01. Seven Bridges of Konigsberg](https://www.youtube.com/watch?v=eIb1cz06UwI)
 
   * Seven Bridges problem
-  * Eulerian walk
 
-    ![](/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png)
+  ![](/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png)
 
-  * Degree
-    - Odd for starting or ending points
-    - Even nodes for intermediate points
+  * **Eulerian walk/path/trail** in a finite graph is a path which visits *every edge* exactly once
+
+  * **Eulerian circuit/cycle** is an Eulerian path which starts and ends on the same vertex
+
+  * **Degree/Valency**: is the number of edges incident to the vertex, with
+  loops counted twice, denoted by $$\deg ⁡ ( v )$$
+
+    - Odd degree for starting or ending nodes
+    - Even degree for intermediate nodes
 
   * **Lemma**
 
-  If a graph has an Eulerian walk then the number of odd degree vertices is
-  either 0 or 2. 0 when the path starts where it ends. 2 when there is a
+  If a graph has an **Eulerian walk** then the number of **odd degree vertices** is
+  either **0 or 2**. 0 when the path starts where it ends. 2 when there is a
   starting point different from the ending point.
 
   ![](/assets/png-images/2018-06-27-learning-graph-theory-bcb514e9.png)
