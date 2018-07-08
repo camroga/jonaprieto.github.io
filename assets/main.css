@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* Agda. */
-.Agda { padding: .4em .4em; background: #f1f7fd; border: 1px solid #d2e6f7; border-radius: 3px; font-family: Menlo, Source Code Pro, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; font-size: .74em; }
+.Agda { background: #f1f7fd; border: 1px solid #d2e6f7; border-radius: 3px; font-family: Menlo, Source Code Pro, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; font-size: .74em; }
 
 .Spec { border: 1px dashed #81b9ea !important; }
 
