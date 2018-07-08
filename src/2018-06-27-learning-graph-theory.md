@@ -10,8 +10,41 @@ My plan to learn about graphs:
 
 ### Graph Theory by [Sarada Herke](https://www.youtube.com/channel/UCV8tyRakGZuXUwD-wYH1yGg)
 
-- [ ] [01. Seven Bridges of Konigsberg](https://www.youtube.com/watch?v=eIb1cz06UwI)
-- [ ] [02. Definition of a Graph](https://www.youtube.com/watch?v=S1Zwhz-MhCs)
+- [x] [01. Seven Bridges of Konigsberg](https://www.youtube.com/watch?v=eIb1cz06UwI)
+
+  * Seven Bridges problem
+  * Eulerian walk
+
+    ![](/assets/png-images/2018-06-27-learning-graph-theory-c13de192.png)
+
+  * Degree
+    - Odd for starting or ending points
+    - Even nodes for intermediate points
+
+  * **Lemma**
+
+  If a graph has an Eulerian walk then the number of odd degree vertices is
+  either 0 or 2. 0 when the path starts where it ends. 2 when there is a
+  starting point different from the ending point.
+
+  ![](/assets/png-images/2018-06-27-learning-graph-theory-bcb514e9.png)
+
+- [x] [02. Definition of a Graph](https://www.youtube.com/watch?v=S1Zwhz-MhCs)
+
+  A graph is a pair $$G = (V, E)$$, where $$V$$ is a set of vertices and $$E$$ is a subset
+  of the cartesian product $$V \times V$$.
+
+  - Size of the graph is denoted by \|E\|
+
+  - Order of the graph is denoted by \|V\|
+
+  Some kind of graphs:
+
+  - **Simple graphs** : No loops, no multiple loops
+  - **Directed graphs** : each edge has a direction associated to it
+  - **Undirected graphs** : edges without any direction
+
+
 - [ ] [03. Examples of Graphs](https://www.youtube.com/watch?v=lLOvB1qFE1E)
 - [ ] [04. Families of Graphs](https://www.youtube.com/watch?v=71XbdtoG7P8)
 - [ ] [05. Connected and Regular Graphs](https://www.youtube.com/watch?v=BEyuUXQs5ko)
