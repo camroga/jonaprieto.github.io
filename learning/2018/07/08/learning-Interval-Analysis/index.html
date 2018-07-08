@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Circle puzzle</title>
-  <meta name="description" content="Moebius type family:">
+  <title>Intervals</title>
+  <meta name="description" content="Interval and Related Software">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -123,49 +123,94 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+354</span>/<span class="substractions">-318</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/92d1aefe6d32d2ee240bb16eb742f3d865be635a"> working in a hott library</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+52</span>/<span class="substractions">-0</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/b8c424512b896f98b270ad62dd2082136137ff09"> Interval analysis plan</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/92d1aefe6d32d2ee240bb16eb742f3d865be635a">92d1aef </a> on  04 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/b8c424512b896f98b270ad62dd2082136137ff09">b8c4245 </a> on  08 Jul 2018
     </div>
     </div>
   </div>
   
 
-  <h1 class="post-title">Circle puzzle</h1>
+  <h1 class="post-title">Intervals</h1>
 
   
-  <p>Moebius type family:</p>
-
-<p class="equation">
-$$
-\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
-\mathbb{S}^1 \to \mathcal{U}.
-$$
-</p>
-
-<div class="exercise">
-Prove the equivalence of
-
-<p class="equation">
-$$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.$$
-</p>
-</div>
-
-<p>I gave a talk giving one solution using the flattening lemma:</p>
-
-<ul>
-  <li><a href="https://github.com/jonaprieto/flattenlem/files/2045561/Jonathan-Prieto-Cubides-The-Flattening-Lemma.pdf"><strong>Direct link PDF</strong></a></li>
+  <div class="toc">
+    <nav>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#interval-and-related-software">Interval and Related Software</a></li>
 </ul>
 
-<h2 id="references">References</h2>
+    </nav>
+  </div>
+  
+  <h2 id="interval-and-related-software">Interval and Related Software</h2>
 
-<div class="references">
-  <ul>
-    <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
-  </ul>
-</div>
+<ul class="task-list">
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="http://www.euler-math-toolbox.de/Programs/08%20-%20Intervals.html">Euler</a></p>
+
+    <ul>
+      <li>Interval Arithmetic</li>
+      <li><a href="http://www.euler-math-toolbox.de/reference/numerical.html#Interval_Solvers_and_Guaranteed_Solutions">Interval Solvers and Guaranteed Solutions</a></li>
+    </ul>
+  </li>
+  <li class="task-list-item">
+    <p><a href="http://www-sop.inria.fr/coprin/index_english.html">ALIAS Library</a></p>
+  </li>
+</ul>
+
+<p>Algorithms Library of Interval Analysis for Systems; see also this link</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="ftp://ftp.iam.uni-karlsruhe.de/pub/awa/">AWA</a></li>
+</ul>
+
+<p>A software package for verified solution of ordinary differential equations.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="http://capd.ii.uj.edu.pl/">CAPD, Computer-Assisted Proofs in Dynamics</a></li>
+</ul>
+
+<p>A C++ package for rigorous numerics for dynamical systems, oriented mostly for computer assisted proofs in dynamics.
+This library provides provides rigorous solvers for ODEs, variational equations for ODEs, differential inclusions, automatic computation of Poincare maps and their derivatives, computation of homology of spaces, maps and many other features.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="http://cosy.pa.msu.edu/">COSY</a></li>
+</ul>
+
+<p>This software package is based on Taylor model and interval methods. It is intended for verified solution of such problems as ordinary differential equations, quadrature, range bounding, etc. It can either be used as a stand-alone program or via C++ and Fortran 90/95 frontends.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="http://valencia-ivp.com/">VALENCIA-IVP</a></li>
+</ul>
+
+<p>Software for VALidation of state ENClosures using Interval Arithmetic for Initial Value Problems</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="http://www.cas.mcmaster.ca/~nedialk/vnodelp/">VNODE-LP</a>
+A C++ based Interval Solver for Initial Value Problems in Ordinary Differential Equations</p>
+  </li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="http://gitorious.org/pytaylor">Pytaylor</a></p>
+  </li>
+</ul>
+
+<p>A Python package implementing Taylor models and associated guaranteed ODE solvers.
+Pytaylor uses mpmath for interval arithmetic and sympy for symbolic manipulation.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="http://www.ti3.tu-harburg.de/rump/intlab/index.html">INTLAB - INTerval LABoratory</a></li>
+</ul>
+
+<p>An interval toolbox for Matlab; free for non-commercial use.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />(INTLAB references](http://www.ti3.tuhh.de/rump/intlab/INTLABref.pdf)</li>
+</ul>
 
 
   <!-- <h2> References </h2> -->
@@ -177,17 +222,6 @@ $$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\math
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
-            Intervals
-            
-            <small>08 Jul 2018</small>
-            
-          </a>
-        </h3>
-      </li>
     
       <li>
         <h3>
@@ -204,6 +238,17 @@ $$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\math
         <h3>
           <a href="/verification/2018/07/05/sat-solving/">
             SAT solvers
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/07/05/hott-lib/">
+            HoTT basics in Agda
             
             <small>05 Jul 2018</small>
             

@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+163</span>/<span class="substractions">-0</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7990dea9f1339e5f8598676a6b1c6a718576e2d6"> New folder assets; entry about jekyll; unsorted posted updated</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+164</span>/<span class="substractions">-3</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/b8c424512b896f98b270ad62dd2082136137ff09"> Interval analysis plan</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7990dea9f1339e5f8598676a6b1c6a718576e2d6">7990dea </a> on  06 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/b8c424512b896f98b270ad62dd2082136137ff09">b8c4245 </a> on  08 Jul 2018
     </div>
     </div>
   </div>
@@ -145,152 +145,151 @@ surprisingly useful:</p>
 
 <p>I modified the sources to work for my purposes, maybe it can help you too.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{CompositeDisposable, Directory, File} = require 'atom'
-fs = require 'fs'
-path = require 'path'
-crypto = require "crypto"
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nx">CompositeDisposable</span><span class="p">,</span> <span class="nx">Directory</span><span class="p">,</span> <span class="nx">File</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'atom'</span>
+<span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'fs'</span>
+<span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'path'</span>
+<span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span> <span class="s2">"crypto"</span>
 
-defaultImageDir = "/assets/"
+<span class="nx">defaultImageDir</span> <span class="o">=</span> <span class="s2">"/assets/"</span>
 
-module.exports = MarkdownImageAssistant =
-  subscriptions: null
-  config:
-      suffixes:
-          title: "Active file types"
-          description: "File type that image assistant should activate for"
-          type: 'array'
-          default: ['.markdown', '.md', '.mdown', '.mkd', '.mkdow']
-          items:
-              type: 'string'
-      preserveOrigName:
-          title: "Preserve original file names"
-          description: "When dragging and dropping files, whether to perserve original file names when copying over into the image directory"
-          type: 'boolean'
-          default: false
-      prependTargetFileName:
-          title: "Prepend the target file name"
-          description: "Whether to prepend the target file name when copying over the image. Overrides the \"Preserve Original Name\" setting."
-          type: 'boolean'
-          default: true
-      preserveFileNameInAssetsFolder:
-          title: "Create per-file asset directories"
-          description: "Creates a separate asset directory for each markdown file, e.g. `README.assets/`; setting `Image Directory` to a value other than the default of `assets/` overrides this option"
-          type: 'boolean'
-          default: false
-      imageDir:
-          title: "Image directory"
-          description: "Local directory to copy images into; created if not found."
-          type: 'string'
-          default: defaultImageDir
-      insertHtmlOverMarkdown:
-          title: "Insert image as Markup, instead of Markdown"
-          description: "Insert an image as HTML Markup, `&lt;img src=''&gt;`, instead of Markdown, `![]()`.  Useful if you want to adjust image `width` or `height`"
-          type: 'boolean'
-          default: false
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">MarkdownImageAssistant</span> <span class="o">=</span>
+  <span class="nx">subscriptions</span><span class="p">:</span> <span class="kc">null</span>
+  <span class="nx">config</span><span class="p">:</span>
+      <span class="nx">suffixes</span><span class="p">:</span>
+          <span class="nx">title</span><span class="p">:</span> <span class="s2">"Active file types"</span>
+          <span class="nx">description</span><span class="p">:</span> <span class="s2">"File type that image assistant should activate for"</span>
+          <span class="nx">type</span><span class="p">:</span> <span class="s1">'array'</span>
+          <span class="k">default</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.markdown'</span><span class="p">,</span> <span class="s1">'.md'</span><span class="p">,</span> <span class="s1">'.mdown'</span><span class="p">,</span> <span class="s1">'.mkd'</span><span class="p">,</span> <span class="s1">'.mkdow'</span><span class="p">]</span>
+          <span class="nx">items</span><span class="p">:</span>
+              <span class="nx">type</span><span class="p">:</span> <span class="s1">'string'</span>
+      <span class="nx">preserveOrigName</span><span class="p">:</span>
+          <span class="nx">title</span><span class="p">:</span> <span class="s2">"Preserve original file names"</span>
+          <span class="nx">description</span><span class="p">:</span> <span class="s2">"When dragging and dropping files, whether to perserve original file names when copying over into the image directory"</span>
+          <span class="nx">type</span><span class="p">:</span> <span class="s1">'boolean'</span>
+          <span class="k">default</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="nx">prependTargetFileName</span><span class="p">:</span>
+          <span class="nx">title</span><span class="p">:</span> <span class="s2">"Prepend the target file name"</span>
+          <span class="nx">description</span><span class="p">:</span> <span class="s2">"Whether to prepend the target file name when copying over the image. Overrides the </span><span class="se">\"</span><span class="s2">Preserve Original Name</span><span class="se">\"</span><span class="s2"> setting."</span>
+          <span class="nx">type</span><span class="p">:</span> <span class="s1">'boolean'</span>
+          <span class="k">default</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="nx">preserveFileNameInAssetsFolder</span><span class="p">:</span>
+          <span class="nx">title</span><span class="p">:</span> <span class="s2">"Create per-file asset directories"</span>
+          <span class="nx">description</span><span class="p">:</span> <span class="s2">"Creates a separate asset directory for each markdown file, e.g. `README.assets/`; setting `Image Directory` to a value other than the default of `assets/` overrides this option"</span>
+          <span class="nx">type</span><span class="p">:</span> <span class="s1">'boolean'</span>
+          <span class="k">default</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="nx">imageDir</span><span class="p">:</span>
+          <span class="nx">title</span><span class="p">:</span> <span class="s2">"Image directory"</span>
+          <span class="nx">description</span><span class="p">:</span> <span class="s2">"Local directory to copy images into; created if not found."</span>
+          <span class="nx">type</span><span class="p">:</span> <span class="s1">'string'</span>
+          <span class="k">default</span><span class="p">:</span> <span class="nx">defaultImageDir</span>
+      <span class="nx">insertHtmlOverMarkdown</span><span class="p">:</span>
+          <span class="nx">title</span><span class="p">:</span> <span class="s2">"Insert image as Markup, instead of Markdown"</span>
+          <span class="nx">description</span><span class="p">:</span> <span class="s2">"Insert an image as HTML Markup, `&lt;img src=''&gt;`, instead of Markdown, `![]()`.  Useful if you want to adjust image `width` or `height`"</span>
+          <span class="nx">type</span><span class="p">:</span> <span class="s1">'boolean'</span>
+          <span class="k">default</span><span class="p">:</span> <span class="kc">false</span>
 
-  activate: (state) -&gt;
-      # Events subscribed to in atom's system can be easily cleaned up
+  <span class="nx">activate</span><span class="p">:</span> <span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="o">-&gt;</span>
+      <span class="err">#</span> <span class="nx">Events</span> <span class="nx">subscribed</span> <span class="nx">to</span> <span class="k">in</span> <span class="nx">atom</span><span class="s1">'s system can be easily cleaned up
       # with a CompositeDisposable
       @subscriptions = new CompositeDisposable
 
-      # Register handler for drag 'n drop events
-      @subscriptions.add atom.workspace.observeTextEditors (editor) =&gt; @handle_subscription(editor)
-      # Register handler for copy and paste events
-      @subscriptions.add atom.commands.onWillDispatch (e) =&gt;
-          if event? and event.type == 'core:paste'
-              editor = atom.workspace.getActiveTextEditor()
-              return unless editor
-              @handle_cp(e)
+      # Register handler for drag '</span><span class="nx">n</span> <span class="nx">drop</span> <span class="nx">events</span>
+      <span class="p">@</span><span class="nd">subscriptions</span><span class="p">.</span><span class="nx">add</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">workspace</span><span class="p">.</span><span class="nx">observeTextEditors</span> <span class="p">(</span><span class="nx">editor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">@</span><span class="nd">handle_subscription</span><span class="p">(</span><span class="nx">editor</span><span class="p">)</span>
+      <span class="err">#</span> <span class="nx">Register</span> <span class="nx">handler</span> <span class="k">for</span> <span class="nx">copy</span> <span class="nx">and</span> <span class="nx">paste</span> <span class="nx">events</span>
+      <span class="p">@</span><span class="nd">subscriptions</span><span class="p">.</span><span class="nx">add</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">commands</span><span class="p">.</span><span class="nx">onWillDispatch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span>
+          <span class="k">if</span> <span class="nx">event</span><span class="p">?</span> <span class="nx">and</span> <span class="nx">event</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">'core:paste'</span>
+              <span class="nx">editor</span> <span class="o">=</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">workspace</span><span class="p">.</span><span class="nx">getActiveTextEditor</span><span class="p">()</span>
+              <span class="k">return</span> <span class="nx">unless</span> <span class="nx">editor</span>
+              <span class="p">@</span><span class="nd">handle_cp</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 
-  handle_subscription: (editor) -&gt;
-      textEditorElement = atom.views.getView editor
-      # on drag and drop event
-      textEditorElement.addEventListener "drop", (e) =&gt; @handle_dropped(e)
+  <span class="nx">handle_subscription</span><span class="p">:</span> <span class="p">(</span><span class="nx">editor</span><span class="p">)</span> <span class="o">-&gt;</span>
+      <span class="nx">textEditorElement</span> <span class="o">=</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">views</span><span class="p">.</span><span class="nx">getView</span> <span class="nx">editor</span>
+      <span class="err">#</span> <span class="nx">on</span> <span class="nx">drag</span> <span class="nx">and</span> <span class="nx">drop</span> <span class="nx">event</span>
+      <span class="nx">textEditorElement</span><span class="p">.</span><span class="nx">addEventListener</span> <span class="s2">"drop"</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">@</span><span class="nd">handle_dropped</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span>
 
-  # triggered in response to dragged and dropped files
-  handle_dropped: (e) -&gt;
-      e.preventDefault?()
-      e.stopPropagation?()
-      editor = atom.workspace.getActiveTextEditor()
-      return unless editor
+  <span class="err">#</span> <span class="nx">triggered</span> <span class="k">in</span> <span class="nx">response</span> <span class="nx">to</span> <span class="nx">dragged</span> <span class="nx">and</span> <span class="nx">dropped</span> <span class="nx">files</span>
+  <span class="nx">handle_dropped</span><span class="p">:</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">-&gt;</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">?()</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">stopPropagation</span><span class="p">?()</span>
+      <span class="nx">editor</span> <span class="o">=</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">workspace</span><span class="p">.</span><span class="nx">getActiveTextEditor</span><span class="p">()</span>
+      <span class="k">return</span> <span class="nx">unless</span> <span class="nx">editor</span>
 
-      dropped_files = e.dataTransfer.files
+      <span class="nx">dropped_files</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">dataTransfer</span><span class="p">.</span><span class="nx">files</span>
 
-      for f in dropped_files
-          if fs.lstatSync(f.path).isFile()
-              imgbuffer = new Buffer(fs.readFileSync(f.path))
-              extname = path.extname(f.path)
-              if atom.config.get('markdown-image-assistant.preserveOrigName')
-                  origname = path.basename(f.path, extname)
-              else
-                  origname = ""
-              @process_file(editor, imgbuffer, extname, origname)
+      <span class="k">for</span> <span class="nx">f</span> <span class="k">in</span> <span class="nx">dropped_files</span>
+          <span class="k">if</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">lstatSync</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">path</span><span class="p">).</span><span class="nx">isFile</span><span class="p">()</span>
+              <span class="nx">imgbuffer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Buffer</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">readFileSync</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">path</span><span class="p">))</span>
+              <span class="nx">extname</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">path</span><span class="p">)</span>
+              <span class="k">if</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.preserveOrigName'</span><span class="p">)</span>
+                  <span class="nx">origname</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nx">path</span><span class="p">,</span> <span class="nx">extname</span><span class="p">)</span>
+              <span class="k">else</span>
+                  <span class="nx">origname</span> <span class="o">=</span> <span class="s2">""</span>
+              <span class="p">@</span><span class="nd">process_file</span><span class="p">(</span><span class="nx">editor</span><span class="p">,</span> <span class="nx">imgbuffer</span><span class="p">,</span> <span class="nx">extname</span><span class="p">,</span> <span class="nx">origname</span><span class="p">)</span>
 
-  # triggered in response to a copy pasted image
-  handle_cp: (e) -&gt;
-      clipboard = require 'clipboard'
-      img = clipboard.readImage()
-      return if img.isEmpty()
-      editor = atom.workspace.getActiveTextEditor()
-      e.stopImmediatePropagation()
-      imgbuffer = img.toPNG()
-      @process_file(editor, imgbuffer, ".png", "")
+  <span class="err">#</span> <span class="nx">triggered</span> <span class="k">in</span> <span class="nx">response</span> <span class="nx">to</span> <span class="nx">a</span> <span class="nx">copy</span> <span class="nx">pasted</span> <span class="nx">image</span>
+  <span class="nx">handle_cp</span><span class="p">:</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">-&gt;</span>
+      <span class="nx">clipboard</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'clipboard'</span>
+      <span class="nx">img</span> <span class="o">=</span> <span class="nx">clipboard</span><span class="p">.</span><span class="nx">readImage</span><span class="p">()</span>
+      <span class="k">return</span> <span class="k">if</span> <span class="nx">img</span><span class="p">.</span><span class="nx">isEmpty</span><span class="p">()</span>
+      <span class="nx">editor</span> <span class="o">=</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">workspace</span><span class="p">.</span><span class="nx">getActiveTextEditor</span><span class="p">()</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">stopImmediatePropagation</span><span class="p">()</span>
+      <span class="nx">imgbuffer</span> <span class="o">=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">toPNG</span><span class="p">()</span>
+      <span class="p">@</span><span class="nd">process_file</span><span class="p">(</span><span class="nx">editor</span><span class="p">,</span> <span class="nx">imgbuffer</span><span class="p">,</span> <span class="s2">".png"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)</span>
 
-  # write a given buffer to the local "assets/" directory
-  process_file: (editor, imgbuffer, extname, origname) -&gt;
-      target_file = editor.getPath()
+  <span class="err">#</span> <span class="nx">write</span> <span class="nx">a</span> <span class="nx">given</span> <span class="nx">buffer</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">local</span> <span class="s2">"assets/"</span> <span class="nx">directory</span>
+  <span class="nx">process_file</span><span class="p">:</span> <span class="p">(</span><span class="nx">editor</span><span class="p">,</span> <span class="nx">imgbuffer</span><span class="p">,</span> <span class="nx">extname</span><span class="p">,</span> <span class="nx">origname</span><span class="p">)</span> <span class="o">-&gt;</span>
+      <span class="nx">target_file</span> <span class="o">=</span> <span class="nx">editor</span><span class="p">.</span><span class="nx">getPath</span><span class="p">()</span>
 
-      if path.extname(target_file) not in atom.config.get('markdown-image-assistant.suffixes')
-          console.log "Adding images to non-markdown files is not supported"
-          return false
+      <span class="k">if</span> <span class="nx">path</span><span class="p">.</span><span class="nx">extname</span><span class="p">(</span><span class="nx">target_file</span><span class="p">)</span> <span class="nx">not</span> <span class="k">in</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.suffixes'</span><span class="p">)</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s2">"Adding images to non-markdown files is not supported"</span>
+          <span class="k">return</span> <span class="kc">false</span>
 
-      if atom.config.get('markdown-image-assistant.imageDir') == defaultImageDir &amp;&amp; atom.config.get('markdown-image-assistant.preserveFileNameInAssetsFolder')
-          assets_dir = path.basename(path.parse(target_file).name + "." + atom.config.get('markdown-image-assistant.imageDir'))
-      else
-          assets_dir = path.basename(atom.config.get('markdown-image-assistant.imageDir'))
-      assets_path = path.join(target_file, "..", "..", assets_dir, "png-images")
+      <span class="k">if</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.imageDir'</span><span class="p">)</span> <span class="o">==</span> <span class="nx">defaultImageDir</span> <span class="o">&amp;&amp;</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.preserveFileNameInAssetsFolder'</span><span class="p">)</span>
+          <span class="nx">assets_dir</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">target_file</span><span class="p">).</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">"."</span> <span class="o">+</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.imageDir'</span><span class="p">))</span>
+      <span class="k">else</span>
+          <span class="nx">assets_dir</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">basename</span><span class="p">(</span><span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.imageDir'</span><span class="p">))</span>
+      <span class="nx">assets_path</span> <span class="o">=</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">target_file</span><span class="p">,</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">".."</span><span class="p">,</span> <span class="nx">assets_dir</span><span class="p">,</span> <span class="s2">"png-images"</span><span class="p">)</span>
 
-      # I want to storage my pics in an specific folder in a folder one-level up
+      <span class="err">#</span> <span class="nx">I</span> <span class="nx">want</span> <span class="nx">to</span> <span class="nx">storage</span> <span class="nx">my</span> <span class="nx">pics</span> <span class="k">in</span> <span class="nx">an</span> <span class="nx">specific</span> <span class="nx">folder</span> <span class="k">in</span> <span class="nx">a</span> <span class="nx">folder</span> <span class="nx">one</span><span class="o">-</span><span class="nx">level</span> <span class="nx">up</span>
 
 
-      md5 = crypto.createHash 'md5'
-      md5.update(imgbuffer)
+      <span class="nx">md5</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span> <span class="s1">'md5'</span>
+      <span class="nx">md5</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">imgbuffer</span><span class="p">)</span>
 
-      if !atom.config.get('markdown-image-assistant.prependTargetFileName')
-          img_filename = "#{md5.digest('hex').slice(0,8)}#{extname}"
-      else if origname == ""
-          img_filename = "#{path.parse(target_file).name}-#{md5.digest('hex').slice(0,8)}#{extname}"
-      else
-          img_filename = "#{path.parse(target_file).name}-#{origname}#{extname}"
-      console.log img_filename
+      <span class="k">if</span> <span class="o">!</span><span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.prependTargetFileName'</span><span class="p">)</span>
+          <span class="nx">img_filename</span> <span class="o">=</span> <span class="s2">"#{md5.digest('hex').slice(0,8)}#{extname}"</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="nx">origname</span> <span class="o">==</span> <span class="s2">""</span>
+          <span class="nx">img_filename</span> <span class="o">=</span> <span class="s2">"#{path.parse(target_file).name}-#{md5.digest('hex').slice(0,8)}#{extname}"</span>
+      <span class="k">else</span>
+          <span class="nx">img_filename</span> <span class="o">=</span> <span class="s2">"#{path.parse(target_file).name}-#{origname}#{extname}"</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="nx">img_filename</span>
 
-      @create_dir assets_path, ()=&gt;
-          fs.writeFile path.join(assets_path, img_filename), imgbuffer, 'binary', ()=&gt;
-              console.log "Copied file over to #{assets_path}"
-              if atom.config.get('markdown-image-assistant.insertHtmlOverMarkdown')
-                editor.insertText "&lt;img alt=\"#{img_filename}\" src=\"#{assets_dir}/#{img_filename}\" width=\"\" height=\"\" &gt;"
-              else
-                editor.insertText "![](/#{assets_dir}/png-images/#{img_filename})"
+      <span class="p">@</span><span class="nd">create_dir</span> <span class="nx">assets_path</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span>
+          <span class="nx">fs</span><span class="p">.</span><span class="nx">writeFile</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">assets_path</span><span class="p">,</span> <span class="nx">img_filename</span><span class="p">),</span> <span class="nx">imgbuffer</span><span class="p">,</span> <span class="s1">'binary'</span><span class="p">,</span> <span class="p">()</span><span class="o">=&gt;</span>
+              <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s2">"Copied file over to #{assets_path}"</span>
+              <span class="k">if</span> <span class="nx">atom</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'markdown-image-assistant.insertHtmlOverMarkdown'</span><span class="p">)</span>
+                <span class="nx">editor</span><span class="p">.</span><span class="nx">insertText</span> <span class="s2">"&lt;img alt=</span><span class="se">\"</span><span class="s2">#{img_filename}</span><span class="se">\"</span><span class="s2"> src=</span><span class="se">\"</span><span class="s2">#{assets_dir}/#{img_filename}</span><span class="se">\"</span><span class="s2"> width=</span><span class="se">\"\"</span><span class="s2"> height=</span><span class="se">\"\"</span><span class="s2"> &gt;"</span>
+              <span class="k">else</span>
+                <span class="nx">editor</span><span class="p">.</span><span class="nx">insertText</span> <span class="s2">"![](/#{assets_dir}/png-images/#{img_filename})"</span>
 
-      return false
+      <span class="k">return</span> <span class="kc">false</span>
 
-  create_dir: (dir_path, callback)=&gt;
-      dir_handle = new Directory(dir_path)
+  <span class="nx">create_dir</span><span class="p">:</span> <span class="p">(</span><span class="nx">dir_path</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span><span class="o">=&gt;</span>
+      <span class="nx">dir_handle</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Directory</span><span class="p">(</span><span class="nx">dir_path</span><span class="p">)</span>
 
-      dir_handle.exists().then (existed) =&gt;
-          if not existed
-              dir_handle.create().then (created) =&gt;
-                  if created
-                      console.log "Successfully created #{dir_path}"
-                      callback()
-          else
-              callback()
+      <span class="nx">dir_handle</span><span class="p">.</span><span class="nx">exists</span><span class="p">().</span><span class="nx">then</span> <span class="p">(</span><span class="nx">existed</span><span class="p">)</span> <span class="o">=&gt;</span>
+          <span class="k">if</span> <span class="nx">not</span> <span class="nx">existed</span>
+              <span class="nx">dir_handle</span><span class="p">.</span><span class="nx">create</span><span class="p">().</span><span class="nx">then</span> <span class="p">(</span><span class="nx">created</span><span class="p">)</span> <span class="o">=&gt;</span>
+                  <span class="k">if</span> <span class="nx">created</span>
+                      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span> <span class="s2">"Successfully created #{dir_path}"</span>
+                      <span class="nx">callback</span><span class="p">()</span>
+          <span class="k">else</span>
+              <span class="nx">callback</span><span class="p">()</span>
 
-  deactivate: -&gt;
-      @subscriptions.dispose()
+  <span class="nx">deactivate</span><span class="p">:</span> <span class="o">-&gt;</span>
+      <span class="p">@</span><span class="nd">subscriptions</span><span class="p">.</span><span class="nx">dispose</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>&lt;/div&gt;</p>
 
 
   <!-- <h2> References </h2> -->
@@ -302,6 +301,17 @@ module.exports = MarkdownImageAssistant =
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+            Intervals
+            
+            <small>08 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
     
       <li>
         <h3>
@@ -318,17 +328,6 @@ module.exports = MarkdownImageAssistant =
         <h3>
           <a href="/verification/2018/07/05/sat-solving/">
             SAT solvers
-            
-            <small>05 Jul 2018</small>
-            
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/type-theory/2018/07/05/hott-lib/">
-            HoTT basics in Agda
             
             <small>05 Jul 2018</small>
             
