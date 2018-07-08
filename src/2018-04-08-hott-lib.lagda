@@ -10,9 +10,10 @@ This is my attempt to collect in just one-file, a basic overview of HoTT in Agda
 This source code was type-checked by Agda 2.5.4.
 
 Based on:
+
 <div class="references" markdown="1">
 - https://github.com/HoTT/HoTT-Agda/
-- https://mroman42.github.io/ctlc/agda-hott/Total.html.
+- https://mroman42.github.io/ctlc/agda-hott/Total.html
 </div>
 
 Agda has a pragma to work with HoTT (`--without-K`):
@@ -1190,6 +1191,7 @@ Voevodsky's univalence axiom is postulated. It induces
 an equality between any two equivalent types. Some β and η rules
 are provided.
 
+{: .foldable}
 \begin{code}
 -- module Univalence where
 --

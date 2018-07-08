@@ -8,7 +8,7 @@ baseurl:             ''
 timezone:            'Europe/Oslo'
 # paginate:            100
 
-highlighter: rouge
+highlighter: pygments
 gist:
   noscript: false
 
