@@ -1,42 +1,42 @@
 @charset "UTF-8";
 /* Agda. */
-.Agda { background: #f1f7fd; border: 1px solid #d2e6f7; border-radius: 3px; font-family: Menlo, Source Code Pro, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; font-size: .74em; }
+.Agda { background: #f0f8ff; border: 1px solid darker(#f0f8ff, 30%); border-radius: 5px; font-family: Menlo, Source Code Pro, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; font-size: .75em; }
 
 .Spec { border: 1px dashed #81b9ea !important; }
 
 /* Aspects. */
-.Comment { color: #6babea; }
+.Comment { color: #82827c; font-style: italic; }
 
-.Keyword { color: #CD6600; }
+.Keyword { color: #6D508B; font-weight: bold; }
 
-.String { color: #B22222; }
+.String { color: #CD5555; }
 
 .Number { color: #A020F0; }
 
-.Symbol { color: #404040; }
+.Symbol { color: #990073; }
 
-.PrimitiveType { color: #0000CD; }
+.PrimitiveType { color: #574EA4; }
 
 /* NameKinds. */
-.Bound { color: black; }
+.Bound { color: #6D508B; }
 
-.InductiveConstructor { color: #008B00; }
+.InductiveConstructor { color: #008B00; font-weight: bolder; }
 
 .CoinductiveConstructor { color: #8B7500; }
 
-.Datatype { color: #0000CD; }
+.Datatype { color: #574EA4; }
 
-.Field { color: #EE1289; }
+.Field { color: #008080; font-weight: bolder; }
 
-.Function { color: #0000CD; }
+.Function { color: #564ea3; font-weight: bold; }
 
 .Module { color: #A020F0; }
 
-.Postulate { color: #0000CD; }
+.Postulate { color: #642969; }
 
-.Primitive { color: #0000CD; }
+.Primitive { color: #6D508B; }
 
-.Record { color: #0000CD; }
+.Record { color: #6D508B; }
 
 /* OtherAspects. */
 .UnsolvedMeta { color: black; background: yellow; }
@@ -47,7 +47,7 @@
 
 .IncompletePattern { color: black; background: #F5DEB3; }
 
-.Error { color: red; text-decoration: underline; }
+.Error { color: #a61717; background: #e3d2d2; text-decoration: underline; }
 
 .TypeChecks { color: black; background: #ADD8E6; }
 
@@ -74,7 +74,7 @@ a { color: #1a6091; text-decoration: none; }
 a strong { color: inherit; }
 
 /* `:focus` is linked to `:hover` for basic accessibility */
-a:hover, a:focus { text-decoration: underline; }
+a:hover, a:focus { text-decoration: none; }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 { margin-bottom: .5rem; font-weight: bold; line-height: 1.25; text-rendering: optimizeLegibility; }
