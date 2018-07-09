@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Set theory</title>
-  <meta name="description" content="">
+  <title>Types</title>
+  <meta name="description" content="Texts from many sources. See a good list of resources to learn here.">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -123,7 +123,7 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+59</span>/<span class="substractions">-1</span>)</span>:
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+40</span>/<span class="substractions">-0</span>)</span>:
           <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/2c20eb91cacd042d1cbaa2bbc9b58768844076dc"> Starting the work for monday</a></span>
       </div>
     <div class="main-last-date">
@@ -133,77 +133,42 @@
   </div>
   
 
-  <h1 class="post-title">Set theory</h1>
+  <h1 class="post-title">Types</h1>
 
   
-  <div class="references">
+  <p>Texts from many sources. See a good list of resources to learn
+<a href="https://github.com/williamdemeo/TypeFunc">here</a>.</p>
 
-  <ul>
-    <li>Considering this playlist: https://www.youtube.com/playlist?list=PLR3z46pdylqSRkO1luzzwxR6mPyTyc6ne</li>
-  </ul>
+<h2 id="intro-to-homotopy-type-theory-by-thorsten-altenkirch"><a href="http://www.cs.nott.ac.uk/~psztxa/ewscs-17/notes.pdf">Intro to Homotopy Type Theory by Thorsten Altenkirch</a></h2>
 
-  <h2 id="zfcs-axioms"><strong>ZFC’s axioms</strong></h2>
+<p>The word type theory has at least two meanings:
+  • The theory of types in programming language
+  • Martin-Löf’s Type Theory as a constructive foundation of Mathematics</p>
 
-  <p>See a set theory formalisation in Agda in <a href="https://github.com/acalles1/setform">acalles1/setform</a>
- The following was taken from that source and from (Suppes 1960, p. 56).</p>
+<ul>
+  <li>Extensional Type Theory is now referred to as Computational Type Theory</li>
+  <li>Type theory is an intuitive foundation of Mathematics</li>
+</ul>
 
-  <ul>
-    <li>
-      <p><strong>ext (Extensionality)</strong>: If two sets have exactly the same members,
-   they are equal.</p>
-    </li>
-    <li>
-      <p><strong>empt (Empty Set Axiom)</strong>: There is a set having no
-   members. Allows us to define the empty set.</p>
-    </li>
-    <li>
-      <p><strong>pair (Pairing Axiom)</strong>: For any sets y and z, there is a set having
-   as members just y and z. Allows to define a set which is just
-   the pair of any two sets.</p>
-    </li>
-    <li>
-      <p><strong>pow (Power Set Axiom)</strong>: For any x there is a set whose members are
-   exactly the subsets of x. Allows us to define the power set
-   operation.</p>
-    </li>
-    <li>
-      <p><strong>sub (Subset Axiom, or Specification Axiom)</strong>: This axiom asserts the
-   existence of a set B whose members are exactly those sets x in y
-   such that they satisfy certain property. Allows us to define
-   many operations like cartesian products and difference of sets.</p>
-    </li>
-    <li>
-      <p><strong>uni (Union Axiom)</strong>: For any set x, there exists a set A whose
-   elements are exactly the members of x. Allows us to define the
-   union of two sets.</p>
-    </li>
-    <li>
-      <p><strong>pem (Principle of the excluded middle)</strong>: To prove some things
-   not valid in intuitionistic logic and valid in classical logic. Taken
-   from the Standford Encyclopedia entry on Intuitionistic Logic.
-   (https://plato.stanford.edu/entries/logic-intuitionistic/).</p>
-    </li>
-  </ul>
+<p><img src="/assets/png-images/2018-06-27-learning-types-7385c80c.png" alt="" /></p>
 
-  <p>The sum axioms allow us to define the union operation
-   over a family of sets.</p>
+<h3 id="higher-inductive-types">Higher Inductive Types</h3>
 
-  <ul>
-    <li>
-      <p><a href="https://www.youtube.com/embed/hcRZadc5KpI">How the Axiom of Choice Gives Sizeless Sets</a></p>
+<p>Higher Inductive Types even for sets are more general than set quotients
+because we can define elements and equalities at the same time. An example for
+this are infinite branching trees with permutations. That is we define infinitely
+branching trees
+<img src="/assets/png-images/2018-06-27-learning-types-91cfc8c2.png" alt="" />
+We inductively define a relation which identifies trees upto permutations of
+subtrees:
+<img src="/assets/png-images/2018-06-27-learning-types-acf5fbeb.png" alt="" />
+Now trees with permutations can be defined as PTree :≡ Tree/ ∼. However, it
+turns out that this type is not as useful as we might hope. Let’s say we want
+to lift the node construction to PTree that is we want to define</p>
 
-      <p><img src="/assets/png-images/2018-06-27-learning-set-theory-fba52c79.png" alt="" /></p>
-
-      <ul>
-        <li><strong>Axiom of Choice</strong> Given a infinite collection of nonempty sets we can
-form a new set that contains one element from each set.</li>
-      </ul>
-
-      <p><img src="/assets/png-images/2018-06-27-learning-set-theory-7cb7b20d.png" alt="" /></p>
-    </li>
-  </ul>
-
-</div>
+<p>Using HITs we have an alternative: we can define permutable trees by
+introducing the elements and the equalities at the same time
+<img src="/assets/png-images/2018-06-27-learning-types-37c6e3f6.png" alt="" /></p>
 
 
   <!-- <h2> References </h2> -->
