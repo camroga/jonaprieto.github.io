@@ -1199,7 +1199,6 @@ Voevodsky's univalence axiom is postulated. It induces
 an equality between any two equivalent types. Some β and η rules
 are provided.
 
-{: .foldable}
 \begin{code}
 module Univalence where
 
@@ -1228,7 +1227,12 @@ module Univalence where
     ua-η p = rlmap-inverse eqvUnivalence
   open UnivalenceAxiom public
 
---
+\end{code}
+
+Somme lemmas about Univelance
+
+{: .foldable}
+\begin{code}
 --
 --   module UnivalenceLemmas {ℓ} where
 --     -- The identity equivalence creates the trivial path.

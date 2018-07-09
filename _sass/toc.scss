@@ -30,10 +30,11 @@
 .toc .table-of-contents {
   font-size: 16px;
 }
+
 .toc a
 {
-  color: gray;
+  color: darken(#6D508B, 30%);
   &:hover {
-     color: black;
+     color: darken(#6D508B, 50%);
    }
 }
