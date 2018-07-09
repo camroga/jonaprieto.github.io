@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* Agda. */
-.Agda { background: #f0f8ff; border: 1px solid darker(#f0f8ff, 30%); border-radius: 5px; font-family: Menlo, Source Code Pro, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; font-size: .75em; }
+.Agda { background: #f0f8ff; border: 1px solid #f0f0f0; border-radius: 5px; font-family: Menlo, Source Code Pro, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; font-size: .75em; }
 
 .Spec { border: 1px dashed #81b9ea !important; }
 
@@ -69,7 +69,7 @@ html { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1
 body { color: #515151; background-color: #fff; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
-a { color: #1a6091; text-decoration: none; }
+a { color: #6a4e88; text-decoration: none; }
 
 a strong { color: inherit; }
 
@@ -318,9 +318,9 @@ h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; f
 
 .post-modifications { font-size: 90%; line-height: 20px; text-align: right; font-weight: bolder; width: auto; color: darkgrey; }
 
-.additions { color: darkgreen; }
+.additions { color: darker(gray, 50%); font-weight: bolder; }
 
-.substractions { color: darkred; }
+.substractions { color: ligher(gray, 5%); }
 
 .commit-message a { color: #586069; }
 
@@ -660,10 +660,10 @@ a.pagination-item:hover { background-color: #f5f5f5; }
 /* Literal.Number.Integer.Long */
 .css .o, .css .o + .nt, .css .nt + .nt { color: #999; }
 
-.toc { float: right; position: fixed; width: 300px; top: 5px; right: 9px; margin: 0 auto; height: auto; font-size: 11px; overflow: scroll; height: -webkit-fill-available; padding-left: 2em; overflow-x: hidden; text-overflow: ellipsis; }
+.toc { float: right; position: fixed; width: 300px; top: 5px; right: 9px; margin: 0 auto; padding-right: 10px; margin-right: 10px; height: auto; font-size: 11px; overflow: scroll; height: -webkit-fill-available; padding-left: 2em; overflow-x: hidden; text-overflow: ellipsis; }
 .toc ul { padding-left: 10px; margin-bottom: 0px; }
 
-@media all and (max-width: 72em) { .toc { display: none; } }
+@media all and (max-width: 83em) { .toc { display: none; } }
 .toc .table-of-contents { font-size: 16px; }
 
 .toc a { color: gray; }
