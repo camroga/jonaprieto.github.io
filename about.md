@@ -13,7 +13,7 @@ For more information, checkout this repository [cv](http://github.com/jonaprieto
 
 ### About this blog
 
-This tool is my repository, it's open source and I hope you enjoy it.
+The sources of this blog are open source. The blog is using the following projects:
 
 - `github-pages`
 - `jekyll` with minima theme
