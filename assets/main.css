@@ -69,7 +69,7 @@ html { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 1
 body { color: #515151; background-color: #fff; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 /* No `:visited` state is required by default (browsers will use `a`) */
-a { color: #6a4e88; text-decoration: none; }
+a { color: #21182a; text-decoration: none; }
 
 a strong { color: inherit; }
 
@@ -219,7 +219,7 @@ html, body { overflow-x: hidden; }
 
 html { font-family: "PT Serif", Georgia, "Times New Roman", serif; }
 
-h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; font-weight: 400; color: #0e3862; letter-spacing: -.025rem; }
+h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; font-weight: 400; color: #21182a; letter-spacing: -.025rem; }
 
 .post-changes { background: #fafafa; padding: 5px; margin-bottom: 30px; border-bottom: 1px solid #c2c2c2; font-size: 85%; }
 
@@ -666,7 +666,7 @@ a.pagination-item:hover { background-color: #f5f5f5; }
 @media all and (max-width: 83em) { .toc { display: none; } }
 .toc .table-of-contents { font-size: 16px; }
 
-.toc a { color: gray; }
+.toc a { color: #21182a; }
 .toc a:hover { color: black; }
 
 div.equation { text-align: center; }

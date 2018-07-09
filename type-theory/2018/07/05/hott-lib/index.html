@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+5238</span>/<span class="substractions">-4058</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/2c20eb91cacd042d1cbaa2bbc9b58768844076dc"> Starting the work for monday</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+5322</span>/<span class="substractions">-4141</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/b6b81f76c0474809c7a367408a6c514a92ddd34c"> more cosmetics</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/2c20eb91cacd042d1cbaa2bbc9b58768844076dc">2c20eb9 </a> on  09 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/b6b81f76c0474809c7a367408a6c514a92ddd34c">b6b81f7 </a> on  09 Jul 2018
     </div>
     </div>
   </div>
@@ -1286,89 +1286,90 @@ a function providing gfx = x and fgy = y for any given x and y.</p>
 an equality between any two equivalent types. Some β and η rules
 are provided.</p>
 
-<pre class="Agda foldable"><a id="35725" class="Keyword">module</a> <a id="Univalence"></a><a id="35732" href="/type-theory/2018/07/05/hott-lib/#35732" class="Module">Univalence</a> <a id="35743" class="Keyword">where</a>
+<pre class="Agda"><a id="35711" class="Keyword">module</a> <a id="Univalence"></a><a id="35718" href="/type-theory/2018/07/05/hott-lib/#35718" class="Module">Univalence</a> <a id="35729" class="Keyword">where</a>
 
-  <a id="35752" class="Comment">-- Voevodsky&#39;s Univalence Axiom.</a>
-  <a id="35787" class="Keyword">module</a> <a id="UnivalenceAxiom"></a><a id="35794" href="/type-theory/2018/07/05/hott-lib/#35794" class="Module">UnivalenceAxiom</a> <a id="35810" class="Symbol">{</a><a id="35811" href="/type-theory/2018/07/05/hott-lib/#35811" class="Bound">ℓ</a><a id="35812" class="Symbol">}</a> <a id="35814" class="Symbol">{</a><a id="35815" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="35817" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a> <a id="35819" class="Symbol">:</a> <a id="35821" href="/type-theory/2018/07/05/hott-lib/#999" class="Function">Type</a> <a id="35826" href="/type-theory/2018/07/05/hott-lib/#35811" class="Bound">ℓ</a><a id="35827" class="Symbol">}</a> <a id="35829" class="Keyword">where</a>
-    <a id="Univalence.UnivalenceAxiom.idtoeqv"></a><a id="35839" href="/type-theory/2018/07/05/hott-lib/#35839" class="Function">idtoeqv</a> <a id="35847" class="Symbol">:</a> <a id="35849" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="35851" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="35854" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a> <a id="35856" class="Symbol">→</a> <a id="35858" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="35860" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="35862" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a>
-    <a id="35868" href="/type-theory/2018/07/05/hott-lib/#35839" class="Function">idtoeqv</a> <a id="35876" href="/type-theory/2018/07/05/hott-lib/#35876" class="Bound">p</a> <a id="35878" class="Symbol">=</a> <a id="35880" href="/type-theory/2018/07/05/hott-lib/#33778" class="Function">qinv-≃</a>
-      <a id="35893" class="Symbol">(</a><a id="35894" href="/type-theory/2018/07/05/hott-lib/#10059" class="Function">transport</a> <a id="35904" class="Symbol">(λ</a> <a id="35907" href="/type-theory/2018/07/05/hott-lib/#35907" class="Bound">x</a> <a id="35909" class="Symbol">→</a> <a id="35911" href="/type-theory/2018/07/05/hott-lib/#35907" class="Bound">x</a><a id="35912" class="Symbol">)</a> <a id="35914" href="/type-theory/2018/07/05/hott-lib/#35876" class="Bound">p</a><a id="35915" class="Symbol">)</a>
-      <a id="35923" class="Symbol">(</a><a id="35924" href="/type-theory/2018/07/05/hott-lib/#10059" class="Function">transport</a> <a id="35934" class="Symbol">(λ</a> <a id="35937" href="/type-theory/2018/07/05/hott-lib/#35937" class="Bound">x</a> <a id="35939" class="Symbol">→</a> <a id="35941" href="/type-theory/2018/07/05/hott-lib/#35937" class="Bound">x</a><a id="35942" class="Symbol">)</a> <a id="35944" class="Symbol">(</a><a id="35945" href="/type-theory/2018/07/05/hott-lib/#8074" class="Function">inv</a> <a id="35949" href="/type-theory/2018/07/05/hott-lib/#35876" class="Bound">p</a><a id="35950" class="Symbol">)</a> <a id="35952" href="/type-theory/2018/07/05/hott-lib/#2445" class="InductiveConstructor Operator">,</a> <a id="35954" class="Symbol">(</a><a id="35955" href="/type-theory/2018/07/05/hott-lib/#13516" class="Function">transport-inv-l</a> <a id="35971" href="/type-theory/2018/07/05/hott-lib/#35876" class="Bound">p</a> <a id="35973" href="/type-theory/2018/07/05/hott-lib/#2445" class="InductiveConstructor Operator">,</a> <a id="35975" href="/type-theory/2018/07/05/hott-lib/#13691" class="Function">transport-inv-r</a> <a id="35991" href="/type-theory/2018/07/05/hott-lib/#35876" class="Bound">p</a><a id="35992" class="Symbol">))</a>
+  <a id="35738" class="Comment">-- Voevodsky&#39;s Univalence Axiom.</a>
+  <a id="35773" class="Keyword">module</a> <a id="UnivalenceAxiom"></a><a id="35780" href="/type-theory/2018/07/05/hott-lib/#35780" class="Module">UnivalenceAxiom</a> <a id="35796" class="Symbol">{</a><a id="35797" href="/type-theory/2018/07/05/hott-lib/#35797" class="Bound">ℓ</a><a id="35798" class="Symbol">}</a> <a id="35800" class="Symbol">{</a><a id="35801" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="35803" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a> <a id="35805" class="Symbol">:</a> <a id="35807" href="/type-theory/2018/07/05/hott-lib/#999" class="Function">Type</a> <a id="35812" href="/type-theory/2018/07/05/hott-lib/#35797" class="Bound">ℓ</a><a id="35813" class="Symbol">}</a> <a id="35815" class="Keyword">where</a>
+    <a id="Univalence.UnivalenceAxiom.idtoeqv"></a><a id="35825" href="/type-theory/2018/07/05/hott-lib/#35825" class="Function">idtoeqv</a> <a id="35833" class="Symbol">:</a> <a id="35835" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="35837" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="35840" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a> <a id="35842" class="Symbol">→</a> <a id="35844" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="35846" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="35848" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a>
+    <a id="35854" href="/type-theory/2018/07/05/hott-lib/#35825" class="Function">idtoeqv</a> <a id="35862" href="/type-theory/2018/07/05/hott-lib/#35862" class="Bound">p</a> <a id="35864" class="Symbol">=</a> <a id="35866" href="/type-theory/2018/07/05/hott-lib/#33778" class="Function">qinv-≃</a>
+      <a id="35879" class="Symbol">(</a><a id="35880" href="/type-theory/2018/07/05/hott-lib/#10059" class="Function">transport</a> <a id="35890" class="Symbol">(λ</a> <a id="35893" href="/type-theory/2018/07/05/hott-lib/#35893" class="Bound">x</a> <a id="35895" class="Symbol">→</a> <a id="35897" href="/type-theory/2018/07/05/hott-lib/#35893" class="Bound">x</a><a id="35898" class="Symbol">)</a> <a id="35900" href="/type-theory/2018/07/05/hott-lib/#35862" class="Bound">p</a><a id="35901" class="Symbol">)</a>
+      <a id="35909" class="Symbol">(</a><a id="35910" href="/type-theory/2018/07/05/hott-lib/#10059" class="Function">transport</a> <a id="35920" class="Symbol">(λ</a> <a id="35923" href="/type-theory/2018/07/05/hott-lib/#35923" class="Bound">x</a> <a id="35925" class="Symbol">→</a> <a id="35927" href="/type-theory/2018/07/05/hott-lib/#35923" class="Bound">x</a><a id="35928" class="Symbol">)</a> <a id="35930" class="Symbol">(</a><a id="35931" href="/type-theory/2018/07/05/hott-lib/#8074" class="Function">inv</a> <a id="35935" href="/type-theory/2018/07/05/hott-lib/#35862" class="Bound">p</a><a id="35936" class="Symbol">)</a> <a id="35938" href="/type-theory/2018/07/05/hott-lib/#2445" class="InductiveConstructor Operator">,</a> <a id="35940" class="Symbol">(</a><a id="35941" href="/type-theory/2018/07/05/hott-lib/#13516" class="Function">transport-inv-l</a> <a id="35957" href="/type-theory/2018/07/05/hott-lib/#35862" class="Bound">p</a> <a id="35959" href="/type-theory/2018/07/05/hott-lib/#2445" class="InductiveConstructor Operator">,</a> <a id="35961" href="/type-theory/2018/07/05/hott-lib/#13691" class="Function">transport-inv-r</a> <a id="35977" href="/type-theory/2018/07/05/hott-lib/#35862" class="Bound">p</a><a id="35978" class="Symbol">))</a>
 
-    <a id="36000" class="Comment">-- The Univalence axiom induces an equivalence between equalities</a>
-    <a id="36070" class="Comment">-- and equivalences.</a>
-    <a id="36095" class="Keyword">postulate</a> <a id="Univalence.UnivalenceAxiom.axiomUnivalence"></a><a id="36105" href="/type-theory/2018/07/05/hott-lib/#36105" class="Postulate">axiomUnivalence</a> <a id="36121" class="Symbol">:</a> <a id="36123" href="/type-theory/2018/07/05/hott-lib/#18709" class="Function">isEquiv</a> <a id="36131" href="/type-theory/2018/07/05/hott-lib/#35839" class="Function">idtoeqv</a>
-    <a id="Univalence.UnivalenceAxiom.eqvUnivalence"></a><a id="36143" href="/type-theory/2018/07/05/hott-lib/#36143" class="Function">eqvUnivalence</a> <a id="36157" class="Symbol">:</a> <a id="36159" class="Symbol">(</a><a id="36160" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="36162" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36165" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a><a id="36166" class="Symbol">)</a> <a id="36168" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36170" class="Symbol">(</a><a id="36171" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="36173" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36175" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a><a id="36176" class="Symbol">)</a>
-    <a id="36182" href="/type-theory/2018/07/05/hott-lib/#36143" class="Function">eqvUnivalence</a> <a id="36196" class="Symbol">=</a> <a id="36198" href="/type-theory/2018/07/05/hott-lib/#35839" class="Function">idtoeqv</a> <a id="36206" href="/type-theory/2018/07/05/hott-lib/#2445" class="InductiveConstructor Operator">,</a> <a id="36208" href="/type-theory/2018/07/05/hott-lib/#36105" class="Postulate">axiomUnivalence</a>
+    <a id="35986" class="Comment">-- The Univalence axiom induces an equivalence between equalities</a>
+    <a id="36056" class="Comment">-- and equivalences.</a>
+    <a id="36081" class="Keyword">postulate</a> <a id="Univalence.UnivalenceAxiom.axiomUnivalence"></a><a id="36091" href="/type-theory/2018/07/05/hott-lib/#36091" class="Postulate">axiomUnivalence</a> <a id="36107" class="Symbol">:</a> <a id="36109" href="/type-theory/2018/07/05/hott-lib/#18709" class="Function">isEquiv</a> <a id="36117" href="/type-theory/2018/07/05/hott-lib/#35825" class="Function">idtoeqv</a>
+    <a id="Univalence.UnivalenceAxiom.eqvUnivalence"></a><a id="36129" href="/type-theory/2018/07/05/hott-lib/#36129" class="Function">eqvUnivalence</a> <a id="36143" class="Symbol">:</a> <a id="36145" class="Symbol">(</a><a id="36146" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="36148" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36151" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a><a id="36152" class="Symbol">)</a> <a id="36154" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36156" class="Symbol">(</a><a id="36157" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="36159" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36161" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a><a id="36162" class="Symbol">)</a>
+    <a id="36168" href="/type-theory/2018/07/05/hott-lib/#36129" class="Function">eqvUnivalence</a> <a id="36182" class="Symbol">=</a> <a id="36184" href="/type-theory/2018/07/05/hott-lib/#35825" class="Function">idtoeqv</a> <a id="36192" href="/type-theory/2018/07/05/hott-lib/#2445" class="InductiveConstructor Operator">,</a> <a id="36194" href="/type-theory/2018/07/05/hott-lib/#36091" class="Postulate">axiomUnivalence</a>
 
-    <a id="36229" class="Comment">-- Introduction rule for equalities.</a>
-    <a id="Univalence.UnivalenceAxiom.ua"></a><a id="36270" href="/type-theory/2018/07/05/hott-lib/#36270" class="Function">ua</a> <a id="36273" class="Symbol">:</a> <a id="36275" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="36277" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36279" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a> <a id="36281" class="Symbol">→</a> <a id="36283" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="36285" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36288" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a>
-    <a id="36294" href="/type-theory/2018/07/05/hott-lib/#36270" class="Function">ua</a> <a id="36297" class="Symbol">=</a> <a id="36299" href="/type-theory/2018/07/05/hott-lib/#19078" class="Function">remap</a> <a id="36305" href="/type-theory/2018/07/05/hott-lib/#36143" class="Function">eqvUnivalence</a>
+    <a id="36215" class="Comment">-- Introduction rule for equalities.</a>
+    <a id="Univalence.UnivalenceAxiom.ua"></a><a id="36256" href="/type-theory/2018/07/05/hott-lib/#36256" class="Function">ua</a> <a id="36259" class="Symbol">:</a> <a id="36261" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="36263" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36265" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a> <a id="36267" class="Symbol">→</a> <a id="36269" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="36271" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36274" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a>
+    <a id="36280" href="/type-theory/2018/07/05/hott-lib/#36256" class="Function">ua</a> <a id="36283" class="Symbol">=</a> <a id="36285" href="/type-theory/2018/07/05/hott-lib/#19078" class="Function">remap</a> <a id="36291" href="/type-theory/2018/07/05/hott-lib/#36129" class="Function">eqvUnivalence</a>
 
-    <a id="36324" class="Comment">-- Computation rules</a>
-    <a id="Univalence.UnivalenceAxiom.ua-β"></a><a id="36349" href="/type-theory/2018/07/05/hott-lib/#36349" class="Function">ua-β</a> <a id="36354" class="Symbol">:</a> <a id="36356" class="Symbol">(</a><a id="36357" href="/type-theory/2018/07/05/hott-lib/#36357" class="Bound">eqv</a> <a id="36361" class="Symbol">:</a> <a id="36363" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="36365" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36367" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a><a id="36368" class="Symbol">)</a> <a id="36370" class="Symbol">→</a> <a id="36372" href="/type-theory/2018/07/05/hott-lib/#35839" class="Function">idtoeqv</a> <a id="36380" class="Symbol">(</a><a id="36381" href="/type-theory/2018/07/05/hott-lib/#36270" class="Function">ua</a> <a id="36384" href="/type-theory/2018/07/05/hott-lib/#36357" class="Bound">eqv</a><a id="36387" class="Symbol">)</a> <a id="36389" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36392" href="/type-theory/2018/07/05/hott-lib/#36357" class="Bound">eqv</a>
-    <a id="36400" href="/type-theory/2018/07/05/hott-lib/#36349" class="Function">ua-β</a> <a id="36405" href="/type-theory/2018/07/05/hott-lib/#36405" class="Bound">eqv</a> <a id="36409" class="Symbol">=</a> <a id="36411" href="/type-theory/2018/07/05/hott-lib/#19216" class="Function">lrmap-inverse</a> <a id="36425" href="/type-theory/2018/07/05/hott-lib/#36143" class="Function">eqvUnivalence</a>
+    <a id="36310" class="Comment">-- Computation rules</a>
+    <a id="Univalence.UnivalenceAxiom.ua-β"></a><a id="36335" href="/type-theory/2018/07/05/hott-lib/#36335" class="Function">ua-β</a> <a id="36340" class="Symbol">:</a> <a id="36342" class="Symbol">(</a><a id="36343" href="/type-theory/2018/07/05/hott-lib/#36343" class="Bound">eqv</a> <a id="36347" class="Symbol">:</a> <a id="36349" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="36351" href="/type-theory/2018/07/05/hott-lib/#18841" class="Function Operator">≃</a> <a id="36353" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a><a id="36354" class="Symbol">)</a> <a id="36356" class="Symbol">→</a> <a id="36358" href="/type-theory/2018/07/05/hott-lib/#35825" class="Function">idtoeqv</a> <a id="36366" class="Symbol">(</a><a id="36367" href="/type-theory/2018/07/05/hott-lib/#36256" class="Function">ua</a> <a id="36370" href="/type-theory/2018/07/05/hott-lib/#36343" class="Bound">eqv</a><a id="36373" class="Symbol">)</a> <a id="36375" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36378" href="/type-theory/2018/07/05/hott-lib/#36343" class="Bound">eqv</a>
+    <a id="36386" href="/type-theory/2018/07/05/hott-lib/#36335" class="Function">ua-β</a> <a id="36391" href="/type-theory/2018/07/05/hott-lib/#36391" class="Bound">eqv</a> <a id="36395" class="Symbol">=</a> <a id="36397" href="/type-theory/2018/07/05/hott-lib/#19216" class="Function">lrmap-inverse</a> <a id="36411" href="/type-theory/2018/07/05/hott-lib/#36129" class="Function">eqvUnivalence</a>
 
-    <a id="Univalence.UnivalenceAxiom.ua-η"></a><a id="36444" href="/type-theory/2018/07/05/hott-lib/#36444" class="Function">ua-η</a> <a id="36449" class="Symbol">:</a> <a id="36451" class="Symbol">(</a><a id="36452" href="/type-theory/2018/07/05/hott-lib/#36452" class="Bound">p</a> <a id="36454" class="Symbol">:</a> <a id="36456" href="/type-theory/2018/07/05/hott-lib/#35815" class="Bound">A</a> <a id="36458" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36461" href="/type-theory/2018/07/05/hott-lib/#35817" class="Bound">B</a><a id="36462" class="Symbol">)</a> <a id="36464" class="Symbol">→</a> <a id="36466" href="/type-theory/2018/07/05/hott-lib/#36270" class="Function">ua</a> <a id="36469" class="Symbol">(</a><a id="36470" href="/type-theory/2018/07/05/hott-lib/#35839" class="Function">idtoeqv</a> <a id="36478" href="/type-theory/2018/07/05/hott-lib/#36452" class="Bound">p</a><a id="36479" class="Symbol">)</a> <a id="36481" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36484" href="/type-theory/2018/07/05/hott-lib/#36452" class="Bound">p</a>
-    <a id="36490" href="/type-theory/2018/07/05/hott-lib/#36444" class="Function">ua-η</a> <a id="36495" href="/type-theory/2018/07/05/hott-lib/#36495" class="Bound">p</a> <a id="36497" class="Symbol">=</a> <a id="36499" href="/type-theory/2018/07/05/hott-lib/#19348" class="Function">rlmap-inverse</a> <a id="36513" href="/type-theory/2018/07/05/hott-lib/#36143" class="Function">eqvUnivalence</a>
-  <a id="36529" class="Keyword">open</a> <a id="36534" href="/type-theory/2018/07/05/hott-lib/#35794" class="Module">UnivalenceAxiom</a> <a id="36550" class="Keyword">public</a>
+    <a id="Univalence.UnivalenceAxiom.ua-η"></a><a id="36430" href="/type-theory/2018/07/05/hott-lib/#36430" class="Function">ua-η</a> <a id="36435" class="Symbol">:</a> <a id="36437" class="Symbol">(</a><a id="36438" href="/type-theory/2018/07/05/hott-lib/#36438" class="Bound">p</a> <a id="36440" class="Symbol">:</a> <a id="36442" href="/type-theory/2018/07/05/hott-lib/#35801" class="Bound">A</a> <a id="36444" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36447" href="/type-theory/2018/07/05/hott-lib/#35803" class="Bound">B</a><a id="36448" class="Symbol">)</a> <a id="36450" class="Symbol">→</a> <a id="36452" href="/type-theory/2018/07/05/hott-lib/#36256" class="Function">ua</a> <a id="36455" class="Symbol">(</a><a id="36456" href="/type-theory/2018/07/05/hott-lib/#35825" class="Function">idtoeqv</a> <a id="36464" href="/type-theory/2018/07/05/hott-lib/#36438" class="Bound">p</a><a id="36465" class="Symbol">)</a> <a id="36467" href="/type-theory/2018/07/05/hott-lib/#5183" class="Datatype Operator">==</a> <a id="36470" href="/type-theory/2018/07/05/hott-lib/#36438" class="Bound">p</a>
+    <a id="36476" href="/type-theory/2018/07/05/hott-lib/#36430" class="Function">ua-η</a> <a id="36481" href="/type-theory/2018/07/05/hott-lib/#36481" class="Bound">p</a> <a id="36483" class="Symbol">=</a> <a id="36485" href="/type-theory/2018/07/05/hott-lib/#19348" class="Function">rlmap-inverse</a> <a id="36499" href="/type-theory/2018/07/05/hott-lib/#36129" class="Function">eqvUnivalence</a>
+  <a id="36515" class="Keyword">open</a> <a id="36520" href="/type-theory/2018/07/05/hott-lib/#35780" class="Module">UnivalenceAxiom</a> <a id="36536" class="Keyword">public</a></pre>
 
-<a id="36558" class="Comment">--</a>
-<a id="36561" class="Comment">--</a>
-<a id="36564" class="Comment">--   module UnivalenceLemmas {ℓ} where</a>
-<a id="36603" class="Comment">--     -- The identity equivalence creates the trivial path.</a>
-<a id="36664" class="Comment">--     ua-id : {A : Type ℓ} → ua idEqv == refl A</a>
-<a id="36713" class="Comment">--     ua-id {A} =</a>
-<a id="36732" class="Comment">--       begin</a>
-<a id="36747" class="Comment">--         ua idEqv              ==⟨ ap ua (sameEqv (refl id)) ⟩</a>
-<a id="36812" class="Comment">--         ua (idtoeqv (refl A)) ==⟨ ua-η (refl A) ⟩</a>
-<a id="36865" class="Comment">--         refl A</a>
-<a id="36883" class="Comment">--       ∎</a>
-<a id="36894" class="Comment">--</a>
-<a id="36897" class="Comment">--     -- The composition of equivalences is preserved into composition</a>
-<a id="36969" class="Comment">--     -- of equalities.</a>
-<a id="36994" class="Comment">--     ua-comp : {A B C : Type ℓ} → (α : A ≃ B) → (β : B ≃ C) → ua (compEqv α β) == ua α · ua β</a>
-<a id="37090" class="Comment">--     ua-comp α β =</a>
-<a id="37111" class="Comment">--       begin</a>
-<a id="37126" class="Comment">--         ua (compEqv α β)                               ==⟨ ap (λ x → ua (compEqv x β)) (inv (ua-β α)) ⟩</a>
-<a id="37233" class="Comment">--         ua (compEqv (idtoeqv (ua α)) β)                ==⟨ ap (λ x → ua (compEqv (idtoeqv (ua α)) x))</a>
-<a id="37338" class="Comment">--                                                            (inv (ua-β β)) ⟩</a>
-<a id="37417" class="Comment">--         ua (compEqv (idtoeqv (ua α)) (idtoeqv (ua β))) ==⟨ ap ua lemma ⟩</a>
-<a id="37493" class="Comment">--         ua (idtoeqv (ua α · ua β))                     ==⟨ ua-η (ua α · ua β) ⟩</a>
-<a id="37576" class="Comment">--         ua α · ua β</a>
-<a id="37599" class="Comment">--       ∎</a>
-<a id="37610" class="Comment">--       where</a>
-<a id="37625" class="Comment">--         lemma : compEqv (idtoeqv (ua α)) (idtoeqv (ua β)) == idtoeqv (ua α · ua β)</a>
-<a id="37711" class="Comment">--         lemma = sameEqv (</a>
-<a id="37740" class="Comment">--           begin</a>
-<a id="37759" class="Comment">--             fst (idtoeqv (ua β)) ∘ fst (idtoeqv (ua α))                 ==⟨ refl _ ⟩</a>
-<a id="37847" class="Comment">--             (transport (λ x → x) (ua β)) ∘ (transport (λ x → x) (ua α)) ==⟨ transport-comp (ua α) (ua β) ⟩</a>
-<a id="37957" class="Comment">--             transport (λ x → x) (ua α · ua β)                           ==⟨ refl _ ⟩</a>
-<a id="38045" class="Comment">--             fst (idtoeqv (ua α · ua β))</a>
-<a id="38088" class="Comment">--           ∎)</a>
-<a id="38104" class="Comment">--</a>
-<a id="38107" class="Comment">--     -- Inverses are preserved.</a>
-<a id="38141" class="Comment">--     ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A</a>
-<a id="38221" class="Comment">--     ua-inv-r α =</a>
-<a id="38241" class="Comment">--       begin</a>
-<a id="38256" class="Comment">--         ua α · ua (invEqv α)      ==⟨ inv (ua-comp α (invEqv α)) ⟩</a>
-<a id="38326" class="Comment">--         ua (compEqv α (invEqv α)) ==⟨ ap ua (compEqv-inv α) ⟩</a>
-<a id="38391" class="Comment">--         ua idEqv                  ==⟨ ua-id ⟩</a>
-<a id="38440" class="Comment">--         refl _</a>
-<a id="38458" class="Comment">--       ∎</a>
-<a id="38469" class="Comment">--</a>
-<a id="38472" class="Comment">--     ua-inv : {A B : Type ℓ} → (α : A ≃ B) → ua (invEqv α) == inv (ua α)</a>
-<a id="38547" class="Comment">--     ua-inv α =</a>
-<a id="38565" class="Comment">--       begin</a>
-<a id="38580" class="Comment">--         ua (invEqv α)                       ==⟨ ap (_· ua (invEqv α)) (inv (·-linv (ua α))) ⟩</a>
-<a id="38677" class="Comment">--         inv (ua α) · ua α · ua (invEqv α)   ==⟨ ·-assoc (inv (ua α)) _ _ ⟩</a>
-<a id="38755" class="Comment">--         inv (ua α) · (ua α · ua (invEqv α)) ==⟨ ap (inv (ua α) ·_) (ua-inv-r α) ⟩</a>
-<a id="38840" class="Comment">--         inv (ua α) · refl _                 ==⟨ inv (·-runit (inv ((ua α)))) ⟩</a>
-<a id="38922" class="Comment">--         inv (ua α)</a>
-<a id="38944" class="Comment">--       ∎</a>
-<a id="38955" class="Comment">--   open UnivalenceLemmas public</a>
-<a id="38989" class="Comment">--</a>
-<a id="38992" class="Comment">-- open Univalence</a></pre>
+<p>Somme lemmas about Univelance</p>
+
+<pre class="Agda foldable"><a id="36614" class="Comment">--</a>
+<a id="36617" class="Comment">--   module UnivalenceLemmas {ℓ} where</a>
+<a id="36656" class="Comment">--     -- The identity equivalence creates the trivial path.</a>
+<a id="36717" class="Comment">--     ua-id : {A : Type ℓ} → ua idEqv == refl A</a>
+<a id="36766" class="Comment">--     ua-id {A} =</a>
+<a id="36785" class="Comment">--       begin</a>
+<a id="36800" class="Comment">--         ua idEqv              ==⟨ ap ua (sameEqv (refl id)) ⟩</a>
+<a id="36865" class="Comment">--         ua (idtoeqv (refl A)) ==⟨ ua-η (refl A) ⟩</a>
+<a id="36918" class="Comment">--         refl A</a>
+<a id="36936" class="Comment">--       ∎</a>
+<a id="36947" class="Comment">--</a>
+<a id="36950" class="Comment">--     -- The composition of equivalences is preserved into composition</a>
+<a id="37022" class="Comment">--     -- of equalities.</a>
+<a id="37047" class="Comment">--     ua-comp : {A B C : Type ℓ} → (α : A ≃ B) → (β : B ≃ C) → ua (compEqv α β) == ua α · ua β</a>
+<a id="37143" class="Comment">--     ua-comp α β =</a>
+<a id="37164" class="Comment">--       begin</a>
+<a id="37179" class="Comment">--         ua (compEqv α β)                               ==⟨ ap (λ x → ua (compEqv x β)) (inv (ua-β α)) ⟩</a>
+<a id="37286" class="Comment">--         ua (compEqv (idtoeqv (ua α)) β)                ==⟨ ap (λ x → ua (compEqv (idtoeqv (ua α)) x))</a>
+<a id="37391" class="Comment">--                                                            (inv (ua-β β)) ⟩</a>
+<a id="37470" class="Comment">--         ua (compEqv (idtoeqv (ua α)) (idtoeqv (ua β))) ==⟨ ap ua lemma ⟩</a>
+<a id="37546" class="Comment">--         ua (idtoeqv (ua α · ua β))                     ==⟨ ua-η (ua α · ua β) ⟩</a>
+<a id="37629" class="Comment">--         ua α · ua β</a>
+<a id="37652" class="Comment">--       ∎</a>
+<a id="37663" class="Comment">--       where</a>
+<a id="37678" class="Comment">--         lemma : compEqv (idtoeqv (ua α)) (idtoeqv (ua β)) == idtoeqv (ua α · ua β)</a>
+<a id="37764" class="Comment">--         lemma = sameEqv (</a>
+<a id="37793" class="Comment">--           begin</a>
+<a id="37812" class="Comment">--             fst (idtoeqv (ua β)) ∘ fst (idtoeqv (ua α))                 ==⟨ refl _ ⟩</a>
+<a id="37900" class="Comment">--             (transport (λ x → x) (ua β)) ∘ (transport (λ x → x) (ua α)) ==⟨ transport-comp (ua α) (ua β) ⟩</a>
+<a id="38010" class="Comment">--             transport (λ x → x) (ua α · ua β)                           ==⟨ refl _ ⟩</a>
+<a id="38098" class="Comment">--             fst (idtoeqv (ua α · ua β))</a>
+<a id="38141" class="Comment">--           ∎)</a>
+<a id="38157" class="Comment">--</a>
+<a id="38160" class="Comment">--     -- Inverses are preserved.</a>
+<a id="38194" class="Comment">--     ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A</a>
+<a id="38274" class="Comment">--     ua-inv-r α =</a>
+<a id="38294" class="Comment">--       begin</a>
+<a id="38309" class="Comment">--         ua α · ua (invEqv α)      ==⟨ inv (ua-comp α (invEqv α)) ⟩</a>
+<a id="38379" class="Comment">--         ua (compEqv α (invEqv α)) ==⟨ ap ua (compEqv-inv α) ⟩</a>
+<a id="38444" class="Comment">--         ua idEqv                  ==⟨ ua-id ⟩</a>
+<a id="38493" class="Comment">--         refl _</a>
+<a id="38511" class="Comment">--       ∎</a>
+<a id="38522" class="Comment">--</a>
+<a id="38525" class="Comment">--     ua-inv : {A B : Type ℓ} → (α : A ≃ B) → ua (invEqv α) == inv (ua α)</a>
+<a id="38600" class="Comment">--     ua-inv α =</a>
+<a id="38618" class="Comment">--       begin</a>
+<a id="38633" class="Comment">--         ua (invEqv α)                       ==⟨ ap (_· ua (invEqv α)) (inv (·-linv (ua α))) ⟩</a>
+<a id="38730" class="Comment">--         inv (ua α) · ua α · ua (invEqv α)   ==⟨ ·-assoc (inv (ua α)) _ _ ⟩</a>
+<a id="38808" class="Comment">--         inv (ua α) · (ua α · ua (invEqv α)) ==⟨ ap (inv (ua α) ·_) (ua-inv-r α) ⟩</a>
+<a id="38893" class="Comment">--         inv (ua α) · refl _                 ==⟨ inv (·-runit (inv ((ua α)))) ⟩</a>
+<a id="38975" class="Comment">--         inv (ua α)</a>
+<a id="38997" class="Comment">--       ∎</a>
+<a id="39008" class="Comment">--   open UnivalenceLemmas public</a>
+<a id="39042" class="Comment">--</a>
+<a id="39045" class="Comment">-- open Univalence</a></pre>
 
 
   <!-- <h2> References </h2> -->
