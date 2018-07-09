@@ -404,11 +404,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .additions {
-  color: darkgreen;
+  color: darker(gray, 50%);
+  font-weight: bolder;
 }
 
 .substractions {
-  color: darkred;
+  color: ligher(gray, 5%);
 }
 .commit-message a {
   color: #586069;

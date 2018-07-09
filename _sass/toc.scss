@@ -5,6 +5,8 @@
   top: 5px;
   right: 9px;
   margin: 0 auto;
+  padding-right: 10px;
+  margin-right: 10px;
   height: auto;
   font-size: 11px;
   overflow: scroll;
@@ -19,7 +21,7 @@
   }
 }
 
-@media all and (max-width: 72em){
+@media all and (max-width:83em){
   .toc {
     display: none;
   }
