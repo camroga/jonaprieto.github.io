@@ -2,7 +2,7 @@
 layout: "post"
 title: "Emacs"
 date: "2018-06-21"
-categories: text-editors
+categories: learning
 ---
 
 I’m not dogmatic about which editor is the best. I use at least three different
@@ -14,7 +14,7 @@ this amazing tool/text editor that many people claim it is. Since I don’t have
 too much time to spend on this kind of task, I will try to learn on the top of
 another configuration. Spacemacs is the first option here. I tested, it works
 pretty well, but I want to have something more humble without too much
-customization, something with enough space of freedom to play with.
+customisation, something with enough space of freedom to play with.
 
 My version of emacs at this moment in OSX:
 

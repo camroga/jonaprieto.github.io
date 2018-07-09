@@ -210,7 +210,8 @@ g ∘ f = λ x → g (f x)
 
 \begin{code}
 infixr 0 _$_
-_$_ : ∀ {i j} {A : Type i} {B : A → Type j} → (∀ x → B x) → (∀ x → B x)
+_$_ : ∀ {i j} {A : Type i} {B : A → Type j}
+    → (∀ x → B x) → (∀ x → B x)
 f $ x = f x
 \end{code}
 
@@ -218,9 +219,11 @@ The common symbol use to be dollar sign (\$) but it produces
 some errors for my jekyll configuration.
 
 #### Curryfication
+
 \begin{code}
 curry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
- → (∀ s → C s) → (∀ x y → C (x , y))
+      → (∀ s → C s)
+      → (∀ x y → C (x , y))
 curry f x y = f (x , y)
 \end{code}
 
@@ -228,22 +231,25 @@ curry f x y = f (x , y)
 
 \begin{code}
 uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Type k}
-   → (∀ x y → C x y) → (∀ s → C (fst s) (snd s))
+        → (∀ x y → C x y)
+        → (∀ s → C (fst s) (snd s))
 uncurry f (x , y) = f x y
 \end{code}
 
-#### Instance Searh (review)
+#### Instance Searh
 
 \begin{code}
+-- TODO : How to use this?
 ⟨⟩ : ∀ {i} {A : Type i} {{a : A}} → A
 ⟨⟩ {{a}} = a
 \end{code}
 
 ### Identity Type
 
+Equality is defined as an inductive type. Its induction principle
+is the J-eliminator.
+
 \begin{code}
--- Equality is defined as an inductive type. Its induction principle
--- is the J-eliminator.
 infix 30 _==_
 data _==_ {ℓ} {A : Type ℓ} : A → A → Type ℓ where
   refl :(a : A) → a == a
@@ -267,6 +273,7 @@ J' {a = a} B d (refl a) = d
 \end{code}
 
 Composition of paths
+
 \begin{code}
 infixl 50 _·_
 _·_ : ∀ {ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
@@ -296,7 +303,7 @@ Equational reasoning is a way to write readable chains of equalities.
 The idea is that you can write the following:
 
 {% raw %}
-```
+```agda
   t : a == e
   t = a =⟨ p ⟩
       b =⟨ q ⟩
@@ -342,25 +349,47 @@ open EquationalReasoning
 
 Properties and structure of the equality type.
 
+### Equality
+
+Types are higher groupoids.  If we see equalities as paths, this
+is the inverse of a path. If we see equalities classically, this
+is the symmetric property of equality.
 \begin{code}
-
--- Equality.
-
--- Types are higher groupoids.  If we see equalities as paths, this
--- is the inverse of a path. If we see equalities classically, this
--- is the symmetric property of equality.
 inv : ∀{ℓ} {A : Type ℓ}  {a b : A}
   → a == b
   → b == a
 inv (refl a) = refl a
-
--- Functions are functors to equalities.  In other words, functions
--- preserve equalities.
+\end{code}
+Functions are functors to equalities.  In other words, functions
+preserve equalities.
+\begin{code}
 ap : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f : A → B)
   →   a == b
   → f a == f b
 ap f (refl a) = refl (f a)
 \end{code}
+
+#### Associativity of composition
+
+Properties of function composition.
+
+\begin{code}
+
+-- Left associativity
+∘-lassoc
+  : ∀{ℓ} {A B C D : Type ℓ}
+  → (h : C → D) → (g : B → C) → (f : A → B)
+  → (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
+∘-lassoc h g f = refl (λ x → h (g (f x)))
+
+-- Right associativity
+∘-rassoc
+  : ∀{ℓ} {A B C D : Type ℓ}
+  → (h : C → D) → (g : B → C) → (f : A → B)
+  → ((h ∘ g) ∘ f) == (h ∘ (g ∘ f))
+∘-rassoc h g f = inv (∘-lassoc h g f)
+\end{code}
+
 
 ## Properties on the groupoid
 Some properties on the groupoid structure of equalities
@@ -510,27 +539,6 @@ apd : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
     → (f : (a : A) → P a) → (p : a == b)
     → transport P p (f a) == f b
 apd f (refl a) = refl (f a)
-\end{code}
-
-## Composition
-
-Properties of function composition.
-
-\begin{code}
-module Composition where
-
-  -- Associativity
-  ∘-lassoc : ∀{ℓ} {A B C D : Type ℓ} →
-    (h : C → D) → (g : B → C) → (f : A → B) →
-    (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
-  ∘-lassoc h g f = refl (λ x → h (g (f x)))
-
-  ∘-rassoc : ∀{ℓ} {A B C D : Type ℓ} →
-    (h : C → D) → (g : B → C) → (f : A → B) →
-    ((h ∘ g) ∘ f) == (h ∘ (g ∘ f))
-  ∘-rassoc h g f = inv (∘-lassoc h g f)
-
-open Composition
 \end{code}
 
 ## Homotopy
@@ -1193,32 +1201,33 @@ are provided.
 
 {: .foldable}
 \begin{code}
--- module Univalence where
---
---   -- Voevodsky's Univalence Axiom.
---   module UnivalenceAxiom {ℓ} {A B : Type ℓ} where
---     idtoeqv : A == B → A ≃ B
---     idtoeqv p = qinv-≃
---       (transport (λ x → x) p)
---       (transport (λ x → x) (inv p) , (transport-inv-l p , transport-inv-r p))
---
---     -- The Univalence axiom induces an equivalence between equalities
---     -- and equivalences.
---     postulate axiomUnivalence : isEquiv idtoeqv
---     eqvUnivalence : (A == B) ≃ (A ≃ B)
---     eqvUnivalence = idtoeqv , axiomUnivalence
---
---     -- Introduction rule for equalities.
---     ua : A ≃ B → A == B
---     ua = remap eqvUnivalence
---
---     -- Computation rules
---     ua-β : (eqv : A ≃ B) → idtoeqv (ua eqv) == eqv
---     ua-β eqv = lrmap-inverse eqvUnivalence
---
---     ua-η : (p : A == B) → ua (idtoeqv p) == p
---     ua-η p = rlmap-inverse eqvUnivalence
---   open UnivalenceAxiom public
+module Univalence where
+
+  -- Voevodsky's Univalence Axiom.
+  module UnivalenceAxiom {ℓ} {A B : Type ℓ} where
+    idtoeqv : A == B → A ≃ B
+    idtoeqv p = qinv-≃
+      (transport (λ x → x) p)
+      (transport (λ x → x) (inv p) , (transport-inv-l p , transport-inv-r p))
+
+    -- The Univalence axiom induces an equivalence between equalities
+    -- and equivalences.
+    postulate axiomUnivalence : isEquiv idtoeqv
+    eqvUnivalence : (A == B) ≃ (A ≃ B)
+    eqvUnivalence = idtoeqv , axiomUnivalence
+
+    -- Introduction rule for equalities.
+    ua : A ≃ B → A == B
+    ua = remap eqvUnivalence
+
+    -- Computation rules
+    ua-β : (eqv : A ≃ B) → idtoeqv (ua eqv) == eqv
+    ua-β eqv = lrmap-inverse eqvUnivalence
+
+    ua-η : (p : A == B) → ua (idtoeqv p) == p
+    ua-η p = rlmap-inverse eqvUnivalence
+  open UnivalenceAxiom public
+
 --
 --
 --   module UnivalenceLemmas {ℓ} where
