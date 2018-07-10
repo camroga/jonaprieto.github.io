@@ -12,7 +12,6 @@ $('div.references').linkify();
 $('.algolia-modified a').map(
   function(){
     var modifiedDate = $(this).text();
-    console.log(modifiedDate);
     $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
   }
 );

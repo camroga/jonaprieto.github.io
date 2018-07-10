@@ -4,16 +4,18 @@ permalink: /about/
 title: About
 ---
 
-### About me
-
-A Ph.D. student at [University of Bergen](https://www.uib.no/en/ii) under the
+I'm a first-year Ph.D. student at [University of Bergen](https://www.uib.no/en/ii) under the
 advisory of [Marc
 Bezem](https://cas.oslo.no/fellows/marc-bezem-article2086-828.html) and
 co-supervised by [Bjørn Ian
-Dundas](https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html). I'm
-interested about the connections between mathematics and computer science. Enjoy
-learning about types, functional programming and logic. I code in python,
-mathematica, haskell and nowadays agda. For more information, checkout this
+Dundas](https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html).
+
+Before, I did my Master in Applied Mathematics in the Mathematical Sciences Department at [Universidad EAFIT](http://www.eafit.edu.co/).
+I was under the [advisory](http://www1.eafit.edu.co/asr/supervised-students.html) of [Andrés Sicard-Ramírez](http://www1.eafit.edu.co/asr/) in the group of the [Logic and Computation](http://scienti.colciencias.gov.co:8080/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008091) research group.
+
+My current research interests are connections between mathematics and computer science:
+verification, functional programming, type theory, logic, proof-assistants and lately categories.
+For more information, checkout this
 repository [cv](http://github.com/jonaprieto/curriculum-vitae).
 
 ### About this blog

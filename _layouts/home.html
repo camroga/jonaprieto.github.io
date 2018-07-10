@@ -46,7 +46,7 @@ layout: default
 
     {% if category_name contains "thoughts" %}
     <br/>
-    <div id="#{{ category_name | slugize }}"> 🐿  {{category_name | capitalize }}</div>
+    <div id="#{{ category_name | slugize }}">🐿  {{category_name | capitalize }}</div>
     <div class="post-list">
       {% for post in site.categories[category_name] %}
       <div class="algolia">
