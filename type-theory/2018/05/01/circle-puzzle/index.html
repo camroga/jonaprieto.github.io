@@ -169,7 +169,9 @@ $$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\math
 
 
   <!-- <h2> References </h2> -->
+  <div class="references" markdown="1">
   <ol class="bibliography"></ol>
+  </div>
   <!-- </ -->
 
 </div>
@@ -213,7 +215,6 @@ $$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\, (\math
     
   </ul>
 </div>
-
 <div id="disqus_thread"></div>
 <script>
 
@@ -332,6 +333,12 @@ WebFontConfig = {
          }
      });
  });
+</script>
+<script type="text/javascript">
+  const refs = $(".references");
+if (  refs.text() != ""){
+   refs.prepend("<h3>References</h3>");
+}
 </script>
 
 

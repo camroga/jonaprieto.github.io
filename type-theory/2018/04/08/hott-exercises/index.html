@@ -1411,7 +1411,9 @@ Therefore <script type="math/tex">A</script> is a mere proposition.</li>
 
 
   <!-- <h2> References </h2> -->
+  <div class="references" markdown="1">
   <ol class="bibliography"></ol>
+  </div>
   <!-- </ -->
 
 </div>
@@ -1455,7 +1457,6 @@ Therefore <script type="math/tex">A</script> is a mere proposition.</li>
     
   </ul>
 </div>
-
 <div id="disqus_thread"></div>
 <script>
 
@@ -1574,6 +1575,12 @@ WebFontConfig = {
          }
      });
  });
+</script>
+<script type="text/javascript">
+  const refs = $(".references");
+if (  refs.text() != ""){
+   refs.prepend("<h3>References</h3>");
+}
 </script>
 
 

@@ -267,7 +267,13 @@ h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; f
 
 #archives h6 { margin: 0px; }
 
-.container.content h3:before { content: '❯ '; }
+.container.content h2:before { content: '❯ '; }
+
+.container.content h3:before { content: '❯❯ '; }
+
+.container.content h4:before { content: '❯❯❯ '; }
+
+.container.content h5:before { content: '❯❯❯❯ '; }
 
 .table-of-contents { /* padding: 5px 0px 5px 10px; */ }
 
@@ -660,10 +666,10 @@ a.pagination-item:hover { background-color: #f5f5f5; }
 /* Literal.Number.Integer.Long */
 .css .o, .css .o + .nt, .css .nt + .nt { color: #999; }
 
-.toc { float: right; position: fixed; width: 300px; top: 5px; right: 9px; margin: 0 auto; padding-right: 10px; margin-right: 10px; height: auto; font-size: 11px; overflow: scroll; height: -webkit-fill-available; padding-left: 2em; overflow-x: hidden; text-overflow: ellipsis; }
+.toc { background: aliceblue; float: right; position: fixed; width: 300px; top: 5px; right: 9px; margin: 0 auto; padding-right: 10px; margin-right: 10px; height: auto; font-size: 11px; overflow: scroll; height: -webkit-fill-available; padding-left: 2em; overflow-x: hidden; text-overflow: ellipsis; }
 .toc ul { padding-left: 10px; margin-bottom: 0px; }
 
-@media all and (max-width: 83em) { .toc { display: none; } }
+@media all and (max-width: 77em) { .toc { display: none; } }
 .toc .table-of-contents { font-size: 16px; }
 
 .toc a { color: #21182a; }

@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+17</span>/<span class="substractions">-1</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/6537f323073fa6d772ca2575cfa5b8f4bf0a9f6e"> many changes</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+21</span>/<span class="substractions">-1</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7f827eb1bc7623f61102e0b839bd15353daa17b4"> path over workday</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/6537f323073fa6d772ca2575cfa5b8f4bf0a9f6e">6537f32 </a> on  06 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7f827eb1bc7623f61102e0b839bd15353daa17b4">7f827eb </a> on  10 Jul 2018
     </div>
     </div>
   </div>
@@ -145,13 +145,21 @@
     <li>
       <p>2018-07-06 13:30 what is the semantics of type theory? what does it mean that something doesn’t change the semantics.</p>
     </li>
+    <li>
+      <p>Isomorphism implies equality: https://homotopytypetheory.org/2012/09/23/isomorphism-implies-equality/
+http://www.cse.chalmers.se/~nad/listings/equality/Univalence-axiom.Isomorphism-implies-equality.html</p>
+    </li>
+    <li>
+      <p>http://www.cs.ox.ac.uk/people/sam.speight/publications/sams-hott-thesis.pdf</p>
+    </li>
   </ul>
-
 </div>
 
 
   <!-- <h2> References </h2> -->
+  <div class="references" markdown="1">
   <ol class="bibliography"></ol>
+  </div>
   <!-- </ -->
 
 </div>
@@ -195,7 +203,6 @@
     
   </ul>
 </div>
-
 <div id="disqus_thread"></div>
 <script>
 
@@ -314,6 +321,12 @@ WebFontConfig = {
          }
      });
  });
+</script>
+<script type="text/javascript">
+  const refs = $(".references");
+if (  refs.text() != ""){
+   refs.prepend("<h3>References</h3>");
+}
 </script>
 
 
