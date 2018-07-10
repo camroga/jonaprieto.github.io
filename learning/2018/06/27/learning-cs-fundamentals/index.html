@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+277</span>/<span class="substractions">-102</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/aa52e7e6577dd0a6f75c4324ebe7dfaa5fbf5d1b"> cat-for-programmers progress</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+284</span>/<span class="substractions">-104</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9a91dd30bee7b40ef5772076d2be3abc9330eb35"> ALIAS-C++ updates; addition links and related</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/aa52e7e6577dd0a6f75c4324ebe7dfaa5fbf5d1b">aa52e7e </a> on  07 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9a91dd30bee7b40ef5772076d2be3abc9330eb35">9a91dd3 </a> on  11 Jul 2018
     </div>
     </div>
   </div>
@@ -199,8 +199,16 @@ will be to solve the same problem with the half size of the original in case the
 <p>As you can see the maximum number of guessing will be depend on how many times we could divide by 2 the number N, that is, 2^#guesses-allowed. With ten guesses, N should be 1024, but we forgot one thing because the answer is 1023. There is a problem about the “center” because when N is odd, there is no such center.</p>
 
 <ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/mergesort/?chapter=recursion">mergesort</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/quicksort/?chapter=recursion">quicksort</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://brilliant.org/practice/mergesort/?chapter=recursion">mergesort</a></li>
+</ul>
+
+<p><img src="/assets/png-images/2018-06-27-learning-cs-fundamentals-299c445c.png" alt="" /></p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://brilliant.org/practice/quicksort/?chapter=recursion">quicksort</a>
+Does the pivot always be in the correct position (sorted) after the first partitioning? Yes, it does.</p>
+  </li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/linked-list/?chapter=recursion">linked-list</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues">stacks-and-queues</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://brilliant.org/practice/stacks-2/?chapter=stacks-and-queues">stacks-2</a></li>
@@ -426,6 +434,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script type="text/javascript">
 $('div.references').linkify();
+$('div.links').linkify();
 
 // moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
 $('.algolia-modified a').map(

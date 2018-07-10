@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Intervals</title>
-  <meta name="description" content="">
+  <meta name="description" content="Interval analysis literature search.">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -123,11 +123,11 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+87</span>/<span class="substractions">-18</span>)</span>:
-          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7f54df1dd72e1fa0aaca6e1124018556ef0938dc"> Interval analysis additions</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+106</span>/<span class="substractions">-21</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9a91dd30bee7b40ef5772076d2be3abc9330eb35"> ALIAS-C++ updates; addition links and related</a></span>
       </div>
     <div class="main-last-date">
-        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/7f54df1dd72e1fa0aaca6e1124018556ef0938dc">7f54df1 </a> on  08 Jul 2018
+        Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9a91dd30bee7b40ef5772076d2be3abc9330eb35">9a91dd3 </a> on  11 Jul 2018
     </div>
     </div>
   </div>
@@ -142,7 +142,7 @@
       <ul>
   <li><a href="#interval-and-related-software">Interval and Related Software</a>
     <ul>
-      <li><a href="#alias-library"><a href="http://www-sop.inria.fr/coprin/index_english.html">ALIAS Library</a></a></li>
+      <li><a href="#alias-library-2012"><a href="http://www-sop.inria.fr/coprin/logiciels/ALIAS/ALIAS-C++/ALIAS-C++.html">ALIAS Library 2012</a></a></li>
       <li><a href="#arb"><a href="http://arblib.org/">Arb</a></a></li>
       <li><a href="#awa"><a href="ftp://ftp.iam.uni-karlsruhe.de/pub/awa/">AWA</a></a></li>
       <li><a href="#capd-computer-assisted-proofs-in-dynamics"><a href="http://capd.ii.uj.edu.pl/">CAPD, Computer-Assisted Proofs in Dynamics</a></a></li>
@@ -159,13 +159,41 @@
     </nav>
   </div>
   
-  <div class="references">
+  <p>Interval analysis literature search.</p>
+
+<div class="links">
 
   <h2 id="interval-and-related-software">Interval and Related Software</h2>
 
-  <h3 id="alias-library"><a href="http://www-sop.inria.fr/coprin/index_english.html">ALIAS Library</a></h3>
+  <h3 id="alias-library-2012"><a href="http://www-sop.inria.fr/coprin/logiciels/ALIAS/ALIAS-C++/ALIAS-C++.html">ALIAS Library 2012</a></h3>
 
-  <p>Algorithms Library of Interval Analysis for Systems; see also this link</p>
+  <p>Algorithms Library of Interval Analysis for Systems</p>
+
+  <ul>
+    <li>https://www-sop.inria.fr/coprin/developpements/main.html</li>
+    <li>
+      <p>https://www-sop.inria.fr/coprin/logiciels/ALIAS/ALIAS-C++/manual-alias-C++2.7.pdf</p>
+    </li>
+    <li>
+      <p><a href="http://www-sop.inria.fr/coprin/logiciels/ALIAS/Examples/COURS/index.html">Tutorial: Analyse par intervalles et Applications</a></p>
+    </li>
+    <li>
+      <p>Examples: <a href="https://www-sop.inria.fr/coprin/logiciels/ALIAS/Benches/benches.html">The COPRIN examples page</a></p>
+    </li>
+    <li>
+      <p><a href="http://www2.math.uni-wuppertal.de/~xsc/software/intpakX/"><strong>Solve_intpakX with Graphics</strong></a> is a set of Maple procedures for solving system of equations that takes the basic algorithms of ALIAS but allows the resolution in arbitrary precision.</p>
+
+      <ul>
+        <li>
+          <p><a href="https://hal.inria.fr/inria-00071744/document">Multiple Precision Interval Packages:Comparing
+Different Approaches. M. Grimmer</a></p>
+        </li>
+        <li>
+          <p><a href="http://www2.math.uni-wuppertal.de/wrswt/preprints/prep_02_5.pdf">Interval Arithmetic in Maple with intpakX</a></p>
+        </li>
+      </ul>
+    </li>
+  </ul>
 
   <h3 id="arb"><a href="http://arblib.org/">Arb</a></h3>
 
@@ -265,8 +293,8 @@ Pytaylor uses</p>
     
       <li>
         <h3>
-          <a href="/2018/07/05/geometry-intution-of-pathovers/">
-            Geometry Intution Of Pathovers
+          <a href="/type-theory/2018/07/05/hott-lib/">
+            HoTT basics in Agda
             
             <small>05 Jul 2018</small>
             
@@ -312,6 +340,7 @@ s.setAttribute('data-timestamp', +new Date());
 
 <script type="text/javascript">
 $('div.references').linkify();
+$('div.links').linkify();
 
 // moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
 $('.algolia-modified a').map(
