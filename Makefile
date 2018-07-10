@@ -16,7 +16,6 @@ ipeImagesPNG     := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png
 latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexitImages))
 copyPasteImagesPNG := $(subst src/assets/,assets/,$(copyPasteImages))
 
-#
 all:  _posts/ $(markdownOrig) $(markdownAgda) $(copyPasteImagesPNG) $(ipeImagesPNG) $(latexitImagesPNG) $(pdflagda)
 
 _posts/ :
@@ -103,8 +102,8 @@ $(HOME)/agda2html-master/:
 	cd $(HOME)/agda2html-master;\
 		stack install
 
-.PHONY : references
-references : _bibliography/library.bib
+.PHONY : _bibliography/reb.bib
+_bibliography/reb.bib : _bibliography/library.bib
 	- @echo "==================================================================="
 	-	@echo "====================== Generating References ======================"
 	-	@echo "==================================================================="

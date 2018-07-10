@@ -13,15 +13,14 @@ data Id (A : Set) (x y : A) : Set where
   refl : Id A x y
 ```
 
-The only rule/constructor is `refl` that represents the reflexivity property of
-the inductive types. Sometimes we can another definition for refl, that is
-similar as the presented above but using the equality symbol (`_≡_`) and Π-type.
+The only rule/constructor for the identity type is `refl` that represents the reflexivity property of
+the inductive types. We could've defined it by using the following syntax (`_≡_`) and Π-type.
 
 ```
 refl: Π x:A. x ≡ x
 ```
 
-In Agda we will write this
+In Agda we can write something like
 
 ```agda
 infix 4 _≡_
@@ -79,14 +78,13 @@ types formed by these small types have `Set 1` type, and so on with `Set i` type
 
 We call *path* to the inhabitant of the identity type, that is, p : x ≡ y for
 some x and y of type A. We can probably think that there is only one p, but
-there are many identifications between x and y from the HoTT perspective. That's
-the reason we talk about one path and one set of paths, the *path space*.
+there are many identifications between x and y from the HoTT perspective. For that
+reason we refer to a path and a set of paths or path space like something no trivial.
 
 ![path](/assets/ipe-images/path.png)
 
-Now, we introduce the induction principle for the identity type with `pi`
-abbreviation of path induction also called elimination identity and noted
-[`J`](https://homotopytypetheory.org/2011/04/10/just-kidding-understanding-identity-elimination-in-homotopy-type-theory/).
+Now, we introduce the induction principle for the identity type denoted by `pi`,
+that is the elimination rule of this type also called [`J` rule.](https://homotopytypetheory.org/2011/04/10/just-kidding-understanding-identity-elimination-in-homotopy-type-theory/).)
 
 \begin{code}
 pi

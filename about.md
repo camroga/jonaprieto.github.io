@@ -6,10 +6,15 @@ title: About
 
 ### About me
 
-A Ph.D. student at University of Bergen. I'm interested about the connections
-between mathematics and computer science. Enjoy learning about types, functional
-programming and logic. I code in python, mathematica, haskell and nowadays agda.
-For more information, checkout this repository [cv](http://github.com/jonaprieto/curriculum-vitae).
+A Ph.D. student at [University of Bergen](https://www.uib.no/en/ii) under the
+advisory of [Marc
+Bezem](https://cas.oslo.no/fellows/marc-bezem-article2086-828.html) and
+co-supervised by [Bjørn Ian
+Dundas](https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html). I'm
+interested about the connections between mathematics and computer science. Enjoy
+learning about types, functional programming and logic. I code in python,
+mathematica, haskell and nowadays agda. For more information, checkout this
+repository [cv](http://github.com/jonaprieto/curriculum-vitae).
 
 ### About this blog
 

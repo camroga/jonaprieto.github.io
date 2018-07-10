@@ -401,8 +401,8 @@ module ·-Properties {ℓ} {A : Type ℓ} where
   ·-lunit : {a b : A} (p : a == b) → p == (refl _) · p
   ·-lunit (refl a) = refl (refl a)
 
-  ·-assoc : {a b c d : A} (p : a == b) → (q : b == c) → (r : c == d) →
-    (p · q) · r == p · (q · r)
+  ·-assoc : {a b c d : A} (p : a == b) → (q : b == c) → (r : c == d)
+          → (p · q) · r == p · (q · r)
   ·-assoc (refl a) q r = refl (q · r)
 
   ·-linv : {a b : A} (p : a == b) → (inv p) · p == refl b
@@ -470,9 +470,9 @@ open Transport public
 
 ## Actions on paths II
 
+More properties and lemmas on equality, transporting and function application.
+
 \begin{code}
--- More properties and lemmas on equality, transporting and function
--- application.
 ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
 ap-id (refl a) = refl (refl a)
 
@@ -657,7 +657,7 @@ open Contractible public
 
 \end{code}
 
-## Equivalence in HoTT
+## Equivalence
 
 \begin{code}
 

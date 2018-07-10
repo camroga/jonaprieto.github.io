@@ -1,4 +1,5 @@
 .toc{
+  background: aliceblue;
   float: right;
   position: fixed;
   width: 300px;
@@ -21,7 +22,7 @@
   }
 }
 
-@media all and (max-width:83em){
+@media all and (max-width:77em){
   .toc {
     display: none;
   }

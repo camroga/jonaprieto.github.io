@@ -215,11 +215,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #archives h6 {
   margin: 0px;
-
 }
 
-
-.container.content h3:before {content:'❯ '}
+.container.content h2:before {content:'❯ '}
+.container.content h3:before {content:'❯❯ '}
+.container.content h4:before {content:'❯❯❯ '}
+.container.content h5:before {content:'❯❯❯❯ '}
 
 .table-of-contents{
   /* padding: 5px 0px 5px 10px; */
