@@ -7,13 +7,29 @@ published: true
 toc: true
 ---
 
-<div class="references" markdown="1">
+Interval analysis literature search.
+
+<div class="links" markdown="1">
 
 ## Interval and Related Software
 
-### [ALIAS Library](http://www-sop.inria.fr/coprin/index_english.html)
+### [ALIAS Library 2012](http://www-sop.inria.fr/coprin/logiciels/ALIAS/ALIAS-C++/ALIAS-C++.html)
 
-Algorithms Library of Interval Analysis for Systems; see also this link
+Algorithms Library of Interval Analysis for Systems
+
+  - https://www-sop.inria.fr/coprin/developpements/main.html
+  - https://www-sop.inria.fr/coprin/logiciels/ALIAS/ALIAS-C++/manual-alias-C++2.7.pdf
+
+  - [Tutorial: Analyse par intervalles et Applications](http://www-sop.inria.fr/coprin/logiciels/ALIAS/Examples/COURS/index.html)
+
+  - Examples: [The COPRIN examples page](https://www-sop.inria.fr/coprin/logiciels/ALIAS/Benches/benches.html)
+
+- [**Solve_intpakX with Graphics**](http://www2.math.uni-wuppertal.de/~xsc/software/intpakX/) is a set of Maple procedures for solving system of equations that takes the basic algorithms of ALIAS but allows the resolution in arbitrary precision.
+
+  - [Multiple Precision Interval Packages:Comparing
+Different Approaches. M. Grimmer](https://hal.inria.fr/inria-00071744/document)
+
+  - [Interval Arithmetic in Maple with intpakX](http://www2.math.uni-wuppertal.de/wrswt/preprints/prep_02_5.pdf)
 
 ### [Arb](http://arblib.org/)
 
