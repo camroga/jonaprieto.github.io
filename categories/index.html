@@ -156,10 +156,6 @@
     </article>
     
     <article class="archive-item">
-      <h6> <a href="/type-theory/2018/06/30/geometry-intution-of-pathovers/">PathOvers in HoTT</a></h6>
-    </article>
-    
-    <article class="archive-item">
       <h6> <a href="/type-theory/2018/05/01/circle-puzzle/">Circle puzzle</a></h6>
     </article>
     
@@ -293,7 +289,6 @@ $('div.references').linkify();
 $('.algolia-modified a').map(
   function(){
     var modifiedDate = $(this).text();
-    console.log(modifiedDate);
     $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
   }
 );

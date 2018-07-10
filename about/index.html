@@ -125,16 +125,18 @@
     <h2 class="page-title">About</h2>
     
   
-  <h3 id="about-me">About me</h3>
-
-<p>A Ph.D. student at <a href="https://www.uib.no/en/ii">University of Bergen</a> under the
+  <p>I’m a first-year Ph.D. student at <a href="https://www.uib.no/en/ii">University of Bergen</a> under the
 advisory of <a href="https://cas.oslo.no/fellows/marc-bezem-article2086-828.html">Marc
 Bezem</a> and
 co-supervised by <a href="https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html">Bjørn Ian
-Dundas</a>. I’m
-interested about the connections between mathematics and computer science. Enjoy
-learning about types, functional programming and logic. I code in python,
-mathematica, haskell and nowadays agda. For more information, checkout this
+Dundas</a>.</p>
+
+<p>Before, I did my Master in Applied Mathematics in the Mathematical Sciences Department at <a href="http://www.eafit.edu.co/">Universidad EAFIT</a>.
+I was under the <a href="http://www1.eafit.edu.co/asr/supervised-students.html">advisory</a> of <a href="http://www1.eafit.edu.co/asr/">Andrés Sicard-Ramírez</a> in the group of the <a href="http://scienti.colciencias.gov.co:8080/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008091">Logic and Computation</a> research group.</p>
+
+<p>My current research interests are connections between mathematics and computer science:
+verification, functional programming, type theory, logic, proof-assistants and lately categories.
+For more information, checkout this
 repository <a href="http://github.com/jonaprieto/curriculum-vitae">cv</a>.</p>
 
 <h3 id="about-this-blog">About this blog</h3>
@@ -189,7 +191,6 @@ $('div.references').linkify();
 $('.algolia-modified a').map(
   function(){
     var modifiedDate = $(this).text();
-    console.log(modifiedDate);
     $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
   }
 );
