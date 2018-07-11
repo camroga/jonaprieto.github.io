@@ -1228,7 +1228,7 @@ module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where
 
 ## Other facts
 
-We can build dependent path by applying depedent function to a homogeneous path.
+We can build a dependent path by applying a depedent function to a homogeneous path.
 
 \begin{code}
 apdo : ∀ {ℓ} {A : Type ℓ} {B : A → Type ℓ} (f : (a : A) → B a)
