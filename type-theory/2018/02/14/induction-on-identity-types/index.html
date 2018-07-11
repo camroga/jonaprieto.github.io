@@ -334,7 +334,7 @@ necessary is to have C a refl, that is, holds C for the <em>base case</em>.</p>
 
 
   <!-- <h2> References </h2> -->
-  <div class="references" markdown="1">
+  <div class="cited-references" markdown="1">
   <ol class="bibliography"></ol>
   </div>
   <!-- </ -->
@@ -500,10 +500,24 @@ WebFontConfig = {
  });
 </script>
 <script type="text/javascript">
+
+  $('.cited-references').hide();
   const refs = $(".references");
-if (  refs.text() != ""){
-   refs.prepend("<h3>References</h3>");
-}
+  $('.references').append( $('.cited-references').html());
+  if ( refs.text() != ""){
+     refs.prepend("<h3>References</h3>");
+  }
+  else{
+    if ($(".cited-references").text() != ""){
+      $(".cited-references").prepend("<h3 id='refs'>References</h3>");
+      $(".cited-references").show();
+      $(".toc nav>ul").append(
+        "<li><a href='#refs'>References</a></li>"
+      );
+    }
+
+  }
+
 </script>
 
 
