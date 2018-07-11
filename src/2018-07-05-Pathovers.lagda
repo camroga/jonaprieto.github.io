@@ -895,6 +895,37 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₄-~-HEq₃ idp = idp
 \end{code}
 
+To complete with the chain of equivalence, we show  `HEq₄-≃-HEq₁`
+
+{: .foldable}
+\begin{code}
+-- A proof that HEq₃-≃-HEq₄
+module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
+
+  HEq₄-to-HEq₁ : {α : A == B}{a : A}{b : B}
+               → HEq₄ A B α a b
+               → HEq₁ A B α a b
+  HEq₄-to-HEq₁ {idp} idp = hid
+
+  HEq₁-to-HEq₄ : {α : A == B}{a : A}{b : B}
+               → HEq₁ A B α a b
+               → HEq₄ A B α a b
+  HEq₁-to-HEq₄ {idp} {a} {.a} hid = idp
+
+  HEq₄-≃-HEq₁ : {α : A == B}{a : A}{b : B}
+             → HEq₄ A B α a b ≃ HEq₁ A B α a b
+  HEq₄-≃-HEq₁ {idp} {a} {b} =
+    qinv-≃ HEq₄-to-HEq₁ (HEq₁-to-HEq₄ , HEq₄-~-HEq₁ , HEq₁-~-HEq₄)
+    where
+      HEq₄-~-HEq₁ : ( p : HEq₁ A B idp a b)
+                  → ( HEq₄-to-HEq₁ (HEq₁-to-HEq₄ p ) == p)
+      HEq₄-~-HEq₁ hid = idp
+
+      HEq₁-~-HEq₄ : ( p : HEq₄ A B idp a b)
+                  → ( HEq₁-to-HEq₄ (HEq₄-to-HEq₁ p ) == p)
+      HEq₁-~-HEq₄ idp = idp
+\end{code}
+
 We will prefer the first definition.
 \begin{code}
 HEq = HEq₁
