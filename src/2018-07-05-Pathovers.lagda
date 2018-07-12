@@ -14,7 +14,7 @@ briefly mentioned in {% cite hottbook %} and later defined in {% cite Licata2015
 
 ![](/assets/png-images/2018-07-05-geometry-intution-of-pathovers-7f9fb342.png)
 
-Let's review first an equility type that is closely relted with these pathovers.
+Let's review first an equility type that is closely related with these PathOvers.
 (See also {% cite Licata2015 %} for some extra comments).
 
 {: .foldable}
@@ -32,9 +32,10 @@ Type ℓ = Set ℓ
 
 ## Homogeneous equality
 
-> `Path {A} a₀ a₁` is sometimes called **homogeneous equality**, because it
-> relates two elements a₀ and a₁ whose types are *definitionally/judgementally
-> equal*.
+The *homogeneous equality* is a type `Path` that relate two elements `a₀` and
+`a₁` whose types are *definitionally/judgementally. We denote this type as `Path
+{A} a₀ a₁`. The curly braces in Agda stands for an *inplicit argument* that the
+type-checker infers. We also use the symbol (`_==_`) to denote this type.
 
 \begin{code}
 infix 30 _==_
@@ -46,6 +47,7 @@ Path = _==_
 
 ## Heterogeneous equality
 
+
 > In {%cite McBride2004 %} the author introduced a *heterogeneous equality*, which is an equality type
 > `a:A= b:B` that relates two elements `a:A` and `b:B` which may have two judgementally
 > distinct types, though the reflexivity constructor applies only when both the
@@ -56,17 +58,22 @@ Path = _==_
 > is undesirable **in homotopy type theory, because not all types should be sets**.
 
 > This heterogeneous equality relates two elements of two different types along a
-> specific equality α between the types.
+> specific equality α between the types. {% cite Licata2015 %}.
 
-We will continue using `idp` for the reflexivity constructor, which it's going
-to be convenient to switch between the definitions of the heterogeneous equality
-and furtermore, between the definition of the homogeneous equality.
 
 \begin{code}
 data HEq₁ {ℓ} (A : Type ℓ) : (B : Type ℓ) → (α : A == B) (a : A) (b : B) → Type ℓ where
   idp : ∀ {a : A} → HEq₁ A A idp a a
 \end{code}
 
+We adopt the same name `idp` for the reflexivity constructor of the `Path` type
+for the heterogeneous equality. This name is convenient because we want to
+maintain some consistency in the following proofs. We will switch between
+different definitions of heterogeneous equality but also between definitions for
+the homogeneous equality.
+
+Let us recall the transport function and the coercion function  along a
+homogeneous equality.
 
 \begin{code}
 transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (P : A → Type ℓⱼ) {a b : A}
@@ -76,7 +83,6 @@ transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (P : A → Type ℓⱼ) {a b :
 transport P idp = (λ x → x)
 \end{code}
 
-Coercion along a homogeneous equality
 \begin{code}
 coe : ∀ {ℓ}{A B : Type ℓ}
     → A == B
@@ -797,7 +803,7 @@ open hott public
 
 
 Let be `α : A == B`, `a : A`, and `b : B` then the following types are equivalent
-to `HEq`.
+to the previous type `HEq₁`.
 
 - \begin{code}
 HEq₂ : ∀ {ℓ} (A : Type ℓ)(B : Type ℓ) (α : A == B)(a : A)(b : B) → Type ℓ
