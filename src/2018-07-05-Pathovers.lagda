@@ -960,21 +960,21 @@ data PathOver₁ {ℓ} {A : Set ℓ} (C : A → Type ℓ) {a₁ : A} :
 \end{code}
 
 - \begin{code}
-PathOver₂ : ∀ {ℓ} {A : Type ℓ} → (C : A → Type ℓ) (a₁ a₂ : A)
-          → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓ
-PathOver₂ C a₁ a₂ α c₁ c₂ = HEq (C a₁) (C a₂) (ap C α) c₁ c₂
+PathOver₂ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+          → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ
+PathOver₂ {A = A} C {a₁} {a₂} α c₁ c₂ = HEq (C a₁) (C a₂) (ap C α) c₁ c₂
 \end{code}
 
 - \begin{code}
-PathOver₃ : ∀ {ℓ} {A : Type ℓ}(C : A → Type ℓ) (a₁ a₂ : A)
-          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓ
-PathOver₃ C a₁ a₂ α c₁ c₂ = transport C α c₁ == c₂
+PathOver₃ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+PathOver₃ {A = A} C {a₁} {a₂} α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
 - \begin{code}
-PathOver₄ : ∀ {ℓ} {A : Type ℓ}(C : A → Type ℓ) (a₁ a₂ : A)
+PathOver₄ : ∀ {ℓ} {A : Type ℓ}(C : A → Type ℓ) {a₁ a₂ : A}
           → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓ
-PathOver₄ C a₁ a₂ α c₁ c₂ = c₁ ==  transport C (inv α) c₂
+PathOver₄ {A = A} C {a₁} {a₂} α c₁ c₂ = c₁ == transport C (inv α) c₂
 \end{code}
 
 - \begin{code}
@@ -996,23 +996,23 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₁-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₁ C α c₁ c₂
-         → PathOver₂ C a₁ a₂ α c₁ c₂
+         → PathOver₂ C α c₁ c₂
   PathOver₁-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = hid
 
   PathOver₂-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₂ C a₁ a₂ α c₁ c₂
+         → PathOver₂ C α c₁ c₂
          → PathOver₁ C α c₁ c₂
   PathOver₂-to-PathOver₁ {a₁} {.a₁} {idp} {c₁} {.c₁} hid = idp
   --
   PathOver₁-≃-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-        → PathOver₁ C α c₁ c₂ ≃ PathOver₂ C a₁ a₂ α c₁ c₂
+        → PathOver₁ C α c₁ c₂ ≃ PathOver₂ C α c₁ c₂
   PathOver₁-≃-PathOver₂ {a₁}{.a₁}{idp}{c₁}{c₂} =
     qinv-≃
       PathOver₁-to-PathOver₂
       (PathOver₂-to-PathOver₁
         , PathOver₁~PathOver₅ , PathOver₂~PathOver₁)
     where
-      PathOver₁~PathOver₅ : (p : PathOver₂ C a₁ a₁ idp c₁ c₂)
+      PathOver₁~PathOver₅ : (p : PathOver₂ C idp c₁ c₂)
           → PathOver₁-to-PathOver₂ (PathOver₂-to-PathOver₁ p) == p
       PathOver₁~PathOver₅ hid = idp
 
@@ -1028,28 +1028,28 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₂-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₂ C a₁ a₂ α c₁ c₂
-         → PathOver₃ C a₁ a₂ α c₁ c₂
+         → PathOver₂ C α c₁ c₂
+         → PathOver₃ C α c₁ c₂
   PathOver₂-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} hid = idp
 
   PathOver₃-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₃ C a₁ a₂ α c₁ c₂
-         → PathOver₂ C a₁ a₂ α c₁ c₂
+         → PathOver₃ C α c₁ c₂
+         → PathOver₂ C α c₁ c₂
   PathOver₃-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = hid
   --
   PathOver₂-≃-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-        → PathOver₂ C a₁ a₂ α c₁ c₂ ≃ PathOver₃ C a₁ a₂ α c₁ c₂
+        → PathOver₂ C α c₁ c₂ ≃ PathOver₃ C α c₁ c₂
   PathOver₂-≃-PathOver₃ {a₁}{.a₁}{idp}{c₁}{c₂} =
     qinv-≃
       PathOver₂-to-PathOver₃
       (PathOver₃-to-PathOver₂
         , PathOver₂~PathOver₅ , PathOver₃~PathOver₂)
     where
-      PathOver₂~PathOver₅ : (p : PathOver₃ C a₁ a₁ idp c₁ c₂)
+      PathOver₂~PathOver₅ : (p : PathOver₃ C idp c₁ c₂)
           → PathOver₂-to-PathOver₃ (PathOver₃-to-PathOver₂ p) == p
       PathOver₂~PathOver₅ idp = idp
 
-      PathOver₃~PathOver₂ : (p : PathOver₂ C a₁ a₁ idp c₁ c₂)
+      PathOver₃~PathOver₂ : (p : PathOver₂ C idp c₁ c₂)
           → PathOver₃-to-PathOver₂ (PathOver₂-to-PathOver₃ p) == p
       PathOver₃~PathOver₂ hid = idp
 \end{code}
@@ -1062,28 +1062,28 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₃-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₃ C a₁ a₂ α c₁ c₂
-         → PathOver₄ C a₁ a₂ α c₁ c₂
+         → PathOver₃ C α c₁ c₂
+         → PathOver₄ C α c₁ c₂
   PathOver₃-to-PathOver₄ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
 
   PathOver₄-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₄ C a₁ a₂ α c₁ c₂
-         → PathOver₃ C a₁ a₂ α c₁ c₂
+         → PathOver₄ C α c₁ c₂
+         → PathOver₃ C α c₁ c₂
   PathOver₄-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
   --
   PathOver₃-≃-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-        → PathOver₃ C a₁ a₂ α c₁ c₂ ≃ PathOver₄ C a₁ a₂ α c₁ c₂
+        → PathOver₃ C α c₁ c₂ ≃ PathOver₄ C α c₁ c₂
   PathOver₃-≃-PathOver₄ {a₁}{.a₁}{idp}{c₁}{c₂} =
     qinv-≃
       PathOver₃-to-PathOver₄
       (PathOver₄-to-PathOver₃
         , PathOver₃~PathOver₅ , PathOver₄~PathOver₃)
     where
-      PathOver₃~PathOver₅ : (p : PathOver₄ C a₁ a₁ idp c₁ c₂)
+      PathOver₃~PathOver₅ : (p : PathOver₄ C idp c₁ c₂)
           → PathOver₃-to-PathOver₄ (PathOver₄-to-PathOver₃ p) == p
       PathOver₃~PathOver₅ idp = idp
 
-      PathOver₄~PathOver₃ : (p : PathOver₃ C a₁ a₁ idp c₁ c₂)
+      PathOver₄~PathOver₃ : (p : PathOver₃ C idp c₁ c₂)
           → PathOver₄-to-PathOver₃ (PathOver₃-to-PathOver₄ p) == p
       PathOver₄~PathOver₃ idp = idp
 \end{code}
@@ -1095,17 +1095,17 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₄-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₄ C a₁ a₂ α c₁ c₂
+         → PathOver₄ C α c₁ c₂
          → PathOver₅ C α c₁ c₂
   PathOver₄-to-PathOver₅ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
 
   PathOver₅-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₅ C α c₁ c₂
-         → PathOver₄ C a₁ a₂ α c₁ c₂
+         → PathOver₄ C α c₁ c₂
   PathOver₅-to-PathOver₄ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
   --
   PathOver₄-≃-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-        → PathOver₄ C a₁ a₂ α c₁ c₂ ≃ PathOver₅ C α c₁ c₂
+        → PathOver₄ C α c₁ c₂ ≃ PathOver₅ C α c₁ c₂
   PathOver₄-≃-PathOver₅ {a₁}{.a₁}{idp}{c₁}{c₂} =
     qinv-≃
       PathOver₄-to-PathOver₅
@@ -1116,7 +1116,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
           → PathOver₄-to-PathOver₅ (PathOver₅-to-PathOver₄ p) == p
       PathOver₄~PathOver₅ idp = idp
 
-      PathOver₅~PathOver₄ : (p : PathOver₄ C a₁ a₁ idp c₁ c₂)
+      PathOver₅~PathOver₄ : (p : PathOver₄ C idp c₁ c₂)
           → PathOver₅-to-PathOver₄ (PathOver₄-to-PathOver₅ p) == p
       PathOver₅~PathOver₄ idp = idp
 \end{code}
@@ -1157,7 +1157,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 We are going to use the fifth definition for pathovers, the one which is
 using an inductive family.
 \begin{code}
-PathOver = PathOver₅
+PathOver = PathOver₃
 
 infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
@@ -1178,45 +1178,50 @@ syntax PathOver B p u v = u == v [ B ↓ p ]
 ## Total spaces
 
 \begin{code}
-module _ {i j}{A : Type i}{B : A → Type j}{x y : A} where
+module _ {i j}{A : Type i}{C : A → Type j}{a₁ a₂ : A} where
 
-  Σ-to-==[↓] : {p : x == y}{u : B x}{v : B y}
-    → Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p)
-    → u == v [ B ↓ p ]
+  Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+    → c₁ == c₂ [ C ↓  α ]
   Σ-to-==[↓] (idp , idp) = idp
+
+  ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (γ : c₁ == c₂ [ C ↓ α ])
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+  ==[↓]-to-Σ {idp} idp = (idp , idp)
+
+  -- -- Alternative (also type-checked):
+  -- ==[↓]-to-Σ {α = α} γ = (pair= α γ , ap-fst-pair= α γ)
+  --   where
+  --   pair= : ∀ {i j} {A : Type i} {C : A → Type j}
+  --     {a₁ a₂ : A} {c₁ : C a₁} {c₂ : C a₂}
+  --     → (α : a₁ == a₂)
+  --     → (γ : c₁ == c₂ [ C ↓ α ])
+  --     ------
+  --     → (a₁ , c₁) == (a₂ , c₂)
+  --   pair= idp γ = ap (_ ,_) γ
   --
-  ==[↓]-to-Σ : {p : x == y}{u : B x}{v : B y}
-    → (r : u == v [ B ↓ p ])
-    → Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p)
+  --   ap-fst-pair= : (α : a₁ == a₂)
+  --       → {c₁ : C a₁}{c₂ : C a₂} (γ : c₁ == c₂ [ C ↓ α ] )
+  --       → ap fst (pair= α γ) == α
+  --   ap-fst-pair= idp idp = idp
 
-  ==[↓]-to-Σ {p = p} r = (pair= p r , ap-fst-pair= p r)
-    where
-    pair= : ∀ {i j} {A : Type i} {B : A → Type j}
-      {a a' : A} (p : a == a') {b : B a} {b' : B a'}
-      (q : b == b' [ B ↓ p ]) → (a , b) == (a' , b')
-    pair= idp q = ap (_ ,_) q
-
-    ap-fst-pair= : (p : x == y)
-        → {u : B x}{v : B y} (q : u == v [ B ↓ p ] )
-        → ap fst (pair= p q) == p
-    ap-fst-pair= idp idp = idp
-
-  -- homotopy­
+  -- homotopa₂­
   Σ-to-==[↓]∘==[↓]-to-Σ∼id
-    : {p : x == y}{u : B x}{v : B y}
-    → (r : u == v [ B ↓ p ])
-    → Σ-to-==[↓] (==[↓]-to-Σ r) == r
-  Σ-to-==[↓]∘==[↓]-to-Σ∼id  {p = idp} idp = idp
-
+    : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (γ : c₁ == c₂ [ C ↓ α ])
+    → Σ-to-==[↓] {α = α} (==[↓]-to-Σ γ) == γ
+  Σ-to-==[↓]∘==[↓]-to-Σ∼id  {α = idp} idp = idp
+  --
   ==[↓]-to-Σ∘Σ-to-==[↓]∼id
-    : {p : x == y}{u : B x}{v : B y}
-    → (pair : Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p))
+    : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (pair : Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
     → ==[↓]-to-Σ (Σ-to-==[↓] pair) == pair
   ==[↓]-to-Σ∘Σ-to-==[↓]∼id (idp , idp) = idp
-
-  Σ-≃-==[↓] : {p : x == y}{u : B x}{v : B y}
-    → (Σ ((x , u) == (y , v)) (λ q → (ap fst q) == p))
-    ≃ (u == v [ B ↓ p ])
+  --
+  Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+    ≃ (c₁ == c₂ [ C ↓ α ])
 
   Σ-≃-==[↓] =
     qinv-≃

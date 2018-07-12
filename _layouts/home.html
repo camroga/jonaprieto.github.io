@@ -34,7 +34,7 @@ layout: default
   {% for category in site.categories %}
   {% capture category_name %}{{ category | first }}{% endcapture %}
     {% if category_name contains "learning" %}
-    <div id="#{{ category_name | slugize }}">🐥 Plans </div>
+    <div id="#{{ category_name | slugize }}">🐥 Plans</div>
     <div class="post-list">
       {% for post in site.categories[category_name] %}
       <div class="algolia">

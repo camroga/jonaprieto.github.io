@@ -5,6 +5,7 @@ date: "2018-06-30"
 categories: type-theory
 toc: true
 agda: true
+published: true
 ---
 
 We want to formilise in HoTT the intuition behind a correspondance between the

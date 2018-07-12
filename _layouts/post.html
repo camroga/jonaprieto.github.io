@@ -11,7 +11,7 @@ comments: true
 {% assign raw = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 
 <div class="post">
-  {% if page.git %}
+  <!-- {% if post.git %} -->
   <div class="post-changes">
     <div class="main-heading">
       <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+{{page.git.total_additions}}</span>/<span class="substractions">-{{page.git.total_subtractions}}</span>)</span>:
@@ -23,7 +23,7 @@ comments: true
     </div>
     </div>
   </div>
-  {% endif %}
+  <!-- {% endif %} -->
 
   <h1 class="post-title">{{ page.title }} <small class="view-source"><a href="{{githubpath}}" target="_blank">View source</a> | <a href="{{raw}}" download target="_blank"> Download </a> </small></h1>
 
