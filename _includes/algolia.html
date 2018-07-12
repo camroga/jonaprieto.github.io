@@ -38,7 +38,6 @@ const hitTemplate = function(hit) {
   if (hit.date) {
     // date = moment.unix(hit.date).format('L');
     date = moment.unix(hit.date).format('DD/MM/YYYY');
-    console.log(date);
     modifiedDate = hit.last_modified_at;
     lastDate = moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
   }
@@ -48,8 +47,18 @@ const hitTemplate = function(hit) {
   if ( "html"  in hit._highlightResult)
     {   content = hit._highlightResult.html.value; }
   const category = hit.categories[0];
-  const message = hit.git.last_commit.message;
-  const commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;
+  var message = "No available";
+  var commiturl = "";
+  if ( "git" in hit){
+    if ("last_commit" in hit.git){
+      if ("message" in hit.git.last_commit){
+        message = hit.git.last_commit.message;
+      }
+      if ("long_sha" in hit.git.last_commit){
+      commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;
+      }
+    }
+  }
   return `
 <div class="${hitBoxClass}">
   <div class="post-list">

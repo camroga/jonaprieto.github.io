@@ -77,11 +77,25 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
 }
 
+.main-title-prefix {
+  display: table-cell;
+  float: left;
+  width: 110px;
+
+}
+
+.main-commit-message {
+   width: auto;
+   overflow: hidden;
+   text-overflow: ellipsis;
+
+}
+
 .main-last-date
 {
-  display: table-cell;
-  float: right !important;
-  text-align: right;
+  border-top: 1px solid #c3c3c3;
+  padding-top: 3px;
+  text-align: center;
   width : auto;
   font-size: 13px;
   line-height: 20px;

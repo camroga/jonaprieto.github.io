@@ -9,16 +9,19 @@ layout: default
   <div id="search-searchbar"></div>
   {% if site.github %}
   <div class="main-heading">
-    <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}"> {{site.git.last_commit.message}}</a></span>
-    <a class="main-rss" href="{{ "/feed.xml" | relative_url }}">
-      rss
-    </a>
+    <div class="main-title">
+      <div class="main-title-prefix"> Latest change:</div>
+      <div class="main-commit-message">
+            <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">
+              {{site.git.last_commit.message}}</a>
+      </div>
+    </div>
   </div>
+
   <div class="main-last-date">
-      Latest commit <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }}
+      (Latest commit <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }})
   </div>
-  </div>
+
   {% endif %}
   <br/>
   <div>🐈 Notes </div>
@@ -31,7 +34,7 @@ layout: default
   {% for category in site.categories %}
   {% capture category_name %}{{ category | first }}{% endcapture %}
     {% if category_name contains "learning" %}
-    <div id="#{{ category_name | slugize }}">🐥 Links and Notes</div>
+    <div id="#{{ category_name | slugize }}">🐥 Plans </div>
     <div class="post-list">
       {% for post in site.categories[category_name] %}
       <div class="algolia">
@@ -46,7 +49,7 @@ layout: default
 
     {% if category_name contains "thoughts" %}
     <br/>
-    <div id="#{{ category_name | slugize }}">🐿  {{category_name | capitalize }}</div>
+    <div id="#{{ category_name | slugize }}">🐿  Random</div>
     <div class="post-list">
       {% for post in site.categories[category_name] %}
       <div class="algolia">
