@@ -114,7 +114,7 @@
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
 
-            <small style="text-decoration:left">∷ WorkInProgress Student<span class="modifications">(<span class="additions">+175576</span>/<span class="substractions">-132104</span>)</span>
+            <small style="text-decoration:left">∷ WorkInProgress Student<span class="modifications">(<span class="additions">+175618</span>/<span class="substractions">-132119</span>)</span>
             </small>
           </h3>
         </div>
@@ -127,16 +127,19 @@
   <div id="search-searchbar"></div>
   
   <div class="main-heading">
-    <div class="main-title"> Latest change:
-        <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/435924a8fea00d90024d44cf05c6f9e215ccb33d"> View source and Download links to access the latest version of the post</a></span>
-    <a class="main-rss" href="/feed.xml">
-      rss
-    </a>
+    <div class="main-title">
+      <div class="main-title-prefix"> Latest change:</div>
+      <div class="main-commit-message">
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/6b396d7a71cd175afdf72837ef946e175b54689a">
+              cosmetics in the scss files</a>
+      </div>
+    </div>
   </div>
+
   <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/435924a8fea00d90024d44cf05c6f9e215ccb33d">5ccb33d </a> on  12 Jul 2018
+      (Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/6b396d7a71cd175afdf72837ef946e175b54689a">b54689a </a> on  12 Jul 2018)
   </div>
-  </div>
+
   
   <br/>
   <div>🐈 Notes </div>
@@ -161,7 +164,7 @@
   
   
     
-    <div id="#learning">🐥 Links and Notes</div>
+    <div id="#learning">🐥 Plans </div>
     <div class="post-list">
       
       <div class="algolia">
@@ -251,7 +254,7 @@
 
     
     <br/>
-    <div id="#thoughts">🐿  Thoughts</div>
+    <div id="#thoughts">🐿  Random</div>
     <div class="post-list">
       
       <div class="algolia">
@@ -313,7 +316,6 @@ const hitTemplate = function(hit) {
   if (hit.date) {
     // date = moment.unix(hit.date).format('L');
     date = moment.unix(hit.date).format('DD/MM/YYYY');
-    console.log(date);
     modifiedDate = hit.last_modified_at;
     lastDate = moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
   }
@@ -323,8 +325,18 @@ const hitTemplate = function(hit) {
   if ( "html"  in hit._highlightResult)
     {   content = hit._highlightResult.html.value; }
   const category = hit.categories[0];
-  const message = hit.git.last_commit.message;
-  const commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;
+  var message = "No available";
+  var commiturl = "";
+  if ( "git" in hit){
+    if ("last_commit" in hit.git){
+      if ("message" in hit.git.last_commit){
+        message = hit.git.last_commit.message;
+      }
+      if ("long_sha" in hit.git.last_commit){
+      commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;
+      }
+    }
+  }
   return `
 <div class="${hitBoxClass}">
   <div class="post-list">

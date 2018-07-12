@@ -230,7 +230,11 @@ h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; f
 
 .main-title { display: table-cell; /* width: 100px; */ float: left; }
 
-.main-last-date { display: table-cell; float: right !important; text-align: right; width: auto; font-size: 13px; line-height: 20px; color: #586069; }
+.main-title-prefix { display: table-cell; float: left; width: 110px; }
+
+.main-commit-message { width: auto; overflow: hidden; text-overflow: ellipsis; }
+
+.main-last-date { border-top: 1px solid #c3c3c3; padding-top: 3px; text-align: center; width: auto; font-size: 13px; line-height: 20px; color: #586069; }
 
 .main-last-date a { color: #586069; }
 
