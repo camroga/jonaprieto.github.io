@@ -67,9 +67,12 @@ body {
 
 /* No `:visited` state is required by default (browsers will use `a`) */
 a {
-  color:  darken(#6D508B, 30%);
+  color: lighten(#6D508B, 5%);
   text-decoration: none;
 }
+
+a:visited { color: lighten(#6D508B, 10%) !important;}
+
 a strong {
   color: inherit;
 }

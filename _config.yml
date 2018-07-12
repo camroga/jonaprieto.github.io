@@ -1,7 +1,7 @@
 # Setup
 repository:          'jonaprieto/jonaprieto.github.io'
 title:               'jonaprieto'
-tagline:             '∷ WorkInProgress Student'
+tagline:             '∷ WorkInProgress'
 description:         'Jonathan Prieto-Cubides'
 url:                 'http://jonaprieto.github.io'
 baseurl:             ''
@@ -17,7 +17,7 @@ markdown: kramdown
 #   parse_block_html: true
 excerpt_separator: "\n\n"
 
-permalink: "/:title"
+permalink: pretty
 
 plugins:
   - jekyll-feed

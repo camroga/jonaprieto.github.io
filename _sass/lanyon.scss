@@ -69,6 +69,12 @@ h1, h2, h3, h4, h5, h6 {
   display: table;
   width: 100%;
   line-height: 20px;
+  font-size: 85%;
+  color: darker(#c2c2c2, 20%);
+
+  a {
+    color: darker(#c2c2c2, 20%);
+  }
 }
 
 .main-title {
@@ -80,33 +86,26 @@ h1, h2, h3, h4, h5, h6 {
 .main-title-prefix {
   display: table-cell;
   float: left;
-  width: 110px;
+  width: auto;
+  padding-right: 5px;
 
 }
 
 .main-commit-message {
-   width: auto;
-   overflow: hidden;
-   text-overflow: ellipsis;
-
+  display: table-cell;
+  float: left;
+  width: 350px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .main-last-date
 {
-  border-top: 1px solid #c3c3c3;
-  padding-top: 3px;
-  text-align: center;
+  display: table-cell;
+  float: right;
   width : auto;
   font-size: 13px;
   line-height: 20px;
-  color: #586069;
-}
-.main-last-date a {
-  color: #586069;
-}
-.main-rss {
-  font-size: 13%;
-  color: #c3c3c3;
 }
 
 

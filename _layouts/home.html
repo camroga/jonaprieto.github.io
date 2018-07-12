@@ -16,10 +16,10 @@ layout: default
               {{site.git.last_commit.message}}</a>
       </div>
     </div>
-  </div>
 
-  <div class="main-last-date">
-      (Latest commit <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }})
+    <div class="main-last-date">
+      Latest commit <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }}
+    </div>
   </div>
 
   {% endif %}
