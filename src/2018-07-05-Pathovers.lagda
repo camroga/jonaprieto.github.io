@@ -38,7 +38,7 @@ Type ℓ = Set ℓ
 
 \begin{code}
 infix 30 _==_
-data _==_ {i} {A : Type i} (a : A) : A → Type i where
+data _==_ {ℓᵢ} {A : Type ℓᵢ} (a : A) : A → Type ℓᵢ where
   idp : a == a
 
 Path = _==_
@@ -56,11 +56,15 @@ Path = _==_
 > is undesirable **in homotopy type theory, because not all types should be sets**.
 
 > This heterogeneous equality relates two elements of two different types along a
-> specific equality α between the types
+> specific equality α between the types.
+
+We will continue using `idp` for the reflexivity constructor, which it's going
+to be convenient to switch between the definitions of the heterogeneous equality
+and furtermore, between the definition of the homogeneous equality.
 
 \begin{code}
 data HEq₁ {ℓ} (A : Type ℓ) : (B : Type ℓ) → (α : A == B) (a : A) (b : B) → Type ℓ where
-  hid : ∀ {a : A} → HEq₁ A A idp a a
+  idp : ∀ {a : A} → HEq₁ A A idp a a
 \end{code}
 
 
@@ -821,12 +825,12 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
   HEq₁-to-HEq₂ : {α : A == B}{a : A}{b : B}
                → HEq₁ A B α a b
                → HEq₂ A B α a b
-  HEq₁-to-HEq₂ {idp} {a} {.a} hid = idp
+  HEq₁-to-HEq₂ {idp} {a} {.a} idp = idp
 
   HEq₂-to-HEq₁ : {α : A == B}{a : A}{b : B}
                → HEq₂ A B α a b
                → HEq₁ A B α a b
-  HEq₂-to-HEq₁ {idp} {a} {.a} idp = hid
+  HEq₂-to-HEq₁ {idp} {a} {.a} idp = idp
 
   HEq₁-≃-HEq₂ : {α : A == B}{a : A}{b : B}
              → HEq₁ A B α a b ≃ HEq₂ A B α a b
@@ -839,7 +843,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
       HEq₂-~-HEq₁ : ( p : HEq₁ A B idp a b)
                   → ( HEq₂-to-HEq₁ (HEq₁-to-HEq₂ p ) == p)
-      HEq₂-~-HEq₁ hid = idp
+      HEq₂-~-HEq₁ idp = idp
 \end{code}
 
 {: .foldable}
@@ -913,12 +917,12 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
   HEq₄-to-HEq₁ : {α : A == B}{a : A}{b : B}
                → HEq₄ A B α a b
                → HEq₁ A B α a b
-  HEq₄-to-HEq₁ {idp} idp = hid
+  HEq₄-to-HEq₁ {idp} idp = idp
 
   HEq₁-to-HEq₄ : {α : A == B}{a : A}{b : B}
                → HEq₁ A B α a b
                → HEq₄ A B α a b
-  HEq₁-to-HEq₄ {idp} {a} {.a} hid = idp
+  HEq₁-to-HEq₄ {idp} {a} {.a} idp = idp
 
   HEq₄-≃-HEq₁ : {α : A == B}{a : A}{b : B}
              → HEq₄ A B α a b ≃ HEq₁ A B α a b
@@ -927,7 +931,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
     where
       HEq₄-~-HEq₁ : ( p : HEq₁ A B idp a b)
                   → ( HEq₄-to-HEq₁ (HEq₁-to-HEq₄ p ) == p)
-      HEq₄-~-HEq₁ hid = idp
+      HEq₄-~-HEq₁ idp = idp
 
       HEq₁-~-HEq₄ : ( p : HEq₄ A B idp a b)
                   → ( HEq₁-to-HEq₄ (HEq₄-to-HEq₁ p ) == p)
@@ -954,8 +958,8 @@ the path in the base `A`. We can also define this notion of PathOvers in at leas
 other four different ways. Let's such definitions all equivalent.
 
 - \begin{code}
-data PathOver₁ {ℓ} {A : Set ℓ} (C : A → Type ℓ) {a₁ : A} :
-      {a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓ where
+data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
+      {a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ where
       idp : {c₁ : C a₁} → PathOver₁ C idp c₁ c₁
 \end{code}
 
@@ -972,14 +976,14 @@ PathOver₃ {A = A} C {a₁} {a₂} α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
 - \begin{code}
-PathOver₄ : ∀ {ℓ} {A : Type ℓ}(C : A → Type ℓ) {a₁ a₂ : A}
-          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓ
+PathOver₄ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
 PathOver₄ {A = A} C {a₁} {a₂} α c₁ c₂ = c₁ == transport C (inv α) c₂
 \end{code}
 
 - \begin{code}
-PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (C : A → Type ℓⱼ)
-  {a₁ a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ
+PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
 PathOver₅ {A = A} B idp c₁ c₂ = c₁ == c₂
 \end{code}
 
@@ -997,12 +1001,12 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
   PathOver₁-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₁ C α c₁ c₂
          → PathOver₂ C α c₁ c₂
-  PathOver₁-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = hid
+  PathOver₁-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
 
   PathOver₂-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₂ C α c₁ c₂
          → PathOver₁ C α c₁ c₂
-  PathOver₂-to-PathOver₁ {a₁} {.a₁} {idp} {c₁} {.c₁} hid = idp
+  PathOver₂-to-PathOver₁ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
   --
   PathOver₁-≃-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₁ C α c₁ c₂ ≃ PathOver₂ C α c₁ c₂
@@ -1014,7 +1018,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
     where
       PathOver₁~PathOver₅ : (p : PathOver₂ C idp c₁ c₂)
           → PathOver₁-to-PathOver₂ (PathOver₂-to-PathOver₁ p) == p
-      PathOver₁~PathOver₅ hid = idp
+      PathOver₁~PathOver₅ idp = idp
 
       PathOver₂~PathOver₁ : (p : PathOver₁ C idp c₁ c₂)
           → PathOver₂-to-PathOver₁ (PathOver₁-to-PathOver₂ p) == p
@@ -1030,12 +1034,12 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
   PathOver₂-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₂ C α c₁ c₂
          → PathOver₃ C α c₁ c₂
-  PathOver₂-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} hid = idp
+  PathOver₂-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
 
   PathOver₃-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₃ C α c₁ c₂
          → PathOver₂ C α c₁ c₂
-  PathOver₃-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = hid
+  PathOver₃-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
   --
   PathOver₂-≃-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₂ C α c₁ c₂ ≃ PathOver₃ C α c₁ c₂
@@ -1051,7 +1055,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
       PathOver₃~PathOver₂ : (p : PathOver₂ C idp c₁ c₂)
           → PathOver₃-to-PathOver₂ (PathOver₂-to-PathOver₃ p) == p
-      PathOver₃~PathOver₂ hid = idp
+      PathOver₃~PathOver₂ idp = idp
 \end{code}
 
 
@@ -1155,9 +1159,11 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 \end{code}
 
 We are going to use the fifth definition for pathovers, the one which is
-using an inductive family.
+using an inductive family. Nevertheless, in the following, the reader can change
+the subindex of the `PathOver` word to use any other definition.
+
 \begin{code}
-PathOver = PathOver₃
+PathOver = PathOver₅
 
 infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
@@ -1178,17 +1184,20 @@ syntax PathOver B p u v = u == v [ B ↓ p ]
 ## Total spaces
 
 \begin{code}
-module _ {i j}{A : Type i}{C : A → Type j}{a₁ a₂ : A} where
+module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
 
   Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
     → c₁ == c₂ [ C ↓  α ]
-  Σ-to-==[↓] (idp , idp) = idp
+  Σ-to-==[↓] {c₁ = c₁} (idp , idp) = idp
 
   ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (γ : c₁ == c₂ [ C ↓ α ])
     → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
   ==[↓]-to-Σ {idp} idp = (idp , idp)
+
+  -- -- more explict:
+  -- ==[↓]-to-Σ {idp}{c₁}{c₂} idp = (idp {a = (a₁ , c₁)}, idp {a = idp {a = a₁}})
 
   -- -- Alternative (also type-checked):
   -- ==[↓]-to-Σ {α = α} γ = (pair= α γ , ap-fst-pair= α γ)
@@ -1206,12 +1215,13 @@ module _ {i j}{A : Type i}{C : A → Type j}{a₁ a₂ : A} where
   --       → ap fst (pair= α γ) == α
   --   ap-fst-pair= idp idp = idp
 
-  -- homotopa₂­
+  -- homotopy₂­
   Σ-to-==[↓]∘==[↓]-to-Σ∼id
     : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (γ : c₁ == c₂ [ C ↓ α ])
     → Σ-to-==[↓] {α = α} (==[↓]-to-Σ γ) == γ
-  Σ-to-==[↓]∘==[↓]-to-Σ∼id  {α = idp} idp = idp
+  Σ-to-==[↓]∘==[↓]-to-Σ∼id {α = idp}{c₁}{c₂} idp = idp
+  -- Σ-to-==[↓]∘==[↓]-to-Σ∼id {α = idp}{c₁}{c₂} idp = {! ==[↓]-to-Σ (idp {a = PathOver C (idp {a = a₁}) c₁ c₂})  !} -- idp
   --
   ==[↓]-to-Σ∘Σ-to-==[↓]∼id
     : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
