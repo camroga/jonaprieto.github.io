@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="Jonathan Prieto-Cubides">
+  <title>Set theory</title>
+  <meta name="description" content="">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -69,7 +69,7 @@
     
       
         
-          <a class="sidebar-nav-item active" href="/about/">About</a>
+          <a class="sidebar-nav-item" href="/about/">About</a>
         
       
     
@@ -120,56 +120,164 @@
       
       <div class="container content">
         
-<div class="page">
+
+
+
+<div class="post">
   
-    <h2 class="page-title">About</h2>
-    
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+59</span>/<span class="substractions">-1</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-27-learning-set-theory.md"> Starting the work for monday</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-27-learning-set-theory.md>2c20eb9 </a> on  09 Jul 2018
+    </div>
+    </div>
+  </div>
   
-  <p>I’m a Ph.D. student in my first-year at <a href="https://www.uib.no/en/ii">University of
-Bergen</a> under the advisory of <a href="https://cas.oslo.no/fellows/marc-bezem-article2086-828.html">Marc
-Bezem</a> and
-co-supervised by <a href="https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html">Bjørn Ian
-Dundas</a>.</p>
 
-<p>I did my Master in Applied Mathematics in the Mathematical Sciences Department at <a href="http://www.eafit.edu.co/">Universidad EAFIT</a>.
-I was under the <a href="http://www1.eafit.edu.co/asr/supervised-students.html">advisory</a> of <a href="http://www1.eafit.edu.co/asr/">Andrés Sicard-Ramírez</a> in the group of the <a href="http://scienti.colciencias.gov.co:8080/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008091">Logic and Computation</a> research group.</p>
+  <h1 class="post-title">Set theory <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-27-learning-set-theory.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-27-learning-set-theory.md" download target="_blank"> Download </a> </small></h1>
 
-<p>My current research interests are connections between mathematics and computer science:
-verification, functional programming, type theory, logic, proof-assistants and lately categories.
-For more information, checkout this
-repository <a href="http://github.com/jonaprieto/curriculum-vitae">cv</a>.</p>
+  
+  <div class="references">
 
-<h3 id="about-this-blog">About this blog</h3>
+  <ul>
+    <li>Considering this playlist: https://www.youtube.com/playlist?list=PLR3z46pdylqSRkO1luzzwxR6mPyTyc6ne</li>
+  </ul>
 
-<p>The sources of this blog are open source. The blog is using the following projects:</p>
+  <h2 id="zfcs-axioms"><strong>ZFC’s axioms</strong></h2>
 
-<ul>
-  <li><code class="highlighter-rouge">github-pages</code></li>
-  <li><code class="highlighter-rouge">jekyll</code> with minima theme</li>
-  <li><code class="highlighter-rouge">algolia</code> provides the search engine plus modifications</li>
-  <li><code class="highlighter-rouge">agda</code> to type-check some experiments</li>
-  <li><code class="highlighter-rouge">agda2html</code> for embedding <code class="highlighter-rouge">Agda</code> code in Html</li>
-  <li><code class="highlighter-rouge">ipe</code> to draw all my pictures</li>
-  <li>Since April 2018 I changed to <a href="https://tex.s2cms.com/">https://tex.s2cms.com/</a> to render <code class="highlighter-rouge">Latex</code> instead of <code class="highlighter-rouge">KaTeX</code></li>
-  <li><code class="highlighter-rouge">timelinejs</code> to show some test timelines</li>
-  <li><code class="highlighter-rouge">linkify</code> to replace any url address to anchor tags</li>
-</ul>
+  <p>See a set theory formalisation in Agda in <a href="https://github.com/acalles1/setform">acalles1/setform</a>
+ The following was taken from that source and from (Suppes 1960, p. 56).</p>
 
-<h3 id="license">License</h3>
+  <ul>
+    <li>
+      <p><strong>ext (Extensionality)</strong>: If two sets have exactly the same members,
+   they are equal.</p>
+    </li>
+    <li>
+      <p><strong>empt (Empty Set Axiom)</strong>: There is a set having no
+   members. Allows us to define the empty set.</p>
+    </li>
+    <li>
+      <p><strong>pair (Pairing Axiom)</strong>: For any sets y and z, there is a set having
+   as members just y and z. Allows to define a set which is just
+   the pair of any two sets.</p>
+    </li>
+    <li>
+      <p><strong>pow (Power Set Axiom)</strong>: For any x there is a set whose members are
+   exactly the subsets of x. Allows us to define the power set
+   operation.</p>
+    </li>
+    <li>
+      <p><strong>sub (Subset Axiom, or Specification Axiom)</strong>: This axiom asserts the
+   existence of a set B whose members are exactly those sets x in y
+   such that they satisfy certain property. Allows us to define
+   many operations like cartesian products and difference of sets.</p>
+    </li>
+    <li>
+      <p><strong>uni (Union Axiom)</strong>: For any set x, there exists a set A whose
+   elements are exactly the members of x. Allows us to define the
+   union of two sets.</p>
+    </li>
+    <li>
+      <p><strong>pem (Principle of the excluded middle)</strong>: To prove some things
+   not valid in intuitionistic logic and valid in classical logic. Taken
+   from the Standford Encyclopedia entry on Intuitionistic Logic.
+   (https://plato.stanford.edu/entries/logic-intuitionistic/).</p>
+    </li>
+  </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Released under MIT License
+  <p>The sum axioms allow us to define the union operation
+   over a family of sets.</p>
 
-Copyright (c) 2018 Jonathan Prieto-Cubides.
+  <ul>
+    <li>
+      <p><a href="https://www.youtube.com/embed/hcRZadc5KpI">How the Axiom of Choice Gives Sizeless Sets</a></p>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+      <p><img src="/assets/png-images/2018-06-27-learning-set-theory-fba52c79.png" alt="" /></p>
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+      <ul>
+        <li><strong>Axiom of Choice</strong> Given a infinite collection of nonempty sets we can
+form a new set that contains one element from each set.</li>
+      </ul>
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-</code></pre></div></div>
+      <p><img src="/assets/png-images/2018-06-27-learning-set-theory-7cb7b20d.png" alt="" /></p>
+    </li>
+  </ul>
 
 </div>
 
+
+  <!-- <h2> References </h2> -->
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+  <!-- </ -->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+            Intervals
+            
+            <small>08 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/thoughts/2018/07/05/unsorted/">
+            Unsorted
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/verification/2018/07/05/sat-solving/">
+            SAT solvers
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
       </div>
       

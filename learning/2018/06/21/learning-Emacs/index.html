@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Emacs</title>
+  <meta name="description" content="I’m not dogmatic about which editor is the best. I use at least three different text editor depending on what I’m working on: sublime text 3, atom, and emacs...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+
+
+</head>
+
+
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/HoTT-Timeline/">HoTT Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/categories/">Post by category</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">References</a>
+        
+      
+    
+
+    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.1.zip">Download</a> -->
+    <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+  </nav>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+<div class="post">
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+229</span>/<span class="substractions">-0</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-21-learning-Emacs.md"> Starting the work for monday</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-21-learning-Emacs.md>2c20eb9 </a> on  09 Jul 2018
+    </div>
+    </div>
+  </div>
+  
+
+  <h1 class="post-title">Emacs <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-21-learning-Emacs.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/2c20eb91cacd042d1cbaa2bbc9b58768844076dc/_posts/2018-06-21-learning-Emacs.md" download target="_blank"> Download </a> </small></h1>
+
+  
+  <p>I’m not dogmatic about which editor is the best. I use at least three different
+text editor depending on what I’m working on: sublime text 3, atom, and emacs.
+This post is about emacs but I must confess that I’m a complete beginner using
+emacs. I’ve never touched my own configuration scripts and the kind of things an
+expert user probably do. My goal in this post is that, becoming a real user of
+this amazing tool/text editor that many people claim it is. Since I don’t have
+too much time to spend on this kind of task, I will try to learn on the top of
+another configuration. Spacemacs is the first option here. I tested, it works
+pretty well, but I want to have something more humble without too much
+customisation, something with enough space of freedom to play with.</p>
+
+<p>My version of emacs at this moment in OSX:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GNU Emacs 26.1 (build 1, x86_64-apple-darwin17.5.0)
+ of 2018-05-28
+</code></pre></div></div>
+
+<h2 id="cask"><a href="http://github.com/cask/cask">Cask</a></h2>
+
+<p>Cask is a project management tool for Emacs that helps automate the package
+development cycle; development, dependencies, testing, building, packaging and
+more.</p>
+
+<p>Cask can also be used to manage dependencies for your local Emacs configuration.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install cask
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://github.com/rdallasgray/graphene">Graphene starting kit</a></li>
+</ul>
+
+<p>Good ideas but I prefer to not use it.</p>
+
+<ul>
+  <li>your default initialisation file is ~/.emacs.d/init.el.</li>
+  <li>
+    <p>packages repo:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;; Require Emacs' package functionality
+(require 'package)
+
+;; Add the Melpa repository to the list of package sources
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+;; Initialise the package system.
+(package-initialize)
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Then either select those lines and do <code class="highlighter-rouge">M-x eval-region</code>, or restart Emacs. After
+that, do <code class="highlighter-rouge">M-x list-packages</code>, search for ‘graphene’ (either manually or using
+<code class="highlighter-rouge">C-s</code>), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.</p>
+
+<h2 id="completation">Completation</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
+; (bind-key "\e\e\e" 'company-abort)
+; (bind-key "\C-g" 'company-abort)
+; (bind-key "" 'company-select-next)
+; (bind-key "" 'company-select-previous)
+; (bind-key "" 'company-select-next-or-abort)
+; (bind-key "" 'company-select-previous-or-abort)
+; (bind-key "" 'company-next-page)
+; (bind-key "" 'company-previous-page)
+; (bind-key "" 'company-complete-mouse)
+; (bind-key "" 'company-select-mouse)
+; (bind-key "" 'company-complete-selection)
+(bind-key "TAB" 'company-complete-common)
+; (bind-key "" 'company-show-doc-buffer)
+; (bind-key "" 'company-show-location)
+; (bind-key "" 'company-search-candidates)
+; (bind-key "" 'company-filter-candidates)
+</code></pre></div></div>
+
+<h2 id="agda"><a href="http://gitub.com/agda/agda">Agda</a></h2>
+
+<p>Run in the command line <code class="highlighter-rouge">agda-mode compile</code> and <code class="highlighter-rouge">agda-mode setup</code>.
+Since I prefer to maintain the keybindings explicit, this goes in the <code class="highlighter-rouge">init.el</code> file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda-mode locate")))
+
+(require 'bind-key)
+(bind-key "C-c ,"     'agda2-goal-and-context                 )
+(bind-key "C-c ."     'agda2-goal-and-context-and-inferred    )
+(bind-key "C-c ;"     'agda2-goal-and-context-and-checked     )
+(bind-key "C-c ="     'agda2-show-constraints                 )
+(bind-key "C-c ?"     'agda2-show-goals                       )
+(bind-key "C-c C-a"   'agda2-abort                            )
+(bind-key "C-c C-a"   'agda2-auto                             )
+(bind-key "C-c C-b"   'agda2-previous-goal                    )
+(bind-key "C-c C-d"   'agda2-infer-type-maybe-toplevel        )
+(bind-key "C-c C-d"   'agda2-remove-annotations               )
+(bind-key "C-c C-e"   'agda2-show-context                     )
+(bind-key "C-c C-f"   'agda2-next-goal                        )
+(bind-key "C-c C-r"   'agda2-refine                           )
+(bind-key "C-c C-s"   'agda2-solve-maybe-all                  )
+(bind-key "C-c C-w"   'agda2-why-in-scope-maybe-toplevel      )
+(bind-key "C-c C-z"   'agda2-search-about-toplevel            )
+(bind-key "C-c SPC"   'agda2-give                             )
+(bind-key "C-c c"     'agda2-make-case                        )
+(bind-key "C-c h"     'agda2-helper-function-type             )
+(bind-key "C-c l"     'agda2-load                             )
+(bind-key "C-c n"     'agda2-compute-normalised-maybe-toplevel)
+(bind-key "C-c o"     'agda2-module-contents-maybe-toplevel   )
+(bind-key "C-c t"     'agda2-goal-type                        )
+(bind-key "C-c C-g"   'agda2-go-back                          )
+; (bind-key "C-x c"   'agda2-compile                          )
+(bind-key "C-x C-h"   'agda2-display-implicit-argurments      )
+(bind-key "C-x C-q"   'agda2-quit                             )
+(bind-key "C-x C-r"   'agda2-restart                          )
+(bind-key "C-x d"     'agda2-remove-annotations               )
+; (bind-key "C-c C-s"     'agda2-set-program-version         )
+</code></pre></div></div>
+
+<h2 id="proof-general"><a href="https://proofgeneral.github.io/">Proof-General</a></h2>
+
+<p>In the home directory run this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
+cd ~/.emacs.d/lisp/PG
+make
+</code></pre></div></div>
+
+<h2 id="theme">Theme</h2>
+
+<p>I think the spacemacs did it very good in this aspect. I searched and
+there its theme available without the need to install all the spacemacs.</p>
+
+<ul>
+  <li>https://github.com/nashamri/spacemacs-theme</li>
+</ul>
+
+<p>Add this in the <code class="highlighter-rouge">init.el</code> file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(load-theme 'spacemacs-light t)
+</code></pre></div></div>
+
+<h2 id="markdown-and-jekyll">Markdown and Jekyll</h2>
+
+<p>Use <code class="highlighter-rouge">M-x package-install markdown-mode</code>
+Use <code class="highlighter-rouge">M-x package-install jekyll-modes</code></p>
+
+<h2 id="keybindings">Keybindings</h2>
+
+<p>For keybindings beginner and learners I totally recommend to install the package:
+<a href="https://github.com/justbur/emacs-which-key"><code class="highlighter-rouge">which-key</code></a>: <code class="highlighter-rouge">M-x package-install
+which-key</code> and add these lines in the <code class="highlighter-rouge">init.el</code>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(require 'which-key)
+(which-key-mode)
+</code></pre></div></div>
+
+<p>To visualize all the commands, I set up this package to show me on the right
+side the frame with all the commands (add this
+<code class="highlighter-rouge">(which-key-setup-side-window-right)</code> in the <code class="highlighter-rouge">init.el</code>)</p>
+
+<ul>
+  <li><code class="highlighter-rouge">C-h</code> : help</li>
+  <li><code class="highlighter-rouge">C-g</code> : quit</li>
+  <li><code class="highlighter-rouge">C-x b</code> : switch buffers</li>
+  <li>
+    <p><code class="highlighter-rouge">C-x k</code> always kills the active buffer, rather than asking you which one you want to kill</p>
+  </li>
+  <li><code class="highlighter-rouge">C-x 1</code> : close all windows except the active window</li>
+  <li><code class="highlighter-rouge">C-x 0</code> : close the active window</li>
+  <li><code class="highlighter-rouge">C-x 2</code> : split the active window vertically into two horizontal windows</li>
+  <li><code class="highlighter-rouge">C-x 3</code> : split the active window horizontally into two vertical windows</li>
+</ul>
+
+<h3 id="files">Files</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-f</code> : open file</li>
+  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-s</code> : save file</li>
+  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-w</code> : save file as</li>
+</ul>
+
+<h3 id="writing">Writing</h3>
+
+<ul>
+  <li><code class="highlighter-rouge">C-space</code> : set region mark</li>
+  <li><code class="highlighter-rouge">C-w</code> : kill region</li>
+  <li><code class="highlighter-rouge">C-k</code> : kill region between point and end of current line</li>
+  <li>
+    <p><code class="highlighter-rouge">C-y</code> : yank region from kill ring</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">C-_</code> : undo</p>
+  </li>
+  <li><code class="highlighter-rouge">C-s</code> : search forwards</li>
+  <li><code class="highlighter-rouge">C-r</code> : search backwards</li>
+  <li><code class="highlighter-rouge">M-%</code> : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)</li>
+  <li><code class="highlighter-rouge">M-q</code> : <strong>wrap text</strong></li>
+</ul>
+
+<h3 id="graphene">Graphene</h3>
+
+<p>Graphene creates some new keybindings, and alters some existing ones:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">C-x C-k</code> kills the default buffer and closes its window</li>
+  <li><code class="highlighter-rouge">C-c n</code> creates a new buffer</li>
+  <li><code class="highlighter-rouge">C-c N</code> creates a new instance of Emacs</li>
+</ul>
+
+<p>(<em>Not working for unknown reason in my laptop</em>):</p>
+
+<ul>
+  <li><code class="highlighter-rouge">C-;</code> adds a semicolon at the end of the line</li>
+  <li><code class="highlighter-rouge">M-RET</code> creates a newline below the current line and moves to it</li>
+  <li><code class="highlighter-rouge">C-M-;</code> comments or uncomments the current line</li>
+  <li><code class="highlighter-rouge">C-&gt;</code> increases the height of the current window</li>
+  <li><code class="highlighter-rouge">C-&lt;</code> decreases it</li>
+  <li><code class="highlighter-rouge">C-.</code> increases the width of the current window</li>
+  <li><code class="highlighter-rouge">C-,</code> decreases it</li>
+  <li><code class="highlighter-rouge">C-c s</code> selects the Speedbar window</li>
+</ul>
+
+<h2 id="projects">Projects</h2>
+
+<p>project-persist uses the following keybindings:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P n</code> to create a new project</li>
+  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P f</code> to find an existing project</li>
+  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P k</code> to close the current project</li>
+  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P d</code> to delete an existing project</li>
+</ul>
+
+
+  <!-- <h2> References </h2> -->
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+  <!-- </ -->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+            Intervals
+            
+            <small>08 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/thoughts/2018/07/05/unsorted/">
+            Unsorted
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/verification/2018/07/05/sat-solving/">
+            SAT solvers
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <!-- Import jQuery -->
+<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/assets/linkify.min.js"></script>
+<script src="/assets/linkify-jquery.min.js"></script>
+
+<script type="text/javascript">
+$('div.references').linkify();
+$('.bibliography').linkify();
+$('div.links').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
+</script>
+
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
+<script type="text/javascript">
+ $("script[type='math/tex']").replaceWith(
+     function(){
+         var tex = $(this).text();
+         return "&zwnj;$$" + tex + "$$&zwnj;";
+     });
+ $("script[type='math/tex; mode=display']").replaceWith(
+     function(){
+         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
+     });
+</script>
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var autoHeight = $(this).height();
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+     $(this).height(lineHeight);
+     // $(this).height(2.0 * lineHeight);
+     $(this).css('overflow','hidden');
+     $(this).click(function(){
+         if ($(this).height() == autoHeight) {
+             // $(this).height(2.0 * lineHeight);
+             $(this).height(lineHeight);
+             plus.show();
+         }
+         else {
+             $(this).height('auto');
+             plus.hide();
+         }
+     });
+ });
+</script>
+<script type="text/javascript">
+
+  $('.cited-references').hide();
+  const refs = $(".references");
+  $('.references').append( $('.cited-references').html());
+  if ( refs.text() != ""){
+     refs.prepend("<h3>References</h3>");
+  }
+  else{
+    if ($(".cited-references").text() != ""){
+      $(".cited-references").prepend("<h3 id='refs'>References</h3>");
+      $(".cited-references").show();
+      $(".toc nav>ul").append(
+        "<li><a href='#refs'>References</a></li>"
+      );
+    }
+
+  }
+
+</script>
+
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
