@@ -32,10 +32,13 @@ const search = instantsearch({
   }
 });
 
+
 const hitTemplate = function(hit) {
   let date = '';
   if (hit.date) {
-    date = moment.unix(hit.date).format('L');
+    // date = moment.unix(hit.date).format('L');
+    date = moment.unix(hit.date).format('DD/MM/YYYY');
+    console.log(date);
     modifiedDate = hit.last_modified_at;
     lastDate = moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
   }

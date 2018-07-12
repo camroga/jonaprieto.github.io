@@ -2,6 +2,7 @@
 layout: "post"
 title: "Induction on Identity Types"
 date: "2018-02-14"
+agda: true
 categories: type-theory
 ---
 

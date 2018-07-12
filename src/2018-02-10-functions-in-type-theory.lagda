@@ -3,6 +3,8 @@ title: "Function Type"
 layout: "post"
 date: "2018-02-10"
 categories: type-theory
+agda: true
+
 ---
 
 # Function Type Rules

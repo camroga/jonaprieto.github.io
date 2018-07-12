@@ -3,7 +3,7 @@ layout: "post"
 title: "PL"
 date: "2018-06-30"
 categories: learning
-published: true
+agda: true
 toc: true
 ---
 

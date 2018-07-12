@@ -4,6 +4,7 @@ title: "HoTT basics in Agda"
 date: "2018-07-05"
 categories: type-theory
 toc: true
+agda: true
 ---
 
 This is my attempt to collect in just one-file, a basic overview of HoTT in Agda.

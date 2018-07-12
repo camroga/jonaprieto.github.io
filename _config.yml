@@ -17,7 +17,7 @@ markdown: kramdown
 #   parse_block_html: true
 excerpt_separator: "\n\n"
 
-permalink: pretty
+permalink: "/:title"
 
 plugins:
   - jekyll-feed

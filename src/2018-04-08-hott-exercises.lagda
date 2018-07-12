@@ -2,6 +2,7 @@
 layout: "post"
 title: "HoTT exercises"
 date: "2018-04-08"
+agda: true
 categories: type-theory
 toc: true
 ---
