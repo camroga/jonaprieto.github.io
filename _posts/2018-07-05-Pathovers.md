@@ -1113,7 +1113,7 @@ We are going to use the fifth definition for pathovers, the one which is
 using an inductive family. Nevertheless, in the following, the reader can change
 the subindex of the `PathOver` word to use any other definition.
 
-<pre class="Agda">{% raw %}<a id="PathOver"></a><a id="40280" href="{% endraw %}{% link _posts/2018-07-05-pathovers.md %}{% raw %}#40280" class="Function">PathOver</a> <a id="40289" class="Symbol">=</a> <a id="40291" href="{% endraw %}{% link _posts/2018-07-05-pathovers.md %}{% raw %}#33921" class="Function">PathOver₅</a>
+<pre class="Agda">{% raw %}<a id="PathOver"></a><a id="40280" href="{% endraw %}{% link _posts/2018-07-05-pathovers.md %}{% raw %}#40280" class="Function">PathOver</a> <a id="40289" class="Symbol">=</a> <a id="40291" href="{% endraw %}{% link _posts/2018-07-05-pathovers.md %}{% raw %}#33485" class="Function">PathOver₃</a>
 
 <a id="40302" class="Keyword">infix</a> <a id="40308" class="Number">30</a> <a id="40311" href="{% endraw %}{% link _posts/2018-07-05-pathovers.md %}{% raw %}#40280" class="Function">PathOver</a>
 <a id="40320" class="Keyword">syntax</a> <a id="40327" href="{% endraw %}{% link _posts/2018-07-05-pathovers.md %}{% raw %}#40280" class="Function">PathOver</a> B p u v <a id="40344" class="Symbol">=</a> u == v [ B ↓ p ]{% endraw %}</pre>

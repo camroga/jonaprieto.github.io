@@ -1163,7 +1163,7 @@ using an inductive family. Nevertheless, in the following, the reader can change
 the subindex of the `PathOver` word to use any other definition.
 
 \begin{code}
-PathOver = PathOver₅
+PathOver = PathOver₃
 
 infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
