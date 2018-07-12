@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Induction on Identity Types</title>
+  <meta name="description" content="We present here a new type former to introduce identities. The identity or equality type is defined as follows:">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+
+
+</head>
+
+
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/HoTT-Timeline">HoTT Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/categories/">Post by category</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">References</a>
+        
+      
+    
+
+    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.1.zip">Download</a> -->
+    <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+  </nav>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+
+            <small style="text-decoration:left">∷ WorkInProgress Student</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+<div class="post">
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+1360</span>/<span class="substractions">-1176</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda"> View source and Download links to access the latest version of the post</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda>435924a </a> on  12 Jul 2018
+    </div>
+    </div>
+  </div>
+  
+
+  <h1 class="post-title">Induction on Identity Types <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda" download target="_blank"> Download </a> </small></h1>
+
+  
+  <p>We present here a new type former to introduce identities.
+The identity or equality type is defined as follows:</p>
+
+<pre><code class="language-agda">data Id (A : Set) (x y : A) : Set where
+  refl : Id A x y
+</code></pre>
+
+<p>The only rule/constructor for the identity type is <code class="highlighter-rouge">refl</code> that represents the reflexivity property of
+the inductive types. We could’ve defined it by using the following syntax (<code class="highlighter-rouge">_≡_</code>) and Π-type.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>refl: Π x:A. x ≡ x
+</code></pre></div></div>
+
+<p>In Agda we can write something like</p>
+
+<pre><code class="language-agda">infix 4 _≡_
+data _≡_ {a} {A : Set a} (x : A) : A → Set a where
+  instance refl : x ≡ x
+</code></pre>
+
+<p>instead of</p>
+
+<pre><code class="language-agda">infix 3 _≡_
+_≡_ : ∀ {A : Set} → (x y : A) → Id A x y
+x ≡ y = refl
+</code></pre>
+
+<p>However, this type is already present in the Agda standard library, so let’s use it</p>
+
+<pre class="Agda"><a id="851" class="Keyword">open</a> <a id="856" class="Keyword">import</a> <a id="863" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="901" class="Keyword">using</a> <a id="907" class="Symbol">(</a><a id="908" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="912" class="Symbol">;</a> <a id="914" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">_≡_</a><a id="917" class="Symbol">)</a></pre>
+
+<h3 id="martin-löfs-rules-about-identity-type">Martin-Löf’s rules about identity type</h3>
+
+<ul>
+  <li>
+    <p>ML1. For any type <code class="highlighter-rouge">X</code>, for each <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> of it, there is a type <code class="highlighter-rouge">a = b</code></p>
+  </li>
+  <li>
+    <p>ML2. There is an element <code class="highlighter-rouge">refl x : x = x</code> for each <code class="highlighter-rouge">x : X</code></p>
+  </li>
+  <li>
+    <p>ML3. Induction for equality:</p>
+
+    <blockquote>
+      <p>For any type <script type="math/tex">X</script> and for any element <script type="math/tex">a</script> of it, given a family of types <script type="math/tex">P(b,e)</script>
+  depending on parameters <script type="math/tex">b</script> of type <script type="math/tex">X</script> and <script type="math/tex">e</script> of type <script type="math/tex">a=b</script>, in order to
+  define elements <script type="math/tex">f(b,e) : P(b,e)</script> of all of them it suffices to provide an
+  element <script type="math/tex">p</script> of <script type="math/tex">P(a, refl\ a)</script>.  The resulting function <script type="math/tex">f</script> may be regarded as
+  having been completely defined by the single definition <script type="math/tex">f(a, refl\ a) := p</script>.</p>
+    </blockquote>
+
+    <blockquote>
+      <p>Intuitively, the induction principle for equality amounts to saying that the
+  element <script type="math/tex">refl a</script> ``generates’’ the system of types <script type="math/tex">a=b</script>, as <script type="math/tex">b</script> ranges
+  over elements of <script type="math/tex">A</script>.
+  <cite><a href="http://arxiv.org/abs/1711.01477">Daniel Grayson</a></cite></p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>We will show in a moment more about ML3 rule from the univalance perspective,
+that is, the homotopy type theory perspective. The main diference up to now, we
+give another meaning of <code class="highlighter-rouge">a = b</code>, insteaf of thinking about it as a proof of such
+a equality, we are going to think as a <code class="highlighter-rouge">path space</code> in a topological space
+associated to <code class="highlighter-rouge">A</code></p>
+
+<p>In the following, we may encounter with <a href="https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/">levels</a> in Agda.
+The small types are those that belongs to the first level 0, types of level 1 are
+those formed by using small types, and so on. The small types in Agda has <code class="highlighter-rouge">Set</code> type ,
+types formed by these small types have <code class="highlighter-rouge">Set 1</code> type, and so on with <code class="highlighter-rouge">Set i</code> type.</p>
+
+<h3 id="path-induction">Path induction</h3>
+
+<p>We call <em>path</em> to the inhabitant of the identity type, that is, p : x ≡ y for
+some x and y of type A. We can probably think that there is only one p, but
+there are many identifications between x and y from the HoTT perspective. For that
+reason we refer to a path and a set of paths or path space like something no trivial.</p>
+
+<p><img src="/assets/ipe-images/path.png" alt="path" /></p>
+
+<p>Now, we introduce the induction principle for the identity type denoted by <code class="highlighter-rouge">pi</code>,
+that is the elimination rule of this type also called <a href="https://homotopytypetheory.org/2011/04/10/just-kidding-understanding-identity-elimination-in-homotopy-type-theory/"><code class="highlighter-rouge">J</code> rule.</a>.)</p>
+
+<pre class="Agda"><a id="pi"></a><a id="3215" href="/induction-on-identity-types#3215" class="Function">pi</a>
+  <a id="3220" class="Symbol">:</a> <a id="3222" class="Symbol">∀</a> <a id="3224" class="Symbol">{</a><a id="3225" href="/induction-on-identity-types#3225" class="Bound">i</a><a id="3226" class="Symbol">}</a> <a id="3228" class="Symbol">{</a><a id="3229" href="/induction-on-identity-types#3229" class="Bound">A</a> <a id="3231" class="Symbol">:</a> <a id="3233" class="PrimitiveType">Set</a><a id="3236" class="Symbol">}</a>
+  <a id="3240" class="Symbol">→</a> <a id="3242" class="Symbol">(</a><a id="3243" href="/induction-on-identity-types#3243" class="Bound">C</a> <a id="3245" class="Symbol">:</a> <a id="3247" class="Symbol">(</a><a id="3248" href="/induction-on-identity-types#3248" class="Bound">x</a> <a id="3250" href="/induction-on-identity-types#3250" class="Bound">y</a> <a id="3252" class="Symbol">:</a> <a id="3254" href="/induction-on-identity-types#3229" class="Bound">A</a><a id="3255" class="Symbol">)</a> <a id="3257" class="Symbol">→</a> <a id="3259" href="/induction-on-identity-types#3248" class="Bound">x</a> <a id="3261" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3263" href="/induction-on-identity-types#3250" class="Bound">y</a> <a id="3265" class="Symbol">→</a> <a id="3267" class="PrimitiveType">Set</a> <a id="3271" href="/induction-on-identity-types#3225" class="Bound">i</a><a id="3272" class="Symbol">)</a>
+  <a id="3276" class="Symbol">→</a> <a id="3278" class="Symbol">(∀</a> <a id="3281" class="Symbol">(</a><a id="3282" href="/induction-on-identity-types#3282" class="Bound">x</a> <a id="3284" class="Symbol">:</a> <a id="3286" href="/induction-on-identity-types#3229" class="Bound">A</a><a id="3287" class="Symbol">)</a> <a id="3289" class="Symbol">→</a> <a id="3291" href="/induction-on-identity-types#3243" class="Bound">C</a> <a id="3293" href="/induction-on-identity-types#3282" class="Bound">x</a> <a id="3295" href="/induction-on-identity-types#3282" class="Bound">x</a> <a id="3297" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="3301" class="Symbol">)</a>
+  <a id="3305" class="Symbol">→</a> <a id="3307" class="Symbol">∀</a> <a id="3309" class="Symbol">(</a><a id="3310" href="/induction-on-identity-types#3310" class="Bound">x</a> <a id="3312" href="/induction-on-identity-types#3312" class="Bound">y</a> <a id="3314" class="Symbol">:</a> <a id="3316" href="/induction-on-identity-types#3229" class="Bound">A</a><a id="3317" class="Symbol">)</a> <a id="3319" class="Symbol">(</a><a id="3320" href="/induction-on-identity-types#3320" class="Bound">p</a> <a id="3322" class="Symbol">:</a> <a id="3324" href="/induction-on-identity-types#3310" class="Bound">x</a> <a id="3326" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3328" href="/induction-on-identity-types#3312" class="Bound">y</a><a id="3329" class="Symbol">)</a> <a id="3331" class="Symbol">→</a> <a id="3333" href="/induction-on-identity-types#3243" class="Bound">C</a> <a id="3335" href="/induction-on-identity-types#3310" class="Bound">x</a> <a id="3337" href="/induction-on-identity-types#3312" class="Bound">y</a> <a id="3339" href="/induction-on-identity-types#3320" class="Bound">p</a></pre>
+
+<p>defined by the equation</p>
+
+<pre class="Agda"><a id="3391" href="/induction-on-identity-types#3215" class="Function">pi</a> <a id="3394" class="Symbol">{</a><a id="3395" href="/induction-on-identity-types#3395" class="Bound">A</a><a id="3396" class="Symbol">}</a> <a id="3398" href="/induction-on-identity-types#3398" class="Bound">C</a> <a id="3400" href="/induction-on-identity-types#3400" class="Bound">c</a> <a id="3402" href="/induction-on-identity-types#3402" class="Bound">x</a> <a id="3404" class="DottedPattern Symbol">.</a><a id="3405" href="/induction-on-identity-types#3402" class="DottedPattern Bound">x</a> <a id="3407" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3412" class="Symbol">=</a> <a id="3414" href="/induction-on-identity-types#3400" class="Bound">c</a> <a id="3416" href="/induction-on-identity-types#3402" class="Bound">x</a></pre>
+
+<p>Let us unpackage this:</p>
+
+<p>To contruct something of the type (∀ (x y : A) (p : x ≡ y) → C x y p) we need that:</p>
+
+<ul>
+  <li>
+    <p>C can construct types from three arguments: two points and one path.</p>
+  </li>
+  <li>
+    <p>C holds in the <em>diagonal</em>, that is, we need to prove or find an
+inhabitant of C x x refl for all x.</p>
+  </li>
+</ul>
+
+<p>Then, as result, the property C holds for all paths in general.</p>
+
+<h3 id="based-path-induction">Based path induction</h3>
+
+<p>A differente or more customized version of path induction is the based
+path induction abbreviated as <code class="highlighter-rouge">bpi</code>.</p>
+
+<pre class="Agda"><a id="bpi"></a><a id="3927" href="/induction-on-identity-types#3927" class="Function">bpi</a>
+  <a id="3933" class="Symbol">:</a> <a id="3935" class="Symbol">∀</a> <a id="3937" class="Symbol">{</a><a id="3938" href="/induction-on-identity-types#3938" class="Bound">i</a><a id="3939" class="Symbol">}</a> <a id="3941" class="Symbol">{</a><a id="3942" href="/induction-on-identity-types#3942" class="Bound">A</a> <a id="3944" class="Symbol">:</a> <a id="3946" class="PrimitiveType">Set</a><a id="3949" class="Symbol">}</a>
+  <a id="3953" class="Symbol">→</a> <a id="3955" class="Symbol">(</a><a id="3956" href="/induction-on-identity-types#3956" class="Bound">a</a> <a id="3958" class="Symbol">:</a> <a id="3960" href="/induction-on-identity-types#3942" class="Bound">A</a><a id="3961" class="Symbol">)</a>
+  <a id="3965" class="Symbol">→</a> <a id="3967" class="Symbol">(</a><a id="3968" href="/induction-on-identity-types#3968" class="Bound">C</a> <a id="3970" class="Symbol">:</a> <a id="3972" class="Symbol">(</a><a id="3973" href="/induction-on-identity-types#3973" class="Bound">y</a> <a id="3975" class="Symbol">:</a> <a id="3977" href="/induction-on-identity-types#3942" class="Bound">A</a><a id="3978" class="Symbol">)</a> <a id="3980" class="Symbol">→</a> <a id="3982" href="/induction-on-identity-types#3956" class="Bound">a</a> <a id="3984" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3986" href="/induction-on-identity-types#3973" class="Bound">y</a> <a id="3988" class="Symbol">→</a> <a id="3990" class="PrimitiveType">Set</a> <a id="3994" href="/induction-on-identity-types#3938" class="Bound">i</a><a id="3995" class="Symbol">)</a>
+  <a id="3999" class="Symbol">→</a> <a id="4001" href="/induction-on-identity-types#3968" class="Bound">C</a> <a id="4003" href="/induction-on-identity-types#3956" class="Bound">a</a> <a id="4005" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>
+  <a id="4012" class="Symbol">→</a> <a id="4014" class="Symbol">(</a><a id="4015" href="/induction-on-identity-types#4015" class="Bound">y</a> <a id="4017" class="Symbol">:</a> <a id="4019" href="/induction-on-identity-types#3942" class="Bound">A</a><a id="4020" class="Symbol">)</a> <a id="4022" class="Symbol">(</a><a id="4023" href="/induction-on-identity-types#4023" class="Bound">p</a> <a id="4025" class="Symbol">:</a> <a id="4027" href="/induction-on-identity-types#3956" class="Bound">a</a> <a id="4029" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4031" href="/induction-on-identity-types#4015" class="Bound">y</a><a id="4032" class="Symbol">)</a> <a id="4034" class="Symbol">→</a> <a id="4036" href="/induction-on-identity-types#3968" class="Bound">C</a> <a id="4038" href="/induction-on-identity-types#4015" class="Bound">y</a> <a id="4040" href="/induction-on-identity-types#4023" class="Bound">p</a></pre>
+
+<p>defined by the equation</p>
+
+<pre class="Agda"><a id="4092" href="/induction-on-identity-types#3927" class="Function">bpi</a> <a id="4096" href="/induction-on-identity-types#4096" class="Bound">a</a> <a id="4098" href="/induction-on-identity-types#4098" class="Bound">C</a> <a id="4100" href="/induction-on-identity-types#4100" class="Bound">c</a> <a id="4102" class="DottedPattern Symbol">.</a><a id="4103" href="/induction-on-identity-types#4096" class="DottedPattern Bound">a</a> <a id="4105" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="4110" class="Symbol">=</a> <a id="4112" href="/induction-on-identity-types#4100" class="Bound">c</a></pre>
+
+<p><em>Remark</em>: we can not repeat in Agda a name variable in an equation. But using
+the dot accompanying as a prefix of a variable, it tells the typechecker that
+there is only one possible value and it corresponds to that variable.</p>
+
+<p>Let us unpackage this:</p>
+
+<ul>
+  <li>
+    <p>With a fixed endpoint a</p>
+  </li>
+  <li>
+    <p>if we consider all paths whiches start with a</p>
+  </li>
+  <li>
+    <p>to have the property for all y:A and for all paths a ≡ y the only
+necessary is to have C a refl, that is, holds C for the <em>base case</em>.</p>
+  </li>
+</ul>
+
+<h3 id="equivalence-between-path-induction-and-base-path-induction">Equivalence between path induction and base path induction</h3>
+
+<p>Path-induction follows from path based induction.</p>
+
+<pre class="Agda"><a id="bpi⇒pi"></a><a id="4720" href="/induction-on-identity-types#4720" class="Function">bpi⇒pi</a>
+  <a id="4729" class="Symbol">:</a> <a id="4731" class="Symbol">∀</a> <a id="4733" class="Symbol">{</a><a id="4734" href="/induction-on-identity-types#4734" class="Bound">A</a> <a id="4736" class="Symbol">:</a> <a id="4738" class="PrimitiveType">Set</a><a id="4741" class="Symbol">}</a>
+  <a id="4745" class="Symbol">→</a> <a id="4747" class="Symbol">(</a><a id="4748" href="/induction-on-identity-types#4748" class="Bound">C</a> <a id="4750" class="Symbol">:</a> <a id="4752" class="Symbol">(</a><a id="4753" href="/induction-on-identity-types#4753" class="Bound">x</a> <a id="4755" href="/induction-on-identity-types#4755" class="Bound">y</a> <a id="4757" class="Symbol">:</a> <a id="4759" href="/induction-on-identity-types#4734" class="Bound">A</a><a id="4760" class="Symbol">)</a> <a id="4762" class="Symbol">→</a> <a id="4764" href="/induction-on-identity-types#4753" class="Bound">x</a> <a id="4766" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4768" href="/induction-on-identity-types#4755" class="Bound">y</a> <a id="4770" class="Symbol">→</a> <a id="4772" class="PrimitiveType">Set</a><a id="4775" class="Symbol">)</a>
+  <a id="4779" class="Symbol">→</a> <a id="4781" class="Symbol">(</a><a id="4782" href="/induction-on-identity-types#4782" class="Bound">c</a> <a id="4784" class="Symbol">:</a> <a id="4786" class="Symbol">(</a><a id="4787" href="/induction-on-identity-types#4787" class="Bound">x</a> <a id="4789" class="Symbol">:</a> <a id="4791" href="/induction-on-identity-types#4734" class="Bound">A</a><a id="4792" class="Symbol">)</a> <a id="4794" class="Symbol">→</a> <a id="4796" href="/induction-on-identity-types#4748" class="Bound">C</a> <a id="4798" href="/induction-on-identity-types#4787" class="Bound">x</a> <a id="4800" href="/induction-on-identity-types#4787" class="Bound">x</a> <a id="4802" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="4806" class="Symbol">)</a>
+  <a id="4810" class="Symbol">→</a> <a id="4812" class="Symbol">(</a><a id="4813" href="/induction-on-identity-types#4813" class="Bound">x</a> <a id="4815" href="/induction-on-identity-types#4815" class="Bound">y</a> <a id="4817" class="Symbol">:</a> <a id="4819" href="/induction-on-identity-types#4734" class="Bound">A</a><a id="4820" class="Symbol">)</a> <a id="4822" class="Symbol">(</a><a id="4823" href="/induction-on-identity-types#4823" class="Bound">p</a> <a id="4825" class="Symbol">:</a> <a id="4827" href="/induction-on-identity-types#4813" class="Bound">x</a> <a id="4829" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4831" href="/induction-on-identity-types#4815" class="Bound">y</a><a id="4832" class="Symbol">)</a> <a id="4834" class="Symbol">→</a> <a id="4836" href="/induction-on-identity-types#4748" class="Bound">C</a> <a id="4838" href="/induction-on-identity-types#4813" class="Bound">x</a> <a id="4840" href="/induction-on-identity-types#4815" class="Bound">y</a> <a id="4842" href="/induction-on-identity-types#4823" class="Bound">p</a>
+
+<a id="4845" href="/induction-on-identity-types#4720" class="Function">bpi⇒pi</a> <a id="4852" class="Symbol">{</a><a id="4853" href="/induction-on-identity-types#4853" class="Bound">A</a><a id="4854" class="Symbol">}</a> <a id="4856" href="/induction-on-identity-types#4856" class="Bound">C</a> <a id="4858" href="/induction-on-identity-types#4858" class="Bound">c</a> <a id="4860" href="/induction-on-identity-types#4860" class="Bound">x</a> <a id="4862" class="Symbol">=</a> <a id="4864" href="/induction-on-identity-types#4958" class="Function">g</a>
+  <a id="4868" class="Keyword">where</a>
+    <a id="4878" href="/induction-on-identity-types#4878" class="Function">C′</a> <a id="4881" class="Symbol">:</a> <a id="4883" class="Symbol">(</a><a id="4884" href="/induction-on-identity-types#4884" class="Bound">y</a> <a id="4886" class="Symbol">:</a> <a id="4888" href="/induction-on-identity-types#4853" class="Bound">A</a><a id="4889" class="Symbol">)</a> <a id="4891" class="Symbol">→</a> <a id="4893" href="/induction-on-identity-types#4860" class="Bound">x</a> <a id="4895" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4897" href="/induction-on-identity-types#4884" class="Bound">y</a> <a id="4899" class="Symbol">→</a> <a id="4901" class="PrimitiveType">Set</a>
+    <a id="4909" href="/induction-on-identity-types#4878" class="Function">C′</a> <a id="4912" class="Symbol">=</a> <a id="4914" href="/induction-on-identity-types#4856" class="Bound">C</a> <a id="4916" href="/induction-on-identity-types#4860" class="Bound">x</a>
+
+    <a id="4923" href="/induction-on-identity-types#4923" class="Function">c′</a> <a id="4926" class="Symbol">:</a> <a id="4928" href="/induction-on-identity-types#4856" class="Bound">C</a> <a id="4930" href="/induction-on-identity-types#4860" class="Bound">x</a> <a id="4932" href="/induction-on-identity-types#4860" class="Bound">x</a> <a id="4934" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>
+    <a id="4943" href="/induction-on-identity-types#4923" class="Function">c′</a>  <a id="4947" class="Symbol">=</a> <a id="4949" href="/induction-on-identity-types#4858" class="Bound">c</a> <a id="4951" href="/induction-on-identity-types#4860" class="Bound">x</a>
+
+    <a id="4958" href="/induction-on-identity-types#4958" class="Function">g</a> <a id="4960" class="Symbol">:</a> <a id="4962" class="Symbol">∀</a> <a id="4964" class="Symbol">(</a><a id="4965" href="/induction-on-identity-types#4965" class="Bound">y</a> <a id="4967" class="Symbol">:</a> <a id="4969" href="/induction-on-identity-types#4853" class="Bound">A</a><a id="4970" class="Symbol">)</a> <a id="4972" class="Symbol">(</a><a id="4973" href="/induction-on-identity-types#4973" class="Bound">p</a> <a id="4975" class="Symbol">:</a> <a id="4977" href="/induction-on-identity-types#4860" class="Bound">x</a> <a id="4979" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4981" href="/induction-on-identity-types#4965" class="Bound">y</a><a id="4982" class="Symbol">)</a> <a id="4984" class="Symbol">→</a> <a id="4986" href="/induction-on-identity-types#4878" class="Function">C′</a> <a id="4989" href="/induction-on-identity-types#4965" class="Bound">y</a> <a id="4991" href="/induction-on-identity-types#4973" class="Bound">p</a>
+    <a id="4997" href="/induction-on-identity-types#4958" class="Function">g</a> <a id="4999" class="Symbol">=</a> <a id="5001" href="/induction-on-identity-types#3927" class="Function">bpi</a> <a id="5005" href="/induction-on-identity-types#4860" class="Bound">x</a> <a id="5007" href="/induction-on-identity-types#4878" class="Function">C′</a> <a id="5010" href="/induction-on-identity-types#4923" class="Function">c′</a></pre>
+
+<p>The other direction:</p>
+
+<pre class="Agda"><a id="pi⇒bpi"></a><a id="5060" href="/induction-on-identity-types#5060" class="Function">pi⇒bpi</a>
+  <a id="5069" class="Symbol">:</a> <a id="5071" class="Symbol">∀</a> <a id="5073" class="Symbol">{</a><a id="5074" href="/induction-on-identity-types#5074" class="Bound">A</a> <a id="5076" class="Symbol">:</a> <a id="5078" class="PrimitiveType">Set</a><a id="5081" class="Symbol">}</a>
+  <a id="5085" class="Symbol">→</a> <a id="5087" class="Symbol">(</a><a id="5088" href="/induction-on-identity-types#5088" class="Bound">a</a> <a id="5090" class="Symbol">:</a> <a id="5092" href="/induction-on-identity-types#5074" class="Bound">A</a><a id="5093" class="Symbol">)</a>
+  <a id="5097" class="Symbol">→</a> <a id="5099" class="Symbol">(</a><a id="5100" href="/induction-on-identity-types#5100" class="Bound">C</a> <a id="5102" class="Symbol">:</a> <a id="5104" class="Symbol">(</a><a id="5105" href="/induction-on-identity-types#5105" class="Bound">y</a> <a id="5107" class="Symbol">:</a> <a id="5109" href="/induction-on-identity-types#5074" class="Bound">A</a><a id="5110" class="Symbol">)</a> <a id="5112" class="Symbol">→</a> <a id="5114" href="/induction-on-identity-types#5088" class="Bound">a</a> <a id="5116" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="5118" href="/induction-on-identity-types#5105" class="Bound">y</a> <a id="5120" class="Symbol">→</a> <a id="5122" class="PrimitiveType">Set</a><a id="5125" class="Symbol">)</a>
+  <a id="5129" class="Symbol">→</a> <a id="5131" class="Symbol">(</a><a id="5132" href="/induction-on-identity-types#5132" class="Bound">c</a> <a id="5134" class="Symbol">:</a> <a id="5136" href="/induction-on-identity-types#5100" class="Bound">C</a> <a id="5138" href="/induction-on-identity-types#5088" class="Bound">a</a> <a id="5140" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="5144" class="Symbol">)</a>
+  <a id="5148" class="Symbol">→</a> <a id="5150" class="Symbol">∀</a> <a id="5152" class="Symbol">(</a><a id="5153" href="/induction-on-identity-types#5153" class="Bound">y</a> <a id="5155" class="Symbol">:</a> <a id="5157" href="/induction-on-identity-types#5074" class="Bound">A</a><a id="5158" class="Symbol">)</a> <a id="5160" class="Symbol">(</a><a id="5161" href="/induction-on-identity-types#5161" class="Bound">p</a> <a id="5163" class="Symbol">:</a> <a id="5165" href="/induction-on-identity-types#5088" class="Bound">a</a> <a id="5167" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="5169" href="/induction-on-identity-types#5153" class="Bound">y</a><a id="5170" class="Symbol">)</a> <a id="5172" class="Symbol">→</a> <a id="5174" href="/induction-on-identity-types#5100" class="Bound">C</a> <a id="5176" href="/induction-on-identity-types#5153" class="Bound">y</a> <a id="5178" href="/induction-on-identity-types#5161" class="Bound">p</a>
+
+<a id="5181" href="/induction-on-identity-types#5060" class="Function">pi⇒bpi</a> <a id="5188" class="Symbol">{</a><a id="5189" href="/induction-on-identity-types#5189" class="Bound">A</a><a id="5190" class="Symbol">}</a> <a id="5192" href="/induction-on-identity-types#5192" class="Bound">a</a> <a id="5194" href="/induction-on-identity-types#5194" class="Bound">C</a> <a id="5196" href="/induction-on-identity-types#5196" class="Bound">c</a> <a id="5198" href="/induction-on-identity-types#5198" class="Bound">y</a> <a id="5200" href="/induction-on-identity-types#5200" class="Bound">p</a> <a id="5202" class="Symbol">=</a> <a id="5204" href="/induction-on-identity-types#5377" class="Function">f</a> <a id="5206" href="/induction-on-identity-types#5192" class="Bound">a</a> <a id="5208" href="/induction-on-identity-types#5198" class="Bound">y</a> <a id="5210" href="/induction-on-identity-types#5200" class="Bound">p</a> <a id="5212" href="/induction-on-identity-types#5194" class="Bound">C</a> <a id="5214" href="/induction-on-identity-types#5196" class="Bound">c</a>
+  <a id="5218" class="Keyword">where</a>
+    <a id="5228" href="/induction-on-identity-types#5228" class="Function">D</a> <a id="5230" class="Symbol">:</a> <a id="5232" class="Symbol">∀</a> <a id="5234" class="Symbol">(</a><a id="5235" href="/induction-on-identity-types#5235" class="Bound">x</a> <a id="5237" href="/induction-on-identity-types#5237" class="Bound">y</a> <a id="5239" class="Symbol">:</a> <a id="5241" href="/induction-on-identity-types#5189" class="Bound">A</a><a id="5242" class="Symbol">)</a> <a id="5244" class="Symbol">→</a> <a id="5246" href="/induction-on-identity-types#5235" class="Bound">x</a> <a id="5248" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="5250" href="/induction-on-identity-types#5237" class="Bound">y</a> <a id="5252" class="Symbol">→</a> <a id="5254" class="PrimitiveType">Set₁</a>
+    <a id="5263" href="/induction-on-identity-types#5228" class="Function">D</a> <a id="5265" href="/induction-on-identity-types#5265" class="Bound">x</a> <a id="5267" href="/induction-on-identity-types#5267" class="Bound">y</a> <a id="5269" href="/induction-on-identity-types#5269" class="Bound">p</a> <a id="5271" class="Symbol">=</a> <a id="5273" class="Symbol">(</a><a id="5274" href="/induction-on-identity-types#5274" class="Bound">L</a> <a id="5276" class="Symbol">:</a> <a id="5278" class="Symbol">(</a><a id="5279" href="/induction-on-identity-types#5279" class="Bound">z</a> <a id="5281" class="Symbol">:</a> <a id="5283" href="/induction-on-identity-types#5189" class="Bound">A</a><a id="5284" class="Symbol">)</a> <a id="5286" class="Symbol">→</a> <a id="5288" href="/induction-on-identity-types#5265" class="Bound">x</a> <a id="5290" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="5292" href="/induction-on-identity-types#5279" class="Bound">z</a> <a id="5294" class="Symbol">→</a> <a id="5296" class="PrimitiveType">Set</a><a id="5299" class="Symbol">)</a> <a id="5301" class="Symbol">→</a> <a id="5303" href="/induction-on-identity-types#5274" class="Bound">L</a> <a id="5305" href="/induction-on-identity-types#5265" class="Bound">x</a> <a id="5307" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="5312" class="Symbol">→</a> <a id="5314" href="/induction-on-identity-types#5274" class="Bound">L</a> <a id="5316" href="/induction-on-identity-types#5267" class="Bound">y</a> <a id="5318" href="/induction-on-identity-types#5269" class="Bound">p</a>
+
+    <a id="5325" href="/induction-on-identity-types#5325" class="Function">d</a> <a id="5327" class="Symbol">:</a> <a id="5329" class="Symbol">∀</a> <a id="5331" class="Symbol">(</a><a id="5332" href="/induction-on-identity-types#5332" class="Bound">x</a> <a id="5334" class="Symbol">:</a> <a id="5336" href="/induction-on-identity-types#5189" class="Bound">A</a><a id="5337" class="Symbol">)</a> <a id="5339" class="Symbol">→</a> <a id="5341" href="/induction-on-identity-types#5228" class="Function">D</a> <a id="5343" href="/induction-on-identity-types#5332" class="Bound">x</a> <a id="5345" href="/induction-on-identity-types#5332" class="Bound">x</a> <a id="5347" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>
+    <a id="5356" href="/induction-on-identity-types#5325" class="Function">d</a> <a id="5358" class="Symbol">=</a> <a id="5360" class="Symbol">λ</a> <a id="5362" href="/induction-on-identity-types#5362" class="Bound">x</a> <a id="5364" href="/induction-on-identity-types#5364" class="Bound">C</a> <a id="5366" href="/induction-on-identity-types#5366" class="Bound">c</a> <a id="5368" class="Symbol">→</a> <a id="5370" href="/induction-on-identity-types#5366" class="Bound">c</a>
+
+    <a id="5377" href="/induction-on-identity-types#5377" class="Function">f</a> <a id="5379" class="Symbol">:</a> <a id="5381" class="Symbol">∀</a> <a id="5383" class="Symbol">(</a><a id="5384" href="/induction-on-identity-types#5384" class="Bound">x</a> <a id="5386" href="/induction-on-identity-types#5386" class="Bound">y</a> <a id="5388" class="Symbol">:</a> <a id="5390" href="/induction-on-identity-types#5189" class="Bound">A</a><a id="5391" class="Symbol">)</a> <a id="5393" class="Symbol">(</a><a id="5394" href="/induction-on-identity-types#5394" class="Bound">p</a> <a id="5396" class="Symbol">:</a> <a id="5398" href="/induction-on-identity-types#5384" class="Bound">x</a> <a id="5400" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="5402" href="/induction-on-identity-types#5386" class="Bound">y</a><a id="5403" class="Symbol">)</a> <a id="5405" class="Symbol">→</a> <a id="5407" href="/induction-on-identity-types#5228" class="Function">D</a> <a id="5409" href="/induction-on-identity-types#5384" class="Bound">x</a> <a id="5411" href="/induction-on-identity-types#5386" class="Bound">y</a> <a id="5413" href="/induction-on-identity-types#5394" class="Bound">p</a>
+    <a id="5419" href="/induction-on-identity-types#5377" class="Function">f</a> <a id="5421" class="Symbol">=</a> <a id="5423" href="/induction-on-identity-types#3215" class="Function">pi</a> <a id="5426" href="/induction-on-identity-types#5228" class="Function">D</a> <a id="5428" href="/induction-on-identity-types#5325" class="Function">d</a></pre>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li>
+    <p><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></p>
+  </li>
+  <li>
+    <p><span id="Grayson2017">Grayson, D. R. (2017). An Introduction to Univalent Foundations for Mathematicians. Retrieved from http://arxiv.org/abs/1711.01477</span></p>
+  </li>
+</ul>
+
+
+  <!-- <h2> References </h2> -->
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+  <!-- </ -->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning-Interval-Analysis">
+            Intervals
+            
+            <small>08 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/unsorted">
+            Unsorted
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/sat-solving">
+            SAT solvers
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <!-- Import jQuery -->
+<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/assets/linkify.min.js"></script>
+<script src="/assets/linkify-jquery.min.js"></script>
+
+<script type="text/javascript">
+$('div.references').linkify();
+$('.bibliography').linkify();
+$('div.links').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
+</script>
+
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
+<script type="text/javascript">
+ $("script[type='math/tex']").replaceWith(
+     function(){
+         var tex = $(this).text();
+         return "&zwnj;$$" + tex + "$$&zwnj;";
+     });
+ $("script[type='math/tex; mode=display']").replaceWith(
+     function(){
+         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
+     });
+</script>
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var autoHeight = $(this).height();
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+     $(this).height(lineHeight);
+     // $(this).height(2.0 * lineHeight);
+     $(this).css('overflow','hidden');
+     $(this).click(function(){
+         if ($(this).height() == autoHeight) {
+             // $(this).height(2.0 * lineHeight);
+             $(this).height(lineHeight);
+             plus.show();
+         }
+         else {
+             $(this).height('auto');
+             plus.hide();
+         }
+     });
+ });
+</script>
+<script type="text/javascript">
+
+  $('.cited-references').hide();
+  const refs = $(".references");
+  $('.references').append( $('.cited-references').html());
+  if ( refs.text() != ""){
+     refs.prepend("<h3>References</h3>");
+  }
+  else{
+    if ($(".cited-references").text() != ""){
+      $(".cited-references").prepend("<h3 id='refs'>References</h3>");
+      $(".cited-references").show();
+      $(".toc nav>ul").append(
+        "<li><a href='#refs'>References</a></li>"
+      );
+    }
+
+  }
+
+</script>
+
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

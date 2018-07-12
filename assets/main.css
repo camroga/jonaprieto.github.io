@@ -221,6 +221,9 @@ html { font-family: "PT Serif", Georgia, "Times New Roman", serif; }
 
 h1, h2, h3, h4, h5, h6 { font-family: "PT Sans", Helvetica, Arial, sans-serif; font-weight: 400; color: #21182a; letter-spacing: -.025rem; }
 
+.view-source { float: right; font-size: small; }
+.view-source a { text-decoration: underline; }
+
 .post-changes { background: #fafafa; padding: 5px; margin-bottom: 30px; border-bottom: 1px solid #c2c2c2; font-size: 85%; }
 
 .main-heading { display: table; width: 100%; line-height: 20px; }

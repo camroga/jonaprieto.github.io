@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>404: Page not found</title>
-  <meta name="description" content="Jonathan Prieto-Cubides">
+  <title>Latex tricks</title>
+  <meta name="description" content="">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -119,10 +119,144 @@
         </div>
       
       <div class="container content">
-        <div class="page">
-  <h1 class="page-title">404: Page not found</h1>
-  <p class="lead">Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. <a href="/">Head back home</a> to try finding it again.</p>
+        
+
+
+
+<div class="post">
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+92</span>/<span class="substractions">-36</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/529eaaca05c47fe5b8669b1553c5bc9f4fb0a0b5/_posts/2018-01-30-latex-tricks.md"> changing some titles</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/529eaaca05c47fe5b8669b1553c5bc9f4fb0a0b5/_posts/2018-01-30-latex-tricks.md>529eaac </a> on  06 Jul 2018
+    </div>
+    </div>
+  </div>
+  
+
+  <h1 class="post-title">Latex tricks <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/529eaaca05c47fe5b8669b1553c5bc9f4fb0a0b5/_posts/2018-01-30-latex-tricks.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/529eaaca05c47fe5b8669b1553c5bc9f4fb0a0b5/_posts/2018-01-30-latex-tricks.md" download target="_blank"> Download </a> </small></h1>
+
+  
+  <div class="references">
+
+  <p>A collection of useful tricks and snippets to use in Latex.</p>
+
+  <h3 id="highlight-undefined-references-and-citation-by-stefan-kottwitz">Highlight undefined references and citation by Stefan Kottwitz</h3>
+
+  <ul>
+    <li>See https://latex.org/forum/viewtopic.php?t=13654</li>
+    <li>See https://tex.stackexchange.com/questions/176297/automatically-highlight-undefined-references</li>
+  </ul>
+
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
+  <span class="k">\usepackage</span><span class="p">{</span>xcolor<span class="p">}</span>
+  <span class="k">\newcommand*</span><span class="p">{</span><span class="k">\missingreference</span><span class="p">}{</span><span class="k">\colorbox</span><span class="p">{</span>red<span class="p">}{</span>?reference?<span class="p">}}</span>
+  <span class="k">\newcommand*</span><span class="p">{</span><span class="k">\missingcitation</span><span class="p">}{</span><span class="k">\colorbox</span><span class="p">{</span>red<span class="p">}{</span>?citation?<span class="p">}}</span>
+  <span class="k">\makeatletter</span>
+  <span class="k">\def\@</span>setref#1#2#3<span class="p">{</span><span class="c">%</span>
+     <span class="k">\ifx</span>#1<span class="k">\relax</span>
+      <span class="k">\protect\G</span>@refundefinedtrue
+      <span class="k">\nfss</span>@text<span class="p">{</span><span class="k">\reset</span>@font<span class="k">\missingreference</span><span class="p">}</span><span class="c">%</span>
+      <span class="k">\@</span>latex@warning<span class="p">{</span>Reference `#3' on page <span class="k">\thepage</span> <span class="k">\space</span>
+                undefined<span class="p">}</span><span class="c">%</span>
+     <span class="k">\else</span>
+      <span class="k">\expandafter</span>#2#1<span class="k">\null</span>
+     <span class="k">\fi</span><span class="p">}</span>
+  <span class="k">\def\@</span>citex[#1]#2<span class="p">{</span><span class="k">\leavevmode</span>
+     <span class="k">\let\@</span>citea<span class="k">\@</span>empty
+     <span class="k">\@</span>cite<span class="p">{</span><span class="k">\@</span>for<span class="k">\@</span>citeb:=#2<span class="k">\do</span>
+       <span class="p">{</span><span class="k">\@</span>citea<span class="k">\def\@</span>citea<span class="p">{</span>,<span class="k">\penalty\@</span>m<span class="k">\ </span><span class="p">}</span><span class="c">%</span>
+        <span class="k">\edef\@</span>citeb<span class="p">{</span><span class="k">\expandafter\@</span>firstofone<span class="k">\@</span>citeb<span class="k">\@</span>empty<span class="p">}</span><span class="c">%</span>
+        <span class="k">\if</span>@filesw<span class="k">\immediate\write\@</span>auxout<span class="p">{</span><span class="k">\string\citation</span><span class="p">{</span><span class="k">\@</span>citeb<span class="p">}}</span><span class="k">\fi</span>
+        <span class="k">\@</span>ifundefined<span class="p">{</span>b@<span class="k">\@</span>citeb<span class="p">}{</span><span class="k">\hbox</span><span class="p">{</span><span class="k">\reset</span>@font<span class="k">\missingcitation</span><span class="p">}</span><span class="c">%</span>
+          <span class="k">\G</span>@refundefinedtrue
+          <span class="k">\@</span>latex@warning
+            <span class="p">{</span>Citation `<span class="k">\@</span>citeb' on page <span class="k">\thepage</span> <span class="k">\space</span> undefined<span class="p">}}</span><span class="c">%</span>
+          <span class="p">{</span><span class="k">\@</span>cite@ofmt<span class="p">{</span><span class="k">\csname</span> b@<span class="k">\@</span>citeb<span class="k">\endcsname</span><span class="p">}}}}{</span>#1<span class="p">}}</span>
+  <span class="k">\makeatother</span>
+  <span class="nt">\begin{document}</span>
+
+  This is a missing reference: <span class="k">\ref</span><span class="p">{</span>somefig<span class="p">}</span>.
+
+  This is a mssing citation: <span class="k">\cite</span><span class="p">{</span>somebib<span class="p">}</span>.
+
+  <span class="nt">\end{document}</span>
+</code></pre></div>  </div>
+
 </div>
+
+
+  <!-- <h2> References </h2> -->
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+  <!-- </ -->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning-Interval-Analysis">
+            Intervals
+            
+            <small>08 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/unsorted">
+            Unsorted
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/sat-solving">
+            SAT solvers
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
       </div>
       

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Post by category</title>
+  <title>Interval Analysis Timeline</title>
   <meta name="description" content="Jonathan Prieto-Cubides">
 
   <link rel="stylesheet" href="/assets/main.css">
@@ -27,11 +27,24 @@
   </script>
 
   
+  <!-- TIMELINE -->
+  <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+  
 
 
 </head>
 
 
+
+    <style>
+      html, body {
+        height:100%;
+        width:100%;
+        padding: 0px;
+        margin: 0px;
+      }
+    </style>
 
 
   <body>
@@ -81,13 +94,13 @@
     
       
         
-          <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline">Interval Analysis Timeline</a>
+          <a class="sidebar-nav-item active" href="/Interval-Analysis-Timeline">Interval Analysis Timeline</a>
         
       
     
       
         
-          <a class="sidebar-nav-item active" href="/categories/">Post by category</a>
+          <a class="sidebar-nav-item" href="/categories/">Post by category</a>
         
       
     
@@ -118,162 +131,11 @@
           </h3>
         </div>
       
-      <div class="container content">
         
-<div class="page">
-  
-    <h2 class="page-title">Post by category</h2>
-    
-  
-  <div id="archives">
-
-  <div class="archive-group">
-    
-    <div id="#latex"></div>
-    <p></p>
-    <h3 class="category-head">latex</h3>
-    <a name="latex"></a>
-    
-    <article class="archive-item">
-      <h6> <a href="/latex-tricks">Latex tricks</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/jekyll-atom-tricks">Jekyll Atom tricks</a></h6>
-    </article>
-    
-  </div>
-
-  <div class="archive-group">
-    
-    <div id="#type-theory"></div>
-    <p></p>
-    <h3 class="category-head">type-theory</h3>
-    <a name="type-theory"></a>
-    
-    <article class="archive-item">
-      <h6> <a href="/hott-lib">HoTT basics in Agda</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/pathovers">PathOvers in HoTT</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/circle-puzzle">Circle puzzle</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/hott-exercises">HoTT exercises</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/path-algebra-in-hott">Path Algebra in HoTT</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/induction-on-identity-types">Induction on Identity Types</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/induction-on-natural-numbers">Induction on Natural Numbers</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/functions-in-type-theory">Function Type</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/type-theory-journey">Type theories</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/leibniz-s-equality">Leibniz's Equality</a></h6>
-    </article>
-    
-  </div>
-
-  <div class="archive-group">
-    
-    <div id="#learning"></div>
-    <p></p>
-    <h3 class="category-head">learning</h3>
-    <a name="learning"></a>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-Interval-Analysis">Intervals</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-functional-programming">PL</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-types">Types</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-set-theory">Set theory</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-logic">Logic</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-group-theory">Groups</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-graph-theory">Graphs</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-cs-fundamentals">CS basics</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-Emacs">Emacs</a></h6>
-    </article>
-    
-    <article class="archive-item">
-      <h6> <a href="/learning-category-theory">Categories</a></h6>
-    </article>
-    
-  </div>
-
-  <div class="archive-group">
-    
-    <div id="#verification"></div>
-    <p></p>
-    <h3 class="category-head">verification</h3>
-    <a name="verification"></a>
-    
-    <article class="archive-item">
-      <h6> <a href="/sat-solving">SAT solvers</a></h6>
-    </article>
-    
-  </div>
-
-  <div class="archive-group">
-    
-    <div id="#thoughts"></div>
-    <p></p>
-    <h3 class="category-head">thoughts</h3>
-    <a name="thoughts"></a>
-    
-    <article class="archive-item">
-      <h6> <a href="/unsorted">Unsorted</a></h6>
-    </article>
-    
-  </div>
-
-</div>
-
-</div>
+  <iframe src="https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1VO66d5Q7SITgVYxnXNWnVoJeJF7EgPOIFSEnCUVsRVI&amp;font=Default&amp;lang=en&amp;initial_zoom=10000&amp;scale_factor=1&amp;height=850&amp;hash_bookmark=true&amp;timenav_position=top" width="100%" height="850" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" frameborder="0"></iframe>
 
 
-      </div>
+
       
       </div>
     </div>
