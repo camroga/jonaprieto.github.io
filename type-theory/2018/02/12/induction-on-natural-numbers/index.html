@@ -126,7 +126,7 @@
 <div class="post">
   <!--  -->
 
-  <h1 class="post-title">Induction on Natural Numbers <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-12-induction-on-natural-numbers.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-12-induction-on-natural-numbers.lagda" download target="_blank"> Download </a> </small></h1>
+  <h1 class="post-title">Induction on Natural Numbers <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/2d9a337765af9b67d8d0086829f1799d7defb63a/src/2018-02-12-induction-on-natural-numbers.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/2d9a337765af9b67d8d0086829f1799d7defb63a/src/2018-02-12-induction-on-natural-numbers.lagda" download target="_blank"> Download </a> </small></h1>
 
   
   <p>The induction principle comes from a generalization of a dependent function that
@@ -524,23 +524,28 @@ The recursor <code class="highlighter-rouge">recℕ</code> is the <em>no-depende
 by defining two equations:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">f(0) ≡ c₀</code> for <code class="highlighter-rouge">c₀ : C</code></li>
-  <li><code class="highlighter-rouge">f(suc n) ≡ cₛ(n, f(n))</code> for <code class="highlighter-rouge">cₛ : ℕ → C → C</code></li>
-</ul>
-
-<h3 id="references">References</h3>
-
-<ul>
   <li>
-    <p><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></p>
+    <p><code class="highlighter-rouge">f(0) ≡ c₀</code> for <code class="highlighter-rouge">c₀ : C</code></p>
   </li>
   <li>
-    <p><span id="Coquand1992">Coquand, T. (1992). Pattern matching with dependent types. <i>Informal proceedings of Logical Frameworks</i>. https://doi.org/10.1.1.37.9541</span></p>
-  </li>
-  <li>
-    <p><a href="https://plfa.github.io/Induction/">Induction in PLAgda</a></p>
+    <p><code class="highlighter-rouge">f(suc n) ≡ cₛ(n, f(n))</code> for <code class="highlighter-rouge">cₛ : ℕ → C → C</code></p>
   </li>
 </ul>
+
+<div class="references">
+
+  <ul>
+    <li>
+      <p><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></p>
+    </li>
+    <li>
+      <p><span id="Coquand1992">Coquand, T. (1992). Pattern matching with dependent types. <i>Informal proceedings of Logical Frameworks</i>. https://doi.org/10.1.1.37.9541</span></p>
+    </li>
+    <li>
+      <p><a href="https://plfa.github.io/Induction/">Induction in PLAgda</a></p>
+    </li>
+  </ul>
+</div>
 
 
 
