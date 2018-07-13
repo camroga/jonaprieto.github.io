@@ -1,7 +1,7 @@
 ---
 layout: "post"
 title: "PathOvers in HoTT"
-date: "2018-06-30"
+date: "2018-07-05"
 categories: type-theory
 toc: true
 agda: true
@@ -14,7 +14,7 @@ concept of *PathOver* and its respective *total space*. The term PathOver was
 briefly mentioned in {% cite hottbook %} and later defined in {% cite Licata2015
 %}. It is extensivily used in {%cite hott-in:agda %}.
 
-![](/assets/png-images/2018-07-05-geometry-intution-of-pathovers-7f9fb342.png)
+![path](/assets/ipe-images/pathovers-total-space.png)
 
 Let's review first an equility type that is closely related with these PathOvers.
 (See also {% cite Licata2015 %} for some extra comments).
@@ -983,11 +983,15 @@ PathOver₃ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁
 PathOver₃ {A = A} C {a₁} {a₂} α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
+![path](/assets/ipe-images/pathover-3.png)
+
 - \begin{code}
 PathOver₄ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
           → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
 PathOver₄ {A = A} C {a₁} {a₂} α c₁ c₂ = c₁ == transport C (inv α) c₂
 \end{code}
+
+![path](/assets/ipe-images/pathover-4.png)
 
 - \begin{code}
 PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
@@ -1185,7 +1189,7 @@ syntax PathOver B p u v = u == v [ B ↓ p ]
 > A **path-over** `γ : PathOver C α c­₁ c₂` represents a path σ in `∑ a:A . C` a
 > a between `(a₁, c₁)` and `(a₂,c₂)`, such that ap fst σ is exactly `α`. That
 > is, it is a path in the total space that projects down to, or lies over, `α`
-> (path pairing `pair= α γ` will be made precise below)
+> (path pairing `pair= α γ` will be made precise below).
 
 
 \begin{code}
@@ -1308,7 +1312,7 @@ apdo f idp = idp
 ## General Lemma
 
 The previous fact can also seen as a case of the following lemma.
-If $A : Type$ and $C : A → Type$, we can show that:
+If `A : Type` and `C : A → Type`, we can show that:
 
 \begin{code}
 module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
