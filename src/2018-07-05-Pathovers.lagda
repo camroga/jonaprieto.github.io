@@ -1231,10 +1231,10 @@ path-induction on the identity types from the components.
 
 \begin{code}
 module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
-
 \end{code}
 
 \begin{code}
+-- Def.
   Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
     → c₁ == c₂ [ C ↓  α ]
@@ -1249,6 +1249,7 @@ module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} 
   , c₁)` and `(a₁ == a₁) == (a₁ == a₁)`.
 
 \begin{code}
+-- Def.
   ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (γ : c₁ == c₂ [ C ↓ α ])
     → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
@@ -1265,12 +1266,12 @@ module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} 
   --       → {c₁ : C a₁}{c₂ : C a₂} (γ : c₁ == c₂ [ C ↓ α ] )
   --       → ap fst (pair= α γ) == α
   --   ap-fst-pair= idp idp = idp
-
 \end{code}
 
 The respective homotopies
 
 \begin{code}
+-- Homotopies
   Σ-to-==[↓]∘==[↓]-to-Σ∼id
     : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (γ : c₁ == c₂ [ C ↓ α ])
@@ -1287,6 +1288,7 @@ The respective homotopies
 Finally, we show the equivalence using the fact above proved.
 
 \begin{code}
+-- Equivalence
   Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
     ≃ (c₁ == c₂ [ C ↓ α ])
@@ -1310,7 +1312,7 @@ apdo f idp = idp
 \end{code}
 
 
-## General Lemma
+## Extra
 
 The previous fact can also seen as a case of the following lemma.
 If `A : Type` and `C : A → Type`, we can show that:

@@ -386,15 +386,18 @@ Summing up, the recursor `recℕ` allows to define a function `f : ℕ → C` wh
 by defining two equations:
 
 + `f(0) ≡ c₀` for `c₀ : C`
+
 + `f(suc n) ≡ cₛ(n, f(n))` for `cₛ : ℕ → C → C`
 
-### References
 
-- {% reference hottbook %}
+<div class="references" markdown="1">
 
-- {% reference Coquand1992 %}
+  - {% reference hottbook %}
 
-- [Induction in PLAgda](https://plfa.github.io/Induction/)
+  - {% reference Coquand1992 %}
+
+  - [Induction in PLAgda](https://plfa.github.io/Induction/)
+</div>
 
 [HoTT]:https://homotopytypetheory.org/book.
 [Grayson]:http://arxiv.org/abs/1711.01477
