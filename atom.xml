@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-13T19:16:42+02:00</updated>
+ <updated>2018-07-14T01:04:11+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -3713,9 +3713,67 @@ A &lt;strong&gt;stack&lt;/strong&gt; is an &lt;em&gt;abstract data type&lt;/em&g
    <link href="http://jonaprieto.github.io/learning/2018/06/27/concurrent-programming/"/>
    <updated>2018-06-27T00:00:00+02:00</updated>
    <id>http://jonaprieto.github.io/learning/2018/06/27/concurrent-programming</id>
-   <content type="html">&lt;p&gt;In progress.&lt;/p&gt;
+   <content type="html">&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-concurrent-programming-5d8141a7.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-logic-18987575.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;keywords&quot;&gt;Keywords&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A &lt;strong&gt;sequential algorithm&lt;/strong&gt; is a &lt;em&gt;formal description&lt;/em&gt; of the behaviour of a sequential state machine: the text of the algorithm states the transitions that have to be sequentially executed.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;An &lt;strong&gt;algorithm&lt;/strong&gt; is a text that describes statements that have to be executed&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A &lt;strong&gt;process&lt;/strong&gt; is a “text in action” that results from the algorithm&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A &lt;strong&gt;sequential process&lt;/strong&gt; (sometimes called a &lt;strong&gt;thread&lt;/strong&gt;) is a process defined by a single control flow (i.e., its behavior is managed by a single program counter).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;A &lt;strong&gt;concurrent algorithm&lt;/strong&gt; (or &lt;em&gt;concurrent program&lt;/em&gt; or &lt;em&gt;multiprocess program&lt;/em&gt;) is the description of &lt;em&gt;a set of sequential state machines&lt;/em&gt; that cooperate through a communication medium, e.g., a &lt;strong&gt;shared memory&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We consider process that are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;“Reliable”&lt;/em&gt; means that each process results from the correct execution of the code of the corresponding algorithm&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;em&gt;“Asynchronous”&lt;/em&gt; means that there is no timing assumption on the time it takes for a process to proceed from a state transition to the next one (which means that an asynchronous sequential process proceeds at an arbitrary speed).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;process-synchronization&quot;&gt;Process Synchronization&lt;/h2&gt;
+
+&lt;p&gt;Processes of a multiprocess program &lt;strong&gt;interact&lt;/strong&gt; in one way or another&lt;/p&gt;
+
+&lt;p&gt;Assumptions:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;one processor per process&lt;/li&gt;
+  &lt;li&gt;consequently the processes do execute &lt;em&gt;in parallel&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This assumption on the number of processors means that, when there are fewer processors than processes, there is an &lt;strong&gt;underlying scheduler&lt;/strong&gt; (hidden to the processes) that assigns processors to processes.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Process synchronization&lt;/em&gt; occurs when the progress of one or several processes depends on the behavior of other processes.&lt;/p&gt;
+
+&lt;p&gt;Two types of process interaction require synchronization: &lt;em&gt;competition&lt;/em&gt; and &lt;em&gt;cooperation&lt;/em&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Synchronization&lt;/strong&gt; is the &lt;em&gt;set of rules&lt;/em&gt; and &lt;em&gt;mechanisms&lt;/em&gt; that allows the specification and implementation of sequencing properties on statements issued by the processes so that all the executions of a multiprocess program are correct&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;synchronization-competition&quot;&gt;Synchronization: Competition&lt;/h3&gt;
+
+&lt;p&gt;This type of process interaction occurs when processes have to compete to execute some statements and only one process at a time (or a bounded number of them) is allowed to execute them&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Example: &lt;em&gt;resource allocation is a typical example of process competition&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
