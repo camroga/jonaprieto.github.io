@@ -963,7 +963,8 @@ We define `PathOver₁` as the inductive family with only one constructor,
 the reflexivity over the reflexivity on the base space `A`. To eliminate this
 type, we can use path-over induction. In Agda, we just do pattern matching along
 the path on the base `A`. Additionaly, we can define this notion of PathOvers in at least
-four different ways. Let us see these definitions, all equivalent.
+four different ways. Let us see these definitions, all equivalent. To refer to a pathover,
+we adopt the notation `c₁ == c₂ [ C ↓ α ]` from the HoTT-Agda library.
 
 - \begin{code}
 data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
@@ -1178,7 +1179,7 @@ the reader can change the subindex of the `PathOver` word to use any other defin
 PathOver = PathOver₁
 
 infix 30 PathOver
-syntax PathOver B p u v = u == v [ B ↓ p ]
+syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 \end{code}
 
 > While we have motivated PathOver as a factored heterogeneous equality, there
@@ -1199,7 +1200,7 @@ pair= : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : A → Type ℓⱼ}
   {a₁ a₂ : A} {c₁ : C a₁} {c₂ : C a₂}
   → (α : a₁ == a₂)
   → (γ : c₁ == c₂ [ C ↓ α ])
-  ------
+
   → (a₁ , c₁) == (a₂ , c₂)
 pair= idp idp = ap (_ ,_) idp
 \end{code}

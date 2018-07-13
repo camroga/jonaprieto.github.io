@@ -33,3 +33,19 @@ My plan to learn some group theory from Brilliant.
 - [ ] [counting-with-burnsides-lemma](https://brilliant.org/practice/counting-with-burnsides-lemma/?chapter=group-actions)
 - [ ] [semidirect-products](https://brilliant.org/practice/semidirect-products/?chapter=group-actions)
 - [ ] [sylow-theorems](https://brilliant.org/practice/sylow-theorems/?chapter=group-actions)
+
+
+Relations occur all the time, and mathematicians have agreed on names for some of the most common properties.
+
+- *Reflexive* For all n, the relation n ≤ n holds.
+- *Transitive* For all m, n, and p, if m ≤ n and n ≤ p hold, then m ≤ p holds.
+- *Anti-symmetric* For all m and n, if both m ≤ n and n ≤ m hold, then m ≡ n holds.
+- *Total* For all m and n, either m ≤ n or n ≤ m holds.
+
+The relation _≤_ satisfies all four of these properties.
+
+There are also names for some combinations of these properties.
+
+- *Preorder* Any relation that is reflexive and transitive.
+- *Partial order* Any preorder that is also anti-symmetric.
+- *Total order* Any partial order that is also total.
