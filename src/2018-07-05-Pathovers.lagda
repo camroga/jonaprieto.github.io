@@ -7,6 +7,8 @@ toc: true
 agda: true
 ---
 
+(Working in progress with Marc Bezem)
+
 We want to formilise in HoTT the intuition behind a correspondance between the
 concept of *PathOver* and its respective *total space*. The term PathOver was
 briefly mentioned in {% cite hottbook %} and later defined in {% cite Licata2015
@@ -32,10 +34,10 @@ Type ℓ = Set ℓ
 
 ## Homogeneous equality
 
-The *homogeneous equality* is a type `Path` that relate two elements `a₀` and
+The *homogeneous equality* is a type `Path` that relates two elements `a₀` and
 `a₁` whose types are *definitionally/judgementally. We denote this type as `Path
-{A} a₀ a₁`. The curly braces in Agda stands for an *inplicit argument* that the
-type-checker infers. We also use the symbol (`_==_`) to denote this type.
+{A} a₀ a₁`. The curly braces in Agda stands for *inplicit arguments*.
+We also use the symbol (`_==_`) to denote this type.
 
 \begin{code}
 infix 30 _==_
@@ -951,17 +953,17 @@ HEq = HEq₁
 
 ## Path over a path
 
-The PathOver is the depedent version of a *path*, what it exactly means is that
-we have a path between two endpoints from maybe different types but with. Which
-is exactly the same definition of the heterogeneous equality. The difference is
-that PathOvers simplifies the `HEq` definition by factorizing the type family
+The PathOver is the dependent version of a *path*, what it means that the path
+is between two endpoints from maybe different types. This is of course what we
+saw in the definition of the heterogeneous equality. The difference is that
+we simplify `HEq`  definition with `PathOver` by factorizing the type family
 that is involved in the paths.
 
-We first define `PathOver₁` as the inductive family with only one constructor,
+We define `PathOver₁` as the inductive family with only one constructor,
 the reflexivity over the reflexivity on the base space `A`. To eliminate this
-type, we can use path-over induction. In Agda, we just do pattern matching on
-the path in the base `A`. We can also define this notion of PathOvers in at least
-other four different ways. Let's such definitions all equivalent.
+type, we can use path-over induction. In Agda, we just do pattern matching along
+the path on the base `A`. Additionaly, we can define this notion of PathOvers in at least
+four different ways. Let us see these definitions, all equivalent.
 
 - \begin{code}
 data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
@@ -993,8 +995,8 @@ PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁
 PathOver₅ {A = A} B idp c₁ c₂ = c₁ == c₂
 \end{code}
 
-Above when we used `transport C α c₁`, we could also have used `coe (ap C α)`,
-both functions are of type `C a₁ → C a₂`. The other case with `c₂` is similar.
+Notice that above when we used `transport C α c₁`, we could also have used `coe (ap C α)`,
+we mention this because in HoTT-Agda library, it's defined `transport` using `coe`.
 
 ### Equivalences
 
@@ -1164,17 +1166,16 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₁~PathOver₅ idp = idp
 \end{code}
 
-We are going to use the fifth definition for pathovers, the one which is
-using an inductive family. Nevertheless, in the following, the reader can change
-the subindex of the `PathOver` word to use any other definition.
+We prefer the third definition for pathovers that comes from the HoTT book, that is,
+PathOver defined by an inductive family. Nevertheless, in the following definition,
+the reader can change the subindex of the `PathOver` word to use any other definition.
 
 \begin{code}
-PathOver = PathOver₃
+PathOver = PathOver₁
 
 infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
-
 
 > While we have motivated PathOver as a factored heterogeneous equality, there
 > is also a geometric intuition. **Dependent types correspond to fibrations**, so a
@@ -1187,16 +1188,62 @@ syntax PathOver B p u v = u == v [ B ↓ p ]
 > (path pairing `pair= α γ` will be made precise below)
 
 
+\begin{code}
+-- An extra and useful function:
+-- to make dependent pairs
+pair= : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : A → Type ℓⱼ}
+  {a₁ a₂ : A} {c₁ : C a₁} {c₂ : C a₂}
+  → (α : a₁ == a₂)
+  → (γ : c₁ == c₂ [ C ↓ α ])
+  ------
+  → (a₁ , c₁) == (a₂ , c₂)
+pair= idp idp = ap (_ ,_) idp
+\end{code}
+
 ## Total spaces
+
+We want to prove the following lemma:
+
+**Lemma.** Let be `A : Type` and `C : A → Type` with two terms `a₁ a₂ : A` and a
+path between them `α : a₁ == a₂`. If  `c₁ : C a₁`, `c₂ : C a₂` then there is an
+correspondance between a term in the total space and the path between c₁ and c₁,
+the depedent path along the path `α`.
+
+<p class="equation">
+$$
+ \sum\limits_{(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
+  \simeq \mathsf{PathOver}~C~α~c₁~c₂.
+$$
+</p>
+
+To show such a equivalence, we proceed defining the functions back and forth,
+the two homotopies associated to these functions with the identity and finally,
+we prove the equivalence using the quasiinverse version for the equivalence type.
+
+- Let us define the function `Σ-to-==[↓]` that maps a term of the sigma type to
+a pathover. This construction is using Σ-induction followed by two
+path-induction on the identity types from the components.
 
 \begin{code}
 module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
 
+\end{code}
+
+\begin{code}
   Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
     → c₁ == c₂ [ C ↓  α ]
   Σ-to-==[↓] {c₁ = c₁} (idp , idp) = idp
 
+\end{code}
+
+- The inverse function to the previous one is `==[↓]-to-Σ`, which sends
+  pathovers to a dependent pair as it follows. Its construction is by using
+  path-induction on `α` in the base space, follows by path-induction on `γ`. The
+  goal after this becomes in a pair of two reflexivity proofs `(a₁ , c₁) == (a₁
+  , c₁)` and `(a₁ == a₁) == (a₁ == a₁)`.
+
+\begin{code}
   ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (γ : c₁ == c₂ [ C ↓ α ])
     → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
@@ -1205,36 +1252,36 @@ module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} 
   -- -- more explict:
   -- ==[↓]-to-Σ {idp}{c₁}{c₂} idp = (idp {a = (a₁ , c₁)}, idp {a = idp {a = a₁}})
 
-  -- -- Alternative (also type-checked):
+  -- -- Alternative way to construct this function is (also type-checked):
   -- ==[↓]-to-Σ {α = α} γ = (pair= α γ , ap-fst-pair= α γ)
   --   where
-  --   pair= : ∀ {i j} {A : Type i} {C : A → Type j}
-  --     {a₁ a₂ : A} {c₁ : C a₁} {c₂ : C a₂}
-  --     → (α : a₁ == a₂)
-  --     → (γ : c₁ == c₂ [ C ↓ α ])
-  --     ------
-  --     → (a₁ , c₁) == (a₂ , c₂)
-  --   pair= idp γ = ap (_ ,_) γ
   --
   --   ap-fst-pair= : (α : a₁ == a₂)
   --       → {c₁ : C a₁}{c₂ : C a₂} (γ : c₁ == c₂ [ C ↓ α ] )
   --       → ap fst (pair= α γ) == α
   --   ap-fst-pair= idp idp = idp
 
-  -- homotopy₂­
+\end{code}
+
+The respective homotopies
+
+\begin{code}
   Σ-to-==[↓]∘==[↓]-to-Σ∼id
     : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (γ : c₁ == c₂ [ C ↓ α ])
     → Σ-to-==[↓] {α = α} (==[↓]-to-Σ γ) == γ
-  Σ-to-==[↓]∘==[↓]-to-Σ∼id {α = idp}{c₁}{c₂} idp = idp
-  -- Σ-to-==[↓]∘==[↓]-to-Σ∼id {α = idp}{c₁}{c₂} idp = {! ==[↓]-to-Σ (idp {a = PathOver C (idp {a = a₁}) c₁ c₂})  !} -- idp
-  --
+  Σ-to-==[↓]∘==[↓]-to-Σ∼id {α = idp} idp = idp
+
   ==[↓]-to-Σ∘Σ-to-==[↓]∼id
     : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (pair : Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
     → ==[↓]-to-Σ (Σ-to-==[↓] pair) == pair
   ==[↓]-to-Σ∘Σ-to-==[↓]∼id (idp , idp) = idp
-  --
+\end{code}
+
+Finally, we show the equivalence using the fact above proved.
+
+\begin{code}
   Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
     ≃ (c₁ == c₂ [ C ↓ α ])
@@ -1255,4 +1302,56 @@ We can build a dependent path by applying a depedent function to a homogeneous p
 apdo : ∀ {ℓ} {A : Type ℓ} {B : A → Type ℓ} (f : (a : A) → B a)
       {a₁ a₂ : A} → (α : a₁ == a₂) → (PathOver B α (f a₁) (f a₂))
 apdo f idp = idp
+\end{code}
+
+
+## General Lemma
+
+The previous fact can also seen as a case of the following lemma.
+If $A : Type$ and $C : A → Type$, we can show that:
+
+\begin{code}
+module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
+
+  l→ : {B : Type ℓᵢ}
+      → (e : B ≃ A)
+      → Σ A P
+      -----
+      → Σ B (λ b → P ((lemap e) b))
+  l→ {B} e (a , pₐ) = finv a , coe equalsPs pₐ
+    where
+      f : B → A
+      f = lemap e
+
+      finv : A → B
+      finv = remap e
+
+      equalsPs : P a  == P (lemap e (remap e a))
+      equalsPs = ap P (inv (lrmap-inverse e))
+
+  l← : {B : Type ℓᵢ}
+      → (e : B ≃ A)
+      → Σ B (λ b → P ((lemap e) b))
+      -----
+      → Σ A P
+  l← {B} e (b , p) = (lemap e) b , p
+  --
+  -- l→∘l←-~-id : {B : Type ℓᵢ}
+  --         → (e : B ≃ A)
+  --         → (pΣbP' : Σ B (λ b → P ((fst e) b)) )
+  --         → l→ e (l← e pΣbP') == pΣbP'
+  -- l→∘l←-~-id (f , eqf) (b , p) =
+  --   Σ-bycomponents
+  --     ( ap fst (pair= {!   !} {!   !})
+  --     , {!   !})
+  -- --
+  -- l←∘l→-~-id : {B : Type ℓᵢ}
+  --         → (e : B ≃ A)
+  --         → (pΣaP : Σ A P)
+  --         → l← e (l→ e pΣaP) == pΣaP
+  -- l←∘l→-~-id e (b , p) = Σ-bycomponents ({!   !} , {!   !})
+  --
+  --
+  -- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
+  -- lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})
 \end{code}

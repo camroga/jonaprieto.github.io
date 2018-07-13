@@ -52,9 +52,14 @@ As you can see the maximum number of guessing will be depend on how many times w
 - [x] [quicksort](https://brilliant.org/practice/quicksort/?chapter=recursion)
 Does the pivot always be in the correct position (sorted) after the first partitioning? Yes, it does.
 
-- [ ] [linked-list](https://brilliant.org/practice/linked-list/?chapter=recursion)
-- [ ] [stacks-and-queues](https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues)
-- [ ] [stacks-2](https://brilliant.org/practice/stacks-2/?chapter=stacks-and-queues)
+- [x] [linked-list](https://brilliant.org/practice/linked-list/?chapter=recursion)
+- [x] [stacks-and-queues](https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues)
+
+- [x] [stacks-2](https://brilliant.org/practice/stacks-2/?chapter=stacks-and-queues)
+A **stack** is an *abstract data type* that places restrictions on where you can add and remove elements. As with any abstract data type, a stack can be implemented with a variety of data structures, such as a linked list or an array.
+
+  - Review again this one: https://brilliant.org/practice/stacks-2/?p=10
+
 - [ ] [queues](https://brilliant.org/practice/queues/?chapter=stacks-and-queues)
 - [ ] [binary-trees-2](https://brilliant.org/practice/binary-trees-2/?chapter=binary-trees)
 - [ ] [binary-trees](https://brilliant.org/practice/binary-trees/?chapter=binary-trees)
