@@ -129,13 +129,30 @@
   <h1 class="post-title">Concurrent <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/aa7dd032af5c51aa8ce8f3e55a1a34d89198a0fe/_posts/2018-06-27-concurrent-programming.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/aa7dd032af5c51aa8ce8f3e55a1a34d89198a0fe/_posts/2018-06-27-concurrent-programming.md" download target="_blank"> Download </a> </small></h1>
 
   
+  <div class="toc">
+    <nav>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#keywords">Keywords</a></li>
+  <li><a href="#process-synchronization">Process Synchronization</a>
+    <ul>
+      <li><a href="#synchronization-competition">Synchronization: Competition</a></li>
+    </ul>
+  </li>
+</ul>
+
+    </nav>
+  </div>
+  
   <p><img src="/assets/png-images/2018-06-27-concurrent-programming-5d8141a7.png" alt="" /></p>
 
 <h2 id="keywords">Keywords</h2>
 
 <ul>
   <li>
-    <p>A <strong>sequential algorithm</strong> is a <em>formal description</em> of the behaviour of a sequential state machine: the text of the algorithm states the transitions that have to be sequentially executed.</p>
+    <p>A <strong>sequential algorithm</strong> is a <em>formal description</em> of the behaviour of a
+sequential state machine: the text of the algorithm states the transitions
+that have to be sequentially executed.</p>
   </li>
   <li>
     <p>An <strong>algorithm</strong> is a text that describes statements that have to be executed</p>
@@ -144,22 +161,28 @@
     <p>A <strong>process</strong> is a “text in action” that results from the algorithm</p>
   </li>
   <li>
-    <p>A <strong>sequential process</strong> (sometimes called a <strong>thread</strong>) is a process defined by a single control flow (i.e., its behavior is managed by a single program counter).</p>
+    <p>A <strong>sequential process</strong> (sometimes called a <strong>thread</strong>) is a process defined
+by a single control flow (i.e., its behavior is managed by a single program
+counter).</p>
   </li>
   <li>
-    <p>A <strong>concurrent algorithm</strong> (or <em>concurrent program</em> or <em>multiprocess program</em>) is the description of <em>a set of sequential state machines</em> that cooperate through a communication medium, e.g., a <strong>shared memory</strong>.</p>
+    <p>A <strong>concurrent algorithm</strong> (or <em>concurrent program</em> or <em>multiprocess program</em>)
+is the description of <em>a set of sequential state machines</em> that cooperate
+through a communication medium, e.g., a <strong>shared memory</strong>.</p>
   </li>
 </ul>
 
 <p>We consider process that are:</p>
 
 <ul>
+  <li><em>“Reliable”</em> means that each process results from the correct execution of</li>
   <li>
-    <p><em>“Reliable”</em> means that each process results from the correct execution of the code of the corresponding algorithm</p>
+    <p>the code of the corresponding algorithm</p>
   </li>
-  <li>
-    <p><em>“Asynchronous”</em> means that there is no timing assumption on the time it takes for a process to proceed from a state transition to the next one (which means that an asynchronous sequential process proceeds at an arbitrary speed).</p>
-  </li>
+  <li><em>“Asynchronous”</em> means that there is no timing assumption on the time it
+takes for a process to proceed from a state transition to the next one
+(which means that an asynchronous sequential process proceeds at an
+arbitrary speed).</li>
 </ul>
 
 <h2 id="process-synchronization">Process Synchronization</h2>
@@ -173,19 +196,28 @@
   <li>consequently the processes do execute <em>in parallel</em></li>
 </ol>
 
-<p>This assumption on the number of processors means that, when there are fewer processors than processes, there is an <strong>underlying scheduler</strong> (hidden to the processes) that assigns processors to processes.</p>
+<p>This assumption on the number of processors means that, when there are fewer
+processors than processes, there is an <strong>underlying scheduler</strong> (hidden to the
+processes) that assigns processors to processes.</p>
 
-<p><em>Process synchronization</em> occurs when the progress of one or several processes depends on the behavior of other processes.</p>
+<p><em>Process synchronization</em> occurs when the progress of one or several processes
+*depends on the behavior of other processes.</p>
 
-<p>Two types of process interaction require synchronization: <em>competition</em> and <em>cooperation</em></p>
+<p>Two types of process interaction require synchronization: <em>competition</em> and
+<em>cooperation</em></p>
 
 <ul>
-  <li><strong>Synchronization</strong> is the <em>set of rules</em> and <em>mechanisms</em> that allows the specification and implementation of sequencing properties on statements issued by the processes so that all the executions of a multiprocess program are correct</li>
+  <li><strong>Synchronization</strong> is the <em>set of rules</em> and <em>mechanisms</em> that allows the
+specification and implementation of sequencing properties on statements issued
+by the processes so that all the executions of a multiprocess program are
+correct</li>
 </ul>
 
 <h3 id="synchronization-competition">Synchronization: Competition</h3>
 
-<p>This type of process interaction occurs when processes have to compete to execute some statements and only one process at a time (or a bounded number of them) is allowed to execute them</p>
+<p>This type of process interaction occurs when processes have to compete to
+execute some statements and only one process at a time (or a bounded number of
+them) is allowed to execute them</p>
 
 <ul>
   <li>Example: <em>resource allocation is a typical example of process competition</em>.</li>
