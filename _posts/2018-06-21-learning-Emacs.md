@@ -9,7 +9,7 @@ I’m not dogmatic about which editor is the best. I use at least three differen
 text editor depending on what I’m working on: sublime text 3, atom, and emacs.
 This post is about emacs but I must confess that I’m a complete beginner using
 emacs. I’ve never touched my own configuration scripts and the kind of things an
-expert user probably do. My goal in this post is that, becoming a real user of
+expert user probably does. My goal in this post is that, becoming a real user of
 this amazing tool/text editor that many people claim it is. Since I don’t have
 too much time to spend on this kind of task, I will try to learn on the top of
 another configuration. Spacemacs is the first option here. I tested, it works

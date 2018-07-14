@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "HoTT basics in Agda"
+title: "Mini HoTT library in Agda"
 date: "2018-07-05"
 categories: type-theory
 toc: true
@@ -10,12 +10,10 @@ agda: true
 This is my attempt to collect in just one-file, a basic overview of HoTT in Agda.
 This source code was type-checked by Agda 2.5.4.
 
-Based on:
+{: .references }
 
-<div class="references" markdown="1">
-- https://github.com/HoTT/HoTT-Agda/
-- https://mroman42.github.io/ctlc/agda-hott/Total.html
-</div>
+  - https://github.com/HoTT/HoTT-Agda/
+  - https://mroman42.github.io/ctlc/agda-hott/Total.html
 
 Agda has a pragma to work with HoTT (`--without-K`):
 
@@ -297,6 +295,9 @@ PathOver {A = A} B {x} (refl x) u v = u == v
 infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
+
+[Here]({% link 2018-07-05-pathovers %}) we discuss more about Pathovers and
+equivalent types.
 
 ## Equational Reasoning
 
