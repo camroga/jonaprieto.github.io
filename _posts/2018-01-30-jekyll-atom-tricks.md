@@ -5,15 +5,14 @@ date: "2018-01-30"
 categories: latex
 ---
 
-To work with this blog by writing the post in Atom, I found the following
-surprisingly useful:
+To work with this blog by writing the posts using Atom, I found the following tool
+surprisingly useful (it allows you to copy-paste your screenshoots, drag-and-drop):
 
   - [atom-markdown-image-assistant](https://atom.io/packages/markdown-image-assistant)
 
 I modified the sources to work for my purposes, maybe it can help you too.
 
-{% raw %}
-```javascript
+{%- highlight javascript -%}
 {CompositeDisposable, Directory, File} = require 'atom'
 fs = require 'fs'
 path = require 'path'
@@ -157,5 +156,4 @@ module.exports = MarkdownImageAssistant =
 
   deactivate: ->
       @subscriptions.dispose()
-```
-{% endraw %}
+{%- endhighlight -%}

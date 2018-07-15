@@ -248,6 +248,7 @@ GEM
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
     minitest (5.11.3)
+    multi_json (1.13.1)
     multipart-post (2.0.0)
     namae (1.0.1)
     netrc (0.11.0)
@@ -260,6 +261,8 @@ GEM
     posix-spawn (0.3.13)
     progressbar (1.9.0)
     public_suffix (2.0.5)
+    pygments.rb (1.2.1)
+      multi_json (>= 1.0.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
@@ -304,6 +307,7 @@ DEPENDENCIES
   jekyll-scholar
   minima (~> 2.4.0)
   netrc
+  pygments.rb
   unicode
 
 BUNDLED WITH

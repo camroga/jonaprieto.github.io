@@ -48,10 +48,73 @@ Learning graphs on youtube.
   - **Directed graphs** : each edge has a direction associated to it
   - **Undirected graphs** : edges without any direction
 
+- [x] [03. Examples of Graphs](https://www.youtube.com/watch?v=lLOvB1qFE1E)
 
-- [ ] [03. Examples of Graphs](https://www.youtube.com/watch?v=lLOvB1qFE1E)
-- [ ] [04. Families of Graphs](https://www.youtube.com/watch?v=71XbdtoG7P8)
-- [ ] [05. Connected and Regular Graphs](https://www.youtube.com/watch?v=BEyuUXQs5ko)
+  $$uv$$ stands for $$\{u, v\} \in E$$, in a graph $$G = (V(G), E(E))$$.
+
+- [x] [04. Families of Graphs](https://www.youtube.com/watch?v=71XbdtoG7P8)
+
+  - [**A Complete graph**](http://mathworld.wolfram.com/CompleteGraph.html)
+    $$K_n$$ on $$n$$ vertices is a simple (no-loops, no-multiple loops) with an
+    edge between every pair of vertices.
+
+    - $$ \# (E) = n \cdot C_2$$, $$C_2$$ is the binomial coefficient
+
+    ![](/assets/png-images/2018-06-27-learning-graph-theory-6b99df17.png)
+
+  - Empty graphs
+  - Bipartite graphs and (Complete Bipartite graphs $$K_{n,m}$$)
+
+    ![](/assets/png-images/2018-06-27-learning-graph-theory-1837f36b.png)
+
+  - Path $$P_n$$ is graph whose vertices can be arranged in a sequence.
+
+  ![](/assets/png-images/2018-06-27-learning-graph-theory-1ff903e5.png)
+
+  - Cycle $$C_6$$ is a graph whose vertices can be arranged in a cyclic sequence
+    such That the ending vertex is connected with the starting vertex forming a
+    chain. The cycle $$C_n$$ is just the path $$P_n$$ after adding the edge that
+    connects the tail and the head of the path.
+
+  ![](/assets/png-images/2018-06-27-learning-graph-theory-355a9076.png)
+
+  - Triangle = $$C_3$$ and $$K_3$$
+
+- [x] [05. Connected and Regular Graphs](https://www.youtube.com/watch?v=BEyuUXQs5ko)
+
+  - [A **connected graph**](http://mathworld.wolfram.com/ConnectedGraph.html) is a
+    graph which is connected in the sense of a topological space, i.e., there is
+    a path from any point to any other point in the graph.
+
+    ![](/assets/png-images/2018-06-27-learning-graph-theory-0f87473b.png)
+
+  - A **disconnected graph** is a graph G is said to be disconnected if it is not
+    connected, i.e., if there exist two nodes in G such that no path in G has
+    those nodes as endpoints.
+
+    ![](/assets/png-images/2018-06-27-learning-graph-theory-cee5a515.png)
+
+  - **(Open) neighbourhood** of v in G is
+
+    {: .equation}
+      $$ N_{G}(v) = \{u | uv \in E(G) \}$$
+
+  - **(Closed) neighbourhood** of v in G is
+
+    {: .equation}
+      $$ N_{G}[v] = N_{G}(v) \cup \{ v \}$$
+
+  - The **degree of a vertex** $$v \in V(G)$$ in terms of neighbourhoods is
+
+    {: .equation}
+      $$ \deg_{G} (v) = \# N_{G}(v) $$
+
+  - A graph is **r-regular** if $$\deg_{G}(v) = r$$ for all $$v \in V(G)$$
+  - The **minimum degree** is denoted by $$\delta(G)$$
+  - The **minimum degree** is denoted by $$\Delta(G)$$
+
+  ![](/assets/png-images/2018-06-27-learning-graph-theory-95d01eee.png)
+
 - [ ] [06. Sum of Degrees is ALWAYS Twice the Number of Edges](https://www.youtube.com/watch?v=YoRhmz_OSBY)
 - [ ] [07. Adjacency Matrix and Incidence Matrix](https://www.youtube.com/watch?v=LUDNz2bIjWI)
 - [ ] [08a. Basic Problem Set (part 1/2)](https://www.youtube.com/watch?v=Qe9e-XcEvlo)

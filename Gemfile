@@ -16,4 +16,5 @@ group :jekyll_plugins do
    gem 'citeproc-ruby'
    gem 'csl-styles'
    gem 'jekyll-scholar'
+   gem 'pygments.rb'
 end
