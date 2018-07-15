@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Jekyll Atom tricks</title>
-  <meta name="description" content="To work with this blog by writing the post in Atom, I found the following surprisingly useful:">
+  <meta name="description" content="To work with this blog by writing the posts using Atom, I found the following tool surprisingly useful (it allows you to copy-paste your screenshoots, drag-a...">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -126,19 +126,18 @@
 <div class="post">
   <!--  -->
 
-  <h1 class="post-title">Jekyll Atom tricks <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/b8c424512b896f98b270ad62dd2082136137ff09/_posts/2018-01-30-jekyll-atom-tricks.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/b8c424512b896f98b270ad62dd2082136137ff09/_posts/2018-01-30-jekyll-atom-tricks.md" download target="_blank"> Download </a> </small></h1>
+  <h1 class="post-title">Jekyll Atom tricks <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/67e76a1411bf0c2dfea08144e9bd19a3df6477e3/_posts/2018-01-30-jekyll-atom-tricks.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/67e76a1411bf0c2dfea08144e9bd19a3df6477e3/_posts/2018-01-30-jekyll-atom-tricks.md" download target="_blank"> Download </a> </small></h1>
 
   
-  <p>To work with this blog by writing the post in Atom, I found the following
-surprisingly useful:</p>
+  <p>To work with this blog by writing the posts using Atom, I found the following tool
+surprisingly useful (it allows you to copy-paste your screenshoots, drag-and-drop):</p>
 
 <ul>
   <li><a href="https://atom.io/packages/markdown-image-assistant">atom-markdown-image-assistant</a></li>
 </ul>
 
 <p>I modified the sources to work for my purposes, maybe it can help you too.</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="nx">CompositeDisposable</span><span class="p">,</span> <span class="nx">Directory</span><span class="p">,</span> <span class="nx">File</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'atom'</span>
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span><span class="nx">CompositeDisposable</span><span class="p">,</span> <span class="nx">Directory</span><span class="p">,</span> <span class="nx">File</span><span class="p">}</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'atom'</span>
 <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'fs'</span>
 <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span> <span class="s1">'path'</span>
 <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span> <span class="s2">"crypto"</span>
@@ -280,9 +279,7 @@ surprisingly useful:</p>
               <span class="nx">callback</span><span class="p">()</span>
 
   <span class="nx">deactivate</span><span class="p">:</span> <span class="o">-&gt;</span>
-      <span class="p">@</span><span class="nd">subscriptions</span><span class="p">.</span><span class="nx">dispose</span><span class="p">()</span>
-</code></pre></div></div>
-
+      <span class="p">@</span><span class="nd">subscriptions</span><span class="p">.</span><span class="nx">dispose</span><span class="p">()</span></code></pre></figure>
 
 
   <!-- <h2> References </h2> -->

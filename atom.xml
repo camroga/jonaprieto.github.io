@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-15T12:31:03+02:00</updated>
+ <updated>2018-07-15T14:33:29+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -3437,9 +3437,90 @@ of the cartesian product &lt;script type=&quot;math/tex&quot;&gt;V \times V&lt;/
       &lt;li&gt;&lt;strong&gt;Undirected graphs&lt;/strong&gt; : edges without any direction&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lLOvB1qFE1E&quot;&gt;03. Examples of Graphs&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=71XbdtoG7P8&quot;&gt;04. Families of Graphs&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=BEyuUXQs5ko&quot;&gt;05. Connected and Regular Graphs&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lLOvB1qFE1E&quot;&gt;03. Examples of Graphs&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;uv&lt;/script&gt; stands for &lt;script type=&quot;math/tex&quot;&gt;\{u, v\} \in E&lt;/script&gt;, in a graph &lt;script type=&quot;math/tex&quot;&gt;G = (V(G), E(E))&lt;/script&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=71XbdtoG7P8&quot;&gt;04. Families of Graphs&lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;http://mathworld.wolfram.com/CompleteGraph.html&quot;&gt;&lt;strong&gt;A Complete graph&lt;/strong&gt;&lt;/a&gt;
+&lt;script type=&quot;math/tex&quot;&gt;K_n&lt;/script&gt; on &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; vertices is a simple (no-loops, no-multiple loops) with an
+edge between every pair of vertices.&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;\# (E) = n \cdot C_2&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;C_2&lt;/script&gt; is the binomial coefficient&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-6b99df17.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Empty graphs&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Bipartite graphs and (Complete Bipartite graphs &lt;script type=&quot;math/tex&quot;&gt;K_{n,m}&lt;/script&gt;)&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-1837f36b.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Path &lt;script type=&quot;math/tex&quot;&gt;P_n&lt;/script&gt; is graph whose vertices can be arranged in a sequence.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-1ff903e5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Cycle &lt;script type=&quot;math/tex&quot;&gt;C_6&lt;/script&gt; is a graph whose vertices can be arranged in a cyclic sequence
+such That the ending vertex is connected with the starting vertex forming a
+chain. The cycle &lt;script type=&quot;math/tex&quot;&gt;C_n&lt;/script&gt; is just the path &lt;script type=&quot;math/tex&quot;&gt;P_n&lt;/script&gt; after adding the edge that
+connects the tail and the head of the path.&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-355a9076.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Triangle = &lt;script type=&quot;math/tex&quot;&gt;C_3&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;K_3&lt;/script&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=BEyuUXQs5ko&quot;&gt;05. Connected and Regular Graphs&lt;/a&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;a href=&quot;http://mathworld.wolfram.com/ConnectedGraph.html&quot;&gt;A &lt;strong&gt;connected graph&lt;/strong&gt;&lt;/a&gt; is a
+graph which is connected in the sense of a topological space, i.e., there is
+a path from any point to any other point in the graph.&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-0f87473b.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;A &lt;strong&gt;disconnected graph&lt;/strong&gt; is a graph G is said to be disconnected if it is not
+connected, i.e., if there exist two nodes in G such that no path in G has
+those nodes as endpoints.&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-cee5a515.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;(Open) neighbourhood&lt;/strong&gt; of v in G is&lt;/p&gt;
+
+        &lt;script type=&quot;math/tex; mode=display&quot;&gt;N_{G}(v) = \{u | uv \in E(G) \}&lt;/script&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;(Closed) neighbourhood&lt;/strong&gt; of v in G is&lt;/p&gt;
+
+        &lt;script type=&quot;math/tex; mode=display&quot;&gt;N_{G}[v] = N_{G}(v) \cup \{ v \}&lt;/script&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;The &lt;strong&gt;degree of a vertex&lt;/strong&gt; &lt;script type=&quot;math/tex&quot;&gt;v \in V(G)&lt;/script&gt; in terms of neighbourhoods is&lt;/p&gt;
+
+        &lt;script type=&quot;math/tex; mode=display&quot;&gt;\deg_{G} (v) = \# N_{G}(v)&lt;/script&gt;
+      &lt;/li&gt;
+      &lt;li&gt;A graph is &lt;strong&gt;r-regular&lt;/strong&gt; if &lt;script type=&quot;math/tex&quot;&gt;\deg_{G}(v) = r&lt;/script&gt; for all &lt;script type=&quot;math/tex&quot;&gt;v \in V(G)&lt;/script&gt;&lt;/li&gt;
+      &lt;li&gt;The &lt;strong&gt;minimum degree&lt;/strong&gt; is denoted by &lt;script type=&quot;math/tex&quot;&gt;\delta(G)&lt;/script&gt;&lt;/li&gt;
+      &lt;li&gt;The &lt;strong&gt;minimum degree&lt;/strong&gt; is denoted by &lt;script type=&quot;math/tex&quot;&gt;\Delta(G)&lt;/script&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-graph-theory-95d01eee.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=YoRhmz_OSBY&quot;&gt;06. Sum of Degrees is ALWAYS Twice the Number of Edges&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LUDNz2bIjWI&quot;&gt;07. Adjacency Matrix and Incidence Matrix&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Qe9e-XcEvlo&quot;&gt;08a. Basic Problem Set (part 1/2)&lt;/a&gt;&lt;/li&gt;
@@ -6787,16 +6868,15 @@ This is also known as “Leibniz’s Law”… in &lt;a href=&quot;https://ncatl
    <link href="http://jonaprieto.github.io/latex/2018/01/30/jekyll-atom-tricks/"/>
    <updated>2018-01-30T00:00:00+01:00</updated>
    <id>http://jonaprieto.github.io/latex/2018/01/30/jekyll-atom-tricks</id>
-   <content type="html">&lt;p&gt;To work with this blog by writing the post in Atom, I found the following
-surprisingly useful:&lt;/p&gt;
+   <content type="html">&lt;p&gt;To work with this blog by writing the posts using Atom, I found the following tool
+surprisingly useful (it allows you to copy-paste your screenshoots, drag-and-drop):&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://atom.io/packages/markdown-image-assistant&quot;&gt;atom-markdown-image-assistant&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;I modified the sources to work for my purposes, maybe it can help you too.&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CompositeDisposable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'atom'&lt;/span&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CompositeDisposable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Directory&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;File&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'atom'&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;fs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'fs'&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'path'&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;crypto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;crypto&quot;&lt;/span&gt;
@@ -6938,9 +7018,7 @@ surprisingly useful:&lt;/p&gt;
               &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
   &lt;span class=&quot;nx&quot;&gt;deactivate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;subscriptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dispose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
+      &lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;subscriptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dispose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 </content>
  </entry>
  

@@ -126,7 +126,7 @@
 <div class="post">
   <!--  -->
 
-  <h1 class="post-title">Graphs <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/974f7bf9e0affb4d410f1256a62ace423590488d/_posts/2018-06-27-learning-graph-theory.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/974f7bf9e0affb4d410f1256a62ace423590488d/_posts/2018-06-27-learning-graph-theory.md" download target="_blank"> Download </a> </small></h1>
+  <h1 class="post-title">Graphs <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/67e76a1411bf0c2dfea08144e9bd19a3df6477e3/_posts/2018-06-27-learning-graph-theory.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/67e76a1411bf0c2dfea08144e9bd19a3df6477e3/_posts/2018-06-27-learning-graph-theory.md" download target="_blank"> Download </a> </small></h1>
 
   
   <p>Learning graphs on youtube.</p>
@@ -189,9 +189,90 @@ of the cartesian product <script type="math/tex">V \times V</script>.</p>
       <li><strong>Undirected graphs</strong> : edges without any direction</li>
     </ul>
   </li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=lLOvB1qFE1E">03. Examples of Graphs</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=71XbdtoG7P8">04. Families of Graphs</a></li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=BEyuUXQs5ko">05. Connected and Regular Graphs</a></li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=lLOvB1qFE1E">03. Examples of Graphs</a></p>
+
+    <p><script type="math/tex">uv</script> stands for <script type="math/tex">\{u, v\} \in E</script>, in a graph <script type="math/tex">G = (V(G), E(E))</script>.</p>
+  </li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=71XbdtoG7P8">04. Families of Graphs</a></p>
+
+    <ul>
+      <li>
+        <p><a href="http://mathworld.wolfram.com/CompleteGraph.html"><strong>A Complete graph</strong></a>
+<script type="math/tex">K_n</script> on <script type="math/tex">n</script> vertices is a simple (no-loops, no-multiple loops) with an
+edge between every pair of vertices.</p>
+
+        <ul>
+          <li><script type="math/tex">\# (E) = n \cdot C_2</script>, <script type="math/tex">C_2</script> is the binomial coefficient</li>
+        </ul>
+
+        <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-6b99df17.png" alt="" /></p>
+      </li>
+      <li>Empty graphs</li>
+      <li>
+        <p>Bipartite graphs and (Complete Bipartite graphs <script type="math/tex">K_{n,m}</script>)</p>
+
+        <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-1837f36b.png" alt="" /></p>
+      </li>
+      <li>Path <script type="math/tex">P_n</script> is graph whose vertices can be arranged in a sequence.</li>
+    </ul>
+
+    <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-1ff903e5.png" alt="" /></p>
+
+    <ul>
+      <li>Cycle <script type="math/tex">C_6</script> is a graph whose vertices can be arranged in a cyclic sequence
+such That the ending vertex is connected with the starting vertex forming a
+chain. The cycle <script type="math/tex">C_n</script> is just the path <script type="math/tex">P_n</script> after adding the edge that
+connects the tail and the head of the path.</li>
+    </ul>
+
+    <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-355a9076.png" alt="" /></p>
+
+    <ul>
+      <li>Triangle = <script type="math/tex">C_3</script> and <script type="math/tex">K_3</script></li>
+    </ul>
+  </li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=BEyuUXQs5ko">05. Connected and Regular Graphs</a></p>
+
+    <ul>
+      <li>
+        <p><a href="http://mathworld.wolfram.com/ConnectedGraph.html">A <strong>connected graph</strong></a> is a
+graph which is connected in the sense of a topological space, i.e., there is
+a path from any point to any other point in the graph.</p>
+
+        <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-0f87473b.png" alt="" /></p>
+      </li>
+      <li>
+        <p>A <strong>disconnected graph</strong> is a graph G is said to be disconnected if it is not
+connected, i.e., if there exist two nodes in G such that no path in G has
+those nodes as endpoints.</p>
+
+        <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-cee5a515.png" alt="" /></p>
+      </li>
+      <li>
+        <p><strong>(Open) neighbourhood</strong> of v in G is</p>
+
+        <script type="math/tex; mode=display">N_{G}(v) = \{u | uv \in E(G) \}</script>
+      </li>
+      <li>
+        <p><strong>(Closed) neighbourhood</strong> of v in G is</p>
+
+        <script type="math/tex; mode=display">N_{G}[v] = N_{G}(v) \cup \{ v \}</script>
+      </li>
+      <li>
+        <p>The <strong>degree of a vertex</strong> <script type="math/tex">v \in V(G)</script> in terms of neighbourhoods is</p>
+
+        <script type="math/tex; mode=display">\deg_{G} (v) = \# N_{G}(v)</script>
+      </li>
+      <li>A graph is <strong>r-regular</strong> if <script type="math/tex">\deg_{G}(v) = r</script> for all <script type="math/tex">v \in V(G)</script></li>
+      <li>The <strong>minimum degree</strong> is denoted by <script type="math/tex">\delta(G)</script></li>
+      <li>The <strong>minimum degree</strong> is denoted by <script type="math/tex">\Delta(G)</script></li>
+    </ul>
+
+    <p><img src="/assets/png-images/2018-06-27-learning-graph-theory-95d01eee.png" alt="" /></p>
+  </li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=YoRhmz_OSBY">06. Sum of Degrees is ALWAYS Twice the Number of Edges</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=LUDNz2bIjWI">07. Adjacency Matrix and Incidence Matrix</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=Qe9e-XcEvlo">08a. Basic Problem Set (part 1/2)</a></li>
