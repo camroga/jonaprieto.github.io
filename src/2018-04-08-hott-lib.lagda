@@ -482,7 +482,7 @@ ap-comp f g (refl a) = refl (refl (g (f a)))
 
 ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C} (p : a == b)
          → ap (λ _ → c) p == refl c
-ap-const {c = c} (refl a) = refl (refl c)
+ap-const {c = c} (refl a) = {!   !}
 
 ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
      → (f : A → B) → (p : a == b) → (q : b == c)
