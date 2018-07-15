@@ -296,9 +296,6 @@ infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
 
-[Here]({% link 2018-07-05-pathovers %}) we discuss more about Pathovers and
-equivalent types.
-
 ## Equational Reasoning
 
 Equational reasoning is a way to write readable chains of equalities.
