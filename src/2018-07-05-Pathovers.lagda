@@ -9,14 +9,21 @@ agda: true
 
 (Working in progress with Marc Bezem)
 
-We want to formilise in HoTT the intuition behind a correspondance between the
-concept of *PathOver* and its respective *total space*. The term PathOver was
-briefly mentioned in {% cite hottbook %} and later defined in {% cite Licata2015
-%}. It is extensivily used in {%cite hott-in:agda %}.
+We want to formalise in HoTT the intuition behind a correspondance between the
+concept of *path-over* and its respective *total space*.
+
+% - That the pathover has its own (certain paths in the total space). --TODO
+
+The term PathOver was briefly mentioned in {% cite hottbook %} and they were
+later define in as dependent path in {% cite Licata2015
+%}. The concept is extensivily used in {%cite hott-in:agda %}.
+
+% (in words) about the transport and the notation in the book -- TODO
+% which is shorthand for ... using transport function for the definition.
 
 ![path](/assets/ipe-images/pathovers-total-space.png)
 
-Let's review first an equility type that is closely related with these PathOvers.
+Let's review first an equality type that is closely related with these PathOvers.
 (See also {% cite Licata2015 %} for some extra comments).
 
 {: .foldable}
@@ -35,8 +42,8 @@ Type ℓ = Set ℓ
 ## Homogeneous equality
 
 The *homogeneous equality* is a type `Path` that relates two elements `a₀` and
-`a₁` whose types are *definitionally/judgementally. We denote this type as `Path
-{A} a₀ a₁`. The curly braces in Agda stands for *inplicit arguments*.
+`a₁` whose types are *definitionally/judgementally* equal. We denote this type as `Path
+{A} a₀ a₁`. The curly braces in Agda stand for *implicit arguments*.
 We also use the symbol (`_==_`) to denote this type.
 
 \begin{code}
@@ -49,7 +56,6 @@ Path = _==_
 
 ## Heterogeneous equality
 
-
 > In {%cite McBride2004 %} the author introduced a *heterogeneous equality*, which is an equality type
 > `a:A= b:B` that relates two elements `a:A` and `b:B` which may have two judgementally
 > distinct types, though the reflexivity constructor applies only when both the
@@ -59,14 +65,14 @@ Path = _==_
 > homogeneous equality type *satisfying uniqueness of identity proofs*, which
 > is undesirable **in homotopy type theory, because not all types should be sets**.
 
-> This heterogeneous equality relates two elements of two different types along a
-> specific equality α between the types. {% cite Licata2015 %}.
-
-
 \begin{code}
 data HEq₁ {ℓ} (A : Type ℓ) : (B : Type ℓ) → (α : A == B) (a : A) (b : B) → Type ℓ where
   idp : ∀ {a : A} → HEq₁ A A idp a a
 \end{code}
+
+> This heterogeneous equality relates two elements of two different types along a
+> specific equality α between the types. {% cite Licata2015 %}.
+
 
 We adopt the same name `idp` for the reflexivity constructor of the `Path` type
 for the heterogeneous equality. This name is convenient because we want to
@@ -953,18 +959,32 @@ HEq = HEq₁
 
 ## Path over a path
 
-The PathOver is the dependent version of a *path*, what it means that the path
-is between two endpoints from maybe different types. This is of course what we
-saw in the definition of the heterogeneous equality. The difference is that
-we simplify `HEq`  definition with `PathOver` by factorizing the type family
-that is involved in the paths.
+Given a type family $$C: A → Type$$ and a path $$α : a₁ = a₂$$, a *pathover* is a
+path connecting $$c₁ : C a₁$$ with  $$c₂ : C a₂$$  lying over $$α$$.
+types.
 
-We define `PathOver₁` as the inductive family with only one constructor,
-the reflexivity over the reflexivity on the base space `A`. To eliminate this
-type, we can use path-over induction. In Agda, we just do pattern matching along
-the path on the base `A`. Additionaly, we can define this notion of PathOvers in at least
-four different ways. Let us see these definitions, all equivalent. To refer to a pathover,
-we adopt the notation `c₁ == c₂ [ C ↓ α ]` from the HoTT-Agda library.
+% -- TODO
+The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
+them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
+
+% --TODO
+The geometry intuition has been formalised by {% cite Licata2015 %}
+in five different ways as follows.
+
+% The PathOver is the dependent version of a *path*, what it means that the path
+% is between two endpoints from maybe different types. This is of course what we
+% saw in the definition of the heterogeneous equality. The difference is that
+% we simplify `HEq`  definition with `PathOver` by factorizing the type family
+% that is involved in the paths.
+%
+% We define `PathOver₁` as the inductive family with only one constructor,
+% the reflexivity over the reflexivity on the base space `A`. To eliminate this
+% type, we can use path-over induction. In Agda, we just do pattern matching along
+% the path on the base `A`. Additionaly, we can define this notion of PathOvers in at least
+% four different ways. Let us see these definitions, all equivalent. To refer to a pathover,
+% we adopt the notation `c₁ == c₂ [ C ↓ α ]` from the HoTT-Agda library.
+
+A more direct formalisation is the type
 
 - \begin{code}
 data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
@@ -1311,7 +1331,6 @@ apdo : ∀ {ℓ} {A : Type ℓ} {B : A → Type ℓ} (f : (a : A) → B a)
 apdo f idp = idp
 \end{code}
 
-
 ## Extra
 
 The previous fact can also seen as a case of the following lemma.
@@ -1362,3 +1381,8 @@ module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
   -- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
   -- lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})
 \end{code}
+
+
+## References
+https://github.com/HoTT/HoTT-Agda/
+https://mroman42.github.io/ctlc/agda-hott/Total.html

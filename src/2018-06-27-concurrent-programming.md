@@ -107,3 +107,8 @@ Probably to star watching from the video 5-1.
 - [ ] [7-2 Parallel sudoku solver, strategies, overview of Haskell parallelism.](https://www.youtube.com/watch?v=ynEhy_zAL_0)
 - [ ] [8-1 Concurrent Haskell, MVars](https://www.youtube.com/watch?v=Y5UiylhFzhI)
 - [ ] [8-2 Software Transactional Memory](https://www.youtube.com/watch?v=GIimRbcOvM8)
+
+
+
+- http://www.cs.nott.ac.uk/~pszbsl/G52CON/
+- http://lsi.ugr.es/jmantas/pdp/teoria/teoria.php

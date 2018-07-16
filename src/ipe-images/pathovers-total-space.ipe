@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180323145431" modified="D:20180713162013"/>
+<info created="D:20180323145431" modified="D:20180716120320"/>
 <preamble>\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}</preamble>
@@ -323,9 +323,9 @@ h
 </path>
 <text matrix="1 0 0 1 -29.5554 -18.9735" transformations="translations" pos="406 598" stroke="black" type="label" width="10.53" height="9.803" depth="0" valign="baseline" size="Large" style="math">A</text>
 <use matrix="1 0 0 1 -16 -32" name="mark/disk(sx)" pos="244 626" size="normal" stroke="black"/>
-<use matrix="1 0 0 1 -14 -29.7546" name="mark/disk(sx)" pos="342 654" size="normal" stroke="black"/>
+<use matrix="1 0 0 1 -6 -33.7546" name="mark/disk(sx)" pos="342 654" size="normal" stroke="black"/>
 <text matrix="1 0 0 1 -6.55983 -7.40791" transformations="translations" pos="232 592" stroke="black" type="label" width="9.736" height="4.294" depth="1.49" valign="baseline" style="math">a_1</text>
-<text matrix="1 0 0 1 -7.94138 0" transformations="translations" pos="340 620" stroke="black" type="label" width="9.736" height="4.294" depth="1.49" valign="baseline" style="math">a_2</text>
+<text matrix="1 0 0 1 4.05862 -4" transformations="translations" pos="340 620" stroke="black" type="label" width="9.736" height="4.294" depth="1.49" valign="baseline" style="math">a_2</text>
 <path stroke="black" arrow="normal/tiny">
 229.247 595.459 m
 242.671 608.882
@@ -333,7 +333,7 @@ h
 302.191 586.003
 318.95 602.762
 317.512 620.104
-325.783 623.414 c
+336 620 c
 </path>
 <text matrix="1 0 0 1 -4.79796 -13.41" transformations="translations" pos="288 604" stroke="black" type="label" width="6.41" height="4.289" depth="0" valign="baseline" style="math">\alpha</text>
 <path stroke="black">
@@ -361,6 +361,7 @@ h
 </path>
 <text transformations="translations" pos="372.553 685.243" stroke="black" type="label" width="40.003" height="6.812" depth="1.49" valign="baseline" style="math">\Sigma_{a : A}~C~a</text>
 <text matrix="1 0 0 1 -1.28716 -2.89867" transformations="translations" pos="264.508 690.67" stroke="black" type="label" width="41.235" height="6.775" depth="1.93" valign="baseline" style="math">\mathsf{pair^{=}}~\alpha~\gamma</text>
-<text matrix="1 0 0 1 -17.2117 -4.36501" transformations="translations" pos="351.965 655.537" stroke="black" type="label" width="110.575" height="7.473" depth="2.49" valign="baseline" style="math">\gamma :\equiv ~(c_1 = c_2~[~C~\downarrow~\alpha~])</text>
+<text matrix="1 0 0 1 -17.2117 -4.36501" transformations="translations" pos="351.965 655.537" stroke="black" type="label" width="102.826" height="7.473" depth="2.49" valign="baseline" style="math">\gamma : ~(c_1 = c_2~[~C~\downarrow~\alpha~])</text>
+<use matrix="1 0 0 1 -6 -33.7546" name="mark/disk(sx)" pos="342 654" size="normal" stroke="black"/>
 </page>
 </ipe>
