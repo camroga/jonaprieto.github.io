@@ -9,6 +9,8 @@ agda: true
 
 (Working in progress with Marc Bezem)
 
+-- TODO agregrar las referencias y borrar lo que no se usa
+
 We want to formalise in HoTT the intuition behind a correspondance between the
 concept of *path-over* and its respective *total space*.
 

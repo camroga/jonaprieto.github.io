@@ -147,20 +147,29 @@ push-sources :
 .phony : push
 push :
 	- make
-	- make push-sources
+	- @git checkout sources
+	- @echo "==================================================================="
+	-	@echo "======================= Pushing on SOURCES ========================"
+	-	@echo "==================================================================="
+	- @git add .
+	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
 	- @echo "==================================================================="
 	-	@echo "========================= Jekyll Building ========================="
 	-	@echo "==================================================================="
 	- @jekyll build
+	- @jekyll algolia
+	- @git add .
+	- @git commit -am "$(MSG)"
+	- @git push origin sources
 	- @if [[ -d "_site/.git" ]]; then \
 			echo "===================================================================" &&\
 	    echo "================ STATICS FILES: Pushing on MASTER =================" &&\
 	    echo "===================================================================" &&\
-	    cd _site && \
+	    cd _site && git checkout master \
 			git add --all && \
 			git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
 			git push origin master;\
-			cd .. && jekyll algolia; \
+			cd .. \
 		else \
 			echo "[!] run first:\n\t $$ make init-master"; \
 		fi
