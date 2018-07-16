@@ -1,0 +1,37 @@
+@media print {
+    body {
+    	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    	font-size: 1em;
+    	color: #333333;
+    	margin-top: 2cm;
+    	margin-right: auto;
+    	margin-bottom: 1.5cm;
+    	margin-left: 10px;
+    }
+    .toc {
+       display:none;
+    }
+    pre { display: none;}
+
+    @page {
+      margin: 2cm;
+    }
+
+    @page :first {
+      margin: 1cm 2cm;
+    }
+
+    img {
+    max-width: 100% !important;
+    }
+    @page :left {
+      margin: 1cm 3cm 1cm 2cm;
+    }
+
+    @page :right {
+      margin: 1cm 2cm 2cm 3cm;
+    }
+}
+
+
+// https://getflywheel.com/layout/how-to-style-your-website-for-print-with-css/

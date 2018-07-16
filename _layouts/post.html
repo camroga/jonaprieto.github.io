@@ -5,9 +5,11 @@ comments: true
 {% if page.agda %}
   {% assign filepath = page.path | replace: '_posts', 'src' | replace: '.md', '.lagda' %}
 {% else %}
-  {% assign filepath = page.path %}
+  {% assign filepath = page.path | replace: '_posts', 'src' %}
 {% endif %}
-{% assign githubpath = site.github.repository_url | append: "/blob/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
+{% assign viewsource = site.github.repository_url | append: "/blob/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
+{% assign editsource = site.github.repository_url | append: "/edit/sources/" | append: filepath %}
+{% assign history = site.github.repository_url | append: "/commits/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 {% assign raw = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 
 <div class="post">
@@ -26,8 +28,7 @@ comments: true
   {% else %}
   No git information available
   {% endif %}
-
-  <h1 class="post-title">{{ page.title }} <small class="view-source"><a href="{{githubpath}}" target="_blank">View source</a> | <a href="{{raw}}" download target="_blank"> Download </a> </small></h1>
+  <h1 class="post-title">{{ page.title }} <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a> | <a href="{{viewsource}}" target="_blank">View source </a> | <a href="{{editsource}}" target="_blank"> Edit </a> | <a href="{{history}}" target="_blank"> History</a></small></h1>
 
   {% if page.toc %}
   <div class="toc">
