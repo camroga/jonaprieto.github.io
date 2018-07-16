@@ -144,15 +144,15 @@ push-sources :
 		git remote add origin http://github.com/jonaprieto/jonaprieto.github.io.git && \
 		git pull origin master
 
-.phony : push
-push :
-	- @echo "==================================================================="
-	-	@echo "======================= Pushing on SOURCES ========================"
-	-	@echo "==================================================================="
-	- make
+.phony : commit
+commit :
+	- echo "==================================================================="
+	-	echo "======================= Preparing to Publish ======================"
+	-	echo "==================================================================="
+	- @make
 	- @git checkout sources
 	- @git add .
-	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
+	- $(eval MSG := $(shell bash -c 'read -p "Message: " pwd; echo $$pwd'))
 	- @echo "==================================================================="
 	-	@echo "========================= Jekyll Building ========================="
 	-	@echo "==================================================================="
@@ -165,7 +165,7 @@ push :
 			echo "===================================================================" &&\
 	    echo "================ STATICS FILES: Pushing on MASTER =================" &&\
 	    echo "===================================================================" &&\
-	    cd _site && git checkout master \
+	    cd _site && git checkout master && \
 			git add --all && \
 			git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
 			git push origin master;\
