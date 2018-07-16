@@ -62,8 +62,6 @@
       
     
       
-    
-      
         
       
     
@@ -82,6 +80,12 @@
       
         
           <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
         
       
     
@@ -124,7 +128,19 @@
 
 
 <div class="post">
-  <!--  -->
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+3814</span>/<span class="substractions">-2568</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-04-08-hott-exercises.lagda"> View source and Download links to access the latest version of the post</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-04-08-hott-exercises.lagda>435924a </a> on  12 Jul 2018
+    </div>
+    </div>
+  </div>
+  
 
   <h1 class="post-title">HoTT exercises <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-04-08-hott-exercises.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-04-08-hott-exercises.lagda" download target="_blank"> Download </a> </small></h1>
 
@@ -255,7 +271,7 @@ type-checked as a whole using Agda v2.5.3.</p>
     <a id="2206" class="Symbol">→</a> <a id="2208" href="/type-theory/2018/04/08/hott-exercises/#2141" class="Bound">A</a> <a id="2210" class="Symbol">→</a> <a id="2212" href="/type-theory/2018/04/08/hott-exercises/#2163" class="Bound">C</a>
 <a id="2214" href="/type-theory/2018/04/08/hott-exercises/#2214" class="Bound">g</a> <a id="2216" href="/type-theory/2018/04/08/hott-exercises/#2124" class="Function Operator">∘</a> <a id="2218" href="/type-theory/2018/04/08/hott-exercises/#2218" class="Bound">f</a> <a id="2220" class="Symbol">=</a> <a id="2222" class="Symbol">λ</a> <a id="2224" href="/type-theory/2018/04/08/hott-exercises/#2224" class="Bound">x</a> <a id="2226" class="Symbol">→</a> <a id="2228" href="/type-theory/2018/04/08/hott-exercises/#2214" class="Bound">g</a> <a id="2230" class="Symbol">(</a><a id="2231" href="/type-theory/2018/04/08/hott-exercises/#2218" class="Bound">f</a> <a id="2233" href="/type-theory/2018/04/08/hott-exercises/#2224" class="Bound">x</a><a id="2234" class="Symbol">)</a></pre>
 
-<p>Then, the <code class="highlighter-rouge">∘-assoc</code> shows us that associativity of this composition holds.</p>
+<p>Then, the <code>∘-assoc</code> shows us that associativity of this composition holds.</p>
 
 <pre class="Agda"><a id="∘-assoc"></a><a id="2337" href="/type-theory/2018/04/08/hott-exercises/#2337" class="Function">∘-assoc</a> <a id="2345" class="Symbol">:</a> <a id="2347" class="Symbol">∀</a> <a id="2349" class="Symbol">{</a><a id="2350" href="/type-theory/2018/04/08/hott-exercises/#2350" class="Bound">i</a> <a id="2352" href="/type-theory/2018/04/08/hott-exercises/#2352" class="Bound">j</a> <a id="2354" href="/type-theory/2018/04/08/hott-exercises/#2354" class="Bound">k</a> <a id="2356" href="/type-theory/2018/04/08/hott-exercises/#2356" class="Bound">l</a><a id="2357" class="Symbol">}</a> <a id="2359" class="Symbol">{</a><a id="2360" href="/type-theory/2018/04/08/hott-exercises/#2360" class="Bound">A</a> <a id="2362" class="Symbol">:</a> <a id="2364" class="PrimitiveType">Set</a> <a id="2368" href="/type-theory/2018/04/08/hott-exercises/#2350" class="Bound">i</a><a id="2369" class="Symbol">}{</a><a id="2371" href="/type-theory/2018/04/08/hott-exercises/#2371" class="Bound">B</a> <a id="2373" class="Symbol">:</a> <a id="2375" class="PrimitiveType">Set</a> <a id="2379" href="/type-theory/2018/04/08/hott-exercises/#2352" class="Bound">j</a><a id="2380" class="Symbol">}{</a><a id="2382" href="/type-theory/2018/04/08/hott-exercises/#2382" class="Bound">C</a> <a id="2384" class="Symbol">:</a> <a id="2386" class="PrimitiveType">Set</a> <a id="2390" href="/type-theory/2018/04/08/hott-exercises/#2354" class="Bound">k</a><a id="2391" class="Symbol">}{</a><a id="2393" href="/type-theory/2018/04/08/hott-exercises/#2393" class="Bound">D</a> <a id="2395" class="Symbol">:</a> <a id="2397" class="PrimitiveType">Set</a> <a id="2401" href="/type-theory/2018/04/08/hott-exercises/#2356" class="Bound">l</a><a id="2402" class="Symbol">}</a>
         <a id="2412" class="Symbol">→</a> <a id="2414" class="Symbol">(</a><a id="2415" href="/type-theory/2018/04/08/hott-exercises/#2415" class="Bound">h</a> <a id="2417" class="Symbol">:</a> <a id="2419" href="/type-theory/2018/04/08/hott-exercises/#2382" class="Bound">C</a> <a id="2421" class="Symbol">→</a> <a id="2423" href="/type-theory/2018/04/08/hott-exercises/#2393" class="Bound">D</a><a id="2424" class="Symbol">)(</a><a id="2426" href="/type-theory/2018/04/08/hott-exercises/#2426" class="Bound">g</a> <a id="2428" class="Symbol">:</a> <a id="2430" href="/type-theory/2018/04/08/hott-exercises/#2371" class="Bound">B</a> <a id="2432" class="Symbol">→</a> <a id="2434" href="/type-theory/2018/04/08/hott-exercises/#2382" class="Bound">C</a><a id="2435" class="Symbol">)(</a><a id="2437" href="/type-theory/2018/04/08/hott-exercises/#2437" class="Bound">f</a> <a id="2439" class="Symbol">:</a> <a id="2441" href="/type-theory/2018/04/08/hott-exercises/#2360" class="Bound">A</a> <a id="2443" class="Symbol">→</a> <a id="2445" href="/type-theory/2018/04/08/hott-exercises/#2371" class="Bound">B</a><a id="2446" class="Symbol">)</a>
@@ -370,7 +386,7 @@ that we provide.</p>
 
 <p>On the other hand, the product type is just a particular case of the sigma type
 when the codomain is not dependent, as we can see next by omitting the argument
-in <code class="highlighter-rouge">(λ _ → B)</code>.</p>
+in <code>(λ _ → B)</code>.</p>
 
 <pre class="Agda"><a id="5787" class="Keyword">module</a> <a id="×-Def₁"></a><a id="5794" href="/type-theory/2018/04/08/hott-exercises/#5794" class="Module">×-Def₁</a> <a id="5801" class="Keyword">where</a>
   <a id="5809" class="Keyword">open</a> <a id="5814" href="/type-theory/2018/04/08/hott-exercises/#4918" class="Module">Σ-Def₁</a> <a id="5821" class="Keyword">public</a>
@@ -413,7 +429,7 @@ every element of <script type="math/tex">A\times B</script> is equal to a pair.<
   $$
 </p>
 
-<p>Product type definition using <code class="highlighter-rouge">data</code>:</p>
+<p>Product type definition using <code>data</code>:</p>
 
 <pre class="Agda"><a id="6956" class="Comment">-- this would be trivial in agda due to definitional η for records</a>
 <a id="7023" class="Comment">-- so Capriotti defined a product type without η:</a>
@@ -482,7 +498,7 @@ $$\Sigma$$-types, i.e. show induction and verify the definitional equality
 is valid.
 </p>
 
-<p>Σ-type definition using <code class="highlighter-rouge">data</code>:</p>
+<p>Σ-type definition using <code>data</code>:</p>
 
 <pre class="Agda"><a id="8954" class="Keyword">module</a> <a id="Σ-Def₂"></a><a id="8961" href="/type-theory/2018/04/08/hott-exercises/#8961" class="Module">Σ-Def₂</a> <a id="8968" class="Keyword">where</a>
 
@@ -576,8 +592,8 @@ for natural numbers. (See more details about these functions in
   <a id="11410" href="/type-theory/2018/04/08/hott-exercises/#11368" class="Function">ite</a> <a id="11414" href="/type-theory/2018/04/08/hott-exercises/#11414" class="Bound">C</a> <a id="11416" href="/type-theory/2018/04/08/hott-exercises/#11416" class="Bound">c₀</a> <a id="11419" href="/type-theory/2018/04/08/hott-exercises/#11419" class="Bound">cₛ</a> <a id="11422" href="/type-theory/2018/04/08/hott-exercises/#10812" class="InductiveConstructor">zero</a>    <a id="11430" class="Symbol">=</a> <a id="11432" href="/type-theory/2018/04/08/hott-exercises/#11416" class="Bound">c₀</a>
   <a id="11437" href="/type-theory/2018/04/08/hott-exercises/#11368" class="Function">ite</a> <a id="11441" href="/type-theory/2018/04/08/hott-exercises/#11441" class="Bound">C</a> <a id="11443" href="/type-theory/2018/04/08/hott-exercises/#11443" class="Bound">c₀</a> <a id="11446" href="/type-theory/2018/04/08/hott-exercises/#11446" class="Bound">cₛ</a> <a id="11449" class="Symbol">(</a><a id="11450" href="/type-theory/2018/04/08/hott-exercises/#10825" class="InductiveConstructor">suc</a> <a id="11454" href="/type-theory/2018/04/08/hott-exercises/#11454" class="Bound">n</a><a id="11455" class="Symbol">)</a> <a id="11457" class="Symbol">=</a> <a id="11459" href="/type-theory/2018/04/08/hott-exercises/#11446" class="Bound">cₛ</a> <a id="11462" class="Symbol">(</a><a id="11463" href="/type-theory/2018/04/08/hott-exercises/#11368" class="Function">ite</a> <a id="11467" href="/type-theory/2018/04/08/hott-exercises/#11441" class="Bound">C</a> <a id="11469" href="/type-theory/2018/04/08/hott-exercises/#11443" class="Bound">c₀</a> <a id="11472" href="/type-theory/2018/04/08/hott-exercises/#11446" class="Bound">cₛ</a> <a id="11475" href="/type-theory/2018/04/08/hott-exercises/#11454" class="Bound">n</a><a id="11476" class="Symbol">)</a></pre>
 
-<p>Then, we now can define the recursor using this <code class="highlighter-rouge">ite</code> by iterating over the type
-<code class="highlighter-rouge">ℕ × C</code> (<em>reloading recursion</em>?).</p>
+<p>Then, we now can define the recursor using this <code>ite</code> by iterating over the type
+<code>ℕ × C</code> (<em>reloading recursion</em>?).</p>
 
 <pre class="Agda"><a id="11620" class="Comment">-- recursor</a>
   <a id="11634" class="Keyword">open</a> <a id="11639" href="/type-theory/2018/04/08/hott-exercises/#7080" class="Module">×-Def₂</a> <a id="11646" class="Keyword">using</a> <a id="11652" class="Symbol">(</a><a id="11653" href="/type-theory/2018/04/08/hott-exercises/#7101" class="Datatype Operator">_×_</a><a id="11656" class="Symbol">;</a> <a id="11658" href="/type-theory/2018/04/08/hott-exercises/#7180" class="Function">proj₁</a><a id="11663" class="Symbol">;</a> <a id="11665" href="/type-theory/2018/04/08/hott-exercises/#7261" class="Function">proj₂</a><a id="11670" class="Symbol">;</a> <a id="11672" href="/type-theory/2018/04/08/hott-exercises/#7157" class="InductiveConstructor Operator">_,_</a><a id="11675" class="Symbol">)</a>
@@ -590,7 +606,7 @@ for natural numbers. (See more details about these functions in
            <a id="11873" href="/type-theory/2018/04/08/hott-exercises/#11746" class="Bound">n</a><a id="11874" class="Symbol">)</a></pre>
 
 <p>Now, we need to establish the propositional equality between these two
-definitions of recursor, i.e, between <code class="highlighter-rouge">rec</code> and <code class="highlighter-rouge">rec₂</code>. Let’s use
+definitions of recursor, i.e, between <code>rec</code> and <code>rec₂</code>. Let’s use
 induction to prove that.</p>
 
 <pre class="Agda"><a id="12064" class="Keyword">module</a> <a id="ex1-4"></a><a id="12071" href="/type-theory/2018/04/08/hott-exercises/#12071" class="Module">ex1-4</a> <a id="12077" class="Keyword">where</a>
@@ -1417,7 +1433,7 @@ Therefore <script type="math/tex">A</script> is a mere proposition.</li>
     
       <li>
         <h3>
-          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
             Intervals
             
             <small>08 Jul 2018</small>
@@ -1439,8 +1455,8 @@ Therefore <script type="math/tex">A</script> is a mere proposition.</li>
     
       <li>
         <h3>
-          <a href="/type-theory/2018/07/05/pathovers/">
-            PathOvers in HoTT
+          <a href="/type-theory/2018/07/05/pathovers-hott/">
+            PathOvers
             
             <small>05 Jul 2018</small>
             

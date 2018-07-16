@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Path Algebra in HoTT</title>
+  <meta name="description" content="In Univalence we have a different interpretation of type theory. We replace the set-theoretical notion of sets for types and we use the topological space not...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+
+
+</head>
+
+
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    
+
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/HoTT-Timeline/">HoTT Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/categories/">Post by category</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">References</a>
+        
+      
+    
+
+    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.1.zip">Download</a> -->
+    <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+  </nav>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+<div class="post">
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+161</span>/<span class="substractions">-0</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/b7b086742f2980911e87f65d2d7e617c48a5c5f9/src/2018-02-16-path-algebra-hott.lagda"> fixing mistakes with git, working in progress</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/b7b086742f2980911e87f65d2d7e617c48a5c5f9/src/2018-02-16-path-algebra-hott.lagda>b7b0867 </a> on  16 Jul 2018
+    </div>
+    </div>
+  </div>
+  
+
+  <h1 class="post-title">Path Algebra in HoTT <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/b7b086742f2980911e87f65d2d7e617c48a5c5f9/src/2018-02-16-path-algebra-hott.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/b7b086742f2980911e87f65d2d7e617c48a5c5f9/src/2018-02-16-path-algebra-hott.lagda" download target="_blank"> Download </a> </small></h1>
+
+  
+  <p>In Univalence we have a different interpretation of type theory. We replace the
+set-theoretical notion of sets for types and we use the <em>topological space</em>
+notion instead. The judgement <script type="math/tex">a : A</script> for a type <script type="math/tex">A</script> is now the point <script type="math/tex">a</script> in the
+topological space <script type="math/tex">A</script>. We also include the identity type as a primary type.
+Changing the notation of this type about a proof of the equality <script type="math/tex">a = b</script> to a
+<em>path space</em>. This path space comprehends all paths with <script type="math/tex">a</script> as the starting
+point and <script type="math/tex">b</script> as the end point. The inhabitant of this type is called a <em>path</em>.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>To work with the identity type let’s use the type <code>(_≡_)</code> defined in
+the Agda standard library but using the following pragma to make our code
+compatible with HoTT.</p>
+
+<pre class="Agda"><a id="870" class="Symbol">{-#</a> <a id="874" class="Keyword">OPTIONS</a> <a id="882" class="Option">--without-K</a> <a id="894" class="Symbol">#-}</a></pre>
+
+<pre class="Agda"><a id="923" class="Keyword">open</a> <a id="928" class="Keyword">import</a> <a id="935" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="973" class="Keyword">using</a> <a id="979" class="Symbol">(</a><a id="980" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">_≡_</a><a id="983" class="Symbol">;</a> <a id="985" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="989" class="Symbol">)</a></pre>
+
+<h3 id="path-induction">Path Induction</h3>
+
+<p>The elimination principle for the identity type is the path induction.
+It allows us to define an outgoing function from the identity type to
+a dependent type <script type="math/tex">C</script> as we see in the <code>pi</code> definition. It worths to
+mention this principle is also called <code>J</code>.</p>
+
+<pre class="Agda"><a id="pi"></a><a id="1291" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a>
+  <a id="1296" class="Symbol">:</a> <a id="1298" class="Symbol">∀</a> <a id="1300" class="Symbol">{</a><a id="1301" href="/type-theory/2018/02/16/path-algebra-hott/#1301" class="Bound">i</a> <a id="1303" href="/type-theory/2018/02/16/path-algebra-hott/#1303" class="Bound">j</a><a id="1304" class="Symbol">}</a> <a id="1306" class="Symbol">{</a><a id="1307" href="/type-theory/2018/02/16/path-algebra-hott/#1307" class="Bound">A</a> <a id="1309" class="Symbol">:</a> <a id="1311" class="PrimitiveType">Set</a> <a id="1315" href="/type-theory/2018/02/16/path-algebra-hott/#1301" class="Bound">i</a><a id="1316" class="Symbol">}</a>
+  <a id="1320" class="Symbol">→</a> <a id="1322" class="Symbol">(</a><a id="1323" href="/type-theory/2018/02/16/path-algebra-hott/#1323" class="Bound">C</a> <a id="1325" class="Symbol">:</a> <a id="1327" class="Symbol">(</a><a id="1328" href="/type-theory/2018/02/16/path-algebra-hott/#1328" class="Bound">x</a> <a id="1330" href="/type-theory/2018/02/16/path-algebra-hott/#1330" class="Bound">y</a> <a id="1332" class="Symbol">:</a> <a id="1334" href="/type-theory/2018/02/16/path-algebra-hott/#1307" class="Bound">A</a><a id="1335" class="Symbol">)</a> <a id="1337" class="Symbol">→</a> <a id="1339" href="/type-theory/2018/02/16/path-algebra-hott/#1328" class="Bound">x</a> <a id="1341" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1343" href="/type-theory/2018/02/16/path-algebra-hott/#1330" class="Bound">y</a> <a id="1345" class="Symbol">→</a> <a id="1347" class="PrimitiveType">Set</a> <a id="1351" href="/type-theory/2018/02/16/path-algebra-hott/#1303" class="Bound">j</a><a id="1352" class="Symbol">)</a>
+  <a id="1356" class="Symbol">→</a> <a id="1358" class="Symbol">(∀</a> <a id="1361" class="Symbol">(</a><a id="1362" href="/type-theory/2018/02/16/path-algebra-hott/#1362" class="Bound">x</a> <a id="1364" class="Symbol">:</a> <a id="1366" href="/type-theory/2018/02/16/path-algebra-hott/#1307" class="Bound">A</a><a id="1367" class="Symbol">)</a> <a id="1369" class="Symbol">→</a> <a id="1371" href="/type-theory/2018/02/16/path-algebra-hott/#1323" class="Bound">C</a> <a id="1373" href="/type-theory/2018/02/16/path-algebra-hott/#1362" class="Bound">x</a> <a id="1375" href="/type-theory/2018/02/16/path-algebra-hott/#1362" class="Bound">x</a> <a id="1377" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="1381" class="Symbol">)</a>
+  <a id="1385" class="Symbol">→</a> <a id="1387" class="Symbol">∀</a> <a id="1389" class="Symbol">(</a><a id="1390" href="/type-theory/2018/02/16/path-algebra-hott/#1390" class="Bound">x</a> <a id="1392" href="/type-theory/2018/02/16/path-algebra-hott/#1392" class="Bound">y</a> <a id="1394" class="Symbol">:</a> <a id="1396" href="/type-theory/2018/02/16/path-algebra-hott/#1307" class="Bound">A</a><a id="1397" class="Symbol">)</a> <a id="1399" class="Symbol">(</a><a id="1400" href="/type-theory/2018/02/16/path-algebra-hott/#1400" class="Bound">p</a> <a id="1402" class="Symbol">:</a> <a id="1404" href="/type-theory/2018/02/16/path-algebra-hott/#1390" class="Bound">x</a> <a id="1406" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1408" href="/type-theory/2018/02/16/path-algebra-hott/#1392" class="Bound">y</a><a id="1409" class="Symbol">)</a> <a id="1411" class="Symbol">→</a> <a id="1413" href="/type-theory/2018/02/16/path-algebra-hott/#1323" class="Bound">C</a> <a id="1415" href="/type-theory/2018/02/16/path-algebra-hott/#1390" class="Bound">x</a> <a id="1417" href="/type-theory/2018/02/16/path-algebra-hott/#1392" class="Bound">y</a> <a id="1419" href="/type-theory/2018/02/16/path-algebra-hott/#1400" class="Bound">p</a>
+<a id="1421" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="1424" class="Symbol">{</a><a id="1425" href="/type-theory/2018/02/16/path-algebra-hott/#1425" class="Bound">A</a><a id="1426" class="Symbol">}</a> <a id="1428" href="/type-theory/2018/02/16/path-algebra-hott/#1428" class="Bound">C</a> <a id="1430" href="/type-theory/2018/02/16/path-algebra-hott/#1430" class="Bound">c</a> <a id="1432" href="/type-theory/2018/02/16/path-algebra-hott/#1432" class="Bound">x</a> <a id="1434" class="DottedPattern Symbol">.</a><a id="1435" href="/type-theory/2018/02/16/path-algebra-hott/#1432" class="DottedPattern Bound">x</a> <a id="1437" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="1442" class="Symbol">=</a> <a id="1444" href="/type-theory/2018/02/16/path-algebra-hott/#1430" class="Bound">c</a> <a id="1446" href="/type-theory/2018/02/16/path-algebra-hott/#1432" class="Bound">x</a></pre>
+
+<h3 id="path-concatenation">Path Concatenation</h3>
+
+<p>To join two paths when one ends where the other starts, we
+define the <em>concatenation</em> operator between paths denoted by the symbol (<code>_·_</code>).
+Let’s see its picture.</p>
+
+<p><img src="/assets/ipe-images/path-concatenation.png" alt="path" /></p>
+
+<pre class="Agda"><a id="1713" class="Keyword">infixr</a> <a id="1720" class="Number">20</a> <a id="1723" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">_·_</a>
+<a id="_·_"></a><a id="1727" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">_·_</a> <a id="1731" class="Symbol">:</a> <a id="1733" class="Symbol">∀</a> <a id="1735" class="Symbol">{</a><a id="1736" href="/type-theory/2018/02/16/path-algebra-hott/#1736" class="Bound">A</a> <a id="1738" class="Symbol">:</a> <a id="1740" class="PrimitiveType">Set</a><a id="1743" class="Symbol">}</a>
+    <a id="1749" class="Symbol">→</a> <a id="1751" class="Symbol">{</a><a id="1752" href="/type-theory/2018/02/16/path-algebra-hott/#1752" class="Bound">x</a> <a id="1754" href="/type-theory/2018/02/16/path-algebra-hott/#1754" class="Bound">y</a> <a id="1756" href="/type-theory/2018/02/16/path-algebra-hott/#1756" class="Bound">z</a> <a id="1758" class="Symbol">:</a> <a id="1760" href="/type-theory/2018/02/16/path-algebra-hott/#1736" class="Bound">A</a><a id="1761" class="Symbol">}</a> <a id="1763" class="Symbol">→</a> <a id="1765" class="Symbol">(</a><a id="1766" href="/type-theory/2018/02/16/path-algebra-hott/#1766" class="Bound">p</a> <a id="1768" class="Symbol">:</a> <a id="1770" href="/type-theory/2018/02/16/path-algebra-hott/#1752" class="Bound">x</a> <a id="1772" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1774" href="/type-theory/2018/02/16/path-algebra-hott/#1754" class="Bound">y</a><a id="1775" class="Symbol">)</a> <a id="1777" class="Symbol">→</a> <a id="1779" class="Symbol">(</a><a id="1780" href="/type-theory/2018/02/16/path-algebra-hott/#1780" class="Bound">q</a> <a id="1782" class="Symbol">:</a> <a id="1784" href="/type-theory/2018/02/16/path-algebra-hott/#1754" class="Bound">y</a> <a id="1786" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1788" href="/type-theory/2018/02/16/path-algebra-hott/#1756" class="Bound">z</a><a id="1789" class="Symbol">)</a> <a id="1791" class="Symbol">→</a> <a id="1793" href="/type-theory/2018/02/16/path-algebra-hott/#1752" class="Bound">x</a> <a id="1795" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1797" href="/type-theory/2018/02/16/path-algebra-hott/#1756" class="Bound">z</a>
+<a id="1799" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">_·_</a> <a id="1803" class="Symbol">{</a><a id="1804" href="/type-theory/2018/02/16/path-algebra-hott/#1804" class="Bound">A</a><a id="1805" class="Symbol">}</a> <a id="1807" class="Symbol">{</a><a id="1808" href="/type-theory/2018/02/16/path-algebra-hott/#1808" class="Bound">x</a><a id="1809" class="Symbol">}</a> <a id="1811" class="Symbol">{</a><a id="1812" href="/type-theory/2018/02/16/path-algebra-hott/#1812" class="Bound">y</a><a id="1813" class="Symbol">}</a> <a id="1815" class="Symbol">{</a><a id="1816" href="/type-theory/2018/02/16/path-algebra-hott/#1816" class="Bound">z</a><a id="1817" class="Symbol">}</a> <a id="1819" href="/type-theory/2018/02/16/path-algebra-hott/#1819" class="Bound">p</a> <a id="1821" href="/type-theory/2018/02/16/path-algebra-hott/#1821" class="Bound">q</a> <a id="1823" class="Symbol">=</a> <a id="1825" href="/type-theory/2018/02/16/path-algebra-hott/#1933" class="Function">D₁</a> <a id="1828" href="/type-theory/2018/02/16/path-algebra-hott/#1808" class="Bound">x</a> <a id="1830" href="/type-theory/2018/02/16/path-algebra-hott/#1812" class="Bound">y</a> <a id="1832" href="/type-theory/2018/02/16/path-algebra-hott/#1819" class="Bound">p</a> <a id="1834" href="/type-theory/2018/02/16/path-algebra-hott/#1816" class="Bound">z</a> <a id="1836" href="/type-theory/2018/02/16/path-algebra-hott/#1821" class="Bound">q</a>
+  <a id="1840" class="Keyword">where</a>
+    <a id="1850" href="/type-theory/2018/02/16/path-algebra-hott/#1850" class="Function">D₂</a> <a id="1853" class="Symbol">:</a> <a id="1855" class="Symbol">(</a><a id="1856" href="/type-theory/2018/02/16/path-algebra-hott/#1856" class="Bound">x</a> <a id="1858" href="/type-theory/2018/02/16/path-algebra-hott/#1858" class="Bound">z</a> <a id="1860" class="Symbol">:</a> <a id="1862" href="/type-theory/2018/02/16/path-algebra-hott/#1804" class="Bound">A</a><a id="1863" class="Symbol">)</a> <a id="1865" class="Symbol">(</a><a id="1866" href="/type-theory/2018/02/16/path-algebra-hott/#1866" class="Bound">q</a> <a id="1868" class="Symbol">:</a> <a id="1870" href="/type-theory/2018/02/16/path-algebra-hott/#1856" class="Bound">x</a> <a id="1872" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1874" href="/type-theory/2018/02/16/path-algebra-hott/#1858" class="Bound">z</a><a id="1875" class="Symbol">)</a> <a id="1877" class="Symbol">→</a> <a id="1879" href="/type-theory/2018/02/16/path-algebra-hott/#1856" class="Bound">x</a> <a id="1881" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1883" href="/type-theory/2018/02/16/path-algebra-hott/#1858" class="Bound">z</a>
+    <a id="1889" href="/type-theory/2018/02/16/path-algebra-hott/#1850" class="Function">D₂</a> <a id="1892" class="Symbol">=</a> <a id="1894" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="1897" class="Symbol">(λ</a> <a id="1900" href="/type-theory/2018/02/16/path-algebra-hott/#1900" class="Bound">x</a> <a id="1902" href="/type-theory/2018/02/16/path-algebra-hott/#1902" class="Bound">z</a> <a id="1904" href="/type-theory/2018/02/16/path-algebra-hott/#1904" class="Bound">q</a> <a id="1906" class="Symbol">→</a> <a id="1908" href="/type-theory/2018/02/16/path-algebra-hott/#1900" class="Bound">x</a> <a id="1910" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1912" href="/type-theory/2018/02/16/path-algebra-hott/#1902" class="Bound">z</a><a id="1913" class="Symbol">)</a> <a id="1915" class="Symbol">(λ</a> <a id="1918" href="/type-theory/2018/02/16/path-algebra-hott/#1918" class="Bound">x</a> <a id="1920" class="Symbol">→</a> <a id="1922" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="1926" class="Symbol">)</a>
+
+    <a id="1933" href="/type-theory/2018/02/16/path-algebra-hott/#1933" class="Function">D₁</a> <a id="1936" class="Symbol">:</a> <a id="1938" class="Symbol">(</a><a id="1939" href="/type-theory/2018/02/16/path-algebra-hott/#1939" class="Bound">x</a> <a id="1941" href="/type-theory/2018/02/16/path-algebra-hott/#1941" class="Bound">y</a> <a id="1943" class="Symbol">:</a> <a id="1945" href="/type-theory/2018/02/16/path-algebra-hott/#1804" class="Bound">A</a><a id="1946" class="Symbol">)</a> <a id="1948" class="Symbol">→</a> <a id="1950" class="Symbol">(</a><a id="1951" href="/type-theory/2018/02/16/path-algebra-hott/#1939" class="Bound">x</a> <a id="1953" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1955" href="/type-theory/2018/02/16/path-algebra-hott/#1941" class="Bound">y</a><a id="1956" class="Symbol">)</a> <a id="1958" class="Symbol">→</a> <a id="1960" class="Symbol">((</a><a id="1962" href="/type-theory/2018/02/16/path-algebra-hott/#1962" class="Bound">z</a> <a id="1964" class="Symbol">:</a> <a id="1966" href="/type-theory/2018/02/16/path-algebra-hott/#1804" class="Bound">A</a><a id="1967" class="Symbol">)</a> <a id="1969" class="Symbol">→</a> <a id="1971" class="Symbol">(</a><a id="1972" href="/type-theory/2018/02/16/path-algebra-hott/#1972" class="Bound">q</a> <a id="1974" class="Symbol">:</a> <a id="1976" href="/type-theory/2018/02/16/path-algebra-hott/#1941" class="Bound">y</a> <a id="1978" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1980" href="/type-theory/2018/02/16/path-algebra-hott/#1962" class="Bound">z</a><a id="1981" class="Symbol">)</a> <a id="1983" class="Symbol">→</a> <a id="1985" href="/type-theory/2018/02/16/path-algebra-hott/#1939" class="Bound">x</a> <a id="1987" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1989" href="/type-theory/2018/02/16/path-algebra-hott/#1962" class="Bound">z</a><a id="1990" class="Symbol">)</a>
+    <a id="1996" href="/type-theory/2018/02/16/path-algebra-hott/#1933" class="Function">D₁</a> <a id="1999" class="Symbol">=</a> <a id="2001" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="2004" class="Symbol">(λ</a> <a id="2007" href="/type-theory/2018/02/16/path-algebra-hott/#2007" class="Bound">x</a> <a id="2009" href="/type-theory/2018/02/16/path-algebra-hott/#2009" class="Bound">y</a> <a id="2011" href="/type-theory/2018/02/16/path-algebra-hott/#2011" class="Bound">p</a> <a id="2013" class="Symbol">→</a> <a id="2015" class="Symbol">((</a><a id="2017" href="/type-theory/2018/02/16/path-algebra-hott/#2017" class="Bound">z</a> <a id="2019" class="Symbol">:</a> <a id="2021" href="/type-theory/2018/02/16/path-algebra-hott/#1804" class="Bound">A</a><a id="2022" class="Symbol">)</a> <a id="2024" class="Symbol">→</a> <a id="2026" class="Symbol">(</a><a id="2027" href="/type-theory/2018/02/16/path-algebra-hott/#2027" class="Bound">q</a> <a id="2029" class="Symbol">:</a> <a id="2031" href="/type-theory/2018/02/16/path-algebra-hott/#2009" class="Bound">y</a> <a id="2033" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2035" href="/type-theory/2018/02/16/path-algebra-hott/#2017" class="Bound">z</a><a id="2036" class="Symbol">)</a> <a id="2038" class="Symbol">→</a> <a id="2040" href="/type-theory/2018/02/16/path-algebra-hott/#2007" class="Bound">x</a> <a id="2042" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2044" href="/type-theory/2018/02/16/path-algebra-hott/#2017" class="Bound">z</a><a id="2045" class="Symbol">))</a> <a id="2048" class="Symbol">(λ</a> <a id="2051" href="/type-theory/2018/02/16/path-algebra-hott/#2051" class="Bound">x</a> <a id="2053" class="Symbol">→</a> <a id="2055" href="/type-theory/2018/02/16/path-algebra-hott/#1850" class="Function">D₂</a> <a id="2058" href="/type-theory/2018/02/16/path-algebra-hott/#2051" class="Bound">x</a><a id="2059" class="Symbol">)</a></pre>
+
+<p>To make the above code shorter in Agda, we could have defined the function by
+pattern-matching. Nonetheless, the idea here was use path induction — the pi
+function— entirely.</p>
+
+<h3 id="path-inverse">Path Inverse</h3>
+
+<p>The path inverse for a given path <code>p : a = b</code> is denoted by <code>p⁻¹ : b = a</code>.
+This path only change the original direction of the path <code>p</code>. Let’s see it.</p>
+
+<pre class="Agda"><a id="2436" class="Keyword">infixl</a> <a id="2443" class="Number">20</a> <a id="2446" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">_⁻¹</a>
+<a id="_⁻¹"></a><a id="2450" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">_⁻¹</a> <a id="2454" class="Symbol">:</a> <a id="2456" class="Symbol">∀</a> <a id="2458" class="Symbol">{</a><a id="2459" href="/type-theory/2018/02/16/path-algebra-hott/#2459" class="Bound">A</a> <a id="2461" class="Symbol">:</a> <a id="2463" class="PrimitiveType">Set</a><a id="2466" class="Symbol">}</a> <a id="2468" class="Symbol">{</a><a id="2469" href="/type-theory/2018/02/16/path-algebra-hott/#2469" class="Bound">x</a> <a id="2471" href="/type-theory/2018/02/16/path-algebra-hott/#2471" class="Bound">y</a> <a id="2473" class="Symbol">:</a> <a id="2475" href="/type-theory/2018/02/16/path-algebra-hott/#2459" class="Bound">A</a><a id="2476" class="Symbol">}</a> <a id="2478" class="Symbol">→</a> <a id="2480" class="Symbol">(</a><a id="2481" href="/type-theory/2018/02/16/path-algebra-hott/#2481" class="Bound">p</a> <a id="2483" class="Symbol">:</a> <a id="2485" href="/type-theory/2018/02/16/path-algebra-hott/#2469" class="Bound">x</a> <a id="2487" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2489" href="/type-theory/2018/02/16/path-algebra-hott/#2471" class="Bound">y</a><a id="2490" class="Symbol">)</a> <a id="2492" class="Symbol">→</a> <a id="2494" href="/type-theory/2018/02/16/path-algebra-hott/#2471" class="Bound">y</a> <a id="2496" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2498" href="/type-theory/2018/02/16/path-algebra-hott/#2469" class="Bound">x</a>
+<a id="2500" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">_⁻¹</a> <a id="2504" class="Symbol">{</a><a id="2505" href="/type-theory/2018/02/16/path-algebra-hott/#2505" class="Bound">A</a><a id="2506" class="Symbol">}{</a><a id="2508" href="/type-theory/2018/02/16/path-algebra-hott/#2508" class="Bound">x</a><a id="2509" class="Symbol">}{</a><a id="2511" href="/type-theory/2018/02/16/path-algebra-hott/#2511" class="Bound">y</a><a id="2512" class="Symbol">}</a> <a id="2514" href="/type-theory/2018/02/16/path-algebra-hott/#2514" class="Bound">p</a> <a id="2516" class="Symbol">=</a>
+  <a id="2520" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="2523" class="Symbol">(λ</a> <a id="2526" href="/type-theory/2018/02/16/path-algebra-hott/#2526" class="Bound">x</a> <a id="2528" href="/type-theory/2018/02/16/path-algebra-hott/#2528" class="Bound">y</a> <a id="2530" href="/type-theory/2018/02/16/path-algebra-hott/#2530" class="Bound">p</a> <a id="2532" class="Symbol">→</a> <a id="2534" href="/type-theory/2018/02/16/path-algebra-hott/#2528" class="Bound">y</a> <a id="2536" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2538" href="/type-theory/2018/02/16/path-algebra-hott/#2526" class="Bound">x</a><a id="2539" class="Symbol">)</a>
+     <a id="2546" class="Symbol">(λ</a> <a id="2549" href="/type-theory/2018/02/16/path-algebra-hott/#2549" class="Bound">x</a> <a id="2551" class="Symbol">→</a> <a id="2553" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="2558" class="Symbol">{</a><a id="2559" class="Argument">x</a> <a id="2561" class="Symbol">=</a> <a id="2563" href="/type-theory/2018/02/16/path-algebra-hott/#2549" class="Bound">x</a><a id="2564" class="Symbol">})</a>
+     <a id="2572" href="/type-theory/2018/02/16/path-algebra-hott/#2508" class="Bound">x</a> <a id="2574" href="/type-theory/2018/02/16/path-algebra-hott/#2511" class="Bound">y</a> <a id="2576" href="/type-theory/2018/02/16/path-algebra-hott/#2514" class="Bound">p</a></pre>
+
+<p>As you can see, path inversion is just the symmetric property for this
+identity type. Now let’s see some algebra.</p>
+
+<hr />
+
+<h3 id="algebra">Algebra</h3>
+
+<ul>
+  <li>l1 : <script type="math/tex">(\mathsf{refl}_{x})^{-1} \equiv \mathsf{refl}_{x}</script></li>
+  <li>l2 : <script type="math/tex">p \cdot p^{-1} \equiv \mathsf{refl}_{x}</script></li>
+  <li>l3 : <script type="math/tex">\mathsf{refl}_{x} \cdot p \equiv p</script></li>
+  <li>l4 : <script type="math/tex">p \cdot \mathsf{refl} y \equiv p</script></li>
+  <li>l5 : <script type="math/tex">(p ^{-1})^{-1} \equiv p</script></li>
+</ul>
+
+<p><img src="/assets/ipe-images/path-algebra.png" alt="path" /></p>
+
+<hr />
+
+<p>Proofs:</p>
+
+<ul>
+  <li>l1 : <script type="math/tex">(\mathsf{refl}_{x})^{-1} \equiv \mathsf{refl}_{x}</script></li>
+</ul>
+<pre class="Agda"><a id="l1"></a><a id="3244" href="/type-theory/2018/02/16/path-algebra-hott/#3244" class="Function">l1</a> <a id="3247" class="Symbol">:</a> <a id="3249" class="Symbol">∀</a> <a id="3251" class="Symbol">{</a><a id="3252" href="/type-theory/2018/02/16/path-algebra-hott/#3252" class="Bound">A</a> <a id="3254" class="Symbol">:</a> <a id="3256" class="PrimitiveType">Set</a><a id="3259" class="Symbol">}</a> <a id="3261" class="Symbol">{</a><a id="3262" href="/type-theory/2018/02/16/path-algebra-hott/#3262" class="Bound">x</a> <a id="3264" class="Symbol">:</a> <a id="3266" href="/type-theory/2018/02/16/path-algebra-hott/#3252" class="Bound">A</a><a id="3267" class="Symbol">}</a> <a id="3269" class="Symbol">→</a> <a id="3271" class="Symbol">(</a><a id="3272" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3277" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a><a id="3279" class="Symbol">)</a> <a id="3281" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3283" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>
+<a id="3288" href="/type-theory/2018/02/16/path-algebra-hott/#3244" class="Function">l1</a> <a id="3291" class="Symbol">{</a><a id="3292" href="/type-theory/2018/02/16/path-algebra-hott/#3292" class="Bound">A</a><a id="3293" class="Symbol">}{</a><a id="3295" href="/type-theory/2018/02/16/path-algebra-hott/#3295" class="Bound">x</a><a id="3296" class="Symbol">}</a> <a id="3298" class="Symbol">=</a>
+  <a id="3302" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="3305" class="Symbol">(λ</a> <a id="3308" href="/type-theory/2018/02/16/path-algebra-hott/#3308" class="Bound">x</a> <a id="3310" href="/type-theory/2018/02/16/path-algebra-hott/#3310" class="Bound">y</a> <a id="3312" href="/type-theory/2018/02/16/path-algebra-hott/#3312" class="Bound">p</a> <a id="3314" class="Symbol">→</a> <a id="3316" class="Symbol">(</a><a id="3317" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3322" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a><a id="3324" class="Symbol">)</a> <a id="3326" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3328" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3333" class="Symbol">{</a><a id="3334" class="Argument">x</a> <a id="3336" class="Symbol">=</a> <a id="3338" href="/type-theory/2018/02/16/path-algebra-hott/#3308" class="Bound">x</a><a id="3339" class="Symbol">})</a>
+     <a id="3347" class="Symbol">(λ</a> <a id="3350" href="/type-theory/2018/02/16/path-algebra-hott/#3350" class="Bound">x</a> <a id="3352" class="Symbol">→</a> <a id="3354" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3359" class="Symbol">{</a><a id="3360" class="Argument">x</a> <a id="3362" class="Symbol">=</a> <a id="3364" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3369" class="Symbol">{</a><a id="3370" class="Argument">x</a> <a id="3372" class="Symbol">=</a> <a id="3374" href="/type-theory/2018/02/16/path-algebra-hott/#3350" class="Bound">x</a><a id="3375" class="Symbol">}})</a>
+     <a id="3384" href="/type-theory/2018/02/16/path-algebra-hott/#3295" class="Bound">x</a> <a id="3386" href="/type-theory/2018/02/16/path-algebra-hott/#3295" class="Bound">x</a> <a id="3388" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a></pre>
+
+<ul>
+  <li>l2 : <script type="math/tex">p \cdot p^{-1} \equiv \mathsf{refl}_{x}</script></li>
+</ul>
+
+<pre class="Agda"><a id="l2"></a><a id="3470" href="/type-theory/2018/02/16/path-algebra-hott/#3470" class="Function">l2</a> <a id="3473" class="Symbol">:</a> <a id="3475" class="Symbol">∀</a> <a id="3477" class="Symbol">{</a><a id="3478" href="/type-theory/2018/02/16/path-algebra-hott/#3478" class="Bound">A</a> <a id="3480" class="Symbol">:</a> <a id="3482" class="PrimitiveType">Set</a><a id="3485" class="Symbol">}</a> <a id="3487" class="Symbol">(</a><a id="3488" href="/type-theory/2018/02/16/path-algebra-hott/#3488" class="Bound">x</a> <a id="3490" href="/type-theory/2018/02/16/path-algebra-hott/#3490" class="Bound">y</a> <a id="3492" class="Symbol">:</a> <a id="3494" href="/type-theory/2018/02/16/path-algebra-hott/#3478" class="Bound">A</a><a id="3495" class="Symbol">)</a> <a id="3497" class="Symbol">→</a> <a id="3499" class="Symbol">(</a><a id="3500" href="/type-theory/2018/02/16/path-algebra-hott/#3500" class="Bound">p</a> <a id="3502" class="Symbol">:</a> <a id="3504" href="/type-theory/2018/02/16/path-algebra-hott/#3488" class="Bound">x</a> <a id="3506" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3508" href="/type-theory/2018/02/16/path-algebra-hott/#3490" class="Bound">y</a><a id="3509" class="Symbol">)</a> <a id="3511" class="Symbol">→</a> <a id="3513" class="Symbol">(</a><a id="3514" href="/type-theory/2018/02/16/path-algebra-hott/#3500" class="Bound">p</a> <a id="3516" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">·</a> <a id="3518" class="Symbol">(</a><a id="3519" href="/type-theory/2018/02/16/path-algebra-hott/#3500" class="Bound">p</a> <a id="3521" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a><a id="3523" class="Symbol">))</a>  <a id="3527" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3529" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>
+<a id="3534" href="/type-theory/2018/02/16/path-algebra-hott/#3470" class="Function">l2</a> <a id="3537" class="Symbol">=</a>
+  <a id="3541" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="3544" class="Symbol">(λ</a> <a id="3547" href="/type-theory/2018/02/16/path-algebra-hott/#3547" class="Bound">x</a> <a id="3549" href="/type-theory/2018/02/16/path-algebra-hott/#3549" class="Bound">y</a> <a id="3551" href="/type-theory/2018/02/16/path-algebra-hott/#3551" class="Bound">p</a> <a id="3553" class="Symbol">→</a> <a id="3555" class="Symbol">(</a><a id="3556" href="/type-theory/2018/02/16/path-algebra-hott/#3551" class="Bound">p</a> <a id="3558" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">·</a> <a id="3560" class="Symbol">(</a><a id="3561" href="/type-theory/2018/02/16/path-algebra-hott/#3551" class="Bound">p</a> <a id="3563" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a><a id="3565" class="Symbol">))</a>  <a id="3569" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3571" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="3575" class="Symbol">)</a>
+     <a id="3582" class="Symbol">(λ</a> <a id="3585" href="/type-theory/2018/02/16/path-algebra-hott/#3585" class="Bound">x</a> <a id="3587" class="Symbol">→</a> <a id="3589" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3594" class="Symbol">{</a> <a id="3596" class="Argument">x</a> <a id="3598" class="Symbol">=</a> <a id="3600" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3605" class="Symbol">{</a><a id="3606" class="Argument">x</a> <a id="3608" class="Symbol">=</a> <a id="3610" href="/type-theory/2018/02/16/path-algebra-hott/#3585" class="Bound">x</a><a id="3611" class="Symbol">}})</a></pre>
+
+<ul>
+  <li>l3 : <script type="math/tex">\mathsf{refl}_{x} \cdot p \equiv p</script></li>
+</ul>
+
+<pre class="Agda"><a id="l3"></a><a id="3687" href="/type-theory/2018/02/16/path-algebra-hott/#3687" class="Function">l3</a> <a id="3690" class="Symbol">:</a> <a id="3692" class="Symbol">∀</a> <a id="3694" class="Symbol">{</a><a id="3695" href="/type-theory/2018/02/16/path-algebra-hott/#3695" class="Bound">A</a> <a id="3697" class="Symbol">:</a> <a id="3699" class="PrimitiveType">Set</a><a id="3702" class="Symbol">}</a> <a id="3704" class="Symbol">(</a><a id="3705" href="/type-theory/2018/02/16/path-algebra-hott/#3705" class="Bound">x</a> <a id="3707" href="/type-theory/2018/02/16/path-algebra-hott/#3707" class="Bound">y</a> <a id="3709" class="Symbol">:</a> <a id="3711" href="/type-theory/2018/02/16/path-algebra-hott/#3695" class="Bound">A</a><a id="3712" class="Symbol">)</a> <a id="3714" class="Symbol">→</a> <a id="3716" class="Symbol">(</a><a id="3717" href="/type-theory/2018/02/16/path-algebra-hott/#3717" class="Bound">p</a> <a id="3719" class="Symbol">:</a> <a id="3721" href="/type-theory/2018/02/16/path-algebra-hott/#3705" class="Bound">x</a> <a id="3723" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3725" href="/type-theory/2018/02/16/path-algebra-hott/#3707" class="Bound">y</a><a id="3726" class="Symbol">)</a> <a id="3728" class="Symbol">→</a> <a id="3730" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3735" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">·</a> <a id="3737" href="/type-theory/2018/02/16/path-algebra-hott/#3717" class="Bound">p</a> <a id="3739" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3741" href="/type-theory/2018/02/16/path-algebra-hott/#3717" class="Bound">p</a>
+<a id="3743" href="/type-theory/2018/02/16/path-algebra-hott/#3687" class="Function">l3</a> <a id="3746" class="Symbol">=</a>
+  <a id="3750" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="3753" class="Symbol">(λ</a> <a id="3756" href="/type-theory/2018/02/16/path-algebra-hott/#3756" class="Bound">x</a> <a id="3758" href="/type-theory/2018/02/16/path-algebra-hott/#3758" class="Bound">y</a> <a id="3760" href="/type-theory/2018/02/16/path-algebra-hott/#3760" class="Bound">p</a> <a id="3762" class="Symbol">→</a> <a id="3764" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3769" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">·</a> <a id="3771" href="/type-theory/2018/02/16/path-algebra-hott/#3760" class="Bound">p</a> <a id="3773" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3775" href="/type-theory/2018/02/16/path-algebra-hott/#3760" class="Bound">p</a><a id="3776" class="Symbol">)</a>
+     <a id="3783" class="Symbol">(λ</a> <a id="3786" href="/type-theory/2018/02/16/path-algebra-hott/#3786" class="Bound">x</a> <a id="3788" class="Symbol">→</a> <a id="3790" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3795" class="Symbol">{</a> <a id="3797" class="Argument">x</a> <a id="3799" class="Symbol">=</a> <a id="3801" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3806" class="Symbol">{</a><a id="3807" class="Argument">x</a> <a id="3809" class="Symbol">=</a> <a id="3811" href="/type-theory/2018/02/16/path-algebra-hott/#3786" class="Bound">x</a><a id="3812" class="Symbol">}})</a></pre>
+
+<ul>
+  <li>l4 : <script type="math/tex">p \cdot \mathsf{refl} y \equiv p</script></li>
+</ul>
+
+<pre class="Agda"><a id="l4"></a><a id="3886" href="/type-theory/2018/02/16/path-algebra-hott/#3886" class="Function">l4</a> <a id="3889" class="Symbol">:</a> <a id="3891" class="Symbol">∀</a> <a id="3893" class="Symbol">{</a><a id="3894" href="/type-theory/2018/02/16/path-algebra-hott/#3894" class="Bound">A</a> <a id="3896" class="Symbol">:</a> <a id="3898" class="PrimitiveType">Set</a><a id="3901" class="Symbol">}</a> <a id="3903" class="Symbol">(</a><a id="3904" href="/type-theory/2018/02/16/path-algebra-hott/#3904" class="Bound">x</a> <a id="3906" href="/type-theory/2018/02/16/path-algebra-hott/#3906" class="Bound">y</a> <a id="3908" class="Symbol">:</a> <a id="3910" href="/type-theory/2018/02/16/path-algebra-hott/#3894" class="Bound">A</a><a id="3911" class="Symbol">)</a> <a id="3913" class="Symbol">→</a> <a id="3915" class="Symbol">(</a><a id="3916" href="/type-theory/2018/02/16/path-algebra-hott/#3916" class="Bound">p</a> <a id="3918" class="Symbol">:</a> <a id="3920" href="/type-theory/2018/02/16/path-algebra-hott/#3904" class="Bound">x</a> <a id="3922" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3924" href="/type-theory/2018/02/16/path-algebra-hott/#3906" class="Bound">y</a><a id="3925" class="Symbol">)</a> <a id="3927" class="Symbol">→</a> <a id="3929" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3934" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">·</a> <a id="3936" href="/type-theory/2018/02/16/path-algebra-hott/#3916" class="Bound">p</a> <a id="3938" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3940" href="/type-theory/2018/02/16/path-algebra-hott/#3916" class="Bound">p</a>
+<a id="3942" href="/type-theory/2018/02/16/path-algebra-hott/#3886" class="Function">l4</a> <a id="3945" class="Symbol">=</a> <a id="3947" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="3950" class="Symbol">(λ</a> <a id="3953" href="/type-theory/2018/02/16/path-algebra-hott/#3953" class="Bound">x</a> <a id="3955" href="/type-theory/2018/02/16/path-algebra-hott/#3955" class="Bound">y</a> <a id="3957" href="/type-theory/2018/02/16/path-algebra-hott/#3957" class="Bound">p</a> <a id="3959" class="Symbol">→</a> <a id="3961" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3966" href="/type-theory/2018/02/16/path-algebra-hott/#1727" class="Function Operator">·</a> <a id="3968" href="/type-theory/2018/02/16/path-algebra-hott/#3957" class="Bound">p</a> <a id="3970" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3972" href="/type-theory/2018/02/16/path-algebra-hott/#3957" class="Bound">p</a><a id="3973" class="Symbol">)</a>
+        <a id="3983" class="Symbol">(λ</a> <a id="3986" href="/type-theory/2018/02/16/path-algebra-hott/#3986" class="Bound">x</a> <a id="3988" class="Symbol">→</a> <a id="3990" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3995" class="Symbol">{</a><a id="3996" class="Argument">x</a> <a id="3998" class="Symbol">=</a> <a id="4000" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="4005" class="Symbol">{</a><a id="4006" class="Argument">x</a> <a id="4008" class="Symbol">=</a> <a id="4010" href="/type-theory/2018/02/16/path-algebra-hott/#3986" class="Bound">x</a><a id="4011" class="Symbol">}})</a></pre>
+
+<ul>
+  <li>l5 : <script type="math/tex">(p ^{-1})^{-1} \equiv p</script></li>
+</ul>
+
+<pre class="Agda"><a id="l5"></a><a id="4077" href="/type-theory/2018/02/16/path-algebra-hott/#4077" class="Function">l5</a> <a id="4080" class="Symbol">:</a> <a id="4082" class="Symbol">∀</a> <a id="4084" class="Symbol">{</a><a id="4085" href="/type-theory/2018/02/16/path-algebra-hott/#4085" class="Bound">A</a> <a id="4087" class="Symbol">:</a> <a id="4089" class="PrimitiveType">Set</a><a id="4092" class="Symbol">}</a> <a id="4094" class="Symbol">(</a><a id="4095" href="/type-theory/2018/02/16/path-algebra-hott/#4095" class="Bound">x</a> <a id="4097" href="/type-theory/2018/02/16/path-algebra-hott/#4097" class="Bound">y</a> <a id="4099" class="Symbol">:</a> <a id="4101" href="/type-theory/2018/02/16/path-algebra-hott/#4085" class="Bound">A</a><a id="4102" class="Symbol">)</a> <a id="4104" class="Symbol">→</a> <a id="4106" class="Symbol">(</a><a id="4107" href="/type-theory/2018/02/16/path-algebra-hott/#4107" class="Bound">p</a> <a id="4109" class="Symbol">:</a> <a id="4111" href="/type-theory/2018/02/16/path-algebra-hott/#4095" class="Bound">x</a> <a id="4113" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4115" href="/type-theory/2018/02/16/path-algebra-hott/#4097" class="Bound">y</a><a id="4116" class="Symbol">)</a> <a id="4118" class="Symbol">→</a> <a id="4120" class="Symbol">(</a><a id="4121" href="/type-theory/2018/02/16/path-algebra-hott/#4107" class="Bound">p</a>  <a id="4124" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a><a id="4126" class="Symbol">)</a> <a id="4128" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a> <a id="4131" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4133" href="/type-theory/2018/02/16/path-algebra-hott/#4107" class="Bound">p</a>
+<a id="4135" href="/type-theory/2018/02/16/path-algebra-hott/#4077" class="Function">l5</a> <a id="4138" class="Symbol">=</a> <a id="4140" href="/type-theory/2018/02/16/path-algebra-hott/#1291" class="Function">pi</a> <a id="4143" class="Symbol">(λ</a> <a id="4146" href="/type-theory/2018/02/16/path-algebra-hott/#4146" class="Bound">x</a> <a id="4148" href="/type-theory/2018/02/16/path-algebra-hott/#4148" class="Bound">y</a> <a id="4150" href="/type-theory/2018/02/16/path-algebra-hott/#4150" class="Bound">p</a> <a id="4152" class="Symbol">→</a> <a id="4154" class="Symbol">(</a><a id="4155" href="/type-theory/2018/02/16/path-algebra-hott/#4150" class="Bound">p</a>  <a id="4158" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a><a id="4160" class="Symbol">)</a> <a id="4162" href="/type-theory/2018/02/16/path-algebra-hott/#2450" class="Function Operator">⁻¹</a> <a id="4165" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4167" href="/type-theory/2018/02/16/path-algebra-hott/#4150" class="Bound">p</a><a id="4168" class="Symbol">)</a>
+        <a id="4178" class="Symbol">(λ</a> <a id="4181" href="/type-theory/2018/02/16/path-algebra-hott/#4181" class="Bound">x</a> <a id="4183" class="Symbol">→</a> <a id="4185" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="4190" class="Symbol">{</a><a id="4191" class="Argument">x</a> <a id="4193" class="Symbol">=</a> <a id="4195" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="4200" class="Symbol">{</a><a id="4201" class="Argument">x</a> <a id="4203" class="Symbol">=</a> <a id="4205" href="/type-theory/2018/02/16/path-algebra-hott/#4181" class="Bound">x</a><a id="4206" class="Symbol">}})</a></pre>
+
+<h3 id="transport">Transport</h3>
+
+<pre class="Agda"><a id="transp"></a><a id="4250" href="/type-theory/2018/02/16/path-algebra-hott/#4250" class="Function">transp</a> <a id="4257" class="Symbol">:</a> <a id="4259" class="Symbol">∀</a> <a id="4261" class="Symbol">{</a><a id="4262" href="/type-theory/2018/02/16/path-algebra-hott/#4262" class="Bound">A</a> <a id="4264" class="Symbol">:</a> <a id="4266" class="PrimitiveType">Set</a><a id="4269" class="Symbol">}{</a><a id="4271" href="/type-theory/2018/02/16/path-algebra-hott/#4271" class="Bound">x</a> <a id="4273" href="/type-theory/2018/02/16/path-algebra-hott/#4273" class="Bound">x&#39;</a> <a id="4276" class="Symbol">:</a> <a id="4278" href="/type-theory/2018/02/16/path-algebra-hott/#4262" class="Bound">A</a><a id="4279" class="Symbol">}</a>
+      <a id="4287" class="Symbol">→</a> <a id="4289" class="Symbol">(</a><a id="4290" href="/type-theory/2018/02/16/path-algebra-hott/#4290" class="Bound">B</a> <a id="4292" class="Symbol">:</a> <a id="4294" href="/type-theory/2018/02/16/path-algebra-hott/#4262" class="Bound">A</a> <a id="4296" class="Symbol">→</a> <a id="4298" class="PrimitiveType">Set</a><a id="4301" class="Symbol">)</a> <a id="4303" class="Symbol">→</a> <a id="4305" class="Symbol">(</a><a id="4306" href="/type-theory/2018/02/16/path-algebra-hott/#4306" class="Bound">y</a> <a id="4308" class="Symbol">:</a> <a id="4310" href="/type-theory/2018/02/16/path-algebra-hott/#4290" class="Bound">B</a> <a id="4312" href="/type-theory/2018/02/16/path-algebra-hott/#4271" class="Bound">x</a><a id="4313" class="Symbol">)</a> <a id="4315" class="Symbol">→</a> <a id="4317" class="Symbol">(</a><a id="4318" href="/type-theory/2018/02/16/path-algebra-hott/#4318" class="Bound">u</a> <a id="4320" class="Symbol">:</a> <a id="4322" href="/type-theory/2018/02/16/path-algebra-hott/#4271" class="Bound">x</a> <a id="4324" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4326" href="/type-theory/2018/02/16/path-algebra-hott/#4273" class="Bound">x&#39;</a><a id="4328" class="Symbol">)</a> <a id="4330" class="Symbol">→</a> <a id="4332" href="/type-theory/2018/02/16/path-algebra-hott/#4290" class="Bound">B</a> <a id="4334" href="/type-theory/2018/02/16/path-algebra-hott/#4273" class="Bound">x&#39;</a>
+<a id="4337" href="/type-theory/2018/02/16/path-algebra-hott/#4250" class="Function">transp</a> <a id="4344" href="/type-theory/2018/02/16/path-algebra-hott/#4344" class="Bound">B</a> <a id="4346" href="/type-theory/2018/02/16/path-algebra-hott/#4346" class="Bound">y</a> <a id="4348" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>  <a id="4354" class="Symbol">=</a> <a id="4356" href="/type-theory/2018/02/16/path-algebra-hott/#4346" class="Bound">y</a></pre>
+
+<p><img src="/assets/ipe-images/transport-fiber.png" alt="path" /></p>
+
+<p>Transport is the <em>path</em> version of the Leibniz’s Law in one direction:</p>
+
+<script type="math/tex; mode=display">\forallx \forally (x \equiv y \to \forall P \ (P(x) \Leftrightarrow P(y))</script>
+
+<p>We should also say, we’re already familiar with its type since it
+shows up as the susbstitution of equals in type theory. Actually,
+in the Agda standard library, we found <code>subst</code> that follows from the same principle:</p>
+
+<pre class="Agda"><a id="4805" class="Keyword">open</a> <a id="4810" class="Keyword">import</a> <a id="4817" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="4855" class="Keyword">using</a> <a id="4861" class="Symbol">(</a><a id="4862" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.Core.html#700" class="Function">subst</a><a id="4867" class="Symbol">)</a>
+
+<a id="trans&#39;"></a><a id="4870" href="/type-theory/2018/02/16/path-algebra-hott/#4870" class="Function">trans&#39;</a> <a id="4877" class="Symbol">:</a> <a id="4879" class="Symbol">∀</a> <a id="4881" class="Symbol">{</a><a id="4882" href="/type-theory/2018/02/16/path-algebra-hott/#4882" class="Bound">A</a> <a id="4884" class="Symbol">:</a> <a id="4886" class="PrimitiveType">Set</a><a id="4889" class="Symbol">}{</a><a id="4891" href="/type-theory/2018/02/16/path-algebra-hott/#4891" class="Bound">x</a> <a id="4893" href="/type-theory/2018/02/16/path-algebra-hott/#4893" class="Bound">x&#39;</a> <a id="4896" class="Symbol">:</a> <a id="4898" href="/type-theory/2018/02/16/path-algebra-hott/#4882" class="Bound">A</a><a id="4899" class="Symbol">}</a>
+      <a id="4907" class="Symbol">→</a> <a id="4909" class="Symbol">(</a><a id="4910" href="/type-theory/2018/02/16/path-algebra-hott/#4910" class="Bound">B</a> <a id="4912" class="Symbol">:</a> <a id="4914" href="/type-theory/2018/02/16/path-algebra-hott/#4882" class="Bound">A</a> <a id="4916" class="Symbol">→</a> <a id="4918" class="PrimitiveType">Set</a><a id="4921" class="Symbol">)</a> <a id="4923" class="Symbol">→</a> <a id="4925" class="Symbol">(</a><a id="4926" href="/type-theory/2018/02/16/path-algebra-hott/#4926" class="Bound">y</a> <a id="4928" class="Symbol">:</a> <a id="4930" href="/type-theory/2018/02/16/path-algebra-hott/#4910" class="Bound">B</a> <a id="4932" href="/type-theory/2018/02/16/path-algebra-hott/#4891" class="Bound">x</a><a id="4933" class="Symbol">)</a> <a id="4935" class="Symbol">→</a> <a id="4937" class="Symbol">(</a><a id="4938" href="/type-theory/2018/02/16/path-algebra-hott/#4938" class="Bound">u</a> <a id="4940" class="Symbol">:</a> <a id="4942" href="/type-theory/2018/02/16/path-algebra-hott/#4891" class="Bound">x</a> <a id="4944" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4946" href="/type-theory/2018/02/16/path-algebra-hott/#4893" class="Bound">x&#39;</a><a id="4948" class="Symbol">)</a> <a id="4950" class="Symbol">→</a> <a id="4952" href="/type-theory/2018/02/16/path-algebra-hott/#4910" class="Bound">B</a> <a id="4954" href="/type-theory/2018/02/16/path-algebra-hott/#4893" class="Bound">x&#39;</a>
+<a id="4957" href="/type-theory/2018/02/16/path-algebra-hott/#4870" class="Function">trans&#39;</a> <a id="4964" href="/type-theory/2018/02/16/path-algebra-hott/#4964" class="Bound">B</a> <a id="4966" href="/type-theory/2018/02/16/path-algebra-hott/#4966" class="Bound">y</a> <a id="4968" href="/type-theory/2018/02/16/path-algebra-hott/#4968" class="Bound">u</a> <a id="4970" class="Symbol">=</a> <a id="4972" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.Core.html#700" class="Function">subst</a> <a id="4978" href="/type-theory/2018/02/16/path-algebra-hott/#4964" class="Bound">B</a> <a id="4980" href="/type-theory/2018/02/16/path-algebra-hott/#4968" class="Bound">u</a> <a id="4982" href="/type-theory/2018/02/16/path-algebra-hott/#4966" class="Bound">y</a></pre>
+
+<h3 id="references">References</h3>
+
+<div class="references">
+
+  <ul>
+    <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
+    <li><span id="agdateam">Team, T. A. D. (2015). Agda 2.4.2.3. Retrieved from http://wiki.portal.chalmers.se/agda/pmwiki.php</span></li>
+  </ul>
+
+</div>
+
+
+  <!-- <h2> References </h2> -->
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+  <!-- </ -->
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
+            Intervals
+            
+            <small>08 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/thoughts/2018/07/05/unsorted/">
+            Unsorted
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/type-theory/2018/07/05/pathovers-hott/">
+            PathOvers
+            
+            <small>05 Jul 2018</small>
+            
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <!-- Import jQuery -->
+<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/assets/linkify.min.js"></script>
+<script src="/assets/linkify-jquery.min.js"></script>
+
+<script type="text/javascript">
+$('div.references').linkify();
+$('.bibliography').linkify();
+$('div.links').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
+</script>
+
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
+<script type="text/javascript">
+ $("script[type='math/tex']").replaceWith(
+     function(){
+         var tex = $(this).text();
+         return "&zwnj;$$" + tex + "$$&zwnj;";
+     });
+ $("script[type='math/tex; mode=display']").replaceWith(
+     function(){
+         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
+     });
+</script>
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var autoHeight = $(this).height();
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+     $(this).height(lineHeight);
+     // $(this).height(2.0 * lineHeight);
+     $(this).css('overflow','hidden');
+     $(this).click(function(){
+         if ($(this).height() == autoHeight) {
+             // $(this).height(2.0 * lineHeight);
+             $(this).height(lineHeight);
+             plus.show();
+         }
+         else {
+             $(this).height('auto');
+             plus.hide();
+         }
+     });
+ });
+</script>
+<script type="text/javascript">
+
+  $('.cited-references').hide();
+  const refs = $(".references");
+  $('.references').append( $('.cited-references').html());
+  if ( refs.text() != ""){
+     refs.prepend("<h3>References</h3>");
+  }
+  else{
+    if ($(".cited-references").text() != ""){
+      $(".cited-references").prepend("<h3 id='refs'>References</h3>");
+      $(".cited-references").show();
+      $(".toc nav>ul").append(
+        "<li><a href='#refs'>References</a></li>"
+      );
+    }
+
+  }
+
+</script>
+
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>

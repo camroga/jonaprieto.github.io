@@ -62,8 +62,6 @@
       
     
       
-    
-      
         
       
     
@@ -82,6 +80,12 @@
       
         
           <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
         
       
     
@@ -124,7 +128,19 @@
 
 
 <div class="post">
-  <!--  -->
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+1360</span>/<span class="substractions">-1176</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda"> View source and Download links to access the latest version of the post</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda>435924a </a> on  12 Jul 2018
+    </div>
+    </div>
+  </div>
+  
 
   <h1 class="post-title">Induction on Identity Types <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/435924a8fea00d90024d44cf05c6f9e215ccb33d/src/2018-02-14-induction-on-identity-types.lagda" download target="_blank"> Download </a> </small></h1>
 
@@ -136,11 +152,11 @@ The identity or equality type is defined as follows:</p>
   refl : Id A x y
 </code></pre>
 
-<p>The only rule/constructor for the identity type is <code class="highlighter-rouge">refl</code> that represents the reflexivity property of
-the inductive types. We could’ve defined it by using the following syntax (<code class="highlighter-rouge">_≡_</code>) and Π-type.</p>
+<p>The only rule/constructor for the identity type is <code>refl</code> that represents the reflexivity property of
+the inductive types. We could’ve defined it by using the following syntax (<code>_≡_</code>) and Π-type.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>refl: Π x:A. x ≡ x
-</code></pre></div></div>
+<pre><code>refl: Π x:A. x ≡ x
+</code></pre>
 
 <p>In Agda we can write something like</p>
 
@@ -164,10 +180,10 @@ x ≡ y = refl
 
 <ul>
   <li>
-    <p>ML1. For any type <code class="highlighter-rouge">X</code>, for each <code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">b</code> of it, there is a type <code class="highlighter-rouge">a = b</code></p>
+    <p>ML1. For any type <code>X</code>, for each <code>a</code> and <code>b</code> of it, there is a type <code>a = b</code></p>
   </li>
   <li>
-    <p>ML2. There is an element <code class="highlighter-rouge">refl x : x = x</code> for each <code class="highlighter-rouge">x : X</code></p>
+    <p>ML2. There is an element <code>refl x : x = x</code> for each <code>x : X</code></p>
   </li>
   <li>
     <p>ML3. Induction for equality:</p>
@@ -191,14 +207,14 @@ x ≡ y = refl
 
 <p>We will show in a moment more about ML3 rule from the univalance perspective,
 that is, the homotopy type theory perspective. The main diference up to now, we
-give another meaning of <code class="highlighter-rouge">a = b</code>, insteaf of thinking about it as a proof of such
-a equality, we are going to think as a <code class="highlighter-rouge">path space</code> in a topological space
-associated to <code class="highlighter-rouge">A</code></p>
+give another meaning of <code>a = b</code>, insteaf of thinking about it as a proof of such
+a equality, we are going to think as a <code>path space</code> in a topological space
+associated to <code>A</code></p>
 
 <p>In the following, we may encounter with <a href="https://pigworker.wordpress.com/2015/01/09/universe-hierarchies/">levels</a> in Agda.
 The small types are those that belongs to the first level 0, types of level 1 are
-those formed by using small types, and so on. The small types in Agda has <code class="highlighter-rouge">Set</code> type ,
-types formed by these small types have <code class="highlighter-rouge">Set 1</code> type, and so on with <code class="highlighter-rouge">Set i</code> type.</p>
+those formed by using small types, and so on. The small types in Agda has <code>Set</code> type ,
+types formed by these small types have <code>Set 1</code> type, and so on with <code>Set i</code> type.</p>
 
 <h3 id="path-induction">Path induction</h3>
 
@@ -209,8 +225,8 @@ reason we refer to a path and a set of paths or path space like something no tri
 
 <p><img src="/assets/ipe-images/path.png" alt="path" /></p>
 
-<p>Now, we introduce the induction principle for the identity type denoted by <code class="highlighter-rouge">pi</code>,
-that is the elimination rule of this type also called <a href="https://homotopytypetheory.org/2011/04/10/just-kidding-understanding-identity-elimination-in-homotopy-type-theory/"><code class="highlighter-rouge">J</code> rule.</a>.)</p>
+<p>Now, we introduce the induction principle for the identity type denoted by <code>pi</code>,
+that is the elimination rule of this type also called <a href="https://homotopytypetheory.org/2011/04/10/just-kidding-understanding-identity-elimination-in-homotopy-type-theory/"><code>J</code> rule.</a>.)</p>
 
 <pre class="Agda"><a id="pi"></a><a id="3215" href="/type-theory/2018/02/14/induction-on-identity-types/#3215" class="Function">pi</a>
   <a id="3220" class="Symbol">:</a> <a id="3222" class="Symbol">∀</a> <a id="3224" class="Symbol">{</a><a id="3225" href="/type-theory/2018/02/14/induction-on-identity-types/#3225" class="Bound">i</a><a id="3226" class="Symbol">}</a> <a id="3228" class="Symbol">{</a><a id="3229" href="/type-theory/2018/02/14/induction-on-identity-types/#3229" class="Bound">A</a> <a id="3231" class="Symbol">:</a> <a id="3233" class="PrimitiveType">Set</a><a id="3236" class="Symbol">}</a>
@@ -241,7 +257,7 @@ inhabitant of C x x refl for all x.</p>
 <h3 id="based-path-induction">Based path induction</h3>
 
 <p>A differente or more customized version of path induction is the based
-path induction abbreviated as <code class="highlighter-rouge">bpi</code>.</p>
+path induction abbreviated as <code>bpi</code>.</p>
 
 <pre class="Agda"><a id="bpi"></a><a id="3927" href="/type-theory/2018/02/14/induction-on-identity-types/#3927" class="Function">bpi</a>
   <a id="3933" class="Symbol">:</a> <a id="3935" class="Symbol">∀</a> <a id="3937" class="Symbol">{</a><a id="3938" href="/type-theory/2018/02/14/induction-on-identity-types/#3938" class="Bound">i</a><a id="3939" class="Symbol">}</a> <a id="3941" class="Symbol">{</a><a id="3942" href="/type-theory/2018/02/14/induction-on-identity-types/#3942" class="Bound">A</a> <a id="3944" class="Symbol">:</a> <a id="3946" class="PrimitiveType">Set</a><a id="3949" class="Symbol">}</a>
@@ -340,7 +356,7 @@ necessary is to have C a refl, that is, holds C for the <em>base case</em>.</p>
     
       <li>
         <h3>
-          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
             Intervals
             
             <small>08 Jul 2018</small>
@@ -362,8 +378,8 @@ necessary is to have C a refl, that is, holds C for the <em>base case</em>.</p>
     
       <li>
         <h3>
-          <a href="/type-theory/2018/07/05/pathovers/">
-            PathOvers in HoTT
+          <a href="/type-theory/2018/07/05/pathovers-hott/">
+            PathOvers
             
             <small>05 Jul 2018</small>
             

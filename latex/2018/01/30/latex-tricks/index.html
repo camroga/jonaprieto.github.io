@@ -62,8 +62,6 @@
       
     
       
-    
-      
         
       
     
@@ -82,6 +80,12 @@
       
         
           <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
         
       
     
@@ -124,9 +128,21 @@
 
 
 <div class="post">
-  <!--  -->
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+95</span>/<span class="substractions">-42</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f275dfecc11e90440f0f84e3977caf83bc3e9cda/_posts/2018-01-30-latex-tricks.md"> fixing conflicts</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/f275dfecc11e90440f0f84e3977caf83bc3e9cda/_posts/2018-01-30-latex-tricks.md>f275dfe </a> on  16 Jul 2018
+    </div>
+    </div>
+  </div>
+  
 
-  <h1 class="post-title">Latex tricks <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/529eaaca05c47fe5b8669b1553c5bc9f4fb0a0b5/_posts/2018-01-30-latex-tricks.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/529eaaca05c47fe5b8669b1553c5bc9f4fb0a0b5/_posts/2018-01-30-latex-tricks.md" download target="_blank"> Download </a> </small></h1>
+  <h1 class="post-title">Latex tricks <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f275dfecc11e90440f0f84e3977caf83bc3e9cda/_posts/2018-01-30-latex-tricks.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/f275dfecc11e90440f0f84e3977caf83bc3e9cda/_posts/2018-01-30-latex-tricks.md" download target="_blank"> Download </a> </small></h1>
 
   
   <div class="references">
@@ -139,42 +155,36 @@
     <li>See https://latex.org/forum/viewtopic.php?t=13654</li>
     <li>See https://tex.stackexchange.com/questions/176297/automatically-highlight-undefined-references</li>
   </ul>
-
-  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">\documentclass</span><span class="p">{</span>article<span class="p">}</span>
-  <span class="k">\usepackage</span><span class="p">{</span>xcolor<span class="p">}</span>
-  <span class="k">\newcommand*</span><span class="p">{</span><span class="k">\missingreference</span><span class="p">}{</span><span class="k">\colorbox</span><span class="p">{</span>red<span class="p">}{</span>?reference?<span class="p">}}</span>
-  <span class="k">\newcommand*</span><span class="p">{</span><span class="k">\missingcitation</span><span class="p">}{</span><span class="k">\colorbox</span><span class="p">{</span>red<span class="p">}{</span>?citation?<span class="p">}}</span>
+  <figure class="highlight"><pre><code class="language-latex" data-lang="latex"><span></span>  <span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
+  <span class="k">\usepackage</span><span class="nb">{</span>xcolor<span class="nb">}</span>
+  <span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\missingreference</span><span class="nb">}{</span><span class="k">\colorbox</span><span class="nb">{</span>red<span class="nb">}{</span>?reference?<span class="nb">}}</span>
+  <span class="k">\newcommand*</span><span class="nb">{</span><span class="k">\missingcitation</span><span class="nb">}{</span><span class="k">\colorbox</span><span class="nb">{</span>red<span class="nb">}{</span>?citation?<span class="nb">}}</span>
   <span class="k">\makeatletter</span>
-  <span class="k">\def\@</span>setref#1#2#3<span class="p">{</span><span class="c">%</span>
+  <span class="k">\def\@</span>setref#1#2#3<span class="nb">{</span><span class="c">%</span>
      <span class="k">\ifx</span>#1<span class="k">\relax</span>
       <span class="k">\protect\G</span>@refundefinedtrue
-      <span class="k">\nfss</span>@text<span class="p">{</span><span class="k">\reset</span>@font<span class="k">\missingreference</span><span class="p">}</span><span class="c">%</span>
-      <span class="k">\@</span>latex@warning<span class="p">{</span>Reference `#3' on page <span class="k">\thepage</span> <span class="k">\space</span>
-                undefined<span class="p">}</span><span class="c">%</span>
+      <span class="k">\nfss</span>@text<span class="nb">{</span><span class="k">\reset</span>@font<span class="k">\missingreference</span><span class="nb">}</span><span class="c">%</span>
+      <span class="k">\@</span>latex@warning<span class="nb">{</span>Reference `#3&#39; on page <span class="k">\thepage</span> <span class="k">\space</span>
+                undefined<span class="nb">}</span><span class="c">%</span>
      <span class="k">\else</span>
       <span class="k">\expandafter</span>#2#1<span class="k">\null</span>
-     <span class="k">\fi</span><span class="p">}</span>
-  <span class="k">\def\@</span>citex[#1]#2<span class="p">{</span><span class="k">\leavevmode</span>
+     <span class="k">\fi</span><span class="nb">}</span>
+  <span class="k">\def\@</span>citex[#1]#2<span class="nb">{</span><span class="k">\leavevmode</span>
      <span class="k">\let\@</span>citea<span class="k">\@</span>empty
-     <span class="k">\@</span>cite<span class="p">{</span><span class="k">\@</span>for<span class="k">\@</span>citeb:=#2<span class="k">\do</span>
-       <span class="p">{</span><span class="k">\@</span>citea<span class="k">\def\@</span>citea<span class="p">{</span>,<span class="k">\penalty\@</span>m<span class="k">\ </span><span class="p">}</span><span class="c">%</span>
-        <span class="k">\edef\@</span>citeb<span class="p">{</span><span class="k">\expandafter\@</span>firstofone<span class="k">\@</span>citeb<span class="k">\@</span>empty<span class="p">}</span><span class="c">%</span>
-        <span class="k">\if</span>@filesw<span class="k">\immediate\write\@</span>auxout<span class="p">{</span><span class="k">\string\citation</span><span class="p">{</span><span class="k">\@</span>citeb<span class="p">}}</span><span class="k">\fi</span>
-        <span class="k">\@</span>ifundefined<span class="p">{</span>b@<span class="k">\@</span>citeb<span class="p">}{</span><span class="k">\hbox</span><span class="p">{</span><span class="k">\reset</span>@font<span class="k">\missingcitation</span><span class="p">}</span><span class="c">%</span>
+     <span class="k">\@</span>cite<span class="nb">{</span><span class="k">\@</span>for<span class="k">\@</span>citeb:=#2<span class="k">\do</span>
+       <span class="nb">{</span><span class="k">\@</span>citea<span class="k">\def\@</span>citea<span class="nb">{</span>,<span class="k">\penalty\@</span>m<span class="k">\ </span><span class="nb">}</span><span class="c">%</span>
+        <span class="k">\edef\@</span>citeb<span class="nb">{</span><span class="k">\expandafter\@</span>firstofone<span class="k">\@</span>citeb<span class="k">\@</span>empty<span class="nb">}</span><span class="c">%</span>
+        <span class="k">\if</span>@filesw<span class="k">\immediate\write\@</span>auxout<span class="nb">{</span><span class="k">\string\citation</span><span class="nb">{</span><span class="k">\@</span>citeb<span class="nb">}}</span><span class="k">\fi</span>
+        <span class="k">\@</span>ifundefined<span class="nb">{</span>b@<span class="k">\@</span>citeb<span class="nb">}{</span><span class="k">\hbox</span><span class="nb">{</span><span class="k">\reset</span>@font<span class="k">\missingcitation</span><span class="nb">}</span><span class="c">%</span>
           <span class="k">\G</span>@refundefinedtrue
           <span class="k">\@</span>latex@warning
-            <span class="p">{</span>Citation `<span class="k">\@</span>citeb' on page <span class="k">\thepage</span> <span class="k">\space</span> undefined<span class="p">}}</span><span class="c">%</span>
-          <span class="p">{</span><span class="k">\@</span>cite@ofmt<span class="p">{</span><span class="k">\csname</span> b@<span class="k">\@</span>citeb<span class="k">\endcsname</span><span class="p">}}}}{</span>#1<span class="p">}}</span>
+            <span class="nb">{</span>Citation `<span class="k">\@</span>citeb&#39; on page <span class="k">\thepage</span> <span class="k">\space</span> undefined<span class="nb">}}</span><span class="c">%</span>
+          <span class="nb">{</span><span class="k">\@</span>cite@ofmt<span class="nb">{</span><span class="k">\csname</span> b@<span class="k">\@</span>citeb<span class="k">\endcsname</span><span class="nb">}}}}{</span>#1<span class="nb">}}</span>
   <span class="k">\makeatother</span>
-  <span class="nt">\begin{document}</span>
-
-  This is a missing reference: <span class="k">\ref</span><span class="p">{</span>somefig<span class="p">}</span>.
-
-  This is a mssing citation: <span class="k">\cite</span><span class="p">{</span>somebib<span class="p">}</span>.
-
-  <span class="nt">\end{document}</span>
-</code></pre></div>  </div>
-
+  <span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+  This is a missing reference: <span class="k">\ref</span><span class="nb">{</span>somefig<span class="nb">}</span>.
+  This is a missing citation: <span class="k">\cite</span><span class="nb">{</span>somebib<span class="nb">}</span>.
+  <span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span></code></pre></figure>
 </div>
 
 
@@ -192,7 +202,7 @@
     
       <li>
         <h3>
-          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
             Intervals
             
             <small>08 Jul 2018</small>
@@ -214,8 +224,8 @@
     
       <li>
         <h3>
-          <a href="/type-theory/2018/07/05/pathovers/">
-            PathOvers in HoTT
+          <a href="/type-theory/2018/07/05/pathovers-hott/">
+            PathOvers
             
             <small>05 Jul 2018</small>
             

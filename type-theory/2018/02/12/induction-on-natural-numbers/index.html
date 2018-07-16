@@ -62,8 +62,6 @@
       
     
       
-    
-      
         
       
     
@@ -82,6 +80,12 @@
       
         
           <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
         
       
     
@@ -124,7 +128,19 @@
 
 
 <div class="post">
-  <!--  -->
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+2935</span>/<span class="substractions">-2531</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/2d9a337765af9b67d8d0086829f1799d7defb63a/src/2018-02-12-induction-on-natural-numbers.lagda"> last additions</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/2d9a337765af9b67d8d0086829f1799d7defb63a/src/2018-02-12-induction-on-natural-numbers.lagda>2d9a337 </a> on  13 Jul 2018
+    </div>
+    </div>
+  </div>
+  
 
   <h1 class="post-title">Induction on Natural Numbers <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/2d9a337765af9b67d8d0086829f1799d7defb63a/src/2018-02-12-induction-on-natural-numbers.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/2d9a337765af9b67d8d0086829f1799d7defb63a/src/2018-02-12-induction-on-natural-numbers.lagda" download target="_blank"> Download </a> </small></h1>
 
@@ -152,7 +168,7 @@ another, the successor, for the rest of numbers.</p>
 
 <pre class="Agda"><a id="869" class="Symbol">{-#</a> <a id="873" class="Keyword">BUILTIN</a> NATURAL <a id="889" href="/type-theory/2018/02/12/induction-on-natural-numbers/#723" class="Datatype">ℕ</a> <a id="891" class="Symbol">#-}</a></pre>
 
-<p>Then, we can now type big numbers like usual instead of <code class="highlighter-rouge">suc (suc (...))</code>:</p>
+<p>Then, we can now type big numbers like usual instead of <code>suc (suc (...))</code>:</p>
 
 <pre class="Agda"><a id="bigNumber"></a><a id="996" href="/type-theory/2018/02/12/induction-on-natural-numbers/#996" class="Function">bigNumber</a> <a id="1006" class="Symbol">:</a> <a id="1008" href="/type-theory/2018/02/12/induction-on-natural-numbers/#723" class="Datatype">ℕ</a>
 <a id="1010" href="/type-theory/2018/02/12/induction-on-natural-numbers/#996" class="Function">bigNumber</a> <a id="1020" class="Symbol">=</a> <a id="1022" class="Number">123456789</a></pre>
@@ -210,7 +226,7 @@ In Agda, we can define it as follows.</p>
 <a id="2288" href="/type-theory/2018/02/12/induction-on-natural-numbers/#2252" class="CatchallClause Function">double₂</a><a id="2295" class="CatchallClause"> </a><a id="2296" href="/type-theory/2018/02/12/induction-on-natural-numbers/#2296" class="CatchallClause Bound">n</a>    <a id="2301" class="Symbol">=</a> <a id="2303" href="/type-theory/2018/02/12/induction-on-natural-numbers/#748" class="InductiveConstructor">suc</a> <a id="2307" class="Symbol">(</a><a id="2308" href="/type-theory/2018/02/12/induction-on-natural-numbers/#748" class="InductiveConstructor">suc</a> <a id="2312" href="/type-theory/2018/02/12/induction-on-natural-numbers/#2296" class="Bound">n</a><a id="2313" class="Symbol">)</a></pre>
 
 <p>For testing purposes, let’s import from the equaility definition
-type (<code class="highlighter-rouge">_≡_</code>) and its rule (<code class="highlighter-rouge">refl</code>) from the std-lib library.</p>
+type (<code>_≡_</code>) and its rule (<code>refl</code>) from the std-lib library.</p>
 
 <pre class="Agda"><a id="2467" class="Keyword">open</a> <a id="2472" class="Keyword">import</a> <a id="2479" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="2517" class="Keyword">using</a> <a id="2523" class="Symbol">(</a><a id="2524" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="2528" class="Symbol">;</a> <a id="2530" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">_≡_</a><a id="2533" class="Symbol">;</a> <a id="2535" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.Core.html#560" class="Function">sym</a><a id="2538" class="Symbol">)</a>
 
@@ -220,28 +236,28 @@ type (<code class="highlighter-rouge">_≡_</code>) and its rule (<code class="h
 <a id="25+25"></a><a id="2571" href="/type-theory/2018/02/12/induction-on-natural-numbers/#2571" class="Function">25+25</a> <a id="2577" class="Symbol">:</a> <a id="2579" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1895" class="Function">add</a> <a id="2583" class="Number">25</a> <a id="2586" class="Number">25</a> <a id="2589" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2591" class="Number">50</a>
 <a id="2594" href="/type-theory/2018/02/12/induction-on-natural-numbers/#2571" class="Function">25+25</a> <a id="2600" class="Symbol">=</a> <a id="2602" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a></pre>
 
-<p>It’s time to unpacking the the definition of <code class="highlighter-rouge">add</code>:</p>
+<p>It’s time to unpacking the the definition of <code>add</code>:</p>
 
 <ul>
   <li>By <a href="https://en.wikipedia.org/wiki/Currying">Currying</a>, the binary
-  function <code class="highlighter-rouge">add</code> can be seen as a function that returns a unary function fixing the
-  first argument. Thus, the domain for the <code class="highlighter-rouge">recℕ</code>, <code class="highlighter-rouge">C</code> is <code class="highlighter-rouge">ℕ → ℕ</code> (a unary funciton).</li>
+  function <code>add</code> can be seen as a function that returns a unary function fixing the
+  first argument. Thus, the domain for the <code>recℕ</code>, <code>C</code> is <code>ℕ → ℕ</code> (a unary funciton).</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  add   : ℕ → (ℕ → ℕ)
+<pre><code>  add   : ℕ → (ℕ → ℕ)
   add n : ℕ → ℕ
-</code></pre></div></div>
+</code></pre>
 
 <ul>
   <li>When the first argument is zero, we just return the second argument, that is,
-  <code class="highlighter-rouge">add 0</code> is the identity function. Thus <code class="highlighter-rouge">c₀</code> is <code class="highlighter-rouge">(λ m → m)</code>.</li>
+  <code>add 0</code> is the identity function. Thus <code>c₀</code> is <code>(λ m → m)</code>.</li>
 </ul>
 
 <pre><code class="language-agda">  add zero m = m
 </code></pre>
 
 <ul>
-  <li>Question: why <code class="highlighter-rouge">((λ n g m → suc (g m)))</code>?</li>
+  <li>Question: why <code>((λ n g m → suc (g m)))</code>?</li>
 </ul>
 
 <p><strong>Multiplication</strong></p>
@@ -302,7 +318,7 @@ following</p>
 <pre class="Agda"><a id="suc-cong"></a><a id="4566" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4566" class="Function">suc-cong</a> <a id="4575" class="Symbol">:</a> <a id="4577" class="Symbol">∀</a> <a id="4579" class="Symbol">{</a><a id="4580" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4580" class="Bound">n</a> <a id="4582" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4582" class="Bound">m</a> <a id="4584" class="Symbol">:</a> <a id="4586" href="/type-theory/2018/02/12/induction-on-natural-numbers/#723" class="Datatype">ℕ</a><a id="4587" class="Symbol">}</a> <a id="4589" class="Symbol">→</a> <a id="4591" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4580" class="Bound">n</a> <a id="4593" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4595" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4582" class="Bound">m</a> <a id="4597" class="Symbol">→</a> <a id="4599" href="/type-theory/2018/02/12/induction-on-natural-numbers/#748" class="InductiveConstructor">suc</a> <a id="4603" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4580" class="Bound">n</a> <a id="4605" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4607" href="/type-theory/2018/02/12/induction-on-natural-numbers/#748" class="InductiveConstructor">suc</a> <a id="4611" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4582" class="Bound">m</a>
 <a id="4613" href="/type-theory/2018/02/12/induction-on-natural-numbers/#4566" class="Function">suc-cong</a> <a id="4622" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="4627" class="Symbol">=</a> <a id="4629" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a></pre>
 
-<p>As we can see in the type of <code class="highlighter-rouge">suc-cong</code> we used implicit
+<p>As we can see in the type of <code>suc-cong</code> we used implicit
 arguments for the numbers n and m. That’s pretty convenient to get
 some help by letting infer Agda about those implicit argument.</p>
 
@@ -319,7 +335,7 @@ for the add function are indeed equal using ι-,β- reductions:</p>
 
 <pre class="Agda"><a id="assoc"></a><a id="5132" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5132" class="Function">assoc</a> <a id="5138" class="Symbol">:</a> <a id="5140" class="Symbol">(</a><a id="5141" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5141" class="Bound">i</a> <a id="5143" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5143" class="Bound">j</a> <a id="5145" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5145" class="Bound">k</a> <a id="5147" class="Symbol">:</a> <a id="5149" href="/type-theory/2018/02/12/induction-on-natural-numbers/#723" class="Datatype">ℕ</a><a id="5150" class="Symbol">)</a> <a id="5152" class="Symbol">→</a> <a id="5154" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5141" class="Bound">i</a> <a id="5156" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5158" class="Symbol">(</a><a id="5159" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5143" class="Bound">j</a> <a id="5161" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5163" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5145" class="Bound">k</a><a id="5164" class="Symbol">)</a> <a id="5166" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="5168" class="Symbol">(</a><a id="5169" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5141" class="Bound">i</a> <a id="5171" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5173" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5143" class="Bound">j</a><a id="5174" class="Symbol">)</a> <a id="5176" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5178" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5145" class="Bound">k</a></pre>
 
-<p>To prove this property by induction we need first to provide the term <code class="highlighter-rouge">assoc₀</code>, that
+<p>To prove this property by induction we need first to provide the term <code>assoc₀</code>, that
 is the base case and then build an inhabitant of the induction hypothesis.</p>
 
 <pre class="Agda"><a id="assoc₀"></a><a id="5366" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5366" class="Function">assoc₀</a> <a id="5373" class="Symbol">:</a> <a id="5375" class="Symbol">∀</a> <a id="5377" class="Symbol">(</a><a id="5378" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5378" class="Bound">j</a> <a id="5380" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5380" class="Bound">k</a> <a id="5382" class="Symbol">:</a> <a id="5384" href="/type-theory/2018/02/12/induction-on-natural-numbers/#723" class="Datatype">ℕ</a><a id="5385" class="Symbol">)</a> <a id="5387" class="Symbol">→</a> <a id="5389" class="Number">0</a> <a id="5391" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5393" class="Symbol">(</a><a id="5394" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5378" class="Bound">j</a> <a id="5396" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5398" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5380" class="Bound">k</a><a id="5399" class="Symbol">)</a> <a id="5401" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="5403" class="Symbol">(</a><a id="5404" class="Number">0</a> <a id="5406" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5408" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5378" class="Bound">j</a><a id="5409" class="Symbol">)</a> <a id="5411" href="/type-theory/2018/02/12/induction-on-natural-numbers/#1963" class="Function Operator">+</a> <a id="5413" href="/type-theory/2018/02/12/induction-on-natural-numbers/#5380" class="Bound">k</a>
@@ -405,8 +421,8 @@ is the base case and then build an inhabitant of the induction hypothesis.</p>
 <p>In the above definition may it’s worth to notice that indHyp
 is actually our induction hypothesis.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>indHyp : double (n + 1) ≡ suc (suc (double n))
-</code></pre></div></div>
+<pre><code>indHyp : double (n + 1) ≡ suc (suc (double n))
+</code></pre>
 
 <ul>
   <li>Exercise 3</li>
@@ -443,7 +459,7 @@ then for all $$n : \mathbb{N}$$, $$P(n)$$.
 </div>
 
 <p>To solve this problem, we need to define a type for the <em>less than</em> relationship
-(<code class="highlighter-rouge">_&lt;_</code>) between natural numbers but we also have to define the disjunction to
+(<code>_&lt;_</code>) between natural numbers but we also have to define the disjunction to
 make a case analysis that we need for our proof. Let’s see. You may skip this first part.</p>
 
 <pre class="Agda"><a id="8371" class="Keyword">module</a> <a id="ℕ-transInd"></a><a id="8378" href="/type-theory/2018/02/12/induction-on-natural-numbers/#8378" class="Module">ℕ-transInd</a> <a id="8389" class="Symbol">(</a><a id="8390" href="/type-theory/2018/02/12/induction-on-natural-numbers/#8390" class="Bound">P</a> <a id="8392" class="Symbol">:</a> <a id="8394" href="/type-theory/2018/02/12/induction-on-natural-numbers/#723" class="Datatype">ℕ</a> <a id="8396" class="Symbol">→</a> <a id="8398" href="/type-theory/2018/02/12/induction-on-natural-numbers/#469" class="Function">𝒰</a><a id="8399" class="Symbol">)</a> <a id="8401" class="Keyword">where</a>
@@ -518,17 +534,17 @@ where $$P : \mathbb{N} \to \mathcal{U}$$.
 <h3 id="conclusion">Conclusion</h3>
 
 <p>Induction as it was presented here is stronger than recursion.
-The recursor <code class="highlighter-rouge">recℕ</code> is the <em>no-dependent</em> version of <code class="highlighter-rouge">indℕ</code> function.</p>
+The recursor <code>recℕ</code> is the <em>no-dependent</em> version of <code>indℕ</code> function.</p>
 
-<p>Summing up, the recursor <code class="highlighter-rouge">recℕ</code> allows to define a function <code class="highlighter-rouge">f : ℕ → C</code> where <code class="highlighter-rouge">C : 𝒰</code>
+<p>Summing up, the recursor <code>recℕ</code> allows to define a function <code>f : ℕ → C</code> where <code>C : 𝒰</code>
 by defining two equations:</p>
 
 <ul>
   <li>
-    <p><code class="highlighter-rouge">f(0) ≡ c₀</code> for <code class="highlighter-rouge">c₀ : C</code></p>
+    <p><code>f(0) ≡ c₀</code> for <code>c₀ : C</code></p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">f(suc n) ≡ cₛ(n, f(n))</code> for <code class="highlighter-rouge">cₛ : ℕ → C → C</code></p>
+    <p><code>f(suc n) ≡ cₛ(n, f(n))</code> for <code>cₛ : ℕ → C → C</code></p>
   </li>
 </ul>
 
@@ -563,7 +579,7 @@ by defining two equations:</p>
     
       <li>
         <h3>
-          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
             Intervals
             
             <small>08 Jul 2018</small>
@@ -585,8 +601,8 @@ by defining two equations:</p>
     
       <li>
         <h3>
-          <a href="/type-theory/2018/07/05/pathovers/">
-            PathOvers in HoTT
+          <a href="/type-theory/2018/07/05/pathovers-hott/">
+            PathOvers
             
             <small>05 Jul 2018</small>
             

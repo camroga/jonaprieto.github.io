@@ -62,8 +62,6 @@
       
     
       
-    
-      
         
       
     
@@ -82,6 +80,12 @@
       
         
           <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
         
       
     
@@ -124,9 +128,21 @@
 
 
 <div class="post">
-  <!--  -->
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+229</span>/<span class="substractions">-0</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/b7b086742f2980911e87f65d2d7e617c48a5c5f9/_posts/2018-06-21-learning-emacs-editor.md"> fixing mistakes with git, working in progress</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/b7b086742f2980911e87f65d2d7e617c48a5c5f9/_posts/2018-06-21-learning-emacs-editor.md>b7b0867 </a> on  16 Jul 2018
+    </div>
+    </div>
+  </div>
+  
 
-  <h1 class="post-title">Emacs <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/e751f51e2b0523179874ce5e31074f3c3ddff2ce/_posts/2018-06-21-learning-Emacs.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/e751f51e2b0523179874ce5e31074f3c3ddff2ce/_posts/2018-06-21-learning-Emacs.md" download target="_blank"> Download </a> </small></h1>
+  <h1 class="post-title">Emacs <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/b7b086742f2980911e87f65d2d7e617c48a5c5f9/_posts/2018-06-21-learning-emacs-editor.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/b7b086742f2980911e87f65d2d7e617c48a5c5f9/_posts/2018-06-21-learning-emacs-editor.md" download target="_blank"> Download </a> </small></h1>
 
   
   <p>I’m not dogmatic about which editor is the best. I use at least three different
@@ -142,9 +158,9 @@ customisation, something with enough space of freedom to play with.</p>
 
 <p>My version of emacs at this moment in OSX:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GNU Emacs 26.1 (build 1, x86_64-apple-darwin17.5.0)
+<pre><code>GNU Emacs 26.1 (build 1, x86_64-apple-darwin17.5.0)
  of 2018-05-28
-</code></pre></div></div>
+</code></pre>
 
 <h2 id="cask"><a href="http://github.com/cask/cask">Cask</a></h2>
 
@@ -154,8 +170,8 @@ more.</p>
 
 <p>Cask can also be used to manage dependencies for your local Emacs configuration.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew install cask
-</code></pre></div></div>
+<pre><code>brew install cask
+</code></pre>
 
 <ul>
   <li><a href="https://github.com/rdallasgray/graphene">Graphene starting kit</a></li>
@@ -168,7 +184,7 @@ more.</p>
   <li>
     <p>packages repo:</p>
 
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;; Require Emacs' package functionality
+    <pre><code>;; Require Emacs' package functionality
 (require 'package)
 
 ;; Add the Melpa repository to the list of package sources
@@ -176,17 +192,17 @@ more.</p>
 
 ;; Initialise the package system.
 (package-initialize)
-</code></pre></div>    </div>
+</code></pre>
   </li>
 </ul>
 
-<p>Then either select those lines and do <code class="highlighter-rouge">M-x eval-region</code>, or restart Emacs. After
-that, do <code class="highlighter-rouge">M-x list-packages</code>, search for ‘graphene’ (either manually or using
-<code class="highlighter-rouge">C-s</code>), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.</p>
+<p>Then either select those lines and do <code>M-x eval-region</code>, or restart Emacs. After
+that, do <code>M-x list-packages</code>, search for ‘graphene’ (either manually or using
+<code>C-s</code>), mark it for installation by pressing ‘i’, and install it by pressing ‘x’.</p>
 
 <h2 id="completation">Completation</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(require 'company)
+<pre><code>(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ; (bind-key "\e\e\e" 'company-abort)
@@ -205,14 +221,14 @@ that, do <code class="highlighter-rouge">M-x list-packages</code>, search for �
 ; (bind-key "" 'company-show-location)
 ; (bind-key "" 'company-search-candidates)
 ; (bind-key "" 'company-filter-candidates)
-</code></pre></div></div>
+</code></pre>
 
 <h2 id="agda"><a href="http://gitub.com/agda/agda">Agda</a></h2>
 
-<p>Run in the command line <code class="highlighter-rouge">agda-mode compile</code> and <code class="highlighter-rouge">agda-mode setup</code>.
-Since I prefer to maintain the keybindings explicit, this goes in the <code class="highlighter-rouge">init.el</code> file:</p>
+<p>Run in the command line <code>agda-mode compile</code> and <code>agda-mode setup</code>.
+Since I prefer to maintain the keybindings explicit, this goes in the <code>init.el</code> file:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(load-file (let ((coding-system-for-read 'utf-8))
+<pre><code>(load-file (let ((coding-system-for-read 'utf-8))
                 (shell-command-to-string "agda-mode locate")))
 
 (require 'bind-key)
@@ -246,16 +262,16 @@ Since I prefer to maintain the keybindings explicit, this goes in the <code clas
 (bind-key "C-x C-r"   'agda2-restart                          )
 (bind-key "C-x d"     'agda2-remove-annotations               )
 ; (bind-key "C-c C-s"     'agda2-set-program-version         )
-</code></pre></div></div>
+</code></pre>
 
 <h2 id="proof-general"><a href="https://proofgeneral.github.io/">Proof-General</a></h2>
 
 <p>In the home directory run this:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
+<pre><code>git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
 cd ~/.emacs.d/lisp/PG
 make
-</code></pre></div></div>
+</code></pre>
 
 <h2 id="theme">Theme</h2>
 
@@ -266,67 +282,67 @@ there its theme available without the need to install all the spacemacs.</p>
   <li>https://github.com/nashamri/spacemacs-theme</li>
 </ul>
 
-<p>Add this in the <code class="highlighter-rouge">init.el</code> file:</p>
+<p>Add this in the <code>init.el</code> file:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(load-theme 'spacemacs-light t)
-</code></pre></div></div>
+<pre><code>(load-theme 'spacemacs-light t)
+</code></pre>
 
 <h2 id="markdown-and-jekyll">Markdown and Jekyll</h2>
 
-<p>Use <code class="highlighter-rouge">M-x package-install markdown-mode</code>
-Use <code class="highlighter-rouge">M-x package-install jekyll-modes</code></p>
+<p>Use <code>M-x package-install markdown-mode</code>
+Use <code>M-x package-install jekyll-modes</code></p>
 
 <h2 id="keybindings">Keybindings</h2>
 
 <p>For keybindings beginner and learners I totally recommend to install the package:
-<a href="https://github.com/justbur/emacs-which-key"><code class="highlighter-rouge">which-key</code></a>: <code class="highlighter-rouge">M-x package-install
-which-key</code> and add these lines in the <code class="highlighter-rouge">init.el</code>:</p>
+<a href="https://github.com/justbur/emacs-which-key"><code>which-key</code></a>: <code>M-x package-install
+which-key</code> and add these lines in the <code>init.el</code>:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(require 'which-key)
+<pre><code>(require 'which-key)
 (which-key-mode)
-</code></pre></div></div>
+</code></pre>
 
 <p>To visualize all the commands, I set up this package to show me on the right
 side the frame with all the commands (add this
-<code class="highlighter-rouge">(which-key-setup-side-window-right)</code> in the <code class="highlighter-rouge">init.el</code>)</p>
+<code>(which-key-setup-side-window-right)</code> in the <code>init.el</code>)</p>
 
 <ul>
-  <li><code class="highlighter-rouge">C-h</code> : help</li>
-  <li><code class="highlighter-rouge">C-g</code> : quit</li>
-  <li><code class="highlighter-rouge">C-x b</code> : switch buffers</li>
+  <li><code>C-h</code> : help</li>
+  <li><code>C-g</code> : quit</li>
+  <li><code>C-x b</code> : switch buffers</li>
   <li>
-    <p><code class="highlighter-rouge">C-x k</code> always kills the active buffer, rather than asking you which one you want to kill</p>
+    <p><code>C-x k</code> always kills the active buffer, rather than asking you which one you want to kill</p>
   </li>
-  <li><code class="highlighter-rouge">C-x 1</code> : close all windows except the active window</li>
-  <li><code class="highlighter-rouge">C-x 0</code> : close the active window</li>
-  <li><code class="highlighter-rouge">C-x 2</code> : split the active window vertically into two horizontal windows</li>
-  <li><code class="highlighter-rouge">C-x 3</code> : split the active window horizontally into two vertical windows</li>
+  <li><code>C-x 1</code> : close all windows except the active window</li>
+  <li><code>C-x 0</code> : close the active window</li>
+  <li><code>C-x 2</code> : split the active window vertically into two horizontal windows</li>
+  <li><code>C-x 3</code> : split the active window horizontally into two vertical windows</li>
 </ul>
 
 <h3 id="files">Files</h3>
 
 <ul>
-  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-f</code> : open file</li>
-  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-s</code> : save file</li>
-  <li><code class="highlighter-rouge">C-x</code> + <code class="highlighter-rouge">C-w</code> : save file as</li>
+  <li><code>C-x</code> + <code>C-f</code> : open file</li>
+  <li><code>C-x</code> + <code>C-s</code> : save file</li>
+  <li><code>C-x</code> + <code>C-w</code> : save file as</li>
 </ul>
 
 <h3 id="writing">Writing</h3>
 
 <ul>
-  <li><code class="highlighter-rouge">C-space</code> : set region mark</li>
-  <li><code class="highlighter-rouge">C-w</code> : kill region</li>
-  <li><code class="highlighter-rouge">C-k</code> : kill region between point and end of current line</li>
+  <li><code>C-space</code> : set region mark</li>
+  <li><code>C-w</code> : kill region</li>
+  <li><code>C-k</code> : kill region between point and end of current line</li>
   <li>
-    <p><code class="highlighter-rouge">C-y</code> : yank region from kill ring</p>
+    <p><code>C-y</code> : yank region from kill ring</p>
   </li>
   <li>
-    <p><code class="highlighter-rouge">C-_</code> : undo</p>
+    <p><code>C-_</code> : undo</p>
   </li>
-  <li><code class="highlighter-rouge">C-s</code> : search forwards</li>
-  <li><code class="highlighter-rouge">C-r</code> : search backwards</li>
-  <li><code class="highlighter-rouge">M-%</code> : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)</li>
-  <li><code class="highlighter-rouge">M-q</code> : <strong>wrap text</strong></li>
+  <li><code>C-s</code> : search forwards</li>
+  <li><code>C-r</code> : search backwards</li>
+  <li><code>M-%</code> : query replace (‘space’ to replace, ‘n’ to skip, ‘!’ to replace all)</li>
+  <li><code>M-q</code> : <strong>wrap text</strong></li>
 </ul>
 
 <h3 id="graphene">Graphene</h3>
@@ -334,22 +350,22 @@ side the frame with all the commands (add this
 <p>Graphene creates some new keybindings, and alters some existing ones:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">C-x C-k</code> kills the default buffer and closes its window</li>
-  <li><code class="highlighter-rouge">C-c n</code> creates a new buffer</li>
-  <li><code class="highlighter-rouge">C-c N</code> creates a new instance of Emacs</li>
+  <li><code>C-x C-k</code> kills the default buffer and closes its window</li>
+  <li><code>C-c n</code> creates a new buffer</li>
+  <li><code>C-c N</code> creates a new instance of Emacs</li>
 </ul>
 
 <p>(<em>Not working for unknown reason in my laptop</em>):</p>
 
 <ul>
-  <li><code class="highlighter-rouge">C-;</code> adds a semicolon at the end of the line</li>
-  <li><code class="highlighter-rouge">M-RET</code> creates a newline below the current line and moves to it</li>
-  <li><code class="highlighter-rouge">C-M-;</code> comments or uncomments the current line</li>
-  <li><code class="highlighter-rouge">C-&gt;</code> increases the height of the current window</li>
-  <li><code class="highlighter-rouge">C-&lt;</code> decreases it</li>
-  <li><code class="highlighter-rouge">C-.</code> increases the width of the current window</li>
-  <li><code class="highlighter-rouge">C-,</code> decreases it</li>
-  <li><code class="highlighter-rouge">C-c s</code> selects the Speedbar window</li>
+  <li><code>C-;</code> adds a semicolon at the end of the line</li>
+  <li><code>M-RET</code> creates a newline below the current line and moves to it</li>
+  <li><code>C-M-;</code> comments or uncomments the current line</li>
+  <li><code>C-&gt;</code> increases the height of the current window</li>
+  <li><code>C-&lt;</code> decreases it</li>
+  <li><code>C-.</code> increases the width of the current window</li>
+  <li><code>C-,</code> decreases it</li>
+  <li><code>C-c s</code> selects the Speedbar window</li>
 </ul>
 
 <h2 id="projects">Projects</h2>
@@ -357,10 +373,10 @@ side the frame with all the commands (add this
 <p>project-persist uses the following keybindings:</p>
 
 <ul>
-  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P n</code> to create a new project</li>
-  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P f</code> to find an existing project</li>
-  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P k</code> to close the current project</li>
-  <li><code class="highlighter-rouge">C-c</code> <code class="highlighter-rouge">P d</code> to delete an existing project</li>
+  <li><code>C-c</code> <code>P n</code> to create a new project</li>
+  <li><code>C-c</code> <code>P f</code> to find an existing project</li>
+  <li><code>C-c</code> <code>P k</code> to close the current project</li>
+  <li><code>C-c</code> <code>P d</code> to delete an existing project</li>
 </ul>
 
 
@@ -378,7 +394,7 @@ side the frame with all the commands (add this
     
       <li>
         <h3>
-          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
             Intervals
             
             <small>08 Jul 2018</small>
@@ -400,8 +416,8 @@ side the frame with all the commands (add this
     
       <li>
         <h3>
-          <a href="/type-theory/2018/07/05/pathovers/">
-            PathOvers in HoTT
+          <a href="/type-theory/2018/07/05/pathovers-hott/">
+            PathOvers
             
             <small>05 Jul 2018</small>
             

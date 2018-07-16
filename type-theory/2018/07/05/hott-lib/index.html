@@ -62,8 +62,6 @@
       
     
       
-    
-      
         
       
     
@@ -82,6 +80,12 @@
       
         
           <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
         
       
     
@@ -124,7 +128,19 @@
 
 
 <div class="post">
-  <!--  -->
+  
+  <div class="post-changes">
+    <div class="main-heading">
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+9299</span>/<span class="substractions">-8119</span>)</span>:
+          <span class="commit-message"> <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/659909dda09dece3a0963c9c854050f088145333/src/2018-04-08-hott-lib.lagda"> Added video lectures for concurrent programming</a></span>
+      </div>
+    <div class="main-last-date">
+        Latest commit
+        <a href=http://github.com/jonaprieto/jonaprieto.github.io/blob/659909dda09dece3a0963c9c854050f088145333/src/2018-04-08-hott-lib.lagda>659909d </a> on  16 Jul 2018
+    </div>
+    </div>
+  </div>
+  
 
   <h1 class="post-title">Mini HoTT library in Agda <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/659909dda09dece3a0963c9c854050f088145333/src/2018-04-08-hott-lib.lagda" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/659909dda09dece3a0963c9c854050f088145333/src/2018-04-08-hott-lib.lagda" download target="_blank"> Download </a> </small></h1>
 
@@ -207,7 +223,7 @@ This source code was type-checked by Agda 2.5.4.</p>
   <li>https://mroman42.github.io/ctlc/agda-hott/Total.html</li>
 </ul>
 
-<p>Agda has a pragma to work with HoTT (<code class="highlighter-rouge">--without-K</code>):</p>
+<p>Agda has a pragma to work with HoTT (<code>--without-K</code>):</p>
 
 <pre class="Agda"><a id="438" class="Symbol">{-#</a> <a id="442" class="Keyword">OPTIONS</a> <a id="450" class="Option">--without-K</a> <a id="462" class="Symbol">#-}</a>
 <a id="466" class="Keyword">open</a> <a id="471" class="Keyword">import</a> <a id="478" href="Agda.Primitive.html" class="Module">Agda.Primitive</a> <a id="493" class="Keyword">public</a>
@@ -216,7 +232,7 @@ This source code was type-checked by Agda 2.5.4.</p>
 
 <h2 id="universes">Universes</h2>
 <p>Type universe hierarchy. It hides Agda primitive
-hierarchy and the keyword <code class="highlighter-rouge">Set</code>. It uses <code class="highlighter-rouge">Type</code> instead.</p>
+hierarchy and the keyword <code>Set</code>. It uses <code>Type</code> instead.</p>
 
 <pre class="Agda"><a id="782" class="Keyword">module</a> <a id="Universes"></a><a id="789" href="/type-theory/2018/07/05/hott-lib/#789" class="Module">Universes</a> <a id="799" class="Keyword">where</a>
 
@@ -344,13 +360,13 @@ natural numbers in arabic notation.</p>
 <pre class="Agda"><a id="id"></a><a id="3586" href="/type-theory/2018/07/05/hott-lib/#3586" class="Function">id</a> <a id="3589" class="Symbol">:</a> <a id="3591" class="Symbol">∀</a> <a id="3593" class="Symbol">{</a><a id="3594" href="/type-theory/2018/07/05/hott-lib/#3594" class="Bound">ℓ</a><a id="3595" class="Symbol">}</a> <a id="3597" class="Symbol">{</a><a id="3598" href="/type-theory/2018/07/05/hott-lib/#3598" class="Bound">A</a> <a id="3600" class="Symbol">:</a> <a id="3602" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="3607" href="/type-theory/2018/07/05/hott-lib/#3594" class="Bound">ℓ</a><a id="3608" class="Symbol">}</a> <a id="3610" class="Symbol">→</a> <a id="3612" href="/type-theory/2018/07/05/hott-lib/#3598" class="Bound">A</a> <a id="3614" class="Symbol">→</a> <a id="3616" href="/type-theory/2018/07/05/hott-lib/#3598" class="Bound">A</a>
 <a id="3618" href="/type-theory/2018/07/05/hott-lib/#3586" class="Function">id</a> <a id="3621" href="/type-theory/2018/07/05/hott-lib/#3621" class="Bound">a</a> <a id="3623" class="Symbol">=</a> <a id="3625" href="/type-theory/2018/07/05/hott-lib/#3621" class="Bound">a</a></pre>
 
-<p>The identity function on a type <code class="highlighter-rouge">A</code> is <code class="highlighter-rouge">idf A</code>.</p>
+<p>The identity function on a type <code>A</code> is <code>idf A</code>.</p>
 <pre class="Agda"><a id="idf"></a><a id="3700" href="/type-theory/2018/07/05/hott-lib/#3700" class="Function">idf</a> <a id="3704" class="Symbol">:</a> <a id="3706" class="Symbol">∀</a> <a id="3708" class="Symbol">{</a><a id="3709" href="/type-theory/2018/07/05/hott-lib/#3709" class="Bound">i</a><a id="3710" class="Symbol">}</a> <a id="3712" class="Symbol">(</a><a id="3713" href="/type-theory/2018/07/05/hott-lib/#3713" class="Bound">A</a> <a id="3715" class="Symbol">:</a> <a id="3717" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="3722" href="/type-theory/2018/07/05/hott-lib/#3709" class="Bound">i</a><a id="3723" class="Symbol">)</a> <a id="3725" class="Symbol">→</a> <a id="3727" class="Symbol">(</a><a id="3728" href="/type-theory/2018/07/05/hott-lib/#3713" class="Bound">A</a> <a id="3730" class="Symbol">→</a> <a id="3732" href="/type-theory/2018/07/05/hott-lib/#3713" class="Bound">A</a><a id="3733" class="Symbol">)</a>
 <a id="3735" href="/type-theory/2018/07/05/hott-lib/#3700" class="Function">idf</a> <a id="3739" href="/type-theory/2018/07/05/hott-lib/#3739" class="Bound">A</a> <a id="3741" class="Symbol">=</a> <a id="3743" class="Symbol">λ</a> <a id="3745" href="/type-theory/2018/07/05/hott-lib/#3745" class="Bound">x</a> <a id="3747" class="Symbol">→</a> <a id="3749" href="/type-theory/2018/07/05/hott-lib/#3745" class="Bound">x</a></pre>
 
 <h4 id="constant-function">Constant function</h4>
 
-<p>Constant function at some point <code class="highlighter-rouge">b</code> is <code class="highlighter-rouge">cst b</code></p>
+<p>Constant function at some point <code>b</code> is <code>cst b</code></p>
 
 <pre class="Agda"><a id="cst"></a><a id="3848" href="/type-theory/2018/07/05/hott-lib/#3848" class="Function">cst</a> <a id="3852" class="Symbol">:</a> <a id="3854" class="Symbol">∀</a> <a id="3856" class="Symbol">{</a><a id="3857" href="/type-theory/2018/07/05/hott-lib/#3857" class="Bound">i</a> <a id="3859" href="/type-theory/2018/07/05/hott-lib/#3859" class="Bound">j</a><a id="3860" class="Symbol">}</a> <a id="3862" class="Symbol">{</a><a id="3863" href="/type-theory/2018/07/05/hott-lib/#3863" class="Bound">A</a> <a id="3865" class="Symbol">:</a> <a id="3867" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="3872" href="/type-theory/2018/07/05/hott-lib/#3857" class="Bound">i</a><a id="3873" class="Symbol">}</a> <a id="3875" class="Symbol">{</a><a id="3876" href="/type-theory/2018/07/05/hott-lib/#3876" class="Bound">B</a> <a id="3878" class="Symbol">:</a> <a id="3880" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="3885" href="/type-theory/2018/07/05/hott-lib/#3859" class="Bound">j</a><a id="3886" class="Symbol">}</a> <a id="3888" class="Symbol">(</a><a id="3889" href="/type-theory/2018/07/05/hott-lib/#3889" class="Bound">b</a> <a id="3891" class="Symbol">:</a> <a id="3893" href="/type-theory/2018/07/05/hott-lib/#3876" class="Bound">B</a><a id="3894" class="Symbol">)</a> <a id="3896" class="Symbol">→</a> <a id="3898" class="Symbol">(</a><a id="3899" href="/type-theory/2018/07/05/hott-lib/#3863" class="Bound">A</a> <a id="3901" class="Symbol">→</a> <a id="3903" href="/type-theory/2018/07/05/hott-lib/#3876" class="Bound">B</a><a id="3904" class="Symbol">)</a>
 <a id="3906" href="/type-theory/2018/07/05/hott-lib/#3848" class="Function">cst</a> <a id="3910" href="/type-theory/2018/07/05/hott-lib/#3910" class="Bound">b</a> <a id="3912" class="Symbol">=</a> <a id="3914" class="Symbol">λ</a> <a id="3916" href="/type-theory/2018/07/05/hott-lib/#3916" class="Bound">_</a> <a id="3918" class="Symbol">→</a> <a id="3920" href="/type-theory/2018/07/05/hott-lib/#3910" class="Bound">b</a></pre>
@@ -429,10 +445,10 @@ is the J-eliminator.</p>
 
 <h3 id="pathover">PathOver</h3>
 
-<p>If you have a dependent type <code class="highlighter-rouge">B</code> over <code class="highlighter-rouge">A</code>, a path <code class="highlighter-rouge">p : x == y</code> in <code class="highlighter-rouge">A</code> and two
-points <code class="highlighter-rouge">u : B x</code> and <code class="highlighter-rouge">v : B y</code>, there is a <strong>type</strong> <code class="highlighter-rouge">[u == v [ B ↓ p]]</code> of paths
-from <code class="highlighter-rouge">u</code> to <code class="highlighter-rouge">v</code> lying over the path <code class="highlighter-rouge">p</code>.  By definition, if <code class="highlighter-rouge">p</code> is a constant
-path, then <code class="highlighter-rouge">[u == v [ B ↓ p ]]</code> is just an ordinary path in the fiber.
+<p>If you have a dependent type <code>B</code> over <code>A</code>, a path <code>p : x == y</code> in <code>A</code> and two
+points <code>u : B x</code> and <code>v : B y</code>, there is a <strong>type</strong> <code>[u == v [ B ↓ p]]</code> of paths
+from <code>u</code> to <code>v</code> lying over the path <code>p</code>.  By definition, if <code>p</code> is a constant
+path, then <code>[u == v [ B ↓ p ]]</code> is just an ordinary path in the fiber.
 <a href="https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115">More info here</a>.</p>
 
 <pre class="Agda"><a id="PathOver"></a><a id="6329" href="/type-theory/2018/07/05/hott-lib/#6329" class="Function">PathOver</a> <a id="6338" class="Symbol">:</a> <a id="6340" class="Symbol">∀</a> <a id="6342" class="Symbol">{</a><a id="6343" href="/type-theory/2018/07/05/hott-lib/#6343" class="Bound">ℓᵢ</a> <a id="6346" href="/type-theory/2018/07/05/hott-lib/#6346" class="Bound">ℓⱼ</a><a id="6348" class="Symbol">}</a> <a id="6350" class="Symbol">{</a><a id="6351" href="/type-theory/2018/07/05/hott-lib/#6351" class="Bound">A</a> <a id="6353" class="Symbol">:</a> <a id="6355" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="6360" href="/type-theory/2018/07/05/hott-lib/#6343" class="Bound">ℓᵢ</a><a id="6362" class="Symbol">}</a> <a id="6364" class="Symbol">(</a><a id="6365" href="/type-theory/2018/07/05/hott-lib/#6365" class="Bound">B</a> <a id="6367" class="Symbol">:</a> <a id="6369" href="/type-theory/2018/07/05/hott-lib/#6351" class="Bound">A</a> <a id="6371" class="Symbol">→</a> <a id="6373" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="6378" href="/type-theory/2018/07/05/hott-lib/#6346" class="Bound">ℓⱼ</a><a id="6380" class="Symbol">)</a>
@@ -455,10 +471,10 @@ The idea is that you can write the following:</p>
       e ∎
 </code></pre>
 
-<p>where <code class="highlighter-rouge">p</code> is a path from <code class="highlighter-rouge">a</code> to <code class="highlighter-rouge">b</code>, <code class="highlighter-rouge">q</code> is a path from <code class="highlighter-rouge">b</code> to <code class="highlighter-rouge">c</code>, and so on.
-You often have to apply some equality in some context, for instance <code class="highlighter-rouge">p</code> could be
-<code class="highlighter-rouge">ap ctx thm</code> where <code class="highlighter-rouge">thm</code> is the interesting theorem used to prove that <code class="highlighter-rouge">a</code> is
-equal to <code class="highlighter-rouge">b</code>, and <code class="highlighter-rouge">ctx</code> is the context. <a href="https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270">More info here</a>.</p>
+<p>where <code>p</code> is a path from <code>a</code> to <code>b</code>, <code>q</code> is a path from <code>b</code> to <code>c</code>, and so on.
+You often have to apply some equality in some context, for instance <code>p</code> could be
+<code>ap ctx thm</code> where <code>thm</code> is the interesting theorem used to prove that <code>a</code> is
+equal to <code>b</code>, and <code>ctx</code> is the context. <a href="https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270">More info here</a>.</p>
 
 <pre class="Agda"><a id="7201" class="Keyword">module</a> <a id="EquationalReasoning"></a><a id="7208" href="/type-theory/2018/07/05/hott-lib/#7208" class="Module">EquationalReasoning</a> <a id="7228" class="Symbol">{</a><a id="7229" href="/type-theory/2018/07/05/hott-lib/#7229" class="Bound">ℓᵢ</a><a id="7231" class="Symbol">}</a> <a id="7233" class="Symbol">{</a><a id="7234" href="/type-theory/2018/07/05/hott-lib/#7234" class="Bound">A</a> <a id="7236" class="Symbol">:</a> <a id="7238" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="7243" href="/type-theory/2018/07/05/hott-lib/#7229" class="Bound">ℓᵢ</a><a id="7245" class="Symbol">}</a> <a id="7247" class="Keyword">where</a>
 
@@ -554,8 +570,8 @@ preserve equalities.</p>
 
 <h2 id="transport">Transport</h2>
 
-<p>When we transport a proof of <code class="highlighter-rouge">(P a)</code> over an equality <code class="highlighter-rouge">(a == b)</code>, we
-get a proof of <code class="highlighter-rouge">(P b)</code>.</p>
+<p>When we transport a proof of <code>(P a)</code> over an equality <code>(a == b)</code>, we
+get a proof of <code>(P b)</code>.</p>
 
 <pre class="Agda"><a id="9989" class="Keyword">module</a> <a id="Transport"></a><a id="9996" href="/type-theory/2018/07/05/hott-lib/#9996" class="Module">Transport</a> <a id="10006" class="Symbol">{</a><a id="10007" href="/type-theory/2018/07/05/hott-lib/#10007" class="Bound">ℓᵢ</a><a id="10009" class="Symbol">}</a> <a id="10011" class="Symbol">{</a><a id="10012" href="/type-theory/2018/07/05/hott-lib/#10012" class="Bound">A</a> <a id="10014" class="Symbol">:</a> <a id="10016" href="/type-theory/2018/07/05/hott-lib/#982" class="Function">Type</a> <a id="10021" href="/type-theory/2018/07/05/hott-lib/#10007" class="Bound">ℓᵢ</a><a id="10023" class="Symbol">}</a> <a id="10025" class="Keyword">where</a>
   <a id="10033" class="Comment">-- Transport</a>
@@ -1375,7 +1391,7 @@ are provided.</p>
     
       <li>
         <h3>
-          <a href="/learning/2018/07/08/learning-Interval-Analysis/">
+          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
             Intervals
             
             <small>08 Jul 2018</small>
@@ -1397,8 +1413,8 @@ are provided.</p>
     
       <li>
         <h3>
-          <a href="/type-theory/2018/07/05/pathovers/">
-            PathOvers in HoTT
+          <a href="/type-theory/2018/07/05/pathovers-hott/">
+            PathOvers
             
             <small>05 Jul 2018</small>
             
