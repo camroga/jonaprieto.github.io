@@ -47,7 +47,7 @@ assets/%.png : src/assets/%.png
 
 .phony: serve
 serve:
-	ruby -S bundle exec jekyll liveserve --force_polling --watch --incremental
+	ruby -S bundle exec jekyll liveserve -l --force_polling --watch --incremental --trace --verbose --future
 
 # remove all auxiliary files
 .phony: clean

@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "PL"
+title: "Programming languages"
 date: "2018-06-30"
 categories: learning
 agda: true

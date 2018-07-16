@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "PathOvers in HoTT"
+title: "PathOvers"
 date: "2018-07-05"
 categories: type-theory
 toc: true

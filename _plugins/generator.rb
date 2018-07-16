@@ -2,9 +2,11 @@ require 'rbconfig'
 
 module Jekyll
   module GitMetadata
+    warn "Warning:".yellow + "Foo!"
     class Generator < Jekyll::Generator
 
-      safe true
+      # safe true
+      priority :highest
 
       def generate(site)
         raise "Git is not installed" unless git_installed?

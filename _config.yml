@@ -19,13 +19,7 @@ excerpt_separator: "\n\n"
 
 permalink: pretty
 
-plugins:
-  - jekyll-feed
-  - jekyll-last-modified-at
-  - jekyll-algolia
-  - jekyll-github-metadata
-  - netrc
-  - jekyll/scholar
+plugins_dir: _plugins
 
 scholar:
   style: apa
@@ -53,7 +47,7 @@ exclude:
 include:
   - .nojekyll
 
-# future: true
+future: true
 
 # ----------------------------------------------------------------------------
 algolia:
