@@ -1316,7 +1316,8 @@ If `A : Type` and `C : A → Type`, we can show that:
   <a id="47190" class="Comment">-- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))</a>
   <a id="47267" class="Comment">-- lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})</a>{% endraw %}</pre>
 
+{: .references}
 
-## References
-https://github.com/HoTT/HoTT-Agda/
-https://mroman42.github.io/ctlc/agda-hott/Total.html
+  - https://github.com/HoTT/HoTT-Agda/
+
+  - https://mroman42.github.io/ctlc/agda-hott/Total.html

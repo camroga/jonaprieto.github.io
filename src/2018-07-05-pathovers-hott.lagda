@@ -1384,7 +1384,8 @@ module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
   -- lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})
 \end{code}
 
+{: .references}
 
-## References
-https://github.com/HoTT/HoTT-Agda/
-https://mroman42.github.io/ctlc/agda-hott/Total.html
+  - https://github.com/HoTT/HoTT-Agda/
+
+  - https://mroman42.github.io/ctlc/agda-hott/Total.html
