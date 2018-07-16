@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Concurrent</title>
-  <meta name="description" content="">
+  <title>Concurrency</title>
+  <meta name="description" content="Keywords">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -126,7 +126,7 @@
 <div class="post">
   <!--  -->
 
-  <h1 class="post-title">Concurrent <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/e751f51e2b0523179874ce5e31074f3c3ddff2ce/_posts/2018-06-27-concurrent-programming.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/e751f51e2b0523179874ce5e31074f3c3ddff2ce/_posts/2018-06-27-concurrent-programming.md" download target="_blank"> Download </a> </small></h1>
+  <h1 class="post-title">Concurrency <small class="view-source"><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/659909dda09dece3a0963c9c854050f088145333/_posts/2018-06-27-concurrent-programming.md" target="_blank">View source</a> | <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/659909dda09dece3a0963c9c854050f088145333/_posts/2018-06-27-concurrent-programming.md" download target="_blank"> Download </a> </small></h1>
 
   
   <div class="toc">
@@ -139,14 +139,20 @@
       <li><a href="#synchronization-competition">Synchronization: Competition</a></li>
     </ul>
   </li>
+  <li><a href="#video-lectures">Video lectures</a>
+    <ul>
+      <li><a href="#c11-concurrency-by-bartosz-milewski"><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ&amp;list=PL1835A90FC78FF8BE">C++11 Concurrency by Bartosz Milewski</a></a></li>
+      <li><a href="#haskell-and-concurrency-by-bartosz-milewski"><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ&amp;list=PL1835A90FC78FF8BE">Haskell and Concurrency by Bartosz Milewski</a></a></li>
+    </ul>
+  </li>
 </ul>
 
     </nav>
   </div>
   
-  <p><img src="/assets/png-images/2018-06-27-concurrent-programming-5d8141a7.png" alt="" /></p>
+  <h2 id="keywords">Keywords</h2>
 
-<h2 id="keywords">Keywords</h2>
+<p><img src="/assets/png-images/2018-06-27-concurrent-programming-5d8141a7.png" alt="" /></p>
 
 <ul>
   <li>
@@ -221,6 +227,46 @@ them) is allowed to execute them</p>
 
 <ul>
   <li>Example: <em>resource allocation is a typical example of process competition</em>.</li>
+</ul>
+
+<h2 id="video-lectures">Video lectures</h2>
+
+<h3 id="c11-concurrency-by-bartosz-milewski"><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ&amp;list=PL1835A90FC78FF8BE">C++11 Concurrency by Bartosz Milewski</a></h3>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ">1. Preliminaries, “Hello Thread!,” fork/join</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=qtRUG5ztMoA">2. Move semantics, passing arguments to threads</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=TZ9BgdgpYm8">3. Sharing data between threads</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=o0pCft99K74">4. Promises, futures, and async</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=_Ll0PIobErE">5. Async tasks, task-based concurrency</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=2Xad9bCYbJE">6. Map/Reduce. Massively parallel directory listing.</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=4zWbQRE3tWk">7. Mutexes, locks, and monitors</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=frPBwUDGLEI">8. Argument passing. Chasing a concurrency bug.</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=309Y-QlIvew">9. Condition variables</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=dB4kAO8M5Fg">The Language of Concurrency General introduction to concurrency</a></li>
+</ul>
+
+<h3 id="haskell-and-concurrency-by-bartosz-milewski"><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ&amp;list=PL1835A90FC78FF8BE">Haskell and Concurrency by Bartosz Milewski</a></h3>
+
+<p>Probably to star watching from the video 5-1.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=N6sOMGYsvFA">1-1 Why Haskell?</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=ybba5tcOeEY">1-2 Functions</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=oQ4fvA1OEcY">2-1 More Functions</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=a6IkhX1zgXI">2-2 Product data types</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=jWrRs-l8C1U">3-1 Laziness</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=MagayXbH4oY">3-2 Sum types</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=F-nAAIH4e2s">4-1 Recursion</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=tVK7mzD4PVQ">4-2 Functors</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=PlFgKV0ZXoE">5-1 Monads!</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=UtNB30Na65g">5-2 The Monad Class</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=h6zbQ23U05g">6-1 IO Monad</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=FdUS93RXEwY">6-2 Parallellism and Concurrency</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=3NjxfKsjn-k">7 1 The Eval monad</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=ynEhy_zAL_0">7-2 Parallel sudoku solver, strategies, overview of Haskell parallelism.</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=Y5UiylhFzhI">8-1 Concurrent Haskell, MVars</a></li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=GIimRbcOvM8">8-2 Software Transactional Memory</a></li>
 </ul>
 
 
