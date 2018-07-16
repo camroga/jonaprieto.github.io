@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "CS basics"
+title: "CS Basics"
 date: "2018-06-27"
 categories: learning
 published: true

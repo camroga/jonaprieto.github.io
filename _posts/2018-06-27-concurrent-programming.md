@@ -1,15 +1,16 @@
 ---
 layout: "post"
-title: "Concurrent"
+title: "Concurrency"
 date: "2018-06-27"
 categories: learning
 published: true
 toc: true
 ---
 
-![](/assets/png-images/2018-06-27-concurrent-programming-5d8141a7.png)
 
 ## Keywords
+
+![](/assets/png-images/2018-06-27-concurrent-programming-5d8141a7.png)
 
 - A **sequential algorithm** is a *formal description* of the behaviour of a
   sequential state machine: the text of the algorithm states the transitions
@@ -68,3 +69,41 @@ execute some statements and only one process at a time (or a bounded number of
 them) is allowed to execute them
 
 - Example: *resource allocation is a typical example of process competition*.
+
+
+## Video lectures
+
+### [C++11 Concurrency by Bartosz Milewski](https://www.youtube.com/watch?v=80ifzK3b8QQ&list=PL1835A90FC78FF8BE)
+
+- [ ] [1. Preliminaries, "Hello Thread!," fork/join](https://www.youtube.com/watch?v=80ifzK3b8QQ)
+- [ ] [2. Move semantics, passing arguments to threads](https://www.youtube.com/watch?v=qtRUG5ztMoA)
+- [ ] [3. Sharing data between threads](https://www.youtube.com/watch?v=TZ9BgdgpYm8)
+- [ ] [4. Promises, futures, and async](https://www.youtube.com/watch?v=o0pCft99K74)
+- [ ] [5. Async tasks, task-based concurrency](https://www.youtube.com/watch?v=_Ll0PIobErE)
+- [ ] [6. Map/Reduce. Massively parallel directory listing.](https://www.youtube.com/watch?v=2Xad9bCYbJE)
+- [ ] [7. Mutexes, locks, and monitors](https://www.youtube.com/watch?v=4zWbQRE3tWk)
+- [ ] [8. Argument passing. Chasing a concurrency bug.](https://www.youtube.com/watch?v=frPBwUDGLEI)
+- [ ] [9. Condition variables](https://www.youtube.com/watch?v=309Y-QlIvew)
+- [ ] [The Language of Concurrency General introduction to concurrency](https://www.youtube.com/watch?v=dB4kAO8M5Fg)
+
+
+### [Haskell and Concurrency by Bartosz Milewski](https://www.youtube.com/watch?v=80ifzK3b8QQ&list=PL1835A90FC78FF8BE)
+
+Probably to star watching from the video 5-1.
+
+- [ ] [1-1 Why Haskell?](https://www.youtube.com/watch?v=N6sOMGYsvFA)
+- [ ] [1-2 Functions](https://www.youtube.com/watch?v=ybba5tcOeEY)
+- [ ] [2-1 More Functions](https://www.youtube.com/watch?v=oQ4fvA1OEcY)
+- [ ] [2-2 Product data types](https://www.youtube.com/watch?v=a6IkhX1zgXI)
+- [ ] [3-1 Laziness](https://www.youtube.com/watch?v=jWrRs-l8C1U)
+- [ ] [3-2 Sum types](https://www.youtube.com/watch?v=MagayXbH4oY)
+- [ ] [4-1 Recursion](https://www.youtube.com/watch?v=F-nAAIH4e2s)
+- [ ] [4-2 Functors](https://www.youtube.com/watch?v=tVK7mzD4PVQ)
+- [ ] [5-1 Monads!](https://www.youtube.com/watch?v=PlFgKV0ZXoE)
+- [ ] [5-2 The Monad Class](https://www.youtube.com/watch?v=UtNB30Na65g)
+- [ ] [6-1 IO Monad](https://www.youtube.com/watch?v=h6zbQ23U05g)
+- [ ] [6-2 Parallellism and Concurrency](https://www.youtube.com/watch?v=FdUS93RXEwY)
+- [ ] [7 1 The Eval monad](https://www.youtube.com/watch?v=3NjxfKsjn-k)
+- [ ] [7-2 Parallel sudoku solver, strategies, overview of Haskell parallelism.](https://www.youtube.com/watch?v=ynEhy_zAL_0)
+- [ ] [8-1 Concurrent Haskell, MVars](https://www.youtube.com/watch?v=Y5UiylhFzhI)
+- [ ] [8-2 Software Transactional Memory](https://www.youtube.com/watch?v=GIimRbcOvM8)
