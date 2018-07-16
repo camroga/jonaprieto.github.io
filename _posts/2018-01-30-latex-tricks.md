@@ -15,8 +15,8 @@ A collection of useful tricks and snippets to use in Latex.
 - See https://latex.org/forum/viewtopic.php?t=13654
 - See https://tex.stackexchange.com/questions/176297/automatically-highlight-undefined-references
 
+{%- highlight latex -%}
 {% raw %}
-```
   \documentclass{article}
   \usepackage{xcolor}
   \newcommand*{\missingreference}{\colorbox{red}{?reference?}}
@@ -44,13 +44,10 @@ A collection of useful tricks and snippets to use in Latex.
           {\@cite@ofmt{\csname b@\@citeb\endcsname}}}}{#1}}
   \makeatother
   \begin{document}
-
   This is a missing reference: \ref{somefig}.
-
-  This is a mssing citation: \cite{somebib}.
-
+  This is a missing citation: \cite{somebib}.
   \end{document}
-```
 {% endraw %}
+{%- endhighlight -%}
 
 </div>

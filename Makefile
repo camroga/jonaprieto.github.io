@@ -146,11 +146,11 @@ push-sources :
 
 .phony : push
 push :
-	- make
-	- @git checkout sources
 	- @echo "==================================================================="
 	-	@echo "======================= Pushing on SOURCES ========================"
 	-	@echo "==================================================================="
+	- make
+	- @git checkout sources
 	- @git add .
 	- $(eval MSG := $(shell bash -c 'read -p "Commit msg: " pwd; echo $$pwd'))
 	- @echo "==================================================================="
