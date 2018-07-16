@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-16T17:47:19+02:00</updated>
+ <updated>2018-07-17T00:54:37+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -1478,6 +1478,1422 @@ If &lt;code&gt;A : Type&lt;/code&gt; and &lt;code&gt;C : A → Type&lt;/code&gt;
   &lt;a id=&quot;47185&quot; class=&quot;Comment&quot;&gt;--&lt;/a&gt;
   &lt;a id=&quot;47190&quot; class=&quot;Comment&quot;&gt;-- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))&lt;/a&gt;
   &lt;a id=&quot;47267&quot; class=&quot;Comment&quot;&gt;-- lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})&lt;/a&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+&lt;p&gt;https://github.com/HoTT/HoTT-Agda/
+https://mroman42.github.io/ctlc/agda-hott/Total.html&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>PathOvers</title>
+   <link href="http://jonaprieto.github.io/type-theory/2018/07/05/pathovers-hott.lagda/"/>
+   <updated>2018-07-05T00:00:00+02:00</updated>
+   <id>http://jonaprieto.github.io/type-theory/2018/07/05/pathovers-hott.lagda</id>
+   <content type="html">&lt;p&gt;(Working in progress with Marc Bezem)&lt;/p&gt;
+
+&lt;p&gt;– TODO agregrar las referencias y borrar lo que no se usa&lt;/p&gt;
+
+&lt;p&gt;We want to formalise in HoTT the intuition behind a correspondance between the
+concept of &lt;em&gt;path-over&lt;/em&gt; and its respective &lt;em&gt;total space&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;% - That the pathover has its own (certain paths in the total space). –TODO&lt;/p&gt;
+
+&lt;p&gt;The term PathOver was briefly mentioned in &lt;a href=&quot;#hottbook&quot;&gt;(Univalent Foundations Program, 2013)&lt;/a&gt; and they were
+later define in as dependent path in &lt;a href=&quot;#Licata2015&quot;&gt;(Licata &amp;amp; Brunerie, 2015)&lt;/a&gt;. The concept is extensivily used in &lt;a href=&quot;#hott-in:agda&quot;&gt;(Brunerie et al., n.d.)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;% (in words) about the transport and the notation in the book – TODO
+% which is shorthand for … using transport function for the definition.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ipe-images/pathovers-total-space.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Let’s review first an equality type that is closely related with these PathOvers.
+(See also &lt;a href=&quot;#Licata2015&quot;&gt;(Licata &amp;amp; Brunerie, 2015)&lt;/a&gt; for some extra comments).&lt;/p&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}&lt;/p&gt;
+
+&lt;p&gt;–  Agda code type-checked with v2.5.4&lt;/p&gt;
+
+&lt;p&gt;{-# OPTIONS –without-K #-}&lt;/p&gt;
+
+&lt;p&gt;open import Agda.Primitive public&lt;/p&gt;
+
+&lt;p&gt;Type : (ℓ : Level) → Set (lsuc ℓ)
+Type ℓ = Set ℓ
+\end{code}&lt;/p&gt;
+
+&lt;h2 id=&quot;homogeneous-equality&quot;&gt;Homogeneous equality&lt;/h2&gt;
+
+&lt;p&gt;The &lt;em&gt;homogeneous equality&lt;/em&gt; is a type &lt;code&gt;Path&lt;/code&gt; that relates two elements &lt;code&gt;a₀&lt;/code&gt; and
+&lt;code&gt;a₁&lt;/code&gt; whose types are &lt;em&gt;definitionally/judgementally&lt;/em&gt; equal. We denote this type as &lt;code&gt;Path
+{A} a₀ a₁&lt;/code&gt;. The curly braces in Agda stand for &lt;em&gt;implicit arguments&lt;/em&gt;.
+We also use the symbol (&lt;code&gt;_==_&lt;/code&gt;) to denote this type.&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+infix 30 &lt;em&gt;==&lt;/em&gt;
+data &lt;em&gt;==&lt;/em&gt; {ℓᵢ} {A : Type ℓᵢ} (a : A) : A → Type ℓᵢ where
+  idp : a == a&lt;/p&gt;
+
+&lt;p&gt;Path = &lt;em&gt;==&lt;/em&gt;
+\end{code}&lt;/p&gt;
+
+&lt;h2 id=&quot;heterogeneous-equality&quot;&gt;Heterogeneous equality&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In &lt;a href=&quot;#McBride2004&quot;&gt;(McBride, 2004)&lt;/a&gt; the author introduced a &lt;em&gt;heterogeneous equality&lt;/em&gt;, which is an equality type
+&lt;code&gt;a:A= b:B&lt;/code&gt; that relates two elements &lt;code&gt;a:A&lt;/code&gt; and &lt;code&gt;b:B&lt;/code&gt; which may have two judgementally
+distinct types, though the reflexivity constructor applies only when both the
+two types and the two terms are judgementally equal.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;However, McBride’s heterogeneous equality is &lt;strong&gt;logically equivalent&lt;/strong&gt; to a
+homogeneous equality type &lt;em&gt;satisfying uniqueness of identity proofs&lt;/em&gt;, which
+is undesirable &lt;strong&gt;in homotopy type theory, because not all types should be sets&lt;/strong&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;\begin{code}
+data HEq₁ {ℓ} (A : Type ℓ) : (B : Type ℓ) → (α : A == B) (a : A) (b : B) → Type ℓ where
+  idp : ∀ {a : A} → HEq₁ A A idp a a
+\end{code}&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This heterogeneous equality relates two elements of two different types along a
+specific equality α between the types. &lt;a href=&quot;#Licata2015&quot;&gt;(Licata &amp;amp; Brunerie, 2015)&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We adopt the same name &lt;code&gt;idp&lt;/code&gt; for the reflexivity constructor of the &lt;code&gt;Path&lt;/code&gt; type
+for the heterogeneous equality. This name is convenient because we want to
+maintain some consistency in the following proofs. We will switch between
+different definitions of heterogeneous equality but also between definitions for
+the homogeneous equality.&lt;/p&gt;
+
+&lt;p&gt;Let us recall the transport function and the coercion function  along a
+homogeneous equality.&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (P : A → Type ℓⱼ) {a b : A}
+  → a == b
+  → P a
+  → P b
+transport P idp = (λ x → x)
+\end{code}&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+coe : ∀ {ℓ}{A B : Type ℓ}
+    → A == B
+    → (A → B)
+coe A==B A = transport (λ X → X) A==B A
+\end{code}&lt;/p&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+— Somme HoTT machinery necessary for the following sections.
+— This includes homotopies, equivalences, among other concepts.
+module hott where&lt;/p&gt;
+
+&lt;p&gt;infixr 60 &lt;em&gt;,&lt;/em&gt;
+  record Σ {ℓᵢ ℓⱼ} (S : Type ℓᵢ)(T : S → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
+    constructor &lt;em&gt;,&lt;/em&gt;
+    field
+      fst : S
+      snd : T fst
+  open Σ public&lt;/p&gt;
+
+&lt;p&gt;Π : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (P : A → Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+  Π A P = (x : A) → P x&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;×&lt;/em&gt; : ∀{ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+  A × B = Σ A (λ _ → B)&lt;/p&gt;
+
+&lt;p&gt;infixr 80 &lt;em&gt;+&lt;/em&gt;
+  data &lt;em&gt;+&lt;/em&gt; {ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
+    inl : S → S + T
+    inr : T → S + T&lt;/p&gt;
+
+&lt;p&gt;id : ∀ {ℓ} {A : Type ℓ} → A → A
+  id a = a&lt;/p&gt;
+
+&lt;p&gt;infixr 80 &lt;em&gt;∘&lt;/em&gt;
+  &lt;em&gt;∘&lt;/em&gt; : ∀{ℓᵢ ℓⱼ ℓₖ}
+      {A : Type ℓᵢ}
+      {B : A → Type ℓⱼ}
+      {C : (a : A) → (B a → Type ℓₖ)}
+      → (g : {a : A} → Π (B a) (C a)) → (f : Π A B) → Π A (λ a → C a (f a))
+  g ∘ f = λ x → g (f x)&lt;/p&gt;
+
+&lt;p&gt;infixr 0 &lt;em&gt;$&lt;/em&gt;
+  &lt;em&gt;$&lt;/em&gt; : ∀ {i j} {A : Type i} {B : A → Type j}
+      → (∀ x → B x) → (∀ x → B x)
+  f $ x = f x&lt;/p&gt;
+
+&lt;p&gt;infixl 50 &lt;em&gt;·&lt;/em&gt;
+  &lt;em&gt;·&lt;/em&gt; : ∀ {ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
+  idp · q = q&lt;/p&gt;
+
+&lt;p&gt;inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
+  inv idp = idp&lt;/p&gt;
+
+&lt;p&gt;ap : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f : A → B)
+    →   a == b
+    → f a == f b
+  ap f idp = idp&lt;/p&gt;
+
+&lt;p&gt;module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;infixr 2 _==⟨⟩_
+_==⟨⟩_ : ∀ (x {y} : A) → x == y → x == y
+_ ==⟨⟩ p = p
+
+infixr 2 _==⟨_⟩_
+_==⟨_⟩_ :  (x : A) {y z : A} → x == y → y == z → x == z
+_ ==⟨ p1 ⟩ p2 = p1 · p2
+
+infix  3 _∎
+_∎ : (x : A) → x == x
+_∎ = λ x → idp
+
+infix  1 begin_
+begin_ : {x y : A} → x == y → x == y
+begin_ p = p
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open EquationalReasoning public&lt;/p&gt;
+
+&lt;p&gt;module ·-Properties {ℓ} {A : Type ℓ} where
+    ·-runit : {a b : A} (p : a == b) → p == p · idp
+    ·-runit idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;·-lunit : {a b : A} (p : a == b) → p == idp · p
+·-lunit idp = idp
+
+·-assoc : {a b c d : A} (p : a == b) → (q : b == c) → (r : c == d)
+        → (p · q) · r == p · (q · r)
+·-assoc idp q r = idp
+
+·-linv : {a b : A} (p : a == b) → (inv p) · p == idp
+·-linv idp = idp
+
+·-rinv : {a b : A} (p : a == b) → p · (inv p) == idp
+·-rinv idp = idp
+
+·-cancellation : {a : A} (p : a == a) → (q : a == a) → p · q == p → q == idp
+·-cancellation {a} p q α =
+  begin
+    q                   ==⟨ ap (_· q) (inv (·-linv p)) ⟩
+    inv p · p · q       ==⟨ (·-assoc (inv p) _ _) ⟩
+    inv p · (p · q)     ==⟨ (ap (inv p ·_) α) ⟩
+    inv p · p           ==⟨ ·-linv p ⟩
+    idp
+  ∎   open ·-Properties
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Some lemmas on the transport operation.
+transport-concat-r : {a : A} {x y : A} → (p : x == y) → (q : a == x) →
+  transport (λ x → a == x) p q == q · p
+transport-concat-r idp q = ·-runit q
+
+transport-concat-l : {a : A} {x y : A} → (p : x == y) → (q : x == a) →
+  transport (λ x → x == a) p q == (inv p) · q
+transport-concat-l idp q = idp
+
+transport-concat : {x y : A} → (p : x == y) → (q : x == x) →
+  transport (λ x → x == x) p q == (inv p) · q · p
+transport-concat idp q = ·-runit q
+
+transport-eq-fun : ∀{ℓⱼ} {B : Type ℓⱼ} (f g : A → B) {x y : A} (p : x == y) (q : f x == g x)
+                  → transport (λ z → f z == g z) p q == inv (ap f p) · q · (ap g p)
+transport-eq-fun f g idp q = ·-runit q
+
+transport-comp : ∀{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ} (p : a == b) (q : b == c)
+                 → ((transport P q) ∘ (transport P p)) == transport P (p · q)
+transport-comp {P = P} idp q = idp {a = (transport P q)}
+
+transport-comp-h : ∀{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ} (p : a == b) (q : b == c) (x : P a)
+                 → ((transport P q) ∘ (transport P p)) x == transport P (p · q) x
+transport-comp-h {P = P} idp q x = idp {a =  (transport P q x)}
+
+-- A shorter notation for transport.
+_✶ : ∀{ℓⱼ} {P : A → Type ℓⱼ} {a b : A} → a == b → P a → P b
+_✶ = transport _   open Transport-Properties public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
+  ap-id idp = idp&lt;/p&gt;
+
+&lt;p&gt;ap-comp : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {a b : A}
+          → (f : A → B) → (g : B → C) → (p : a == b)
+          → ap g (ap f p) == ap (g ∘ f) p
+  ap-comp f g idp = idp&lt;/p&gt;
+
+&lt;p&gt;ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C} (p : a == b)
+           → ap (λ _ → c) p == idp
+  ap-const {c = c} idp = idp {a = idp {a = c}}&lt;/p&gt;
+
+&lt;p&gt;ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
+       → (f : A → B) → (p : a == b) → (q : b == c)
+       → ap f (p · q) == ap f p · ap f q
+  ap-· f idp q = idp {a = (ap f q)}&lt;/p&gt;
+
+&lt;p&gt;ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
+         → (f : A → B) → (p : a == b)
+         → ap f (inv p) == inv (ap f p)
+  ap-inv f idp = idp&lt;/p&gt;
+
+&lt;p&gt;transport-eq-fun-l : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (f : A → B) {x y : A}
+                       → (p : x == y) (q : f x == b)
+                       → transport (λ z → f z == b) p q == inv (ap f p) · q
+  transport-eq-fun-l {b = b} f p q =
+    begin
+      transport (λ z → f z == b) p q      ==⟨ transport-eq-fun f (λ _ → b) p q ⟩
+      inv (ap f p) · q · ap (λ _ → b) p   ==⟨ ap (inv (ap f p) · q ·_) (ap-const p) ⟩
+      inv (ap f p) · q · idp           ==⟨ inv (·-runit _) ⟩
+      inv (ap f p) · q
+    ∎&lt;/p&gt;
+
+&lt;p&gt;transport-eq-fun-r : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (g : A → B) {x y : A}
+                       → (p : x == y) (q : b == g x)
+                       → transport (λ z → b == g z) p q == q · (ap g p)
+  transport-eq-fun-r {b = b} g p q =
+    begin
+      transport (λ z → b == g z) p q      ==⟨ transport-eq-fun (λ _ → b) g p q ⟩
+      inv (ap (λ _ → b) p) · q · ap g p   ==⟨ ·-assoc (inv (ap (λ _ → b) p)) q (ap g p) ⟩
+      inv (ap (λ _ → b) p) · (q · ap g p) ==⟨ ap (λ u → inv u · (q · ap g p)) (ap-const p) ⟩
+      (q · ap g p)
+    ∎&lt;/p&gt;
+
+&lt;p&gt;transport-inv-l : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (b : B)
+                → transport (λ v → v) p (transport (λ v → v) (inv p) b) == b
+  transport-inv-l idp b = idp&lt;/p&gt;
+
+&lt;p&gt;transport-inv-r : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (a : A)
+                → transport (λ v → v) (inv p) (transport (λ v → v) p a) == a
+  transport-inv-r idp b = idp&lt;/p&gt;
+
+&lt;p&gt;transport-family : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {P : B → Type ℓₖ}
+                   → {f : A → B} → {x y : A} → (p : x == y) → (u : P (f x))
+                   → transport (P ∘ f) p u == transport P (ap f p) u
+  transport-family idp u = idp&lt;/p&gt;
+
+&lt;p&gt;transport-fun : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
+                  → (p : x == y) → (f : A x → B x)
+                  → transport (λ x → (A x → B x)) p f == (λ x → transport B p (f (transport A (inv p) x)))
+  transport-fun idp f = idp&lt;/p&gt;
+
+&lt;p&gt;apd : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
+      → (f : (a : A) → P a) → (p : a == b)
+      → transport P p (f a) == f b
+  apd f idp = idp&lt;/p&gt;
+
+&lt;p&gt;module Homotopy {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
+    – A homotopy is a natural isomorphism between two functions, we will write
+    – f ∼ g when (f x == g x) for all x.
+    homotopy : (f g : ((x : A) → P x)) → Type (ℓᵢ ⊔ ℓⱼ)
+    homotopy f g = (x : A) → f x == g x&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;_∼_ : (f g : ((x : A) → P x)) → Type (ℓᵢ ⊔ ℓⱼ)
+f ∼ g = homotopy f g
+
+-- Homotopy is an equivalence relation
+h-refl : (f : (x : A) → P x) → f ∼ f
+h-refl f x = idp
+
+h-simm : (f g : (x : A) → P x) → f ∼ g → g ∼ f
+h-simm f g u x = inv (u x)
+
+h-comp : (f g h : (x : A) → P x) → f ∼ g → g ∼ h → f ∼ h
+h-comp f g h u v x = (u x)·(v x)
+
+_●_ : {f g h : (x : A) → P x} → f ∼ g → g ∼ h → f ∼ h
+α ● β = h-comp _ _ _ α β
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Homotopy public&lt;/p&gt;
+
+&lt;p&gt;– Composition with homotopies
+  module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} where
+    hl-comp : (f g : A → B) → (j k : B → C) → f ∼ g → j ∼ k → (j ∘ f) ∼ (k ∘ g)
+    hl-comp f g j k α β x = ap j (α x) · β (g x)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rcomp-∼ : (f : A → B) → {j k : B → C} → j ∼ k → (j ∘ f) ∼ (k ∘ f)
+rcomp-∼ f β = hl-comp _ _ _ _ (h-refl f) β
+
+lcomp-∼ : {f g : A → B} → (j : B → C) → f ∼ g → (j ∘ f) ∼ (j ∘ g)
+lcomp-∼ j α = hl-comp _ _ _ _ α (h-refl j)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open HomotopyComposition public&lt;/p&gt;
+
+&lt;p&gt;module Fibers {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- The fiber of a map over a point is given by
+fib : (f : A → B) → B → Type (ℓᵢ ⊔ ℓⱼ)
+fib f b = Σ A (λ a → f a == b)
+
+-- A function applied over the fiber returns the original point
+fib-eq : {f : A → B} → {b : B} → (h : fib f b) → f (fst h) == b
+fib-eq (a , α) = α
+
+-- Each point is on the fiber of its image
+fib-image : {f : A → B} → {a : A} → fib f (f a)
+fib-image {f} {a} = a , idp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Fibers public&lt;/p&gt;
+
+&lt;p&gt;module Contractible where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Contractible types. A contractible type is a type such that every
+-- element is equal to a center of contraction.
+isContr : ∀{ℓ}  (A : Type ℓ) → Type ℓ
+isContr A = Σ A (λ a → ((x : A) → a == x))   open Contractible public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;module Equivalence where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;module DefinitionOfEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
+  -- Contractible maps. A map is contractible if the fiber in any
+  -- point is contractible, that is, each element has a unique
+  -- preimage.
+  isContrMap : (f : A → B) → Type (ℓᵢ ⊔ ℓⱼ)
+  isContrMap f = (b : B) → isContr (fib f b)
+
+  -- There exists an equivalence between two types if there exists a
+  -- contractible function between them.
+  isEquiv : (f : A → B) → Type (ℓᵢ ⊔ ℓⱼ)
+  isEquiv = isContrMap
+open DefinitionOfEquivalence public
+
+-- Equivalence of types.
+_≃_ : ∀{ℓᵢ ℓⱼ}  (A : Type ℓᵢ) (B : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+A ≃ B = Σ (A → B) isEquiv
+
+module EquivalenceMaps {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
+
+  -- Maps of an equivalence
+  lemap : A ≃ B → (A → B)
+  lemap = fst
+
+  remap : A ≃ B → (B → A)
+  remap (f , contrf) b = fst (fst (contrf b))
+
+  -- The maps of an equivalence are inverses in particular
+  lrmap-inverse : (eq : A ≃ B) → {b : B} → (lemap eq) ((remap eq) b) == b
+  lrmap-inverse (f , eqf) {b} = fib-eq (fst (eqf b))
+
+  rlmap-inverse : (eq : A ≃ B) → {a : A} → (remap eq) ((lemap eq) a) == a
+  rlmap-inverse (f , eqf) {a} = ap fst ((snd (eqf (f a))) fib-image)
+
+  lrmap-inverse-h : (eq : A ≃ B) → ((lemap eq) ∘ (remap eq)) ∼ id
+  lrmap-inverse-h eq = λ x → lrmap-inverse eq {x}
+
+  rlmap-inverse-h : (eq : A ≃ B) → ((remap eq) ∘ (lemap eq)) ∼ id
+  rlmap-inverse-h eq = λ x → rlmap-inverse eq {x}
+open EquivalenceMaps public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Equivalence public&lt;/p&gt;
+
+&lt;p&gt;module FunctionExtensionality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {f g : (a : A) → B a} where
+    – Application of an homotopy
+    happly : f == g → ((x : A) → f x == g x)
+    happly idp x = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- The axiom of function extensionality postulates that the
+-- application of homotopies is an equivalence.
+postulate axiomFunExt : isEquiv happly
+
+eqFunExt : (f == g) ≃ ((x : A) → f x == g x)
+eqFunExt = happly , axiomFunExt
+
+-- From this, the usual notion of function extensionality follows.
+funext : ((x : A) → f x == g x) → f == g
+funext = remap eqFunExt
+
+-- Beta and eta rules for function extensionality
+funext-β : (h : ((x : A) → f x == g x)) → happly (funext h) == h
+funext-β h = lrmap-inverse eqFunExt
+
+funext-η : (p : f == g) → funext (happly p) == p
+funext-η p = rlmap-inverse eqFunExt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open FunctionExtensionality public&lt;/p&gt;
+
+&lt;p&gt;– Function extensionality in the transport case
+  module FunctionExtensionalityTransport
+    {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A B : X → Type ℓⱼ} {x y : X} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;funext-transport
+  : (p : x == y) → (f : A x → B x) → (g : A y → B y)
+  → ((p ✶) f == g) ≃ ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a))
+funext-transport idp f g = eqFunExt
+
+funext-transport-l
+  : (p : x == y) → (f : A x → B x) → (g : A y → B y)
+  → ((p ✶) f == g) → ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a))
+funext-transport-l p f g = lemap (funext-transport p _ _)
+
+funext-transport-r
+  : (p : x == y) → (f : A x → B x) → (g : A y → B y)
+  → ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a)) → ((p ✶) f == g)
+funext-transport-r p f g = remap (funext-transport p _ _)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open FunctionExtensionalityTransport public&lt;/p&gt;
+
+&lt;p&gt;module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Two dependent pairs are equal if they are componentwise equal.
+Σ-componentwise : {v w : Σ A P} → v == w → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w)
+Σ-componentwise  idp = (idp , idp)
+
+Σ-bycomponents : {v w : Σ A P} → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w) → v == w
+Σ-bycomponents (idp , idp) = idp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Sigma public&lt;/p&gt;
+
+&lt;p&gt;module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- In a pair, the equality of the two components of the pairs is
+-- equivalent to equality of the two pairs.
+prodComponentwise : {x y : A × B} → (x == y) → ((fst x == fst y) × (snd x == snd y))
+fst (prodComponentwise idp) = idp
+snd (prodComponentwise idp) = idp
+
+prodByComponents : {x y : A × B} → ((fst x == fst y) × (snd x == snd y)) → (x == y)
+prodByComponents (idp , idp) = idp
+
+-- This is in fact an equivalence.
+prodCompInverse : {x y : A × B} (b : ((fst x == fst y) × (snd x == snd y))) →
+                  prodComponentwise (prodByComponents b) == b
+prodCompInverse (idp , idp) = idp
+
+prodByCompInverse : {x y : A × B} (b : x == y) →
+                  prodByComponents (prodComponentwise b) == b
+prodByCompInverse idp = idp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open CartesianProduct public&lt;/p&gt;
+
+&lt;p&gt;module Propositions where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- A type is a mere proposition if any two inhabitants of the type
+-- are equal
+isProp : ∀{ℓ}  (A : Type ℓ) → Type ℓ
+isProp A = ((x y : A) → x == y)
+
+-- The type of mere propositions
+hProp : ∀{ℓ} → Type (lsuc ℓ)
+hProp {ℓ} = Σ (Type ℓ) isProp
+
+
+-- The dependent function type to proposition types is itself a
+-- proposition.
+piProp : ∀{ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : A → Type ℓⱼ}
+       → ((a : A) → isProp (B a)) → isProp ((a : A) → B a)
+piProp props f g = funext λ a → props a (f a) (g a)
+
+-- The product of propositions is itself a proposition.
+isProp-prod : ∀{ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : Type ℓⱼ}
+            → isProp A → isProp B → isProp (A × B)
+isProp-prod p q x y = prodByComponents ((p _ _) , (q _ _))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Propositions public&lt;/p&gt;
+
+&lt;p&gt;module Sets where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- A type is a &quot;set&quot; by definition if any two equalities on the type
+-- are equal.
+isSet : ∀{ℓ}  (A : Type ℓ) → Type ℓ
+isSet A = (x y : A) → isProp (x == y)
+
+-- The type of sets.
+hSet : ∀{ℓ} → Type (lsuc ℓ)
+hSet {ℓ} = Σ (Type ℓ) isSet
+
+-- Product of sets is a set.
+isSet-prod : ∀{ℓᵢ ℓⱼ}  {A : Type ℓᵢ} → {B : Type ℓⱼ}
+           → isSet A → isSet B → isSet (A × B)
+isSet-prod sa sb (a , b) (c , d) p q = begin
+   p
+    ==⟨ inv (prodByCompInverse p) ⟩
+   prodByComponents (prodComponentwise p)
+    ==⟨ ap prodByComponents (prodByComponents (sa a c _ _ , sb b d _ _)) ⟩
+   prodByComponents (prodComponentwise q)
+    ==⟨ prodByCompInverse q ⟩
+   q
+  ∎
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Sets public&lt;/p&gt;
+
+&lt;p&gt;module HLevels where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Propositions are Sets.
+propIsSet : ∀{ℓ} {A : Type ℓ} → isProp A → isSet A
+propIsSet {A = A} f a _ p q = lemma p · inv (lemma q)
+  where
+    triang : {y z : A} {p : y == z} → (f a y) · p == f a z
+    triang {b}{p = idp} = inv (·-runit (f a b))
+
+    lemma : {y z : A} (p : y == z) → p == inv (f a y) · (f a z)
+    lemma {y} {z} p =
+      begin
+        p                         ==⟨ ap (_· p) (inv (·-linv (f a y))) ⟩
+        inv (f a y) · f a y · p   ==⟨ ·-assoc (inv (f a y)) (f a y) p ⟩
+        inv (f a y) · (f a y · p) ==⟨ ap (inv (f a y) ·_) triang ⟩
+        inv (f a y) · (f a z)
+      ∎
+
+-- Contractible types are Propositions.
+contrIsProp : ∀{ℓ}  {A : Type ℓ} → isContr A → isProp A
+contrIsProp (a , p) x y = inv (p x) · p y
+
+-- To be contractible is itself a proposition.
+isContrIsProp : ∀{ℓ}  {A : Type ℓ} → isProp (isContr A)
+isContrIsProp {_} {A} (a , p) (b , q) = Σ-bycomponents (inv (q a) , piProp (AisSet b) _ q)
+  where
+    AisSet : isSet A
+    AisSet = propIsSet (contrIsProp (a , p))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open HLevels public&lt;/p&gt;
+
+&lt;p&gt;module EquivalenceProp {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Contractible maps are propositions
+isContrMapIsProp : (f : A → B) → isProp (isContrMap f)
+isContrMapIsProp f = piProp λ a → isContrIsProp
+
+isEquivIsProp : (f : A → B) → isProp (isEquiv f)
+isEquivIsProp = isContrMapIsProp
+
+-- Equality of same-morphism equivalences
+sameEqv : {α β : A ≃ B} → fst α == fst β → α == β
+sameEqv {(f , σ)} {(g , τ)} p = Σ-bycomponents (p , (isEquivIsProp g _ τ))
+
+-- Equivalences preserve propositions
+isProp-≃ : (A ≃ B) → isProp A → isProp B
+isProp-≃ eq prop x y =
+  begin
+    x                       ==⟨ inv (lrmap-inverse eq) ⟩
+    lemap eq ((remap eq) x) ==⟨ ap (λ u → lemap eq u) (prop _ _) ⟩
+    lemap eq ((remap eq) y) ==⟨ lrmap-inverse eq ⟩
+    y
+  ∎
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open EquivalenceProp public&lt;/p&gt;
+
+&lt;p&gt;module Naturality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
+    h-naturality : {f g : A → B} (H : f ∼ g) → {x y : A} → (p : x == y)
+                 → H x · ap g p == ap f p · H y
+    h-naturality  H {x = x} (idp ) = inv (·-runit (H x))
+  open Naturality
+  h-naturality-id : ∀{ℓ} {A : Type ℓ} {f : A → A} (H : f ∼ id) → {x : A}
+                  → H (f x) == ap f (H x)
+  h-naturality-id {f = f} H {x = x} =
+    begin
+      H (f x)                            ==⟨ ·-runit (H (f x)) ⟩
+      H (f x) · (idp {a = f x})          ==⟨ ap (H (f x) ·&lt;em&gt;) (inv (·-rinv (H x))) ⟩
+      H (f x) · (H x · inv (H x))        ==⟨ inv (·-assoc (H (f x)) _ (inv (H x))) ⟩
+      H (f x) · H x · inv (H x)          ==⟨ ap (λ u → H (f x) · u · inv (H x)) (inv (ap-id _)) ⟩
+      H (f x) · ap id (H x) · inv (H x)  ==⟨ ap (&lt;/em&gt;· inv (H x)) (h-naturality H (H x)) ⟩
+      ap f (H x) · H x · inv (H x)       ==⟨ ·-assoc (ap f (H x)) _ (inv (H x)) ⟩
+      ap f (H x) · (H x · inv (H x))     ==⟨ ap (ap f (H x) ·_) (·-rinv (H x)) ⟩
+      ap f (H x) · (idp {a = f x})       ==⟨ inv (·-runit (ap f (H x))) ⟩
+      ap f (H x)
+    ∎&lt;/p&gt;
+
+&lt;p&gt;module Halfadjoints {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Half adjoint equivalence.
+record ishae (f : A → B) : Type (ℓᵢ ⊔ ℓⱼ) where
+  constructor hae
+  field
+    g : B → A
+    η : (g ∘ f) ∼ id
+    ε : (f ∘ g) ∼ id
+    τ : (x : A) → ap f (η x) == ε (f x)
+
+-- Half adjoint equivalences give contractible fibers.
+ishae-contr : (f : A → B) → ishae f → isContrMap f
+ishae-contr f (hae g η ε τ) y = ((g y) , (ε y)) , contra
+  where
+    lemma : (c c' : fib f y) → Σ (fst c == fst c') (λ γ → (ap f γ) · snd c' == snd c) → c == c'
+    lemma c c' (p , q) = Σ-bycomponents (p , lemma2)
+      where
+        lemma2 : transport (λ z → f z == y) p (snd c) == snd c'
+        lemma2 =
+          begin
+            transport (λ z → f z == y) p (snd c)
+              ==⟨ transport-eq-fun-l f p (snd c) ⟩
+            inv (ap f p) · (snd c)
+              ==⟨ ap (inv (ap f p) ·_) (inv q) ⟩
+            inv (ap f p) · ((ap f p) · (snd c'))
+              ==⟨ inv (·-assoc (inv (ap f p)) (ap f p) (snd c')) ⟩
+            inv (ap f p) · (ap f p) · (snd c')
+              ==⟨ ap (_· (snd c')) (·-linv (ap f p)) ⟩
+            snd c'
+          ∎
+
+    contra : (x : fib f y) → (g y , ε y) == x
+    contra (x , p) = lemma (g y , ε y) (x , p) (γ , lemma3)
+      where
+        γ : g y == x
+        γ = inv (ap g p) · η x
+
+        lemma3 : (ap f γ · p) == ε y
+        lemma3 =
+          begin
+            ap f γ · p
+              ==⟨ ap (_· p) (ap-· f (inv (ap g p)) (η x)) ⟩
+            ap f (inv (ap g p)) · ap f (η x) · p
+              ==⟨ ·-assoc (ap f (inv (ap g p))) _ p ⟩
+            ap f (inv (ap g p)) · (ap f (η x) · p)
+              ==⟨ ap (_· (ap f (η x) · p)) (ap-inv f (ap g p)) ⟩
+            inv (ap f (ap g p)) · (ap f (η x) · p)
+              ==⟨ ap (λ u → inv (ap f (ap g p)) · (u · p)) (τ x) ⟩
+            inv (ap f (ap g p)) · (ε (f x) · p)
+              ==⟨ ap (λ u → inv (ap f (ap g p)) · (ε (f x) · u)) (inv (ap-id p)) ⟩
+            inv (ap f (ap g p)) · (ε (f x) · ap id p)
+              ==⟨ ap (inv (ap f (ap g p)) ·_) (h-naturality ε p) ⟩
+            inv (ap f (ap g p)) · (ap (f ∘ g) p · ε y)
+              ==⟨ ap (λ u → inv u · (ap (f ∘ g) p · ε y)) (ap-comp g f p) ⟩
+            inv (ap (f ∘ g) p) · (ap (f ∘ g) p · ε y)
+              ==⟨ inv (·-assoc (inv (ap (f ∘ g) p)) _ (ε y)) ⟩
+            (inv (ap (f ∘ g) p) · ap (f ∘ g) p) · ε y
+              ==⟨ ap (_· ε y) (·-linv (ap (λ z → f (g z)) p)) ⟩
+            ε y
+          ∎
+
+-- Half-adjointness implies equivalence.
+ishae-≃ : {f : A → B} → ishae f → A ≃ B
+ishae-≃ ishaef = _ , (ishae-contr _ ishaef)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Halfadjoints public&lt;/p&gt;
+
+&lt;p&gt;module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Definitions for quasiinverses, left-inverses, right-inverses and
+-- biinverses.
+qinv : (A → B) → Type (ℓᵢ ⊔ ℓⱼ)
+qinv f = Σ (B → A) (λ g → ((f ∘ g) ∼ id) × ((g ∘ f) ∼ id))
+
+linv : (A → B) → Type (ℓᵢ ⊔ ℓⱼ)
+linv f = Σ (B → A) (λ g → (g ∘ f) ∼ id)
+
+rinv : (A → B) → Type (ℓᵢ ⊔ ℓⱼ)
+rinv f = Σ (B → A) λ g → (f ∘ g) ∼ id
+
+biinv : (A → B) → Type (ℓᵢ ⊔ ℓⱼ)
+biinv f = linv f × rinv f
+
+qinv-biinv : (f : A → B) → qinv f → biinv f
+qinv-biinv f (g , (u1 , u2)) = (g , u2) , (g , u1)
+
+biinv-qinv : (f : A → B) → biinv f → qinv f
+biinv-qinv f ((h , α) , (g , β)) = g , (β , δ)
+  where
+    γ1 : g ∼ ((h ∘ f) ∘ g)
+    γ1 = rcomp-∼ g (h-simm (h ∘ f) id α)
+
+    γ2 : ((h ∘ f) ∘ g) ∼ (h ∘ (f ∘ g))
+    γ2 x = idp
+
+    γ : g ∼ h
+    γ = γ1 ● (γ2 ● (lcomp-∼ h β))
+
+    δ : (g ∘ f) ∼ id
+    δ = (rcomp-∼ f γ) ● α
+
+equiv-biinv : (f : A → B) → isContrMap f → biinv f
+equiv-biinv f contrf =
+  (remap eq , rlmap-inverse-h eq) , (remap eq , lrmap-inverse-h eq)
+  where
+    eq : A ≃ B
+    eq = f , contrf
+
+-- Quasiinverses are halfadjoint equivalences.
+qinv-ishae : {f : A → B} → qinv f → ishae f
+qinv-ishae {f} (g , (ε , η)) = record {
+    g = g ;
+    η = η ;
+    ε = λ b → inv (ε (f (g b))) · ap f (η (g b)) · ε b ;
+    τ = τ
+  }
+  where
+    lemma1 : (a : A) → ap f (η (g (f a))) · ε (f a) == ε (f (g (f a))) · ap f (η a)
+    lemma1 a =
+      begin
+        ap f (η ((g ∘ f) a)) · ε (f a)
+          ==⟨ ap (λ u → ap f u · ε (f a)) (h-naturality-id η) ⟩
+        ap f (ap (g ∘ f) (η a)) · ε (f a)
+          ==⟨ ap (_· ε (f a)) (ap-comp (g ∘ f) f (η a)) ⟩
+        ap (f ∘ (g ∘ f)) (η a) · ε (f a)
+          ==⟨ inv (h-naturality (λ x → ε (f x)) (η a)) ⟩
+        ε (f (g (f a))) · ap f (η a)
+      ∎
+
+    τ : (a : A) → ap f (η a) == (inv (ε (f (g (f a)))) · ap f (η (g (f a))) · ε (f a))
+    τ a =
+      begin
+        ap f (η a)
+          ==⟨ ap (_· ap f (η a)) (inv (·-linv (ε (f (g (f a)))))) ⟩
+        inv (ε (f (g (f a)))) · ε (f (g (f a))) · ap f (η a)
+          ==⟨ ·-assoc (inv (ε (f (g (f a))))) _ (ap f (η a)) ⟩
+        inv (ε (f (g (f a)))) · (ε (f (g (f a))) · ap f (η a))
+          ==⟨ ap (inv (ε (f (g (f a)))) ·_) (inv (lemma1 a)) ⟩
+        inv (ε (f (g (f a)))) · (ap f (η (g (f a))) · ε (f a))
+          ==⟨ inv (·-assoc (inv (ε (f (g (f a))))) _ (ε (f a))) ⟩
+        inv (ε (f (g (f a)))) · ap f (η (g (f a))) · ε (f a)
+      ∎
+
+-- Quasiinverses create equivalences.
+qinv-≃ : (f : A → B) → qinv f → A ≃ B
+qinv-≃ f = ishae-≃ ∘ qinv-ishae
+
+≃-qinv : A ≃ B → Σ (A → B) qinv
+≃-qinv eq = lemap eq , (remap eq , (lrmap-inverse-h eq , rlmap-inverse-h eq))
+
+-- Half-adjoint equivalences are quasiinverses.
+ishae-qinv : {f : A → B} → ishae f → qinv f
+ishae-qinv {f} (hae g η ε τ) = g , (ε , η)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open Quasiinverses public&lt;/p&gt;
+
+&lt;p&gt;module EquivalenceComposition where&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;-- Composition of quasiinverses
+qinv-comp : ∀{ℓ} {A B C : Type ℓ} → Σ (A → B) qinv → Σ (B → C) qinv → Σ (A → C) qinv
+qinv-comp (f , (if , (εf , ηf))) (g , (ig , (εg , ηg))) = (g ∘ f) , ((if ∘ ig) ,
+   ( (λ x → ap g (εf (ig x)) · εg x)
+   ,  λ x → ap if (ηg (f x)) · ηf x))
+
+qinv-inv : ∀{ℓ} {A B : Type ℓ} → Σ (A → B) qinv → Σ (B → A) qinv
+qinv-inv (f , (g , (ε , η))) = g , (f , (η , ε))
+
+-- Composition of equivalences
+idEqv : ∀{ℓ} {A : Type ℓ} → A ≃ A
+idEqv = id , λ a → (a , idp) , λ { (_ , idp) → idp }
+
+compEqv : ∀{ℓ} {A B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
+compEqv {ℓ} {A} {B} {C} eqf eqg = qinv-≃ (fst qcomp) (snd qcomp)
+ where
+   qcomp : Σ (A → C) qinv
+   qcomp = qinv-comp (≃-qinv eqf) (≃-qinv eqg)
+
+invEqv : ∀{ℓ} {A B : Type ℓ} → A ≃ B → B ≃ A
+invEqv {ℓ} {A} {B} eqf = qinv-≃ (fst qcinv) (snd qcinv)
+ where
+   qcinv : Σ (B → A) qinv
+   qcinv = qinv-inv (≃-qinv eqf)
+
+-- Lemmas about composition
+compEqv-inv : ∀{ℓ} {A B : Type ℓ} → (α : A ≃ B) → compEqv α (invEqv α) == idEqv
+compEqv-inv {_} {A} {B} α = sameEqv (
+ begin
+   fst (compEqv α (invEqv α)) ==⟨ idp ⟩
+   fst (invEqv α) ∘ fst α     ==⟨ funext (rlmap-inverse-h α) ⟩
+   id
+ ∎)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;open EquivalenceComposition public&lt;/p&gt;
+
+&lt;p&gt;open hott public
+\end{code}&lt;/p&gt;
+
+&lt;p&gt;Let be &lt;code&gt;α : A == B&lt;/code&gt;, &lt;code&gt;a : A&lt;/code&gt;, and &lt;code&gt;b : B&lt;/code&gt; then the following types are equivalent
+to the previous type &lt;code&gt;HEq₁&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;\begin{code}
+HEq₂ : ∀ {ℓ} (A : Type ℓ)(B : Type ℓ) (α : A == B)(a : A)(b : B) → Type ℓ
+HEq₂ A B α a b = Path (coe α a) b
+\end{code}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\begin{code}
+HEq₃  : ∀ {ℓ} (A : Type ℓ)(B : Type ℓ) (α : A == B)(a : A)(b : B) → Type ℓ
+HEq₃ A B α a b = Path a (coe (inv α) b)
+\end{code}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\begin{code}
+HEq₄ : ∀ {ℓ} (A : Type ℓ)(B : Type ℓ) (α : A == B)(a : A)(b : B) → Type ℓ
+HEq₄ A .A idp a b = Path a b
+\end{code}&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;equivalences&quot;&gt;Equivalences&lt;/h3&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– A proof that HEq₁-≃-HEq₂&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;HEq₁-to-HEq₂ : {α : A == B}{a : A}{b : B}
+               → HEq₁ A B α a b
+               → HEq₂ A B α a b
+  HEq₁-to-HEq₂ {idp} {a} {.a} idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₂-to-HEq₁ : {α : A == B}{a : A}{b : B}
+               → HEq₂ A B α a b
+               → HEq₁ A B α a b
+  HEq₂-to-HEq₁ {idp} {a} {.a} idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₁-≃-HEq₂ : {α : A == B}{a : A}{b : B}
+             → HEq₁ A B α a b ≃ HEq₂ A B α a b
+  HEq₁-≃-HEq₂ {idp} {a} {b} =
+    qinv-≃ HEq₁-to-HEq₂ (HEq₂-to-HEq₁ , HEq₁-~-HEq₂ , HEq₂-~-HEq₁)
+    where
+      HEq₁-~-HEq₂ : ( p : HEq₂ A B idp a b)
+                  → ( HEq₁-to-HEq₂ (HEq₂-to-HEq₁ p ) == p)
+      HEq₁-~-HEq₂ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  HEq₂-~-HEq₁ : ( p : HEq₁ A B idp a b)
+              → ( HEq₂-to-HEq₁ (HEq₁-to-HEq₂ p ) == p)
+  HEq₂-~-HEq₁ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– A proof that HEq₂-≃-HEq₃&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;HEq₂-to-HEq₃ : {α : A == B}{a : A}{b : B}
+               → HEq₂ A B α a b
+               → HEq₃ A B α a b
+  HEq₂-to-HEq₃ {idp}  idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₃-to-HEq₂ : {α : A == B}{a : A}{b : B}
+               → HEq₃ A B α a b
+               → HEq₂ A B α a b
+  HEq₃-to-HEq₂ {idp} {a} {.a} idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₂-≃-HEq₃ : {α : A == B}{a : A}{b : B}
+             → HEq₂ A B α a b ≃ HEq₃ A B α a b
+  HEq₂-≃-HEq₃ {idp} {a} {b} =
+    qinv-≃ HEq₂-to-HEq₃ (HEq₃-to-HEq₂ , HEq₂-~-HEq₃ , HEq₃-~-HEq₂)
+    where
+      HEq₂-~-HEq₃ : ( p : HEq₃ A B idp a b)
+                  → ( HEq₂-to-HEq₃ (HEq₃-to-HEq₂ p ) == p)
+      HEq₂-~-HEq₃ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  HEq₃-~-HEq₂ : ( p : HEq₂ A B idp a b)
+              → ( HEq₃-to-HEq₂ (HEq₂-to-HEq₃ p ) == p)
+  HEq₃-~-HEq₂ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– A proof that HEq₃-≃-HEq₄&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;HEq₃-to-HEq₄ : {α : A == B}{a : A}{b : B}
+               → HEq₃ A B α a b
+               → HEq₄ A B α a b
+  HEq₃-to-HEq₄ {idp}  idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₄-to-HEq₃ : {α : A == B}{a : A}{b : B}
+               → HEq₄ A B α a b
+               → HEq₃ A B α a b
+  HEq₄-to-HEq₃ {idp} {a} {.a} idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₃-≃-HEq₄ : {α : A == B}{a : A}{b : B}
+             → HEq₃ A B α a b ≃ HEq₄ A B α a b
+  HEq₃-≃-HEq₄ {idp} {a} {b} =
+    qinv-≃ HEq₃-to-HEq₄ (HEq₄-to-HEq₃ , HEq₃-~-HEq₄ , HEq₄-~-HEq₃)
+    where
+      HEq₃-~-HEq₄ : ( p : HEq₄ A B idp a b)
+                  → ( HEq₃-to-HEq₄ (HEq₄-to-HEq₃ p ) == p)
+      HEq₃-~-HEq₄ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  HEq₄-~-HEq₃ : ( p : HEq₃ A B idp a b)
+              → ( HEq₄-to-HEq₃ (HEq₃-to-HEq₄ p ) == p)
+  HEq₄-~-HEq₃ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Finally, we complete the chain of equivalence with &lt;code&gt;HEq₄-≃-HEq₁&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– A proof that HEq₄-to-HEq₁&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;HEq₄-to-HEq₁ : {α : A == B}{a : A}{b : B}
+               → HEq₄ A B α a b
+               → HEq₁ A B α a b
+  HEq₄-to-HEq₁ {idp} idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₁-to-HEq₄ : {α : A == B}{a : A}{b : B}
+               → HEq₁ A B α a b
+               → HEq₄ A B α a b
+  HEq₁-to-HEq₄ {idp} {a} {.a} idp = idp&lt;/p&gt;
+
+&lt;p&gt;HEq₄-≃-HEq₁ : {α : A == B}{a : A}{b : B}
+             → HEq₄ A B α a b ≃ HEq₁ A B α a b
+  HEq₄-≃-HEq₁ {idp} {a} {b} =
+    qinv-≃ HEq₄-to-HEq₁ (HEq₁-to-HEq₄ , HEq₄-~-HEq₁ , HEq₁-~-HEq₄)
+    where
+      HEq₄-~-HEq₁ : ( p : HEq₁ A B idp a b)
+                  → ( HEq₄-to-HEq₁ (HEq₁-to-HEq₄ p ) == p)
+      HEq₄-~-HEq₁ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  HEq₁-~-HEq₄ : ( p : HEq₄ A B idp a b)
+              → ( HEq₁-to-HEq₄ (HEq₄-to-HEq₁ p ) == p)
+  HEq₁-~-HEq₄ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For the follwing discussion, we may use heterogeneous using the first definition.
+\begin{code}
+HEq = HEq₁
+\end{code}&lt;/p&gt;
+
+&lt;h2 id=&quot;path-over-a-path&quot;&gt;Path over a path&lt;/h2&gt;
+
+&lt;p&gt;Given a type family &lt;script type=&quot;math/tex&quot;&gt;C: A → Type&lt;/script&gt; and a path &lt;script type=&quot;math/tex&quot;&gt;α : a₁ = a₂&lt;/script&gt;, a &lt;em&gt;pathover&lt;/em&gt; is a
+path connecting &lt;script type=&quot;math/tex&quot;&gt;c₁ : C a₁&lt;/script&gt; with  &lt;script type=&quot;math/tex&quot;&gt;c₂ : C a₂&lt;/script&gt;  lying over &lt;script type=&quot;math/tex&quot;&gt;α&lt;/script&gt;.
+types.&lt;/p&gt;
+
+&lt;p&gt;% – TODO
+The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
+them ΣAC is the total space and “projecting down” means ap proj q = p with proj : ΣAC&lt;/p&gt;
+
+&lt;p&gt;% –TODO
+The geometry intuition has been formalised by &lt;a href=&quot;#Licata2015&quot;&gt;(Licata &amp;amp; Brunerie, 2015)&lt;/a&gt;
+in five different ways as follows.&lt;/p&gt;
+
+&lt;p&gt;% The PathOver is the dependent version of a &lt;em&gt;path&lt;/em&gt;, what it means that the path
+% is between two endpoints from maybe different types. This is of course what we
+% saw in the definition of the heterogeneous equality. The difference is that
+% we simplify &lt;code&gt;HEq&lt;/code&gt;  definition with &lt;code&gt;PathOver&lt;/code&gt; by factorizing the type family
+% that is involved in the paths.
+%
+% We define &lt;code&gt;PathOver₁&lt;/code&gt; as the inductive family with only one constructor,
+% the reflexivity over the reflexivity on the base space &lt;code&gt;A&lt;/code&gt;. To eliminate this
+% type, we can use path-over induction. In Agda, we just do pattern matching along
+% the path on the base &lt;code&gt;A&lt;/code&gt;. Additionaly, we can define this notion of PathOvers in at least
+% four different ways. Let us see these definitions, all equivalent. To refer to a pathover,
+% we adopt the notation &lt;code&gt;c₁ == c₂ [ C ↓ α ]&lt;/code&gt; from the HoTT-Agda library.&lt;/p&gt;
+
+&lt;p&gt;A more direct formalisation is the type&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;\begin{code}
+data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
+    {a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ where
+    idp : {c₁ : C a₁} → PathOver₁ C idp c₁ c₁
+\end{code}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\begin{code}
+PathOver₂ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+        → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ
+PathOver₂ {A = A} C {a₁} {a₂} α c₁ c₂ = HEq (C a₁) (C a₂) (ap C α) c₁ c₂
+\end{code}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;\begin{code}
+PathOver₃ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+        → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+PathOver₃ {A = A} C {a₁} {a₂} α c₁ c₂ = transport C α c₁ == c₂
+\end{code}&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ipe-images/pathover-3.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\begin{code}
+PathOver₄ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+        → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+PathOver₄ {A = A} C {a₁} {a₂} α c₁ c₂ = c₁ == transport C (inv α) c₂
+\end{code}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ipe-images/pathover-4.png&quot; alt=&quot;path&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\begin{code}
+PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+        → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+PathOver₅ {A = A} B idp c₁ c₂ = c₁ == c₂
+\end{code}&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Notice that above when we used &lt;code&gt;transport C α c₁&lt;/code&gt;, we could also have used &lt;code&gt;coe (ap C α)&lt;/code&gt;,
+we mention this because in HoTT-Agda library, it’s defined &lt;code&gt;transport&lt;/code&gt; using &lt;code&gt;coe&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;equivalences-1&quot;&gt;Equivalences&lt;/h3&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– PathOver₁-≃-PathOver₂&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;PathOver₁-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₁ C α c₁ c₂
+         → PathOver₂ C α c₁ c₂
+  PathOver₁-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp&lt;/p&gt;
+
+&lt;p&gt;PathOver₂-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₂ C α c₁ c₂
+         → PathOver₁ C α c₁ c₂
+  PathOver₂-to-PathOver₁ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  –
+  PathOver₁-≃-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+        → PathOver₁ C α c₁ c₂ ≃ PathOver₂ C α c₁ c₂
+  PathOver₁-≃-PathOver₂ {a₁}{.a₁}{idp}{c₁}{c₂} =
+    qinv-≃
+      PathOver₁-to-PathOver₂
+      (PathOver₂-to-PathOver₁
+        , PathOver₁~PathOver₅ , PathOver₂~PathOver₁)
+    where
+      PathOver₁~PathOver₅ : (p : PathOver₂ C idp c₁ c₂)
+          → PathOver₁-to-PathOver₂ (PathOver₂-to-PathOver₁ p) == p
+      PathOver₁~PathOver₅ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  PathOver₂~PathOver₁ : (p : PathOver₁ C idp c₁ c₂)
+      → PathOver₂-to-PathOver₁ (PathOver₁-to-PathOver₂ p) == p
+  PathOver₂~PathOver₁ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– PathOver₂-≃-PathOver₃&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;PathOver₂-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₂ C α c₁ c₂
+         → PathOver₃ C α c₁ c₂
+  PathOver₂-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp&lt;/p&gt;
+
+&lt;p&gt;PathOver₃-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₃ C α c₁ c₂
+         → PathOver₂ C α c₁ c₂
+  PathOver₃-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  –
+  PathOver₂-≃-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+        → PathOver₂ C α c₁ c₂ ≃ PathOver₃ C α c₁ c₂
+  PathOver₂-≃-PathOver₃ {a₁}{.a₁}{idp}{c₁}{c₂} =
+    qinv-≃
+      PathOver₂-to-PathOver₃
+      (PathOver₃-to-PathOver₂
+        , PathOver₂~PathOver₅ , PathOver₃~PathOver₂)
+    where
+      PathOver₂~PathOver₅ : (p : PathOver₃ C idp c₁ c₂)
+          → PathOver₂-to-PathOver₃ (PathOver₃-to-PathOver₂ p) == p
+      PathOver₂~PathOver₅ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  PathOver₃~PathOver₂ : (p : PathOver₂ C idp c₁ c₂)
+      → PathOver₃-to-PathOver₂ (PathOver₂-to-PathOver₃ p) == p
+  PathOver₃~PathOver₂ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– PathOver₃-≃-PathOver₄&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;PathOver₃-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₃ C α c₁ c₂
+         → PathOver₄ C α c₁ c₂
+  PathOver₃-to-PathOver₄ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp&lt;/p&gt;
+
+&lt;p&gt;PathOver₄-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₄ C α c₁ c₂
+         → PathOver₃ C α c₁ c₂
+  PathOver₄-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  –
+  PathOver₃-≃-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+        → PathOver₃ C α c₁ c₂ ≃ PathOver₄ C α c₁ c₂
+  PathOver₃-≃-PathOver₄ {a₁}{.a₁}{idp}{c₁}{c₂} =
+    qinv-≃
+      PathOver₃-to-PathOver₄
+      (PathOver₄-to-PathOver₃
+        , PathOver₃~PathOver₅ , PathOver₄~PathOver₃)
+    where
+      PathOver₃~PathOver₅ : (p : PathOver₄ C idp c₁ c₂)
+          → PathOver₃-to-PathOver₄ (PathOver₄-to-PathOver₃ p) == p
+      PathOver₃~PathOver₅ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  PathOver₄~PathOver₃ : (p : PathOver₃ C idp c₁ c₂)
+      → PathOver₄-to-PathOver₃ (PathOver₃-to-PathOver₄ p) == p
+  PathOver₄~PathOver₃ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– PathOver₄-≃-PathOver₅&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;PathOver₄-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₄ C α c₁ c₂
+         → PathOver₅ C α c₁ c₂
+  PathOver₄-to-PathOver₅ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp&lt;/p&gt;
+
+&lt;p&gt;PathOver₅-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₅ C α c₁ c₂
+         → PathOver₄ C α c₁ c₂
+  PathOver₅-to-PathOver₄ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  –
+  PathOver₄-≃-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+        → PathOver₄ C α c₁ c₂ ≃ PathOver₅ C α c₁ c₂
+  PathOver₄-≃-PathOver₅ {a₁}{.a₁}{idp}{c₁}{c₂} =
+    qinv-≃
+      PathOver₄-to-PathOver₅
+      (PathOver₅-to-PathOver₄
+        , PathOver₄~PathOver₅ , PathOver₅~PathOver₄)
+    where
+      PathOver₄~PathOver₅ : (p : PathOver₅ C idp c₁ c₂)
+          → PathOver₄-to-PathOver₅ (PathOver₅-to-PathOver₄ p) == p
+      PathOver₄~PathOver₅ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  PathOver₅~PathOver₄ : (p : PathOver₄ C idp c₁ c₂)
+      → PathOver₅-to-PathOver₄ (PathOver₄-to-PathOver₅ p) == p
+  PathOver₅~PathOver₄ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p class=&quot;foldable&quot;&gt;\begin{code}
+– PathOver₅-≃-PathOver₁&lt;/p&gt;
+
+&lt;p&gt;module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where&lt;/p&gt;
+
+&lt;p&gt;PathOver₅-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₅ C α c₁ c₂
+         → PathOver₁ C α c₁ c₂
+  PathOver₅-to-PathOver₁ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp&lt;/p&gt;
+
+&lt;p&gt;PathOver₁-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₁ C α c₁ c₂
+         → PathOver₅ C α c₁ c₂
+  PathOver₁-to-PathOver₅ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  –
+  PathOver₅-≃-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+        → PathOver₅ C α c₁ c₂ ≃ PathOver₁ C α c₁ c₂
+  PathOver₅-≃-PathOver₁ {a₁}{.a₁}{idp}{c₁}{c₂} =
+    qinv-≃
+      PathOver₅-to-PathOver₁
+      (PathOver₁-to-PathOver₅
+        , PathOver₅~PathOver₁ , PathOver₁~PathOver₅)
+    where
+      PathOver₅~PathOver₁ : (p : PathOver₁ C idp c₁ c₂)
+          → PathOver₅-to-PathOver₁ (PathOver₁-to-PathOver₅ p) == p
+      PathOver₅~PathOver₁ idp = idp&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  PathOver₁~PathOver₅ : (p : PathOver₅ C idp c₁ c₂)
+      → PathOver₁-to-PathOver₅ (PathOver₅-to-PathOver₁ p) == p
+  PathOver₁~PathOver₅ idp = idp \end{code}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We prefer the third definition for pathovers that comes from the HoTT book, that is,
+PathOver defined by an inductive family. Nevertheless, in the following definition,
+the reader can change the subindex of the &lt;code&gt;PathOver&lt;/code&gt; word to use any other definition.&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+PathOver = PathOver₁&lt;/p&gt;
+
+&lt;p&gt;infix 30 PathOver
+syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
+\end{code}&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;While we have motivated PathOver as a factored heterogeneous equality, there
+is also a geometric intuition. &lt;strong&gt;Dependent types correspond to fibrations&lt;/strong&gt;, so a
+type &lt;code&gt;C : A → Type&lt;/code&gt; can be pictured as its total space &lt;code&gt;∑ a:A . C&lt;/code&gt; a projecting
+down to &lt;code&gt;A&lt;/code&gt; by first projection.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A &lt;strong&gt;path-over&lt;/strong&gt; &lt;code&gt;γ : PathOver C α c­₁ c₂&lt;/code&gt; represents a path σ in &lt;code&gt;∑ a:A . C&lt;/code&gt; a
+a between &lt;code&gt;(a₁, c₁)&lt;/code&gt; and &lt;code&gt;(a₂,c₂)&lt;/code&gt;, such that ap fst σ is exactly &lt;code&gt;α&lt;/code&gt;. That
+is, it is a path in the total space that projects down to, or lies over, &lt;code&gt;α&lt;/code&gt;
+(path pairing &lt;code&gt;pair= α γ&lt;/code&gt; will be made precise below).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;\begin{code}
+– An extra and useful function:
+– to make dependent pairs
+pair= : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : A → Type ℓⱼ}
+  {a₁ a₂ : A} {c₁ : C a₁} {c₂ : C a₂}
+  → (α : a₁ == a₂)
+  → (γ : c₁ == c₂ [ C ↓ α ])&lt;/p&gt;
+
+&lt;p&gt;→ (a₁ , c₁) == (a₂ , c₂)
+pair= idp idp = ap (_ ,_) idp
+\end{code}&lt;/p&gt;
+
+&lt;h2 id=&quot;total-spaces&quot;&gt;Total spaces&lt;/h2&gt;
+
+&lt;p&gt;We want to prove the following lemma:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lemma.&lt;/strong&gt; Let be &lt;code&gt;A : Type&lt;/code&gt; and &lt;code&gt;C : A → Type&lt;/code&gt; with two terms &lt;code&gt;a₁ a₂ : A&lt;/code&gt; and a
+path between them &lt;code&gt;α : a₁ == a₂&lt;/code&gt;. If  &lt;code&gt;c₁ : C a₁&lt;/code&gt;, &lt;code&gt;c₂ : C a₂&lt;/code&gt; then there is an
+correspondance between a term in the total space and the path between c₁ and c₁,
+the depedent path along the path &lt;code&gt;α&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;equation&quot;&gt;
+$$
+ \sum\limits_{(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
+  \simeq \mathsf{PathOver}~C~α~c₁~c₂.
+$$
+&lt;/p&gt;
+
+&lt;p&gt;To show such a equivalence, we proceed defining the functions back and forth,
+the two homotopies associated to these functions with the identity and finally,
+we prove the equivalence using the quasiinverse version for the equivalence type.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Let us define the function &lt;code&gt;Σ-to-==[↓]&lt;/code&gt; that maps a term of the sigma type to
+a pathover. This construction is using Σ-induction followed by two
+path-induction on the identity types from the components.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;\begin{code}
+module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
+\end{code}&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+– Def.
+  Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+    → c₁ == c₂ [ C ↓  α ]
+  Σ-to-==[↓] {c₁ = c₁} (idp , idp) = idp&lt;/p&gt;
+
+&lt;p&gt;\end{code}&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The inverse function to the previous one is &lt;code&gt;==[↓]-to-Σ&lt;/code&gt;, which sends
+pathovers to a dependent pair as it follows. Its construction is by using
+path-induction on &lt;code&gt;α&lt;/code&gt; in the base space, follows by path-induction on &lt;code&gt;γ&lt;/code&gt;. The
+goal after this becomes in a pair of two reflexivity proofs &lt;code&gt;(a₁ , c₁) == (a₁
+, c₁)&lt;/code&gt; and &lt;code&gt;(a₁ == a₁) == (a₁ == a₁)&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;\begin{code}
+– Def.
+  ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (γ : c₁ == c₂ [ C ↓ α ])
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+  ==[↓]-to-Σ {idp} idp = (idp , idp)&lt;/p&gt;
+
+&lt;p&gt;– – more explict:
+  – ==[↓]-to-Σ {idp}{c₁}{c₂} idp = (idp {a = (a₁ , c₁)}, idp {a = idp {a = a₁}})&lt;/p&gt;
+
+&lt;p&gt;– – Alternative way to construct this function is (also type-checked):
+  – ==[↓]-to-Σ {α = α} γ = (pair= α γ , ap-fst-pair= α γ)
+  –   where
+  –
+  –   ap-fst-pair= : (α : a₁ == a₂)
+  –       → {c₁ : C a₁}{c₂ : C a₂} (γ : c₁ == c₂ [ C ↓ α ] )
+  –       → ap fst (pair= α γ) == α
+  –   ap-fst-pair= idp idp = idp
+\end{code}&lt;/p&gt;
+
+&lt;p&gt;The respective homotopies&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+– Homotopies
+  Σ-to-==[↓]∘==[↓]-to-Σ∼id
+    : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (γ : c₁ == c₂ [ C ↓ α ])
+    → Σ-to-==[↓] {α = α} (==[↓]-to-Σ γ) == γ
+  Σ-to-==[↓]∘==[↓]-to-Σ∼id {α = idp} idp = idp&lt;/p&gt;
+
+&lt;p&gt;==[↓]-to-Σ∘Σ-to-==[↓]∼id
+    : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (pair : Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+    → ==[↓]-to-Σ (Σ-to-==[↓] pair) == pair
+  ==[↓]-to-Σ∘Σ-to-==[↓]∼id (idp , idp) = idp
+\end{code}&lt;/p&gt;
+
+&lt;p&gt;Finally, we show the equivalence using the fact above proved.&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+– Equivalence
+  Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+    ≃ (c₁ == c₂ [ C ↓ α ])&lt;/p&gt;
+
+&lt;p&gt;Σ-≃-==[↓] =
+    qinv-≃
+      Σ-to-==[↓]    – equivalence
+      ((==[↓]-to-Σ  – inverse
+      , (Σ-to-==[↓]∘==[↓]-to-Σ∼id , ==[↓]-to-Σ∘Σ-to-==[↓]∼id))) – homotopies
+\end{code}&lt;/p&gt;
+
+&lt;h2 id=&quot;other-facts&quot;&gt;Other facts&lt;/h2&gt;
+
+&lt;p&gt;We can build a dependent path by applying a depedent function to a homogeneous path.&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+apdo : ∀ {ℓ} {A : Type ℓ} {B : A → Type ℓ} (f : (a : A) → B a)
+      {a₁ a₂ : A} → (α : a₁ == a₂) → (PathOver B α (f a₁) (f a₂))
+apdo f idp = idp
+\end{code}&lt;/p&gt;
+
+&lt;h2 id=&quot;extra&quot;&gt;Extra&lt;/h2&gt;
+
+&lt;p&gt;The previous fact can also seen as a case of the following lemma.
+If &lt;code&gt;A : Type&lt;/code&gt; and &lt;code&gt;C : A → Type&lt;/code&gt;, we can show that:&lt;/p&gt;
+
+&lt;p&gt;\begin{code}
+module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where&lt;/p&gt;
+
+&lt;p&gt;l→ : {B : Type ℓᵢ}
+      → (e : B ≃ A)
+      → Σ A P
+      —–
+      → Σ B (λ b → P ((lemap e) b))
+  l→ {B} e (a , pₐ) = finv a , coe equalsPs pₐ
+    where
+      f : B → A
+      f = lemap e&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  finv : A → B
+  finv = remap e
+
+  equalsPs : P a  == P (lemap e (remap e a))
+  equalsPs = ap P (inv (lrmap-inverse e))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;l← : {B : Type ℓᵢ}
+      → (e : B ≃ A)
+      → Σ B (λ b → P ((lemap e) b))
+      —–
+      → Σ A P
+  l← {B} e (b , p) = (lemap e) b , p
+  –
+  – l→∘l←-~-id : {B : Type ℓᵢ}
+  –         → (e : B ≃ A)
+  –         → (pΣbP’ : Σ B (λ b → P ((fst e) b)) )
+  –         → l→ e (l← e pΣbP’) == pΣbP’
+  – l→∘l←-~-id (f , eqf) (b , p) =
+  –   Σ-bycomponents
+  –     ( ap fst (pair= {!   !} {!   !})
+  –     , {!   !})
+  – –
+  – l←∘l→-~-id : {B : Type ℓᵢ}
+  –         → (e : B ≃ A)
+  –         → (pΣaP : Σ A P)
+  –         → l← e (l→ e pΣaP) == pΣaP
+  – l←∘l→-~-id e (b , p) = Σ-bycomponents ({!   !} , {!   !})
+  –
+  –
+  – lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
+  – lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})
+\end{code}&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 &lt;p&gt;https://github.com/HoTT/HoTT-Agda/
@@ -6477,9 +7893,9 @@ by defining two equations:&lt;/p&gt;
  
  <entry>
    <title>Function Type</title>
-   <link href="http://jonaprieto.github.io/type-theory/2018/02/10/functions-in-type-theory/"/>
+   <link href="http://jonaprieto.github.io/type-theor/2018/02/10/functions-in-type-theory/"/>
    <updated>2018-02-10T00:00:00+01:00</updated>
-   <id>http://jonaprieto.github.io/type-theory/2018/02/10/functions-in-type-theory</id>
+   <id>http://jonaprieto.github.io/type-theor/2018/02/10/functions-in-type-theory</id>
    <content type="html">&lt;h1 id=&quot;function-type-rules&quot;&gt;Function Type Rules&lt;/h1&gt;
 
 &lt;p&gt;In type theory we do not define a function since this is an undefined concept
@@ -6518,20 +7934,20 @@ codomain.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;1157&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;1162&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;1169&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html&quot; class=&quot;Module&quot;&gt;Relation.Binary.PropositionalEquality&lt;/a&gt; &lt;a id=&quot;1207&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;1213&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;1214&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;_≡_&lt;/a&gt;&lt;a id=&quot;1217&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1219&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;a id=&quot;1223&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;1156&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;1161&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;1168&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html&quot; class=&quot;Module&quot;&gt;Relation.Binary.PropositionalEquality&lt;/a&gt; &lt;a id=&quot;1206&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;1212&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;1213&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;_≡_&lt;/a&gt;&lt;a id=&quot;1216&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1218&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;a id=&quot;1222&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-&lt;a id=&quot;1226&quot; class=&quot;Keyword&quot;&gt;postulate&lt;/a&gt;
-  &lt;a id=&quot;A&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1238&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;B&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1240&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1240&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;1242&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1244&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;
-  &lt;a id=&quot;t&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1250&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1250&quot; class=&quot;Postulate&quot;&gt;t&lt;/a&gt; &lt;a id=&quot;1252&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1254&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1240&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt;
+&lt;a id=&quot;1225&quot; class=&quot;Keyword&quot;&gt;postulate&lt;/a&gt;
+  &lt;a id=&quot;A&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1237&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;B&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1239&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1239&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;1241&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1243&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;
+  &lt;a id=&quot;t&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1249&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1249&quot; class=&quot;Postulate&quot;&gt;t&lt;/a&gt; &lt;a id=&quot;1251&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1253&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1239&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt;
 
-&lt;a id=&quot;f&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1257&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1257&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1259&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1261&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1263&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1265&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1240&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt;
-&lt;a id=&quot;1267&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1257&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1269&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1269&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;1271&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1273&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1250&quot; class=&quot;Postulate&quot;&gt;t&lt;/a&gt;
+&lt;a id=&quot;f&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1256&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1256&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1258&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1260&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1262&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1264&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1239&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt;
+&lt;a id=&quot;1266&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1256&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1268&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1268&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;1270&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1272&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1249&quot; class=&quot;Postulate&quot;&gt;t&lt;/a&gt;
 
-&lt;a id=&quot;f₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1276&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1276&quot; class=&quot;Function&quot;&gt;f₁&lt;/a&gt; &lt;a id=&quot;1279&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1281&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1283&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1285&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1240&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt;
-&lt;a id=&quot;1287&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1276&quot; class=&quot;Function&quot;&gt;f₁&lt;/a&gt; &lt;a id=&quot;1290&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1292&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;1294&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1294&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;1296&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1298&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1257&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1300&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1294&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;
+&lt;a id=&quot;f₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1275&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1275&quot; class=&quot;Function&quot;&gt;f₁&lt;/a&gt; &lt;a id=&quot;1278&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1280&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1282&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1284&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1239&quot; class=&quot;Postulate&quot;&gt;B&lt;/a&gt;
+&lt;a id=&quot;1286&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1275&quot; class=&quot;Function&quot;&gt;f₁&lt;/a&gt; &lt;a id=&quot;1289&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1291&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;1293&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1293&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;1295&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1297&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1256&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1299&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1293&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;
 
-&lt;a id=&quot;f≡f₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1303&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1303&quot; class=&quot;Function&quot;&gt;f≡f₁&lt;/a&gt; &lt;a id=&quot;1308&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1310&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1257&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1312&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;1314&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1276&quot; class=&quot;Function&quot;&gt;f₁&lt;/a&gt;
-&lt;a id=&quot;1317&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1303&quot; class=&quot;Function&quot;&gt;f≡f₁&lt;/a&gt; &lt;a id=&quot;1322&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1324&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;f≡f₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1302&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1302&quot; class=&quot;Function&quot;&gt;f≡f₁&lt;/a&gt; &lt;a id=&quot;1307&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1309&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1256&quot; class=&quot;Function&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;1311&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;1313&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1275&quot; class=&quot;Function&quot;&gt;f₁&lt;/a&gt;
+&lt;a id=&quot;1316&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1302&quot; class=&quot;Function&quot;&gt;f≡f₁&lt;/a&gt; &lt;a id=&quot;1321&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1323&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;Related:&lt;/p&gt;
 
@@ -6540,19 +7956,19 @@ codomain.&lt;/p&gt;
 that is, if after renaming the variable names they are definitionally equal.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;g&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1517&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1517&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;1519&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt;  &lt;a id=&quot;1522&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1524&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1526&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1528&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1530&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt;
-&lt;a id=&quot;1532&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1517&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;1534&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1536&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;1538&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1538&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;1540&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1540&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;1542&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1544&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1540&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;g&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1516&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1516&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;1518&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt;  &lt;a id=&quot;1521&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1523&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1525&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1527&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1529&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt;
+&lt;a id=&quot;1531&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1516&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;1533&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1535&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;1537&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1537&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;1539&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1539&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;1541&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1543&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1539&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;
 
-&lt;a id=&quot;h&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1547&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1547&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;1549&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1551&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1553&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1555&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1557&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1559&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1238&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt;
-&lt;a id=&quot;1561&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1547&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;1563&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt;  &lt;a id=&quot;1566&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;1568&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1568&quot; class=&quot;Bound&quot;&gt;w&lt;/a&gt; &lt;a id=&quot;1570&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1570&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt; &lt;a id=&quot;1572&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1574&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1570&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;h&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1546&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1546&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;1548&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1550&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1552&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1554&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;1556&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1558&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1237&quot; class=&quot;Postulate&quot;&gt;A&lt;/a&gt;
+&lt;a id=&quot;1560&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1546&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;1562&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt;  &lt;a id=&quot;1565&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;1567&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1567&quot; class=&quot;Bound&quot;&gt;w&lt;/a&gt; &lt;a id=&quot;1569&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1569&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt; &lt;a id=&quot;1571&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;1573&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1569&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;Both &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt; function produce the same result.
 Then if we sustitute in &lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt;, &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt; by &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt;, and &lt;script type=&quot;math/tex&quot;&gt;z&lt;/script&gt; by &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;,
 we get the definition of &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt;, so at the end, &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt; are
 &lt;em&gt;judgemental&lt;/em&gt; equal.&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;g≡h&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1812&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1812&quot; class=&quot;Function&quot;&gt;g≡h&lt;/a&gt; &lt;a id=&quot;1816&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1818&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1517&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;1820&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;1822&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1547&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt;
-&lt;a id=&quot;1824&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#1812&quot; class=&quot;Function&quot;&gt;g≡h&lt;/a&gt; &lt;a id=&quot;1828&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1830&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;/pre&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;g≡h&quot;&gt;&lt;/a&gt;&lt;a id=&quot;1811&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1811&quot; class=&quot;Function&quot;&gt;g≡h&lt;/a&gt; &lt;a id=&quot;1815&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;1817&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1516&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;1819&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;1821&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1546&quot; class=&quot;Function&quot;&gt;h&lt;/a&gt;
+&lt;a id=&quot;1823&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#1811&quot; class=&quot;Function&quot;&gt;g≡h&lt;/a&gt; &lt;a id=&quot;1827&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1829&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;/pre&gt;
 
 &lt;h1 id=&quot;functional-extensionality&quot;&gt;Functional extensionality&lt;/h1&gt;
 
@@ -6560,12 +7976,12 @@ we get the definition of &lt;script type=&quot;math/tex&quot;&gt;g&lt;/script&gt
 axiom that establishes the pointwise equality between two functions.
 This axiom has the following type:&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;2119&quot; class=&quot;Keyword&quot;&gt;postulate&lt;/a&gt;
-  &lt;a id=&quot;FunExt&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2131&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2131&quot; class=&quot;Postulate&quot;&gt;FunExt&lt;/a&gt;
-    &lt;a id=&quot;2142&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2144&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;2146&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;2147&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2147&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;2149&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2149&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;2151&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2153&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;2156&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-    &lt;a id=&quot;2162&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2164&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;2166&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;2167&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2167&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2169&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2169&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2171&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2173&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2147&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;2175&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2177&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2149&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;2178&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-    &lt;a id=&quot;2184&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2186&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;2189&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2190&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2190&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;2192&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2194&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2147&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;2195&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2197&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2199&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2167&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2201&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2190&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;2203&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;2205&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2169&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2207&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2190&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;2208&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-    &lt;a id=&quot;2214&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2216&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2167&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2218&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;2220&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2169&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt;&lt;/pre&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;2118&quot; class=&quot;Keyword&quot;&gt;postulate&lt;/a&gt;
+  &lt;a id=&quot;FunExt&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2130&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2130&quot; class=&quot;Postulate&quot;&gt;FunExt&lt;/a&gt;
+    &lt;a id=&quot;2141&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2143&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;2145&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;2146&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2146&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;2148&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2148&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;2150&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2152&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;a id=&quot;2155&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+    &lt;a id=&quot;2161&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2163&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;2165&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;2166&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2166&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2168&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2168&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2170&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2172&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2146&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;2174&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2176&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2148&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt;&lt;a id=&quot;2177&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+    &lt;a id=&quot;2183&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2185&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;2188&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2189&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2189&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;2191&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2193&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2146&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;2194&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2196&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2198&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2166&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2200&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2189&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;2202&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;2204&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2168&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2206&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2189&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;2207&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+    &lt;a id=&quot;2213&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2215&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2166&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;2217&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;2219&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2168&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;Then, lets use this axiom in a complete example, proving that two defintions
 of the add function are indeed equal. The example also includes a reference
@@ -6574,36 +7990,36 @@ to a note presented later about
 
 &lt;p&gt;The definitions:&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;𝒰&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2553&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2553&quot; class=&quot;Function&quot;&gt;𝒰&lt;/a&gt; &lt;a id=&quot;2555&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2557&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;
-&lt;a id=&quot;2561&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;ℕ&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2566&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2568&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2570&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2553&quot; class=&quot;Function&quot;&gt;𝒰&lt;/a&gt; &lt;a id=&quot;2572&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
- &lt;a id=&quot;ℕ.zero&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2579&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2579&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt; &lt;a id=&quot;2584&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2586&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
- &lt;a id=&quot;ℕ.suc&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2589&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt;  &lt;a id=&quot;2594&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2596&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2598&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2600&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;𝒰&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2552&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2552&quot; class=&quot;Function&quot;&gt;𝒰&lt;/a&gt; &lt;a id=&quot;2554&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2556&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;
+&lt;a id=&quot;2560&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;ℕ&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2565&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2567&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2569&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2552&quot; class=&quot;Function&quot;&gt;𝒰&lt;/a&gt; &lt;a id=&quot;2571&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+ &lt;a id=&quot;ℕ.zero&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2578&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2578&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt; &lt;a id=&quot;2583&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2585&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
+ &lt;a id=&quot;ℕ.suc&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2588&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt;  &lt;a id=&quot;2593&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2595&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2597&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2599&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
 
-&lt;a id=&quot;add&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2603&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2603&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;2607&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2609&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2611&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2613&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2615&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2617&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
-&lt;a id=&quot;2619&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2603&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;2623&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2625&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2682&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2630&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2631&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2633&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2635&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;&lt;a id=&quot;2636&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2638&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2641&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2641&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2643&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2645&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2641&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;2646&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2648&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2651&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2651&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;2653&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2653&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2655&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2655&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2657&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2659&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2663&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2664&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2653&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2666&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2655&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;2667&quot; class=&quot;Symbol&quot;&gt;))&lt;/a&gt;
-  &lt;a id=&quot;2672&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-    &lt;a id=&quot;2682&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2682&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2687&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2689&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2690&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2690&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2692&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2694&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2553&quot; class=&quot;Function&quot;&gt;𝒰&lt;/a&gt;&lt;a id=&quot;2695&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2697&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2699&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2690&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2701&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2703&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2704&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2706&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2708&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2690&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2710&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2712&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2690&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;&lt;a id=&quot;2713&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2715&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2717&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2719&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2721&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2690&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;
-    &lt;a id=&quot;2727&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2682&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2732&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2732&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2734&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2734&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt; &lt;a id=&quot;2737&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2737&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2740&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2579&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt;    &lt;a id=&quot;2748&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2750&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2734&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt;
-    &lt;a id=&quot;2757&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2682&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2762&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2762&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2764&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2764&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt; &lt;a id=&quot;2767&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2767&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2770&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2771&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2775&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2775&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;2776&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2778&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2780&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2767&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2783&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2775&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;2785&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2786&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2682&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2791&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2762&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2793&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2764&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt; &lt;a id=&quot;2796&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2767&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2799&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2775&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;2800&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+&lt;a id=&quot;add&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2602&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2602&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;2606&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2608&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2610&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2612&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2614&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2616&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
+&lt;a id=&quot;2618&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2602&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;2622&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2624&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2681&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2629&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2630&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2632&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2634&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;&lt;a id=&quot;2635&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2637&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2640&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2640&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2642&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2644&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2640&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;2645&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2647&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2650&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2650&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;2652&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2652&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2654&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2654&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2656&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2658&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2662&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2663&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2652&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;2665&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2654&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;2666&quot; class=&quot;Symbol&quot;&gt;))&lt;/a&gt;
+  &lt;a id=&quot;2671&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+    &lt;a id=&quot;2681&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2681&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2686&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2688&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2689&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2689&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2691&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2693&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2552&quot; class=&quot;Function&quot;&gt;𝒰&lt;/a&gt;&lt;a id=&quot;2694&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2696&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2698&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2689&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2700&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2702&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2703&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2705&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2707&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2689&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2709&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2711&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2689&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;&lt;a id=&quot;2712&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2714&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2716&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2718&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2720&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2689&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt;
+    &lt;a id=&quot;2726&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2681&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2731&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2731&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2733&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2733&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt; &lt;a id=&quot;2736&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2736&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2739&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2578&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt;    &lt;a id=&quot;2747&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2749&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2733&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt;
+    &lt;a id=&quot;2756&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2681&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2761&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2761&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2763&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2763&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt; &lt;a id=&quot;2766&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2766&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2769&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2770&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2774&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2774&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;2775&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2777&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2779&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2766&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2782&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2774&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;2784&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2785&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2681&quot; class=&quot;Function&quot;&gt;recℕ&lt;/a&gt; &lt;a id=&quot;2790&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2761&quot; class=&quot;Bound&quot;&gt;C&lt;/a&gt; &lt;a id=&quot;2792&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2763&quot; class=&quot;Bound&quot;&gt;c₀&lt;/a&gt; &lt;a id=&quot;2795&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2766&quot; class=&quot;Bound&quot;&gt;cₛ&lt;/a&gt; &lt;a id=&quot;2798&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2774&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;2799&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-&lt;a id=&quot;add₂&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2803&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2803&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2808&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2810&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2812&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2814&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2816&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2818&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
-&lt;a id=&quot;2820&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2803&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2825&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2579&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt;    &lt;a id=&quot;2833&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2833&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2835&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2837&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2833&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;
-&lt;a id=&quot;2839&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2803&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2844&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2845&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2849&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2849&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;2850&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2852&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2852&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2854&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2856&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2860&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2861&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2803&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2866&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2849&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;2868&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2852&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;2869&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+&lt;a id=&quot;add₂&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2802&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2802&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2807&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2809&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2811&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2813&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt; &lt;a id=&quot;2815&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;2817&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;
+&lt;a id=&quot;2819&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2802&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2824&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2578&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt;    &lt;a id=&quot;2832&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2832&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2834&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2836&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2832&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;
+&lt;a id=&quot;2838&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2802&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2843&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2844&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2848&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2848&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;2849&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;2851&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2851&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;2853&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2855&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;2859&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;2860&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2802&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;2865&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2848&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;2867&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2851&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;2868&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-&lt;a id=&quot;_+_&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2872&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2872&quot; class=&quot;Function Operator&quot;&gt;_+_&lt;/a&gt; &lt;a id=&quot;2876&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2878&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2603&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt;
-&lt;a id=&quot;2882&quot; class=&quot;Keyword&quot;&gt;infix&lt;/a&gt; &lt;a id=&quot;2888&quot; class=&quot;Number&quot;&gt;6&lt;/a&gt; &lt;a id=&quot;2890&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2872&quot; class=&quot;Function Operator&quot;&gt;_+_&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;_+_&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2871&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2871&quot; class=&quot;Function Operator&quot;&gt;_+_&lt;/a&gt; &lt;a id=&quot;2875&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2877&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2602&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt;
+&lt;a id=&quot;2881&quot; class=&quot;Keyword&quot;&gt;infix&lt;/a&gt; &lt;a id=&quot;2887&quot; class=&quot;Number&quot;&gt;6&lt;/a&gt; &lt;a id=&quot;2889&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2871&quot; class=&quot;Function Operator&quot;&gt;_+_&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;By function extensionality axiom :&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;add≡add₂&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2955&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2955&quot; class=&quot;Function&quot;&gt;add≡add₂&lt;/a&gt; &lt;a id=&quot;2964&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2966&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2603&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;2970&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;2972&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2803&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt;
-&lt;a id=&quot;2977&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2955&quot; class=&quot;Function&quot;&gt;add≡add₂&lt;/a&gt; &lt;a id=&quot;2986&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2988&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2131&quot; class=&quot;Postulate&quot;&gt;FunExt&lt;/a&gt; &lt;a id=&quot;2995&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2998&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2998&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3000&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3002&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2131&quot; class=&quot;Postulate&quot;&gt;FunExt&lt;/a&gt; &lt;a id=&quot;3009&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;3011&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3011&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3013&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3015&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3112&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3022&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2998&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3024&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3011&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;3025&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-  &lt;a id=&quot;3029&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-    &lt;a id=&quot;3039&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3039&quot; class=&quot;Function&quot;&gt;+-cong&lt;/a&gt; &lt;a id=&quot;3046&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3048&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;3050&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3051&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3051&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3053&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3053&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3055&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3057&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;&lt;a id=&quot;3058&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3060&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3062&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3051&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3064&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3066&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3053&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3068&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3070&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;3074&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3051&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3076&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3078&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;3082&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3053&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;
-    &lt;a id=&quot;3088&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3039&quot; class=&quot;Function&quot;&gt;+-cong&lt;/a&gt; &lt;a id=&quot;3095&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;3100&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3102&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;add≡add₂&quot;&gt;&lt;/a&gt;&lt;a id=&quot;2954&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2954&quot; class=&quot;Function&quot;&gt;add≡add₂&lt;/a&gt; &lt;a id=&quot;2963&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;2965&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2602&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;2969&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;2971&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2802&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt;
+&lt;a id=&quot;2976&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2954&quot; class=&quot;Function&quot;&gt;add≡add₂&lt;/a&gt; &lt;a id=&quot;2985&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;2987&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2130&quot; class=&quot;Postulate&quot;&gt;FunExt&lt;/a&gt; &lt;a id=&quot;2994&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;2997&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2997&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;2999&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3001&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2130&quot; class=&quot;Postulate&quot;&gt;FunExt&lt;/a&gt; &lt;a id=&quot;3008&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;3010&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3010&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3012&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3014&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3111&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3021&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2997&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3023&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3010&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;3024&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+  &lt;a id=&quot;3028&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+    &lt;a id=&quot;3038&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3038&quot; class=&quot;Function&quot;&gt;+-cong&lt;/a&gt; &lt;a id=&quot;3045&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3047&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;3049&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3050&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3050&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3052&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3052&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3054&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3056&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;&lt;a id=&quot;3057&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3059&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3061&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3050&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3063&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3065&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3052&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3067&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3069&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;3073&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3050&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3075&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3077&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;3081&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3052&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;
+    &lt;a id=&quot;3087&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3038&quot; class=&quot;Function&quot;&gt;+-cong&lt;/a&gt; &lt;a id=&quot;3094&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;3099&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3101&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
 
-    &lt;a id=&quot;3112&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3112&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3119&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3121&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3122&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3122&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3124&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3124&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3126&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3128&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2566&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;&lt;a id=&quot;3129&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3131&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3133&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2603&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;3137&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3122&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3139&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3124&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3141&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3143&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2803&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;3148&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3122&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3150&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3124&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;
-    &lt;a id=&quot;3156&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3112&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3163&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2579&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt;    &lt;a id=&quot;3171&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3171&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3173&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3175&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
-    &lt;a id=&quot;3184&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3112&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3191&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3192&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#2589&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;3196&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3196&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;3197&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3199&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3199&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3201&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3203&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3039&quot; class=&quot;Function&quot;&gt;+-cong&lt;/a&gt; &lt;a id=&quot;3210&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3211&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3112&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3218&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3196&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3220&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3199&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;3221&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;&lt;/pre&gt;
+    &lt;a id=&quot;3111&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3111&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3118&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3120&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3121&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3121&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3123&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3123&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3125&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3127&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2565&quot; class=&quot;Datatype&quot;&gt;ℕ&lt;/a&gt;&lt;a id=&quot;3128&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3130&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3132&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2602&quot; class=&quot;Function&quot;&gt;add&lt;/a&gt; &lt;a id=&quot;3136&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3121&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3138&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3123&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3140&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3142&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2802&quot; class=&quot;Function&quot;&gt;add₂&lt;/a&gt; &lt;a id=&quot;3147&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3121&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3149&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3123&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;
+    &lt;a id=&quot;3155&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3111&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3162&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2578&quot; class=&quot;InductiveConstructor&quot;&gt;zero&lt;/a&gt;    &lt;a id=&quot;3170&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3170&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3172&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3174&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;
+    &lt;a id=&quot;3183&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3111&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3190&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3191&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#2588&quot; class=&quot;InductiveConstructor&quot;&gt;suc&lt;/a&gt; &lt;a id=&quot;3195&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3195&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt;&lt;a id=&quot;3196&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3198&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3198&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt; &lt;a id=&quot;3200&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;3202&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3038&quot; class=&quot;Function&quot;&gt;+-cong&lt;/a&gt; &lt;a id=&quot;3209&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3210&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3111&quot; class=&quot;Function&quot;&gt;helper&lt;/a&gt; &lt;a id=&quot;3217&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3195&quot; class=&quot;Bound&quot;&gt;n&lt;/a&gt; &lt;a id=&quot;3219&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3198&quot; class=&quot;Bound&quot;&gt;m&lt;/a&gt;&lt;a id=&quot;3220&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
 
@@ -6616,38 +8032,38 @@ extensionality&lt;/a&gt; showed in the following excerpts.&lt;/p&gt;
 
 &lt;p&gt;Some imports:&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;3570&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3575&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;3582&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html&quot; class=&quot;Module&quot;&gt;Level&lt;/a&gt;
-&lt;a id=&quot;3588&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3593&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;3600&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html&quot; class=&quot;Module&quot;&gt;Relation.Binary.PropositionalEquality&lt;/a&gt; &lt;a id=&quot;3638&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;3644&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3645&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075&quot; class=&quot;Function&quot;&gt;cong&lt;/a&gt;&lt;a id=&quot;3649&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-&lt;a id=&quot;3651&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3656&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;3663&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html&quot; class=&quot;Module&quot;&gt;Function&lt;/a&gt; &lt;a id=&quot;3672&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;3678&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3679&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;_∘_&lt;/a&gt;&lt;a id=&quot;3682&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;3684&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#1881&quot; class=&quot;Function Operator&quot;&gt;_$_&lt;/a&gt;&lt;a id=&quot;3687&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;&lt;/pre&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;3569&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3574&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;3581&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html&quot; class=&quot;Module&quot;&gt;Level&lt;/a&gt;
+&lt;a id=&quot;3587&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3592&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;3599&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html&quot; class=&quot;Module&quot;&gt;Relation.Binary.PropositionalEquality&lt;/a&gt; &lt;a id=&quot;3637&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;3643&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3644&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075&quot; class=&quot;Function&quot;&gt;cong&lt;/a&gt;&lt;a id=&quot;3648&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+&lt;a id=&quot;3650&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3655&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;3662&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html&quot; class=&quot;Module&quot;&gt;Function&lt;/a&gt; &lt;a id=&quot;3671&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;3677&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3678&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;_∘_&lt;/a&gt;&lt;a id=&quot;3681&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;3683&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#1881&quot; class=&quot;Function Operator&quot;&gt;_$_&lt;/a&gt;&lt;a id=&quot;3686&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;Extensionality&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3714&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3714&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;3729&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3731&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3732&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3732&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;3734&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3734&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;3736&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3738&quot; href=&quot;Agda.Primitive.html#408&quot; class=&quot;Postulate&quot;&gt;Level&lt;/a&gt;&lt;a id=&quot;3743&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3745&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3747&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;3751&quot; class=&quot;Symbol&quot;&gt;_&lt;/a&gt;
-&lt;a id=&quot;3753&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3714&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;3768&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3768&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;3770&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3770&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;3772&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt;
-  &lt;a id=&quot;3776&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3777&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3777&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;3779&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3781&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;3785&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3768&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;3786&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3788&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3789&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3789&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;3791&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3793&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3777&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;3795&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3797&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;3801&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3770&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;3802&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3804&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3805&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3805&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3807&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3807&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3809&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3811&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3812&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3812&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3814&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3816&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3777&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;3817&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3819&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3821&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3789&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;3823&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3812&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;3824&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3826&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt;
-  &lt;a id=&quot;3830&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;3833&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3833&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3835&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3837&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3805&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3839&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3833&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3841&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3843&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3807&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3845&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3833&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;3846&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3848&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3850&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3805&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3852&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3854&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3807&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt;&lt;/pre&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;Extensionality&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3713&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3713&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;3728&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3730&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3731&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3731&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;3733&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3733&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;3735&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3737&quot; href=&quot;Agda.Primitive.html#408&quot; class=&quot;Postulate&quot;&gt;Level&lt;/a&gt;&lt;a id=&quot;3742&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3744&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3746&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;3750&quot; class=&quot;Symbol&quot;&gt;_&lt;/a&gt;
+&lt;a id=&quot;3752&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3713&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;3767&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3767&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;3769&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3769&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;3771&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt;
+  &lt;a id=&quot;3775&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3776&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3776&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;3778&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3780&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;3784&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3767&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;3785&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3787&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3788&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3788&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;3790&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3792&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3776&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;3794&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3796&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;3800&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3769&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;3801&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3803&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3804&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3804&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3806&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3806&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3808&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3810&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3811&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3811&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3813&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3815&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3776&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;3816&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3818&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3820&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3788&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;3822&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3811&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;3823&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3825&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt;
+  &lt;a id=&quot;3829&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;3832&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3832&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3834&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3836&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3804&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3838&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3832&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3840&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3842&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3806&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;3844&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3832&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;3845&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3847&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3849&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3804&quot; class=&quot;Bound&quot;&gt;f&lt;/a&gt; &lt;a id=&quot;3851&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;3853&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3806&quot; class=&quot;Bound&quot;&gt;g&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;If extensionality holds for a given universe level, then it also
 holds for lower ones.&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;extensionality-for-lower-levels&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3969&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3969&quot; class=&quot;Function&quot;&gt;extensionality-for-lower-levels&lt;/a&gt;
-  &lt;a id=&quot;4003&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4005&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4007&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4008&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4008&quot; class=&quot;Bound&quot;&gt;a₁&lt;/a&gt; &lt;a id=&quot;4011&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4011&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt;&lt;a id=&quot;4013&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4015&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4015&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt; &lt;a id=&quot;4018&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4018&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt;
-  &lt;a id=&quot;4023&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4025&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3714&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;4040&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4041&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4008&quot; class=&quot;Bound&quot;&gt;a₁&lt;/a&gt; &lt;a id=&quot;4044&quot; href=&quot;Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;⊔&lt;/a&gt; &lt;a id=&quot;4046&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4015&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt;&lt;a id=&quot;4048&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4050&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4051&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4011&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt; &lt;a id=&quot;4054&quot; href=&quot;Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;⊔&lt;/a&gt; &lt;a id=&quot;4056&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4018&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt;&lt;a id=&quot;4058&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-  &lt;a id=&quot;4062&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4064&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3714&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;4079&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4008&quot; class=&quot;Bound&quot;&gt;a₁&lt;/a&gt; &lt;a id=&quot;4082&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4011&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;extensionality-for-lower-levels&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3968&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3968&quot; class=&quot;Function&quot;&gt;extensionality-for-lower-levels&lt;/a&gt;
+  &lt;a id=&quot;4002&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4004&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4006&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4007&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4007&quot; class=&quot;Bound&quot;&gt;a₁&lt;/a&gt; &lt;a id=&quot;4010&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4010&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt;&lt;a id=&quot;4012&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4014&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4014&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt; &lt;a id=&quot;4017&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4017&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt;
+  &lt;a id=&quot;4022&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4024&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3713&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;4039&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4040&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4007&quot; class=&quot;Bound&quot;&gt;a₁&lt;/a&gt; &lt;a id=&quot;4043&quot; href=&quot;Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;⊔&lt;/a&gt; &lt;a id=&quot;4045&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4014&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt;&lt;a id=&quot;4047&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4049&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4050&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4010&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt; &lt;a id=&quot;4053&quot; href=&quot;Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;⊔&lt;/a&gt; &lt;a id=&quot;4055&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4017&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt;&lt;a id=&quot;4057&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+  &lt;a id=&quot;4061&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4063&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3713&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;4078&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4007&quot; class=&quot;Bound&quot;&gt;a₁&lt;/a&gt; &lt;a id=&quot;4081&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4010&quot; class=&quot;Bound&quot;&gt;b₁&lt;/a&gt;
 
-&lt;a id=&quot;4086&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3969&quot; class=&quot;Function&quot;&gt;extensionality-for-lower-levels&lt;/a&gt; &lt;a id=&quot;4118&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4118&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt; &lt;a id=&quot;4121&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4121&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt; &lt;a id=&quot;4124&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4124&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4128&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4128&quot; class=&quot;Bound&quot;&gt;f≡g&lt;/a&gt; &lt;a id=&quot;4132&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt;
-  &lt;a id=&quot;4136&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075&quot; class=&quot;Function&quot;&gt;cong&lt;/a&gt; &lt;a id=&quot;4141&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;4144&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4144&quot; class=&quot;Bound&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;4146&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4148&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#420&quot; class=&quot;Field&quot;&gt;lower&lt;/a&gt; &lt;a id=&quot;4154&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4156&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4144&quot; class=&quot;Bound&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;4158&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4160&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#407&quot; class=&quot;InductiveConstructor&quot;&gt;lift&lt;/a&gt;&lt;a id=&quot;4164&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4166&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#1881&quot; class=&quot;Function Operator&quot;&gt;$&lt;/a&gt;
-    &lt;a id=&quot;4172&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4124&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4176&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4177&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075&quot; class=&quot;Function&quot;&gt;cong&lt;/a&gt; &lt;a id=&quot;4182&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4183&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#407&quot; class=&quot;InductiveConstructor&quot;&gt;lift&lt;/a&gt; &lt;a id=&quot;4188&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4189&quot; class=&quot;Argument&quot;&gt;ℓ&lt;/a&gt; &lt;a id=&quot;4191&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4193&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4121&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt;&lt;a id=&quot;4195&quot; class=&quot;Symbol&quot;&gt;})&lt;/a&gt; &lt;a id=&quot;4198&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4200&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4128&quot; class=&quot;Bound&quot;&gt;f≡g&lt;/a&gt; &lt;a id=&quot;4204&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4206&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#420&quot; class=&quot;Field&quot;&gt;lower&lt;/a&gt; &lt;a id=&quot;4212&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4213&quot; class=&quot;Argument&quot;&gt;ℓ&lt;/a&gt; &lt;a id=&quot;4215&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4217&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4118&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt;&lt;a id=&quot;4219&quot; class=&quot;Symbol&quot;&gt;})&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;4085&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3968&quot; class=&quot;Function&quot;&gt;extensionality-for-lower-levels&lt;/a&gt; &lt;a id=&quot;4117&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4117&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt; &lt;a id=&quot;4120&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4120&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt; &lt;a id=&quot;4123&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4123&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4127&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4127&quot; class=&quot;Bound&quot;&gt;f≡g&lt;/a&gt; &lt;a id=&quot;4131&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt;
+  &lt;a id=&quot;4135&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075&quot; class=&quot;Function&quot;&gt;cong&lt;/a&gt; &lt;a id=&quot;4140&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;4143&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4143&quot; class=&quot;Bound&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;4145&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4147&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#420&quot; class=&quot;Field&quot;&gt;lower&lt;/a&gt; &lt;a id=&quot;4153&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4155&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4143&quot; class=&quot;Bound&quot;&gt;h&lt;/a&gt; &lt;a id=&quot;4157&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4159&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#407&quot; class=&quot;InductiveConstructor&quot;&gt;lift&lt;/a&gt;&lt;a id=&quot;4163&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4165&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#1881&quot; class=&quot;Function Operator&quot;&gt;$&lt;/a&gt;
+    &lt;a id=&quot;4171&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4123&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4175&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4176&quot; href=&quot;https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075&quot; class=&quot;Function&quot;&gt;cong&lt;/a&gt; &lt;a id=&quot;4181&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4182&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#407&quot; class=&quot;InductiveConstructor&quot;&gt;lift&lt;/a&gt; &lt;a id=&quot;4187&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4188&quot; class=&quot;Argument&quot;&gt;ℓ&lt;/a&gt; &lt;a id=&quot;4190&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4192&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4120&quot; class=&quot;Bound&quot;&gt;b₂&lt;/a&gt;&lt;a id=&quot;4194&quot; class=&quot;Symbol&quot;&gt;})&lt;/a&gt; &lt;a id=&quot;4197&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4199&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4127&quot; class=&quot;Bound&quot;&gt;f≡g&lt;/a&gt; &lt;a id=&quot;4203&quot; href=&quot;https://agda.github.io/agda-stdlib/Function.html#759&quot; class=&quot;Function Operator&quot;&gt;∘&lt;/a&gt; &lt;a id=&quot;4205&quot; href=&quot;https://agda.github.io/agda-stdlib/Level.html#420&quot; class=&quot;Field&quot;&gt;lower&lt;/a&gt; &lt;a id=&quot;4211&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4212&quot; class=&quot;Argument&quot;&gt;ℓ&lt;/a&gt; &lt;a id=&quot;4214&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4216&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4117&quot; class=&quot;Bound&quot;&gt;a₂&lt;/a&gt;&lt;a id=&quot;4218&quot; class=&quot;Symbol&quot;&gt;})&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;Functional extensionality implies a form of extensionality for
 Π-types.&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;∀-extensionality&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4320&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4320&quot; class=&quot;Function&quot;&gt;∀-extensionality&lt;/a&gt;
-  &lt;a id=&quot;4339&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4341&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4343&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4344&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4344&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4346&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4346&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;4347&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-  &lt;a id=&quot;4351&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4353&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#3714&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;4368&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4344&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4370&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4371&quot; href=&quot;Agda.Primitive.html#627&quot; class=&quot;Primitive&quot;&gt;Level.suc&lt;/a&gt; &lt;a id=&quot;4381&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4346&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;4382&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-  &lt;a id=&quot;4386&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4388&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4389&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4389&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4391&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4393&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;4397&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4344&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;4398&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4400&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4401&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4401&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4404&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4404&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4407&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4409&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4389&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4411&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4413&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;4417&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4346&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;4418&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-  &lt;a id=&quot;4422&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4424&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;4427&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4427&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4429&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4431&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4401&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4434&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4427&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4436&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;4438&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4404&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4441&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4427&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4442&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4444&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4446&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;4449&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4449&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4451&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4453&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4401&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4456&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4449&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4457&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4459&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;4461&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;4464&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4464&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4466&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4468&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4404&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4471&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4464&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4472&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;∀-extensionality&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4319&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4319&quot; class=&quot;Function&quot;&gt;∀-extensionality&lt;/a&gt;
+  &lt;a id=&quot;4338&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4340&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4342&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4343&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4343&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4345&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4345&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;4346&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+  &lt;a id=&quot;4350&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4352&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#3713&quot; class=&quot;Function&quot;&gt;Extensionality&lt;/a&gt; &lt;a id=&quot;4367&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4343&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4369&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4370&quot; href=&quot;Agda.Primitive.html#627&quot; class=&quot;Primitive&quot;&gt;Level.suc&lt;/a&gt; &lt;a id=&quot;4380&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4345&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;4381&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+  &lt;a id=&quot;4385&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4387&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4388&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4388&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4390&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4392&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;4396&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4343&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;&lt;a id=&quot;4397&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4399&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4400&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4400&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4403&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4403&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4406&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4408&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4388&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4410&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4412&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt; &lt;a id=&quot;4416&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4345&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;4417&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+  &lt;a id=&quot;4421&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4423&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;4426&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4426&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4428&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4430&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4400&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4433&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4426&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4435&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;4437&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4403&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4440&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4426&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4441&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4443&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4445&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;4448&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4448&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4450&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4452&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4400&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4455&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4448&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4456&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4458&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83&quot; class=&quot;Datatype Operator&quot;&gt;≡&lt;/a&gt; &lt;a id=&quot;4460&quot; class=&quot;Symbol&quot;&gt;(∀&lt;/a&gt; &lt;a id=&quot;4463&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4463&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4465&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4467&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4403&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4470&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4463&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4471&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-&lt;a id=&quot;4475&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4320&quot; class=&quot;Function&quot;&gt;∀-extensionality&lt;/a&gt; &lt;a id=&quot;4492&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4492&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4496&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4496&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4499&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4499&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4502&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4502&quot; class=&quot;Bound&quot;&gt;B₁≡B₂&lt;/a&gt; &lt;a id=&quot;4508&quot; class=&quot;Keyword&quot;&gt;with&lt;/a&gt; &lt;a id=&quot;4513&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4492&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4517&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4502&quot; class=&quot;Bound&quot;&gt;B₁≡B₂&lt;/a&gt;
-&lt;a id=&quot;4523&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4320&quot; class=&quot;Function&quot;&gt;∀-extensionality&lt;/a&gt; &lt;a id=&quot;4540&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4540&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4544&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4544&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;4546&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;4547&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4544&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;  &lt;a id=&quot;4550&quot; href=&quot;/type-theory/2018/02/10/functions-in-type-theory/#4550&quot; class=&quot;Bound&quot;&gt;B₁≡B₂&lt;/a&gt; &lt;a id=&quot;4556&quot; class=&quot;Symbol&quot;&gt;|&lt;/a&gt; &lt;a id=&quot;4558&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;4563&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4565&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;4474&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4319&quot; class=&quot;Function&quot;&gt;∀-extensionality&lt;/a&gt; &lt;a id=&quot;4491&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4491&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4495&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4495&quot; class=&quot;Bound&quot;&gt;B₁&lt;/a&gt; &lt;a id=&quot;4498&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4498&quot; class=&quot;Bound&quot;&gt;B₂&lt;/a&gt; &lt;a id=&quot;4501&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4501&quot; class=&quot;Bound&quot;&gt;B₁≡B₂&lt;/a&gt; &lt;a id=&quot;4507&quot; class=&quot;Keyword&quot;&gt;with&lt;/a&gt; &lt;a id=&quot;4512&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4491&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4516&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4501&quot; class=&quot;Bound&quot;&gt;B₁≡B₂&lt;/a&gt;
+&lt;a id=&quot;4522&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4319&quot; class=&quot;Function&quot;&gt;∀-extensionality&lt;/a&gt; &lt;a id=&quot;4539&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4539&quot; class=&quot;Bound&quot;&gt;ext&lt;/a&gt; &lt;a id=&quot;4543&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4543&quot; class=&quot;Bound&quot;&gt;B&lt;/a&gt; &lt;a id=&quot;4545&quot; class=&quot;DottedPattern Symbol&quot;&gt;.&lt;/a&gt;&lt;a id=&quot;4546&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4543&quot; class=&quot;DottedPattern Bound&quot;&gt;B&lt;/a&gt;  &lt;a id=&quot;4549&quot; href=&quot;/type-theor/2018/02/10/functions-in-type-theory/#4549&quot; class=&quot;Bound&quot;&gt;B₁≡B₂&lt;/a&gt; &lt;a id=&quot;4555&quot; class=&quot;Symbol&quot;&gt;|&lt;/a&gt; &lt;a id=&quot;4557&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt; &lt;a id=&quot;4562&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4564&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140&quot; class=&quot;InductiveConstructor&quot;&gt;refl&lt;/a&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
 

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* Agda. */
+@import "print" print;
 .Agda {
   background: #f0f8ff;
   border: 1px solid #f0f0f0;
