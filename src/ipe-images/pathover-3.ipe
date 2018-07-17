@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180323145431" modified="D:20180713155622"/>
+<info created="D:20180323145431" modified="D:20180717135932"/>
 <preamble>\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}</preamble>
@@ -360,6 +360,6 @@ h
 228.024 668.566 m
 325.88 661.976 l
 </path>
-<text matrix="1 0 0 1 -4 -4" transformations="translations" pos="336 684" stroke="black" type="label" width="64.46" height="7.473" depth="2.49" valign="baseline" style="math"> c_1  = c_2~[ C \downarrow \alpha ]</text>
+<text matrix="1 0 0 1 -4 -4" transformations="translations" pos="336 684" stroke="black" type="label" width="103.09" height="6.926" depth="1.93" valign="baseline" style="math">\gamma : \mathsf{PathOver}_{3}~C~\alpha~c_1~c_2</text>
 </page>
 </ipe>

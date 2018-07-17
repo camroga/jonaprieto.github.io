@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180323145431" modified="D:20180713155557"/>
+<info created="D:20180323145431" modified="D:20180717140649"/>
 <preamble>\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}</preamble>
@@ -350,7 +350,7 @@ h
 <text matrix="1 0 0 1 -6.19219 6.30482" transformations="translations" pos="224 696" stroke="black" type="label" width="20.889" height="6.812" depth="1.49" valign="baseline" style="math">C~a_1</text>
 <text matrix="1 0 0 1 -0.597933 -29.8709" transformations="translations" pos="320 724" stroke="black" type="label" width="20.889" height="6.812" depth="1.49" valign="baseline" style="math">C~a_2</text>
 <text matrix="1 0 0 1 111.768 -10.0835" transformations="translations" pos="220 668" stroke="black" type="label" width="8.781" height="4.294" depth="1.49" valign="baseline" style="math">c_2</text>
-<path stroke="black" pen="fat" rarrow="normal/tiny">
+<path stroke="black" pen="fat" arrow="normal/tiny">
 228.041 641.458 m
 227.94 681.42 l
 </path>
@@ -358,7 +358,7 @@ h
 230.654 682.304 m
 326.434 661.11 l
 </path>
-<text matrix="1 0 0 1 -175.483 -25.662" transformations="translations" pos="336 684" stroke="black" type="label" width="64.46" height="7.473" depth="2.49" valign="baseline" style="math"> c_1  = c_2~[ C \downarrow \alpha ]</text>
+<text matrix="1 0 0 1 -207.483 -25.662" transformations="translations" pos="336 684" stroke="black" type="label" width="93.359" height="6.926" depth="1.93" valign="baseline" style="math">\gamma : \mathsf{PathOver}_4 ~C~c_1~c_2</text>
 <use matrix="1 0 0 1 -0.0321861 6.48421" name="mark/disk(sx)" pos="227.937 676.267" size="normal" stroke="black"/>
 <text matrix="1 0 0 1 -208.038 -14.5321" transformations="translations" pos="354 694" stroke="black" type="label" width="79.529" height="7.895" depth="2.24" valign="baseline" size="small" style="math">\mathsf{transport}^{C} (\alpha^{-1},~c_2)</text>
 </page>
