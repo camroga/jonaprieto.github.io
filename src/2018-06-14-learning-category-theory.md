@@ -5,10 +5,7 @@ date: "2018-06-14"
 categories: learning
 ---
 
-The list of topics that I like and I should know so far is endless.
-This is my attempt to capture some resources to learn category theory,
-since I fell more comfortable learning by watching videos, I collected
-some. Maybe could be the starting point for someone else.
+This is my attempt to save some resources to learn category theory. Maybe could be the starting point for someone else.
 
 ### Video Lectures
 
@@ -43,8 +40,8 @@ some. Maybe could be the starting point for someone else.
 - [x] [4.1: Terminal and initial objects](https://www.youtube.com/watch?v=zer1aFgj4aU)
 - [x] [4.2: Products](https://www.youtube.com/watch?v=Bsdl_NKbNnU)
 - [x] [5.1: Coproducts, sum types](https://www.youtube.com/watch?v=LkIRsNj9T-8)
-- [ ] [5.2: Algebraic data types](https://www.youtube.com/watch?v=w1WMykh7AxA)
-- [ ] [6.1: Functors](https://www.youtube.com/watch?v=FyoQjkwsy7o)
+- [x] [5.2: Algebraic data types](https://www.youtube.com/watch?v=w1WMykh7AxA)
+- [x] [6.1: Functors](https://www.youtube.com/watch?v=FyoQjkwsy7o)
 - [ ] [6.2: Functors in programming](https://www.youtube.com/watch?v=EO86S2EZssc)
 - [ ] [7.1: Functoriality, bifunctors](https://www.youtube.com/watch?v=pUQ0mmbIdxs)
 - [ ] [7.2: Monoidal Categories, Functoriality of ADTs, Profunctors](https://www.youtube.com/watch?v=wtIKd8AhJOc)

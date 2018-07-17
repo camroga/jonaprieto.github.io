@@ -1391,12 +1391,13 @@ module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
           → (e : B ≃ A)
           → (pΣbP' : Σ B (λ b → P ((fst e) b)) )
           → l→ e (l← e pΣbP') == pΣbP'
-  l→∘l←-~-id (f , eqf) (b , p) =
+  l→∘l←-~-id (f , eqf) p =
     Σ-bycomponents
-      ((begin
+      ((begin {!   !}
+          ==⟨ {!   !} ⟩
             {!   !}
-        ==⟨ {!   !} ⟩
-          (b ∎)) , {!   !})
+          ==⟨ {!   !} ⟩
+            ({!   !} ∎)) , {!   !})
   --
   l←∘l→-~-id : {B : Type ℓᵢ}
           → (e : B ≃ A)
@@ -1454,7 +1455,7 @@ module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
       α = inv (ua e)
 
       f :  Σ A P → Σ B (λ b → P ((fst e) b))
-      f (a , p) = {!   !} , ?
+      f (a , p) = {!   !} , {!   !}
 
 \end{code}
 
