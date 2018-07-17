@@ -134,6 +134,8 @@ push-sources :
 	-	@echo "==================================================================="
 	- @git commit -am "$(MSG)"
 	- @git push origin sources
+	-	@echo "========================== END ==================================="
+
 
 .phony: init-master
  init-master :
@@ -150,17 +152,16 @@ commit :
 	-	@echo "======================= Preparing to Publish ======================"
 	-	@echo "==================================================================="
 	- @make
+	- @make _bibliography/reb.bib
 	- @git checkout sources
 	- @git add .
 	- $(eval MSG := $(shell bash -c 'read -p "Message: " pwd; echo $$pwd'))
+	- @git commit -am "$(MSG)"
+	- @git push origin sources
 	- @echo "==================================================================="
 	-	@echo "========================= Jekyll Building ========================="
 	-	@echo "==================================================================="
 	- @jekyll build
-	- @jekyll algolia
-	- @git add .
-	- @git commit -am "$(MSG)"
-	- @git push origin sources
 	- @if [[ -d "_site/.git" ]]; then \
 			echo "===================================================================" &&\
 	    echo "================ STATICS FILES: Pushing on MASTER =================" &&\
@@ -169,10 +170,12 @@ commit :
 			git add --all && \
 			git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
 			git push origin master;\
-			cd .. \
+			cd .. && jekyll algolia\
 		else \
 			echo "[!] run first:\n\t $$ make init-master"; \
 		fi
+	-	@echo "========================== END ==================================="
+
 
 .phony: watch-src
 watch-src:
