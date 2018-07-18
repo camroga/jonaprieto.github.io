@@ -1000,9 +1000,8 @@ HEq = HEq₁
 
 ## Path over a path
 
-Given a type family $$C: A → Type$$ and a path $$α : a₁ = a₂$$, a *pathover* is a
-path connecting $$c₁ : C a₁$$ with  $$c₂ : C a₂$$  lying over $$α$$.
-types.
+Given a type family $$C: A → Type$$ and a path $$α : a₁ = a₂$$, a *pathover* is
+a path connecting $$c₁ : C a₁$$ with $$c₂ : C a₂$$ lying over $$α$$. types.
 
 {% comment %}
 % -- TODO
@@ -1450,7 +1449,7 @@ open Lemma1 public
 - **Lemma 2.** If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 
 {: .equation}
-  $$\sum_{(w:\sum_{A} C)}  \(\mathsf{fst } w = a \simeq C~a.$$
+  $$\sum_{(w:\sum_{A} C)}  \(\mathsf{fst}~w = a\,\simeq\,C~a.$$
 
 \begin{code}
 module Lemma2 {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
@@ -1506,6 +1505,27 @@ module Lemma2 {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
 open Lemma2 public
 \end{code}
 
+{% comment %}
+In context  A: U, P: A->U, x,y:A, alpha: x=_A y, u: Px, v: Py, we have
+
+Sum_(beta: (x,u)=(y,v)) (ap proj1 beta = alpha)
+
+\simeq (by Lemma 1 and Theorem 2.7.2 from the HoTT-book)
+
+Sum_( gamma: Sum_(alpha':x=_A y)(tr alpha' u = v) )
+            ( ap proj1 (pair^= gamma) = alpha )
+
+\simeq (by calculating: ap proj1 (pair^= gamma) = proj1 gamma)
+
+Sum_( gamma: Sum_(alpha':x=_A y)(tr alpha' u = v) )
+            ( proj1 gamma = alpha )
+
+\simeq (by Lemma 2)
+
+tr alpha u = v
+
+{% endcomment %}
+
 Now, let us use Univalence Axiom to prove the main theorem:
 
 {: .foldable}
@@ -1547,10 +1567,11 @@ module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
   -- Working in progress
 \end{code}
 
-## References of Agda Libraries
+## Agda Libraries
+
+We took strong inspiration of the following Agda libraries.
 
 {: .links}
 
   - https://github.com/HoTT/HoTT-Agda/
-
   - https://mroman42.github.io/ctlc/agda-hott/Total.html
