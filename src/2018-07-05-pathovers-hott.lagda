@@ -1219,7 +1219,7 @@ PathOver defined by an inductive family. Nevertheless, in the following definiti
 the reader can change the subindex of the `PathOver` word to use any other definition.
 
 \begin{code}
-PathOver = PathOver₁
+PathOver = PathOver₃
 
 infix 30 PathOver
 syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
@@ -1367,7 +1367,7 @@ If `A : Type` and `C : A → Type`, we can show that:
 
 \begin{code}
 module _ {ℓᵢ}{ℓⱼ}
-  {A : Type ℓᵢ} {P : A → Type ℓⱼ} {B : Type ℓᵢ} (e : B ≃ A) where
+  {A : Type ℓᵢ} {C : A → Type ℓⱼ} {B : Type ℓᵢ} (e : B ≃ A) where
 
   f : B → A
   f = lemap e
@@ -1387,45 +1387,57 @@ module _ {ℓᵢ}{ℓⱼ}
   postulate
     τ : (b : B) → ap f (β b) == α (f b)
 
-  ΣAP-to-ΣBP' : Σ A P → Σ B (λ b → P (f b))
-  ΣAP-to-ΣBP' (a , p) = f⁻¹ a , p'
+  ΣAC-to-ΣBC' : Σ A C → Σ B (λ b → C (f b))
+  ΣAC-to-ΣBC' (a , c) = f⁻¹ a , c'
     where
-      p' : P (f (f⁻¹ a))
-      p' = transport P ((α a) ⁻¹) p
+      c' : C (f (f⁻¹ a))
+      c' = transport C ((α a) ⁻¹) c
 
-  ΣBP'-to-ΣAP : Σ B (λ b → P (f b)) → Σ A P
-  ΣBP'-to-ΣAP (b , p') = f b , p'
+  ΣBC'-to-ΣAC : Σ B (λ b → C (f b)) → Σ A C
+  ΣBC'-to-ΣAC (b , c') = f b , c'
 
-  H₁ : ΣAP-to-ΣBP' ∘ ΣBP'-to-ΣAP ∼ id
-  H₁ (b , p') = Σ-bycomponents (β b , cons)
+  H₁ : ΣAC-to-ΣBC' ∘ ΣBC'-to-ΣAC ∼ id
+  H₁ (b , c') = Σ-bycomponents (β b , patho)
     where
-      ps : P (f (f⁻¹ (f b)))
-      ps = snd (ΣAP-to-ΣBP' (ΣBP'-to-ΣAP (b , p')))
+      c'' : C (f (f⁻¹ (f b)))
+      c'' = transport C ((α (f b)) ⁻¹) c'
 
-      cons : transport (λ x → P (f x)) (β b) ps == p'
-      cons =
+    -- patho : c'' == c' [ (C ∘ f) ↓ (β b)]
+
+      patho : transport (λ x → C (f x)) (β b) c'' == c'
+      patho =
         begin
-          transport (λ x → P (f x)) (β b) ps
-            ==⟨ transport-family (β b) ps ⟩
-          transport P (ap f (β b)) ps
-            ==⟨ ap (λ p → transport P p ps) (τ b) ⟩
-          transport P (α (f b)) ps
-            ==⟨⟩ -- By def.
-          transport P (α (f b)) (transport P (inv (α (f b))) p')
-            ==⟨ transport-comp-h (inv (α (f b))) (α (f b)) p' ⟩
-          transport P (inv (α (f b)) · α (f b)) p'
-            ==⟨ ap (λ p → transport P p p') (·-linv (α (f b))) ⟩
-          transport P idp p'
-            ==⟨ idp ⟩
-          p'
+          transport (λ x → C (f x)) (β b) c''
+            ==⟨ transport-family (β b) c'' ⟩
+          transport C (ap f (β b)) c''
+            ==⟨ ap (λ γ → transport C γ c'') (τ b) ⟩
+          transport C (α (f b)) c''
+            ==⟨ transport-comp-h ((α (f b)) ⁻¹) (α (f b)) c' ⟩
+          transport C ( ((α (f b)) ⁻¹) · α (f b)) c'
+            ==⟨ ap (λ γ → transport C γ c') (·-linv (α (f b))) ⟩
+          transport C idp c'
+            ==⟨⟩
+          c'
         ∎
 
-  H₂ : ΣBP'-to-ΣAP ∘ ΣAP-to-ΣBP' ∼ id
-  H₂ (a , p) = ap {!   !} {!   !}
+  H₂ : ΣBC'-to-ΣAC ∘ ΣAC-to-ΣBC' ∼ id
+  H₂ (a , c) =
+    Σ-bycomponents (α a , patho)
+    where
+      patho : transport C (α a) (transport C ((α a) ⁻¹) c) == c
+      patho =
+        begin
+          transport C (α a) (transport C ((α a) ⁻¹) c)
+            ==⟨ transport-comp-h (inv (α a)) (α a) c ⟩
+          transport C ( ((α a) ⁻¹) · (α a) ) c
+            ==⟨ ap (λ γ → transport C γ c) (·-linv (α a)) ⟩
+          transport C idp c
+            ==⟨⟩
+          c
+        ∎
 
-  --
-  -- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
-  -- lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})
+  lemma-1 :  Σ A C ≃ Σ B (λ b → C (f b))
+  lemma-1 = qinv-≃ ΣAC-to-ΣBC' ( ΣBC'-to-ΣAC , H₁ , H₂)
 \end{code}
 
 
