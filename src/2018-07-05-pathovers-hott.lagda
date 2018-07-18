@@ -7,19 +7,25 @@ toc: true
 agda: true
 ---
 
-(Working in progress with Marc Bezem)
+**(Working in progress jointly with Marc Bezem)**
 
-We want to formalise in HoTT the intuition behind a correspondance between the
-concept of *path-over* and its respective *total space*.
+{% comment %}
+% -- TODO
+% We want to formalise in HoTT the intuition behind a correspondance between the
+% concept of *path-over* and its respective *total space*.
 
 % - That the pathover has its own (certain paths in the total space). --TODO
+{% endcomment %}
 
-The term *pathover* was briefly mentioned in {% cite hottbook %} and they were
-later defined in {% cite Licata2015%} as a dependent path.
-The concept is extensivily used in {%cite hott-in:agda %}.
+The term *pathover* is briefly mentioned in {% cite hottbook %} and also defined
+in {% cite Licata2015%}. The concept is also extensivily used
+in {%cite hott-in:agda %}.
 
-% (in words) about the transport and the notation in the book -- TODO
+{% comment %}
+% -- TODO
+% (in words) about the transport and the notation in the book
 % which is shorthand for ... using transport function for the definition.
+{% endcomment %}
 
 ![path](/assets/ipe-images/pathovers-total-space.png)
 
@@ -29,7 +35,7 @@ Let's review first an equality type that is closely related with these PathOvers
 {: .foldable}
 \begin{code}
 
---  Agda code type-checked with v2.5.4
+--  The following Agda code was type-checked with v2.5.4
 
 {-# OPTIONS --without-K #-}
 
@@ -41,10 +47,12 @@ Type ℓ = Set ℓ
 
 ## Homogeneous equality
 
-The *homogeneous equality* is a type `Path` that relates two elements `a₀` and
-`a₁` whose types are *definitionally/judgementally* equal. We denote this type as `Path
-{A} a₀ a₁`. The curly braces in Agda stand for *implicit arguments*.
-We also use the symbol (`_==_`) to denote this type.
+The *homogeneous equality* is a type $$\mathsf{Path}$$ that relates two elements
+$$a₀$$ and $$a₁$$ whose types are *definitionally/judgementally* equal. We
+denote this type as $$\mathsf{Path}~a₀~a₁$$. In the Agda code, we will find
+curly braces that they stand for *implicit arguments*. The type of $$a₀$$ and
+$$a₁$$, which is $$A$$ is implicit in the following definition of type
+$$\mathsf{Path}$$ also denoted by `_==_` for convenience.
 
 \begin{code}
 infix 30 _==_
@@ -103,7 +111,6 @@ coe : ∀ {ℓ}{A B : Type ℓ}
     → (A → B)
 coe A==B A = transport (λ X → X) A==B A
 \end{code}
-
 
 {: .foldable}
 \begin{code}
@@ -181,8 +188,15 @@ module hott where
   open EquationalReasoning public
 
   module ·-Properties {ℓ} {A : Type ℓ} where
+
+    involution : {a b : A} {p : a == b} → inv (inv p) == p
+    involution {p = idp} = idp
+
     ·-runit : {a b : A} (p : a == b) → p == p · idp
     ·-runit idp = idp
+
+    ·-runit-infer : {a b : A} {p : a == b} →  p · idp == p
+    ·-runit-infer {p = idp} = idp
 
     ·-lunit : {a b : A} (p : a == b) → p == idp · p
     ·-lunit idp = idp
@@ -472,6 +486,16 @@ module hott where
 
     Σ-bycomponents : {v w : Σ A P} → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w) → v == w
     Σ-bycomponents (idp , idp) = idp
+    pair= = Σ-bycomponents
+
+    uppt : (x : Σ A P) → (fst x , snd x) == x
+    uppt (a , b) = idp
+
+    Σ-ap-fst : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
+      → (α : a₁ == a₂ ) → (β : transport P α b₁ == b₂)
+      → ap fst (pair= (α , β)) == α
+    Σ-ap-fst idp idp = idp
+    ap-fst-pair= = Σ-ap-fst
 
   open Sigma public
 
@@ -822,6 +846,7 @@ module hott where
 open hott public
 \end{code}
 
+### Alternative Definitions
 
 Let be `α : A == B`, `a : A`, and `b : B` then the following types are equivalent
 to the previous type `HEq₁`.
@@ -839,16 +864,6 @@ HEq₃ A B α a b = Path a (coe (inv α) b)
 - \begin{code}
 HEq₄ : ∀ {ℓ} (A : Type ℓ)(B : Type ℓ) (α : A == B)(a : A)(b : B) → Type ℓ
 HEq₄ A .A idp a b = Path a b
-\end{code}
-
-\begin{code}
--- data Vec (X : Type) : Type₁ → Type where
-  -- something
-
-
--- _ : ?
--- _ = Heq (Vec Nat (n + m))
-
 \end{code}
 
 ### Equivalences
@@ -959,7 +974,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
   HEq₁-to-HEq₄ : {α : A == B}{a : A}{b : B}
                → HEq₁ A B α a b
                → HEq₄ A B α a b
-  HEq₁-to-HEq₄ {idp} {a} {.a} idp = idp
+  HEq₁-to-HEq₄ {idp} idp = idp
 
   HEq₄-≃-HEq₁ : {α : A == B}{a : A}{b : B}
              → HEq₄ A B α a b ≃ HEq₁ A B α a b
@@ -975,7 +990,8 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₁-~-HEq₄ idp = idp
 \end{code}
 
-For the follwing discussion, we may use heterogeneous using the first definition.
+For the follwing discussion, we use heterogeneous using the first definition.
+
 \begin{code}
 HEq = HEq₁
 \end{code}
@@ -987,27 +1003,27 @@ path connecting $$c₁ : C a₁$$ with  $$c₂ : C a₂$$  lying over $$α$$.
 types.
 
 % -- TODO
-The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
-them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
+% The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
+% them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
 
 % --TODO
-The geometry intuition has been formalised by {% cite Licata2015 %}
-in five different ways as follows.
+% The geometry intuition has been formalised by {% cite Licata2015 %}
+% in five different ways as follows.
 
-% The PathOver is the dependent version of a *path*, what it means that the path
+% --TODO The PathOver is the dependent version of a *path*, what it means that the path
 % is between two endpoints from maybe different types. This is of course what we
 % saw in the definition of the heterogeneous equality. The difference is that
 % we simplify `HEq`  definition with `PathOver` by factorizing the type family
 % that is involved in the paths.
 %
-% We define `PathOver₁` as the inductive family with only one constructor,
+% -- TODO We define `PathOver₁` as the inductive family with only one constructor,
 % the reflexivity over the reflexivity on the base space `A`. To eliminate this
 % type, we can use path-over induction. In Agda, we just do pattern matching along
 % the path on the base `A`. Additionaly, we can define this notion of PathOvers in at least
 % four different ways. Let us see these definitions, all equivalent. To refer to a pathover,
 % we adopt the notation `c₁ == c₂ [ C ↓ α ]` from the HoTT-Agda library.
 
-A more direct formalisation is the type
+### Definitions
 
 - \begin{code}
 data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
@@ -1043,8 +1059,9 @@ PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁
 PathOver₅ C idp c₁ c₂ = c₁ == c₂
 \end{code}
 
-Notice that above when we used `transport C α c₁`, we could also have used `coe (ap C α)`,
-we mention this because in HoTT-Agda library, it's defined `transport` using `coe`.
+Notice that above when we used `transport C α c₁`, we could also have used `coe
+(ap C α)`, we mention this because in HoTT-Agda library, `transport` is defined
+using `coe`.
 
 ### Equivalences
 
@@ -1057,24 +1074,24 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
   PathOver₁-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₁ C α c₁ c₂
          → PathOver₂ C α c₁ c₂
-  PathOver₁-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  PathOver₁-to-PathOver₂ {α = idp} idp = idp
 
   PathOver₂-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₂ C α c₁ c₂
          → PathOver₁ C α c₁ c₂
-  PathOver₂-to-PathOver₁ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  PathOver₂-to-PathOver₁ {α = idp} idp = idp
   --
   PathOver₁-≃-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₁ C α c₁ c₂ ≃ PathOver₂ C α c₁ c₂
-  PathOver₁-≃-PathOver₂ {a₁}{.a₁}{idp}{c₁}{c₂} =
+  PathOver₁-≃-PathOver₂ {α = idp}{c₁}{c₂} =
     qinv-≃
       PathOver₁-to-PathOver₂
       (PathOver₂-to-PathOver₁
-        , PathOver₁~PathOver₅ , PathOver₂~PathOver₁)
+        , PathOver₁~PathOver₂ , PathOver₂~PathOver₁)
     where
-      PathOver₁~PathOver₅ : (p : PathOver₂ C idp c₁ c₂)
+      PathOver₁~PathOver₂ : (p : PathOver₂ C idp c₁ c₂)
           → PathOver₁-to-PathOver₂ (PathOver₂-to-PathOver₁ p) == p
-      PathOver₁~PathOver₅ idp = idp
+      PathOver₁~PathOver₂ idp = idp
 
       PathOver₂~PathOver₁ : (p : PathOver₁ C idp c₁ c₂)
           → PathOver₂-to-PathOver₁ (PathOver₁-to-PathOver₂ p) == p
@@ -1090,24 +1107,24 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
   PathOver₂-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₂ C α c₁ c₂
          → PathOver₃ C α c₁ c₂
-  PathOver₂-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  PathOver₂-to-PathOver₃ {α = idp} idp = idp
 
   PathOver₃-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₃ C α c₁ c₂
          → PathOver₂ C α c₁ c₂
-  PathOver₃-to-PathOver₂ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  PathOver₃-to-PathOver₂ {α = idp} idp = idp
   --
   PathOver₂-≃-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₂ C α c₁ c₂ ≃ PathOver₃ C α c₁ c₂
-  PathOver₂-≃-PathOver₃ {a₁}{.a₁}{idp}{c₁}{c₂} =
+  PathOver₂-≃-PathOver₃ {α = idp}{c₁}{c₂} =
     qinv-≃
       PathOver₂-to-PathOver₃
       (PathOver₃-to-PathOver₂
-        , PathOver₂~PathOver₅ , PathOver₃~PathOver₂)
+        , PathOver₂~PathOver₃ , PathOver₃~PathOver₂)
     where
-      PathOver₂~PathOver₅ : (p : PathOver₃ C idp c₁ c₂)
+      PathOver₂~PathOver₃ : (p : PathOver₃ C idp c₁ c₂)
           → PathOver₂-to-PathOver₃ (PathOver₃-to-PathOver₂ p) == p
-      PathOver₂~PathOver₅ idp = idp
+      PathOver₂~PathOver₃ idp = idp
 
       PathOver₃~PathOver₂ : (p : PathOver₂ C idp c₁ c₂)
           → PathOver₃-to-PathOver₂ (PathOver₂-to-PathOver₃ p) == p
@@ -1124,24 +1141,24 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
   PathOver₃-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₃ C α c₁ c₂
          → PathOver₄ C α c₁ c₂
-  PathOver₃-to-PathOver₄ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  PathOver₃-to-PathOver₄ {α = idp} idp = idp
 
   PathOver₄-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
          → PathOver₄ C α c₁ c₂
          → PathOver₃ C α c₁ c₂
-  PathOver₄-to-PathOver₃ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
+  PathOver₄-to-PathOver₃ {α = idp} idp = idp
   --
   PathOver₃-≃-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₃ C α c₁ c₂ ≃ PathOver₄ C α c₁ c₂
-  PathOver₃-≃-PathOver₄ {a₁}{.a₁}{idp}{c₁}{c₂} =
+  PathOver₃-≃-PathOver₄ {α = idp}{c₁}{c₂} =
     qinv-≃
       PathOver₃-to-PathOver₄
       (PathOver₄-to-PathOver₃
-        , PathOver₃~PathOver₅ , PathOver₄~PathOver₃)
+        , PathOver₃~PathOver₃ , PathOver₄~PathOver₃)
     where
-      PathOver₃~PathOver₅ : (p : PathOver₄ C idp c₁ c₂)
+      PathOver₃~PathOver₃ : (p : PathOver₄ C idp c₁ c₂)
           → PathOver₃-to-PathOver₄ (PathOver₄-to-PathOver₃ p) == p
-      PathOver₃~PathOver₅ idp = idp
+      PathOver₃~PathOver₃ idp = idp
 
       PathOver₄~PathOver₃ : (p : PathOver₃ C idp c₁ c₂)
           → PathOver₄-to-PathOver₃ (PathOver₃-to-PathOver₄ p) == p
@@ -1150,81 +1167,82 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
 {: .foldable}
 \begin{code}
--- PathOver₄-≃-PathOver₅
---
--- module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
---
---   PathOver₄-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
---          → PathOver₄ C α c₁ c₂
---          → PathOver₅ C α c₁ c₂
---   PathOver₄-to-PathOver₅ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
---
---   PathOver₅-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
---          → PathOver₅ C α c₁ c₂
---          → PathOver₄ C α c₁ c₂
---   PathOver₅-to-PathOver₄ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
---   --
---   PathOver₄-≃-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
---         → PathOver₄ C α c₁ c₂ ≃ PathOver₅ C α c₁ c₂
---   PathOver₄-≃-PathOver₅ {a₁}{.a₁}{idp}{c₁}{c₂} =
---     qinv-≃
---       PathOver₄-to-PathOver₅
---       (PathOver₅-to-PathOver₄
---         , PathOver₄~PathOver₅ , PathOver₅~PathOver₄)
---     where
---       PathOver₄~PathOver₅ : (p : PathOver₅ C idp c₁ c₂)
---           → PathOver₄-to-PathOver₅ (PathOver₅-to-PathOver₄ p) == p
---       PathOver₄~PathOver₅ idp = idp
---
---       PathOver₅~PathOver₄ : (p : PathOver₄ C idp c₁ c₂)
---           → PathOver₅-to-PathOver₄ (PathOver₄-to-PathOver₅ p) == p
---       PathOver₅~PathOver₄ idp = idp
+module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
+
+  PathOver₄-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₄ C α c₁ c₂
+         → PathOver₅ C α c₁ c₂
+  PathOver₄-to-PathOver₅ {α = idp} idp = idp
+
+  PathOver₅-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₅ C α c₁ c₂
+         → PathOver₄ C α c₁ c₂
+  PathOver₅-to-PathOver₄ {α = idp} idp = idp
+  --
+  PathOver₄-≃-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+        → PathOver₄ C α c₁ c₂ ≃ PathOver₅ C α c₁ c₂
+  PathOver₄-≃-PathOver₅ {α = idp}{c₁}{c₂} =
+    qinv-≃
+      PathOver₄-to-PathOver₅
+      (PathOver₅-to-PathOver₄
+        , PathOver₄~PathOver₅ , PathOver₅~PathOver₄)
+    where
+      PathOver₄~PathOver₅ : (p : PathOver₅ C idp c₁ c₂)
+          → PathOver₄-to-PathOver₅ (PathOver₅-to-PathOver₄ p) == p
+      PathOver₄~PathOver₅ idp = idp
+
+      PathOver₅~PathOver₄ : (p : PathOver₄ C idp c₁ c₂)
+          → PathOver₅-to-PathOver₄ (PathOver₄-to-PathOver₅ p) == p
+      PathOver₅~PathOver₄ idp = idp
 \end{code}
 
 {: .foldable}
 \begin{code}
--- PathOver₅-≃-PathOver₁
---
--- module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
---
---   PathOver₅-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
---          → PathOver₅ C α c₁ c₂
---          → PathOver₁ C α c₁ c₂
---   PathOver₅-to-PathOver₁ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
---
---   PathOver₁-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
---          → PathOver₁ C α c₁ c₂
---          → PathOver₅ C α c₁ c₂
---   PathOver₁-to-PathOver₅ {a₁} {.a₁} {idp} {c₁} {.c₁} idp = idp
---   --
---   PathOver₅-≃-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
---         → PathOver₅ C α c₁ c₂ ≃ PathOver₁ C α c₁ c₂
---   PathOver₅-≃-PathOver₁ {a₁}{.a₁}{idp}{c₁}{c₂} =
---     qinv-≃
---       PathOver₅-to-PathOver₁
---       (PathOver₁-to-PathOver₅
---         , PathOver₅~PathOver₁ , PathOver₁~PathOver₅)
---     where
---       PathOver₅~PathOver₁ : (p : PathOver₁ C idp c₁ c₂)
---           → PathOver₅-to-PathOver₁ (PathOver₁-to-PathOver₅ p) == p
---       PathOver₅~PathOver₁ idp = idp
---
---       PathOver₁~PathOver₅ : (p : PathOver₅ C idp c₁ c₂)
---           → PathOver₁-to-PathOver₅ (PathOver₅-to-PathOver₁ p) == p
---       PathOver₁~PathOver₅ idp = idp
+module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
+
+  PathOver₅-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₅ C α c₁ c₂
+         → PathOver₁ C α c₁ c₂
+  PathOver₅-to-PathOver₁ {α = idp} idp = idp
+
+  PathOver₁-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+         → PathOver₁ C α c₁ c₂
+         → PathOver₅ C α c₁ c₂
+  PathOver₁-to-PathOver₅ {α = idp} idp = idp
+  --
+  PathOver₅-≃-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+        → PathOver₅ C α c₁ c₂ ≃ PathOver₁ C α c₁ c₂
+  PathOver₅-≃-PathOver₁ {α = idp}{c₁}{c₂} =
+    qinv-≃
+      PathOver₅-to-PathOver₁
+      (PathOver₁-to-PathOver₅
+        , PathOver₅~PathOver₁ , PathOver₁~PathOver₅)
+    where
+      PathOver₅~PathOver₁ : (p : PathOver₁ C idp c₁ c₂)
+          → PathOver₅-to-PathOver₁ (PathOver₁-to-PathOver₅ p) == p
+      PathOver₅~PathOver₁ idp = idp
+
+      PathOver₁~PathOver₅ : (p : PathOver₅ C idp c₁ c₂)
+          → PathOver₁-to-PathOver₅ (PathOver₅-to-PathOver₁ p) == p
+      PathOver₁~PathOver₅ idp = idp
 \end{code}
 
-We prefer the third definition for pathovers that comes from the HoTT book, that is,
-PathOver defined by an inductive family. Nevertheless, in the following definition,
-the reader can change the subindex of the `PathOver` word to use any other definition.
+We use the third definition of the inductive family also used in the HoTT book.
+Nevertheless, if the reader want to use another definition, they can change
+the subindex in the following definition for the variable `PathOver`.
 
 \begin{code}
 PathOver = PathOver₃
+\end{code}
 
+The following is sintax sugar for pathovers used in HoTT-Agda library.
+
+\begin{code}
 infix 30 PathOver
 syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 \end{code}
 
+{% comment %}
 > While we have motivated PathOver as a factored heterogeneous equality, there
 > is also a geometric intuition. **Dependent types correspond to fibrations**, so a
 > type `C : A → Type` can be pictured as its total space `∑ a:A . C` a projecting
@@ -1234,19 +1252,7 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 > a between `(a₁, c₁)` and `(a₂,c₂)`, such that ap fst σ is exactly `α`. That
 > is, it is a path in the total space that projects down to, or lies over, `α`
 > (path pairing `pair= α γ` will be made precise below).
-
-
-\begin{code}
--- An extra and useful function:
--- to make dependent pairs
-pair= : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : A → Type ℓⱼ}
-  {a₁ a₂ : A} {c₁ : C a₁} {c₂ : C a₂}
-  → (α : a₁ == a₂)
-  → (γ : c₁ == c₂ [ C ↓ α ])
-
-  → (a₁ , c₁) == (a₂ , c₂)
-pair= idp idp = ap (_ ,_) idp
-\end{code}
+{% endcomment %}
 
 ## Total spaces
 
@@ -1254,23 +1260,24 @@ We want to prove the following lemma:
 
 **Lemma.** Let be `A : Type` and `C : A → Type` with two terms `a₁ a₂ : A` and a
 path between them `α : a₁ == a₂`. If  `c₁ : C a₁`, `c₂ : C a₂` then there is an
-correspondence between a term in the total space and the pathover between c₁ and c₁
-along the path `α`.
+correspondence between a term in the total space and the pathover between c₁
+and c₁ along the path `α`.
 
-<p class="equation">
-$$
- \sum\limits_{(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
-  \simeq \mathsf{PathOver}~C~α~c₁~c₂.
-$$
-</p>
+{: .equation}
+  $$
+   \sum\limits_{(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
+    \simeq \mathsf{PathOver}~C~α~c₁~c₂.
+  $$
+
 
 To show such a equivalence, we proceed defining the functions back and forth,
 the two homotopies associated to these functions with the identity and finally,
-we prove the equivalence using the quasiinverse version for the equivalence type.
+we prove the equivalence using the quasiinverse version for the equivalence
+type.
 
 - Let us define the function `Σ-to-==[↓]` that maps a term of the sigma type to
-a pathover. This construction is using Σ-induction followed by two
-path-induction on the identity types from the components.
+  a pathover. This construction is using Σ-induction followed by two
+  path-induction on the identity types from the components.
 
 \begin{code}
 module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
@@ -1298,17 +1305,11 @@ module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} 
     → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
   ==[↓]-to-Σ {idp} idp = (idp , idp)
 
-  -- -- more explict:
+  -- -- The more explict version of the reflexivity paths:
   -- ==[↓]-to-Σ {idp}{c₁}{c₂} idp = (idp {a = (a₁ , c₁)}, idp {a = idp {a = a₁}})
 
-  -- -- Alternative way to construct this function is (also type-checked):
+  -- -- Alternative way to construct this function:
   -- ==[↓]-to-Σ {α = α} γ = (pair= α γ , ap-fst-pair= α γ)
-  --   where
-  --
-  --   ap-fst-pair= : (α : a₁ == a₂)
-  --       → {c₁ : C a₁}{c₂ : C a₂} (γ : c₁ == c₂ [ C ↓ α ] )
-  --       → ap fst (pair= α γ) == α
-  --   ap-fst-pair= idp idp = idp
 \end{code}
 
 The respective homotopies
@@ -1356,17 +1357,13 @@ apdo f idp = idp
 
 ## Extra
 
-- **Lemma 1**. If $$A: U$$ and $$P: A → U$$ and $$f: A' \simeq A$$, then
-$$\sum_A P \simeq \sum_{A'} (P ∘ f)$$.
+- **Lemma 1**. If $$A\,,~B : U$$ and $$C: A → U$$ and $$f: B \simeq A$$, then
 
-- **Lemma 2.** If $$A: U$$ and $$P: A → U$$ and $$a: A$$,
-then $$\sum_{(w:\sum_{A} P)}  \(\mathsf{fst } w = a) \simeq Pa$$
-
-The previous fact can also seen as a case of the following lemma.
-If `A : Type` and `C : A → Type`, we can show that:
+{: .equation}
+  $$\sum_A C \simeq \sum_{B} (C ∘ f).$$
 
 \begin{code}
-module _ {ℓᵢ}{ℓⱼ}
+module Lemma1 {ℓᵢ}{ℓⱼ}
   {A : Type ℓᵢ} {C : A → Type ℓⱼ} {B : Type ℓᵢ} (e : B ≃ A) where
 
   f : B → A
@@ -1397,13 +1394,12 @@ module _ {ℓᵢ}{ℓⱼ}
   ΣBC'-to-ΣAC (b , c') = f b , c'
 
   H₁ : ΣAC-to-ΣBC' ∘ ΣBC'-to-ΣAC ∼ id
-  H₁ (b , c') = Σ-bycomponents (β b , patho)
+  H₁ (b , c') = pair= (β b , patho)
     where
       c'' : C (f (f⁻¹ (f b)))
       c'' = transport C ((α (f b)) ⁻¹) c'
 
-    -- patho : c'' == c' [ (C ∘ f) ↓ (β b)]
-
+      -- patho : c'' == c' [ (C ∘ f) ↓ (β b)]
       patho : transport (λ x → C (f x)) (β b) c'' == c'
       patho =
         begin
@@ -1422,13 +1418,13 @@ module _ {ℓᵢ}{ℓⱼ}
 
   H₂ : ΣBC'-to-ΣAC ∘ ΣAC-to-ΣBC' ∼ id
   H₂ (a , c) =
-    Σ-bycomponents (α a , patho)
+   pair= (α a , patho)
     where
       patho : transport C (α a) (transport C ((α a) ⁻¹) c) == c
       patho =
         begin
           transport C (α a) (transport C ((α a) ⁻¹) c)
-            ==⟨ transport-comp-h (inv (α a)) (α a) c ⟩
+            ==⟨ transport-comp-h (((α a) ⁻¹)) (α a) c ⟩
           transport C ( ((α a) ⁻¹) · (α a) ) c
             ==⟨ ap (λ γ → transport C γ c) (·-linv (α a)) ⟩
           transport C idp c
@@ -1438,13 +1434,76 @@ module _ {ℓᵢ}{ℓⱼ}
 
   lemma-1 :  Σ A C ≃ Σ B (λ b → C (f b))
   lemma-1 = qinv-≃ ΣAC-to-ΣBC' ( ΣBC'-to-ΣAC , H₁ , H₂)
+
+open Lemma1 public
 \end{code}
 
+- **Lemma 2.** If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 
-Using Univalence axiom:
+{: .equation}
+  $$\sum_{(w:\sum_{A} C)}  \(\mathsf{fst } w = a \simeq C~a.$$
+
+\begin{code}
+module Lemma2 {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
+
+  ΣΣ-to-C : Σ (Σ A C) (λ w → fst w == a) → C a
+  ΣΣ-to-C ((a , c) , p) = transport C p c
+
+  C-to-ΣΣ : C a → Σ (Σ A C) (λ w → fst w == a)
+  C-to-ΣΣ c = (a , c) , idp
+
+  Ho₁ : ΣΣ-to-C ∘ C-to-ΣΣ ∼ id
+  Ho₁ c = idp
+
+  Ho₂ : C-to-ΣΣ ∘ ΣΣ-to-C ∼ id
+  Ho₂ ((a' , c) , p) = pair= (paireq , patho)
+    where
+
+    c' : transport C (inv p) (transport C p c) == c
+    c' = begin
+            transport C (inv p) (transport C p c)
+              ==⟨ transport-comp-h p ((inv p)) c ⟩
+            transport C (p ·  (inv p)) c
+              ==⟨ ap (λ γ → transport C γ c) (·-rinv p) ⟩
+            transport C idp c
+              ==⟨⟩
+            c
+          ∎
+
+    paireq : a , transport C p c ==  a' , c
+    paireq = pair= (inv p , c')
+
+    patho :  transport (λ w → fst w == a) paireq idp == p
+    patho
+      = begin
+        transport (λ w → fst w == ((λ _ → a) w)) paireq idp
+          ==⟨ transport-eq-fun fst (λ _ → a) paireq idp ⟩
+        inv (ap fst paireq) · idp · ap (λ _ → a) paireq
+          ==⟨ ap (λ γ → inv (ap fst paireq) · idp · γ) (ap-const paireq) ⟩
+        inv (ap fst paireq) · idp  · idp
+          ==⟨ ·-runit-infer ⟩
+        inv (ap fst paireq) · idp
+          ==⟨ ·-runit-infer ⟩
+        inv (ap fst paireq)
+          ==⟨ ap (λ p → inv  p) (ap-fst-pair= (inv p) c') ⟩
+        inv (inv p)
+          ==⟨ involution ⟩
+         p
+        ∎
+
+  lemma-2 : Σ (Σ A C) (λ w → fst w == a) ≃ C a
+  lemma-2 = qinv-≃ ΣΣ-to-C (C-to-ΣΣ , Ho₁ , Ho₂)
+
+open Lemma2 public
+\end{code}
+
+Now, let us use Univalence Axiom to prove the main theorem:
 
 {: .foldable}
 \begin{code}
+
+-- Univalence Axiom definition.
+
 module Univalence where
 
   -- Voevodsky's Univalence Axiom.
@@ -1476,19 +1535,12 @@ open Univalence public
 
 \begin{code}
 module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
-
-  -- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
-  -- lemma {B} e = qinv-≃ {! f  !} {!   !}
-  --   where
-  --     α : A == B
-  --     α = inv (ua e)
-  --
-  --     f :  Σ A P → Σ B (λ b → P ((fst e) b))
-  --     f (a , p) = {!   !} , {!   !}
-
+  -- Working in progress
 \end{code}
 
-{: .references}
+## References of Agda Libraries
+
+{: .links}
 
   - https://github.com/HoTT/HoTT-Agda/
 
