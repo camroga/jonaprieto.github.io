@@ -42,6 +42,20 @@ This is my attempt to save some resources to learn category theory. Maybe could 
 - [x] [5.1: Coproducts, sum types](https://www.youtube.com/watch?v=LkIRsNj9T-8)
 - [x] [5.2: Algebraic data types](https://www.youtube.com/watch?v=w1WMykh7AxA)
 - [x] [6.1: Functors](https://www.youtube.com/watch?v=FyoQjkwsy7o)
+
+  ![](/assets/png-images/2018-06-14-learning-category-theory-104f71d8.png)
+
+  Functors can be:
+    * **Faithful** - (injective on *hom-sets*)
+    * **Ful**     -  (surjective on *hom-sets*)
+    * **Faitful and Ful**  - the best functor xD
+
+  Important functos:
+
+    - constant functor $$\Delta_{c}$$
+
+      ![](/assets/png-images/2018-06-14-learning-category-theory-3ed5e2ea.png)
+
 - [ ] [6.2: Functors in programming](https://www.youtube.com/watch?v=EO86S2EZssc)
 - [ ] [7.1: Functoriality, bifunctors](https://www.youtube.com/watch?v=pUQ0mmbIdxs)
 - [ ] [7.2: Monoidal Categories, Functoriality of ADTs, Profunctors](https://www.youtube.com/watch?v=wtIKd8AhJOc)

@@ -75,7 +75,7 @@ them) is allowed to execute them
 
 ### [C++11 Concurrency by Bartosz Milewski](https://www.youtube.com/watch?v=80ifzK3b8QQ&list=PL1835A90FC78FF8BE)
 
-- [ ] [1. Preliminaries, "Hello Thread!," fork/join](https://www.youtube.com/watch?v=80ifzK3b8QQ)
+- [x] [1. Preliminaries, "Hello Thread!," fork/join](https://www.youtube.com/watch?v=80ifzK3b8QQ)
 
   ![](/assets/png-images/2018-06-27-concurrent-programming-82533b67.png)
 

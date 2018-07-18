@@ -37,8 +37,7 @@ module Universes where
   -- Agda universe hierarchy but it uses Type instead of Set, the
   -- usual name for the Universe in Agda.
   Type : (ℓ : Level) → Set (lsuc ℓ)
-  Type ℓ = Set ℓ
-
+  Type ℓ = Set
   -- First levels of the universe hierarchy
   Type0 : Type (lsuc lzero)
   Type0 = Type lzero
