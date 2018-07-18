@@ -153,6 +153,8 @@ module hott where
   inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
   inv idp = idp
 
+  _⁻¹ = inv
+
   ap : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f : A → B)
     →   a == b
     → f a == f b
@@ -204,7 +206,7 @@ module hott where
         inv p · p           ==⟨ ·-linv p ⟩
         idp
       ∎
-  open ·-Properties
+  open ·-Properties public
 
   module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
 
@@ -294,6 +296,11 @@ module hott where
                    → {f : A → B} → {x y : A} → (p : x == y) → (u : P (f x))
                    → transport (P ∘ f) p u == transport P (ap f p) u
   transport-family idp u = idp
+
+  transport-family-id : ∀{ℓᵢ ℓₖ} {A : Type ℓᵢ} {P : A → Type ℓₖ}
+                   → {x y : A} → (p : x == y) → (u : P x)
+                   → transport (λ a → P a) p u == transport P p u
+  transport-family-id idp u = idp
 
   transport-fun : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
                   → (p : x == y) → (f : A x → B x)
@@ -1359,52 +1366,63 @@ The previous fact can also seen as a case of the following lemma.
 If `A : Type` and `C : A → Type`, we can show that:
 
 \begin{code}
-module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
+module _ {ℓᵢ}{ℓⱼ}
+  {A : Type ℓᵢ} {P : A → Type ℓⱼ} {B : Type ℓᵢ} (e : B ≃ A) where
 
-  l→ : {B : Type ℓᵢ}
-      → (e : B ≃ A)
-      → Σ A P
-      -----
-      → Σ B (λ b → P ((lemap e) b))
-  l→ {B} e (a , pₐ) = f⁻¹ a , p'
+  f : B → A
+  f = lemap e
+
+  f⁻¹ : A → B
+  f⁻¹ = remap e
+
+  α : f ∘ f⁻¹ ∼ id
+  α = lrmap-inverse-h e
+
+  β : f⁻¹ ∘ f  ∼ id
+  β = rlmap-inverse-h e
+
+  -- x : ishae f
+  -- x = qinv-ishae (f⁻¹ , α , β)
+
+  postulate
+    τ : (b : B) → ap f (β b) == α (f b)
+
+  ΣAP-to-ΣBP' : Σ A P → Σ B (λ b → P (f b))
+  ΣAP-to-ΣBP' (a , p) = f⁻¹ a , p'
     where
-      f : B → A
-      f = lemap e
-
-      f⁻¹ : A → B
-      f⁻¹ = remap e
-
-      equalsPs : P a  == P (f (f⁻¹ a))
-      equalsPs = ap P (inv (lrmap-inverse e))
-
       p' : P (f (f⁻¹ a))
-      p' = coe equalsPs pₐ
+      p' = transport P ((α a) ⁻¹) p
 
-  l← : {B : Type ℓᵢ}
-      → (e : B ≃ A)
-      → Σ B (λ b → P ((lemap e) b))
-      -----
-      → Σ A P
-  l← {B} e (b , p) = (lemap e) b , p
+  ΣBP'-to-ΣAP : Σ B (λ b → P (f b)) → Σ A P
+  ΣBP'-to-ΣAP (b , p') = f b , p'
 
-  l→∘l←-~-id : {B : Type ℓᵢ}
-          → (e : B ≃ A)
-          → (pΣbP' : Σ B (λ b → P ((fst e) b)) )
-          → l→ e (l← e pΣbP') == pΣbP'
-  l→∘l←-~-id (f , eqf) p =
-    Σ-bycomponents
-      ((begin {!   !}
-          ==⟨ {!   !} ⟩
-            {!   !}
-          ==⟨ {!   !} ⟩
-            ({!   !} ∎)) , {!   !})
-  --
-  l←∘l→-~-id : {B : Type ℓᵢ}
-          → (e : B ≃ A)
-          → (pΣaP : Σ A P)
-          → l← e (l→ e pΣaP) == pΣaP
-  l←∘l→-~-id e (b , p) = Σ-bycomponents ({!   !} , {!   !})
-  --
+  H₁ : ΣAP-to-ΣBP' ∘ ΣBP'-to-ΣAP ∼ id
+  H₁ (b , p') = Σ-bycomponents (β b , cons)
+    where
+      ps : P (f (f⁻¹ (f b)))
+      ps = snd (ΣAP-to-ΣBP' (ΣBP'-to-ΣAP (b , p')))
+
+      cons : transport (λ x → P (f x)) (β b) ps == p'
+      cons =
+        begin
+          transport (λ x → P (f x)) (β b) ps
+            ==⟨ transport-family (β b) ps ⟩
+          transport P (ap f (β b)) ps
+            ==⟨ ap (λ p → transport P p ps) (τ b) ⟩
+          transport P (α (f b)) ps
+            ==⟨⟩ -- By def.
+          transport P (α (f b)) (transport P (inv (α (f b))) p')
+            ==⟨ transport-comp-h (inv (α (f b))) (α (f b)) p' ⟩
+          transport P (inv (α (f b)) · α (f b)) p'
+            ==⟨ ap (λ p → transport P p p') (·-linv (α (f b))) ⟩
+          transport P idp p'
+            ==⟨ idp ⟩
+          p'
+        ∎
+
+  H₂ : ΣBP'-to-ΣAP ∘ ΣAP-to-ΣBP' ∼ id
+  H₂ (a , p) = ap {!   !} {!   !}
+
   --
   -- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
   -- lemma {B} e = qinv-≃ (l→ e) (l← e , l→∘l←-~-id e , {!   !})
@@ -1447,15 +1465,14 @@ open Univalence public
 \begin{code}
 module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
 
-
-  lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
-  lemma {B} e = qinv-≃ {! f  !} {!   !}
-    where
-      α : A == B
-      α = inv (ua e)
-
-      f :  Σ A P → Σ B (λ b → P ((fst e) b))
-      f (a , p) = {!   !} , {!   !}
+  -- lemma : {B : Type ℓᵢ} → (e : B ≃ A) → Σ A P ≃ Σ B (λ b → P ((fst e) b))
+  -- lemma {B} e = qinv-≃ {! f  !} {!   !}
+  --   where
+  --     α : A == B
+  --     α = inv (ua e)
+  --
+  --     f :  Σ A P → Σ B (λ b → P ((fst e) b))
+  --     f (a , p) = {!   !} , {!   !}
 
 \end{code}
 
