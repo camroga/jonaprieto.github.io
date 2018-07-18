@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-19T01:22:52+02:00</updated>
+ <updated>2018-07-19T01:50:14+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -4631,7 +4631,28 @@ side the frame with all the commands (add this
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=Bsdl_NKbNnU&quot;&gt;4.2: Products&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=LkIRsNj9T-8&quot;&gt;5.1: Coproducts, sum types&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=w1WMykh7AxA&quot;&gt;5.2: Algebraic data types&lt;/a&gt;&lt;/li&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=FyoQjkwsy7o&quot;&gt;6.1: Functors&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=FyoQjkwsy7o&quot;&gt;6.1: Functors&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-14-learning-category-theory-104f71d8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;Functors can be:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Faithful&lt;/strong&gt; - (injective on &lt;em&gt;hom-sets&lt;/em&gt;)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Ful&lt;/strong&gt;     -  (surjective on &lt;em&gt;hom-sets&lt;/em&gt;)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Faitful and Ful&lt;/strong&gt;  - the best functor xD&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;Important functos:&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;constant functor &lt;script type=&quot;math/tex&quot;&gt;\Delta_{c}&lt;/script&gt;&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-14-learning-category-theory-3ed5e2ea.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=EO86S2EZssc&quot;&gt;6.2: Functors in programming&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=pUQ0mmbIdxs&quot;&gt;7.1: Functoriality, bifunctors&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=wtIKd8AhJOc&quot;&gt;7.2: Monoidal Categories, Functoriality of ADTs, Profunctors&lt;/a&gt;&lt;/li&gt;
