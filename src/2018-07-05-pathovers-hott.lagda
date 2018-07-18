@@ -118,6 +118,8 @@ coe A==B A = transport (λ X → X) A==B A
 --- This includes homotopies, equivalences, among other concepts.
 module hott where
 
+  -- Modified version of https://mroman42.github.io/ctlc/agda-hott/Total.html
+
   infixr 60 _,_
   record Σ {ℓᵢ ℓⱼ} (S : Type ℓᵢ)(T : S → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
     constructor _,_
@@ -870,7 +872,7 @@ HEq₄ A .A idp a b = Path a b
 
 {: .foldable}
 \begin{code}
--- A proof that HEq₁-≃-HEq₂
+-- HEq₁-≃-HEq₂
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
@@ -900,7 +902,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
 {: .foldable}
 \begin{code}
--- A proof that HEq₂-≃-HEq₃
+-- HEq₂-≃-HEq₃
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
@@ -930,7 +932,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
 {: .foldable}
 \begin{code}
--- A proof that HEq₃-≃-HEq₄
+-- HEq₃-≃-HEq₄
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
@@ -962,7 +964,7 @@ Finally, we complete the chain of equivalence with `HEq₄-≃-HEq₁`.
 
 {: .foldable}
 \begin{code}
--- A proof that HEq₄-to-HEq₁
+-- HEq₄-≃-HEq₁
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
@@ -1002,6 +1004,7 @@ Given a type family $$C: A → Type$$ and a path $$α : a₁ = a₂$$, a *pathov
 path connecting $$c₁ : C a₁$$ with  $$c₂ : C a₂$$  lying over $$α$$.
 types.
 
+{% comment %}
 % -- TODO
 % The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
 % them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
@@ -1022,6 +1025,8 @@ types.
 % the path on the base `A`. Additionaly, we can define this notion of PathOvers in at least
 % four different ways. Let us see these definitions, all equivalent. To refer to a pathover,
 % we adopt the notation `c₁ == c₂ [ C ↓ α ]` from the HoTT-Agda library.
+
+{% endcomment %}
 
 ### Definitions
 
@@ -1080,7 +1085,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
          → PathOver₂ C α c₁ c₂
          → PathOver₁ C α c₁ c₂
   PathOver₂-to-PathOver₁ {α = idp} idp = idp
-  --
+
   PathOver₁-≃-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₁ C α c₁ c₂ ≃ PathOver₂ C α c₁ c₂
   PathOver₁-≃-PathOver₂ {α = idp}{c₁}{c₂} =
@@ -1113,7 +1118,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
          → PathOver₃ C α c₁ c₂
          → PathOver₂ C α c₁ c₂
   PathOver₃-to-PathOver₂ {α = idp} idp = idp
-  --
+
   PathOver₂-≃-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₂ C α c₁ c₂ ≃ PathOver₃ C α c₁ c₂
   PathOver₂-≃-PathOver₃ {α = idp}{c₁}{c₂} =
@@ -1147,18 +1152,18 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
          → PathOver₄ C α c₁ c₂
          → PathOver₃ C α c₁ c₂
   PathOver₄-to-PathOver₃ {α = idp} idp = idp
-  --
+
   PathOver₃-≃-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₃ C α c₁ c₂ ≃ PathOver₄ C α c₁ c₂
   PathOver₃-≃-PathOver₄ {α = idp}{c₁}{c₂} =
     qinv-≃
       PathOver₃-to-PathOver₄
       (PathOver₄-to-PathOver₃
-        , PathOver₃~PathOver₃ , PathOver₄~PathOver₃)
+        , PathOver₃~PathOver₄ , PathOver₄~PathOver₃)
     where
-      PathOver₃~PathOver₃ : (p : PathOver₄ C idp c₁ c₂)
+      PathOver₃~PathOver₄ : (p : PathOver₄ C idp c₁ c₂)
           → PathOver₃-to-PathOver₄ (PathOver₄-to-PathOver₃ p) == p
-      PathOver₃~PathOver₃ idp = idp
+      PathOver₃~PathOver₄ idp = idp
 
       PathOver₄~PathOver₃ : (p : PathOver₃ C idp c₁ c₂)
           → PathOver₄-to-PathOver₃ (PathOver₃-to-PathOver₄ p) == p
@@ -1167,6 +1172,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
 {: .foldable}
 \begin{code}
+-- PathOver₄-≃-PathOver₅
+
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₄-to-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
@@ -1178,7 +1185,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
          → PathOver₅ C α c₁ c₂
          → PathOver₄ C α c₁ c₂
   PathOver₅-to-PathOver₄ {α = idp} idp = idp
-  --
+
   PathOver₄-≃-PathOver₅ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₄ C α c₁ c₂ ≃ PathOver₅ C α c₁ c₂
   PathOver₄-≃-PathOver₅ {α = idp}{c₁}{c₂} =
@@ -1198,6 +1205,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
 {: .foldable}
 \begin{code}
+-- PathOver₅-≃-PathOver₁
+
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₅-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
@@ -1209,7 +1218,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
          → PathOver₁ C α c₁ c₂
          → PathOver₅ C α c₁ c₂
   PathOver₁-to-PathOver₅ {α = idp} idp = idp
-  --
+
   PathOver₅-≃-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₅ C α c₁ c₂ ≃ PathOver₁ C α c₁ c₂
   PathOver₅-≃-PathOver₁ {α = idp}{c₁}{c₂} =
