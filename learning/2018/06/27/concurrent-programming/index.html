@@ -133,17 +133,17 @@
   
   <div class="post-changes">
     <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+128</span>/<span class="substractions">-14</span>)</span>:
-          <span class="commit-message"> <a href=""> minor changes</a></span>
+      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+141</span>/<span class="substractions">-14</span>)</span>:
+          <span class="commit-message"> <a href=""> concurrency in c++, first lesson</a></span>
       </div>
     <div class="main-last-date">
         Latest commit
-        <a href=>cb7093a </a> on  16 Jul 2018
+        <a href=>eaac117 </a> on  19 Jul 2018
     </div>
     </div>
   </div>
   
-  <h1 class="post-title">Concurrency <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/cb7093a25883ef1a550c4f35f314366085124875/src/2018-06-27-concurrent-programming.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/cb7093a25883ef1a550c4f35f314366085124875/src/2018-06-27-concurrent-programming.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-27-concurrent-programming.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/cb7093a25883ef1a550c4f35f314366085124875/src/2018-06-27-concurrent-programming.md" target="_blank"> History</a></small></h1>
+  <h1 class="post-title">Concurrency <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/eaac117135a8696dcf89757b8750e76c65e0f9a5/src/2018-06-27-concurrent-programming.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/eaac117135a8696dcf89757b8750e76c65e0f9a5/src/2018-06-27-concurrent-programming.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-27-concurrent-programming.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/eaac117135a8696dcf89757b8750e76c65e0f9a5/src/2018-06-27-concurrent-programming.md" target="_blank"> History</a></small></h1>
 
   
   <div class="toc">
@@ -251,7 +251,23 @@ them) is allowed to execute them</p>
 <h3 id="c11-concurrency-by-bartosz-milewski"><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ&amp;list=PL1835A90FC78FF8BE">C++11 Concurrency by Bartosz Milewski</a></h3>
 
 <ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ">1. Preliminaries, “Hello Thread!,” fork/join</a></li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://www.youtube.com/watch?v=80ifzK3b8QQ">1. Preliminaries, “Hello Thread!,” fork/join</a></p>
+
+    <p><img src="/assets/png-images/2018-06-27-concurrent-programming-82533b67.png" alt="" /></p>
+
+    <p><img src="/assets/png-images/2018-06-27-concurrent-programming-ba21a676.png" alt="" /></p>
+
+    <p><code>g++ thread.cpp  -std=c++0x</code></p>
+
+    <p><img src="/assets/png-images/2018-06-27-concurrent-programming-8e5b4ee2.png" alt="" /></p>
+
+    <p><img src="/assets/png-images/2018-06-27-concurrent-programming-67393951.png" alt="" /></p>
+
+    <ul>
+      <li><strong>interleaving</strong>: concurrent programs tend to be not deterministic</li>
+    </ul>
+  </li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=qtRUG5ztMoA">2. Move semantics, passing arguments to threads</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=TZ9BgdgpYm8">3. Sharing data between threads</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://www.youtube.com/watch?v=o0pCft99K74">4. Promises, futures, and async</a></li>

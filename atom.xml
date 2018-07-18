@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-18T23:08:55+02:00</updated>
+ <updated>2018-07-19T01:22:52+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -3784,16 +3784,20 @@ those nodes as endpoints.&lt;/p&gt;
    <content type="html">&lt;p&gt;Just for fun, let’s to follow the &lt;a href=&quot;https://brilliant.org&quot;&gt;Brilliant&lt;/a&gt; chapters
 about computer science.&lt;/p&gt;
 
-&lt;h2 id=&quot;cs-fundamentals&quot;&gt;CS Fundamentals&lt;/h2&gt;
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
-&lt;h3 id=&quot;x-arrays&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/arrays/?chapter=intro-to-algorithms&amp;amp;p=2&quot;&gt;arrays&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;x-searching&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/searching/?chapter=intro-to-algorithms&quot;&gt;searching&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;x-insertion-sort&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/insertion-sort/?chapter=intro-to-algorithms&quot;&gt;insertion-sort&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;--insertion-sort-verified&quot;&gt;[ ] &lt;a href=&quot;https://wenkokke.github.io/2016/insertion-sort-in-agda/&quot;&gt;insertion-sort verified&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;x-big-o-notation&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms&quot;&gt;big-o-notation&lt;/a&gt;&lt;/h3&gt;
-&lt;h3 id=&quot;x-recursion&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/recursion/?chapter=recursion&quot;&gt;recursion&lt;/a&gt;&lt;/h3&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/arrays/?chapter=intro-to-algorithms&amp;amp;p=2&quot;&gt;arrays&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/searching/?chapter=intro-to-algorithms&quot;&gt;searching&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/insertion-sort/?chapter=intro-to-algorithms&quot;&gt;insertion-sort&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://wenkokke.github.io/2016/insertion-sort-in-agda/&quot;&gt;insertion-sort verified&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms&quot;&gt;big-o-notation&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://brilliant.org/practice/recursion/?chapter=recursion&quot;&gt;recursion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h3 id=&quot;x-cs-recursion&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/cs-recursion/?chapter=recursion&quot;&gt;cs-recursion&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-recursion&quot;&gt;[x] Recursion&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/cs-recursion/?chapter=recursion&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Binary Search:&lt;/p&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;binary_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -3810,9 +3814,9 @@ about computer science.&lt;/p&gt;
 &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;34&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;87&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;103&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;binary_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;binary_search&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;hr /&gt;
+&lt;h3 id=&quot;x-divide-and-conquer&quot;&gt;[x] Divide-and-conquer&lt;/h3&gt;
 
-&lt;h3 id=&quot;x-divide-and-conquer&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/divide-and-conquer/?chapter=recursion&quot;&gt;divide-and-conquer&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/divide-and-conquer/?chapter=recursion&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Problem:&lt;/p&gt;
 
@@ -3838,7 +3842,9 @@ will be to solve the same problem with the half size of the original in case the
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;x-mergesort&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/mergesort/?chapter=recursion&quot;&gt;mergesort&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-mergesort&quot;&gt;[x] Mergesort&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/mergesort/?chapter=recursion&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-cs-fundamentals-299c445c.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
@@ -3871,7 +3877,10 @@ will be to solve the same problem with the half size of the original in case the
     &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;merge_sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;hr /&gt;
-&lt;h3 id=&quot;x-quicksort&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/quicksort/?chapter=recursion&quot;&gt;quicksort&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-quicksort&quot;&gt;[x] Quicksort&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/quicksort/?chapter=recursion&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;Does the pivot always be in the correct position (sorted) after the first partitioning? Yes, it does.&lt;/p&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;quickSort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;less&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
@@ -3892,14 +3901,20 @@ will be to solve the same problem with the half size of the original in case the
         &lt;span class=&quot;n&quot;&gt;less&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quickSort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;less&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;more&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;quickSort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;more&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;less&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pivotList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;more&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;x-linked-list&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/linked-list/?chapter=recursion&quot;&gt;linked-list&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-linked-list&quot;&gt;[x] Linked-list&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/linked-list/?chapter=recursion&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;traverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;traverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;h3 id=&quot;x-stacks-and-queues&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues&quot;&gt;stacks-and-queues&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-stacks-and-queues&quot;&gt;[x] stacks-and-queues&lt;/h3&gt;
 
-&lt;h3 id=&quot;x-stacks-2---lifo-last-in-first-out&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/stacks-2/?chapter=stacks-and-queues&quot;&gt;stacks-2&lt;/a&gt; - &lt;strong&gt;LIFO&lt;/strong&gt; (Last-in First-out)&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;x-stacks-2&quot;&gt;[x] stacks-2&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/stacks-2/?chapter=stacks-and-queues&quot;&gt;Link&lt;/a&gt; - &lt;strong&gt;LIFO&lt;/strong&gt; (Last-in First-out)&lt;/p&gt;
 
 &lt;p&gt;A &lt;strong&gt;stack&lt;/strong&gt; is an &lt;em&gt;abstract data type&lt;/em&gt; that places restrictions on where you can add and remove elements. As with any abstract data type, a stack can be implemented with a variety of data structures, such as a linked list or an array.&lt;/p&gt;
 
@@ -3909,7 +3924,9 @@ will be to solve the same problem with the half size of the original in case the
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;x-queues---fifo-first-in-first-out&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/queues/?chapter=stacks-and-queues&quot;&gt;queues&lt;/a&gt; - &lt;strong&gt;FIFO&lt;/strong&gt; (First-in first-out)&lt;/h3&gt;
+&lt;h3 id=&quot;x-queues&quot;&gt;[x] queues&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/queues/?chapter=stacks-and-queues&quot;&gt;Link&lt;/a&gt; - &lt;strong&gt;FIFO&lt;/strong&gt; (First-in first-out)&lt;/p&gt;
 
 &lt;p&gt;Circular queues&lt;/p&gt;
 
@@ -3930,7 +3947,9 @@ will be to solve the same problem with the half size of the original in case the
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;--binary-trees-2&quot;&gt;[ ] &lt;a href=&quot;https://brilliant.org/practice/binary-trees-2/?chapter=binary-trees&quot;&gt;binary-trees-2&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;--binary-trees-2&quot;&gt;[ ] Binary-trees-2&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/binary-trees-2/?chapter=binary-trees&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;The number of children each node has in a tree is called the branching factor&lt;/li&gt;
@@ -3952,7 +3971,9 @@ will be to solve the same problem with the half size of the original in case the
   &lt;li&gt;The &lt;strong&gt;tree height&lt;/strong&gt; is the node height of the root, i.e. the number of branches along the longest path in the tree.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;x-binary-trees&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/binary-trees/?chapter=binary-trees&quot;&gt;binary-trees&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-binary-trees&quot;&gt;[x] Binary trees&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/binary-trees/?chapter=binary-trees&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-cs-fundamentals-3e73c2fd.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
@@ -3962,9 +3983,9 @@ will be to solve the same problem with the half size of the original in case the
 
 &lt;p&gt;Note: A tree can be a full tree without being a complete tree, and a tree can be a complete tree without being a full tree.&lt;/p&gt;
 
-&lt;h3 id=&quot;x-traversals&quot;&gt;[x] &lt;a href=&quot;https://brilliant.org/practice/traversals-2/?chapter=binary-trees&quot;&gt;Traversals&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-traversals&quot;&gt;[x] Traversals&lt;/h3&gt;
 
-&lt;p&gt;TRAVERSALS&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/traversals-2/?chapter=binary-trees&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Pre-order traversal (Root-Left-Right)&lt;/li&gt;
@@ -3994,7 +4015,60 @@ will be to solve the same problem with the half size of the original in case the
 
 &lt;p&gt;The &lt;strong&gt;breadth-first search&lt;/strong&gt;, or &lt;strong&gt;BFS&lt;/strong&gt;, is the counterpart to DFS in tree traversing techniques. It is a search algorithm that traverses down a tree using a queue as its data array, where elements are visited in a FIFO, first-in first-out, mechanism. This strategy is also called level-order traversal, as all nodes on a level are visited before proceeding to the next level.&lt;/p&gt;
 
-&lt;h3 id=&quot;--binary-search-trees-2&quot;&gt;[ ] &lt;a href=&quot;https://brilliant.org/practice/binary-search-trees-2/?chapter=binary-trees&quot;&gt;binary-search-trees-2&lt;/a&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;x-binary-search-trees-2&quot;&gt;[x] binary-search-trees-2&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://brilliant.org/practice/binary-search-trees-2/?chapter=binary-trees&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In a binary search trees (&lt;strong&gt;BST&lt;/strong&gt;’s):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;for any parent (including the root) all elements in any left sub-tree must be smaller than the parent&lt;/li&gt;
+  &lt;li&gt;and all elements in any right sub-tree must be larger than any element in the left sub-tree.&lt;/li&gt;
+  &lt;li&gt;This also means that BSTs do not have duplicate elements.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-cs-fundamentals-826970b6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In a pre-sorted BST, the &lt;strong&gt;in-order&lt;/strong&gt; algorithm will return the data in a correctly sorted order.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For any BST, the time taken to find a node is proportional to the node’s depth.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;The number of comparison of a searching is strongly depended by the depth of the tree.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;If the tree is complete (or at least balanced), then the depth of tree
+will be approximately equal to &lt;script type=&quot;math/tex&quot;&gt;\log_{2}(n)&lt;/script&gt;.&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;A &lt;strong&gt;BST is balanced&lt;/strong&gt; if the left and right branches at a particular
+position are “filled up” at each level without gaps.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Depending on how well balanced a tree is, the runtime of the searching can vary from
+&lt;script type=&quot;math/tex&quot;&gt;O(\log_2 ~n)&lt;/script&gt; to the worst case of &lt;script type=&quot;math/tex&quot;&gt;O(n)&lt;/script&gt;.&lt;/p&gt;
+
+    &lt;p&gt;Sub-optimal performance for a unbalanced tree like:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-learning-cs-fundamentals-8c2f4176.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;&lt;strong&gt;The order with which you add numbers&lt;/strong&gt; into a BST affects the performance of the BST&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;(TODO: why?) if you add pre-sorted data into a BST, it will have maximal inefficiency, &lt;script type=&quot;math/tex&quot;&gt;O(n)&lt;/script&gt;.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&quot;--tree-rotations&quot;&gt;[ ] &lt;a href=&quot;https://brilliant.org/practice/tree-rotations/?chapter=binary-trees&quot;&gt;tree-rotations&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&quot;--red-black-trees&quot;&gt;[ ] &lt;a href=&quot;https://brilliant.org/practice/red-black-trees/?chapter=binary-trees&quot;&gt;red-black-trees&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&quot;--heaps&quot;&gt;[ ] &lt;a href=&quot;https://brilliant.org/practice/heaps/?chapter=heaps-2&quot;&gt;heaps&lt;/a&gt;&lt;/h3&gt;
@@ -4215,7 +4289,23 @@ them) is allowed to execute them&lt;/p&gt;
 &lt;h3 id=&quot;c11-concurrency-by-bartosz-milewski&quot;&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=80ifzK3b8QQ&amp;amp;list=PL1835A90FC78FF8BE&quot;&gt;C++11 Concurrency by Bartosz Milewski&lt;/a&gt;&lt;/h3&gt;
 
 &lt;ul class=&quot;task-list&quot;&gt;
-  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=80ifzK3b8QQ&quot;&gt;1. Preliminaries, “Hello Thread!,” fork/join&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=80ifzK3b8QQ&quot;&gt;1. Preliminaries, “Hello Thread!,” fork/join&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-concurrent-programming-82533b67.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-concurrent-programming-ba21a676.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code&gt;g++ thread.cpp  -std=c++0x&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-concurrent-programming-8e5b4ee2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-06-27-concurrent-programming-67393951.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;interleaving&lt;/strong&gt;: concurrent programs tend to be not deterministic&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=qtRUG5ztMoA&quot;&gt;2. Move semantics, passing arguments to threads&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=TZ9BgdgpYm8&quot;&gt;3. Sharing data between threads&lt;/a&gt;&lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=o0pCft99K74&quot;&gt;4. Promises, futures, and async&lt;/a&gt;&lt;/li&gt;
