@@ -76,6 +76,19 @@ them) is allowed to execute them
 ### [C++11 Concurrency by Bartosz Milewski](https://www.youtube.com/watch?v=80ifzK3b8QQ&list=PL1835A90FC78FF8BE)
 
 - [ ] [1. Preliminaries, "Hello Thread!," fork/join](https://www.youtube.com/watch?v=80ifzK3b8QQ)
+
+  ![](/assets/png-images/2018-06-27-concurrent-programming-82533b67.png)
+
+  ![](/assets/png-images/2018-06-27-concurrent-programming-ba21a676.png)
+
+  `g++ thread.cpp  -std=c++0x`
+
+  ![](/assets/png-images/2018-06-27-concurrent-programming-8e5b4ee2.png)
+
+  ![](/assets/png-images/2018-06-27-concurrent-programming-67393951.png)
+
+  - **interleaving**: concurrent programs tend to be not deterministic
+
 - [ ] [2. Move semantics, passing arguments to threads](https://www.youtube.com/watch?v=qtRUG5ztMoA)
 - [ ] [3. Sharing data between threads](https://www.youtube.com/watch?v=TZ9BgdgpYm8)
 - [ ] [4. Promises, futures, and async](https://www.youtube.com/watch?v=o0pCft99K74)

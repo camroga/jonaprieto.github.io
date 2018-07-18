@@ -10,16 +10,19 @@ toc: true
 Just for fun, let's to follow the [Brilliant](https://brilliant.org) chapters
 about computer science.
 
-## CS Fundamentals
+### Introduction
 
-### [x] [arrays](https://brilliant.org/practice/arrays/?chapter=intro-to-algorithms&p=2)
-### [x] [searching](https://brilliant.org/practice/searching/?chapter=intro-to-algorithms)
-### [x] [insertion-sort](https://brilliant.org/practice/insertion-sort/?chapter=intro-to-algorithms)
-### [ ] [insertion-sort verified](https://wenkokke.github.io/2016/insertion-sort-in-agda/)
-### [x] [big-o-notation](https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms)
-### [x] [recursion](https://brilliant.org/practice/recursion/?chapter=recursion)
+  - [ ] [arrays](https://brilliant.org/practice/arrays/?chapter=intro-to-algorithms&p=2)
+  - [ ] [searching](https://brilliant.org/practice/searching/?chapter=intro-to-algorithms)
+  - [ ] [insertion-sort](https://brilliant.org/practice/insertion-sort/?chapter=intro-to-algorithms)
+  - [ ] [insertion-sort verified](https://wenkokke.github.io/2016/insertion-sort-in-agda/)
+  - [ ] [big-o-notation](https://brilliant.org/practice/big-o-notation-2/?chapter=intro-to-algorithms)
+  - [ ] [recursion](https://brilliant.org/practice/recursion/?chapter=recursion)
 
-### [x] [cs-recursion](https://brilliant.org/practice/cs-recursion/?chapter=recursion)
+
+### [x] Recursion
+
+[Link](https://brilliant.org/practice/cs-recursion/?chapter=recursion)
 
 Binary Search:
 {%- highlight python -%}
@@ -40,9 +43,9 @@ print(binary_search(list, 42))
 {%- endhighlight -%}
 
 
-----
+### [x] Divide-and-conquer
 
-### [x] [divide-and-conquer](https://brilliant.org/practice/divide-and-conquer/?chapter=recursion)
+[Link](https://brilliant.org/practice/divide-and-conquer/?chapter=recursion)
 
 Problem:
 
@@ -70,7 +73,9 @@ As you can see the maximum number of guessing will be depend on how many times w
 
 ----
 
-### [x] [mergesort](https://brilliant.org/practice/mergesort/?chapter=recursion)
+### [x] Mergesort
+
+[Link](https://brilliant.org/practice/mergesort/?chapter=recursion)
 
 ![](/assets/png-images/2018-06-27-learning-cs-fundamentals-299c445c.png)
 
@@ -107,7 +112,10 @@ def merge_sort(m):
 {%- endhighlight -%}
 
 ----
-### [x] [quicksort](https://brilliant.org/practice/quicksort/?chapter=recursion)
+### [x] Quicksort
+
+[Link](https://brilliant.org/practice/quicksort/?chapter=recursion)
+
 Does the pivot always be in the correct position (sorted) after the first partitioning? Yes, it does.
 
 {%- highlight python -%}
@@ -132,7 +140,9 @@ def quickSort(arr):
         return less + pivotList + more
 {%- endhighlight -%}
 
-### [x] [linked-list](https://brilliant.org/practice/linked-list/?chapter=recursion)
+### [x] Linked-list
+
+[Link](https://brilliant.org/practice/linked-list/?chapter=recursion)
 
 {%- highlight python -%}
 def traverse(node):
@@ -141,9 +151,13 @@ def traverse(node):
     print node.data
 {%- endhighlight -%}
 
-### [x] [stacks-and-queues](https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues)
+### [x] stacks-and-queues
 
-### [x] [stacks-2](https://brilliant.org/practice/stacks-2/?chapter=stacks-and-queues) - **LIFO** (Last-in First-out)
+[Link](https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues)
+
+### [x] stacks-2
+
+[Link](https://brilliant.org/practice/stacks-2/?chapter=stacks-and-queues) - **LIFO** (Last-in First-out)
 
 
 A **stack** is an *abstract data type* that places restrictions on where you can add and remove elements. As with any abstract data type, a stack can be implemented with a variety of data structures, such as a linked list or an array.
@@ -152,7 +166,9 @@ A **stack** is an *abstract data type* that places restrictions on where you can
 
 ----
 
-### [x] [queues](https://brilliant.org/practice/queues/?chapter=stacks-and-queues) - **FIFO** (First-in first-out)
+### [x] queues
+
+[Link](https://brilliant.org/practice/queues/?chapter=stacks-and-queues) - **FIFO** (First-in first-out)
 
 Circular queues
 
@@ -167,7 +183,9 @@ A queue can be implemented using two stacks:
 
   ![](/assets/png-images/2018-06-27-learning-cs-fundamentals-b673ddb5.png)
 
-### [ ] [binary-trees-2](https://brilliant.org/practice/binary-trees-2/?chapter=binary-trees)
+### [ ] Binary-trees-2
+
+[Link](https://brilliant.org/practice/binary-trees-2/?chapter=binary-trees)
 
   - The number of children each node has in a tree is called the branching factor
   - Each node has exactly one parent
@@ -190,7 +208,9 @@ A queue can be implemented using two stacks:
   - The **tree height** is the node height of the root, i.e. the number of branches along the longest path in the tree.
 
 
-### [x] [binary-trees](https://brilliant.org/practice/binary-trees/?chapter=binary-trees)
+### [x] Binary trees
+
+[Link](https://brilliant.org/practice/binary-trees/?chapter=binary-trees)
 
   ![](/assets/png-images/2018-06-27-learning-cs-fundamentals-3e73c2fd.png)
 
@@ -200,9 +220,9 @@ A queue can be implemented using two stacks:
 
   Note: A tree can be a full tree without being a complete tree, and a tree can be a complete tree without being a full tree.
 
-### [x] [Traversals](https://brilliant.org/practice/traversals-2/?chapter=binary-trees)
+### [x] Traversals
 
-TRAVERSALS
+[Link](https://brilliant.org/practice/traversals-2/?chapter=binary-trees)
 
 - Pre-order traversal (Root-Left-Right)
 
@@ -239,7 +259,41 @@ A **depth-first search**, or **DFS**, is the strategy that goes down a branch al
 
 The **breadth-first search**, or **BFS**, is the counterpart to DFS in tree traversing techniques. It is a search algorithm that traverses down a tree using a queue as its data array, where elements are visited in a FIFO, first-in first-out, mechanism. This strategy is also called level-order traversal, as all nodes on a level are visited before proceeding to the next level.
 
-### [ ] [binary-search-trees-2](https://brilliant.org/practice/binary-search-trees-2/?chapter=binary-trees)
+### [x] binary-search-trees-2
+
+[Link](https://brilliant.org/practice/binary-search-trees-2/?chapter=binary-trees)
+
+In a binary search trees (**BST**’s):
+
+  - for any parent (including the root) all elements in any left sub-tree must be smaller than the parent
+  - and all elements in any right sub-tree must be larger than any element in the left sub-tree.
+  - This also means that BSTs do not have duplicate elements.
+
+  ![](/assets/png-images/2018-06-27-learning-cs-fundamentals-826970b6.png)
+
+  - In a pre-sorted BST, the **in-order** algorithm will return the data in a correctly sorted order.
+  - For any BST, the time taken to find a node is proportional to the node's depth.
+
+    - The number of comparison of a searching is strongly depended by the depth of the tree.
+
+    - If the tree is complete (or at least balanced), then the depth of tree
+      will be approximately equal to $$\log_{2}(n)$$.
+
+      - A **BST is balanced** if the left and right branches at a particular
+        position are "filled up" at each level without gaps.
+
+
+  - Depending on how well balanced a tree is, the runtime of the searching can vary from
+    $$O(\log_2 ~n)$$ to the worst case of $$O(n)$$.
+
+    Sub-optimal performance for a unbalanced tree like:
+
+    ![](/assets/png-images/2018-06-27-learning-cs-fundamentals-8c2f4176.png)
+
+    - **The order with which you add numbers** into a BST affects the performance of the BST
+
+      - (TODO: why?) if you add pre-sorted data into a BST, it will have maximal inefficiency, $$O(n)$$.
+
 ### [ ] [tree-rotations](https://brilliant.org/practice/tree-rotations/?chapter=binary-trees)
 ### [ ] [red-black-trees](https://brilliant.org/practice/red-black-trees/?chapter=binary-trees)
 ### [ ] [heaps](https://brilliant.org/practice/heaps/?chapter=heaps-2)
