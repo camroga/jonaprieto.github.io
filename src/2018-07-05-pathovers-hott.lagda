@@ -29,7 +29,7 @@ in {%cite hott-in:agda %}.
 
 ![path](/assets/ipe-images/pathovers-total-space.png)
 
-Let's review first an equality type that is closely related with these PathOvers.
+Let's review first an equality type that is closely related with these pathovers.
 (See also {% cite Licata2015 %} for some extra comments).
 
 {: .foldable}
@@ -88,11 +88,11 @@ data HEq₁ {ℓ} (A : Type ℓ)
 > is undesirable **in homotopy type theory, because not all types should be sets**.
 {% endcomment %}
 
-We adopt the same name `idp` for the reflexivity constructor of the `Path` type
-for the heterogeneous equality. This name is convenient because we want to
-maintain some consistency in the following proofs. We will switch between
-different definitions of heterogeneous equality but also between definitions for
-the homogeneous equality.
+We adopt the same name `idp` for the reflexivity constructor of the
+$$\mathsf{Path}$$ type for the heterogeneous equality. This name is convenient
+because we want to maintain some consistency in the following proofs. We will
+switch between different definitions of heterogeneous equality but also between
+definitions for the homogeneous equality.
 
 Let us recall the transport function and the coercion function  along a
 homogeneous equality.
@@ -998,12 +998,13 @@ For the follwing discussion, we use heterogeneous using the first definition.
 HEq = HEq₁
 \end{code}
 
-## Path over a path
-
-Given a type family $$C: A → Type$$ and a path $$α : a₁ = a₂$$, a *pathover* is
-a path connecting $$c₁ : C a₁$$ with $$c₂ : C a₂$$ lying over $$α$$. types.
+## Paths in the total space
 
 {% comment %}
+
+Given a type family $$C: A → \mathsf{Type}$$ and a path $$α : a₁ = a₂$$, a *pathover* is
+a path connecting $$c₁ : C a₁$$ with $$c₂ : C a₂$$ lying over $$α$$. types.
+
 % -- TODO
 % The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
 % them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
@@ -1266,22 +1267,27 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 
 We want to prove the following lemma:
 
-**Lemma.** Let be `A : Type` and `C : A → Type` with two terms `a₁ a₂ : A` and a
-path between them `α : a₁ == a₂`. If  `c₁ : C a₁`, `c₂ : C a₂` then there is an
-correspondence between a term in the total space and the pathover between c₁
-and c₁ along the path `α`.
+**Lemma.**
+
+Let be $$A : \mathsf{Type}$$ and $$C : A → \mathsf{Type}$$ with two terms
+$$a₁~a₂ : A$$ and a path between them $$α : a₁ == a₂$$. If  $$c₁ : C a,~c₂ : C
+a₂$$ then there is an correspondence between a term in the total space and the
+pathover between $$c₁$$ and $$c₁$$ along the path $$α$$.
 
 {: .equation}
   $$
-   \sum\limits_{(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
+   \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
     \simeq \mathsf{PathOver}~C~α~c₁~c₂.
   $$
+
 
 
 To show such a equivalence, we proceed defining the functions back and forth,
 the two homotopies associated to these functions with the identity and finally,
 we prove the equivalence using the quasiinverse version for the equivalence
 type.
+
+![path](/assets/ipe-images/pathovers-total-space-pathover.png)
 
 - Let us define the function `Σ-to-==[↓]` that maps a term of the sigma type to
   a pathover. This construction is using Σ-induction followed by two
