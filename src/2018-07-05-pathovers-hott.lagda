@@ -635,6 +635,7 @@ module hott where
                  → H x · ap g p == ap f p · H y
     h-naturality  H {x = x} (idp ) = inv (·-runit (H x))
   open Naturality
+
   h-naturality-id : ∀{ℓ} {A : Type ℓ} {f : A → A} (H : f ∼ id) → {x : A}
                   → H (f x) == ap f (H x)
   h-naturality-id {f = f} H {x = x} =
@@ -844,6 +845,103 @@ module hott where
      ∎)
 
   open EquivalenceComposition public
+
+
+  module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
+
+    pair=Equiv : {v w : Σ A P}
+      → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w) ≃ v == w
+    pair=Equiv = qinv-≃ Σ-bycomponents (Σ-componentwise , HΣ₁ , HΣ₂)
+      where
+        HΣ₁ : Σ-bycomponents ∘ Σ-componentwise ∼ id
+        HΣ₁ idp = idp
+
+        HΣ₂ : Σ-componentwise ∘ Σ-bycomponents ∼ id
+        HΣ₂ (idp , idp) = idp
+
+    private
+      f : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+        → {β : a₁ == a₂}
+        → {γ : transport P β c₁ == c₂}
+        → ap fst (pair= (β , γ)) == α → β == α
+      f {β = idp} {γ = idp} idp = idp
+
+      g : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+        → {β : a₁ == a₂}
+        → {γ : transport P β c₁ == c₂}
+        → β == α → ap fst (pair= (β , γ)) == α
+      g {β = idp} {γ = idp} idp = idp
+
+      f-g : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+        → {β : a₁ == a₂}
+        → {γ : transport P β c₁ == c₂}
+        → f {α = α}{β = β}{γ} ∘ g {α = α}{β = β} ∼ id
+      f-g {β = idp} {γ = idp} idp = idp
+
+      g-f : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+        → {β : a₁ == a₂}
+        → {γ : transport P β c₁ == c₂}
+        → g {α = α}{β = β}{γ} ∘ f {α = α}{β = β}{γ} ∼ id
+      g-f {β = idp} {γ = idp} idp = idp
+
+    ap-fst-pair=Equiv : {a₁ a₂ : A} {c₁ : P a₁} {c₂ : P a₂}
+      → (α : a₁ == a₂)
+      → (γ : Σ (a₁ == a₂) (λ α' → transport P α' c₁ == c₂))
+      → (ap fst (pair= γ) == α) ≃ fst γ == α
+    ap-fst-pair=Equiv {a₁ = a₁} α (β , γ) = qinv-≃ f (g , f-g , g-f)
+
+  open SigmaEquivalence public
+
+  -- Univalence Axiom definition.
+
+  module Univalence where
+
+    -- Voevodsky's Univalence Axiom.
+    module UnivalenceAxiom {ℓ} {A B : Type ℓ} where
+
+      idtoeqv : A == B → A ≃ B
+      idtoeqv p = qinv-≃
+        (transport (λ x → x) p)
+        (transport (λ x → x) (inv p) , (transport-inv-l p , transport-inv-r p))
+
+      -- The Univalence axiom induces an equivalence between equalities
+      -- and equivalences.
+      postulate axiomUnivalence : isEquiv idtoeqv
+      eqvUnivalence : (A == B) ≃ (A ≃ B)
+      eqvUnivalence = idtoeqv , axiomUnivalence
+
+      -- Introduction rule for equalities.
+      ua : A ≃ B → A == B
+      ua = remap eqvUnivalence
+
+      -- Computation rules
+      ua-β : (eqv : A ≃ B) → idtoeqv (ua eqv) == eqv
+      ua-β eqv = lrmap-inverse eqvUnivalence
+
+      ua-η : (p : A == B) → ua (idtoeqv p) == p
+      ua-η p = rlmap-inverse eqvUnivalence
+    open UnivalenceAxiom public
+  open Univalence public
+
+  module EquivalenceReasoning where
+
+    infixr 2 _≃⟨⟩_
+    _≃⟨⟩_ : ∀ {ℓ} (A {B} : Type ℓ) → A ≃ B → A ≃ B
+    _ ≃⟨⟩ e = e
+
+    infixr 2 _≃⟨_⟩_
+    _≃⟨_⟩_ : ∀ {ℓ} (A : Type ℓ) {B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
+    _ ≃⟨ e₁ ⟩ e₂ = compEqv e₁ e₂
+    --
+    infix  3 _≃∎
+    _≃∎ :  ∀ {ℓ} (A : Type ℓ) → A ≃ A
+    _≃∎ = λ A → idEqv {A = A}
+
+    infix  1 begin≃_
+    begin≃_ : ∀ {ℓ} {A B : Type ℓ} → A ≃ B → A ≃ B
+    begin≃_ e = e
+
+  open EquivalenceReasoning public
 
 open hott public
 \end{code}
@@ -1267,10 +1365,10 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 
 We want to prove the following lemma:
 
-**Lemma.**
+### Theorem `Σ-≃-==[↓]`
 
 Let be $$A : \mathsf{Type}$$ and $$C : A → \mathsf{Type}$$ with two terms
-$$a₁~a₂ : A$$ and a path between them $$α : a₁ == a₂$$. If  $$c₁ : C a,~c₂ : C
+$$a₁~a₂ : A$$ and a path between them $$\alpha : a₁ == a₂$$. If  $$c₁ : C a,~c₂ : C
 a₂$$ then there is an correspondence between a term in the total space and the
 pathover between $$c₁$$ and $$c₁$$ along the path $$α$$.
 
@@ -1346,19 +1444,20 @@ The respective homotopies
 Finally, we show the equivalence using the fact above proved.
 
 \begin{code}
--- Equivalence
-  Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-    → (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
-    ≃ (c₁ == c₂ [ C ↓ α ])
+  private
+    -- Equivalence
+    Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+      → (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+      ≃ (c₁ == c₂ [ C ↓ α ])
 
-  Σ-≃-==[↓] =
-    qinv-≃
-      Σ-to-==[↓]    -- equivalence
-      ((==[↓]-to-Σ  -- inverse
-      , (Σ-to-==[↓]∘==[↓]-to-Σ∼id , ==[↓]-to-Σ∘Σ-to-==[↓]∼id))) -- homotopies
+    Σ-≃-==[↓] =
+      qinv-≃
+        Σ-to-==[↓]    -- equivalence
+        ((==[↓]-to-Σ  -- inverse
+        , (Σ-to-==[↓]∘==[↓]-to-Σ∼id , ==[↓]-to-Σ∘Σ-to-==[↓]∼id)))
 \end{code}
 
-
+{% comment %}
 ## Other facts
 
 We can build a dependent path by applying a depedent function to a homogeneous path.
@@ -1369,28 +1468,31 @@ apdo : ∀ {ℓ} {A : Type ℓ} {B : A → Type ℓ} (f : (a : A) → B a)
 apdo f idp = idp
 \end{code}
 
-## Extra
+{% endcomment %}
 
-- **Lemma 1**. If $$A\,,~B : U$$ and $$C: A → U$$ and $$f: B \simeq A$$, then
+### Lemma 1
+
+If $$A\,,~B : U$$ and $$C: A → U$$ and $$f: B \simeq A$$, then
 
 {: .equation}
-  $$\sum_A C \simeq \sum_{B} (C ∘ f).$$
+  $$\sum_{a:A} C~a \simeq \sum_{b:B} (C ∘ f)~b.$$
 
 \begin{code}
-module Lemma1 {ℓᵢ}{ℓⱼ}
+module Lemma₁ {ℓᵢ}{ℓⱼ}
   {A : Type ℓᵢ} {C : A → Type ℓⱼ} {B : Type ℓᵢ} (e : B ≃ A) where
 
-  f : B → A
-  f = lemap e
+  private
+    f : B → A
+    f = lemap e
 
-  f⁻¹ : A → B
-  f⁻¹ = remap e
+    f⁻¹ : A → B
+    f⁻¹ = remap e
 
-  α : f ∘ f⁻¹ ∼ id
-  α = lrmap-inverse-h e
+    α : f ∘ f⁻¹ ∼ id
+    α = lrmap-inverse-h e
 
-  β : f⁻¹ ∘ f  ∼ id
-  β = rlmap-inverse-h e
+    β : f⁻¹ ∘ f  ∼ id
+    β = rlmap-inverse-h e
 
   -- x : ishae f
   -- x = qinv-ishae (f⁻¹ , α , β)
@@ -1398,18 +1500,19 @@ module Lemma1 {ℓᵢ}{ℓⱼ}
   postulate
     τ : (b : B) → ap f (β b) == α (f b)
 
-  ΣAC-to-ΣBC' : Σ A C → Σ B (λ b → C (f b))
-  ΣAC-to-ΣBC' (a , c) = f⁻¹ a , c'
+  ΣAC-to-ΣBCf : Σ A C → Σ B (λ b → C (f b))
+  ΣAC-to-ΣBCf (a , c) = f⁻¹ a , c'
     where
       c' : C (f (f⁻¹ a))
       c' = transport C ((α a) ⁻¹) c
 
-  ΣBC'-to-ΣAC : Σ B (λ b → C (f b)) → Σ A C
-  ΣBC'-to-ΣAC (b , c') = f b , c'
+  ΣBCf-to-ΣAC : Σ B (λ b → C (f b)) → Σ A C
+  ΣBCf-to-ΣAC (b , c') = f b , c'
 
-  H₁ : ΣAC-to-ΣBC' ∘ ΣBC'-to-ΣAC ∼ id
-  H₁ (b , c') = pair= (β b , patho)
-    where
+  private
+    H₁ : ΣAC-to-ΣBCf ∘ ΣBCf-to-ΣAC ∼ id
+    H₁ (b , c') = pair= (β b , patho)
+      where
       c'' : C (f (f⁻¹ (f b)))
       c'' = transport C ((α (f b)) ⁻¹) c'
 
@@ -1430,10 +1533,10 @@ module Lemma1 {ℓᵢ}{ℓⱼ}
           c'
         ∎
 
-  H₂ : ΣBC'-to-ΣAC ∘ ΣAC-to-ΣBC' ∼ id
-  H₂ (a , c) =
-   pair= (α a , patho)
-    where
+  private
+    H₂ : ΣBCf-to-ΣAC ∘ ΣAC-to-ΣBCf ∼ id
+    H₂ (a , c) = pair= (α a , patho)
+      where
       patho : transport C (α a) (transport C ((α a) ⁻¹) c) == c
       patho =
         begin
@@ -1446,19 +1549,21 @@ module Lemma1 {ℓᵢ}{ℓⱼ}
           c
         ∎
 
-  lemma-1 :  Σ A C ≃ Σ B (λ b → C (f b))
-  lemma-1 = qinv-≃ ΣAC-to-ΣBC' ( ΣBC'-to-ΣAC , H₁ , H₂)
+  lemma₁ :  Σ A C ≃ Σ B (λ b → C (f b))
+  lemma₁ = qinv-≃ ΣAC-to-ΣBCf ( ΣBCf-to-ΣAC , H₁ , H₂)
 
-open Lemma1 public
+open Lemma₁ public
 \end{code}
 
-- **Lemma 2.** If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
+### Lemma 2
+
+If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 
 {: .equation}
   $$\sum_{(w:\sum_{A} C)}  \(\mathsf{fst}~w = a\,\simeq\,C~a.$$
 
 \begin{code}
-module Lemma2 {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
+module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
 
   ΣΣ-to-C : Σ (Σ A C) (λ w → fst w == a) → C a
   ΣΣ-to-C ((a , c) , p) = transport C p c
@@ -1466,15 +1571,15 @@ module Lemma2 {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
   C-to-ΣΣ : C a → Σ (Σ A C) (λ w → fst w == a)
   C-to-ΣΣ c = (a , c) , idp
 
-  Ho₁ : ΣΣ-to-C ∘ C-to-ΣΣ ∼ id
-  Ho₁ c = idp
+  private
+    H₁ : ΣΣ-to-C ∘ C-to-ΣΣ ∼ id
+    H₁ c = idp
 
-  Ho₂ : C-to-ΣΣ ∘ ΣΣ-to-C ∼ id
-  Ho₂ ((a' , c) , p) = pair= (paireq , patho)
-    where
-
-    c' : transport C (inv p) (transport C p c) == c
-    c' = begin
+    H₂ : C-to-ΣΣ ∘ ΣΣ-to-C ∼ id
+    H₂ ((a' , c) , p) = pair= (paireq , patho)
+      where
+        c' : transport C (inv p) (transport C p c) == c
+        c' = begin
             transport C (inv p) (transport C p c)
               ==⟨ transport-comp-h p ((inv p)) c ⟩
             transport C (p ·  (inv p)) c
@@ -1484,94 +1589,118 @@ module Lemma2 {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
             c
           ∎
 
-    paireq : a , transport C p c ==  a' , c
-    paireq = pair= (inv p , c')
+        paireq : a , transport C p c ==  a' , c
+        paireq = pair= (inv p , c')
 
-    patho :  transport (λ w → fst w == a) paireq idp == p
-    patho
-      = begin
-        transport (λ w → fst w == ((λ _ → a) w)) paireq idp
-          ==⟨ transport-eq-fun fst (λ _ → a) paireq idp ⟩
-        inv (ap fst paireq) · idp · ap (λ _ → a) paireq
-          ==⟨ ap (λ γ → inv (ap fst paireq) · idp · γ) (ap-const paireq) ⟩
-        inv (ap fst paireq) · idp  · idp
-          ==⟨ ·-runit-infer ⟩
-        inv (ap fst paireq) · idp
-          ==⟨ ·-runit-infer ⟩
-        inv (ap fst paireq)
-          ==⟨ ap (λ p → inv  p) (ap-fst-pair= (inv p) c') ⟩
-        inv (inv p)
-          ==⟨ involution ⟩
-         p
-        ∎
+        patho :  transport (λ w → fst w == a) paireq idp == p
+        patho
+          = begin
+            transport (λ w → fst w == ((λ _ → a) w)) paireq idp
+              ==⟨ transport-eq-fun fst (λ _ → a) paireq idp ⟩
+            inv (ap fst paireq) · idp · ap (λ _ → a) paireq
+              ==⟨ ap (λ γ → inv (ap fst paireq) · idp · γ) (ap-const paireq) ⟩
+            inv (ap fst paireq) · idp  · idp
+              ==⟨ ·-runit-infer ⟩
+            inv (ap fst paireq) · idp
+              ==⟨ ·-runit-infer ⟩
+            inv (ap fst paireq)
+              ==⟨ ap (λ p → inv  p) (ap-fst-pair= (inv p) c') ⟩
+            inv (inv p)
+              ==⟨ involution ⟩
+             p
+            ∎
 
-  lemma-2 : Σ (Σ A C) (λ w → fst w == a) ≃ C a
-  lemma-2 = qinv-≃ ΣΣ-to-C (C-to-ΣΣ , Ho₁ , Ho₂)
+  lemma₂ : Σ (Σ A C) (λ w → fst w == a) ≃ C a
+  lemma₂ = qinv-≃ ΣΣ-to-C (C-to-ΣΣ , H₁ , H₂)
 
-open Lemma2 public
+open Lemma₂ public
+\end{code}
+
+### Lemma 3
+
+If $$A : U$$, the element $$a : A$$ and two type families $$C,\ D: A → U$$.
+If $$ e : C~a \simeq D~a$$ then
+
+{: .equation}
+  $$\Sigma~A~C~\simeq~\Sigma~A~D.$$
+
+\begin{code}
+module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
+    (e : (a : A) → C a ≃ D a) where
+
+  private
+    f : (a : A) → C a → D a
+    f a = lemap (e a)
+
+    f⁻¹ : (a : A) → D a → C a
+    f⁻¹ a = remap (e a)
+
+    α : (a : A) → (f a) ∘ (f⁻¹ a) ∼ id
+    α a x = lrmap-inverse (e a)
+
+    β : (a : A) → (f⁻¹ a) ∘ (f a) ∼ id
+    β a x = rlmap-inverse (e a)
+
+    ΣAC-to-ΣAD :  Σ A C → Σ A D
+    ΣAC-to-ΣAD (a , c) = (a , (f a) c)
+
+    ΣAD-to-ΣAC :  Σ A D → Σ A C
+    ΣAD-to-ΣAC (a , d) = (a , (f⁻¹ a) d)
+
+    H₁ : ΣAC-to-ΣAD ∘ ΣAD-to-ΣAC ∼ id
+    H₁ (a , d) = pair= (idp , α a d)
+
+    H₂ : ΣAD-to-ΣAC ∘ ΣAC-to-ΣAD ∼ id
+    H₂ (a , c) = pair= (idp  , β a c)
+
+  lemma₃ : Σ A C ≃ Σ A D
+  lemma₃ = qinv-≃ ΣAC-to-ΣAD (ΣAD-to-ΣAC , H₁ , H₂)
+
+open Lemma₃ public
+\end{code}
+
+### Second proof of  `Σ-≃-==[↓]`
+
+Using the above lemma, we can get another proof for the `Σ-≃-==[↓]` theorem.
+Let us recall the equivalence. Let be $$aᵢ : A$$, $$cᵢ : C~aᵢ$$, $$\alpha : a₁ == a₂$$,
+
+
+$$
+ \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
+  \simeq \mathsf{PathOver}~C~α~c₁~c₂.
+$$
+
+\begin{code}
+module _ {ℓ}{A : Type ℓ}{C : A → Type ℓ}
+  {a₁ a₂ : A} (α : a₁ == a₂){c₁ : C a₁}{c₂ : C a₂} where
+
+  private
+    Σ-≃-==[↓] :
+      Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap fst q == α) ≃ PathOver C α c₁ c₂
+    Σ-≃-==[↓] =
+      begin≃
+        Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap fst q == α)
+          ≃⟨ lemma₁ pair=Equiv ⟩
+        Σ (Σ (a₁ == a₂) (λ β → transport C β c₁ == c₂)) (λ γ → ap fst (pair= γ) == α)
+          ≃⟨ lemma₃ (ap-fst-pair=Equiv α) ⟩
+        Σ (Σ (a₁ == a₂) (λ β → transport C β c₁ == c₂)) (λ γ → fst γ == α)
+          ≃⟨ lemma₂ α ⟩
+        transport C α c₁ == c₂
+          ≃⟨⟩
+        PathOver C α c₁ c₂
+      ≃∎
+
 \end{code}
 
 {% comment %}
-In context  A: U, P: A->U, x,y:A, alpha: x=_A y, u: Px, v: Py, we have
-
-Sum_(beta: (x,u)=(y,v)) (ap proj1 beta = alpha)
-
-\simeq (by Lemma 1 and Theorem 2.7.2 from the HoTT-book)
-
-Sum_( gamma: Sum_(alpha':x=_A y)(tr alpha' u = v) )
-            ( ap proj1 (pair^= gamma) = alpha )
-
-\simeq (by calculating: ap proj1 (pair^= gamma) = proj1 gamma)
-
-Sum_( gamma: Sum_(alpha':x=_A y)(tr alpha' u = v) )
-            ( proj1 gamma = alpha )
-
-\simeq (by Lemma 2)
-
-tr alpha u = v
-
-{% endcomment %}
-
 Now, let us use Univalence Axiom to prove the main theorem:
-
-{: .foldable}
-\begin{code}
-
--- Univalence Axiom definition.
-
-module Univalence where
-
-  -- Voevodsky's Univalence Axiom.
-  module UnivalenceAxiom {ℓ} {A B : Type ℓ} where
-    idtoeqv : A == B → A ≃ B
-    idtoeqv p = qinv-≃
-      (transport (λ x → x) p)
-      (transport (λ x → x) (inv p) , (transport-inv-l p , transport-inv-r p))
-
-    -- The Univalence axiom induces an equivalence between equalities
-    -- and equivalences.
-    postulate axiomUnivalence : isEquiv idtoeqv
-    eqvUnivalence : (A == B) ≃ (A ≃ B)
-    eqvUnivalence = idtoeqv , axiomUnivalence
-
-    -- Introduction rule for equalities.
-    ua : A ≃ B → A == B
-    ua = remap eqvUnivalence
-
-    -- Computation rules
-    ua-β : (eqv : A ≃ B) → idtoeqv (ua eqv) == eqv
-    ua-β eqv = lrmap-inverse eqvUnivalence
-
-    ua-η : (p : A == B) → ua (idtoeqv p) == p
-    ua-η p = rlmap-inverse eqvUnivalence
-  open UnivalenceAxiom public
-open Univalence public
-\end{code}
 
 \begin{code}
 module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
   -- Working in progress
 \end{code}
+
+{% endcomment %}
 
 ## Agda Libraries
 
