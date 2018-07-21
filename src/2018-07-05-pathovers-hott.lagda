@@ -1582,28 +1582,31 @@ module Lemma₁UA {ℓᵢ}{ℓⱼ}
   f : B → A
   f = lemap e
 
+  tr = transport
+
   postulate
     transport-ua : ∀{ℓᵢ} {A B : Type ℓᵢ} {f : A → B}{x : A}
-        → (transport _ (ua (f , _ )) x) == f x
+        → (tr _ (ua (f , _ )) x) == f x
+
 
   lemma₁ua :  Σ A C ≃ Σ B (λ b → C (f b))
   lemma₁ua = idtoeqv
     (begin
       Σ A C
         ==⟨ inv (happly (apd (Σ {ℓⱼ = ℓⱼ}) p) C) ⟩
-      transport (λ X → _) p (Σ {ℓⱼ = ℓⱼ} B) C
+      tr (λ X → ?) p (Σ {ℓⱼ = ℓⱼ} B) C
         ==⟨ happly (transport-fun p (Σ {ℓⱼ = ℓⱼ} B)) C ⟩
-      ((λ (x : A → Type _) → transport (λ X → Type _) p (Σ B (transport (λ X → (X → Type ℓⱼ)) (inv p) x)))) C
+      ((λ (x : A → Type _) → tr (λ X → Type _) p (Σ B (tr (λ X → (X → Type ℓⱼ)) p⁻¹ x)))) C
         ==⟨⟩
-      transport (λ X → Type _) p (Σ B (transport (λ X → (X → Type ℓⱼ)) (inv p) C))
-        ==⟨ transport-const {x = _} {y = _} _ (Σ B (transport (λ X → X → Type _) (inv p) C)) ⟩
-      Σ B (transport (λ X → (X → Type _)) (inv p) C)
-        ==⟨ ap (Σ B) (transport-fun (inv p) C) ⟩
-      Σ B (λ x → transport (λ x₁ → Type _) (inv p) (C (transport _ (inv (inv p)) x)))
+      tr (λ X → Type _) p (Σ B (tr (λ X → (X → Type ℓⱼ)) p⁻¹ C))
+        ==⟨ transport-const {x = _} {y = _} _ (Σ B (tr (λ X → X → Type _) p⁻¹ C)) ⟩
+      Σ B (tr (λ X → (X → Type _)) p⁻¹ C)
+        ==⟨ ap (Σ B) (transport-fun p⁻¹ C) ⟩
+      Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (tr _ ((p⁻¹) ⁻¹) b)))
         ==⟨ ap _ involution ⟩
-      Σ B (λ x → transport (λ x₁ → Type _) (inv p) (C (transport _ p x)))
+      Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (tr _ p b)))
         ==⟨ ap _ (ap C transport-ua) ⟩
-      Σ B (λ x → transport (λ x₁ → Type _) (inv p) (C (f x)))
+      Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (f b)))
         ==⟨ ap _ (transport-const _ C) ⟩
       Σ B (λ b → C (f b))
     ∎)
