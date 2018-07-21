@@ -227,6 +227,14 @@ module hott where
   module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
 
     -- Some lemmas on the transport operation.
+
+    transport-const : ∀ {ℓⱼ} {P : A → Type ℓⱼ} {x y : A}
+      {B : Type ℓᵢ}
+      → (p : x == y)
+      → (b : B)
+      → transport (λ _ → B) p b == b
+    transport-const idp _ = idp
+
     transport-concat-r : {a : A} {x y : A} → (p : x == y) → (q : a == x) →
       transport (λ x → a == x) p q == q · p
     transport-concat-r idp q = ·-runit q
@@ -252,8 +260,9 @@ module hott where
     transport-comp-h {P = P} idp q x = idp {a =  (transport P q x)}
 
     -- A shorter notation for transport.
-    _✶ : ∀{ℓⱼ} {P : A → Type ℓⱼ} {a b : A} → a == b → P a → P b
-    _✶ = transport _
+    _✶ : ∀ {ℓⱼ} {P : A → Type ℓⱼ} {a b : A} → a == b → P a → P b
+    _✶ {ℓⱼ} {P} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} P
+
   open Transport-Properties public
 
   ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
@@ -1460,7 +1469,8 @@ Finally, we show the equivalence using the fact above proved.
 {% comment %}
 ## Other facts
 
-We can build a dependent path by applying a depedent function to a homogeneous path.
+We can build a dependent path by applying a depedent function to a homogeneous
+path.
 
 \begin{code}
 apdo : ∀ {ℓ} {A : Type ℓ} {B : A → Type ℓ} (f : (a : A) → B a)
@@ -1479,7 +1489,7 @@ If $$A\,,~B : U$$ and $$C: A → U$$ and $$f: B \simeq A$$, then
 
 \begin{code}
 module Lemma₁ {ℓᵢ}{ℓⱼ}
-  {A : Type ℓᵢ} {C : A → Type ℓⱼ} {B : Type ℓᵢ} (e : B ≃ A) where
+  {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A) {C : A → Type ℓⱼ} where
 
   private
     f : B → A
@@ -1554,6 +1564,52 @@ module Lemma₁ {ℓᵢ}{ℓⱼ}
 
 open Lemma₁ public
 \end{code}
+
+Now, let us prove the same lemma using Univalence Axiom:
+
+
+\begin{code}
+module Lemma₁UA {ℓᵢ}{ℓⱼ}
+  {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A){C : A → Type ℓⱼ}
+  where
+
+  p : B == A
+  p = ua e
+
+  p⁻¹ : A == B
+  p⁻¹ = inv p
+
+  f : B → A
+  f = lemap e
+
+  postulate
+    transport-ua : ∀{ℓᵢ} {A B : Type ℓᵢ} {f : A → B}{x : A}
+        → (transport _ (ua (f , _ )) x) == f x
+
+  lemma₁ua :  Σ A C ≃ Σ B (λ b → C (f b))
+  lemma₁ua = idtoeqv
+    (begin
+      Σ A C
+        ==⟨ inv (happly (apd (Σ {ℓⱼ = ℓⱼ}) p) C) ⟩
+      transport (λ X → _) p (Σ {ℓⱼ = ℓⱼ} B) C
+        ==⟨ happly (transport-fun p (Σ {ℓⱼ = ℓⱼ} B)) C ⟩
+      ((λ (x : A → Type _) → transport (λ X → Type _) p (Σ B (transport (λ X → (X → Type ℓⱼ)) (inv p) x)))) C
+        ==⟨⟩
+      transport (λ X → Type _) p (Σ B (transport (λ X → (X → Type ℓⱼ)) (inv p) C))
+        ==⟨ transport-const {x = _} {y = _} _ (Σ B (transport (λ X → X → Type _) (inv p) C)) ⟩
+      Σ B (transport (λ X → (X → Type _)) (inv p) C)
+        ==⟨ ap (Σ B) (transport-fun (inv p) C) ⟩
+      Σ B (λ x → transport (λ x₁ → Type _) (inv p) (C (transport _ (inv (inv p)) x)))
+        ==⟨ ap _ involution ⟩
+      Σ B (λ x → transport (λ x₁ → Type _) (inv p) (C (transport _ p x)))
+        ==⟨ ap _ (ap C transport-ua) ⟩
+      Σ B (λ x → transport (λ x₁ → Type _) (inv p) (C (f x)))
+        ==⟨ ap _ (transport-const _ C) ⟩
+      Σ B (λ b → C (f b))
+    ∎)
+
+\end{code}
+
 
 ### Lemma 2
 
