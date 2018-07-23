@@ -809,11 +809,15 @@ module hott where
     qinv-≃ f = ishae-≃ ∘ qinv-ishae
 
     ≃-qinv : A ≃ B → Σ (A → B) qinv
-    ≃-qinv eq = lemap eq , (remap eq , (lrmap-inverse-h eq , rlmap-inverse-h eq))
+    ≃-qinv eq =
+      lemap eq , (remap eq , (lrmap-inverse-h eq , rlmap-inverse-h eq))
 
     -- Half-adjoint equivalences are quasiinverses.
     ishae-qinv : {f : A → B} → ishae f → qinv f
     ishae-qinv {f} (hae g η ε τ) = g , (ε , η)
+
+    ≃-ishae : (e : A ≃ B)→ ishae (lemap e)
+    ≃-ishae e = qinv-ishae (snd (≃-qinv e))
 
   open Quasiinverses public
 
@@ -1492,23 +1496,24 @@ module Lemma₁ {ℓᵢ}{ℓⱼ}
   {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A) {C : A → Type ℓⱼ} where
 
   private
+
     f : B → A
     f = lemap e
 
+    ishaef : ishae f
+    ishaef = ≃-ishae e
+  --
     f⁻¹ : A → B
-    f⁻¹ = remap e
+    f⁻¹ = ishae.g ishaef
 
     α : f ∘ f⁻¹ ∼ id
-    α = lrmap-inverse-h e
+    α = ishae.ε ishaef
 
     β : f⁻¹ ∘ f  ∼ id
-    β = rlmap-inverse-h e
+    β = ishae.η ishaef
 
-  -- x : ishae f
-  -- x = qinv-ishae (f⁻¹ , α , β)
-
-  postulate
     τ : (b : B) → ap f (β b) == α (f b)
+    τ = ishae.τ ishaef
 
   ΣAC-to-ΣBCf : Σ A C → Σ B (λ b → C (f b))
   ΣAC-to-ΣBCf (a , c) = f⁻¹ a , c'
@@ -1565,10 +1570,10 @@ module Lemma₁ {ℓᵢ}{ℓⱼ}
 open Lemma₁ public
 \end{code}
 
+{% comment %}
 Now, let us prove the same lemma using Univalence Axiom:
 
-
-\begin{code}
+{% highlighting %}
 module Lemma₁UA {ℓᵢ}{ℓⱼ}
   {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A){C : A → Type ℓⱼ}
   where
@@ -1594,7 +1599,7 @@ module Lemma₁UA {ℓᵢ}{ℓⱼ}
     (begin
       Σ A C
         ==⟨ inv (happly (apd (Σ {ℓⱼ = ℓⱼ}) p) C) ⟩
-      tr (λ X → ?) p (Σ {ℓⱼ = ℓⱼ} B) C
+      tr (λ X → _) p (Σ {ℓⱼ = ℓⱼ} B) C
         ==⟨ happly (transport-fun p (Σ {ℓⱼ = ℓⱼ} B)) C ⟩
       ((λ (x : A → Type _) → tr (λ X → Type _) p (Σ B (tr (λ X → (X → Type ℓⱼ)) p⁻¹ x)))) C
         ==⟨⟩
@@ -1610,9 +1615,8 @@ module Lemma₁UA {ℓᵢ}{ℓⱼ}
         ==⟨ ap _ (transport-const _ C) ⟩
       Σ B (λ b → C (f b))
     ∎)
-
-\end{code}
-
+{% endhighlighting %}
+{% endcomment %}
 
 ### Lemma 2
 
