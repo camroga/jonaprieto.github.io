@@ -2,7 +2,7 @@
 layout: "post"
 title: "SAT solvers"
 date: "2018-07-03"
-categories: verification
+categories: learning
 published: true
 ---
 
@@ -14,8 +14,6 @@ This will contain some thoughts about sat solving. See the references.
   - several conceptual enhancements on the original DPLL procedure, aimed at reducing the amount of explored search space
   such as backjumping (a form of non-chronological backtracking), conflict-driven lemma learning, and restarts.
   - they can solve problems with even *tens of thousands of variables* and *millions of clauses*.
-
-## References
 
 {::options parse_block_html="true" /}
 <div class="references">

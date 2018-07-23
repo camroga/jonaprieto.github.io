@@ -78,6 +78,6 @@ About HoTT:
 
 {% bibliography --file stack-questions-hott %}
 
-### References
+{: .references }
 
-- {% reference hottbook %}
+  - {% reference hottbook %}

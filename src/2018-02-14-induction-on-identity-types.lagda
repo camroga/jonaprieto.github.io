@@ -191,8 +191,8 @@ pi⇒bpi {A} a C c y p = f a y p C c
     f = pi D d
 \end{code}
 
-## References
+{: .references }
 
-- {% reference hottbook %}
+  - {% reference hottbook %}
 
-- {% reference Grayson2017 %}
+  - {% reference Grayson2017 %}

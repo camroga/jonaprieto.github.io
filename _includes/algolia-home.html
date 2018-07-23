@@ -4,10 +4,6 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch-theme-algolia.min.css">
 
-<base href="{{ site.baseurl }}">
-
-<script src="{{ "/assets/latex-to-unicode-converter.min.js" | prepend: site.baseurl }}"></script>
-
 <script>
 const search = instantsearch({
   appId: '{{ site.algolia.application_id }}',
@@ -99,7 +95,7 @@ const hitTemplate = function(hit) {
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search-searchbar',
-    placeholder: 'search notes',
+    placeholder: '',
     autofocus: true
   })
 );
@@ -118,9 +114,12 @@ search.start();
 </script>
 
 <style>
+
+.search-searchbar {
+  padding-top: 10px;
+}
+
 .ais-search-box {
   max-width: 100%;
-  margin-bottom: 15px;
-  padding-top: 5px;
 }
 </style>

@@ -3,6 +3,7 @@ layout: "post"
 title: "Induction on Natural Numbers"
 date: "2018-02-12"
 agda: true
+toc: true
 categories: type-theory
 ---
 
@@ -451,14 +452,13 @@ by defining two equations:
 + `f(suc n) ≡ cₛ(n, f(n))` for `cₛ : ℕ → C → C`
 
 
-<div class="references" markdown="1">
+{: .references}
 
   - {% reference hottbook %}
 
   - {% reference Coquand1992 %}
 
   - [Induction in PLAgda](https://plfa.github.io/Induction/)
-</div>
 
 [HoTT]:https://homotopytypetheory.org/book.
 [Grayson]:http://arxiv.org/abs/1711.01477

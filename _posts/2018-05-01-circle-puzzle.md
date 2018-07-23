@@ -28,8 +28,6 @@ I gave a talk giving one solution using the flattening lemma:
 - [**Direct link PDF**](https://github.com/jonaprieto/flattenlem/files/2045561/Jonathan-Prieto-Cubides-The-Flattening-Lemma.pdf
 )
 
-## References
-
 {::options parse_block_html="true" /}
 <div class="references">
 - {% reference hottbook %}

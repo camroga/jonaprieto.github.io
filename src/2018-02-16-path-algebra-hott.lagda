@@ -173,13 +173,8 @@ trans' : ∀ {A : Set}{x x' : A}
 trans' B y u = subst B u y
 \end{code}
 
-### References
 
-{::options parse_block_html="true" /}
-<div class="references">
+{: .references }
 
   - {% reference hottbook %}
   - {% reference agdateam %}
-
-</div>
-{::options parse_block_html="false" /}

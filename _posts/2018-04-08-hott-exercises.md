@@ -1227,9 +1227,6 @@ Therefore $$A$$ is a mere proposition.
 
 </div>
 
-
-## References
-
 {::options parse_block_html="true" /}
 <div class="references">
 

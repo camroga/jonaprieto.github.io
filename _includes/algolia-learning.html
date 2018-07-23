@@ -1,0 +1,123 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+const search = instantsearch({
+  appId: '{{ site.algolia.application_id }}',
+  apiKey: '{{ site.algolia.search_only_api_key }}',
+  indexName: '{{ site.algolia.index_name }}',
+  searchParameters: {
+    restrictSearchableAttributes: [
+      'title',
+      'content',
+    ],
+    facetFilters: [ 'type:post', 'categories:learning'
+                  ]
+  },
+  searchFunction: function(helper) {
+    if (helper.getState().query === '') {
+      additionalClass = 'empty-query';
+      hitBoxClass = '';
+    } else {
+      additionalClass = '';
+      hitBoxClass = 'hit-box';
+    }
+    helper.search()
+  }
+});
+
+
+const hitTemplate = function(hit) {
+  let date = '';
+  if (hit.date) {
+    // date = moment.unix(hit.date).format('L');
+    date = moment.unix(hit.date).format('DD/MM/YYYY');
+    modifiedDate = hit.last_modified_at;
+    lastDate = moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+  }
+  const url = hit.url;
+  const title = hit._highlightResult.title.value;
+  var content = 'No available.';
+  if ( "html"  in hit._highlightResult)
+    {   content = hit._highlightResult.html.value; }
+  const category = hit.categories[0];
+  var message = "No available";
+  var commiturl = "";
+  if ( "git" in hit){
+    if ("last_commit" in hit.git){
+      if ("message" in hit.git.last_commit){
+        message = hit.git.last_commit.message;
+      }
+      if ("long_sha" in hit.git.last_commit){
+      commiturl = "http://github.com/jonaprieto/jonaprieto.github.io/commit/" + hit.git.last_commit.long_sha;
+      }
+    }
+  }
+  return `
+<div class="${hitBoxClass}">
+  <div class="post-list">
+      <div class="algolia">
+      <div class="algolia-date">${date}</div>
+        <div class="algolia-title"><a href=".${url}">${title}</a></div>
+        <div class="algolia-message"><small> ${message} </small></div>
+        <div class="algolia-modified">
+        <a href=${commiturl}>${lastDate}</a>
+        </div>
+      </div>
+      <div class="${additionalClass}">${content} </div>
+  </div>
+</div>
+  `;
+}
+
+// const hitTemplateTrans = function(hit) {
+//   let date = '';
+//   if (hit.date) {
+//     date = moment.unix(hit.date).format('MMM DD YYYY');
+//   }
+//   const url = hit.url;
+//   const title = hit._highlightResult.title.value;
+//   const content = hit._highlightResult.html.value;
+//
+//   return `
+//     <div class="post-list">
+//       <span class="post-date-list-wrap">
+//       <span class="post-date-list">${date}
+//         <span class="post-title"><a href=".${url}"> ${title}</a></span>
+//        </span>
+//        </span>
+//     </div>
+//   `;
+// }
+
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '#search-searchbar',
+    placeholder: 'search in plans',
+    autofocus: true
+  })
+);
+
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '#search-hits',
+    templates: {
+      empty: 'No results',
+      item: hitTemplate
+    },
+  })
+);
+
+search.start();
+</script>
+
+<style>
+.ais-search-box {
+  max-width: 100%;
+  /* margin-bottom: 15px; */
+  /* padding-top: 5px; */
+}
+</style>

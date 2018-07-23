@@ -7,7 +7,7 @@ toc: true
 agda: true
 ---
 
-**(Working in progress jointly with Marc Bezem)**
+This is a work in progress jointly with Marc Bezem.
 
 {% comment %}
 % -- TODO
@@ -1378,7 +1378,7 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 
 We want to prove the following lemma:
 
-### Theorem `Σ-≃-==[↓]`
+### Theorem 1
 
 Let be $$A : \mathsf{Type}$$ and $$C : A → \mathsf{Type}$$ with two terms
 $$a₁~a₂ : A$$ and a path between them $$\alpha : a₁ == a₂$$. If  $$c₁ : C a,~c₂ : C
@@ -1722,7 +1722,7 @@ module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
 open Lemma₃ public
 \end{code}
 
-### Second proof of  `Σ-≃-==[↓]`
+### Second proof of Theorem 1
 
 Using the above lemma, we can get another proof for the `Σ-≃-==[↓]` theorem.
 Let us recall the equivalence. Let be $$aᵢ : A$$, $$cᵢ : C~aᵢ$$, $$\alpha : a₁ == a₂$$,
@@ -1767,9 +1767,10 @@ module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
 
 ## Agda Libraries
 
-We took strong inspiration of the following Agda libraries.
+We took inspiration of the following Agda libraries for all source code showed above:
 
 {: .links}
 
-  - https://github.com/HoTT/HoTT-Agda/
-  - https://mroman42.github.io/ctlc/agda-hott/Total.html
+  - Pathover syntax: https://github.com/HoTT/HoTT-Agda/.
+
+  - We modify [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html) library to fit our demands.

@@ -1,15 +1,12 @@
 ---
 layout: page
 permalink: /references/
-title: References
+title: List of references
 ---
 
-Ordered by year. If you're using Google Chrome, I recommend you
-installing [this extension](https://github.com/arwankhoiruddin/scihubsearch)
-to get a copy of some articles.
+If you're using Google Chrome, I'd recommend to
+install [scihub ext](https://github.com/arwankhoiruddin/scihubsearch)
+to get a copy of some articles from the following DOIs.
 
-{::options parse_block_html="true" /}
-<div class="references">
-{% bibliography %}
-</div>
-{::options parse_block_html="false" /}
+{: .links}
+  {% bibliography %}

@@ -4,26 +4,34 @@ permalink: /about/
 title: About
 ---
 
-I'm a Ph.D. student in my first-year at [University of
+I'm a Ph.D. student in the first-year at [University of
 Bergen](https://www.uib.no/en/ii) under the advisory of [Marc
 Bezem](https://cas.oslo.no/fellows/marc-bezem-article2086-828.html) and
 co-supervised by [Bjørn Ian
 Dundas](https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html).
+We mostly work nowadays in type theory. It's fun.
 
-I did my Master in Applied Mathematics in the Mathematical Sciences Department at [Universidad EAFIT](http://www.eafit.edu.co/).
-I was under the [advisory](http://www1.eafit.edu.co/asr/supervised-students.html) of [Andrés Sicard-Ramírez](http://www1.eafit.edu.co/asr/) in the group of the [Logic and Computation](http://scienti.colciencias.gov.co:8080/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008091) research group.
+Before came to Norway, I lived in Medellín, Colombia where I did my Master
+in the Mathematical Sciences Department at [Universidad
+EAFIT](http://www.eafit.edu.co/) under the
+[advisory](http://www1.eafit.edu.co/asr/supervised-students.html) of [Andrés
+Sicard-Ramírez](http://www1.eafit.edu.co/asr/) in the group of the [Logic and
+Computation](http://scienti.colciencias.gov.co:8080/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008091)
+research group.
 
-My current research interests are connections between mathematics and computer science:
-verification, functional programming, type theory, logic, proof-assistants and lately categories.
-For more information, checkout this
-repository [cv](http://github.com/jonaprieto/curriculum-vitae).
+My current interests for research are mostly the connections between computer
+science and mathematics such as verification, type theory, functional
+programming, logic, proof-assistants, among others related.
+
+- [My Github](http://github.com/jonaprieto)
+- [My CV](http://github.com/jonaprieto/curriculum-vitae)
 
 ### About this blog
 
 The sources of this blog are open source. The blog is using the following projects:
 
 - `github-pages`
-- `jekyll` with minima theme
+- `jekyll` with the my modified version of the minima theme
 - `algolia` provides the search engine plus modifications
 - `agda` to type-check some experiments
 - `agda2html` for embedding `Agda` code in Html

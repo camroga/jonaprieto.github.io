@@ -2,7 +2,7 @@
 title: "Function Type"
 layout: "post"
 date: "2018-02-10"
-categories: type-theor
+categories: type-theory
 agda: true
 
 ---
@@ -101,7 +101,7 @@ postulate
     → f ≡ g
 \end{code}
 
-Then, lets use this axiom in a complete example, proving that two defintions
+Then, let's use this axiom in a complete example, proving that two defintions
 of the add function are indeed equal. The example also includes a reference
 to a note presented later about
 [induction on natural numbers](https://jonaprieto.github.io/2018/02/14/induction-on-identity-types/):
@@ -193,15 +193,3 @@ Functional extensionality implies a form of extensionality for
 ∀-extensionality ext B₁ B₂ B₁≡B₂ with ext B₁≡B₂
 ∀-extensionality ext B .B  B₁≡B₂ | refl = refl
 \end{code}
-
------------------------------------------------------------------------------
-
-+ Homotopy Type Theory
-
-<div class="todo">
-Univalance implies function extensionality and the uniqueness principle for functions.
-</div>
-
-### References
-
-- {% reference hottbook %}
