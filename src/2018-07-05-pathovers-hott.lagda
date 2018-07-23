@@ -1722,7 +1722,7 @@ module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
 open Lemma₃ public
 \end{code}
 
-### Second proof of Theorem 1
+### Another proof for Theorem 1
 
 Using the above lemma, we can get another proof for the `Σ-≃-==[↓]` theorem.
 Let us recall the equivalence. Let be $$aᵢ : A$$, $$cᵢ : C~aᵢ$$, $$\alpha : a₁ == a₂$$,
