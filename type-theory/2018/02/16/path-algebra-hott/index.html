@@ -49,10 +49,8 @@
   <nav class="sidebar-nav">
     <a class="sidebar-nav-item" href="/">Home</a>
 
-    
-
-    
-    
+    <!--  -->
+    <!-- 
       
     
       
@@ -73,37 +71,26 @@
     
       
         
-          <a class="sidebar-nav-item" href="/HoTT-Timeline/">HoTT Timeline</a>
+          <a class="sidebar-nav-item" href="/hott-timeline-videos/">HoTT Videos Timeline</a>
         
       
     
       
         
-          <a class="sidebar-nav-item" href="/Interval-Analysis-Timeline/">Interval Analysis Timeline</a>
+          <a class="sidebar-nav-item" href="/references/">List of references</a>
         
       
     
       
         
-          <a class="sidebar-nav-item" href="/test/">Plugin Test</a>
+          <a class="sidebar-nav-item" href="/plans/">Plans</a>
         
       
-    
-      
-        
-          <a class="sidebar-nav-item" href="/categories/">Post by category</a>
-        
-      
-    
-      
-        
-          <a class="sidebar-nav-item" href="/references/">References</a>
-        
-      
-    
+     -->
 
-    <!-- <a class="sidebar-nav-item" href="/archive/v0.0.1.zip">Download</a> -->
-    <!-- <a class="sidebar-nav-item" href="">GitHub project</a> -->
+    <a class="sidebar-nav-item" href="/About/">About</a>
+    <a class="sidebar-nav-item" href="/plans/">Plans</a>
+    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">This on GitHub</a>
     <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
   </nav>
 </div>
@@ -131,20 +118,26 @@
 
 <div class="post">
   
-  <div class="post-changes">
-    <div class="main-heading">
-      <div class="main-title"> Latest change <span class="post-modifications">(<span class="additions">+161</span>/<span class="substractions">-0</span>)</span>:
-          <span class="commit-message"> <a href=""> fixing mistakes with git, working in progress</a></span>
+  <div class="main-heading">
+    <div class="main-title">
+      <div class="main-title-prefix"> Latest change:</div>
+      <div class="main-commit-message">
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/53f560f86fa1206b3ba6446725e9c7ef4554b6a1/src/2018-02-16-path-algebra-hott.lagda">
+              many fixes of cosmetics mostly</a>
       </div>
-    <div class="main-last-date">
-        Latest commit
-        <a href=>b7b0867 </a> on  16 Jul 2018
     </div>
+
+    <div class="main-last-date">
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/53f560f86fa1206b3ba6446725e9c7ef4554b6a1/src/2018-02-16-path-algebra-hott.lagda">554b6a1 </a> on  23 Jul 2018
     </div>
   </div>
   
-  <h1 class="post-title">Path Algebra in HoTT <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/b7b086742f2980911e87f65d2d7e617c48a5c5f9/src/2018-02-16-path-algebra-hott.lagda" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/b7b086742f2980911e87f65d2d7e617c48a5c5f9/src/2018-02-16-path-algebra-hott.lagda" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-02-16-path-algebra-hott.lagda" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/b7b086742f2980911e87f65d2d7e617c48a5c5f9/src/2018-02-16-path-algebra-hott.lagda" target="_blank"> History</a></small></h1>
+  <h1 class="post-title">Path Algebra in HoTT
 
+    <div class="github-links">
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/53f560f86fa1206b3ba6446725e9c7ef4554b6a1/src/2018-02-16-path-algebra-hott.lagda" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/53f560f86fa1206b3ba6446725e9c7ef4554b6a1/src/2018-02-16-path-algebra-hott.lagda" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-02-16-path-algebra-hott.lagda" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/53f560f86fa1206b3ba6446725e9c7ef4554b6a1/src/2018-02-16-path-algebra-hott.lagda" target="_blank"> History</a></small>
+    </div>
+  </h1>
   
   <p>In Univalence we have a different interpretation of type theory. We replace the
 set-theoretical notion of sets for types and we use the <em>topological space</em>
@@ -299,16 +292,10 @@ in the Agda standard library, we found <code>subst</code> that follows from the 
       <a id="4907" class="Symbol">→</a> <a id="4909" class="Symbol">(</a><a id="4910" href="/type-theory/2018/02/16/path-algebra-hott/#4910" class="Bound">B</a> <a id="4912" class="Symbol">:</a> <a id="4914" href="/type-theory/2018/02/16/path-algebra-hott/#4882" class="Bound">A</a> <a id="4916" class="Symbol">→</a> <a id="4918" class="PrimitiveType">Set</a><a id="4921" class="Symbol">)</a> <a id="4923" class="Symbol">→</a> <a id="4925" class="Symbol">(</a><a id="4926" href="/type-theory/2018/02/16/path-algebra-hott/#4926" class="Bound">y</a> <a id="4928" class="Symbol">:</a> <a id="4930" href="/type-theory/2018/02/16/path-algebra-hott/#4910" class="Bound">B</a> <a id="4932" href="/type-theory/2018/02/16/path-algebra-hott/#4891" class="Bound">x</a><a id="4933" class="Symbol">)</a> <a id="4935" class="Symbol">→</a> <a id="4937" class="Symbol">(</a><a id="4938" href="/type-theory/2018/02/16/path-algebra-hott/#4938" class="Bound">u</a> <a id="4940" class="Symbol">:</a> <a id="4942" href="/type-theory/2018/02/16/path-algebra-hott/#4891" class="Bound">x</a> <a id="4944" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4946" href="/type-theory/2018/02/16/path-algebra-hott/#4893" class="Bound">x&#39;</a><a id="4948" class="Symbol">)</a> <a id="4950" class="Symbol">→</a> <a id="4952" href="/type-theory/2018/02/16/path-algebra-hott/#4910" class="Bound">B</a> <a id="4954" href="/type-theory/2018/02/16/path-algebra-hott/#4893" class="Bound">x&#39;</a>
 <a id="4957" href="/type-theory/2018/02/16/path-algebra-hott/#4870" class="Function">trans&#39;</a> <a id="4964" href="/type-theory/2018/02/16/path-algebra-hott/#4964" class="Bound">B</a> <a id="4966" href="/type-theory/2018/02/16/path-algebra-hott/#4966" class="Bound">y</a> <a id="4968" href="/type-theory/2018/02/16/path-algebra-hott/#4968" class="Bound">u</a> <a id="4970" class="Symbol">=</a> <a id="4972" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.Core.html#700" class="Function">subst</a> <a id="4978" href="/type-theory/2018/02/16/path-algebra-hott/#4964" class="Bound">B</a> <a id="4980" href="/type-theory/2018/02/16/path-algebra-hott/#4968" class="Bound">u</a> <a id="4982" href="/type-theory/2018/02/16/path-algebra-hott/#4966" class="Bound">y</a></pre>
 
-<h3 id="references">References</h3>
-
-<div class="references">
-
-  <ul>
-    <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
-    <li><span id="agdateam">Team, T. A. D. (2015). Agda 2.4.2.3. Retrieved from http://wiki.portal.chalmers.se/agda/pmwiki.php</span></li>
-  </ul>
-
-</div>
+<ul class="references">
+  <li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li>
+  <li><span id="agdateam">Team, T. A. D. (2015). Agda 2.4.2.3. Retrieved from http://wiki.portal.chalmers.se/agda/pmwiki.php</span></li>
+</ul>
 
 
   <!-- <h2> References </h2> -->
@@ -323,38 +310,22 @@ in the Agda standard library, we found <code>subst</code> that follows from the 
   <h2>Related Posts</h2>
   <ul class="related-posts">
     
-      <li>
-        <h3>
-          <a href="/learning/2018/07/08/learning-interval-analysis-programs/">
-            Intervals
-            
-            <small>08 Jul 2018</small>
-            
-          </a>
-        </h3>
-      </li>
+      
     
-      <li>
-        <h3>
-          <a href="/thoughts/2018/07/05/unsorted/">
-            Unsorted
-            
-            <small>05 Jul 2018</small>
-            
-          </a>
-        </h3>
-      </li>
+      
     
-      <li>
-        <h3>
-          <a href="/type-theory/2018/07/05/pathovers-hott/">
-            PathOvers
-            
-            <small>05 Jul 2018</small>
-            
-          </a>
-        </h3>
-      </li>
+      
+        <li>
+          <h3>
+            <a href="/type-theory/2018/07/05/pathovers-hott/">
+              PathOvers
+              
+                <small>05 Jul 2018</small>
+              
+            </a>
+          </h3>
+        </li>
+      
     
   </ul>
 </div>

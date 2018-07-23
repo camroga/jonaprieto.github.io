@@ -98,38 +98,6 @@
 .Agda a[href]:hover {
   background-color: #B4EEB4; }
 
-/*
- *                        ___
- *                       /\_ \
- *  _____     ___     ___\//\ \      __
- * /\ '__`\  / __`\  / __`\ \ \   /'__`\
- * \ \ \_\ \/\ \_\ \/\ \_\ \_\ \_/\  __/
- *  \ \ ,__/\ \____/\ \____//\____\ \____\
- *   \ \ \/  \/___/  \/___/ \/____/\/____/
- *    \ \_\
- *     \/_/
- *
- * Designed, built, and released under MIT license by @mdo. Learn more at
- * https://github.com/poole/poole.
- */
-/*
- * Contents
- *
- * Body resets
- * Custom type
- * Messages
- * Container
- * Masthead
- * Posts and pages
- * Pagination
- * Reverse layout
- * Themes
- */
-/*
- * Body resets
- *
- * Update the foundational and global aspects of the page.
- */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -495,37 +463,6 @@ a.pagination-item:hover {
     margin-left: -1px;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px; } }
-/*
- *  ___
- * /\_ \
- * \//\ \      __      ___   __  __    ___     ___
- *   \ \ \   /'__`\  /' _ `\/\ \/\ \  / __`\ /' _ `\
- *    \_\ \_/\ \_\.\_/\ \/\ \ \ \_\ \/\ \_\ \/\ \/\ \
- *    /\____\ \__/.\_\ \_\ \_\/`____ \ \____/\ \_\ \_\
- *    \/____/\/__/\/_/\/_/\/_/`/___/> \/___/  \/_/\/_/
- *                               /\___/
- *                               \/__/
- *
- * Designed, built, and released under MIT license by @mdo. Learn more at
- * https://github.com/poole/lanyon.
- */
-/*
- * Contents
- *
- * Global resets
- * Masthead
- * Sidebar
- * Slide effect
- * Posts and pages
- * Pagination
- * Reverse layout
- * Themes
- */
-/*
- * Global resets
- *
- * Update the foundational and global aspects of the page.
- */
 /* Prevent scroll on narrow devices */
 html,
 body {
@@ -542,12 +479,21 @@ h1, h2, h3, h4, h5, h6 {
 
 .view-source {
   float: right;
-  font-size: small; }
+  font-size: small;
+  color: #c3c3c3; }
   .view-source a {
     text-decoration: underline; }
 
+.github-links {
+  width: auto;
+  padding: 4px;
+  float: right;
+  margin: 15px 0px 0px 0px;
+  color: gray; }
+  .github-links a {
+    color: #c3c3c3; }
+
 .post-changes {
-  background: #fafafa;
   padding: 5px;
   margin-bottom: 30px;
   border-bottom: 1px solid #c2c2c2;
@@ -558,7 +504,12 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   line-height: 20px;
   font-size: 85%;
-  color: darker(#c2c2c2, 20%); }
+  color: darker(#c2c2c2, 20%);
+  background: aliceblue;
+  padding: 10px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  border-radius: 5px; }
   .main-heading a {
     color: darker(#c2c2c2, 20%); }
 
@@ -577,6 +528,7 @@ h1, h2, h3, h4, h5, h6 {
   display: table-cell;
   float: left;
   width: 350px;
+  height: 20px;
   overflow: hidden;
   text-overflow: ellipsis; }
 
@@ -1066,11 +1018,12 @@ a.sidebar-nav-item:focus {
 .page-title,
 .post-title,
 .post-title a {
-  color: #303030; }
+  text-decoration: none; }
 
 .page-title,
 .post-title {
-  margin-top: 0; }
+  margin-top: 0;
+  border-bottom: 1px solid #c3c3c3; }
 
 /* Meta data line below post title */
 .post-date {
@@ -1539,7 +1492,6 @@ a.pagination-item:hover {
   background: aliceblue;
   float: right;
   position: fixed;
-  width: 300px;
   top: 5px;
   right: 9px;
   margin: 0 auto;
