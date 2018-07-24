@@ -10,10 +10,11 @@ agda: true
 *This is a work in progress jointly with Marc Bezem.*
 
 There are at least two notions about equality between terms, homogeneous and
-heterogeneous equality. The former is the Identity type, equality between terms
-of the same type whereas the latter stands for equalities of terms not necessary
-of the same type. In this article, we are interested to explore the Pathover
-type and its geometric interpretation that comes from the heterogeneous equality.
+heterogeneous equality. The former is the Identity type for equalities between
+terms of the same type whereas the latter stands for equalities of terms not
+necessary of the same type. In this article, we are interested to explore the
+Pathover type and its geometric interpretation that comes from the heterogeneous
+equality.
 
 The type of Pathover which is often denoted by `PathOver` can be defined in at least
 five different ways, all equivalent as we show later in this document
@@ -33,46 +34,21 @@ The term of a *pathover* was formally defined in {% cite Licata2015%} and also
 briefly mentioned in Section 2.3 in {% cite hottbook %} as a path in the total
 space of `C` which "lies over" `α`.
 
-We are interested to prove the geometry intuition about these pathovers, which
-is, there is a path `q : (a₁, c₁) = (a₂, c₂)` which projects down onto `α : a₁ =
-a₂` as it follows from the figure showed above. `Σ A C` is the total space and
-"projecting down" means `ap fst q = α` where `fst : Σ A C → A`.
+We are interested to prove the geometry intuition about these pathovers in which
+the path `q : (a₁, c₁) = (a₂, c₂)` is projected down onto `α : a₁ = a₂` as it
+follows from the figure showed above. `Σ A C` is the total space and "projecting
+down" means `ap fst q = α` where `fst : Σ A C → A`.
 
 We formalize such a correspondence by showing the equivalence in two different
-ways. We also show some results about Σ-types that we believe can be useful for
-other related problems as well.
-
-
-{% comment %}
-% -- TODO
-% We want to formalise in HoTT the intuition behind a correspondance between the
-% concept of *path-over* and its respective *total space*.
-
-% -- TODO
-% The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
-% them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
-
-% --TODO
-% The geometry intuition has been formalised by {% cite Licata2015 %}
-% in five different ways as follows.
-
-% - That the pathover has its own (certain paths in the total space). --TODO
-{% endcomment %}
-
-{% comment %}
-% -- TODO
-% (in words) about the transport and the notation in the book
-% which is shorthand for ... using transport function for the definition.
-{% endcomment %}
-
-{% comment %}
-![path](/assets/ipe-images/pathovers-total-space.png)
-{% endcomment %}
+ways. We also show some results about Σ-types that makes the second proof a
+little shorted and readable and that we believe they are useful in other
+contexts.
 
 The correctness of this development has been type-checked by Agda v2.5.4. In the
 following, we set up Agda to avoid using Axiom K to type-check, we do this by
 using the pragma `--without-K`, that makes Agda compatible with homotopy type
-theory. We also define a convenient synonym for types, `Type` instead of `Set`.
+theory. We also define a synonym for our types, `Type` instead of `Set` for
+convenience.
 
 \begin{code}
 
@@ -83,6 +59,9 @@ open import Agda.Primitive using ( Level ; lsuc; _⊔_ )
 Type : (ℓ : Level) → Set (lsuc ℓ)
 Type ℓ = Set ℓ
 \end{code}
+
+In order to show the equivalent types for pathovers, let us define in Agda the
+homogeneous equality type and the heterogeneous as well.
 
 ## Homogeneous equality
 
