@@ -1,30 +1,63 @@
 ---
 layout: "post"
-title: "PathOvers"
+title: "Pathovers"
 date: "2018-07-05"
 categories: type-theory
 toc: true
 agda: true
 ---
 
-This is a work in progress jointly with Marc Bezem.
+*This is a work in progress jointly with Marc Bezem.*
 
+There are at least two notions about equality between terms, homogeneous and
+heterogeneous equality. The former is the Identity type, equality between terms
+of the same type whereas the latter stands for equalities of terms not necessary
+of the same type. In this article, we are interested to explore the Pathover
+type and its geometric interpretation that comes from the heterogeneous equality.
 
+Pathover is a type often denoted by `PathOver` and it can be defined in at least
+five different ways all equivalent as we show later (See also {% cite Licata2015%}).
 
+Using the notation the same in {% cite hottbook %}, let be `A : Type`, `a₁, a₂ :
+A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`. One of the definitions for the
+Pathover is as the shorthand for the path between the transport along a path `α
+: a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C a₂`. That
+is, a pathover is a term that inhabitants the type `transport C α c₁ = c₂` also
+denoted by `PathOver C α c₁ c₂`.
+
+![path](/assets/ipe-images/pathovers-total-space-pathover.png)
+*Figure 1. Geometric intuition of Pathovers.*
+
+The term of a *pathover* was formally defined in {% cite Licata2015%} and also
+briefly mentioned in Section 2.3 in {% cite hottbook %} as a path in the total
+space of C which *lies over* α.
+
+We are interested to prove the geometry intuition about these pathovers, which
+is, there is a path `q : (a₁, c₁) = (a₂, c₂)` which projects down onto `α : a₁ =
+a₂` as it follows from the figure showed above. `Σ A C` is the total space and
+"projecting down" means `ap fst q = α` where `fst : Σ A C → A`.
+
+We formalize such a correspondence by showing the equivalence in two different
+ways. We also show some results about Σ-types that we believe can be useful for
+other related problems as well.
+
+The correctness of this development has been type-checked by Agda v2.5.4.
 
 {% comment %}
 % -- TODO
 % We want to formalise in HoTT the intuition behind a correspondance between the
 % concept of *path-over* and its respective *total space*.
 
+% -- TODO
+% The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
+% them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
 
+% --TODO
+% The geometry intuition has been formalised by {% cite Licata2015 %}
+% in five different ways as follows.
 
 % - That the pathover has its own (certain paths in the total space). --TODO
 {% endcomment %}
-
-The term *pathover* is briefly mentioned in {% cite hottbook %} and also defined
-in {% cite Licata2015%}. The concept is also extensivily used
-in {%cite hott-in:agda %}.
 
 {% comment %}
 % -- TODO
@@ -36,17 +69,32 @@ in {%cite hott-in:agda %}.
 ![path](/assets/ipe-images/pathovers-total-space.png)
 {% endcomment %}
 
-Let's review first an equality type that is closely related with these pathovers.
-(See also {% cite Licata2015 %} for some extra comments).
+In order to show the equivalent types for pathovers, let us define in Agda the
+homogeneous equality type and the heterogeneous as well.
 
-{: .foldable}
+{% comment %}
+> While we have motivated PathOver as a factored heterogeneous equality, there
+> is also a geometric intuition. **Dependent types correspond to fibrations**, so a
+> type `C : A → Type` can be pictured as its total space `∑ a:A . C a` projecting
+> down to `A` by first projection.
+
+> A **path-over** `γ : PathOver C α c­₁ c₂` represents a path σ in `∑ a:A . C a`
+> a between `(a₁, c₁)` and `(a₂,c₂)`, such that ap fst σ is exactly `α`. That
+> is, it is a path in the total space that projects down to, or lies over, `α`
+> (path pairing `pair= α γ` will be made precise below).
+{% endcomment %}
+
+
+The following in Agda in because of in order to work in homotopy type theory, we
+must remove the use of Axiom K from the type-checking. That is, using the
+following pragma `--without-K`. We also define a convenient synonym for types,
+`Type` instead of `Set`.
+
 \begin{code}
-
---  The following Agda code was type-checked with v2.5.4
 
 {-# OPTIONS --without-K #-}
 
-open import Agda.Primitive public
+open import Agda.Primitive using ( Level ; lsuc; _⊔_ )
 
 Type : (ℓ : Level) → Set (lsuc ℓ)
 Type ℓ = Set ℓ
@@ -54,12 +102,12 @@ Type ℓ = Set ℓ
 
 ## Homogeneous equality
 
-The *homogeneous equality* is a type $$\mathsf{Path}$$ that relates two elements
-$$a₀$$ and $$a₁$$ whose types are *definitionally/judgementally* equal. We
-denote this type as $$\mathsf{Path}~a₀~a₁$$. In the following Agda code, we will find
-curly braces that they stand for *implicit arguments*. The type of $$a₀$$ and
-$$a₁$$, which is $$A$$ is implicit in the following definition of type
-$$\mathsf{Path}$$ also denoted by `_==_` for convenience.
+The *homogeneous equality* is a type `Path` that relates two elements
+`a₀` and `a₁` whose types are *definitionally/judgmentally* equal. We
+denote this type as `Path a₀ a₁`. In the following Agda code, we will find
+curly braces that they stand for *implicit arguments*. The type of `a₀` and
+`a₁`, which is `A` is implicit in the following definition of type
+`Path` also denoted by `_==_` for convenience.
 
 \begin{code}
 infix 30 _==_
@@ -963,7 +1011,7 @@ module hott where
 open hott public
 \end{code}
 
-### Alternative definitions
+### Other definitions
 
 Let be `α : A == B`, `a : A`, and `b : B` then the following types are equivalent
 to the previous type `HEq₁`.
@@ -1117,15 +1165,6 @@ HEq = HEq₁
 
 Given a type family $$C: A → \mathsf{Type}$$ and a path $$α : a₁ = a₂$$, a *pathover* is
 a path connecting $$c₁ : C a₁$$ with $$c₂ : C a₂$$ lying over $$α$$. types.
-
-% -- TODO
-% The geometry intuition is a path (x,u)= (y,v) which projects down on to p0
-% them ΣAC is the total space and "projecting down" means ap proj q = p with proj : ΣAC
-
-% --TODO
-% The geometry intuition has been formalised by {% cite Licata2015 %}
-% in five different ways as follows.
-
 % --TODO The PathOver is the dependent version of a *path*, what it means that the path
 % is between two endpoints from maybe different types. This is of course what we
 % saw in the definition of the heterogeneous equality. The difference is that
@@ -1359,7 +1398,7 @@ the subindex in the following definition for the variable `PathOver`.
 PathOver = PathOver₃
 \end{code}
 
-The following is sintax sugar for pathovers used in HoTT-Agda library.
+The following is syntax sugar for pathovers used in HoTT-Agda library.
 
 \begin{code}
 infix 30 PathOver
@@ -1367,18 +1406,6 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 \end{code}
 
 {% comment %}
-> While we have motivated PathOver as a factored heterogeneous equality, there
-> is also a geometric intuition. **Dependent types correspond to fibrations**, so a
-> type `C : A → Type` can be pictured as its total space `∑ a:A . C` a projecting
-> down to `A` by first projection.
-
-> A **path-over** `γ : PathOver C α c­₁ c₂` represents a path σ in `∑ a:A . C` a
-> a between `(a₁, c₁)` and `(a₂,c₂)`, such that ap fst σ is exactly `α`. That
-> is, it is a path in the total space that projects down to, or lies over, `α`
-> (path pairing `pair= α γ` will be made precise below).
-{% endcomment %}
-{% comment %}
-
 ## Other facts
 
 We can build a dependent path by applying a dependent function to a homogeneous
@@ -1393,8 +1420,6 @@ apdo f idp = idp
 {% endcomment %}
 
 ## Total spaces
-
-In this section, we
 
 ### Theorem 1
 
@@ -1452,14 +1477,16 @@ the respective homotopies, `Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id` and
   ==[↓]-to-Σ {idp} idp = (idp , idp)
 \end{code}
 
-We could also have defined the above function by using the `pair=` function
+*Remark.* We could also have defined the above function by using the `pair=` function
 which is the right-left direction in Theorem 2.7.2 in {% cite hottbook %} and
-the function `ap-fst-pair=` that maps the path in the base space `α` and the
-pathover `γ` to a term of type `ap fst (pair= (α , γ)) == α`. However, we do not
-get any benefit as far as we know of the latter definition against the former
-and we prefer the former which is simpler and elegant.
+the function `ap-fst-pair=` that maps a path `α` in the base space and the
+pathover `γ` to a term `m` of type `ap fst (pair= (α , γ)) == α`.
+That is, `==[↓]-to-Σ α γ = (pair= α γ, m)`.
 
-Now, let us prove the respective homotopies:
+However, we do not get any benefit as far as we know of the latter definition
+against the former definition and therefore, we have preferred the former which
+is simpler, elegant and exploits the pattern matching of Agda as well as in the
+following homotopies.
 
 \begin{code}
 -- Homotopy: Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id
@@ -1494,7 +1521,7 @@ Since the function `Σ-to-==[↓]` is quasi-inverse by definition using `==[↓]
 
     Σ-≃-==[↓] =
       qinv-≃
-        Σ-to-==[↓]     -- the equivalence
+        Σ-to-==[↓]     -- the quasi-inverse
         ( ==[↓]-to-Σ   -- its inverse
         , H₁           -- homotopy: Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id
         , H₂           -- homotopy: ==[↓]-to-Σ ∘ Σ-to-==[↓] ∼ id
@@ -1523,7 +1550,7 @@ module Lemma₁ {ℓᵢ}{ℓⱼ}
 
     ishaef : ishae f
     ishaef = ≃-ishae e
-  --
+
     f⁻¹ : A → B
     f⁻¹ = ishae.g ishaef
 
