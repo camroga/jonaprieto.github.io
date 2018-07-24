@@ -15,15 +15,16 @@ of the same type whereas the latter stands for equalities of terms not necessary
 of the same type. In this article, we are interested to explore the Pathover
 type and its geometric interpretation that comes from the heterogeneous equality.
 
-Pathover is a type often denoted by `PathOver` and it can be defined in at least
-five different ways all equivalent as we show later (See also {% cite Licata2015%}).
+The type of Pathover which is often denoted by `PathOver` can be defined in at least
+five different ways, all equivalent as we show later in this document
+(See also {% cite Licata2015 %}).
 
-Using the notation the same in {% cite hottbook %}, let be `A : Type`, `a₁, a₂ :
-A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`. One of the definitions for the
-Pathover is as the shorthand for the path between the transport along a path `α
-: a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C a₂`. That
-is, a pathover is a term that inhabitants the type `transport C α c₁ = c₂` also
-denoted by `PathOver C α c₁ c₂`.
+Now, let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C
+a₂`. Using the same notation from {% cite hottbook %}, one of the definitions
+for the Pathover type is as the shorthand for the path between the transport
+along a path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
+fiber `C a₂`. That is, a pathover is a term that inhabitants the type `transport
+C α c₁ = c₂` also denoted by `PathOver C α c₁ c₂`.
 
 ![path](/assets/ipe-images/pathovers-total-space-pathover.png)
 *Figure 1. Geometric intuition of Pathovers.*
