@@ -31,7 +31,7 @@ C α c₁ = c₂` also denoted by `PathOver C α c₁ c₂`.
 
 The term of a *pathover* was formally defined in {% cite Licata2015%} and also
 briefly mentioned in Section 2.3 in {% cite hottbook %} as a path in the total
-space of C which *lies over* α.
+space of `C` which "lies over" `α`.
 
 We are interested to prove the geometry intuition about these pathovers, which
 is, there is a path `q : (a₁, c₁) = (a₂, c₂)` which projects down onto `α : a₁ =
@@ -42,7 +42,6 @@ We formalize such a correspondence by showing the equivalence in two different
 ways. We also show some results about Σ-types that we believe can be useful for
 other related problems as well.
 
-The correctness of this development has been type-checked by Agda v2.5.4.
 
 {% comment %}
 % -- TODO
@@ -70,26 +69,10 @@ The correctness of this development has been type-checked by Agda v2.5.4.
 ![path](/assets/ipe-images/pathovers-total-space.png)
 {% endcomment %}
 
-In order to show the equivalent types for pathovers, let us define in Agda the
-homogeneous equality type and the heterogeneous as well.
-
-{% comment %}
-> While we have motivated PathOver as a factored heterogeneous equality, there
-> is also a geometric intuition. **Dependent types correspond to fibrations**, so a
-> type `C : A → Type` can be pictured as its total space `∑ a:A . C a` projecting
-> down to `A` by first projection.
-
-> A **path-over** `γ : PathOver C α c­₁ c₂` represents a path σ in `∑ a:A . C a`
-> a between `(a₁, c₁)` and `(a₂,c₂)`, such that ap fst σ is exactly `α`. That
-> is, it is a path in the total space that projects down to, or lies over, `α`
-> (path pairing `pair= α γ` will be made precise below).
-{% endcomment %}
-
-
-The following in Agda in because of in order to work in homotopy type theory, we
-must remove the use of Axiom K from the type-checking. That is, using the
-following pragma `--without-K`. We also define a convenient synonym for types,
-`Type` instead of `Set`.
+The correctness of this development has been type-checked by Agda v2.5.4. In the
+following, we set up Agda to avoid using Axiom K to type-check, we do this by
+using the pragma `--without-K`, that makes Agda compatible with homotopy type
+theory. We also define a convenient synonym for types, `Type` instead of `Set`.
 
 \begin{code}
 
