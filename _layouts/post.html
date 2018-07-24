@@ -31,7 +31,6 @@ comments: true
   No git information available
   {% endif %}
   <h1 class="post-title">{{ page.title }}
-
     <div class="github-links">
       <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a> | <a href="{{viewsource}}" target="_blank">View source </a> | <a href="{{editsource}}" target="_blank"> Edit </a> | <a href="{{history}}" target="_blank"> History</a></small>
     </div>
@@ -46,11 +45,9 @@ comments: true
   {% endif %}
   {{ content }}
 
-  <!-- <h2> References </h2> -->
   <div class="cited-references" markdown="1">
   {% bibliography --cited %}
   </div>
-  <!-- </ -->
 
 </div>
 

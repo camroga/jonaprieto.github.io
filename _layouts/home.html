@@ -29,7 +29,7 @@ layout: default
 
 </div>
 <br/>
-{% if jekyll.environment == "development" %}
+<!-- {% if jekyll.environment == "development" %}
 <div id="archives">
 {% for category in site.categories %}
 {% capture category_name %}{{ category | first }}{% endcapture %}
@@ -64,11 +64,11 @@ layout: default
 
 {% endfor %}
 </div>
-{% endif %}
+{% endif %} -->
 
 <div> <a href="http://github.com/jonaprieto/" style="color:#515151" target="_blank">🐞 Repositories</a></div>
 <div> <a href="{{ site.baseurl }}/references" style="color:#515151">🐞 References</a></div>
-<div class="written-by">  Written by <a href="{{ site.baseurl }}{% link about.md %}">Jonathan Prieto-Cubides</a> </div>
+<div class="written-by"> Written by <a href="{{ site.baseurl }}{% link about.md %}">Jonathan Prieto-Cubides</a> </div>
 
 
 {% include algolia-home.html %}

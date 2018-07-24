@@ -9,10 +9,15 @@ agda: true
 
 This is a work in progress jointly with Marc Bezem.
 
+
+
+
 {% comment %}
 % -- TODO
 % We want to formalise in HoTT the intuition behind a correspondance between the
 % concept of *path-over* and its respective *total space*.
+
+
 
 % - That the pathover has its own (certain paths in the total space). --TODO
 {% endcomment %}
@@ -27,7 +32,9 @@ in {%cite hott-in:agda %}.
 % which is shorthand for ... using transport function for the definition.
 {% endcomment %}
 
+{% comment %}
 ![path](/assets/ipe-images/pathovers-total-space.png)
+{% endcomment %}
 
 Let's review first an equality type that is closely related with these pathovers.
 (See also {% cite Licata2015 %} for some extra comments).
@@ -49,7 +56,7 @@ Type ℓ = Set ℓ
 
 The *homogeneous equality* is a type $$\mathsf{Path}$$ that relates two elements
 $$a₀$$ and $$a₁$$ whose types are *definitionally/judgementally* equal. We
-denote this type as $$\mathsf{Path}~a₀~a₁$$. In the Agda code, we will find
+denote this type as $$\mathsf{Path}~a₀~a₁$$. In the following Agda code, we will find
 curly braces that they stand for *implicit arguments*. The type of $$a₀$$ and
 $$a₁$$, which is $$A$$ is implicit in the following definition of type
 $$\mathsf{Path}$$ also denoted by `_==_` for convenience.
@@ -70,9 +77,9 @@ This kind of equality can be formalised as follows in Agda:
 
 \begin{code}
 data HEq₁ {ℓ} (A : Type ℓ)
-       : (B : Type ℓ)
-       → (α : A == B) (a : A) (b : B)
-       → Type ℓ where
+            : (B : Type ℓ)
+            → (α : A == B) (a : A) (b : B)
+            → Type ℓ where
   idp : ∀ {a : A} → HEq₁ A A idp a a
 \end{code}
 
@@ -82,11 +89,9 @@ data HEq₁ {ℓ} (A : Type ℓ)
 > distinct types, though the reflexivity constructor applies only when both the
 > two types and the two terms are judgementally equal.
 
-
 > However, McBride’s heterogeneous equality is **logically equivalent** to a
 > homogeneous equality type *satisfying uniqueness of identity proofs*, which
 > is undesirable **in homotopy type theory, because not all types should be sets**.
-{% endcomment %}
 
 We adopt the same name `idp` for the reflexivity constructor of the
 $$\mathsf{Path}$$ type for the heterogeneous equality. This name is convenient
@@ -94,8 +99,9 @@ because we want to maintain some consistency in the following proofs. We will
 switch between different definitions of heterogeneous equality but also between
 definitions for the homogeneous equality.
 
-Let us recall the transport function and the coercion function  along a
+Let us now define in Agda the transport and the coercion functions along a
 homogeneous equality.
+{% endcomment %}
 
 \begin{code}
 transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (P : A → Type ℓⱼ) {a b : A}
@@ -114,18 +120,16 @@ coe A==B A = transport (λ X → X) A==B A
 
 {: .foldable}
 \begin{code}
---- Somme HoTT machinery necessary for the following sections.
---- This includes homotopies, equivalences, among other concepts.
+--- Basic HoTT types, functions and theorems.
+
 module hott where
 
-  -- Modified version of https://mroman42.github.io/ctlc/agda-hott/Total.html
-
   infixr 60 _,_
-  record Σ {ℓᵢ ℓⱼ} (S : Type ℓᵢ)(T : S → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
+  record Σ {ℓᵢ ℓⱼ} (A : Type ℓᵢ)(C : A → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
     constructor _,_
     field
-      fst : S
-      snd : T fst
+      fst : A
+      snd : C fst
   open Σ public
 
   Π : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (P : A → Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
@@ -503,8 +507,8 @@ module hott where
     uppt (a , b) = idp
 
     Σ-ap-fst : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
-      → (α : a₁ == a₂ ) → (β : transport P α b₁ == b₂)
-      → ap fst (pair= (α , β)) == α
+      → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
+      → ap fst (pair= (α , γ)) == α
     Σ-ap-fst idp idp = idp
     ap-fst-pair= = Σ-ap-fst
 
@@ -959,7 +963,7 @@ module hott where
 open hott public
 \end{code}
 
-### Alternative Definitions
+### Alternative definitions
 
 Let be `α : A == B`, `a : A`, and `b : B` then the following types are equivalent
 to the previous type `HEq₁`.
@@ -1103,8 +1107,6 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₁-~-HEq₄ idp = idp
 \end{code}
 
-For the follwing discussion, we use heterogeneous using the first definition.
-
 \begin{code}
 HEq = HEq₁
 \end{code}
@@ -1175,9 +1177,11 @@ PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁
 PathOver₅ C idp c₁ c₂ = c₁ == c₂
 \end{code}
 
+{% comment %}
 Notice that above when we used `transport C α c₁`, we could also have used `coe
 (ap C α)`, we mention this because in HoTT-Agda library, `transport` is defined
 using `coe`.
+{% endcomment %}
 
 ### Equivalences
 
@@ -1373,107 +1377,11 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 > is, it is a path in the total space that projects down to, or lies over, `α`
 > (path pairing `pair= α γ` will be made precise below).
 {% endcomment %}
-
-## Total spaces
-
-We want to prove the following lemma:
-
-### Theorem 1
-
-Let be $$A : \mathsf{Type}$$ and $$C : A → \mathsf{Type}$$ with two terms
-$$a₁~a₂ : A$$ and a path between them $$\alpha : a₁ == a₂$$. If  $$c₁ : C a,~c₂ : C
-a₂$$ then there is an correspondence between a term in the total space and the
-pathover between $$c₁$$ and $$c₁$$ along the path $$α$$.
-
-{: .equation}
-  $$
-   \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
-    \simeq \mathsf{PathOver}~C~α~c₁~c₂.
-  $$
-
-
-
-To show such a equivalence, we proceed defining the functions back and forth,
-the two homotopies associated to these functions with the identity and finally,
-we prove the equivalence using the quasiinverse version for the equivalence
-type.
-
-![path](/assets/ipe-images/pathovers-total-space-pathover.png)
-
-- Let us define the function `Σ-to-==[↓]` that maps a term of the sigma type to
-  a pathover. This construction is using Σ-induction followed by two
-  path-induction on the identity types from the components.
-
-\begin{code}
-module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
-\end{code}
-
-\begin{code}
--- Def.
-  Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
-    → c₁ == c₂ [ C ↓  α ]
-  Σ-to-==[↓] (idp , idp) = idp
-
-\end{code}
-
-- The inverse function to the previous one is `==[↓]-to-Σ`, which sends
-  pathovers to a dependent pair as it follows. Its construction is by using
-  path-induction on `α` in the base space, follows by path-induction on `γ`. The
-  goal after this becomes in a pair of two reflexivity proofs `(a₁ , c₁) == (a₁
-  , c₁)` and `(a₁ == a₁) == (a₁ == a₁)`.
-
-\begin{code}
--- Def.
-  ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-    → (γ : c₁ == c₂ [ C ↓ α ])
-    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
-  ==[↓]-to-Σ {idp} idp = (idp , idp)
-
-  -- -- The more explict version of the reflexivity paths:
-  -- ==[↓]-to-Σ {idp}{c₁}{c₂} idp = (idp {a = (a₁ , c₁)}, idp {a = idp {a = a₁}})
-
-  -- -- Alternative way to construct this function:
-  -- ==[↓]-to-Σ {α = α} γ = (pair= α γ , ap-fst-pair= α γ)
-\end{code}
-
-The respective homotopies
-
-\begin{code}
--- Homotopies
-  Σ-to-==[↓]∘==[↓]-to-Σ∼id
-    : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-    → (γ : c₁ == c₂ [ C ↓ α ])
-    → Σ-to-==[↓] {α = α} (==[↓]-to-Σ γ) == γ
-  Σ-to-==[↓]∘==[↓]-to-Σ∼id {α = idp} idp = idp
-
-  ==[↓]-to-Σ∘Σ-to-==[↓]∼id
-    : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-    → (pair : Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
-    → ==[↓]-to-Σ (Σ-to-==[↓] pair) == pair
-  ==[↓]-to-Σ∘Σ-to-==[↓]∼id (idp , idp) = idp
-\end{code}
-
-Finally, we show the equivalence using the fact above proved.
-
-\begin{code}
-  private
-    -- Equivalence
-    Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-      → (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
-      ≃ (c₁ == c₂ [ C ↓ α ])
-
-    Σ-≃-==[↓] =
-      qinv-≃
-        Σ-to-==[↓]    -- equivalence
-        ((==[↓]-to-Σ  -- inverse
-        , (Σ-to-==[↓]∘==[↓]-to-Σ∼id , ==[↓]-to-Σ∘Σ-to-==[↓]∼id)))
-\end{code}
-
 {% comment %}
+
 ## Other facts
 
-We can build a dependent path by applying a depedent function to a homogeneous
+We can build a dependent path by applying a dependent function to a homogeneous
 path.
 
 \begin{code}
@@ -1483,6 +1391,119 @@ apdo f idp = idp
 \end{code}
 
 {% endcomment %}
+
+## Total spaces
+
+In this section, we
+
+### Theorem 1
+
+Let be `A : Type`, a path `α : a₁ == a₂` of two terms `a₁, a₂ : A` and a
+type family `C : A → Type`. If `c₁ : C a₁` and `c₂ : C a₂` then
+the type of the pathover between `c₁`
+and `c₁` along the path `α` is equivalent to its total space which is
+the sigma type of `(a₁ , c₁) == (a₂ , c₂)` and `ap fst q == α`, that is the
+following equivalence,
+
+{: .equation}
+  $$
+   \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
+    \simeq \mathsf{PathOver}~C~α~c₁~c₂.
+  $$
+
+**Proof.**
+
+\begin{code}
+module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
+\end{code}
+
+We prove this equivalence by the quasiinverse function `Σ-to-==[↓]`.
+Therefore, we define its inverse, the function `==[↓]-to-Σ` and we show
+the respective homotopies, `Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id` and
+`==[↓]-to-Σ ∘ Σ-to-==[↓] ~ id`.
+
+![path](/assets/ipe-images/pathovers-total-space-pathover.png)
+
+- The function `Σ-to-==[↓]` maps a term of the sigma type in the equation above
+  to the pathover `c₁ == c₂ [ C ↓  α ]`. In its construction, we use Σ-induction
+  followed by two path-induction on each of the its sigma components. As result, we
+  left to just provide a term of the identity type `c₁ == c₂` which is `idp`.
+
+
+\begin{code}
+-- Def.
+  Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+    → c₁ == c₂ [ C ↓  α ]
+  Σ-to-==[↓] (idp , idp) = idp
+\end{code}
+
+- The respective inverse function is `==[↓]-to-Σ`, which maps terms of the
+  pathover `c₁ == c₂ [ C ↓  α ]` to pairs in `Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q →
+  (ap fst q) == α)`. In its construction, we use path-induction on the path `α`
+  in the base space follows by the induction on the pathover `γ`. As result, we
+  define this function as a pair of reflexivity proofs.
+
+\begin{code}
+-- Def.
+  ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+    → (γ : c₁ == c₂ [ C ↓ α ])
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+  ==[↓]-to-Σ {idp} idp = (idp , idp)
+\end{code}
+
+We could also have defined the above function by using the `pair=` function
+which is the right-left direction in Theorem 2.7.2 in {% cite hottbook %} and
+the function `ap-fst-pair=` that maps the path in the base space `α` and the
+pathover `γ` to a term of type `ap fst (pair= (α , γ)) == α`. However, we do not
+get any benefit as far as we know of the latter definition against the former
+and we prefer the former which is simpler and elegant.
+
+Now, let us prove the respective homotopies:
+
+\begin{code}
+-- Homotopy: Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id
+  private
+    H₁ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+       → (γ : c₁ == c₂ [ C ↓ α ])
+       → Σ-to-==[↓] {α = α} (==[↓]-to-Σ γ) == γ
+    H₁ {α = idp} idp = idp
+\end{code}
+
+\begin{code}
+-- Homotopy: ==[↓]-to-Σ ∘ Σ-to-==[↓] ∼ id
+  private
+    H₂ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
+       → (pair : Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+       → ==[↓]-to-Σ (Σ-to-==[↓] pair) == pair
+    H₂ (idp , idp) = idp
+\end{code}
+
+Our remaining step now is to show the respective equivalence. To show that, we
+have used the function `qinv-≃` that provides us a way to convert a
+quasi-inverse function into the equivalence between its domain and codomain.
+Since the function `Σ-to-==[↓]` is quasi-inverse by definition using `==[↓]-to-Σ`,
+`H₁` and `H₂` hence the equivalence follows.
+
+\begin{code}
+-- Equivalence
+  private
+    Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂} →
+      (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+       ≃ (c₁ == c₂ [ C ↓ α ])
+
+    Σ-≃-==[↓] =
+      qinv-≃
+        Σ-to-==[↓]     -- the equivalence
+        ( ==[↓]-to-Σ   -- its inverse
+        , H₁           -- homotopy: Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id
+        , H₂           -- homotopy: ==[↓]-to-Σ ∘ Σ-to-==[↓] ∼ id
+        )
+\end{code}
+
+In the remaining of this section, we prove some useful results
+about sigma types that allow us to give a shorter proof of the
+equivalence proved above.
 
 ### Lemma 1
 
@@ -1573,7 +1594,7 @@ open Lemma₁ public
 {% comment %}
 Now, let us prove the same lemma using Univalence Axiom:
 
-{% highlighting %}
+```agda
 module Lemma₁UA {ℓᵢ}{ℓⱼ}
   {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A){C : A → Type ℓⱼ}
   where
@@ -1615,7 +1636,7 @@ module Lemma₁UA {ℓᵢ}{ℓⱼ}
         ==⟨ ap _ (transport-const _ C) ⟩
       Σ B (λ b → C (f b))
     ∎)
-{% endhighlighting %}
+```
 {% endcomment %}
 
 ### Lemma 2
@@ -1722,21 +1743,27 @@ module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
 open Lemma₃ public
 \end{code}
 
-### Another proof for Theorem 1
+### Extra proof
 
-Using the above lemma, we can get another proof for the `Σ-≃-==[↓]` theorem.
-Let us recall the equivalence. Let be $$aᵢ : A$$, $$cᵢ : C~aᵢ$$, $$\alpha : a₁ == a₂$$,
-
+Let us recall the equivalence.
 
 $$
  \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
   \simeq \mathsf{PathOver}~C~α~c₁~c₂.
 $$
 
+where $$aᵢ : A$$, $$cᵢ : C~aᵢ$$ and $$\alpha : a₁ = a₂$$.
+
 \begin{code}
 module _ {ℓ}{A : Type ℓ}{C : A → Type ℓ}
   {a₁ a₂ : A} (α : a₁ == a₂){c₁ : C a₁}{c₂ : C a₂} where
+\end{code}
 
+Using the previous lemmas, the following is an alternative proof
+of the theorem `Σ-≃-==[↓]`.
+
+\begin{code}
+-- Alternative proof of the theorem Σ-≃-==[↓].
   private
     Σ-≃-==[↓] :
       Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap fst q == α) ≃ PathOver C α c₁ c₂
@@ -1752,7 +1779,6 @@ module _ {ℓ}{A : Type ℓ}{C : A → Type ℓ}
           ≃⟨⟩
         PathOver C α c₁ c₂
       ≃∎
-
 \end{code}
 
 {% comment %}
