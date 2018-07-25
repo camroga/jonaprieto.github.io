@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-25T12:21:55+02:00</updated>
+ <updated>2018-07-25T12:25:36+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -1528,7 +1528,7 @@ homogeneous equalities and the last one by using path-induction.&lt;/p&gt;
       &lt;a id=&quot;44554&quot; href=&quot;/type-theory/2018/07/05/pathovers-hott/#44431&quot; class=&quot;Function&quot;&gt;PathOver₁~PathOver₅&lt;/a&gt; &lt;a id=&quot;44574&quot; href=&quot;/type-theory/2018/07/05/pathovers-hott/#2561&quot; class=&quot;InductiveConstructor&quot;&gt;idp&lt;/a&gt; &lt;a id=&quot;44578&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;44580&quot; href=&quot;/type-theory/2018/07/05/pathovers-hott/#2561&quot; class=&quot;InductiveConstructor&quot;&gt;idp&lt;/a&gt;&lt;/pre&gt;
 
 &lt;p&gt;The third definition is from &lt;a href=&quot;#hottbook&quot;&gt;(Univalent Foundations Program, 2013)&lt;/a&gt; in Section 2.3.
-The syntax sugar for pathovers is from &lt;a href=&quot;#hott-in:agda&quot;&gt;(Brunerie et al., n.d.)&lt;/a&gt;.&lt;/p&gt;
+The syntax sugar for pathovers is from &lt;a href=&quot;#hott-in:agda&quot;&gt;(Brunerie et al., 2018)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;PathOver&quot;&gt;&lt;/a&gt;&lt;a id=&quot;44739&quot; href=&quot;/type-theory/2018/07/05/pathovers-hott/#44739&quot; class=&quot;Function&quot;&gt;PathOver&lt;/a&gt; &lt;a id=&quot;44748&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;44750&quot; href=&quot;/type-theory/2018/07/05/pathovers-hott/#38376&quot; class=&quot;Function&quot;&gt;PathOver₃&lt;/a&gt;
 
