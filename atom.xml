@@ -4,7 +4,7 @@
  <title>jonaprieto</title>
  <link href="http://jonaprieto.github.io/atom.xml" rel="self"/>
  <link href="http://jonaprieto.github.io/"/>
- <updated>2018-07-26T00:46:24+02:00</updated>
+ <updated>2018-07-26T00:50:51+02:00</updated>
  <id>http://jonaprieto.github.io</id>
  <author>
    <name>Jonathan Prieto-Cubides</name>
@@ -3075,13 +3075,9 @@ such as backjumping (a form of non-chronological backtracking), conflict-driven 
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;references&quot;&gt;
-
-  &lt;ul&gt;
-    &lt;li&gt;&lt;span id=&quot;Nieuwenhuis2006&quot;&gt;Nieuwenhuis, R., Nieuwenhuis, R., Oliveras, A., Oliveras, A., Tinelli, C., &amp;amp; Tinelli, C. (2006). Solving SAT and SAT Modulo Theories: From an Abstract Davis–Putnam–Logemann–Loveland Procedure to DPLL(T). &lt;i&gt;J. Acm&lt;/i&gt;, &lt;i&gt;53&lt;/i&gt;(6), 937–977. https://doi.org/10.1145/1217856.1217859&lt;/span&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-
-&lt;/div&gt;
+&lt;ul class=&quot;references&quot;&gt;
+  &lt;li&gt;&lt;span id=&quot;Nieuwenhuis2006&quot;&gt;Nieuwenhuis, R., Nieuwenhuis, R., Oliveras, A., Oliveras, A., Tinelli, C., &amp;amp; Tinelli, C. (2006). Solving SAT and SAT Modulo Theories: From an Abstract Davis–Putnam–Logemann–Loveland Procedure to DPLL(T). &lt;i&gt;J. Acm&lt;/i&gt;, &lt;i&gt;53&lt;/i&gt;(6), 937–977. https://doi.org/10.1145/1217856.1217859&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
  </entry>
  
