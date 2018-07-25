@@ -28,7 +28,7 @@ fiber `C a₂`. That is, a pathover is a term that inhabitants the type `transpo
 C α c₁ = c₂` also denoted by `PathOver C α c₁ c₂`.
 
 ![path](/assets/ipe-images/pathovers-total-space-pathover.png)
-*Figure 1. Geometric intuition of Pathovers.*
+*Figure 1. Pathovers.*
 
 The term of a *pathover* was formally defined in {% cite Licata2015%} and also
 briefly mentioned in Section 2.3 in {% cite hottbook %} as a path in the total

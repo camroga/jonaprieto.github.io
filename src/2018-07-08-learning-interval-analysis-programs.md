@@ -91,10 +91,19 @@ Pytaylor uses
 
 ### VALENCIA-IVP
 
-[Main link](http://valencia-ivp.com/)
+[Main link](http://web.archive.org/web/20070716195309/http://www.valencia-ivp.com/)
 
 Software for VALidation of state ENClosures using Interval Arithmetic for
 Initial Value Problems.
+
+- https://interval.louisiana.edu/reliable-computing-journal/volume-15/no-4/reliable-computing-15-pp-370-381.pdf
+
+To obtain a FREE simplified C++ version of ValEncIA-IVP which contains the basic algorithmic components, please contact [Andreas Rauh](http://web.archive.org/web/20070625235940/http://www.mrm.e-technik.uni-ulm.de/homepage/rauh/rauh_e.htm) by e-mail (Andreas.Rauh@uni-ulm.de).
+
+In order to compile the source code of ValEncIA-IVP, the interval arithmetic library PROFIL/BIAS, the automatic differentiation package FADBAD++, as well as a compatible C++ compiler are required.
+
+- [PROFIL/BIAS](http://web.archive.org/web/20070716195309/http://www.ti3.tu-harburg.de/keil/profil/)
+- [FADBAD++](http://web.archive.org/web/20070716195309/http://www.imm.dtu.dk/fadbad.html)
 
 ### VNODE-LP
 
@@ -103,7 +112,7 @@ Initial Value Problems.
 A C++ based Interval Solver for Initial Value Problems in Ordinary Differential
 Equations.
 
-### [VSPODE1.4]
+### VSPODE1.4
 
 [Main link](https://pdfs.semanticscholar.org/6b0f/6801ef866ed60ac64557cfe9b056ca06788e.pdf)
 
