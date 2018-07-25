@@ -14,16 +14,16 @@ agda: true
 {: .only-website }
   *This is a work in progress jointly with Marc Bezem.*
 
-The type of Pathover which is often denoted by `PathOver` can be defined in at least
-five different ways, all equivalent as we show later in this document
-(See also {% cite Licata2015 %}).
+The type of Pathover which is often denoted by `PathOver` can be defined in at
+least five different ways, all equivalent as we show later in this document (See
+also {% cite Licata2015 %}).
 
-Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C
-a₂`. Using the same notation from {% cite hottbook %}, one of the definitions
-for the Pathover type is as the shorthand for the path between the transport
-along a path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
-fiber `C a₂`. That is, a pathover is a term that inhabit the type `transport
-C α c₁ = c₂` also denoted by `PathOver C α c₁ c₂`.
+Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
+Using the same notation from {% cite hottbook %}, one of the definitions for the
+Pathover type is as the shorthand for the path between the transport along a
+path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C
+a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
+also denoted by `PathOver C α c₁ c₂`.
 
 ![path](/assets/ipe-images/pathovers-total-space-pathover.png)
 *Figure 1. PathOvers and paths in the total space.*
@@ -32,10 +32,10 @@ The term of a *pathover* was formally defined in {% cite Licata2015%} and also
 briefly mentioned in Section 2.3 in {% cite hottbook %} as a path in the total
 space of `C` which "lies over" `α`.
 
-We are interested to prove the geometrical intuition behind these pathovers in which
-the path `q : (a₁, c₁) = (a₂, c₂)` is projected down onto `α : a₁ = a₂` as it
-follows from the figure showed above. `Σ A C` is the total space and "projecting
-down" means `ap π₁ q = α` where `π₁ : Σ A C → A`.
+We are interested to prove the geometrical intuition behind these pathovers in
+which the path `q : (a₁, c₁) = (a₂, c₂)` is projected down onto `α : a₁ = a₂` as
+it follows from the figure showed above. `Σ A C` is the total space and
+"projecting down" means `ap π₁ q = α` where `π₁ : Σ A C → A`.
 
 We formalize such a correspondence by showing the following equivalence
 in two different ways.
@@ -50,11 +50,10 @@ We also show some results about Σ-types that make the second proof of the
 equivalence a little shorter. We also believe they can be useful in other
 contexts.
 
-The correctness of this development has been type-checked by Agda v2.5.4.
-To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
-type-checking by using the option `without-K`.
-Without Axiom K, Agda's `Set` is not a good name for universes in HoTT
-and we rename `Set` to `Type`.
+The correctness of this development has been type-checked by Agda v2.5.4. To be
+consistent with homotopy type theory, we tell Agda to not use Axiom K for
+type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
+not a good name for universes in HoTT and we rename `Set` to `Type`.
 
 \begin{code}
 
@@ -90,8 +89,9 @@ for equality between two elements a : A, b : B, along an equality `α : A == B`.
 Its terms are constructed by the reflexivity constructor which applies only when
 both the two types and the two terms are judgementally equal.
 
-We define in Agda the heterogeneous equality as `HEq` with a different subindex for each
-definition. We start with the inductive definition `HEq₁` in the following.
+We define in Agda the heterogeneous equality as `HEq` with a different subindex
+for each definition. We start with the inductive definition `HEq₁` in the
+following.
 
 \begin{code}
 data HEq₁ {ℓ} (A : Type ℓ)
@@ -109,8 +109,8 @@ proofs and also to switch between the definitions of the Pathover type.
 Now, we have two types `HEq₂` and `HEq₃` that use the transport and the coercion
 functions, defined below. To define `transport` we do path-induction on the
 homogeneous equality between the terms and to define coercion (`coe`) we use
-`transport`. It is also possible to define them in the other way around,
-that is, `transport` by using `coe`.
+`transport`. It is also possible to define them in the other way around, that
+is, `transport` by using `coe`.
 
 \begin{code}
 transport
@@ -746,7 +746,7 @@ module hott where
 
   module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 
-    -- Definitions for quasiinverses, left-inverses, right-inverses and
+    -- Definitions for quasi-inverses, left-inverses, right-inverses and
     -- biinverses.
     qinv : (A → B) → Type (ℓᵢ ⊔ ℓⱼ)
     qinv f = Σ (B → A) (λ g → ((f ∘ g) ∼ id) × ((g ∘ f) ∼ id))
@@ -1153,6 +1153,7 @@ PathOver₃ C α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
 ![path](/assets/ipe-images/pathover-3.png)
+*Figure 2. Pathover₃.*
 
 - \begin{code}
 PathOver₄ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
@@ -1161,6 +1162,7 @@ PathOver₄ C α c₁ c₂ = c₁ == transport C (α ⁻¹) c₂
 \end{code}
 
 ![path](/assets/ipe-images/pathover-4.png)
+*Figure 2. Pathover₄.*
 
 - \begin{code}
 PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
@@ -1363,9 +1365,9 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 
 Let be `A : Type`, a path `α : a₁ == a₂` of two terms `a₁, a₂ : A` and a type
 family `C : A → Type`. If `c₁ : C a₁` and `c₂ : C a₂` then the type of the
-pathovers between `c₁` and `c₁` over the path `α` is equivalent to the
-sigma type of `(a₁ , c₁) == (a₂ , c₂)` such that `ap π₁ q == α`, that is the
-following equivalence,
+pathovers between `c₁` and `c₁` over the path `α` is equivalent to the sigma
+type of `(a₁ , c₁) == (a₂ , c₂)` such that `ap π₁ q == α`, that is the following
+equivalence,
 
 {: .equation}
   $$
@@ -1379,12 +1381,12 @@ following equivalence,
 module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
 \end{code}
 
-We prove this equivalence by the quasiinverse function `Σ-to-==[↓]`.
-Therefore, we define its inverse, the function `==[↓]-to-Σ` and we show
-the respective homotopies, `Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id` and
-`==[↓]-to-Σ ∘ Σ-to-==[↓] ~ id`.
+We prove this equivalence by the quasi-inverse function `Σ-to-==[↓]`. Therefore,
+we define its inverse, the function `==[↓]-to-Σ` and we show the respective
+homotopies, `Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id` and `==[↓]-to-Σ ∘ Σ-to-==[↓] ~ id`.
 
-![path](/assets/ipe-images/pathovers-total-space-pathover.png)
+![path](/assets/ipe-images/pathovers-total-space-syntax-sugar.png)
+*Figure 4. Pathovers and paths in the total space.*
 
 - The function `Σ-to-==[↓]` maps a term of the sigma type in the equation above
   to the pathover `c₁ == c₂ [ C ↓  α ]`. In its construction, we use Σ-induction
@@ -1608,7 +1610,7 @@ module Lemma₁UA {ℓᵢ}{ℓⱼ}
 If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 
 {: .equation}
-  $$\Sigma_{(w\,:\,\Sigma\,A\,C)}  \(\mathsf{\pi_{1}}~w = a\,\simeq\,C~a.$$
+  $$\Sigma_{(w\,:\,\Sigma\,A\,C)}\ \(\mathsf{\pi_{1}}~w = a\,\simeq\,C~a.$$
 
 \begin{code}
 module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
@@ -1763,4 +1765,4 @@ We based on the following Agda libraries.
 
   - Pathovers: https://github.com/HoTT/HoTT-Agda/.
 
-  - Basic homotopy type theory in [Agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
+  - Basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
