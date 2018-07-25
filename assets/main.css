@@ -106,7 +106,8 @@
 html,
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  overflow-wrap: break-word; }
 
 html {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -161,6 +162,7 @@ h4, h5, h6 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  hyphens: auto;
   /* text-align: justify; */ }
 
 strong {
@@ -198,11 +200,9 @@ abbr[title] {
 /* Code */
 code,
 pre {
-  font-family: Menlo, Monaco, "Courier New", monospace; }
+  font-family: Menlo, Source Code Pro, Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif; }
 
 code {
-  padding: .25em .5em;
-  font-size: 85%;
   border-radius: 3px; }
 
 pre {
@@ -483,7 +483,7 @@ h1, h2, h3, h4, h5, h6 {
   .view-source a {
     text-decoration: underline; }
 
-.post > p:nth-child(8) > em {
+.post > p > img + em {
   display: block;
   text-align: center; }
 
