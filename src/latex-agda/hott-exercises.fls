@@ -1,0 +1,6 @@
+PWD /Users/jonaprieto/repos/jonaprieto.github.io/src/latex-agda
+INPUT /usr/local/texlive/2018/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT hott-exercises.tex
+OUTPUT hott-exercises.log

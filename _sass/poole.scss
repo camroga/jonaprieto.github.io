@@ -200,11 +200,44 @@ img {
   margin-bottom: 1rem;
 }
 
+.print-authors {
+  display: table;
+}
 
+.print-author {
+  display: table;
+}
+
+.print-info {
+  display: table-cell;
+  padding-left: 4em;
+  padding-right: 4em;
+}
+.print-author-name, .print-author-affiliation {
+  display: table-row;
+  padding: 3px 10px;
+}
+
+.print-author-affiliation {
+  font-style: italic;
+}
+.print-date {
+  padding-top: 2em;
+  padding-bottom: 4em;
+}
+
+.print-abstract, .print-keywords {
+
+}
+
+.only-website {
+  display: inherit;
+}
 .post img:hover {
   width: -webkit-fill-available;
 }
-.post img {  padding: 0px 20px 0px 20px; width: 50%;}
+.post img {  padding: 0px 20px 0px 20px;
+  width: 70%;}
 
 body > div.wrap > div.masthead > div > h3 > a:nth-child(1) > img {
   border-radius: 5px;

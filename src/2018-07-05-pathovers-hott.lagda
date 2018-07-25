@@ -1,13 +1,18 @@
 ---
 layout: "post"
 title: "Pathovers"
+author: "Jonathan Prieto-Cubides"
+author_affiliation: "University of Bergen"
+coauthor: "Marc Bezem"
+coauthor_affiliation: "University of Bergen"
 date: "2018-07-05"
 categories: type-theory
 toc: true
 agda: true
 ---
 
-*This is a work in progress jointly with Marc Bezem.*
+{: .only-website }
+  *This is a work in progress jointly with Marc Bezem.*
 
 The type of Pathover which is often denoted by `PathOver` can be defined in at least
 five different ways, all equivalent as we show later in this document
@@ -17,30 +22,39 @@ Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂
 a₂`. Using the same notation from {% cite hottbook %}, one of the definitions
 for the Pathover type is as the shorthand for the path between the transport
 along a path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
-fiber `C a₂`. That is, a pathover is a term that inhabitants the type `transport
+fiber `C a₂`. That is, a pathover is a term that inhabit the type `transport
 C α c₁ = c₂` also denoted by `PathOver C α c₁ c₂`.
 
 ![path](/assets/ipe-images/pathovers-total-space-pathover.png)
-*Figure 1. The PathOver type and its total space.*
+*Figure 1. PathOvers and paths in the total space.*
 
 The term of a *pathover* was formally defined in {% cite Licata2015%} and also
 briefly mentioned in Section 2.3 in {% cite hottbook %} as a path in the total
 space of `C` which "lies over" `α`.
 
-We are interested to prove the geometry intuition about these pathovers in which
+We are interested to prove the geometrical intuition behind these pathovers in which
 the path `q : (a₁, c₁) = (a₂, c₂)` is projected down onto `α : a₁ = a₂` as it
 follows from the figure showed above. `Σ A C` is the total space and "projecting
-down" means `ap fst q = α` where `fst : Σ A C → A`.
+down" means `ap π₁ q = α` where `π₁ : Σ A C → A`.
 
-We formalize such a correspondence by showing the equivalence in two different
-ways. We also show some results about Σ-types that makes the second proof a
-little shorted and readable and that we believe they are useful in other
+We formalize such a correspondence by showing the following equivalence
+in two different ways.
+
+{: .equation}
+  $$
+   \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{\pi_{1}}~q~= \alpha)
+    \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
+  $$
+
+We also show some results about Σ-types that make the second proof of the
+equivalence a little shorter. We also believe they can be useful in other
 contexts.
 
 The correctness of this development has been type-checked by Agda v2.5.4.
 To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
-type-checking by using the option `without-K`. We also define a synonym for our types,
-`Type` instead of `Set` for the semantic notation of the universes in HoTT.
+type-checking by using the option `without-K`.
+Without Axiom K, Agda's `Set` is not a good name for universes in HoTT
+and we rename `Set` to `Type`.
 
 \begin{code}
 
@@ -59,7 +73,7 @@ equality in order to define in different ways the PathOver type.
 
 The *homogeneous equality* is the Identity type denoted by `Path` that relates
 two elements `a₀` and `a₁` whose types are *definitionally/judgmentally* equal.
-We also refer us to this type as `a₁ == a₂` or `Path a₀ a₁`.
+We also refer to this type as `a₁ == a₂` or `Path a₁ a₂`.
 
 \begin{code}
 infix 30 _==_
@@ -76,8 +90,8 @@ for equality between two elements a : A, b : B, along an equality `α : A == B`.
 Its terms are constructed by the reflexivity constructor which applies only when
 both the two types and the two terms are judgementally equal.
 
-WE define in Agda the heterogeneous equality as `HEq` plus a subindex per each
-definition. We started with the inductive definition in the following.
+We define in Agda the heterogeneous equality as `HEq` with a different subindex for each
+definition. We start with the inductive definition `HEq₁` in the following.
 
 \begin{code}
 data HEq₁ {ℓ} (A : Type ℓ)
@@ -87,16 +101,16 @@ data HEq₁ {ℓ} (A : Type ℓ)
   idp : ∀ {a : A} → HEq₁ A A idp a a
 \end{code}
 
-In this definition, the reflexivity constructor for Paths was the same name as
-the constructor for homogeneous equality. Using the same, it will allow us to
+In this definition, the reflexivity constructor for Paths is the same name as
+the constructor for homogeneous equality. Using the same name will allow us to
 switch between different definitions of heterogeneous equality in the posteriori
-proofs but also to switch between the definitions of the Pathover type.
+proofs and also to switch between the definitions of the Pathover type.
 
 Now, we have two types `HEq₂` and `HEq₃` that use the transport and the coercion
-functions, defined below. To deine `transport` we do path-induction on the
-homogeneous equality between the terms and to define the coercion (`coe`) we use
-the `transport`. It is also possible to define them in the other way around,
-which is, `transport` by using `coe`.
+functions, defined below. To define `transport` we do path-induction on the
+homogeneous equality between the terms and to define coercion (`coe`) we use
+`transport`. It is also possible to define them in the other way around,
+that is, `transport` by using `coe`.
 
 \begin{code}
 transport
@@ -115,7 +129,7 @@ coe
 coe p A = transport (λ X → X) p A
 \end{code}
 
-{: .foldable}
+{: .foldable .only-website}
 \begin{code}
 
 --- Basic HoTT types, functions and theorems.
@@ -126,8 +140,8 @@ module hott where
   record Σ {ℓᵢ ℓⱼ} (A : Type ℓᵢ)(C : A → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
     constructor _,_
     field
-      fst : A
-      snd : C fst
+      π₁ : A
+      π₂ : C π₁
   open Σ public
 
   Π : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (P : A → Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
@@ -384,7 +398,7 @@ module hott where
     fib f b = Σ A (λ a → f a == b)
 
     -- A function applied over the fiber returns the original point
-    fib-eq : {f : A → B} → {b : B} → (h : fib f b) → f (fst h) == b
+    fib-eq : {f : A → B} → {b : B} → (h : fib f b) → f (π₁ h) == b
     fib-eq (a , α) = α
 
     -- Each point is on the fiber of its image
@@ -424,17 +438,17 @@ module hott where
 
       -- Maps of an equivalence
       lemap : A ≃ B → (A → B)
-      lemap = fst
+      lemap = π₁
 
       remap : A ≃ B → (B → A)
-      remap (f , contrf) b = fst (fst (contrf b))
+      remap (f , contrf) b = π₁ (π₁ (contrf b))
 
       -- The maps of an equivalence are inverses in particular
       lrmap-inverse : (eq : A ≃ B) → {b : B} → (lemap eq) ((remap eq) b) == b
-      lrmap-inverse (f , eqf) {b} = fib-eq (fst (eqf b))
+      lrmap-inverse (f , eqf) {b} = fib-eq (π₁ (eqf b))
 
       rlmap-inverse : (eq : A ≃ B) → {a : A} → (remap eq) ((lemap eq) a) == a
-      rlmap-inverse (f , eqf) {a} = ap fst ((snd (eqf (f a))) fib-image)
+      rlmap-inverse (f , eqf) {a} = ap π₁ ((π₂ (eqf (f a))) fib-image)
 
       lrmap-inverse-h : (eq : A ≃ B) → ((lemap eq) ∘ (remap eq)) ∼ id
       lrmap-inverse-h eq = λ x → lrmap-inverse eq {x}
@@ -494,21 +508,21 @@ module hott where
   module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
 
     -- Two dependent pairs are equal if they are componentwise equal.
-    Σ-componentwise : {v w : Σ A P} → v == w → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w)
+    Σ-componentwise : {v w : Σ A P} → v == w → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
     Σ-componentwise  idp = (idp , idp)
 
-    Σ-bycomponents : {v w : Σ A P} → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w) → v == w
+    Σ-bycomponents : {v w : Σ A P} → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w) → v == w
     Σ-bycomponents (idp , idp) = idp
     pair= = Σ-bycomponents
 
-    uppt : (x : Σ A P) → (fst x , snd x) == x
+    uppt : (x : Σ A P) → (π₁ x , π₂ x) == x
     uppt (a , b) = idp
 
-    Σ-ap-fst : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
+    Σ-ap-π₁ : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
       → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
-      → ap fst (pair= (α , γ)) == α
-    Σ-ap-fst idp idp = idp
-    ap-fst-pair= = Σ-ap-fst
+      → ap π₁ (pair= (α , γ)) == α
+    Σ-ap-π₁ idp idp = idp
+    ap-π₁-pair= = Σ-ap-π₁
 
   open Sigma public
 
@@ -516,15 +530,15 @@ module hott where
 
     -- In a pair, the equality of the two components of the pairs is
     -- equivalent to equality of the two pairs.
-    prodComponentwise : {x y : A × B} → (x == y) → ((fst x == fst y) × (snd x == snd y))
-    fst (prodComponentwise idp) = idp
-    snd (prodComponentwise idp) = idp
+    prodComponentwise : {x y : A × B} → (x == y) → ((π₁ x == π₁ y) × (π₂ x == π₂ y))
+    π₁ (prodComponentwise idp) = idp
+    π₂ (prodComponentwise idp) = idp
 
-    prodByComponents : {x y : A × B} → ((fst x == fst y) × (snd x == snd y)) → (x == y)
+    prodByComponents : {x y : A × B} → ((π₁ x == π₁ y) × (π₂ x == π₂ y)) → (x == y)
     prodByComponents (idp , idp) = idp
 
     -- This is in fact an equivalence.
-    prodCompInverse : {x y : A × B} (b : ((fst x == fst y) × (snd x == snd y))) →
+    prodCompInverse : {x y : A × B} (b : ((π₁ x == π₁ y) × (π₂ x == π₂ y))) →
                       prodComponentwise (prodByComponents b) == b
     prodCompInverse (idp , idp) = idp
 
@@ -626,7 +640,7 @@ module hott where
     isEquivIsProp = isContrMapIsProp
 
     -- Equality of same-morphism equivalences
-    sameEqv : {α β : A ≃ B} → fst α == fst β → α == β
+    sameEqv : {α β : A ≃ B} → π₁ α == π₁ β → α == β
     sameEqv {(f , σ)} {(g , τ)} p = Σ-bycomponents (p , (isEquivIsProp g _ τ))
 
     -- Equivalences preserve propositions
@@ -677,21 +691,21 @@ module hott where
     ishae-contr : (f : A → B) → ishae f → isContrMap f
     ishae-contr f (hae g η ε τ) y = ((g y) , (ε y)) , contra
       where
-        lemma : (c c' : fib f y) → Σ (fst c == fst c') (λ γ → (ap f γ) · snd c' == snd c) → c == c'
+        lemma : (c c' : fib f y) → Σ (π₁ c == π₁ c') (λ γ → (ap f γ) · π₂ c' == π₂ c) → c == c'
         lemma c c' (p , q) = Σ-bycomponents (p , lemma2)
           where
-            lemma2 : transport (λ z → f z == y) p (snd c) == snd c'
+            lemma2 : transport (λ z → f z == y) p (π₂ c) == π₂ c'
             lemma2 =
               begin
-                transport (λ z → f z == y) p (snd c)
-                  ==⟨ transport-eq-fun-l f p (snd c) ⟩
-                inv (ap f p) · (snd c)
+                transport (λ z → f z == y) p (π₂ c)
+                  ==⟨ transport-eq-fun-l f p (π₂ c) ⟩
+                inv (ap f p) · (π₂ c)
                   ==⟨ ap (inv (ap f p) ·_) (inv q) ⟩
-                inv (ap f p) · ((ap f p) · (snd c'))
-                  ==⟨ inv (·-assoc (inv (ap f p)) (ap f p) (snd c')) ⟩
-                inv (ap f p) · (ap f p) · (snd c')
-                  ==⟨ ap (_· (snd c')) (·-linv (ap f p)) ⟩
-                snd c'
+                inv (ap f p) · ((ap f p) · (π₂ c'))
+                  ==⟨ inv (·-assoc (inv (ap f p)) (ap f p) (π₂ c')) ⟩
+                inv (ap f p) · (ap f p) · (π₂ c')
+                  ==⟨ ap (_· (π₂ c')) (·-linv (ap f p)) ⟩
+                π₂ c'
               ∎
 
         contra : (x : fib f y) → (g y , ε y) == x
@@ -819,7 +833,7 @@ module hott where
     ishae-qinv {f} (hae g η ε τ) = g , (ε , η)
 
     ≃-ishae : (e : A ≃ B)→ ishae (lemap e)
-    ≃-ishae e = qinv-ishae (snd (≃-qinv e))
+    ≃-ishae e = qinv-ishae (π₂ (≃-qinv e))
 
   open Quasiinverses public
 
@@ -839,13 +853,13 @@ module hott where
     idEqv = id , λ a → (a , idp) , λ { (_ , idp) → idp }
 
     compEqv : ∀{ℓ} {A B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
-    compEqv {ℓ} {A} {B} {C} eqf eqg = qinv-≃ (fst qcomp) (snd qcomp)
+    compEqv {ℓ} {A} {B} {C} eqf eqg = qinv-≃ (π₁ qcomp) (π₂ qcomp)
      where
        qcomp : Σ (A → C) qinv
        qcomp = qinv-comp (≃-qinv eqf) (≃-qinv eqg)
 
     invEqv : ∀{ℓ} {A B : Type ℓ} → A ≃ B → B ≃ A
-    invEqv {ℓ} {A} {B} eqf = qinv-≃ (fst qcinv) (snd qcinv)
+    invEqv {ℓ} {A} {B} eqf = qinv-≃ (π₁ qcinv) (π₂ qcinv)
      where
        qcinv : Σ (B → A) qinv
        qcinv = qinv-inv (≃-qinv eqf)
@@ -854,8 +868,8 @@ module hott where
     compEqv-inv : ∀{ℓ} {A B : Type ℓ} → (α : A ≃ B) → compEqv α (invEqv α) == idEqv
     compEqv-inv {_} {A} {B} α = sameEqv (
      begin
-       fst (compEqv α (invEqv α)) ==⟨ idp ⟩
-       fst (invEqv α) ∘ fst α     ==⟨ funext (rlmap-inverse-h α) ⟩
+       π₁ (compEqv α (invEqv α)) ==⟨ idp ⟩
+       π₁ (invEqv α) ∘ π₁ α     ==⟨ funext (rlmap-inverse-h α) ⟩
        id
      ∎)
 
@@ -865,7 +879,7 @@ module hott where
   module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
 
     pair=Equiv : {v w : Σ A P}
-      → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w) ≃ v == w
+      → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w) ≃ v == w
     pair=Equiv = qinv-≃ Σ-bycomponents (Σ-componentwise , HΣ₁ , HΣ₂)
       where
         HΣ₁ : Σ-bycomponents ∘ Σ-componentwise ∼ id
@@ -878,13 +892,13 @@ module hott where
       f : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
         → {β : a₁ == a₂}
         → {γ : transport P β c₁ == c₂}
-        → ap fst (pair= (β , γ)) == α → β == α
+        → ap π₁ (pair= (β , γ)) == α → β == α
       f {β = idp} {γ = idp} idp = idp
 
       g : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
         → {β : a₁ == a₂}
         → {γ : transport P β c₁ == c₂}
-        → β == α → ap fst (pair= (β , γ)) == α
+        → β == α → ap π₁ (pair= (β , γ)) == α
       g {β = idp} {γ = idp} idp = idp
 
       f-g : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
@@ -899,11 +913,11 @@ module hott where
         → g {α = α}{β = β}{γ} ∘ f {α = α}{β = β}{γ} ∼ id
       g-f {β = idp} {γ = idp} idp = idp
 
-    ap-fst-pair=Equiv : {a₁ a₂ : A} {c₁ : P a₁} {c₂ : P a₂}
+    ap-π₁-pair=Equiv : {a₁ a₂ : A} {c₁ : P a₁} {c₂ : P a₂}
       → (α : a₁ == a₂)
       → (γ : Σ (a₁ == a₂) (λ α' → transport P α' c₁ == c₂))
-      → (ap fst (pair= γ) == α) ≃ fst γ == α
-    ap-fst-pair=Equiv {a₁ = a₁} α (β , γ) = qinv-≃ f (g , f-g , g-f)
+      → (ap π₁ (pair= γ) == α) ≃ π₁ γ == α
+    ap-π₁-pair=Equiv {a₁ = a₁} α (β , γ) = qinv-≃ f (g , f-g , g-f)
 
   open SigmaEquivalence public
 
@@ -981,8 +995,13 @@ HEq₄ A .A idp a b = Path a b
 
 ### Equivalences
 
-{: .foldable}
+{:.print-version}
+  Let us prove the equivalence between the types `HEq₁` and `HEq₂`.
+  The other equivalences are proved in a similar way but they are available
+  on the website of this document.
+
 \begin{code}
+
 -- HEq₁-≃-HEq₂
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1011,8 +1030,9 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₂-~-HEq₁ idp = idp
 \end{code}
 
-{: .foldable}
+{: .foldable .only-website}
 \begin{code}
+
 -- HEq₂-≃-HEq₃
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1041,8 +1061,10 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₃-~-HEq₂ idp = idp
 \end{code}
 
-{: .foldable}
+
+{: .foldable .only-website}
 \begin{code}
+
 -- HEq₃-≃-HEq₄
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1071,8 +1093,9 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₄-~-HEq₃ idp = idp
 \end{code}
 
-{: .foldable}
+{: .foldable .only-website}
 \begin{code}
+
 -- HEq₄-≃-HEq₁
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1147,8 +1170,13 @@ PathOver₅ _ idp c₁ c₂ = c₁ == c₂
 
 ### Equivalences
 
-{: .foldable}
+{:.print-version}
+  Let us prove the equivalence between the types `PathOver₁` and `PathOver₂`.
+  The other equivalences are proved in a similar way but they are available
+  on the website of this document.
+
 \begin{code}
+
 -- PathOver₁-≃-PathOver₂
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1180,8 +1208,12 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₂~PathOver₁ idp = idp
 \end{code}
 
-{: .foldable}
+{: .print-version}
+
+
+{: .foldable .only-website }
 \begin{code}
+
 -- PathOver₂-≃-PathOver₃
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1213,8 +1245,9 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₃~PathOver₂ idp = idp
 \end{code}
 
-{: .foldable}
+{: .foldable .only-website}
 \begin{code}
+
 -- PathOver₃-≃-PathOver₄
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1246,8 +1279,9 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₄~PathOver₃ idp = idp
 \end{code}
 
-{: .foldable}
+{: .foldable .only-website}
 \begin{code}
+
 -- PathOver₄-≃-PathOver₅
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1279,8 +1313,9 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₅~PathOver₄ idp = idp
 \end{code}
 
-{: .foldable}
+{: .foldable .only-website}
 \begin{code}
+
 -- PathOver₅-≃-PathOver₁
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1326,17 +1361,16 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 
 ### Theorem 1
 
-Let be `A : Type`, a path `α : a₁ == a₂` of two terms `a₁, a₂ : A` and a
-type family `C : A → Type`. If `c₁ : C a₁` and `c₂ : C a₂` then
-the type of the pathover between `c₁`
-and `c₁` along the path `α` is equivalent to its total space which is
-the sigma type of `(a₁ , c₁) == (a₂ , c₂)` and `ap fst q == α`, that is the
+Let be `A : Type`, a path `α : a₁ == a₂` of two terms `a₁, a₂ : A` and a type
+family `C : A → Type`. If `c₁ : C a₁` and `c₂ : C a₂` then the type of the
+pathovers between `c₁` and `c₁` over the path `α` is equivalent to the
+sigma type of `(a₁ , c₁) == (a₂ , c₂)` such that `ap π₁ q == α`, that is the
 following equivalence,
 
 {: .equation}
   $$
-   \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
-    \simeq \mathsf{PathOver}~C~α~c₁~c₂.
+   \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{\pi_{1}}~q~= \alpha)
+    \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
   $$
 
 **Proof.**
@@ -1354,21 +1388,21 @@ the respective homotopies, `Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id` and
 
 - The function `Σ-to-==[↓]` maps a term of the sigma type in the equation above
   to the pathover `c₁ == c₂ [ C ↓  α ]`. In its construction, we use Σ-induction
-  followed by two path-induction on each of the its sigma components. As result, we
-  left to just provide a term of the identity type `c₁ == c₂` which is `idp`.
-
+  followed by two path-inductions on each of the its sigma components. As
+  result, we only have to provide a term of the identity type `c₁ == c₂` where
+  `c₁` and `c₂` are judgementally equal, which is `idp`.
 
 \begin{code}
 -- Def.
   Σ-to-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap π₁ q) == α)
     → c₁ == c₂ [ C ↓  α ]
   Σ-to-==[↓] (idp , idp) = idp
 \end{code}
 
 - The respective inverse function is `==[↓]-to-Σ`, which maps terms of the
   pathover `c₁ == c₂ [ C ↓  α ]` to pairs in `Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q →
-  (ap fst q) == α)`. In its construction, we use path-induction on the path `α`
+  (ap π₁ q) == α)`. In its construction, we use path-induction on the path `α`
   in the base space follows by the induction on the pathover `γ`. As result, we
   define this function as a pair of reflexivity proofs.
 
@@ -1376,14 +1410,14 @@ the respective homotopies, `Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id` and
 -- Def.
   ==[↓]-to-Σ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
     → (γ : c₁ == c₂ [ C ↓ α ])
-    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α)
+    → Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap π₁ q) == α)
   ==[↓]-to-Σ {idp} idp = (idp , idp)
 \end{code}
 
 *Remark.* We could also have defined the above function by using the `pair=` function
 which is the right-left direction in Theorem 2.7.2 in {% cite hottbook %} and
-the function `ap-fst-pair=` that maps a path `α` in the base space and the
-pathover `γ` to a term `m` of type `ap fst (pair= (α , γ)) == α`.
+the function `ap-π₁-pair=` that maps a path `α` in the base space and the
+pathover `γ` to a term `m` of type `ap π₁ (pair= (α , γ)) == α`.
 That is, `==[↓]-to-Σ α γ = (pair= α γ, m)`.
 
 However, we do not get any benefit as far as we know of the latter definition
@@ -1404,7 +1438,7 @@ following homotopies.
 -- Homotopy: ==[↓]-to-Σ ∘ Σ-to-==[↓] ∼ id
   private
     H₂ : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂}
-       → (pair : Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+       → (pair : Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap π₁ q) == α))
        → ==[↓]-to-Σ (Σ-to-==[↓] pair) == pair
     H₂ (idp , idp) = idp
 \end{code}
@@ -1419,7 +1453,7 @@ Since the function `Σ-to-==[↓]` is quasi-inverse by definition using `==[↓]
 -- Equivalence
   private
     Σ-≃-==[↓] : {α : a₁ == a₂}{c₁ : C a₁}{c₂ : C a₂} →
-      (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap fst q) == α))
+      (Σ ((a₁ , c₁) == (a₂ , c₂)) (λ q → (ap π₁ q) == α))
        ≃ (c₁ == c₂ [ C ↓ α ])
 
     Σ-≃-==[↓] =
@@ -1440,7 +1474,7 @@ equivalence proved above.
 If $$A\,,~B : U$$ and $$C: A → U$$ and $$f: B \simeq A$$, then
 
 {: .equation}
-  $$\sum_{a:A} C~a \simeq \sum_{b:B} (C ∘ f)~b.$$
+  $$\Sigma\,{A}\,C\,\simeq\,\Sigma\,B\,(C ∘ f).$$
 
 \begin{code}
 module Lemma₁ {ℓᵢ}{ℓⱼ}
@@ -1574,15 +1608,15 @@ module Lemma₁UA {ℓᵢ}{ℓⱼ}
 If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 
 {: .equation}
-  $$\sum_{(w:\sum_{A} C)}  \(\mathsf{fst}~w = a\,\simeq\,C~a.$$
+  $$\Sigma_{(w\,:\,\Sigma\,A\,C)}  \(\mathsf{\pi_{1}}~w = a\,\simeq\,C~a.$$
 
 \begin{code}
 module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
 
-  ΣΣ-to-C : Σ (Σ A C) (λ w → fst w == a) → C a
+  ΣΣ-to-C : Σ (Σ A C) (λ w → π₁ w == a) → C a
   ΣΣ-to-C ((a , c) , p) = transport C p c
 
-  C-to-ΣΣ : C a → Σ (Σ A C) (λ w → fst w == a)
+  C-to-ΣΣ : C a → Σ (Σ A C) (λ w → π₁ w == a)
   C-to-ΣΣ c = (a , c) , idp
 
   private
@@ -1606,25 +1640,25 @@ module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
         paireq : a , transport C p c ==  a' , c
         paireq = pair= (inv p , c')
 
-        patho :  transport (λ w → fst w == a) paireq idp == p
+        patho :  transport (λ w → π₁ w == a) paireq idp == p
         patho
           = begin
-            transport (λ w → fst w == ((λ _ → a) w)) paireq idp
-              ==⟨ transport-eq-fun fst (λ _ → a) paireq idp ⟩
-            inv (ap fst paireq) · idp · ap (λ _ → a) paireq
-              ==⟨ ap (λ γ → inv (ap fst paireq) · idp · γ) (ap-const paireq) ⟩
-            inv (ap fst paireq) · idp  · idp
+            transport (λ w → π₁ w == ((λ _ → a) w)) paireq idp
+              ==⟨ transport-eq-fun π₁ (λ _ → a) paireq idp ⟩
+            inv (ap π₁ paireq) · idp · ap (λ _ → a) paireq
+              ==⟨ ap (λ γ → inv (ap π₁ paireq) · idp · γ) (ap-const paireq) ⟩
+            inv (ap π₁ paireq) · idp  · idp
               ==⟨ ·-runit-infer ⟩
-            inv (ap fst paireq) · idp
+            inv (ap π₁ paireq) · idp
               ==⟨ ·-runit-infer ⟩
-            inv (ap fst paireq)
-              ==⟨ ap (λ p → inv  p) (ap-fst-pair= (inv p) c') ⟩
+            inv (ap π₁ paireq)
+              ==⟨ ap (λ p → inv  p) (ap-π₁-pair= (inv p) c') ⟩
             inv (inv p)
               ==⟨ involution ⟩
              p
             ∎
 
-  lemma₂ : Σ (Σ A C) (λ w → fst w == a) ≃ C a
+  lemma₂ : Σ (Σ A C) (λ w → π₁ w == a) ≃ C a
   lemma₂ = qinv-≃ ΣΣ-to-C (C-to-ΣΣ , H₁ , H₂)
 
 open Lemma₂ public
@@ -1632,11 +1666,11 @@ open Lemma₂ public
 
 ### Lemma 3
 
-If $$A : U$$, the element $$a : A$$ and two type families $$C,\ D: A → U$$.
-If $$ e : C~a \simeq D~a$$ then
+If $$A : U$$ and for two type families $$C,\ D: A → U$$.
+If we have $$ e :\Pi\,(a : A)~C\,a \simeq D~a$$ then
 
 {: .equation}
-  $$\Sigma~A~C~\simeq~\Sigma~A~D.$$
+  $$\Sigma\,A\,C~\simeq~\Sigma\,A\,D.$$
 
 \begin{code}
 module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
@@ -1678,11 +1712,11 @@ open Lemma₃ public
 Let us recall the equivalence.
 
 $$
- \sum\limits_{q : (a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{fst}~q~= \alpha)
-  \simeq \mathsf{PathOver}~C~α~c₁~c₂.
+ \sum\limits_{q\,:\,(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{\pi_{1}}~q~= \alpha)
+  \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
 $$
 
-where $$aᵢ : A$$, $$cᵢ : C~aᵢ$$ and $$\alpha : a₁ = a₂$$.
+where $$a₁, a₂ : A$$, $$c₁ : C~a₁$$, $$c₂ : C~a₂$$ and $$\alpha : a₁ = a₂$$.
 
 \begin{code}
 module _ {ℓ}{A : Type ℓ}{C : A → Type ℓ}
@@ -1696,14 +1730,14 @@ of the theorem `Σ-≃-==[↓]`.
 -- Alternative proof of the theorem Σ-≃-==[↓].
   private
     Σ-≃-==[↓] :
-      Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap fst q == α) ≃ PathOver C α c₁ c₂
+      Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap π₁ q == α) ≃ PathOver C α c₁ c₂
     Σ-≃-==[↓] =
       begin≃
-        Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap fst q == α)
+        Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap π₁ q == α)
           ≃⟨ lemma₁ pair=Equiv ⟩
-        Σ (Σ (a₁ == a₂) (λ β → transport C β c₁ == c₂)) (λ γ → ap fst (pair= γ) == α)
-          ≃⟨ lemma₃ (ap-fst-pair=Equiv α) ⟩
-        Σ (Σ (a₁ == a₂) (λ β → transport C β c₁ == c₂)) (λ γ → fst γ == α)
+        Σ (Σ (a₁ == a₂) (λ β → transport C β c₁ == c₂)) (λ γ → ap π₁ (pair= γ) == α)
+          ≃⟨ lemma₃ (ap-π₁-pair=Equiv α) ⟩
+        Σ (Σ (a₁ == a₂) (λ β → transport C β c₁ == c₂)) (λ γ → π₁ γ == α)
           ≃⟨ lemma₂ α ⟩
         transport C α c₁ == c₂
           ≃⟨⟩
@@ -1729,4 +1763,4 @@ We based on the following Agda libraries.
 
   - Pathovers: https://github.com/HoTT/HoTT-Agda/.
 
-  - [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html)
+  - Basic homotopy type theory in [Agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).

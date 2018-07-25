@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180323145431" modified="D:20180716120320"/>
+<info created="D:20180323145431" modified="D:20180726001026"/>
 <preamble>\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}</preamble>
@@ -348,7 +348,7 @@ h
 287.986 668.743 m
 288.127 631.076 l
 </path>
-<text transformations="translations" pos="292.368 645.239" stroke="black" type="label" width="10.461" height="6.918" depth="0" valign="baseline" style="math">\mathsf{fst}</text>
+<text transformations="translations" pos="292.368 645.239" stroke="black" type="label" width="10.148" height="4.294" depth="1.49" valign="baseline" style="math">\pi_{1}</text>
 <use name="mark/disk(sx)" pos="224.9 683.873" size="normal" stroke="black"/>
 <use matrix="1 0 0 1 0.357029 0.753409" name="mark/disk(sx)" pos="333.877 698.513" size="normal" stroke="black"/>
 <text matrix="1 0 0 1 -4.41858 1.63585" transformations="translations" pos="209.659 688.991" stroke="black" type="label" width="30.693" height="7.473" depth="2.49" valign="baseline" style="math">(a_1, c_1)</text>

@@ -2,11 +2,22 @@
 html,
 body {
   overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+.print-version {
+  display: none;
 }
 
 html {
   font-family: "PT Serif", Georgia, "Times New Roman", serif;
 }
+
+@media all {
+.page-break	{ display: none; }
+}
+
+
+.always-hide { display: none !important;}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
@@ -30,6 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .github-links {
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   width: auto;
   padding: 4px;
   float: right;
@@ -38,6 +50,10 @@ h1, h2, h3, h4, h5, h6 {
   a {
     color: #c3c3c3;
   }
+}
+
+svg {
+  fill: #515151;
 }
 
 .post-changes {

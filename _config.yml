@@ -8,6 +8,9 @@ baseurl:             ''
 timezone:            'Europe/Oslo'
 # paginate:            100
 
+affiliation: 'University of Bergen'
+email:  'jcu043@uib.no'
+
 highlighter: pygments
 gist:
   noscript: false

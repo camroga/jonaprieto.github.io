@@ -13,6 +13,34 @@ comments: true
 {% assign raw = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 
 <div class="post">
+
+  <div class="print-version">
+    <center>
+      <h1>{{ page.title }} </h1><br/>
+        <div class="print-authors">
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">{{ page.author}}</div>
+              <div class="print-author-affiliation">{{ page.author_affiliation}}</div>
+            </div>
+          </div>
+          {% if page.coauthor %}
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">{{ page.coauthor}}</div>
+              {% if page.coauthor_affiliation %}
+              <div class="print-author-affiliation">{{ page.coauthor_affiliation}}</div>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        <div class="print-date">{{ page.date | date_to_long_string }}</div>
+        {% if page.abstract %}<div class="print-abstract">{{page.abstract}}</div>{% endif %}
+        {% if page.abstract %}<div class="print-keywords">{{page.keywords}}</div>{% endif %}
+    </center>
+  </div>
+
   {% if page.git %}
   <div class="main-heading">
     <div class="main-title">
@@ -32,7 +60,7 @@ comments: true
   {% endif %}
   <h1 class="post-title">{{ page.title }}
     <div class="github-links">
-      <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a> | <a href="{{viewsource}}" target="_blank">View source </a> | <a href="{{editsource}}" target="_blank"> Edit </a> | <a href="{{history}}" target="_blank"> History</a></small>
+      <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a> | <a href="{{viewsource}}" target="_blank">View source </a> | <a href="{{editsource}}" target="_blank"> Edit </a> | <a href="{{history}}" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
     </div>
   </h1>
   {% if page.toc %}
@@ -48,7 +76,10 @@ comments: true
   <div class="cited-references" markdown="1">
   {% bibliography --cited %}
   </div>
-
+  
+  <div class="github-links">
+    <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a> | <a href="{{viewsource}}" target="_blank">View source </a> | <a href="{{editsource}}" target="_blank"> Edit </a> | <a href="{{history}}" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
+  </div>
 </div>
 
 <div class="related">
@@ -69,6 +100,8 @@ comments: true
       {% endunless %}
     {% endfor %}
   </ul>
+
+
 </div>
 <div id="disqus_thread"></div>
 <script>
