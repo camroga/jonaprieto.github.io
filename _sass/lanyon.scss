@@ -23,9 +23,9 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: underline;
   }
 }
-
-.post > p:nth-child(8) > em
-{ display: block;
+.post > p > img + em
+{
+  display: block;
   text-align: center;
 }
 

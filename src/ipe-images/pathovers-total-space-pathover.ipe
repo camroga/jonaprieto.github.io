@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180323145431" modified="D:20180724113030"/>
+<info created="D:20180323145431" modified="D:20180725110520"/>
 <preamble>\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}</preamble>
@@ -359,7 +359,7 @@ h
 296.285 690.691
 332.357 698.999 c
 </path>
-<text transformations="translations" pos="372.553 685.243" stroke="black" type="label" width="31.756" height="9.803" depth="0" valign="baseline" size="Large" style="math">\Sigma A C</text>
+<text matrix="1 0 0 1 8 20" transformations="translations" pos="372.553 685.243" stroke="black" type="label" width="41.663" height="7.471" depth="2.99" valign="baseline" style="math">\sum_{a:A} C~a</text>
 <text matrix="1 0 0 1 -17.2117 -4.36501" transformations="translations" pos="351.965 655.537" stroke="black" type="label" width="101.941" height="6.926" depth="1.93" valign="baseline" style="math">\gamma : ~\mathsf{PathOver}~C~\alpha~c_1~c_2</text>
 <use matrix="1 0 0 1 -6 -33.7546" name="mark/disk(sx)" pos="342 654" size="normal" stroke="black"/>
 <text matrix="1 0 0 1 -21.2316 -17.9185" transformations="translations" pos="276 704" stroke="black" type="label" width="60.438" height="6.143" depth="1.74" valign="baseline" size="small" style="math">q :\equiv~\mathsf{pair}^{=}~\alpha~\gamma</text>

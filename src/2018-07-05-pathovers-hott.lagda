@@ -9,18 +9,11 @@ agda: true
 
 *This is a work in progress jointly with Marc Bezem.*
 
-There are at least two notions about equality between terms, homogeneous and
-heterogeneous equality. The former is the Identity type for equalities between
-terms of the same type whereas the latter stands for equalities of terms not
-necessary of the same type. In this article, we are interested to explore the
-Pathover type and its geometric interpretation that comes from the heterogeneous
-equality.
-
 The type of Pathover which is often denoted by `PathOver` can be defined in at least
 five different ways, all equivalent as we show later in this document
 (See also {% cite Licata2015 %}).
 
-Now, let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C
+Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C
 a₂`. Using the same notation from {% cite hottbook %}, one of the definitions
 for the Pathover type is as the shorthand for the path between the transport
 along a path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
@@ -44,11 +37,10 @@ ways. We also show some results about Σ-types that makes the second proof a
 little shorted and readable and that we believe they are useful in other
 contexts.
 
-The correctness of this development has been type-checked by Agda v2.5.4. In the
-following, we set up Agda to avoid using Axiom K to type-check, we do this by
-using the pragma `--without-K`, that makes Agda compatible with homotopy type
-theory. We also define a synonym for our types, `Type` instead of `Set` for
-convenience.
+The correctness of this development has been type-checked by Agda v2.5.4.
+To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
+type-checking by using the option `without-K`. We also define a synonym for our types,
+`Type` instead of `Set` for the semantic notation of the universes in HoTT.
 
 \begin{code}
 
@@ -60,17 +52,14 @@ Type : (ℓ : Level) → Set (lsuc ℓ)
 Type ℓ = Set ℓ
 \end{code}
 
-In order to show the equivalent types for pathovers, let us define in Agda the
-homogeneous equality type and the heterogeneous as well.
+Now, let us define in Agda the homogeneous equality type and the heterogeneous
+equality in order to define in different ways the PathOver type.
 
 ## Homogeneous equality
 
-The *homogeneous equality* is a type `Path` that relates two elements
-`a₀` and `a₁` whose types are *definitionally/judgmentally* equal. We
-denote this type as `Path a₀ a₁`. In the following Agda code, we will find
-curly braces that they stand for *implicit arguments*. The type of `a₀` and
-`a₁`, which is `A` is implicit in the following definition of type
-`Path` also denoted by `_==_` for convenience.
+The *homogeneous equality* is the Identity type denoted by `Path` that relates
+two elements `a₀` and `a₁` whose types are *definitionally/judgmentally* equal.
+We also refer us to this type as `a₁ == a₂` or `Path a₀ a₁`.
 
 \begin{code}
 infix 30 _==_
@@ -82,9 +71,13 @@ Path = _==_
 
 ## Heterogeneous equality
 
-The heterogeneous equality  in {% cite Licata2015 %} relates two elements
-of two different types along an equality α between the types mentioned.
-This kind of equality can be formalised as follows in Agda:
+The heterogeneous equality as it is defined in {% cite Licata2015 %} is a type
+for equality between two elements a : A, b : B, along an equality `α : A == B`.
+Its terms are constructed by the reflexivity constructor which applies only when
+both the two types and the two terms are judgementally equal.
+
+WE define in Agda the heterogeneous equality as `HEq` plus a subindex per each
+definition. We started with the inductive definition in the following.
 
 \begin{code}
 data HEq₁ {ℓ} (A : Type ℓ)
@@ -94,43 +87,37 @@ data HEq₁ {ℓ} (A : Type ℓ)
   idp : ∀ {a : A} → HEq₁ A A idp a a
 \end{code}
 
-{% comment %}
-> In {%cite McBride2004 %} the author introduced a *heterogeneous equality*, which is an equality type
-> `a:A= b:B` that relates two elements `a:A` and `b:B` which may have two judgementally
-> distinct types, though the reflexivity constructor applies only when both the
-> two types and the two terms are judgementally equal.
+In this definition, the reflexivity constructor for Paths was the same name as
+the constructor for homogeneous equality. Using the same, it will allow us to
+switch between different definitions of heterogeneous equality in the posteriori
+proofs but also to switch between the definitions of the Pathover type.
 
-> However, McBride’s heterogeneous equality is **logically equivalent** to a
-> homogeneous equality type *satisfying uniqueness of identity proofs*, which
-> is undesirable **in homotopy type theory, because not all types should be sets**.
-
-We adopt the same name `idp` for the reflexivity constructor of the
-$$\mathsf{Path}$$ type for the heterogeneous equality. This name is convenient
-because we want to maintain some consistency in the following proofs. We will
-switch between different definitions of heterogeneous equality but also between
-definitions for the homogeneous equality.
-
-Let us now define in Agda the transport and the coercion functions along a
-homogeneous equality.
-{% endcomment %}
+Now, we have two types `HEq₂` and `HEq₃` that use the transport and the coercion
+functions, defined below. To deine `transport` we do path-induction on the
+homogeneous equality between the terms and to define the coercion (`coe`) we use
+the `transport`. It is also possible to define them in the other way around,
+which is, `transport` by using `coe`.
 
 \begin{code}
-transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (P : A → Type ℓⱼ) {a b : A}
+transport
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (C : A → Type ℓⱼ) {a b : A}
   → a == b
-  → P a
-  → P b
-transport P idp = (λ x → x)
+  → C a
+  → C b
+transport C idp = (λ x → x)
 \end{code}
 
 \begin{code}
-coe : ∀ {ℓ}{A B : Type ℓ}
-    → A == B
-    → (A → B)
-coe A==B A = transport (λ X → X) A==B A
+coe
+  : ∀ {ℓ}{A B : Type ℓ}
+  → A == B
+  → (A → B)
+coe p A = transport (λ X → X) p A
 \end{code}
 
 {: .foldable}
 \begin{code}
+
 --- Basic HoTT types, functions and theorems.
 
 module hott where
@@ -974,8 +961,6 @@ module hott where
 open hott public
 \end{code}
 
-### Other definitions
-
 Let be `α : A == B`, `a : A`, and `b : B` then the following types are equivalent
 to the previous type `HEq₁`.
 
@@ -1086,8 +1071,6 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₄-~-HEq₃ idp = idp
 \end{code}
 
-Finally, we complete the chain of equivalence with `HEq₄-≃-HEq₁`.
-
 {: .foldable}
 \begin{code}
 -- HEq₄-≃-HEq₁
@@ -1124,26 +1107,9 @@ HEq = HEq₁
 
 ## Paths in the total space
 
-{% comment %}
-
-Given a type family $$C: A → \mathsf{Type}$$ and a path $$α : a₁ = a₂$$, a *pathover* is
-a path connecting $$c₁ : C a₁$$ with $$c₂ : C a₂$$ lying over $$α$$. types.
-% --TODO The PathOver is the dependent version of a *path*, what it means that the path
-% is between two endpoints from maybe different types. This is of course what we
-% saw in the definition of the heterogeneous equality. The difference is that
-% we simplify `HEq`  definition with `PathOver` by factorizing the type family
-% that is involved in the paths.
-%
-% -- TODO We define `PathOver₁` as the inductive family with only one constructor,
-% the reflexivity over the reflexivity on the base space `A`. To eliminate this
-% type, we can use path-over induction. In Agda, we just do pattern matching along
-% the path on the base `A`. Additionaly, we can define this notion of PathOvers in at least
-% four different ways. Let us see these definitions, all equivalent. To refer to a pathover,
-% we adopt the notation `c₁ == c₂ [ C ↓ α ]` from the HoTT-Agda library.
-
-{% endcomment %}
-
-### Definitions
+As we mentioned above, Pathover can be defined in at least five different ways.
+An inductive definition, using the heterogeneous equality, transporting along
+homogeneous equalities and the last one by using path-induction.
 
 - \begin{code}
 data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
@@ -1160,7 +1126,7 @@ PathOver₂ {A = A} C {a₁} {a₂} α c₁ c₂ = HEq (C a₁) (C a₂) (ap C �
 - \begin{code}
 PathOver₃ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
           → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
-PathOver₃ {A = A} C {a₁} {a₂} α c₁ c₂ = transport C α c₁ == c₂
+PathOver₃ C α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
 ![path](/assets/ipe-images/pathover-3.png)
@@ -1168,7 +1134,7 @@ PathOver₃ {A = A} C {a₁} {a₂} α c₁ c₂ = transport C α c₁ == c₂
 - \begin{code}
 PathOver₄ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
           → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
-PathOver₄ {A = A} C {a₁} {a₂} α c₁ c₂ = c₁ == transport C (inv α) c₂
+PathOver₄ C α c₁ c₂ = c₁ == transport C (α ⁻¹) c₂
 \end{code}
 
 ![path](/assets/ipe-images/pathover-4.png)
@@ -1176,14 +1142,8 @@ PathOver₄ {A = A} C {a₁} {a₂} α c₁ c₂ = c₁ == transport C (inv α) 
 - \begin{code}
 PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
           → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
-PathOver₅ C idp c₁ c₂ = c₁ == c₂
+PathOver₅ _ idp c₁ c₂ = c₁ == c₂
 \end{code}
-
-{% comment %}
-Notice that above when we used `transport C α c₁`, we could also have used `coe
-(ap C α)`, we mention this because in HoTT-Agda library, `transport` is defined
-using `coe`.
-{% endcomment %}
 
 ### Equivalences
 
@@ -1252,7 +1212,6 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
           → PathOver₃-to-PathOver₂ (PathOver₂-to-PathOver₃ p) == p
       PathOver₃~PathOver₂ idp = idp
 \end{code}
-
 
 {: .foldable}
 \begin{code}
@@ -1353,34 +1312,15 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₁~PathOver₅ idp = idp
 \end{code}
 
-We use the third definition of the inductive family also used in the HoTT book.
-Nevertheless, if the reader want to use another definition, they can change
-the subindex in the following definition for the variable `PathOver`.
+The third definition is from {% cite hottbook %} in Section 2.3.
+The syntax sugar for pathovers is from {% cite hott-in:agda %}.
 
 \begin{code}
 PathOver = PathOver₃
-\end{code}
 
-The following is syntax sugar for pathovers used in HoTT-Agda library.
-
-\begin{code}
 infix 30 PathOver
 syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 \end{code}
-
-{% comment %}
-## Other facts
-
-We can build a dependent path by applying a dependent function to a homogeneous
-path.
-
-\begin{code}
-apdo : ∀ {ℓ} {A : Type ℓ} {B : A → Type ℓ} (f : (a : A) → B a)
-      {a₁ a₂ : A} → (α : a₁ == a₂) → (PathOver B α (f a₁) (f a₂))
-apdo f idp = idp
-\end{code}
-
-{% endcomment %}
 
 ## Total spaces
 
@@ -1783,10 +1723,10 @@ module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
 
 ## Agda Libraries
 
-We took inspiration of the following Agda libraries for all source code showed above:
+We based on the following Agda libraries.
 
 {: .links}
 
-  - Pathover syntax: https://github.com/HoTT/HoTT-Agda/.
+  - Pathovers: https://github.com/HoTT/HoTT-Agda/.
 
-  - We modify [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html) library to fit our demands.
+  - [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html)
