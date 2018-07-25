@@ -36,7 +36,7 @@
   color: #6D508B; }
 
 .InductiveConstructor {
-  color: #008B00;
+  color: darkgreen;
   font-weight: bolder; }
 
 .CoinductiveConstructor {
@@ -274,12 +274,37 @@ img {
   margin-top: 1rem;
   margin-bottom: 1rem; }
 
+.print-authors {
+  display: table; }
+
+.print-author {
+  display: table; }
+
+.print-info {
+  display: table-cell;
+  padding-left: 4em;
+  padding-right: 4em; }
+
+.print-author-name, .print-author-affiliation {
+  display: table-row;
+  padding: 3px 10px; }
+
+.print-author-affiliation {
+  font-style: italic; }
+
+.print-date {
+  padding-top: 2em;
+  padding-bottom: 4em; }
+
+.only-website {
+  display: inherit; }
+
 .post img:hover {
   width: -webkit-fill-available; }
 
 .post img {
   padding: 0px 20px 0px 20px;
-  width: 50%; }
+  width: 70%; }
 
 body > div.wrap > div.masthead > div > h3 > a:nth-child(1) > img {
   border-radius: 5px;
@@ -465,10 +490,20 @@ a.pagination-item:hover {
 /* Prevent scroll on narrow devices */
 html,
 body {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility; }
+
+.print-version {
+  display: none; }
 
 html {
   font-family: "PT Serif", Georgia, "Times New Roman", serif; }
+
+@media all {
+  .page-break {
+    display: none; } }
+.always-hide {
+  display: none !important; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
@@ -488,6 +523,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center; }
 
 .github-links {
+  font-family: "PT Sans", Helvetica, Arial, sans-serif;
   width: auto;
   padding: 4px;
   float: right;
@@ -495,6 +531,9 @@ h1, h2, h3, h4, h5, h6 {
   color: gray; }
   .github-links a {
     color: #c3c3c3; }
+
+svg {
+  fill: #515151; }
 
 .post-changes {
   padding: 5px;
@@ -1523,31 +1562,91 @@ a.pagination-item:hover {
     color: black; }
 
 @media print {
+  .page-break {
+    display: block;
+    page-break-before: always; }
+
+  .only-website {
+    display: none !important; }
+
+  .print-version {
+    display: inherit !important; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important; }
+
+  html {
+    font-family: "PT Serif", Georgia, "Times New Roman", serif !important; }
+
+  a {
+    color: black !important; }
+
   body {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    font-size: 1em;
-    color: #333333;
-    margin-top: 2cm;
-    margin-right: auto;
-    margin-bottom: 1.5cm;
-    margin-left: 10px; }
+    font-size: 0.938em !important;
+    color: black !important; }
 
-  .toc {
-    display: none; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "PT Serif", Georgia, "Times New Roman", serif !important;
+    font-weight: 400 !important;
+    color: #21182a !important;
+    letter-spacing: -.025rem !important; }
 
-  pre {
-    display: none; }
+  h1 {
+    font-size: 2em !important;
+    font-weight: bold; }
+
+  h2 {
+    font-size: 1.188em !important; }
+
+  h3 {
+    font-size: 1.00em !important; }
+
+  h4 {
+    font-size: 1.00em !important; }
+
+  h5 {
+    font-size: 1.00em !important; }
+
+  h6 {
+    font-size: 1.00em !important; }
+
+  .post-title,
+  .masthead-title,
+  .main-heading,
+  .github-links,
+  .toc,
+  .hide,
+  .always-hide,
+  .related,
+  #disqus_thread {
+    display: none !important; }
+
+  pre .foldable :not(.hide) {
+    height: unset !important;
+    overflow: visible !important; }
+
+  svg {
+    fill: black !important;
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -o-transform: scale(0.6); }
+
+  .container {
+    max-width: -webkit-fill-available !important; }
 
   @page {
-    margin: 2cm; }
+    size: A4;
+    margin-left: 3cm;
+    margin-right: 3cm;
+    margin-top: 2.5cm;
+    margin-bottom: 2.4cm; }
   @page :first {
-    margin: 1cm 2cm; }
-  img {
-    max-width: 100% !important; }
-
-  @page :left {
-    margin: 1cm 3cm 1cm 2cm; }
-  @page :right {
-    margin: 1cm 2cm 2cm 3cm; } }
+    margin-left: 3cm;
+    margin-right: 3cm;
+    margin-top: 3cm;
+    margin-bottom: 2.4cm; } }
 div.equation {
   text-align: center; }
