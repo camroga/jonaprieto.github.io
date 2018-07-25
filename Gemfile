@@ -7,7 +7,7 @@ group :jekyll_plugins do
    gem "jekyll-feed", "~> 0.6"
    gem 'hawkins'
    gem 'jekyll-last-modified-at'
-   gem 'jekyll-algolia',  "~> 1.3.3"
+   gem 'jekyll-algolia', '~> 1.4', '>= 1.4.6'
    gem 'jekyll-github-metadata'
    gem 'netrc'
    gem 'unicode'
