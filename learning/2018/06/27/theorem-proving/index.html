@@ -14,17 +14,17 @@
 <meta property="og:title" content="Proving" />
 <meta name="author" content="Jonathan Prieto-Cubides" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Concrete Semantics with Isabelle/HOL by Tobias Nipkow, Gerwin Klein" />
-<meta property="og:description" content="Concrete Semantics with Isabelle/HOL by Tobias Nipkow, Gerwin Klein" />
+<meta name="description" content="Isabelle/HOL" />
+<meta property="og:description" content="Isabelle/HOL" />
 <link rel="canonical" href="http://jonaprieto.github.io/learning/2018/06/27/theorem-proving/" />
 <meta property="og:url" content="http://jonaprieto.github.io/learning/2018/06/27/theorem-proving/" />
 <meta property="og:site_name" content="jonaprieto" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-06-27T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"Concrete Semantics with Isabelle/HOL by Tobias Nipkow, Gerwin Klein","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/06/27/theorem-proving/","headline":"Proving","dateModified":"2018-07-16T11:22:15+02:00","datePublished":"2018-06-27T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/06/27/theorem-proving/"},"@context":"http://schema.org"}</script>
+{"description":"Isabelle/HOL","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/06/27/theorem-proving/","headline":"Proving","dateModified":"2018-07-26T22:52:29+02:00","datePublished":"2018-06-27T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/06/27/theorem-proving/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<meta name="description" content="Concrete Semantics with Isabelle/HOL by Tobias Nipkow, Gerwin Klein">
+<meta name="description" content="Isabelle/HOL">
 
   <link rel="stylesheet" href="/assets/main.css">
   <!-- Icons -->
@@ -170,32 +170,171 @@
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md">
-              Added plan to learn Isabelle from the book</a>
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md">
+              isabelle progress of this week</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md">f541578 </a> on  26 Jul 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md">edc886a </a> on  26 Jul 2018
     </div>
   </div>
   
   <h1 class="post-title">Proving
     <div class="github-links">
-      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-27-theorem-proving.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-27-theorem-proving.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
     </div>
   </h1>
   
-  <h2 id="concrete-semantics-with-isabellehol-by-tobias-nipkow-gerwin-klein">Concrete Semantics with Isabelle/HOL by Tobias Nipkow, Gerwin Klein</h2>
+  <div class="toc">
+    <nav>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#isabellehol">Isabelle/HOL</a>
+    <ul>
+      <li><a href="#basic">Basic</a></li>
+      <li><a href="#types">Types</a>
+        <ul>
+          <li><a href="#bool">bool</a></li>
+          <li><a href="#nat">nat</a></li>
+          <li><a href="#list">list</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+    </nav>
+  </div>
+  
+  <h2 id="isabellehol">Isabelle/HOL</h2>
+
+<p>My main reference is <a href="#TobiasNipkow2016">(Nipkow &amp; Klein, 2016)</a></p>
 
 <p><img src="/assets/png-images/2018-06-27-theorem-proving-d1fc95b9.png" alt="" /></p>
 
-<p>Part I Isabelle</p>
+<h3 id="basic">Basic</h3>
+
+<ul>
+  <li><em>Isabelle</em> is a generic system for implementing logical formalisms</li>
+  <li>
+    <p><em>Isabelle/HOL</em> is the specialization of Isabelle for HOL</p>
+  </li>
+  <li>Basic types:
+    <ul>
+      <li><code>bool</code> : truth values</li>
+      <li><code>nat </code> : natural numbers</li>
+      <li><code>int </code> : mathematical Integers</li>
+    </ul>
+  </li>
+  <li>Type constructors:
+    <ul>
+      <li><code>list</code>: <code>nat list</code></li>
+      <li><code>set</code>:  <code>int set</code></li>
+    </ul>
+  </li>
+  <li>function types, denoted by <code>⇒</code>. type</li>
+  <li>type variables, denoted by ′a,… : <code>′a ⇒ ′b list</code></li>
+  <li>
+    <p>type constraint (or type annotation): <code>t :: τ</code> means the term <code>t</code> has type <code>τ</code></p>
+  </li>
+  <li>
+    <p>basic constructors (written for safety between parenthesis):</p>
+
+    <ul>
+      <li><code>(if b then t1 else t2)</code></li>
+      <li><code>(let x = t in u)</code></li>
+      <li><code>(case t of pat1 ⇒ t1 | ... | patn ⇒ tn)</code></li>
+    </ul>
+  </li>
+  <li>formulas: <code>bool</code> terms
+    <ul>
+      <li>constants: <code>True</code>, <code>False</code></li>
+      <li>connectives <code>¬, ∧, ∨, −→</code></li>
+    </ul>
+  </li>
+  <li>equality: <code>= :: ′a ⇒ ′a</code></li>
+  <li>quantifiers: <code>∀ x. P</code> and <code>∃ x. P</code></li>
+  <li><em>universal</em> quantifiers \Lambda and \LongRightarrow (from Isabelle not from HOL)</li>
+  <li>Right-arrows of all kinds always associate to the right</li>
+  <li>
+    <p><code>[[ A1; ...; An ]] =⇒ A</code> is short for <code>A1 =⇒ ... =⇒ An =⇒ A</code></p>
+  </li>
+  <li>
+    <p>Theories: a <strong>theory</strong> is a named collection of types, functions, and theorems.</p>
+
+    <ul>
+      <li>All Isabelle text needs to go into a theory</li>
+      <li><code>T</code> must reside in a theory file named <code>T.thy</code></li>
+      <li>The general format for a theory <code>T</code> is:</li>
+    </ul>
+  </li>
+</ul>
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="k">theory</span> <span class="n">T</span>
+  <span class="kp">imports</span> <span class="n">T1</span> <span class="ow">...</span> <span class="n">Tn</span>
+  <span class="k">begin</span>
+    <span class="ow">...</span>
+  <span class="k">end</span></code></pre></figure>
+<ul>
+  <li>
+    <p><code>Main</code> is a theory available, the union of all the basic predefined theories about arithmetic, lists, sets, etc.</p>
+
+    <ul>
+      <li>more theories at http://afp.sourceforge.net</li>
+    </ul>
+  </li>
+  <li>“… “ for types and formulas in HOL</li>
+  <li>HOL syntax as the inner syntax</li>
+  <li>enclosing theory language as the outer syntax</li>
+</ul>
+
+<h3 id="types">Types</h3>
+
+<h4 id="bool">bool</h4>
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="k">datatype</span> <span class="n">bool</span> <span class="o">=</span> <span class="n">True</span> <span class="o">|</span> <span class="n">False</span></code></pre></figure>
+<ul>
+  <li>predefined functions: ¬, ∧, ∨, −→, among others.</li>
+  <li>example of usage:</li>
+</ul>
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="k">fun</span> <span class="n">conj</span> <span class="o">::</span> <span class="s">&quot;bool ⇒ bool ⇒ bool&quot;</span> <span class="kp">where</span>
+    <span class="s">&quot;conj True True = True&quot;</span>
+  <span class="o">|</span> <span class="s">&quot;conj _   _     = False&quot;</span></code></pre></figure>
+<h4 id="nat">nat</h4>
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="k">datatype</span> <span class="n">nat</span> <span class="o">=</span> <span class="n">0</span> <span class="o">|</span> <span class="n">Suc</span> <span class="n">nat</span></code></pre></figure>
+<ul>
+  <li>predefined functions: +, ∗, !</li>
+  <li>example of usage:</li>
+</ul>
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="k">fun</span> <span class="n">add</span> <span class="o">::</span> <span class="s">&quot;nat ⇒ nat ⇒ nat&quot;</span> <span class="kp">where</span>
+    <span class="s">&quot;add 0 n = n&quot;</span>
+  <span class="o">|</span> <span class="s">&quot;add (Suc m) n = Suc(add m n)&quot;</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="kn">lemma</span> <span class="n">m0eqm</span> <span class="o">:</span> <span class="s">&quot;add m 0 = m&quot;</span>
+  <span class="kp">apply</span><span class="o">(</span><span class="n">induction</span> <span class="n">m</span><span class="o">)</span>
+  <span class="kp">apply</span><span class="o">(</span><span class="n">auto</span><span class="o">)</span>
+<span class="k">done</span></code></pre></figure>
+<ul>
+  <li>
+    <p>the concept of <strong>proof state</strong> is about the hypothesis
+to be eliminated from current stage. That is, what is
+missing of the proof.</p>
+  </li>
+  <li><strong>inspect the lemma</strong>: <code>thm add_02</code></li>
+  <li>the keywords <strong>lemma</strong>, <strong>theorem</strong> and <strong>rule</strong> are interchangeably</li>
+  <li><strong>IH</strong> will stand for “induction hypothesis”.</li>
+</ul>
+
+<h4 id="list">list</h4>
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="k">datatype</span> <span class="err">′</span><span class="n">a</span> <span class="n">list</span> <span class="o">=</span> <span class="n">Nil</span> <span class="o">|</span> <span class="n">Cons</span> <span class="err">′</span><span class="n">a</span> <span class="s">&quot;′a list&quot;</span></code></pre></figure>
+<p>Command <code>value</code> evaluates a term.</p>
+<figure class="highlight"><pre><code class="language-isabelle" data-lang="isabelle"><span></span><span class="kt">value</span> <span class="s">&quot;rev(Cons True (Cons False Nil))&quot;</span> <span class="n">yields</span></code></pre></figure>
+<ul>
+  <li><strong>To suppress the qualified names</strong> you can insert the command declare <code>[[names_short]]</code></li>
+</ul>
+
+<p><strong>Bookmark Page 11</strong>.</p>
 
 <ul class="task-list">
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2 Programming and Proving                         5</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2.1 Basics                                        5</li>
-  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2.2 Types bool, nat and list                      7</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2.3 Type and Function Definitions                 15</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2.4 Induction Heuristics                          19</li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2.5 Simplification                                21</li>
@@ -273,11 +412,11 @@
 
 
   <div class="cited-references" markdown="1">
-  <ol class="bibliography"></ol>
+  <ol class="bibliography"><li><span id="TobiasNipkow2016">Nipkow, T., &amp; Klein, G. (2016). <i>Concrete Semantics</i> (pp. 1–2). https://doi.org/10.1007/978-3-319-10542-0</span></li></ol>
   </div>
 
   <div class="github-links">
-    <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-27-theorem-proving.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7dd69e49a7e1b2a158de250c3b670fe151d49bf5/src/2018-06-27-theorem-proving.md" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
+    <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-27-theorem-proving.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/a240a8819223fed5f53e00b6abb1e5bd6edc886a/src/2018-06-27-theorem-proving.md" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
   </div>
 </div>
 
