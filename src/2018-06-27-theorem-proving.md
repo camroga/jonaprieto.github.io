@@ -4,18 +4,135 @@ title: "Proving"
 date: "2018-06-27"
 categories: learning
 published: true
+toc: true
 ---
 
 
-## Concrete Semantics with Isabelle/HOL by Tobias Nipkow, Gerwin Klein
+## Isabelle/HOL
+
+My main reference is {% cite TobiasNipkow2016 %}
 
 ![](/assets/png-images/2018-06-27-theorem-proving-d1fc95b9.png)
 
-Part I Isabelle
 
-- [ ] 2 Programming and Proving                         5
-- [ ] 2.1 Basics                                        5
-- [ ] 2.2 Types bool, nat and list                      7
+### Basic
+
+- *Isabelle* is a generic system for implementing logical formalisms
+- *Isabelle/HOL* is the specialization of Isabelle for HOL
+
+- Basic types:
+  - `bool` : truth values
+  - `nat ` : natural numbers
+  - `int ` : mathematical Integers
+
+- Type constructors:
+  - `list`: `nat list`
+  - `set`:  `int set`
+
+- function types, denoted by `⇒`. type
+- type variables, denoted by ′a,... : `′a ⇒ ′b list`
+- type constraint (or type annotation): `t :: τ` means the term `t` has type `τ`
+
+- basic constructors (written for safety between parenthesis):
+
+  - `(if b then t1 else t2)`
+  - `(let x = t in u)`
+  - `(case t of pat1 ⇒ t1 | ... | patn ⇒ tn)`
+
+- formulas: `bool` terms
+  - constants: `True`, `False`
+  - connectives `¬, ∧, ∨, −→`
+
+- equality: `= :: ′a ⇒ ′a`
+- quantifiers: `∀ x. P` and `∃ x. P`
+- *universal* quantifiers \Lambda and \LongRightarrow (from Isabelle not from HOL)
+- Right-arrows of all kinds always associate to the right
+- `[[ A1; ...; An ]] =⇒ A` is short for `A1 =⇒ ... =⇒ An =⇒ A`
+
+- Theories: a **theory** is a named collection of types, functions, and theorems.
+
+  - All Isabelle text needs to go into a theory
+  - `T` must reside in a theory file named `T.thy`
+  - The general format for a theory `T` is:
+
+  {%- highlight isabelle -%}
+  theory T
+  imports T1 ... Tn
+  begin
+    ...
+  end
+  {%- endhighlight -%}
+
+  - `Main` is a theory available, the union of all the basic predefined theories about arithmetic, lists, sets, etc.
+
+  - more theories at http://afp.sourceforge.net
+
+- "... " for types and formulas in HOL
+- HOL syntax as the inner syntax
+- enclosing theory language as the outer syntax
+
+### Types
+
+#### bool
+
+{%- highlight isabelle -%}
+datatype bool = True | False
+{%- endhighlight -%}
+
+- predefined functions: ¬, ∧, ∨, −→, among others.
+- example of usage:
+
+{%- highlight isabelle -%}
+fun conj :: "bool ⇒ bool ⇒ bool" where
+    "conj True True = True"
+  | "conj _   _     = False"
+{%- endhighlight -%}
+
+#### nat
+
+{%- highlight isabelle -%}
+datatype nat = 0 | Suc nat
+{%- endhighlight -%}
+
+- predefined functions: +, ∗, !
+- example of usage:
+
+{%- highlight isabelle -%}
+fun add :: "nat ⇒ nat ⇒ nat" where
+    "add 0 n = n"
+  | "add (Suc m) n = Suc(add m n)"
+{%- endhighlight -%}
+
+{%- highlight isabelle -%}
+lemma m0eqm : "add m 0 = m"
+  apply(induction m)
+  apply(auto)
+done
+{%- endhighlight -%}
+
+- the concept of **proof state** is about the hypothesis
+to be eliminated from current stage. That is, what is
+missing of the proof.
+
+- **inspect the lemma**: `thm add_02`
+- the keywords **lemma**, **theorem** and **rule** are interchangeably
+- **IH** will stand for “induction hypothesis”.
+
+#### list
+
+{%- highlight isabelle -%}
+datatype ′a list = Nil | Cons ′a "′a list"
+{%- endhighlight -%}
+
+Command `value` evaluates a term.
+{%- highlight isabelle -%}
+value "rev(Cons True (Cons False Nil))" yields
+{%- endhighlight -%}
+
+- **To suppress the qualified names** you can insert the command declare `[[names_short]]`
+
+**Bookmark Page 11**.
+
 - [ ] 2.3 Type and Function Definitions                 15
 - [ ] 2.4 Induction Heuristics                          19
 - [ ] 2.5 Simplification                                21

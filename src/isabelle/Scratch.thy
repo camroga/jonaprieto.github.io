@@ -1,0 +1,56 @@
+theory Scratch
+  imports Main 
+begin
+
+declare [[names_short]]
+
+datatype bool = True | False
+
+fun conj :: "bool \<Rightarrow> bool \<Rightarrow> bool" where
+  "conj True True = True" |
+  "conj _ _ = False"
+
+fun add2 :: "nat \<Rightarrow> nat \<Rightarrow> nat"
+  where
+    "add2 0 m = 0"
+  | "add2 (Suc n) m = Suc (add2 n m)"
+
+lemma add2 : "add2 m 0 = m"
+  apply (induction m)
+  apply auto
+  done
+
+datatype 'a list = Nil | Cons 'a "'a list"
+
+fun app :: "'a list => 'a list => 'a list" where
+  "app Nil ys = ys" |
+  "app (Cons x xs) ys = Cons x (app xs ys)"
+
+fun rev :: "'a list => 'a list" where
+  "rev Nil = Nil" |
+  "rev (Cons x xs) = app (rev xs) (Cons x Nil)"
+
+value "rev (Cons 2 (Cons 3 (Nil :: nat list)))"
+
+lemma app_Nil2 [simp]
+  : "app xs Nil = xs"
+  apply (induction xs)
+   apply auto
+  done
+
+lemma app_assoc [simp]: "app (app xs ys) zs = app xs (app ys zs)" 
+  apply(induction xs)
+   apply(auto)
+  done
+
+lemma rev_app [simp]: "rev(app xs ys) = app (rev ys) (rev xs)"
+  apply (induction xs)
+   apply auto
+  done
+  
+theorem rev_rev [simp] : "rev(rev ls) = ls"
+  apply (induction ls)
+   apply auto
+  done
+end
+
