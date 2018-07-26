@@ -18,8 +18,10 @@ This source code was type-checked by Agda 2.5.4.
 Agda has a pragma to work with HoTT (`--without-K`):
 
 \begin{code}
+
 {-# OPTIONS --without-K #-}
-open import Agda.Primitive public
+
+open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ )
 
 _ = Set -- trick for avoiding Agda module errors (jekyll)
 \end{code}
@@ -39,14 +41,14 @@ module Universes where
   Type : (ℓ : Level) → Set (lsuc ℓ)
   Type ℓ = Set ℓ
   -- First levels of the universe hierarchy
-  Type0 : Type (lsuc lzero)
-  Type0 = Type lzero
+  Type₀ : Type (lsuc lzero)
+  Type₀ = Type lzero
 
-  Type1 : Type (lsuc (lsuc lzero))
-  Type1 = Type (lsuc lzero)
+  Type₁ : Type (lsuc (lsuc lzero))
+  Type₁ = Type (lsuc lzero)
 
-  Type2 : Type (lsuc (lsuc (lsuc lzero)))
-  Type2 = Type (lsuc (lsuc lzero))
+  Type₂ : Type (lsuc (lsuc (lsuc lzero)))
+  Type₂ = Type (lsuc (lsuc lzero))
 
 open Universes
 \end{code}
@@ -64,7 +66,7 @@ data ⊥ {ℓᵢ} : Type ℓᵢ where
 Empty = ⊥
 
 -- Ex falso quodlibet
-exfalso : ∀{ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
+exfalso : ∀ {ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
 exfalso ()
 
 ⊥-elim = exfalso
@@ -82,7 +84,7 @@ The unit type is defined as record so that we also get the η-rule definitionall
 \begin{code}
 -- A record without fields is the unit type with a single
 -- constructor.
-record ⊤ : Type0 where
+record ⊤ : Type₀ where
   constructor ★
 
 unit = ★
@@ -102,11 +104,17 @@ full generality, at each universe.
 
 \begin{code}
 infixr 60 _,_
-record Σ {ℓᵢ ℓⱼ} (S : Type ℓᵢ)(T : S → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
+record Σ {ℓᵢ ℓⱼ} (A : Type ℓᵢ)(C : A → Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
   constructor _,_
   field
-    fst : S
-    snd : T fst
+    π₁ : A
+    π₂ : C π₁
+
+  proj₁ = π₁
+  fst   = π₁
+
+  proj₂ = π₂
+  snd   = π₂
 open Σ public
 \end{code}
 
@@ -123,7 +131,7 @@ Shorter notation for Π-types.
 Product type as a particular case of the sigma
 
 \begin{code}
-_×_ : ∀{ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+_×_ : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (B : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
 A × B = Σ A (λ _ → B)
 \end{code}
 
@@ -132,9 +140,9 @@ A × B = Σ A (λ _ → B)
 Sum types as inductive types
 \begin{code}
 infixr 80 _+_
-data _+_ {ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
-  inl : S → S + T
-  inr : T → S + T
+data _+_ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (B : Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
+  inl : A → A + B
+  inr : B → A + B
 \end{code}
 
 ### Boolean
@@ -142,7 +150,7 @@ data _+_ {ℓᵢ ℓⱼ} (S : Type ℓᵢ) (T : Type ℓⱼ) : Type (ℓᵢ ⊔ 
 Boolean type, two constants true and false
 
 \begin{code}
-data Bool : Type0 where
+data Bool : Type₀ where
   true  : Bool
   false : Bool
 \end{code}
@@ -156,7 +164,7 @@ successor function. The BUILTIN declaration allows us to use
 natural numbers in arabic notation.
 
 \begin{code}
-data ℕ : Type0 where
+data ℕ : Type₀ where
   zero : ℕ
   succ : ℕ → ℕ
 
@@ -177,7 +185,7 @@ id a = a
 
 The identity function on a type `A` is `idf A`.
 \begin{code}
-idf : ∀ {i} (A : Type i) → (A → A)
+idf : ∀ {ℓᵢ} (A : Type ℓᵢ) → (A → A)
 idf A = λ x → x
 \end{code}
 
@@ -186,21 +194,21 @@ idf A = λ x → x
 Constant function at some point `b` is `cst b`
 
 \begin{code}
-cst : ∀ {i j} {A : Type i} {B : Type j} (b : B) → (A → B)
+cst : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} (b : B) → (A → B)
 cst b = λ _ → b
 \end{code}
 
 #### Composition
 
-A more sofisticated composition function that can handle dependent functions.
+A more sophisticated composition function that can handle dependent functions.
 
 \begin{code}
 infixr 80 _∘_
-_∘_ : ∀{ℓᵢ ℓⱼ ℓₖ}
-    {A : Type ℓᵢ}
-    {B : A → Type ℓⱼ}
-    {C : (a : A) → (B a → Type ℓₖ)}
-    → (g : {a : A} → Π (B a) (C a)) → (f : Π A B) → Π A (λ a → C a (f a))
+_∘_ : ∀ {ℓᵢ ℓⱼ ℓₖ}
+    {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
+    → (g : {a : A} → Π (B a) (C a))
+    → (f : Π A B)
+    → Π A (λ a → C a (f a))
 g ∘ f = λ x → g (f x)
 \end{code}
 
@@ -208,13 +216,11 @@ g ∘ f = λ x → g (f x)
 
 \begin{code}
 infixr 0 _$_
-_$_ : ∀ {i j} {A : Type i} {B : A → Type j}
+_$_ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ}
     → (∀ x → B x) → (∀ x → B x)
 f $ x = f x
 \end{code}
 
-The common symbol use to be dollar sign (\$) but it produces
-some errors for my jekyll configuration.
 
 #### Curryfication
 
@@ -230,11 +236,11 @@ curry f x y = f (x , y)
 \begin{code}
 uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Type k}
         → (∀ x y → C x y)
-        → (∀ s → C (fst s) (snd s))
+        → (∀ s → C (π₁ s) (π₂ s))
 uncurry f (x , y) = f x y
 \end{code}
 
-#### Instance Searh
+#### Instance Search
 
 \begin{code}
 -- TODO : How to use this?
@@ -242,18 +248,23 @@ uncurry f (x , y) = f x y
 ⟨⟩ {{a}} = a
 \end{code}
 
-### Identity Type
+### Homogeneous Equality
 
-Equality is defined as an inductive type. Its induction principle
+The Identity type is defined as an inductive type. Its induction principle
 is the J-eliminator.
 
 \begin{code}
 infix 30 _==_
-data _==_ {ℓ} {A : Type ℓ} : A → A → Type ℓ where
-  refl :(a : A) → a == a
+data _==_ {ℓᵢ} {A : Type ℓᵢ} (a : A) : A → Type ℓᵢ where
+  idp : a == a
 
 Path = _==_
 {-# BUILTIN EQUALITY _==_ #-}
+\end{code}
+
+\begin{code}
+refl : ∀ {ℓᵢ} {A : Type ℓᵢ} (a : A) → a == a
+refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 \end{code}
 
 #### J eliminator
@@ -261,13 +272,13 @@ Path = _==_
 From [HoTT-Agda](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115) *Paulin-Mohring J rule*
 
 \begin{code}
-J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a == a') → Type ℓⱼ) (d : B a (refl a))
+J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a == a') → Type ℓⱼ) (d : B a idp)
   {a' : A} (p : a == a') → B a' p
-J {a = a} B d (refl a) = d
+J {a = a} B d idp = d
 
-J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a' == a) → Type ℓⱼ) (d : B a (refl a))
+J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a' == a) → Type ℓⱼ) (d : B a idp)
   {a' : A} (p : a' == a) → B a' p
-J' {a = a} B d (refl a) = d
+J' {a = a} B d idp = d
 \end{code}
 
 Composition of paths
@@ -275,22 +286,33 @@ Composition of paths
 \begin{code}
 infixl 50 _·_
 _·_ : ∀ {ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
-(refl a) · q = q
+idp · q = q
+\end{code}
+
+### Heterogeneous equality
+
+\begin{code}
+data HEq {ℓ} (A : Type ℓ)
+            : (B : Type ℓ)
+            → (α : A == B) (a : A) (b : B)
+            → Type ℓ where
+  idp : ∀ {a : A} → HEq A A idp a a
 \end{code}
 
 ### PathOver
 
-If you have a dependent type `B` over `A`, a path `p : x == y` in `A` and two
-points `u : B x` and `v : B y`, there is a **type** `[u == v [ B ↓ p]]` of paths
-from `u` to `v` lying over the path `p`.  By definition, if `p` is a constant
-path, then `[u == v [ B ↓ p ]]` is just an ordinary path in the fiber.
-[More info here](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115).
+Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
+Using the same notation from {% cite hottbook %}, one of the definitions for the
+Pathover type is as the shorthand for the path between the transport along a
+path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C
+a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
+also denoted by `PathOver C α c₁ c₂`.
 
 \begin{code}
-PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (B : A → Type ℓⱼ)
-  {x y : A} (p : x == y) (u : B x) (v : B y) → Type ℓⱼ
-PathOver {A = A} B {x} (refl x) u v = u == v
---
+data PathOver {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
+      {a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ where
+      idp : {c₁ : C a₁} → PathOver C idp c₁ c₁
+
 infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
@@ -320,10 +342,6 @@ equal to `b`, and `ctx` is the context. [More info here](https://github.com/HoTT
 
 module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
 
-  -- Common combinators for equational reasoning. They allow us to
-  -- write proof in an equational style. These versions have been
-  -- adapted from the old version of the HoTT-agda library.
-
   infixr 2 _==⟨⟩_
   _==⟨⟩_ : ∀ (x {y} : A) → x == y → x == y
   _ ==⟨⟩ p = p
@@ -334,13 +352,13 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
 
   infix  3 _∎
   _∎ : (x : A) → x == x
-  _∎ = refl
+  _∎ = λ x → idp
 
   infix  1 begin_
   begin_ : {x y : A} → x == y → x == y
   begin_ p = p
 
-open EquationalReasoning
+open EquationalReasoning public
 \end{code}
 
 ## Actions on paths I
@@ -353,18 +371,20 @@ Types are higher groupoids.  If we see equalities as paths, this
 is the inverse of a path. If we see equalities classically, this
 is the symmetric property of equality.
 \begin{code}
-inv : ∀{ℓ} {A : Type ℓ}  {a b : A}
-  → a == b
-  → b == a
-inv (refl a) = refl a
+inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
+inv idp = idp
+
+_⁻¹ = inv
 \end{code}
+
 Functions are functors to equalities.  In other words, functions
 preserve equalities.
+
 \begin{code}
-ap : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f : A → B)
+ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f : A → B)
   →   a == b
   → f a == f b
-ap f (refl a) = refl (f a)
+ap f idp = idp
 \end{code}
 
 #### Associativity of composition
@@ -375,50 +395,58 @@ Properties of function composition.
 
 -- Left associativity
 ∘-lassoc
-  : ∀{ℓ} {A B C D : Type ℓ}
+  : ∀ {ℓ} {A B C D : Type ℓ}
   → (h : C → D) → (g : B → C) → (f : A → B)
   → (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
-∘-lassoc h g f = refl (λ x → h (g (f x)))
+∘-lassoc h g f = idp {a = (λ x → h (g (f x)))}
 
 -- Right associativity
 ∘-rassoc
-  : ∀{ℓ} {A B C D : Type ℓ}
+  : ∀ {ℓ} {A B C D : Type ℓ}
   → (h : C → D) → (g : B → C) → (f : A → B)
   → ((h ∘ g) ∘ f) == (h ∘ (g ∘ f))
 ∘-rassoc h g f = inv (∘-lassoc h g f)
 \end{code}
 
-
 ## Properties on the groupoid
+
 Some properties on the groupoid structure of equalities
+
 \begin{code}
 module ·-Properties {ℓ} {A : Type ℓ} where
-  ·-runit : {a b : A} (p : a == b) → p == p · (refl b)
-  ·-runit (refl a) = refl (refl a)
 
-  ·-lunit : {a b : A} (p : a == b) → p == (refl _) · p
-  ·-lunit (refl a) = refl (refl a)
+  involution : {a b : A} {p : a == b} → inv (inv p) == p
+  involution {p = idp} = idp
+
+  ·-runit : {a b : A} (p : a == b) → p == p · idp
+  ·-runit idp = idp
+
+  ·-runit-infer : {a b : A} {p : a == b} →  p · idp == p
+  ·-runit-infer {p = idp} = idp
+
+  ·-lunit : {a b : A} (p : a == b) → p == idp · p
+  ·-lunit idp = idp
 
   ·-assoc : {a b c d : A} (p : a == b) → (q : b == c) → (r : c == d)
           → (p · q) · r == p · (q · r)
-  ·-assoc (refl a) q r = refl (q · r)
+  ·-assoc idp q r = idp
 
-  ·-linv : {a b : A} (p : a == b) → (inv p) · p == refl b
-  ·-linv (refl a) = refl (refl a)
+  ·-linv : {a b : A} (p : a == b) → (inv p) · p == idp
+  ·-linv idp = idp
 
-  ·-rinv : {a b : A} (p : a == b) → p · (inv p) == refl a
-  ·-rinv (refl a) = refl (refl a)
+  ·-rinv : {a b : A} (p : a == b) → p · (inv p) == idp
+  ·-rinv idp = idp
 
-  ·-cancellation : {a : A} (p : a == a) → (q : a == a) → p · q == p → q == refl a
+  ·-cancellation : {a : A} (p : a == a) → (q : a == a) → p · q == p → q == idp
   ·-cancellation {a} p q α =
     begin
       q                   ==⟨ ap (_· q) (inv (·-linv p)) ⟩
       inv p · p · q       ==⟨ (·-assoc (inv p) _ _) ⟩
       inv p · (p · q)     ==⟨ (ap (inv p ·_) α) ⟩
       inv p · p           ==⟨ ·-linv p ⟩
-      refl a
+      idp
     ∎
-open ·-Properties
+open ·-Properties public
 \end{code}
 
 ## Transport
@@ -427,80 +455,99 @@ When we transport a proof of `(P a)` over an equality `(a == b)`, we
 get a proof of `(P b)`.
 
 \begin{code}
-module Transport {ℓᵢ} {A : Type ℓᵢ} where
-  -- Transport
-  transport : ∀{ℓⱼ} (P : A → Type ℓⱼ) {a b : A}
-    → a == b
-    → P a
-    → P b
-  transport P (refl a) = id
+transport
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (C : A → Type ℓⱼ) {a b : A}
+  → a == b
+  → C a
+  → C b
+transport C idp = (λ x → x)
+
+coe
+  : ∀ {ℓ}{A B : Type ℓ}
+  → A == B
+  → (A → B)
+coe p A = transport (λ X → X) p A
+\end{code}
+
+### Transport properties
+
+\begin{code}
+module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
 
   -- Some lemmas on the transport operation.
+
+  transport-const : ∀ {ℓⱼ} {P : A → Type ℓⱼ} {x y : A}
+    {B : Type ℓᵢ}
+    → (p : x == y)
+    → (b : B)
+    → transport (λ _ → B) p b == b
+  transport-const idp _ = idp
+
   transport-concat-r : {a : A} {x y : A} → (p : x == y) → (q : a == x) →
     transport (λ x → a == x) p q == q · p
-  transport-concat-r (refl a) q = ·-runit q
+  transport-concat-r idp q = ·-runit q
 
   transport-concat-l : {a : A} {x y : A} → (p : x == y) → (q : x == a) →
     transport (λ x → x == a) p q == (inv p) · q
-  transport-concat-l (refl a) q = refl q
+  transport-concat-l idp q = idp
 
   transport-concat : {x y : A} → (p : x == y) → (q : x == x) →
     transport (λ x → x == x) p q == (inv p) · q · p
-  transport-concat (refl a) q = ·-runit q
+  transport-concat idp q = ·-runit q
 
   transport-eq-fun : ∀{ℓⱼ} {B : Type ℓⱼ} (f g : A → B) {x y : A} (p : x == y) (q : f x == g x)
                     → transport (λ z → f z == g z) p q == inv (ap f p) · q · (ap g p)
-  transport-eq-fun f g (refl a) q = ·-runit q
+  transport-eq-fun f g idp q = ·-runit q
 
   transport-comp : ∀{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ} (p : a == b) (q : b == c)
                    → ((transport P q) ∘ (transport P p)) == transport P (p · q)
-  transport-comp {P = P} (refl a) q = refl (transport P q)
+  transport-comp {P = P} idp q = idp {a = (transport P q)}
 
   transport-comp-h : ∀{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ} (p : a == b) (q : b == c) (x : P a)
                    → ((transport P q) ∘ (transport P p)) x == transport P (p · q) x
-  transport-comp-h {P = P} (refl a) q x = refl (transport P q x)
+  transport-comp-h {P = P} idp q x = idp {a =  (transport P q x)}
 
   -- A shorter notation for transport.
-  _✶ : ∀{ℓⱼ} {P : A → Type ℓⱼ} {a b : A} → a == b → P a → P b
-  _✶ = transport _
-open Transport public
-\end{code}
+  _✶ : ∀ {ℓⱼ} {P : A → Type ℓⱼ} {a b : A} → a == b → P a → P b
+  _✶ {ℓⱼ} {P} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} P
 
+open Transport-Properties public
+\end{code}
 ## Actions on paths II
 
 More properties and lemmas on equality, transporting and function application.
 
 \begin{code}
 ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
-ap-id (refl a) = refl (refl a)
+ap-id idp = idp
 
 ap-comp : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {a b : A}
         → (f : A → B) → (g : B → C) → (p : a == b)
         → ap g (ap f p) == ap (g ∘ f) p
-ap-comp f g (refl a) = refl (refl (g (f a)))
+ap-comp f g idp = idp
 
 ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C} (p : a == b)
-         → ap (λ _ → c) p == refl c
-ap-const {c = c} (refl a) = refl (refl c)
+         → ap (λ _ → c) p == idp
+ap-const {c = c} idp = idp {a = idp {a = c}}
 
 ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
      → (f : A → B) → (p : a == b) → (q : b == c)
      → ap f (p · q) == ap f p · ap f q
-ap-· f (refl a) q = refl (ap f q)
+ap-· f idp q = idp {a = (ap f q)}
 
 ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
        → (f : A → B) → (p : a == b)
        → ap f (inv p) == inv (ap f p)
-ap-inv f (refl a) = refl (refl (f a))
+ap-inv f idp = idp
 
 transport-eq-fun-l : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (f : A → B) {x y : A}
                      → (p : x == y) (q : f x == b)
                      → transport (λ z → f z == b) p q == inv (ap f p) · q
 transport-eq-fun-l {b = b} f p q =
   begin
-    transport (λ z → f z == b) p q      ==⟨ transport-eq-fun f (λ _ → b) p q ⟩
-    inv (ap f p) · q · ap (λ _ → b) p   ==⟨ ap (inv (ap f p) · q ·_) (ap-const p) ⟩
-    inv (ap f p) · q · refl b           ==⟨ inv (·-runit _) ⟩
+    transport (λ z → f z == b) p q     ==⟨ transport-eq-fun f (λ _ → b) p q ⟩
+    inv (ap f p) · q · ap (λ _ → b) p  ==⟨ ap (inv (ap f p) · q ·_) (ap-const p) ⟩
+    inv (ap f p) · q · idp             ==⟨ inv (·-runit _) ⟩
     inv (ap f p) · q
   ∎
 
@@ -517,26 +564,33 @@ transport-eq-fun-r {b = b} g p q =
 
 transport-inv-l : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (b : B)
               → transport (λ v → v) p (transport (λ v → v) (inv p) b) == b
-transport-inv-l (refl a) b = refl b
+transport-inv-l idp b = idp
 
 transport-inv-r : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (a : A)
               → transport (λ v → v) (inv p) (transport (λ v → v) p a) == a
-transport-inv-r (refl a) b = refl b
+transport-inv-r idp b = idp
 
 transport-family : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {P : B → Type ℓₖ}
                  → {f : A → B} → {x y : A} → (p : x == y) → (u : P (f x))
                  → transport (P ∘ f) p u == transport P (ap f p) u
-transport-family (refl a) u = refl u
+transport-family idp u = idp
 
-transport-fun : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
-                → (p : x == y) → (f : A x → B x)
-                → transport (λ x → (A x → B x)) p f == (λ x → transport B p (f (transport A (inv p) x)))
-transport-fun (refl a) f = refl f
+transport-family-id
+  : ∀{ℓᵢ ℓₖ} {A : Type ℓᵢ} {P : A → Type ℓₖ}
+  → {x y : A} → (p : x == y) → (u : P x)
+  → transport (λ a → P a) p u == transport P p u
+transport-family-id idp u = idp
+
+transport-fun
+  : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
+  → (p : x == y) → (f : A x → B x)
+  → transport (λ x → (A x → B x)) p f == (λ x → transport B p (f (transport A (inv p) x)))
+transport-fun idp f = idp
 
 apd : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
     → (f : (a : A) → P a) → (p : a == b)
     → transport P p (f a) == f b
-apd f (refl a) = refl (f a)
+apd f idp = idp
 \end{code}
 
 ## Homotopy
@@ -556,7 +610,7 @@ module Homotopy {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
 
   -- Homotopy is an equivalence relation
   h-refl : (f : (x : A) → P x) → f ∼ f
-  h-refl f x = refl (f x)
+  h-refl f x = idp
 
   h-simm : (f g : (x : A) → P x) → f ∼ g → g ∼ f
   h-simm f g u x = inv (u x)
@@ -567,7 +621,7 @@ module Homotopy {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
   _●_ : {f g h : (x : A) → P x} → f ∼ g → g ∼ h → f ∼ h
   α ● β = h-comp _ _ _ α β
 
-open Homotopy
+open Homotopy public
 \end{code}
 
 ## Homotopy Composition
@@ -597,13 +651,13 @@ square commutative diagram.
 module Naturality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
   h-naturality : {f g : A → B} (H : f ∼ g) → {x y : A} → (p : x == y)
                → H x · ap g p == ap f p · H y
-  h-naturality H (refl a) = inv (·-runit (H a))
+  h-naturality H {x = x} idp = inv (·-runit (H x))
 open Naturality
 \end{code}
 
 A particular case of naturality on the identity function.
 \begin{code}
-h-naturality-id : ∀{ℓ} {A : Type ℓ} {f : A → A} (H : f ∼ id) → {x : A}
+h-naturality-id : ∀ {ℓ} {A : Type ℓ} {f : A → A} (H : f ∼ id) → {x : A}
                 → H (f x) == ap f (H x)
 h-naturality-id {f = f} H {x = x} =
   begin
@@ -631,7 +685,7 @@ module Fibers {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  where
   fib f b = Σ A (λ a → f a == b)
 
   -- A function applied over the fiber returns the original point
-  fib-eq : {f : A → B} → {b : B} → (h : fib f b) → f (fst h) == b
+  fib-eq : {f : A → B} → {b : B} → (h : fib f b) → f (π₁ h) == b
   fib-eq (a , α) = α
 
   -- Each point is on the fiber of its image
@@ -649,7 +703,7 @@ module Contractible where
 
   -- Contractible types. A contractible type is a type such that every
   -- element is equal to a center of contraction.
-  isContr : ∀{ℓ}  (A : Type ℓ) → Type ℓ
+  isContr : ∀ {ℓ}  (A : Type ℓ) → Type ℓ
   isContr A = Σ A (λ a → ((x : A) → a == x))
 open Contractible public
 
@@ -676,24 +730,24 @@ module Equivalence where
   open DefinitionOfEquivalence public
 
   -- Equivalence of types.
-  _≃_ : ∀{ℓᵢ ℓⱼ}  (A : Type ℓᵢ) (B : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+  _≃_ : ∀ {ℓᵢ ℓⱼ}  (A : Type ℓᵢ) (B : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
   A ≃ B = Σ (A → B) isEquiv
 
   module EquivalenceMaps {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 
     -- Maps of an equivalence
     lemap : A ≃ B → (A → B)
-    lemap = fst
+    lemap = π₁
 
     remap : A ≃ B → (B → A)
-    remap (f , contrf) b = fst (fst (contrf b))
+    remap (f , contrf) b = π₁ (π₁ (contrf b))
 
     -- The maps of an equivalence are inverses in particular
     lrmap-inverse : (eq : A ≃ B) → {b : B} → (lemap eq) ((remap eq) b) == b
-    lrmap-inverse (f , eqf) {b} = fib-eq (fst (eqf b))
+    lrmap-inverse (f , eqf) {b} = fib-eq (π₁ (eqf b))
 
     rlmap-inverse : (eq : A ≃ B) → {a : A} → (remap eq) ((lemap eq) a) == a
-    rlmap-inverse (f , eqf) {a} = ap fst ((snd (eqf (f a))) fib-image)
+    rlmap-inverse (f , eqf) {a} = ap π₁ ((π₂ (eqf (f a))) fib-image)
 
     lrmap-inverse-h : (eq : A ≃ B) → ((lemap eq) ∘ (remap eq)) ∼ id
     lrmap-inverse-h eq = λ x → lrmap-inverse eq {x}
@@ -712,7 +766,7 @@ open Equivalence
 module FunctionExtensionality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {f g : (a : A) → B a} where
   -- Application of an homotopy
   happly : f == g → ((x : A) → f x == g x)
-  happly (refl f) x = refl (f x)
+  happly idp x = refl (f x)
 
   -- The axiom of function extensionality postulates that the
   -- application of homotopies is an equivalence.
@@ -741,7 +795,7 @@ module FunctionExtensionalityTransport
   funext-transport
     : (p : x == y) → (f : A x → B x) → (g : A y → B y)
     → ((p ✶) f == g) ≃ ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a))
-  funext-transport (refl a) f g = eqFunExt
+  funext-transport idp f g = eqFunExt
 
   funext-transport-l
     : (p : x == y) → (f : A x → B x) → (g : A y → B y)
@@ -762,13 +816,27 @@ open FunctionExtensionalityTransport
 module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
 
   -- Two dependent pairs are equal if they are componentwise equal.
-  Σ-componentwise : {v w : Σ A P} → v == w → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w)
-  Σ-componentwise {v} {.v} (refl .v) = refl (fst v) , refl (snd v)
+  Σ-componentwise : {v w : Σ A P} → v == w → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
+  Σ-componentwise  idp = (idp , idp)
 
-  Σ-bycomponents : {v w : Σ A P} → Σ (fst v == fst w) (λ p → (p ✶) (snd v) == snd w) → v == w
-  Σ-bycomponents {(a , f)} {(.a , .f)} (refl .a , refl .f) = refl (a , f)
-open Sigma
+  Σ-bycomponents : {v w : Σ A P} → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w) → v == w
+  Σ-bycomponents (idp , idp) = idp
+
+  pair= = Σ-bycomponents
+
+  uppt : (x : Σ A P) → (π₁ x , π₂ x) == x
+  uppt (a , b) = idp
+
+  Σ-ap-π₁ : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
+    → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
+    → ap π₁ (pair= (α , γ)) == α
+  Σ-ap-π₁ idp idp = idp
+
+  ap-π₁-pair= = Σ-ap-π₁
+
+open Sigma public
 \end{code}
+
 
 ## Cartesian Product
 
@@ -777,20 +845,20 @@ module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} wher
 
   -- In a pair, the equality of the two components of the pairs is
   -- equivalent to equality of the two pairs.
-  prodComponentwise : {x y : A × B} → (x == y) → ((fst x == fst y) × (snd x == snd y))
-  prodComponentwise (refl a) = refl (fst a) , refl (snd a)
+  prodComponentwise : {x y : A × B} → (x == y) → ((π₁ x == π₁ y) × (π₂ x == π₂ y))
+  prodComponentwise {x = x} idp = refl (π₁ x) , refl (π₂ x)
 
-  prodByComponents : {x y : A × B} → ((fst x == fst y) × (snd x == snd y)) → (x == y)
-  prodByComponents {x = a , b} (refl .a , refl .b) = refl (a , b)
+  prodByComponents : {x y : A × B} → ((π₁ x == π₁ y) × (π₂ x == π₂ y)) → (x == y)
+  prodByComponents {x = a , b} (idp , idp) = refl (a , b)
 
   -- This is in fact an equivalence.
-  prodCompInverse : {x y : A × B} (b : ((fst x == fst y) × (snd x == snd y))) →
+  prodCompInverse : {x y : A × B} (b : ((π₁ x == π₁ y) × (π₂ x == π₂ y))) →
                     prodComponentwise (prodByComponents b) == b
-  prodCompInverse {x} (refl .(fst x) , refl .(snd x)) = refl (refl (fst x) , refl (snd x))
+  prodCompInverse {x} (idp , idp) = refl (refl (π₁ x) , refl (π₂ x))
 
   prodByCompInverse : {x y : A × B} (b : x == y) →
                     prodByComponents (prodComponentwise b) == b
-  prodByCompInverse (refl a) = refl (refl a)
+  prodByCompInverse {x = x} idp = refl (refl x)
 
 open CartesianProduct
 \end{code}
@@ -816,8 +884,8 @@ module DecidableEquality {ℓ} where
   decEqProd : {A B : Type ℓ} → decEq A → decEq B → decEq (A × B)
   decEqProd da db (a1 , b1) (a2 , b2) with (da a1 a2) | (db b1 b2)
   decEqProd da db (a1 , b1) (a2 , b2) | inl aeq | inl beq = inl (prodByComponents (aeq , beq))
-  decEqProd da db (a1 , b1) (a2 , b2) | inl aeq | inr bnq = inr λ b → bnq (ap snd b)
-  decEqProd da db (a1 , b1) (a2 , b2) | inr anq | u       = inr λ b → anq (ap fst b)
+  decEqProd da db (a1 , b1) (a2 , b2) | inl aeq | inr bnq = inr λ b → bnq (ap π₂ b)
+  decEqProd da db (a1 , b1) (a2 , b2) | inr anq | u       = inr λ b → anq (ap π₁ b)
 
 open DecidableEquality
 \end{code}
@@ -834,28 +902,27 @@ module Propositions where
 
   -- A type is a mere proposition if any two inhabitants of the type
   -- are equal
-  isProp : ∀{ℓ}  (A : Type ℓ) → Type ℓ
+  isProp : ∀ {ℓ}  (A : Type ℓ) → Type ℓ
   isProp A = ((x y : A) → x == y)
 
   -- The type of mere propositions
-  hProp : ∀{ℓ} → Type (lsuc ℓ)
+  hProp : ∀ {ℓ} → Type (lsuc ℓ)
   hProp {ℓ} = Σ (Type ℓ) isProp
 
 
   -- The dependent function type to proposition types is itself a
   -- proposition.
-  piProp : ∀{ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : A → Type ℓⱼ}
+  piProp : ∀ {ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : A → Type ℓⱼ}
          → ((a : A) → isProp (B a)) → isProp ((a : A) → B a)
   piProp props f g = funext λ a → props a (f a) (g a)
 
   -- The product of propositions is itself a proposition.
-  isProp-prod : ∀{ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : Type ℓⱼ}
+  isProp-prod : ∀ {ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : Type ℓⱼ}
               → isProp A → isProp B → isProp (A × B)
   isProp-prod p q x y = prodByComponents ((p _ _) , (q _ _))
 
 open Propositions
 \end{code}
-
 
 ## Sets
 
@@ -868,15 +935,15 @@ module Sets where
 
   -- A type is a "set" by definition if any two equalities on the type
   -- are equal.
-  isSet : ∀{ℓ}  (A : Type ℓ) → Type ℓ
+  isSet : ∀ {ℓ}  (A : Type ℓ) → Type ℓ
   isSet A = (x y : A) → isProp (x == y)
 
   -- The type of sets.
-  hSet : ∀{ℓ} → Type (lsuc ℓ)
+  hSet : ∀ {ℓ} → Type (lsuc ℓ)
   hSet {ℓ} = Σ (Type ℓ) isSet
 
   -- Product of sets is a set.
-  isSet-prod : ∀{ℓᵢ ℓⱼ}  {A : Type ℓᵢ} → {B : Type ℓⱼ}
+  isSet-prod : ∀ {ℓᵢ ℓⱼ}  {A : Type ℓᵢ} → {B : Type ℓⱼ}
              → isSet A → isSet B → isSet (A × B)
   isSet-prod sa sb (a , b) (c , d) p q = begin
      p
@@ -908,11 +975,11 @@ these first levels.
 module HLevels where
 
   -- Propositions are Sets.
-  propIsSet : ∀{ℓ} {A : Type ℓ} → isProp A → isSet A
+  propIsSet : ∀ {ℓ} {A : Type ℓ} → isProp A → isSet A
   propIsSet {A = A} f a _ p q = lemma p · inv (lemma q)
     where
       triang : {y z : A} {p : y == z} → (f a y) · p == f a z
-      triang {p = refl b} = inv (·-runit (f a b))
+      triang {y}{p = idp} = inv (·-runit (f a y))
 
       lemma : {y z : A} (p : y == z) → p == inv (f a y) · (f a z)
       lemma {y} {z} p =
@@ -924,11 +991,11 @@ module HLevels where
         ∎
 
   -- Contractible types are Propositions.
-  contrIsProp : ∀{ℓ}  {A : Type ℓ} → isContr A → isProp A
+  contrIsProp : ∀ {ℓ}  {A : Type ℓ} → isContr A → isProp A
   contrIsProp (a , p) x y = inv (p x) · p y
 
   -- To be contractible is itself a proposition.
-  isContrIsProp : ∀{ℓ}  {A : Type ℓ} → isProp (isContr A)
+  isContrIsProp : ∀ {ℓ}  {A : Type ℓ} → isProp (isContr A)
   isContrIsProp {_} {A} (a , p) (b , q) = Σ-bycomponents (inv (q a) , piProp (AisSet b) _ q)
     where
       AisSet : isSet A
@@ -955,7 +1022,7 @@ module EquivalenceProp {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
   isEquivIsProp = isContrMapIsProp
 
   -- Equality of same-morphism equivalences
-  sameEqv : {α β : A ≃ B} → fst α == fst β → α == β
+  sameEqv : {α β : A ≃ B} → π₁ α == π₁ β → α == β
   sameEqv {(f , σ)} {(g , τ)} p = Σ-bycomponents (p , (isEquivIsProp g _ τ))
 
   -- Equivalences preserve propositions
@@ -988,27 +1055,27 @@ module Halfadjoints {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
       g : B → A
       η : (g ∘ f) ∼ id
       ε : (f ∘ g) ∼ id
-      τ : (x : A) → ap f (η x) == ε (f x)
+      τ : (a : A) → ap f (η a) == ε (f a)
 
   -- Half adjoint equivalences give contractible fibers.
   ishae-contr : (f : A → B) → ishae f → isContrMap f
   ishae-contr f (hae g η ε τ) y = ((g y) , (ε y)) , contra
     where
-      lemma : (c c' : fib f y) → Σ (fst c == fst c') (λ γ → (ap f γ) · snd c' == snd c) → c == c'
+      lemma : (c c' : fib f y) → Σ (π₁ c == π₁ c') (λ γ → (ap f γ) · π₂ c' == π₂ c) → c == c'
       lemma c c' (p , q) = Σ-bycomponents (p , lemma2)
         where
-          lemma2 : transport (λ z → f z == y) p (snd c) == snd c'
+          lemma2 : transport (λ z → f z == y) p (π₂ c) == π₂ c'
           lemma2 =
             begin
-              transport (λ z → f z == y) p (snd c)
-                ==⟨ transport-eq-fun-l f p (snd c) ⟩
-              inv (ap f p) · (snd c)
+              transport (λ z → f z == y) p (π₂ c)
+                ==⟨ transport-eq-fun-l f p (π₂ c) ⟩
+              inv (ap f p) · (π₂ c)
                 ==⟨ ap (inv (ap f p) ·_) (inv q) ⟩
-              inv (ap f p) · ((ap f p) · (snd c'))
-                ==⟨ inv (·-assoc (inv (ap f p)) (ap f p) (snd c')) ⟩
-              inv (ap f p) · (ap f p) · (snd c')
-                ==⟨ ap (_· (snd c')) (·-linv (ap f p)) ⟩
-              snd c'
+              inv (ap f p) · ((ap f p) · (π₂ c'))
+                ==⟨ inv (·-assoc (inv (ap f p)) (ap f p) (π₂ c')) ⟩
+              inv (ap f p) · (ap f p) · (π₂ c')
+                ==⟨ ap (_· (π₂ c')) (·-linv (ap f p)) ⟩
+              π₂ c'
             ∎
 
       contra : (x : fib f y) → (g y , ε y) == x
@@ -1045,9 +1112,8 @@ module Halfadjoints {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
   ishae-≃ : {f : A → B} → ishae f → A ≃ B
   ishae-≃ ishaef = _ , (ishae-contr _ ishaef)
 
-open Halfadjoints
+open Halfadjoints public
 \end{code}
-
 
 ## Quasiinverses
 
@@ -1057,7 +1123,7 @@ a function providing gfx = x and fgy = y for any given x and y.
 \begin{code}
 module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 
-  -- Definitions for quasiinverses, left-inverses, right-inverses and
+  -- Definitions for quasi-inverses, left-inverses, right-inverses and
   -- biinverses.
   qinv : (A → B) → Type (ℓᵢ ⊔ ℓⱼ)
   qinv f = Σ (B → A) (λ g → ((f ∘ g) ∼ id) × ((g ∘ f) ∼ id))
@@ -1081,7 +1147,7 @@ module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
       γ1 = rcomp-∼ g (h-simm (h ∘ f) id α)
 
       γ2 : ((h ∘ f) ∘ g) ∼ (h ∘ (f ∘ g))
-      γ2 x = refl (h (f (g x)))
+      γ2 x = idp
 
       γ : g ∼ h
       γ = γ1 ● (γ2 ● (lcomp-∼ h β))
@@ -1136,15 +1202,18 @@ module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
   qinv-≃ f = ishae-≃ ∘ qinv-ishae
 
   ≃-qinv : A ≃ B → Σ (A → B) qinv
-  ≃-qinv eq = lemap eq , (remap eq , (lrmap-inverse-h eq , rlmap-inverse-h eq))
+  ≃-qinv eq =
+    lemap eq , (remap eq , (lrmap-inverse-h eq , rlmap-inverse-h eq))
 
   -- Half-adjoint equivalences are quasiinverses.
   ishae-qinv : {f : A → B} → ishae f → qinv f
   ishae-qinv {f} (hae g η ε τ) = g , (ε , η)
 
-open Quasiinverses
-\end{code}
+  ≃-ishae : (e : A ≃ B)→ ishae (lemap e)
+  ≃-ishae e = qinv-ishae (π₂ (≃-qinv e))
 
+open Quasiinverses public
+\end{code}
 
 ## Equivalence composition
 
@@ -1154,42 +1223,90 @@ Composition of equivalences and properties of that composition.
 module EquivalenceComposition where
 
   -- Composition of quasiinverses
-  qinv-comp : ∀{ℓ} {A B C : Type ℓ} → Σ (A → B) qinv → Σ (B → C) qinv → Σ (A → C) qinv
+  qinv-comp : ∀ {ℓ} {A B C : Type ℓ} → Σ (A → B) qinv → Σ (B → C) qinv → Σ (A → C) qinv
   qinv-comp (f , (if , (εf , ηf))) (g , (ig , (εg , ηg))) = (g ∘ f) , ((if ∘ ig) ,
      ( (λ x → ap g (εf (ig x)) · εg x)
      ,  λ x → ap if (ηg (f x)) · ηf x))
 
-  qinv-inv : ∀{ℓ} {A B : Type ℓ} → Σ (A → B) qinv → Σ (B → A) qinv
+  qinv-inv : ∀ {ℓ} {A B : Type ℓ} → Σ (A → B) qinv → Σ (B → A) qinv
   qinv-inv (f , (g , (ε , η))) = g , (f , (η , ε))
 
   -- Composition of equivalences
-  idEqv : ∀{ℓ} {A : Type ℓ} → A ≃ A
-  idEqv = id , λ a → (a , refl a) , λ { (_ , refl _) → refl (a , refl a) }
+  idEqv : ∀ {ℓ} {A : Type ℓ} → A ≃ A
+  idEqv = id , λ a → (a , refl a) , λ { (_ , idp) → refl (a , refl a) }
 
-  compEqv : ∀{ℓ} {A B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
-  compEqv {ℓ} {A} {B} {C} eqf eqg = qinv-≃ (fst qcomp) (snd qcomp)
+  compEqv : ∀ {ℓ} {A B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
+  compEqv {ℓ} {A} {B} {C} eqf eqg = qinv-≃ (π₁ qcomp) (π₂ qcomp)
    where
      qcomp : Σ (A → C) qinv
      qcomp = qinv-comp (≃-qinv eqf) (≃-qinv eqg)
 
-  invEqv : ∀{ℓ} {A B : Type ℓ} → A ≃ B → B ≃ A
-  invEqv {ℓ} {A} {B} eqf = qinv-≃ (fst qcinv) (snd qcinv)
+  invEqv : ∀ {ℓ} {A B : Type ℓ} → A ≃ B → B ≃ A
+  invEqv {ℓ} {A} {B} eqf = qinv-≃ (π₁ qcinv) (π₂ qcinv)
    where
      qcinv : Σ (B → A) qinv
      qcinv = qinv-inv (≃-qinv eqf)
 
   -- Lemmas about composition
-  compEqv-inv : ∀{ℓ} {A B : Type ℓ} → (α : A ≃ B) → compEqv α (invEqv α) == idEqv
+  compEqv-inv : ∀ {ℓ} {A B : Type ℓ} → (α : A ≃ B) → compEqv α (invEqv α) == idEqv
   compEqv-inv {_} {A} {B} α = sameEqv (
    begin
-     fst (compEqv α (invEqv α)) ==⟨ refl _ ⟩
-     fst (invEqv α) ∘ fst α     ==⟨ funext (rlmap-inverse-h α) ⟩
+     π₁ (compEqv α (invEqv α)) ==⟨ refl _ ⟩
+     π₁ (invEqv α) ∘ π₁ α     ==⟨ funext (rlmap-inverse-h α) ⟩
      id
    ∎)
 
 open EquivalenceComposition
 \end{code}
 
+## Sigma Equivalences
+
+\begin{code}
+module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
+
+  pair=Equiv : {v w : Σ A P}
+    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w) ≃ v == w
+  pair=Equiv = qinv-≃ Σ-bycomponents (Σ-componentwise , HΣ₁ , HΣ₂)
+    where
+      HΣ₁ : Σ-bycomponents ∘ Σ-componentwise ∼ id
+      HΣ₁ idp = idp
+
+      HΣ₂ : Σ-componentwise ∘ Σ-bycomponents ∼ id
+      HΣ₂ (idp , idp) = idp
+
+  private
+    f : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+      → {β : a₁ == a₂}
+      → {γ : transport P β c₁ == c₂}
+      → ap π₁ (pair= (β , γ)) == α → β == α
+    f {β = idp} {γ = idp} idp = idp
+
+    g : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+      → {β : a₁ == a₂}
+      → {γ : transport P β c₁ == c₂}
+      → β == α → ap π₁ (pair= (β , γ)) == α
+    g {β = idp} {γ = idp} idp = idp
+
+    f-g : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+      → {β : a₁ == a₂}
+      → {γ : transport P β c₁ == c₂}
+      → f {α = α}{β = β}{γ} ∘ g {α = α}{β = β} ∼ id
+    f-g {β = idp} {γ = idp} idp = idp
+
+    g-f : {a₁ a₂ : A} {α : a₁ == a₂}{c₁ : P a₁} {c₂ : P a₂}
+      → {β : a₁ == a₂}
+      → {γ : transport P β c₁ == c₂}
+      → g {α = α}{β = β}{γ} ∘ f {α = α}{β = β}{γ} ∼ id
+    g-f {β = idp} {γ = idp} idp = idp
+
+  ap-π₁-pair=Equiv : {a₁ a₂ : A} {c₁ : P a₁} {c₂ : P a₂}
+    → (α : a₁ == a₂)
+    → (γ : Σ (a₁ == a₂) (λ α' → transport P α' c₁ == c₂))
+    → (ap π₁ (pair= γ) == α) ≃ π₁ γ == α
+  ap-π₁-pair=Equiv {a₁ = a₁} α (β , γ) = qinv-≃ f (g , f-g , g-f)
+
+open SigmaEquivalence public
+\end{code}
 
 ## Univalence
 
@@ -1229,6 +1346,7 @@ module Univalence where
 
 Somme lemmas about Univelance
 
+
 {: .foldable}
 \begin{code}
 --
@@ -1258,10 +1376,10 @@ Somme lemmas about Univelance
 --         lemma : compEqv (idtoeqv (ua α)) (idtoeqv (ua β)) == idtoeqv (ua α · ua β)
 --         lemma = sameEqv (
 --           begin
---             fst (idtoeqv (ua β)) ∘ fst (idtoeqv (ua α))                 ==⟨ refl _ ⟩
+--             π₁ (idtoeqv (ua β)) ∘ π₁ (idtoeqv (ua α))                 ==⟨ refl _ ⟩
 --             (transport (λ x → x) (ua β)) ∘ (transport (λ x → x) (ua α)) ==⟨ transport-comp (ua α) (ua β) ⟩
 --             transport (λ x → x) (ua α · ua β)                           ==⟨ refl _ ⟩
---             fst (idtoeqv (ua α · ua β))
+--             π₁ (idtoeqv (ua α · ua β))
 --           ∎)
 --
 --     -- Inverses are preserved.
