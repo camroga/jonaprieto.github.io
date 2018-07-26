@@ -12,36 +12,44 @@
   }
 
 /* Aspects. */
-.Comment       { color: #82827c; font-style: italic;
-}
-.Keyword       { color: #6D508B; font-weight: bold;}
-.String        { color: #CD5555 }
-.Number        { color: #A020F0 }
-.Symbol        { color: #990073 }
-.PrimitiveType { color: #574EA4 }
-.Operator      {}
+.Comment       { color: lighten(#82827c,5%); font-style: italic; }
+.Keyword       { color: #6D508B; font-weight: 500; }
+.String        { color: #BF516B; }
+.Number        { color: #2F8FB2; }
+.Symbol        { color: #990073; font-weight: 450; }
+.PrimitiveType { color: #574EA4; }
+.Operator      { color: #3F6260; font-weight: 600;}
 
 /* NameKinds. */
-.Bound                  { color: #6D508B  }
-.InductiveConstructor   { color: darkgreen; font-weight: bolder;}
-.CoinductiveConstructor { color: #8B7500 }
-.Datatype               { color: #574EA4 }
-.Field                  { color: #008080; font-weight: bolder;}
-.Function               { color: #564ea3; font-weight: bold;}
-.Module                 { color: #A020F0 }
-.Postulate              { color: #642969 }
-.Primitive              { color: #6D508B }
-.Record                 { color: #6D508B }
+.Bound                  { color: #515151; }
+
+.InductiveConstructor   { color: lighten(#3F6260,5%); font-weight: 500;}
+.CoinductiveConstructor { color: lighten(#3F6260,5%); font-weight: 500;}
+
+.Datatype               { color: #574EA4; font-weight: 600; }
+.Datatype.Operator      { color: #574EA4; font-weight: 600; }
+
+.Record                 { color: #574EA4; }
+.Record.Operator        { color: #574EA4; font-weight: 600; }
+.Field                  { color: darken(#2F8FB2, 10%); }
+
+.Function               { color: #574EA4; font-weight: 600;}
+.Function.Operator      { color: #574EA4; font-weight: 600;}
+
+.Module                 { color: #C1418B; font-weight: 400;}
+.Postulate              { color: #642969; }
+.Primitive              { color: #7F449A; }
+
 
 /* OtherAspects. */
-.DottedPattern      {}
-.UnsolvedMeta       { color: black; background: yellow         }
-.UnsolvedConstraint { color: black; background: yellow         }
-.TerminationProblem { color: black; background: #FFA07A        }
-.IncompletePattern  { color: black; background: #F5DEB3        }
+.DottedPattern      { color: #927295; }
+.UnsolvedMeta       { color: gray; background: yellow;        }
+.UnsolvedConstraint { color: gray; background: yellow;        }
+.TerminationProblem { color: gray; background: #FB9E54;        }
+.IncompletePattern  { color: gray; background: #F5DEB3;        }
 .Error              { color: #a61717;  background: #e3d2d2; text-decoration: underline }
-.TypeChecks         { color: black; background: #ADD8E6        }
+.TypeChecks         { color: gray; background: #ADD8E6;        }
 
 /* Standard attributes. */
 .Agda a { text-decoration: none }
-.Agda a[href]:hover { background-color: #B4EEB4 }
+.Agda a[href]:hover { background-color: #B4EEB4; padding:2px;}

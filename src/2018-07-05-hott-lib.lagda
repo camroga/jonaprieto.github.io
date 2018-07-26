@@ -7,15 +7,15 @@ toc: true
 agda: true
 ---
 
-This is my attempt to collect in just one-file, a basic overview of HoTT in Agda.
-This source code was type-checked by Agda 2.5.4.
+In this article, we have collected a basic overview of homotopy type theory (HoTT)
+formalized in Agda. The present development was type-checked by Agda 2.5.4.
 
-{: .references }
+To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
+type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
+not a good name for universes in HoTT and we rename `Set` to `Type`.
 
-  - https://github.com/HoTT/HoTT-Agda/
-  - https://mroman42.github.io/ctlc/agda-hott/Total.html
-
-Agda has a pragma to work with HoTT (`--without-K`):
+I'm not claiming the originality of this code, it's based mostly in agda-hott,
+and it deserves to my learning purposes.
 
 \begin{code}
 
@@ -23,38 +23,14 @@ Agda has a pragma to work with HoTT (`--without-K`):
 
 open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ )
 
-_ = Set -- trick for avoiding Agda module errors (jekyll)
+Type : (ℓ : Level) → Set (lsuc ℓ)
+Type ℓ = Set ℓ
+
+Type₀ : Type (lsuc lzero)
+Type₀ = Type lzero
 \end{code}
 
-Universes
--------------------------------------------------------------------------------
-Type universe hierarchy. It hides Agda primitive
-hierarchy and the keyword `Set`. It uses `Type` instead.
-
-\begin{code}
-
-module Universes where
-
-  -- Our Universe hierarchy. It is implemented over the primitive
-  -- Agda universe hierarchy but it uses Type instead of Set, the
-  -- usual name for the Universe in Agda.
-  Type : (ℓ : Level) → Set (lsuc ℓ)
-  Type ℓ = Set ℓ
-  -- First levels of the universe hierarchy
-  Type₀ : Type (lsuc lzero)
-  Type₀ = Type lzero
-
-  Type₁ : Type (lsuc (lsuc lzero))
-  Type₁ = Type (lsuc lzero)
-
-  Type₂ : Type (lsuc (lsuc (lsuc lzero)))
-  Type₂ = Type (lsuc (lsuc lzero))
-
-open Universes
-\end{code}
-
-Types
--------------------------------------------------------------------------------
+## Type
 
 ### Empty Type
 
@@ -1171,8 +1147,8 @@ module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
       τ = τ
     }
     where
-      lemma1 : (a : A) → ap f (η (g (f a))) · ε (f a) == ε (f (g (f a))) · ap f (η a)
-      lemma1 a =
+      aux-lemma : (a : A) → ap f (η (g (f a))) · ε (f a) == ε (f (g (f a))) · ap f (η a)
+      aux-lemma a =
         begin
           ap f (η ((g ∘ f) a)) · ε (f a)
             ==⟨ ap (λ u → ap f u · ε (f a)) (h-naturality-id η) ⟩
@@ -1191,7 +1167,7 @@ module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
           inv (ε (f (g (f a)))) · ε (f (g (f a))) · ap f (η a)
             ==⟨ ·-assoc (inv (ε (f (g (f a))))) _ (ap f (η a)) ⟩
           inv (ε (f (g (f a)))) · (ε (f (g (f a))) · ap f (η a))
-            ==⟨ ap (inv (ε (f (g (f a)))) ·_) (inv (lemma1 a)) ⟩
+            ==⟨ ap (inv (ε (f (g (f a)))) ·_) (inv (aux-lemma a)) ⟩
           inv (ε (f (g (f a)))) · (ap f (η (g (f a))) · ε (f a))
             ==⟨ inv (·-assoc (inv (ε (f (g (f a))))) _ (ε (f a))) ⟩
           inv (ε (f (g (f a)))) · ap f (η (g (f a))) · ε (f a)
@@ -1341,7 +1317,7 @@ module Univalence where
     ua-η : (p : A == B) → ua (idtoeqv p) == p
     ua-η p = rlmap-inverse eqvUnivalence
   open UnivalenceAxiom public
-
+open Univalence public
 \end{code}
 
 Somme lemmas about Univelance
@@ -1350,58 +1326,909 @@ Somme lemmas about Univelance
 {: .foldable}
 \begin{code}
 --
---   module UnivalenceLemmas {ℓ} where
---     -- The identity equivalence creates the trivial path.
---     ua-id : {A : Type ℓ} → ua idEqv == refl A
---     ua-id {A} =
---       begin
---         ua idEqv              ==⟨ ap ua (sameEqv (refl id)) ⟩
---         ua (idtoeqv (refl A)) ==⟨ ua-η (refl A) ⟩
---         refl A
---       ∎
---
---     -- The composition of equivalences is preserved into composition
---     -- of equalities.
---     ua-comp : {A B C : Type ℓ} → (α : A ≃ B) → (β : B ≃ C) → ua (compEqv α β) == ua α · ua β
---     ua-comp α β =
---       begin
---         ua (compEqv α β)                               ==⟨ ap (λ x → ua (compEqv x β)) (inv (ua-β α)) ⟩
---         ua (compEqv (idtoeqv (ua α)) β)                ==⟨ ap (λ x → ua (compEqv (idtoeqv (ua α)) x))
---                                                            (inv (ua-β β)) ⟩
---         ua (compEqv (idtoeqv (ua α)) (idtoeqv (ua β))) ==⟨ ap ua lemma ⟩
---         ua (idtoeqv (ua α · ua β))                     ==⟨ ua-η (ua α · ua β) ⟩
---         ua α · ua β
---       ∎
---       where
---         lemma : compEqv (idtoeqv (ua α)) (idtoeqv (ua β)) == idtoeqv (ua α · ua β)
---         lemma = sameEqv (
---           begin
---             π₁ (idtoeqv (ua β)) ∘ π₁ (idtoeqv (ua α))                 ==⟨ refl _ ⟩
---             (transport (λ x → x) (ua β)) ∘ (transport (λ x → x) (ua α)) ==⟨ transport-comp (ua α) (ua β) ⟩
---             transport (λ x → x) (ua α · ua β)                           ==⟨ refl _ ⟩
---             π₁ (idtoeqv (ua α · ua β))
---           ∎)
---
---     -- Inverses are preserved.
---     ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A
---     ua-inv-r α =
---       begin
---         ua α · ua (invEqv α)      ==⟨ inv (ua-comp α (invEqv α)) ⟩
---         ua (compEqv α (invEqv α)) ==⟨ ap ua (compEqv-inv α) ⟩
---         ua idEqv                  ==⟨ ua-id ⟩
---         refl _
---       ∎
---
---     ua-inv : {A B : Type ℓ} → (α : A ≃ B) → ua (invEqv α) == inv (ua α)
---     ua-inv α =
---       begin
---         ua (invEqv α)                       ==⟨ ap (_· ua (invEqv α)) (inv (·-linv (ua α))) ⟩
---         inv (ua α) · ua α · ua (invEqv α)   ==⟨ ·-assoc (inv (ua α)) _ _ ⟩
---         inv (ua α) · (ua α · ua (invEqv α)) ==⟨ ap (inv (ua α) ·_) (ua-inv-r α) ⟩
---         inv (ua α) · refl _                 ==⟨ inv (·-runit (inv ((ua α)))) ⟩
---         inv (ua α)
---       ∎
---   open UnivalenceLemmas public
---
--- open Univalence
+module UnivalenceLemmas {ℓ} where
+    -- The identity equivalence creates the trivial path.
+  postulate
+    ua-id : {A : Type ℓ} → ua idEqv == refl A
+    -- ua-id {A} =
+    --   begin
+    --     ua idEqv              ==⟨ ap ua (sameEqv (refl id)) ⟩
+    --     ua (idtoeqv (refl A)) ==⟨ ua-η (refl A) ⟩
+    --     refl A
+    --   ∎
+
+    -- The composition of equivalences is preserved into composition
+    -- of equalities.
+  postulate
+    ua-comp : {A B C : Type ℓ} → (α : A ≃ B) → (β : B ≃ C) → ua (compEqv α β) == ua α · ua β
+    -- ua-comp α β =
+    --   begin
+    --     ua (compEqv α β)                               ==⟨ ap (λ x → ua (compEqv x β)) (inv (ua-β α)) ⟩
+    --     ua (compEqv (idtoeqv (ua α)) β)                ==⟨ ap (λ x → ua (compEqv (idtoeqv (ua α)) x))
+    --                                                        (inv (ua-β β)) ⟩
+    --     ua (compEqv (idtoeqv (ua α)) (idtoeqv (ua β))) ==⟨ ap ua lemma ⟩
+    --     ua (idtoeqv (ua α · ua β))                     ==⟨ ua-η (ua α · ua β) ⟩
+    --     ua α · ua β
+    --   ∎
+    --   where
+    --     lemma : compEqv (idtoeqv (ua α)) (idtoeqv (ua β)) == idtoeqv (ua α · ua β)
+    --     lemma = sameEqv (
+    --       begin
+    --         π₁ (idtoeqv (ua β)) ∘ π₁ (idtoeqv (ua α))                 ==⟨ refl _ ⟩
+    --         (transport (λ x → x) (ua β)) ∘ (transport (λ x → x) (ua α)) ==⟨ transport-comp (ua α) (ua β) ⟩
+    --         transport (λ x → x) (ua α · ua β)                           ==⟨ refl _ ⟩
+    --         π₁ (idtoeqv (ua α · ua β))
+    --       ∎)
+
+    -- Inverses are preserved.
+  postulate
+    ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A
+    -- ua-inv-r α =
+    --   begin
+    --     ua α · ua (invEqv α)      ==⟨ inv (ua-comp α (invEqv α)) ⟩
+    --     ua (compEqv α (invEqv α)) ==⟨ ap ua (compEqv-inv α) ⟩
+    --     ua idEqv                  ==⟨ ua-id ⟩
+    --     refl _
+    --   ∎
+
+  postulate
+    ua-inv : {A B : Type ℓ} → (α : A ≃ B) → ua (invEqv α) == inv (ua α)
+    -- ua-inv α =
+    --   begin
+    --     ua (invEqv α)                       ==⟨ ap (_· ua (invEqv α)) (inv (·-linv (ua α))) ⟩
+    --     inv (ua α) · ua α · ua (invEqv α)   ==⟨ ·-assoc (inv (ua α)) _ _ ⟩
+    --     inv (ua α) · (ua α · ua (invEqv α)) ==⟨ ap (inv (ua α) ·_) (ua-inv-r α) ⟩
+    --     inv (ua α) · refl _                 ==⟨ inv (·-runit (inv ((ua α)))) ⟩
+    --     inv (ua α)
+    --   ∎
+open UnivalenceLemmas public
 \end{code}
+
+## Truncation
+
+\begin{code}
+module Truncation where
+
+  private
+    -- Higher inductive type, defined with equalities between any two
+    -- members.
+    data !∥_∥ {ℓ} (A : Type ℓ) : Type ℓ where
+      !∣_∣ : A → !∥ A ∥
+
+  ∥_∥ : ∀ {ℓ} (A : Type ℓ) → Type ℓ
+  ∥ A ∥ = !∥ A ∥
+
+  ∣_∣ : ∀ {ℓ} {X : Type ℓ} → X → ∥ X ∥
+  ∣ x ∣ = !∣ x ∣
+
+  -- Any two elements of the truncated type are equal
+  postulate trunc : ∀{ℓ} {A : Type ℓ} → isProp ∥ A ∥
+
+  -- Recursion principle
+  trunc-rec : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isProp P → (A → P) → ∥ A ∥ → P
+  trunc-rec _ f !∣ x ∣ = f x
+\end{code}
+
+## Set truncation
+
+An analogous form of truncation for Sets instead of
+Propositions. It truncates any higher-dimensional homothopical
+structure.
+
+\begin{code}
+module SetTruncation where
+
+  private
+    -- Higher inductive type
+    data !∥_∥₀ {ℓ} (A : Type ℓ) : Type ℓ where
+      !∣_∣₀ : A → !∥ A ∥₀
+
+  ∥_∥₀ : ∀ {ℓ} (A : Type ℓ) → Type ℓ
+  ∥ A ∥₀ = !∥ A ∥₀
+
+  ∣_∣₀ : ∀{ℓ} {X : Type ℓ} → X → ∥ X ∥₀
+  ∣ x ∣₀ = !∣ x ∣₀
+
+  -- Any two equalities on the truncated type are equal
+  postulate strunc : ∀{ℓ} {A : Type ℓ} → isSet ∥ A ∥₀
+
+  -- Recursion principle
+  strunc-rec : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isSet P → (A → P) → ∥ A ∥₀ → P
+  strunc-rec _ f !∣ x ∣₀ = f x
+
+  -- Induction principle
+  strunc-ind : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : ∥ A ∥₀ → Type ℓⱼ} → ((a : ∥ A ∥₀) → isSet (B a))
+             → (g : (a : A) → B ∣ a ∣₀) → (a : ∥ A ∥₀) → B a
+  strunc-ind _ g !∣ x ∣₀ = g x
+\end{code}
+
+## Quotients
+
+\begin{code}
+module Quotients where
+
+  record QRel {ℓ} (A : Type ℓ) : Type (lsuc ℓ) where
+    field
+      R : A → A → Type ℓ
+      Aset : isSet A
+      Rprop : (a b : A) → isProp (R a b)
+  open QRel {{...}} public
+
+  private
+    -- Higher inductive type
+    data _!/_ {ℓ} (A : Type ℓ) (r : QRel A) : Type (lsuc ℓ) where
+      ![_] : A → (A !/ r)
+
+  _/_ : ∀{ℓ} (A : Type ℓ) (r : QRel A) → Type (lsuc ℓ)
+  A / r = (A !/ r)
+
+  [_] : ∀{ℓ} {A : Type ℓ} → A → {r : QRel A} → (A / r)
+  [ a ] = ![ a ]
+
+  -- Equalities induced by the relation
+  postulate Req : ∀{ℓ} {A : Type ℓ} {r : QRel A}
+                 → {a b : A} → R {{r}} a b → [ a ] {r} == [ b ]
+
+  -- The quotient of a set is again a set
+  postulate Rtrunc : ∀{ℓ} {A : Type ℓ} {r : QRel A} → isSet (A / r)
+
+  -- Recursion principle
+  QRel-rec : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : Type ℓⱼ}
+            → (f : A → B) → ((x y : A) → R {{r}} x y → f x == f y) → A / r → B
+  QRel-rec f p ![ x ] = f x
+
+  -- Induction principle
+  QRel-ind : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : A / r → Type ℓⱼ}
+            → (f : ((a : A) → B [ a ]))
+            → ((x y : A) → (o : R {{r}} x y) → (transport B (Req o) (f x)) == f y)
+            → (z : A / r) → B z
+  QRel-ind f p ![ x ] = f x
+
+  -- Recursion in two arguments
+  QRel-rec-bi : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : Type ℓⱼ}
+              → (f : A → A → B) → ((x y z t : A) → R {{r}} x y → R {{r}} z t → f x z == f y t)
+              → A / r → A / r → B
+  QRel-rec-bi f p ![ x ] ![ y ] = f x y
+
+
+  Qrel-prod : ∀{ℓᵢ}{A : Type ℓᵢ} (r : QRel A) → QRel (A × A)
+  Qrel-prod r = record { R = λ { (a , b) (c , d) → (R {{r}} a c) × (R {{r}} b d) }
+                       ; Aset = isSet-prod (Aset {{r}}) (Aset {{r}})
+                       ; Rprop = λ { (x , y) (z , w) → isProp-prod (Rprop {{r}} x z) (Rprop {{r}} y w)} }
+\end{code}
+
+## Relation
+
+\begin{code}
+module Relation where
+
+  record Rel {ℓ} (A : Type ℓ) : Type (lsuc ℓ) where
+    field
+      R     : A → A → Type ℓ
+      Rprop : (a b : A) → isProp (R a b)
+  open Rel {{...}} public
+
+open Relation public
+\end{code}
+
+
+## Hedberg
+
+\begin{code}
+module Hedberg {ℓ} where
+
+  module HedbergLemmas (A : Type ℓ) where
+
+    -- A set is a type satisfiying axiom K.
+    axiomKisSet : ((a : A) → (p : a == a) → p == refl a) → isSet A
+    axiomKisSet k x _ p idp = k x p
+
+    -- Lemma: a reflexive relation on X implying the identity proves
+    -- that X is a set.
+    reflRelIsSet :  (r : Rel A) →
+      ((x y : A) → R {{r}} x y → x == y) →
+      (ρ : (a : A) → R {{r}} a a) →
+      isSet A
+    reflRelIsSet r f ρ x .x p idp = lemma p
+      where
+        lemma2 : {a : A} (p : a == a) → (o : R {{r}} a a) →
+          transport (λ x → a == x) p (f a a o) == f a a (transport (R {{r}} a) p o)
+        lemma2 {a} p = funext-transport-l p (f a a) (f a a) (apd (f a) p)
+
+        lemma3 : {a : A} (p : a == a) →
+          (f a a (ρ a)) · p == (f a a (ρ a))
+        lemma3 {a} p = inv (transport-concat-r p _) · lemma2 p (ρ a) ·
+                       ap (f a a) (Rprop {{r}} a a _ (ρ a))
+
+        lemma : {a : A} (p : a == a) → p == refl a
+        lemma {a} p = ·-cancellation ((f a a (ρ a))) p (lemma3 p)
+
+    -- Lemma: if a type is decidable, then ¬¬A is actually A.
+    lemDoubleNeg : (A + ¬ A) → (¬ (¬ A) → A)
+    lemDoubleNeg (inl x) _ = x
+    lemDoubleNeg (inr f) n = exfalso (n f)
+
+  open HedbergLemmas public
+
+  -- Hedberg's theorem. A type with decidable equality is a set.
+  hedberg : {A : Type ℓ} → ((a b : A) → (a == b) + ¬ (a == b)) → isSet A
+  hedberg {A} f = reflRelIsSet A
+                (record { R = λ a b → ¬ (¬ (a == b)) ; Rprop = isPropNeg })
+                doubleNegEq (λ a z → z (refl a))
+    where
+      doubleNegEq : (a b : A) → ¬ (¬ (a == b)) → (a == b)
+      doubleNegEq a b = lemDoubleNeg (a == b) (f a b)
+
+      isPropNeg : (a b : A) → isProp (¬ (¬ (a == b)))
+      isPropNeg a b x y = funext λ u → exfalso (x u)
+
+open Hedberg public
+\end{code}
+
+
+## Algebra
+
+### Monoid
+
+Definition of the algebraic structure of a monoid.
+
+\begin{code}
+module Monoids {ℓ} where
+
+  record Monoid : Type (lsuc ℓ) where
+    field
+      -- Operations of a monoid
+      G : Type ℓ
+      GisSet : isSet G
+      _<>_ : G → G → G  -- Multiplication function
+      e : G             -- Unit element
+
+      -- Axioms of a monoid
+      lunit : (x : G) → (e <> x) == x
+      runit : (x : G) → (x <> e) == x
+      assoc : (x y z : G) → (x <> (y <> z)) == ((x <> y) <> z)
+open Monoids
+\end{code}
+
+## Groups
+
+\begin{code}
+module Groups where
+  record GroupStructure {ℓ} (M : Type ℓ) : Type ℓ where
+    constructor group-structure
+    field
+      -- A group is a monoid
+      _*_   : M → M → M
+      e     : M
+      lunit : ∀ x → (e * x) == x
+      runit : ∀ x → (x * e) == x
+      assoc : ∀ x y z → (x * (y * z)) == ((x * y) * z)
+
+      -- With inverses
+      ginv : M → M
+      glinv : ∀ g → (g * ginv g) == e
+      grinv : ∀ g → (ginv g * g) == e
+
+  record Group {ℓ} : Type (lsuc ℓ) where
+    constructor group
+    field
+      M : Type ℓ
+      str : GroupStructure M
+  open Group {{...}} public
+open Groups
+\end{code}
+
+## Naturals
+
+\begin{code}
+module Naturals where
+
+  -- Addition of natural numbers
+  plus : ℕ → ℕ → ℕ
+  plus zero y = y
+  plus (succ x) y = succ (plus x y)
+
+  infixl 60 _+ₙ_
+  _+ₙ_ : ℕ → ℕ → ℕ
+  _+ₙ_ = plus
+
+  -- Lemmas about addition
+  plus-lunit : (n : ℕ) → zero +ₙ n == n
+  plus-lunit n = refl n
+
+  plus-runit : (n : ℕ) → n +ₙ zero == n
+  plus-runit zero = refl zero
+  plus-runit (succ n) = ap succ (plus-runit n)
+
+  plus-succ : (n m : ℕ) → succ (n +ₙ m) == (n +ₙ (succ m))
+  plus-succ zero     m = refl (succ m)
+  plus-succ (succ n) m = ap succ (plus-succ n m)
+
+  plus-succ-rs : (n m o p : ℕ) → n +ₙ m == o +ₙ p → n +ₙ (succ m) == o +ₙ (succ p)
+  plus-succ-rs n m o p α = inv (plus-succ n m) · ap succ α · (plus-succ o p)
+
+  -- Commutativity
+  plus-comm : (n m : ℕ) → n +ₙ m == m +ₙ n
+  plus-comm zero     m = inv (plus-runit m)
+  plus-comm (succ n) m = ap succ (plus-comm n m) · plus-succ m n
+
+  -- Associativity
+  plus-assoc : (n m p : ℕ) → n +ₙ (m +ₙ p) == (n +ₙ m) +ₙ p
+  plus-assoc zero     m p = refl (m +ₙ p)
+  plus-assoc (succ n) m p = ap succ (plus-assoc n m p)
+
+
+  -- Decidable equality
+  -- Encode-decode technique for natural numbers
+  private
+    code : ℕ → ℕ → Type₀
+    code 0        0        = ⊤
+    code 0        (succ m) = ⊥
+    code (succ n) 0        = ⊥
+    code (succ n) (succ m) = code n m
+
+  crefl : (n : ℕ) → code n n
+  crefl zero     = ★
+  crefl (succ n) = crefl n
+
+  private
+    encode : (n m : ℕ) → (n == m) → code n m
+    encode n m p = transport (code n) p (crefl n)
+
+    decode : (n m : ℕ) → code n m → n == m
+    decode zero zero c = refl zero
+    decode zero (succ m) ()
+    decode (succ n) zero ()
+    decode (succ n) (succ m) c = ap succ (decode n m c)
+
+  zero-not-succ : (n : ℕ) → ¬ (succ n == zero)
+  zero-not-succ n = encode (succ n) 0
+
+  -- The successor function is injective
+  succ-inj : {n m : ℕ} → (succ n == succ m) → n == m
+  succ-inj {n} {m} p = decode n m (encode (succ n) (succ m) p)
+
+  +-inj : (k : ℕ) {n m : ℕ} → (k +ₙ n == k +ₙ m) → n == m
+  +-inj zero   p = p
+  +-inj (succ k) p = +-inj k (succ-inj p)
+
+  nat-decEq : decEq ℕ
+  nat-decEq zero zero = inl (refl zero)
+  nat-decEq zero (succ m) = inr (λ ())
+  nat-decEq (succ n) zero = inr (λ ())
+  nat-decEq (succ n) (succ m) with (nat-decEq n m)
+  nat-decEq (succ n) (succ m) | inl p = inl (ap succ p)
+  nat-decEq (succ n) (succ m) | inr f = inr λ p → f (succ-inj p)
+
+  nat-isSet : isSet ℕ
+  nat-isSet = hedberg nat-decEq
+
+  -- Naturals form a monoid with addition
+  ℕ-plus-monoid : Monoid
+  ℕ-plus-monoid = record
+    { G = ℕ
+    ; GisSet = nat-isSet
+    ; _<>_ = plus
+    ; e = zero
+    ; lunit = plus-lunit
+    ; runit = plus-runit
+    ; assoc = plus-assoc
+    }
+
+  -- Ordering
+  _<ₙ_ : ℕ → ℕ → Type₀
+  n <ₙ m = Σ ℕ (λ k → n +ₙ succ k == m)
+
+  <-isProp : (n m : ℕ) → isProp (n <ₙ m)
+  <-isProp n m (k1 , p1) (k2 , p2) = Σ-bycomponents (succ-inj (+-inj n (p1 · inv p2)) , nat-isSet _ _ _ _)
+
+open Naturals public
+\end{code}
+
+### Integers
+
+\begin{code}
+module Integers where
+
+  data ℤ : Type₀ where
+    zer : ℤ
+    pos : ℕ → ℤ
+    neg : ℕ → ℤ
+
+  -- Inclusion of the natural numbers into the integers
+  NtoZ : ℕ → ℤ
+  NtoZ zero     = zer
+  NtoZ (succ n) = pos n
+
+  -- Successor function
+  zsucc : ℤ → ℤ
+  zsucc zer            = pos 0
+  zsucc (pos x)        = pos (succ x)
+  zsucc (neg zero)     = zer
+  zsucc (neg (succ x)) = neg x
+
+  -- Predecessor function
+  zpred : ℤ → ℤ
+  zpred zer            = neg 0
+  zpred (pos zero)     = zer
+  zpred (pos (succ x)) = pos x
+  zpred (neg x)        = neg (succ x)
+
+  -- Successor and predecessor
+  zsuccpred-id : (n : ℤ) → zsucc (zpred n) == n
+  zsuccpred-id zer            = refl _
+  zsuccpred-id (pos zero)     = refl _
+  zsuccpred-id (pos (succ n)) = refl _
+  zsuccpred-id (neg n)        = refl _
+
+  zpredsucc-id : (n : ℤ) → zpred (zsucc n) == n
+  zpredsucc-id zer            = refl _
+  zpredsucc-id (pos n)        = refl _
+  zpredsucc-id (neg zero)     = refl _
+  zpredsucc-id (neg (succ n)) = refl _
+
+  zpredsucc-succpred : (n : ℤ) → zpred (zsucc n) == zsucc (zpred n)
+  zpredsucc-succpred zer = refl zer
+  zpredsucc-succpred (pos zero) = refl (pos zero)
+  zpredsucc-succpred (pos (succ x)) = refl (pos (succ x))
+  zpredsucc-succpred (neg zero) = refl (neg zero)
+  zpredsucc-succpred (neg (succ x)) = refl (neg (succ x))
+
+  zsuccpred-predsucc : (n : ℤ) → zsucc (zpred n) == zpred (zsucc n)
+  zsuccpred-predsucc n = inv (zpredsucc-succpred n)
+
+  -- Equivalence given by successor and predecessor
+  zequiv-succ : ℤ ≃ ℤ
+  zequiv-succ = qinv-≃ zsucc (zpred , (zsuccpred-id , zpredsucc-id))
+
+  -- Negation
+  - : ℤ → ℤ
+  - zer     = zer
+  - (pos x) = neg x
+  - (neg x) = pos x
+
+  double- : (z : ℤ) → - (- z) == z
+  double- zer = refl _
+  double- (pos x) = refl _
+  double- (neg x) = refl _
+
+  zequiv- : ℤ ≃ ℤ
+  zequiv- = qinv-≃ - (- , (double- , double-))
+
+  -- Addition on integers
+  infixl 60 _+ᶻ_
+  _+ᶻ_ : ℤ → ℤ → ℤ
+  zer +ᶻ m = m
+  pos zero +ᶻ m = zsucc m
+  pos (succ x) +ᶻ m = zsucc (pos x +ᶻ m)
+  neg zero +ᶻ m = zpred m
+  neg (succ x) +ᶻ m = zpred (neg x +ᶻ m)
+
+  -- Lemmas on addition
+  +ᶻ-lunit : (n : ℤ) → n == n +ᶻ zer
+  +ᶻ-lunit zer            = refl _
+  +ᶻ-lunit (pos zero)     = refl _
+  +ᶻ-lunit (pos (succ x)) = ap zsucc (+ᶻ-lunit (pos x))
+  +ᶻ-lunit (neg zero)     = refl _
+  +ᶻ-lunit (neg (succ x)) = ap zpred (+ᶻ-lunit (neg x))
+
+
+  +ᶻ-unit-zsucc : (n : ℤ) → zsucc n == (n +ᶻ pos zero)
+  +ᶻ-unit-zsucc zer = refl _
+  +ᶻ-unit-zsucc (pos zero) = refl _
+  +ᶻ-unit-zsucc (pos (succ x)) = ap zsucc (+ᶻ-unit-zsucc (pos x))
+  +ᶻ-unit-zsucc (neg zero) = refl _
+  +ᶻ-unit-zsucc (neg (succ x)) = inv (zpredsucc-id (neg x)) · ap zpred (+ᶻ-unit-zsucc (neg x))
+
+  +ᶻ-unit-zpred : (n : ℤ) → zpred n == (n +ᶻ neg zero)
+  +ᶻ-unit-zpred zer = refl _
+  +ᶻ-unit-zpred (pos zero) = refl zer
+  +ᶻ-unit-zpred (pos (succ x)) = inv (zsuccpred-id (pos x)) · ap zsucc (+ᶻ-unit-zpred (pos x))
+  +ᶻ-unit-zpred (neg zero) = refl _
+  +ᶻ-unit-zpred (neg (succ x)) = ap zpred (+ᶻ-unit-zpred (neg x))
+
+
+  +ᶻ-pos-zsucc : (n : ℤ) → (x : ℕ) → zsucc (n +ᶻ pos x) == n +ᶻ pos (succ x)
+  +ᶻ-pos-zsucc zer x = refl _
+  +ᶻ-pos-zsucc (pos zero) x = refl _
+  +ᶻ-pos-zsucc (pos (succ n)) x = ap zsucc (+ᶻ-pos-zsucc (pos n) x)
+  +ᶻ-pos-zsucc (neg zero) x = zsuccpred-id (pos x)
+  +ᶻ-pos-zsucc (neg (succ n)) x = zsuccpred-predsucc (neg n +ᶻ pos x) · ap zpred (+ᶻ-pos-zsucc (neg n) x)
+
+  +ᶻ-neg-zpred : (n : ℤ) → (x : ℕ) → zpred (n +ᶻ neg x) == n +ᶻ neg (succ x)
+  +ᶻ-neg-zpred zer x = refl _
+  +ᶻ-neg-zpred (pos zero) x = zpredsucc-id (neg x)
+  +ᶻ-neg-zpred (pos (succ n)) x = zpredsucc-succpred (pos n +ᶻ neg x) · ap zsucc (+ᶻ-neg-zpred (pos n) x)
+  +ᶻ-neg-zpred (neg zero) x = refl _
+  +ᶻ-neg-zpred (neg (succ n)) x = ap zpred (+ᶻ-neg-zpred (neg n) x)
+
+  +ᶻ-comm : (n m : ℤ) → n +ᶻ m == m +ᶻ n
+  +ᶻ-comm zer m = +ᶻ-lunit m
+  +ᶻ-comm (pos zero) m = +ᶻ-unit-zsucc m
+  +ᶻ-comm (pos (succ x)) m = ap zsucc (+ᶻ-comm (pos x) m) · +ᶻ-pos-zsucc m x
+  +ᶻ-comm (neg zero) m = +ᶻ-unit-zpred m
+  +ᶻ-comm (neg (succ x)) m = ap zpred (+ᶻ-comm (neg x) m) · +ᶻ-neg-zpred m x
+
+
+
+  -- Decidable equality
+  pos-inj : {n m : ℕ} → pos n == pos m → n == m
+  pos-inj {n} {.n} idp = refl n
+
+  neg-inj : {n m : ℕ} → neg n == neg m → n == m
+  neg-inj {n} {.n} idp = refl n
+
+  z-decEq : decEq ℤ
+  z-decEq zer zer = inl (refl zer)
+  z-decEq zer (pos x) = inr (λ ())
+  z-decEq zer (neg x) = inr (λ ())
+  z-decEq (pos x) zer = inr (λ ())
+  z-decEq (pos n) (pos m) with (nat-decEq n m)
+  z-decEq (pos n) (pos m) | inl p = inl (ap pos p)
+  z-decEq (pos n) (pos m) | inr f = inr (f ∘ pos-inj)
+  z-decEq (pos n) (neg m) = inr (λ ())
+  z-decEq (neg n) zer = inr (λ ())
+  z-decEq (neg n) (pos x₁) = inr (λ ())
+  z-decEq (neg n) (neg m) with (nat-decEq n m)
+  z-decEq (neg n) (neg m) | inl p = inl (ap neg p)
+  z-decEq (neg n) (neg m) | inr f = inr (f ∘ neg-inj)
+
+  z-isSet : isSet ℤ
+  z-isSet = hedberg z-decEq
+
+
+  -- Multiplication
+  infixl 60 _*ᶻ_
+  _*ᶻ_ : ℤ → ℤ → ℤ
+  zer *ᶻ m = zer
+  pos zero *ᶻ m = m
+  pos (succ x) *ᶻ m = (pos x *ᶻ m) +ᶻ m
+  neg zero *ᶻ m = - m
+  neg (succ x) *ᶻ m = (neg x *ᶻ m) +ᶻ (- m)
+
+
+  -- Ordering
+  _<ᶻ_ : ℤ → ℤ → Type₀
+  zer <ᶻ zer = ⊥
+  zer <ᶻ pos x = ⊤
+  zer <ᶻ neg x = ⊥
+  pos x <ᶻ zer = ⊥
+  pos x <ᶻ pos y = x <ₙ y
+  pos x <ᶻ neg y = ⊥
+  neg x <ᶻ zer = ⊤
+  neg x <ᶻ pos y = ⊤
+  neg x <ᶻ neg y = y <ₙ x
+
+open Integers public
+\end{code}
+
+### Integer Action
+
+\begin{code}
+module IntegerAction {ℓ} {M : Type ℓ} (grpst : GroupStructure M) where
+
+  open GroupStructure grpst
+
+    -- Integers acting on a group structure M.
+  z-act : ℤ → M → M
+  z-act zer            m = e
+  z-act (pos zero)     m = m
+  z-act (pos (succ x)) m = z-act (pos x) m * m
+  z-act (neg zero)     m = ginv m
+  z-act (neg (succ x)) m = (z-act (neg x) m) * ginv m
+
+
+  -- Lemmas on how integers act on a group.
+  zsucc-act : ∀ n a → z-act (zsucc n) a == (z-act n a * a)
+  zsucc-act zer a = inv (lunit a)
+  zsucc-act (pos x) a = refl _
+  zsucc-act (neg zero) a = inv (grinv a)
+  zsucc-act (neg (succ n)) a =
+    begin
+      z-act (neg n) a                   ==⟨ inv (runit (z-act (neg n) a)) ⟩
+      z-act (neg n) a * e               ==⟨ ap (λ section → _*_ (z-act (neg n) a) section) (inv (grinv a)) ⟩
+      z-act (neg n) a * (ginv a * a)    ==⟨ assoc (z-act (neg n) a) (ginv a) a ⟩
+      ((z-act (neg n) a * ginv a) * a)
+    ∎
+
+  zpred-act : ∀ n a → z-act (zpred n) a == (z-act n a * ginv a)
+  zpred-act zer a = inv (lunit (ginv a))
+  zpred-act (pos zero) a = inv (glinv a)
+  zpred-act (pos (succ x)) a =
+    begin
+      z-act (zpred (pos (succ x))) a   ==⟨ refl _ ⟩
+      z-act (pos x) a                  ==⟨ inv (runit _) ⟩
+      z-act (pos x) a * e              ==⟨ ap (λ section → _*_ (z-act (pos x) a) section) (inv (glinv a)) ⟩
+      z-act (pos x) a * (a * ginv a)   ==⟨ assoc (z-act (pos x) a) a (ginv a) ⟩
+      (z-act (pos x) a * a) * ginv a   ==⟨ refl _ ⟩
+      z-act (pos (succ x)) a * ginv a
+    ∎
+  zpred-act (neg x) a = refl _
+
+
+  act-zsucc : ∀ n a → z-act (zsucc n) a == (a * z-act n a)
+  act-zsucc zer a = inv (runit a)
+  act-zsucc (pos zero) a = refl _
+  act-zsucc (pos (succ x)) a =
+    begin
+       ((z-act (pos x) a * a) * a) ==⟨ ap (λ u → u * a) (act-zsucc (pos x) a) ⟩
+       ((a * z-act (pos x) a) * a) ==⟨ inv (assoc a (z-act (pos x) a) a) ⟩
+       (a * (z-act (pos x) a * a))
+    ∎
+  act-zsucc (neg zero) a = inv (glinv a)
+  act-zsucc (neg (succ x)) a =
+    begin
+       z-act (neg x) a                    ==⟨ inv (runit (z-act (neg x) a)) ⟩
+       (z-act (neg x) a) * e              ==⟨ ap (λ section → _*_ (z-act (neg x) a) section) (inv (glinv a)) ⟩
+       (z-act (neg x) a) * (a * ginv a)   ==⟨ assoc (z-act (neg x) a) a (ginv a) ⟩
+       ((z-act (neg x) a) * a) * ginv a   ==⟨ ap (λ s → s * (ginv a)) (inv (zsucc-act (neg x) a)) ⟩
+       (z-act (zsucc (neg x)) a) * ginv a ==⟨ ap (λ s → s * (ginv a)) (act-zsucc (neg x) a) ⟩
+       (a * (z-act (neg x) a)) * ginv a   ==⟨ inv (assoc a (z-act (neg x) a) (ginv a)) ⟩
+       (a * (z-act (neg x) a * ginv a))
+    ∎
+
+  act-zpred : ∀ n a → z-act (zpred n) a == (ginv a * z-act n a)
+  act-zpred n a =
+    begin
+      z-act (zpred n) a  ==⟨ inv (lunit (z-act (zpred n) a)) ⟩
+      e * z-act (zpred n) a  ==⟨ ap (λ section → _*_ section (z-act (zpred n) a)) (inv (grinv a)) ⟩
+      (ginv a * a) * z-act (zpred n) a  ==⟨ inv (assoc _ a _) ⟩
+      ginv a * (a * z-act (zpred n) a)  ==⟨ ap (λ section → _*_ (ginv a) section) (inv (act-zsucc (zpred n) a)) ⟩
+      ginv a * z-act (zsucc (zpred n)) a ==⟨ ap (λ u → (ginv a * (z-act u a))) (zsuccpred-id n) ⟩
+      ginv a * z-act n a
+    ∎
+
+  z-act+ : ∀ n m a → z-act (n +ᶻ m) a == (z-act n a * z-act m a)
+  z-act+ zer m a = inv (lunit (z-act m a))
+  z-act+ (pos zero) m a = act-zsucc m a
+  z-act+ (pos (succ x)) m a =
+    begin
+      z-act (zsucc (pos x +ᶻ m)) a        ==⟨ act-zsucc (pos x +ᶻ m) a ⟩
+      a * z-act (pos x +ᶻ m) a            ==⟨ ap (λ s → a * s) (z-act+ (pos x) m a) ⟩
+      a * (z-act (pos x) a * z-act m a)   ==⟨ assoc a (z-act (pos x) a) (z-act m a) ⟩
+      (a * z-act (pos x) a) * z-act m a   ==⟨ ap (_* z-act m a) (inv (act-zsucc (pos x) a)) ⟩
+      (z-act (pos (succ x)) a) * z-act m a
+    ∎
+  z-act+ (neg zero) m a = act-zpred m a
+  z-act+ (neg (succ x)) m a =
+    begin
+      z-act (zpred (neg x +ᶻ m)) a             ==⟨ act-zpred (neg x +ᶻ m) a ⟩
+      ginv a * z-act (neg x +ᶻ m) a            ==⟨ ap (λ section → _*_ (ginv a) section) (z-act+ (neg x) m a) ⟩
+      ginv a * (z-act (neg x) a * z-act m a)  ==⟨ assoc (ginv a) (z-act (neg x) a) (z-act m a) ⟩
+      (ginv a * z-act (neg x) a) * z-act m a  ==⟨ inv (ap (λ s → s * (z-act m a)) (act-zpred (neg x) a)) ⟩
+      z-act (neg (succ x)) a * z-act m a
+    ∎
+
+open IntegerAction public
+\end{code}
+
+## Intervals
+
+Interval. An interval is defined by taking two points (two elements) and a path
+between them (an element of the equality type). The path is nontrivial.
+
+\begin{code}
+module Interval where
+
+  private
+    -- The interval is defined as a type with a nontrivial equality
+    -- between its two elements.
+    data !I : Set where
+      !Izero : !I
+      !Ione : !I
+
+  I : Type₀
+  I = !I
+
+  Izero : I
+  Izero = !Izero
+
+  Ione : I
+  Ione = !Ione
+
+  postulate seg : Izero == Ione
+
+  -- Induction principle on points.
+  I-ind : ∀{ℓ} {A : Type ℓ} → (a b : A) → (p : a == b) → I → A
+  I-ind a b p !Izero = a
+  I-ind a b p !Ione  = b
+
+  -- Induction principle on paths.
+  postulate I-βind : ∀{ℓ} (A : Type ℓ) → (a b : A) → (p : a == b) → ap (I-ind a b p) seg == p
+open Interval public
+\end{code}
+
+## Circle
+
+The circle type is constructed by postulating a type with
+a single element (base) and a nontrivial path (loop).
+
+\begin{code}
+
+module Circle where
+
+  private
+    -- A private declaration of the type prevents pattern matching and
+    -- allows us to postulate higher-inductive types without losing
+    -- consistency.
+
+    -- This technique is known as the Dan Licata's trick, and it is
+    -- used in the HoTT-Agda library.
+    data !S¹ : Type₀ where
+      !base : !S¹
+
+  S¹ : Type₀
+  S¹ = !S¹
+
+  base : S¹
+  base = !base
+
+  -- Nontrivial path on the circle.
+  postulate loop : base == base
+
+  -- Recursion principle on points
+  S¹-rec : ∀{ℓ} (P : S¹ → Type ℓ) (x : P base) (p : transport P loop x == x) → ((t : S¹) → P t)
+  S¹-rec P x p !base = x
+
+  -- Recursion principle on paths
+  postulate S¹-βrec : ∀{ℓ} (P : S¹ → Type ℓ) (x : P base) (p : transport P loop x == x)
+                      → apd (S¹-rec P x p) loop == p
+
+  -- Induction principle on points
+  S¹-ind : ∀{ℓ} (A : Type ℓ) (a : A) (p : a == a) → (S¹ → A)
+  S¹-ind A a p !base = a
+
+  -- Induction principle on paths
+  postulate S¹-βind : ∀{ℓ} (A : Type ℓ) (a : A) (p : a == a)
+                      → ap (S¹-ind A a p) loop == p
+open Circle public
+\end{code}
+
+## Fundamental Group
+
+Definition of the fundamental group of a type.
+Let a:A be one point of the type. The fundamental group on a is the
+group given by proofs of the equality (a=a).
+
+\begin{code}
+module FundamentalGroup where
+
+  -- Definition of the fundamental group.
+  Ω : ∀{ℓ} (A : Type ℓ) → (a : A) → Type ℓ
+  Ω A a = (a == a)
+
+  -- Its group structure.
+  Ω-st : ∀{ℓ} (A : Type ℓ) → (a : A) → GroupStructure (Ω A a)
+  Ω-st A a = group-structure _·_ (refl a)
+    (λ a → inv (·-lunit a)) (λ a → inv (·-runit a))
+    (λ x y z → inv (·-assoc x y z))
+    inv ·-rinv ·-linv
+
+  Ω-gr : ∀{ℓ} (A : Type ℓ) → (a : A) → Group {ℓ}
+  Ω-gr A a = group (a == a) (Ω-st A a)
+
+  Ω-st-r : ∀{ℓ} (A : Type ℓ) → (a : A) → GroupStructure (Ω A a)
+  Ω-st-r A a = group-structure (λ x y → y · x) (refl a)
+    (λ a → inv (·-runit a)) (λ a → inv (·-lunit a))
+    (λ x y z → ·-assoc z y x)
+    inv ·-linv ·-rinv
+
+open FundamentalGroup public
+\end{code}
+
+## Circle fundamental group
+
+\begin{code}
+module FundGroupCircle where
+
+  -- Winds a loop n times on the circle.
+  loops : ℤ → Ω S¹ base
+  loops n = z-act (Ω-st S¹ base) n loop
+
+  private
+  -- Uses univalence to unwind a path over the integers.
+    code : S¹ → Type₀
+    code = S¹-ind Type₀ ℤ (ua zequiv-succ)
+
+  tcode-succ : (n : ℤ) → transport code loop n == zsucc n
+  tcode-succ n =
+    begin
+      transport code loop n ==⟨ refl _ ⟩
+      transport ((λ a → a) ∘ code) loop n ==⟨ transport-family loop n ⟩
+      transport (λ a → a) (ap code loop) n ==⟨ ap (λ u → transport (λ a → a) u n) (S¹-βind _ ℤ (ua zequiv-succ)) ⟩
+      transport (λ a → a) (ua zequiv-succ) n ==⟨ ap (λ e → (lemap e) n) (ua-β zequiv-succ) ⟩
+      zsucc n
+    ∎
+
+  tcode-pred : (n : ℤ) → transport code (inv loop) n == zpred n
+  tcode-pred n =
+    begin
+      transport code (inv loop) n
+        ==⟨ refl _ ⟩
+      transport ((λ a → a) ∘ code) (inv loop) n
+        ==⟨ transport-family (inv loop) n ⟩
+      transport (λ a → a) (ap code (inv loop)) n
+        ==⟨ ap (λ u → transport (λ a → a) u n) (ap-inv code loop) ⟩
+      transport (λ a → a) (inv (ap code loop)) n
+        ==⟨ ap (λ u → transport (λ a → a) (inv u) n) (S¹-βind _ ℤ (ua zequiv-succ)) ⟩
+      transport (λ a → a) (inv (ua zequiv-succ)) n
+        ==⟨ ap (λ u → transport (λ a → a) u n) (inv (ua-inv zequiv-succ)) ⟩
+      transport (λ a → a) (ua (invEqv zequiv-succ)) n
+        ==⟨ ap (λ e → (lemap e) n) ((ua-β (invEqv zequiv-succ))) ⟩
+      zpred n
+    ∎
+
+  private
+    encode : (x : S¹) → (base == x) → code x
+    encode x p = transport code p zer
+
+    decode : (x : S¹) → code x → (base == x)
+    decode = S¹-rec (λ x → (code x → (base == x))) loops (
+      begin
+        transport (λ x → code x → base == x) loop loops
+          ==⟨ transport-fun loop loops ⟩
+        transport (λ x → base == x) loop ∘ (loops ∘ transport code (inv loop))
+          ==⟨ ap (λ u → u ∘ (loops ∘ transport code (inv loop))) (funext λ p → transport-concat-r loop p) ⟩
+        (_· loop) ∘ (loops ∘ transport code (inv loop))
+          ==⟨ ap (λ u → (_· loop) ∘ (loops ∘ u)) (funext tcode-pred) ⟩
+        (_· loop) ∘ (loops ∘ zpred)
+          ==⟨ funext lemma ⟩
+        loops
+      ∎)
+      where
+        lemma : (n : ℤ) → ((_· loop) ∘ (loops ∘ zpred)) n == loops n
+        lemma zer            = ·-linv loop
+        lemma (pos zero)     = refl _
+        lemma (pos (succ x)) = refl _
+        lemma (neg zero) =
+          ·-assoc (inv loop) (inv loop) loop ·
+          ap (inv loop ·_) (·-linv loop) ·
+          inv (·-runit (inv _))
+        lemma (neg (succ x)) =
+          ·-assoc (loops (neg x) · inv loop) _ loop ·
+          ap ((loops (neg x) · (inv loop)) ·_) (·-linv loop) ·
+          inv (·-runit _)
+
+    decode-encode : (x : S¹) → (p : base == x) → decode x (encode x p) == p
+    decode-encode .base idp = refl (refl base)
+
+    encode-decode : (x : S¹) → (c : code x) → encode x (decode x c) == c
+    encode-decode x = S¹-rec
+        ((λ y → (c : code y) → encode y (decode y c) == c))
+        lemma (funext λ _ → z-isSet _ _ _ _) x
+      where
+        lemma : (n : ℤ) → encode base (loops n) == n
+        lemma zer = refl zer
+        lemma (pos 0) = tcode-succ zer
+        lemma (pos (succ n)) =
+          inv (transport-comp-h (loops (pos n)) loop zer) ·
+          ap (transport code loop) (lemma (pos n)) ·
+          tcode-succ _
+        lemma (neg zero) = tcode-pred zer
+        lemma (neg (succ n)) =
+          inv (transport-comp-h (loops (neg n)) (inv loop) zer) ·
+          ap (transport code (inv loop)) (lemma (neg n)) ·
+          tcode-pred _
+
+  -- Creates an equivalence between paths and encodings.
+  equiv-family : (x : S¹) → (base == x) ≃ code x
+  equiv-family x = qinv-≃ (encode x) (decode x , (encode-decode x , decode-encode x))
+
+
+  -- The fundamental group of the circle is the integers.  In this
+  -- proof, univalence is crucial. The next lemma will prove that the
+  -- equivalence in fact preserves the group structure.
+  fundamental-group-of-the-circle : Ω S¹ base ≃ ℤ
+  fundamental-group-of-the-circle = equiv-family base
+
+  preserves-composition : ∀ n m → loops (n +ᶻ m) == loops n · loops m
+  preserves-composition n m = z-act+ (Ω-st S¹ base) n m loop
+\end{code}
+
+## Agda References
+
+We based on the following Agda libraries.
+
+{: .links}
+
+  - Basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).

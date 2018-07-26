@@ -8,7 +8,7 @@ group :jekyll_plugins do
    gem 'hawkins'
    gem 'jekyll-seo-tag'
    gem 'jekyll-last-modified-at'
-   gem 'jekyll-algolia', '~> 1.4', '>= 1.4.6'
+   gem 'jekyll-algolia', '~> 1.4', '>= 1.4.7'
    gem 'jekyll-github-metadata'
    gem 'netrc'
    gem 'unicode'

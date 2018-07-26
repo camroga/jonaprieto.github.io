@@ -20,8 +20,20 @@ comments: true
         <div class="print-authors">
           <div class="print-info">
             <div class="print-author">
-              <div class="print-author-name">{{ page.author}}</div>
-              <div class="print-author-affiliation">{{ page.author_affiliation}}</div>
+              <div class="print-author-name">
+                {% if page.author %}
+                  {{ page.author}}
+                {% else %}
+                  {{ site.author.name }}
+                {% endif %}
+              </div>
+              <div class="print-author-affiliation">
+                {% if page.author_affiliation %}
+                  {{ page.author_affiliation}}
+                {% else %}
+                  {{ site.affiliation }}
+                {% endif %}
+                </div>
             </div>
           </div>
           {% if page.coauthor %}
