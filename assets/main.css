@@ -12,74 +12,96 @@
 
 /* Aspects. */
 .Comment {
-  color: #82827c;
+  color: #8e8e89;
   font-style: italic; }
 
 .Keyword {
   color: #6D508B;
-  font-weight: bold; }
+  font-weight: 500; }
 
 .String {
-  color: #CD5555; }
+  color: #BF516B; }
 
 .Number {
-  color: #A020F0; }
+  color: #2F8FB2; }
 
 .Symbol {
-  color: #990073; }
+  color: #990073;
+  font-weight: 450; }
 
 .PrimitiveType {
   color: #574EA4; }
 
+.Operator {
+  color: #3F6260;
+  font-weight: 600; }
+
 /* NameKinds. */
 .Bound {
-  color: #6D508B; }
+  color: #515151; }
 
 .InductiveConstructor {
-  color: darkgreen;
-  font-weight: bolder; }
+  color: #49726f;
+  font-weight: 500; }
 
 .CoinductiveConstructor {
-  color: #8B7500; }
+  color: #49726f;
+  font-weight: 500; }
 
 .Datatype {
+  color: #574EA4;
+  font-weight: 600; }
+
+.Datatype.Operator {
+  color: #574EA4;
+  font-weight: 600; }
+
+.Record {
   color: #574EA4; }
 
+.Record.Operator {
+  color: #574EA4;
+  font-weight: 600; }
+
 .Field {
-  color: #008080;
-  font-weight: bolder; }
+  color: #246f8a; }
 
 .Function {
-  color: #564ea3;
-  font-weight: bold; }
+  color: #574EA4;
+  font-weight: 600; }
+
+.Function.Operator {
+  color: #574EA4;
+  font-weight: 600; }
 
 .Module {
-  color: #A020F0; }
+  color: #C1418B;
+  font-weight: 400; }
 
 .Postulate {
   color: #642969; }
 
 .Primitive {
-  color: #6D508B; }
-
-.Record {
-  color: #6D508B; }
+  color: #7F449A; }
 
 /* OtherAspects. */
+.DottedPattern {
+  color: #927295; }
+
 .UnsolvedMeta {
-  color: black;
+  color: gray;
   background: yellow; }
 
 .UnsolvedConstraint {
-  color: black;
+  color: gray;
   background: yellow; }
 
 .TerminationProblem {
-  color: black;
-  background: #FFA07A; }
+  color: gray;
+  background: #FB9E54; }
 
 .IncompletePattern {
-  color: black;
+  color: gray;
   background: #F5DEB3; }
 
 .Error {
@@ -88,7 +110,7 @@
   text-decoration: underline; }
 
 .TypeChecks {
-  color: black;
+  color: gray;
   background: #ADD8E6; }
 
 /* Standard attributes. */
@@ -96,7 +118,8 @@
   text-decoration: none; }
 
 .Agda a[href]:hover {
-  background-color: #B4EEB4; }
+  background-color: #B4EEB4;
+  padding: 2px; }
 
 * {
   -webkit-box-sizing: border-box;
