@@ -1,6 +1,7 @@
 ---
 layout: "post"
 title: "Pathovers"
+use_site_title : false
 author: "Jonathan Prieto-Cubides"
 author_affiliation: "University of Bergen"
 coauthor: "Marc Bezem"

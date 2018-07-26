@@ -136,6 +136,7 @@ DEPENDENCIES
   jekyll-github-metadata
   jekyll-last-modified-at
   jekyll-scholar
+  jekyll-seo-tag
   minima (~> 2.4.0)
   netrc
   pygments.rb

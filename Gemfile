@@ -6,6 +6,7 @@ gem "minima", "~> 2.4.0"
 group :jekyll_plugins do
    gem "jekyll-feed", "~> 0.6"
    gem 'hawkins'
+   gem 'jekyll-seo-tag'
    gem 'jekyll-last-modified-at'
    gem 'jekyll-algolia', '~> 1.4', '>= 1.4.6'
    gem 'jekyll-github-metadata'
