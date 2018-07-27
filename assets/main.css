@@ -1560,17 +1560,17 @@ a.pagination-item:hover {
   top: 5px;
   right: 9px;
   margin: 0 auto;
-  padding-right: 10px;
+  padding: 10px;
   margin-right: 10px;
   height: auto;
-  font-size: 11px;
+  font-size: 0.88em;
   overflow: scroll;
   height: -webkit-fill-available;
   padding-left: 2em;
   overflow-x: hidden;
   text-overflow: ellipsis; }
   .toc ul {
-    padding-left: 10px;
+    padding-left: 8px;
     margin-bottom: 0px; }
 
 @media all and (max-width: 77em) {
