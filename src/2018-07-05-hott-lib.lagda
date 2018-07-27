@@ -7,15 +7,24 @@ toc: true
 agda: true
 ---
 
-In this article, we have collected a basic overview of homotopy type theory (HoTT)
+The following is an overview of homotopy type theory (HoTT)
 formalized in Agda. The present development was type-checked by Agda 2.5.4.
 
 To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
 type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
 not a good name for universes in HoTT and we rename `Set` to `Type`.
 
-I'm not claiming the originality of this code, it's based mostly in agda-hott,
-and it deserves to my learning purposes.
+This code mutates constantly and stands for only for learning purposes. At the
+end of this article, the reader can find the references to the agda libraries in
+which the sources are based on.
+
+{% comment %}
+Some marks to accompany the code:
+
+- 👏 looks great!
+- 🔍 review please!
+- 🆘 needs refactor
+{% endcomment %}
 
 \begin{code}
 
@@ -30,11 +39,11 @@ Type₀ : Type (lsuc lzero)
 Type₀ = Type lzero
 \end{code}
 
-## Type
+## Basic types
 
-### Empty Type
+### Empty type
 
-The empty type, representing falsehood.
+The Empty type, representing falsehood.
 
 \begin{code}
 -- A datatype without constructors is the empty type.
@@ -53,8 +62,8 @@ exfalso : ∀ {ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
 exfalso ()
 
 -- synonyms of exfalso
-⊥-elim = exfalso
-Empty-elim = ⊥-elim
+Empty-elim = exfalso
+⊥-elim     = exfalso
 \end{code}
 
 A useful convention
@@ -64,7 +73,7 @@ A useful convention
 ¬ A = (A → ⊥ {lzero})
 \end{code}
 
-### Unit
+### Unit type
 
 The unit type is defined as record so that we also get the η-rule definitionally.
 
@@ -86,7 +95,7 @@ Unit = ⊤
 Basic types of Martin-Löf type theory and some basic
 functions.
 
-### Σ-types
+### Σ-type
 
 Sigma types are a particular case of records, but records can be
 constructed using only sigma types. Note that l ⊔ q is the maximum
@@ -117,7 +126,7 @@ Shorter notation for Π-types.
 Π A P = (x : A) → P x
 \end{code}
 
-### Products (×)
+### Product type
 
 Product type as a particular case of the sigma
 
@@ -126,9 +135,10 @@ _×_ : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (B : Type ℓⱼ) → Type (ℓᵢ 
 A × B = Σ A (λ _ → B)
 \end{code}
 
-### Coproducts (+)
+### Coproduct
 
 Sum types as inductive types
+
 \begin{code}
 infixr 80 _+_
 data _+_ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (B : Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
@@ -165,9 +175,10 @@ Nat = ℕ
 \end{code}
 
 
-### Common functions
+## Functions
 
-#### Identity function
+### Identity function
+
 The identity function with implicit type.
 \begin{code}
 id : ∀ {ℓ} {A : Type ℓ} → A → A
@@ -180,7 +191,7 @@ idf : ∀ {ℓᵢ} (A : Type ℓᵢ) → (A → A)
 idf A = λ x → x
 \end{code}
 
-#### Constant function
+### Constant function
 
 Constant function at some point `b` is `cst b`
 
@@ -189,7 +200,7 @@ cst : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} (b : B) → (A →
 cst b = λ _ → b
 \end{code}
 
-#### Composition
+### Composition
 
 A more sophisticated composition function that can handle dependent functions.
 
@@ -203,7 +214,7 @@ _∘_ : ∀ {ℓᵢ ℓⱼ ℓₖ}
 g ∘ f = λ x → g (f x)
 \end{code}
 
-#### Application
+### Application
 
 \begin{code}
 infixr 0 _$_
@@ -213,7 +224,7 @@ f $ x = f x
 \end{code}
 
 
-#### Curryfication
+### Curryfication
 
 \begin{code}
 curry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
@@ -222,7 +233,7 @@ curry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
 curry f x y = f (x , y)
 \end{code}
 
-#### Uncurryfication
+### Uncurryfication
 
 \begin{code}
 uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Type k}
@@ -231,7 +242,7 @@ uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Typ
 uncurry f (x , y) = f x y
 \end{code}
 
-#### Instance Search
+### Instance search
 
 \begin{code}
 -- TODO : How to use this?
@@ -239,9 +250,9 @@ uncurry f (x , y) = f x y
 ⟨⟩ {{a}} = a
 \end{code}
 
-### Equality
+## Equality type
 
-#### Homogeneous equality
+### Homogeneous equality
 
 The Identity type is defined as an inductive type. Its induction principle
 is the J-eliminator.
@@ -260,7 +271,7 @@ refl : ∀ {ℓᵢ} {A : Type ℓᵢ} (a : A) → a == a
 refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 \end{code}
 
-##### J eliminator
+#### J eliminator
 
 From [HoTT-Agda](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115) *Paulin-Mohring J rule*
 
@@ -274,7 +285,7 @@ J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a' == a) �
 J' {a = a} B d idp = d
 \end{code}
 
-Composition of paths
+##### Composition of paths
 
 \begin{code}
 infixl 50 _·_
@@ -282,7 +293,38 @@ _·_ : ∀ {ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
 idp · q = q
 \end{code}
 
-#### Heterogeneous equality
+##### Inverse of paths
+
+**Types are higher groupoids**.  If we see equalities as paths, this
+is the inverse of a path. If we see equalities classically, this
+is the symmetric property of equality.
+
+\begin{code}
+inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
+inv idp = idp
+
+_⁻¹ = inv
+\end{code}
+
+##### Associativity of composition
+
+\begin{code}
+-- Left associativity
+∘-lassoc
+  : ∀ {ℓ} {A B C D : Type ℓ}
+  → (h : C → D) → (g : B → C) → (f : A → B)
+  → (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
+∘-lassoc h g f = idp {a = (λ x → h (g (f x)))}
+
+-- Right associativity
+∘-rassoc
+  : ∀ {ℓ} {A B C D : Type ℓ}
+  → (h : C → D) → (g : B → C) → (f : A → B)
+  → ((h ∘ g) ∘ f) == (h ∘ (g ∘ f))
+∘-rassoc h g f = (∘-lassoc h g f) ⁻¹
+\end{code}
+
+### Heterogeneous equality
 
 \begin{code}
 data HEq {ℓ} (A : Type ℓ)
@@ -292,25 +334,7 @@ data HEq {ℓ} (A : Type ℓ)
   idp : ∀ {a : A} → HEq A A idp a a
 \end{code}
 
-### PathOver
-
-Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
-Using the same notation from {% cite hottbook %}, one of the definitions for the
-Pathover type is as the shorthand for the path between the transport along a
-path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C
-a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
-also denoted by `PathOver C α c₁ c₂`.
-
-\begin{code}
-data PathOver {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
-      {a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ where
-      idp : {c₁ : C a₁} → PathOver C idp c₁ c₁
-
-infix 30 PathOver
-syntax PathOver B p u v = u == v [ B ↓ p ]
-\end{code}
-
-## Equational Reasoning
+## Equational reasoning
 
 Equational reasoning is a way to write readable chains of equalities.
 The idea is that you can write the following:
@@ -354,21 +378,7 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
 open EquationalReasoning public
 \end{code}
 
-## Actions on paths I
-
-Properties and structure of the equality type.
-
-### Equality
-
-Types are higher groupoids.  If we see equalities as paths, this
-is the inverse of a path. If we see equalities classically, this
-is the symmetric property of equality.
-\begin{code}
-inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
-inv idp = idp
-
-_⁻¹ = inv
-\end{code}
+## Actions on paths
 
 Functions are functors to equalities.  In other words, functions
 preserve equalities.
@@ -380,25 +390,30 @@ ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f :
 ap f idp = idp
 \end{code}
 
-#### Associativity of composition
-
-Properties of function composition.
+### Lemmas
 
 \begin{code}
+ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
+ap-id idp = idp
 
--- Left associativity
-∘-lassoc
-  : ∀ {ℓ} {A B C D : Type ℓ}
-  → (h : C → D) → (g : B → C) → (f : A → B)
-  → (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
-∘-lassoc h g f = idp {a = (λ x → h (g (f x)))}
+ap-comp : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {a b : A}
+        → (f : A → B) → (g : B → C) → (p : a == b)
+        → ap g (ap f p) == ap (g ∘ f) p
+ap-comp f g idp = idp
 
--- Right associativity
-∘-rassoc
-  : ∀ {ℓ} {A B C D : Type ℓ}
-  → (h : C → D) → (g : B → C) → (f : A → B)
-  → ((h ∘ g) ∘ f) == (h ∘ (g ∘ f))
-∘-rassoc h g f = inv (∘-lassoc h g f)
+ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C} (p : a == b)
+         → ap (λ _ → c) p == idp
+ap-const {c = c} idp = idp {a = idp {a = c}}
+
+ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
+     → (f : A → B) → (p : a == b) → (q : b == c)
+     → ap f (p · q) == ap f p · ap f q
+ap-· f idp q = idp {a = (ap f q)}
+
+ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
+       → (f : A → B) → (p : a == b)
+       → ap f (inv p) == inv (ap f p)
+ap-inv f idp = idp
 \end{code}
 
 ## Properties on the groupoid
@@ -462,7 +477,26 @@ coe
 coe p A = transport (λ X → X) p A
 \end{code}
 
-### Transport properties
+### Pathover
+
+Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
+Using the same notation from {% cite hottbook %}, one of the definitions for the
+Pathover type is as the shorthand for the path between the transport along a
+path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C
+a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
+also denoted by `PathOver C α c₁ c₂`.
+
+\begin{code}
+PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+        → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+PathOver C α c₁ c₂ = transport C α c₁ == c₂
+
+infix 30 PathOver
+syntax PathOver B p u v = u == v [ B ↓ p ]
+\end{code}
+
+
+### Lemmas
 
 \begin{code}
 module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
@@ -506,33 +540,8 @@ module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
 
 open Transport-Properties public
 \end{code}
-## Actions on paths II
-
-More properties and lemmas on equality, transporting and function application.
 
 \begin{code}
-ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
-ap-id idp = idp
-
-ap-comp : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {a b : A}
-        → (f : A → B) → (g : B → C) → (p : a == b)
-        → ap g (ap f p) == ap (g ∘ f) p
-ap-comp f g idp = idp
-
-ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C} (p : a == b)
-         → ap (λ _ → c) p == idp
-ap-const {c = c} idp = idp {a = idp {a = c}}
-
-ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
-     → (f : A → B) → (p : a == b) → (q : b == c)
-     → ap f (p · q) == ap f p · ap f q
-ap-· f idp q = idp {a = (ap f q)}
-
-ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
-       → (f : A → B) → (p : a == b)
-       → ap f (inv p) == inv (ap f p)
-ap-inv f idp = idp
-
 transport-eq-fun-l : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (f : A → B) {x y : A}
                      → (p : x == y) (q : f x == b)
                      → transport (λ z → f z == b) p q == inv (ap f p) · q
@@ -579,7 +588,84 @@ transport-fun
   → (p : x == y) → (f : A x → B x)
   → transport (λ x → (A x → B x)) p f == (λ x → transport B p (f (transport A (inv p) x)))
 transport-fun idp f = idp
+\end{code}
 
+## Basic type lemmas
+
+### Sigma type
+
+\begin{code}
+module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
+
+  -- Two dependent pairs are equal if they are componentwise equal.
+  Σ-componentwise
+    : {v w : Σ A P}
+    → v == w
+    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
+  Σ-componentwise  idp = (idp , idp)
+
+  Σ-bycomponents
+    : {v w : Σ A P}
+    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
+    → v == w
+  Σ-bycomponents (idp , idp) = idp
+
+  pair= = Σ-bycomponents
+
+  uppt : (x : Σ A P) → (π₁ x , π₂ x) == x
+  uppt (a , b) = idp
+
+  Σ-ap-π₁
+    : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
+    → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
+    → ap π₁ (pair= (α , γ)) == α
+  Σ-ap-π₁ idp idp = idp
+
+  ap-π₁-pair= = Σ-ap-π₁
+
+open Sigma public
+\end{code}
+
+
+### Cartesian product
+
+\begin{code}
+module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
+
+  -- In a pair, the equality of the two components of the pairs is
+  -- equivalent to equality of the two pairs.
+  prodComponentwise
+    : {x y : A × B}
+    → (x == y)
+    → (π₁ x == π₁ y) × (π₂ x == π₂ y)
+  prodComponentwise {x = x} idp = refl (π₁ x) , refl (π₂ x)
+
+  prodByComponents
+    : {x y : A × B}
+    → (π₁ x == π₁ y) × (π₂ x == π₂ y)
+    → (x == y)
+  prodByComponents {x = a , b} (idp , idp) = refl (a , b)
+
+  -- This is in fact an equivalence.
+  prodCompInverse
+    : {x y : A × B} (b : ((π₁ x == π₁ y) × (π₂ x == π₂ y)))
+    → prodComponentwise (prodByComponents b) == b
+  prodCompInverse {x} (idp , idp) = refl (refl (π₁ x) , refl (π₂ x))
+
+  prodByCompInverse
+    : {x y : A × B} (b : x == y)
+    → prodByComponents (prodComponentwise b) == b
+  prodByCompInverse {x = x} idp = refl (refl x)
+
+open CartesianProduct
+\end{code}
+
+
+## Action on dependent paths
+
+More properties and lemmas on equality, transporting and function application.
+
+\begin{code}
 apd : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
     → (f : (a : A) → P a) → (p : a == b)
     → transport P p (f a) == f b
@@ -617,7 +703,7 @@ module Homotopy {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
 open Homotopy public
 \end{code}
 
-## Homotopy Composition
+### Composition
 
 \begin{code}
 -- Composition with homotopies
@@ -634,7 +720,7 @@ module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type �
 open HomotopyComposition
 \end{code}
 
-## Naturality
+### Naturality
 
 Homotopy is natural, meaning that it satisfies the following
 square commutative diagram.
@@ -753,75 +839,6 @@ open Equivalence
 \end{code}
 
 
-## Sigma's lemmas
-
-\begin{code}
-module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
-
-  -- Two dependent pairs are equal if they are componentwise equal.
-  Σ-componentwise
-    : {v w : Σ A P}
-    → v == w
-    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
-  Σ-componentwise  idp = (idp , idp)
-
-  Σ-bycomponents
-    : {v w : Σ A P}
-    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
-    → v == w
-  Σ-bycomponents (idp , idp) = idp
-
-  pair= = Σ-bycomponents
-
-  uppt : (x : Σ A P) → (π₁ x , π₂ x) == x
-  uppt (a , b) = idp
-
-  Σ-ap-π₁
-    : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
-    → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
-    → ap π₁ (pair= (α , γ)) == α
-  Σ-ap-π₁ idp idp = idp
-
-  ap-π₁-pair= = Σ-ap-π₁
-
-open Sigma public
-\end{code}
-
-
-## Cartesian Product
-
-\begin{code}
-module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
-
-  -- In a pair, the equality of the two components of the pairs is
-  -- equivalent to equality of the two pairs.
-  prodComponentwise
-    : {x y : A × B}
-    → (x == y)
-    → (π₁ x == π₁ y) × (π₂ x == π₂ y)
-  prodComponentwise {x = x} idp = refl (π₁ x) , refl (π₂ x)
-
-  prodByComponents
-    : {x y : A × B}
-    → (π₁ x == π₁ y) × (π₂ x == π₂ y)
-    → (x == y)
-  prodByComponents {x = a , b} (idp , idp) = refl (a , b)
-
-  -- This is in fact an equivalence.
-  prodCompInverse
-    : {x y : A × B} (b : ((π₁ x == π₁ y) × (π₂ x == π₂ y)))
-    → prodComponentwise (prodByComponents b) == b
-  prodCompInverse {x} (idp , idp) = refl (refl (π₁ x) , refl (π₂ x))
-
-  prodByCompInverse
-    : {x y : A × B} (b : x == y)
-    → prodByComponents (prodComponentwise b) == b
-  prodByCompInverse {x = x} idp = refl (refl x)
-
-open CartesianProduct
-\end{code}
-
-
 ## Function extesionality
 
 \begin{code}
@@ -875,7 +892,7 @@ module FunctionExtensionalityTransport
 open FunctionExtensionalityTransport
 \end{code}
 
-## DecidableEquality
+## Decidable equality
 
 A type has decidable equality if any two of its
 elements are equal or different. This would be a particular
@@ -901,7 +918,9 @@ module DecidableEquality {ℓ} where
 open DecidableEquality
 \end{code}
 
-## Propositions
+## Hlevels
+
+### Propositions
 
 Propositions as described on the main text. A type
 is a proposition if we can create a function making any two of its
@@ -935,7 +954,7 @@ module Propositions where
 open Propositions
 \end{code}
 
-## Sets
+### Sets
 
 Sets are types without any higher dimensional structure, all
 parallel paths are homotopic and the homotopy is given by a
@@ -969,7 +988,7 @@ module Sets where
 open Sets
 \end{code}
 
-## HLevels
+### Lemmas
 
 Higher levels of the homotopical structure, where the
 first levels are:
@@ -1016,8 +1035,6 @@ open HLevels
 \end{code}
 
 
-## EquivalenceProp
-
 Equivalence of two types is a proposition
 Moreover, equivalences preserve propositions.
 
@@ -1050,7 +1067,7 @@ open EquivalenceProp
 \end{code}
 
 
-## Half-Adjoints
+### Half-adjoints
 
 Half-adjoints are an auxiliary notion that helps us
 to define a suitable notion of equivalence, meaning that it is a
@@ -1126,10 +1143,10 @@ module Halfadjoints {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 open Halfadjoints public
 \end{code}
 
-## Quasiinverses
+### Quasiinverses
 
-Two functions are quasiinverses if we can construct
-a function providing gfx = x and fgy = y for any given x and y.
+Two functions are quasi-inverses if we can construct a function providing
+`(g ∘ f) x = x` and `(f ∘ g) y = y` for any given `x` and `y`.
 
 \begin{code}
 module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
@@ -1270,7 +1287,7 @@ module EquivalenceComposition where
 open EquivalenceComposition
 \end{code}
 
-## Sigma Equivalences
+### Sigma type
 
 \begin{code}
 module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
@@ -1937,7 +1954,7 @@ module Integers where
 open Integers public
 \end{code}
 
-### Integer Action
+### Integer action
 
 \begin{code}
 module IntegerAction {ℓ} {M : Type ℓ} (grpst : GroupStructure M) where
@@ -2037,7 +2054,7 @@ module IntegerAction {ℓ} {M : Type ℓ} (grpst : GroupStructure M) where
 open IntegerAction public
 \end{code}
 
-## Higher Inductive Types (HITs)
+## Higher inductive types
 
 ### Interval
 
@@ -2063,7 +2080,8 @@ module Interval where
   Ione : I
   Ione = !Ione
 
-  postulate seg : Izero == Ione
+  postulate
+    seg : Izero == Ione
 
   -- Induction principle on points.
   I-ind : ∀{ℓ} {A : Type ℓ} → (a b : A) → (p : a == b) → I → A
@@ -2085,12 +2103,6 @@ a single element (base) and a nontrivial path (loop).
 module Circle where
 
   private
-    -- A private declaration of the type prevents pattern matching and
-    -- allows us to postulate higher-inductive types without losing
-    -- consistency.
-
-    -- This technique is known as the Dan Licata's trick, and it is
-    -- used in the HoTT-Agda library.
     data !S¹ : Type₀ where
       !base : !S¹
 
@@ -2101,23 +2113,36 @@ module Circle where
   base = !base
 
   -- Nontrivial path on the circle.
-  postulate loop : base == base
+  postulate
+    loop : base == base
 
   -- Recursion principle on points
-  S¹-rec : ∀{ℓ} (P : S¹ → Type ℓ) (x : P base) (p : transport P loop x == x) → ((t : S¹) → P t)
-  S¹-rec P x p !base = x
+  S¹-rec : ∀{ℓ} (A : Type ℓ) (a : A) (p : a == a) → (S¹ → A)
+  S¹-rec A a p !base = a
 
   -- Recursion principle on paths
-  postulate S¹-βrec : ∀{ℓ} (P : S¹ → Type ℓ) (x : P base) (p : transport P loop x == x)
-                      → apd (S¹-rec P x p) loop == p
+  postulate
+    S¹-βrec : ∀{ℓ} (A : Type ℓ)
+            → (a : A) (p : a == a)
+            ------------------------------
+            → ap (S¹-rec A a p) loop == p
 
   -- Induction principle on points
-  S¹-ind : ∀{ℓ} (A : Type ℓ) (a : A) (p : a == a) → (S¹ → A)
-  S¹-ind A a p !base = a
+  S¹-ind : ∀ {ℓ} (P : S¹ → Type ℓ)
+         → (x : P base)
+         → (x == x [ P ↓ loop ])
+         --------------------------
+         → ((t : S¹) → P t)
+  S¹-ind P x p !base = x
 
   -- Induction principle on paths
-  postulate S¹-βind : ∀{ℓ} (A : Type ℓ) (a : A) (p : a == a)
-                      → ap (S¹-ind A a p) loop == p
+  postulate
+    S¹-βind : ∀{ℓ} (P : S¹ → Type ℓ)
+            → (x : P base)
+            → (p : x == x [ P ↓ loop ])
+            -------------------------------
+            → apd (S¹-ind P x p) loop == p
+
 open Circle public
 \end{code}
 
@@ -2125,8 +2150,8 @@ open Circle public
 ### Suspension
 
 \begin{code}
-
 module Suspension where
+
   module S where
 
   private
@@ -2152,15 +2177,16 @@ module Suspension where
           → A
           → Path {ℓ}{Susp A} North South
 
-  -- recursion principle
+  -- Recursion principle on points
   Susp-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}{C : Type ℓⱼ}
-           → (cₙ cₛ : C)
-           → (mer   : A → cₙ == cₛ)
+           → (cₙ cₛ  : C)
+           → (merid' : A → cₙ == cₛ)
            ------------------------
            → (Susp A → C)
-  Susp-rec cₙ _ mer (mkSusp Nₚ _) = cₙ
-  Susp-rec _ cₛ mer (mkSusp Sₚ _) = cₛ
+  Susp-rec cₙ _ _ (mkSusp Nₚ _) = cₙ
+  Susp-rec _ cₛ _ (mkSusp Sₚ _) = cₛ
 
+  -- Recursion principle on paths
   postulate
     Susp-βrec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}{C : Type ℓⱼ}
               → {cₙ cₛ : C} {mer : A → cₙ == cₛ}
@@ -2168,10 +2194,30 @@ module Suspension where
               -------------------------------------------
               → ap (Susp-rec cₙ cₛ mer) (merid a) == mer a
 
+  -- Induction principle on points
+  Susp-ind : ∀ {ℓ} {A : Type ℓ} (C : Susp A → Type ℓ)
+              → (N' : C North)
+              → (S' : C South)
+              → (merid' : (x : A) → N' == S' [ C ↓ (merid x) ])
+              --------------------------------------------------
+              → ((x : Susp A) → C x)
+
+  Susp-ind _ N' S' _ (mkSusp Nₚ _) = N'
+  Susp-ind _ N' S' _ (mkSusp Sₚ _) = S'
+
+  -- Induction principle on paths
+  postulate
+    Susp-βind : ∀ {ℓ} {A : Type ℓ} (C : Susp A → Type ℓ)
+              → (N' : C North)
+              → (S' : C South)
+              → (merid' : (x : A) → N' == S' [ C ↓ (merid x)]) {x : A}
+              --------------------------------------------------------
+              → apd (Susp-ind C N' S' merid') (merid x) == merid' x
+
 open Suspension public
 \end{code}
 
-## Fundamental Group
+## Fundamental group
 
 Definition of the fundamental group of a type.
 Let a:A be one point of the type. The fundamental group on a is the
@@ -2199,7 +2245,6 @@ module FundamentalGroup where
     (λ a → inv (·-runit a)) (λ a → inv (·-lunit a))
     (λ x y z → ·-assoc z y x)
     inv ·-linv ·-rinv
-
 open FundamentalGroup public
 \end{code}
 
@@ -2215,14 +2260,14 @@ module FundGroupCircle where
   private
   -- Uses univalence to unwind a path over the integers.
     code : S¹ → Type₀
-    code = S¹-ind Type₀ ℤ (ua zequiv-succ)
+    code = S¹-rec Type₀ ℤ (ua zequiv-succ)
 
   tcode-succ : (n : ℤ) → transport code loop n == zsucc n
   tcode-succ n =
     begin
       transport code loop n ==⟨ refl _ ⟩
       transport ((λ a → a) ∘ code) loop n ==⟨ transport-family loop n ⟩
-      transport (λ a → a) (ap code loop) n ==⟨ ap (λ u → transport (λ a → a) u n) (S¹-βind _ ℤ (ua zequiv-succ)) ⟩
+      transport (λ a → a) (ap code loop) n ==⟨ ap (λ u → transport (λ a → a) u n) (S¹-βrec _ ℤ (ua zequiv-succ)) ⟩
       transport (λ a → a) (ua zequiv-succ) n ==⟨ ap (λ e → (lemap e) n) (ua-β zequiv-succ) ⟩
       zsucc n
     ∎
@@ -2237,7 +2282,7 @@ module FundGroupCircle where
       transport (λ a → a) (ap code (inv loop)) n
         ==⟨ ap (λ u → transport (λ a → a) u n) (ap-inv code loop) ⟩
       transport (λ a → a) (inv (ap code loop)) n
-        ==⟨ ap (λ u → transport (λ a → a) (inv u) n) (S¹-βind _ ℤ (ua zequiv-succ)) ⟩
+        ==⟨ ap (λ u → transport (λ a → a) (inv u) n) (S¹-βrec _ ℤ (ua zequiv-succ)) ⟩
       transport (λ a → a) (inv (ua zequiv-succ)) n
         ==⟨ ap (λ u → transport (λ a → a) u n) (inv (ua-inv zequiv-succ)) ⟩
       transport (λ a → a) (ua (invEqv zequiv-succ)) n
@@ -2250,7 +2295,7 @@ module FundGroupCircle where
     encode x p = transport code p zer
 
     decode : (x : S¹) → code x → (base == x)
-    decode = S¹-rec (λ x → (code x → (base == x))) loops (
+    decode = S¹-ind (λ x → (code x → (base == x))) loops (
       begin
         transport (λ x → code x → base == x) loop loops
           ==⟨ transport-fun loop loops ⟩
@@ -2280,7 +2325,7 @@ module FundGroupCircle where
     decode-encode .base idp = refl (refl base)
 
     encode-decode : (x : S¹) → (c : code x) → encode x (decode x c) == c
-    encode-decode x = S¹-rec
+    encode-decode x = S¹-ind
         ((λ y → (c : code y) → encode y (decode y c) == c))
         lemma (funext λ _ → z-isSet _ _ _ _) x
       where
@@ -2312,7 +2357,7 @@ module FundGroupCircle where
   preserves-composition n m = z-act+ (Ω-st S¹ base) n m loop
 \end{code}
 
-## Agda References
+## Agda references
 
 We based on the following Agda libraries.
 

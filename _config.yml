@@ -34,10 +34,6 @@ scholar:
   # group_by: 'year'
   use_raw_bibtex_entry: true
 
-toc:
-  min_level: 1 # default: 1
-  max_level: 4 # default: 6
-
 exclude:
   - src/
   - Gemfile
