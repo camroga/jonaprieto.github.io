@@ -39,15 +39,26 @@ The empty type, representing falsehood.
 \begin{code}
 -- A datatype without constructors is the empty type.
 data ⊥ {ℓᵢ} : Type ℓᵢ where
-Empty = ⊥
 
+-- synonyms of ⊥
+Empty = ⊥
+𝟘     = ⊥
+\end{code}
+
+Its eliminator:
+
+\begin{code}
 -- Ex falso quodlibet
 exfalso : ∀ {ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
 exfalso ()
 
+-- synonyms of exfalso
 ⊥-elim = exfalso
 Empty-elim = ⊥-elim
+\end{code}
 
+A useful convention
+\begin{code}
 -- Negation
 ¬ : ∀ {ℓ} → Type ℓ → Type ℓ
 ¬ A = (A → ⊥ {lzero})
@@ -64,6 +75,10 @@ record ⊤ : Type₀ where
   constructor ★
 
 unit = ★
+
+-- synonyms
+Unit = ⊤
+𝟙    = ⊤
 
 {-# BUILTIN UNIT ⊤ #-}
 \end{code}
@@ -224,7 +239,9 @@ uncurry f (x , y) = f x y
 ⟨⟩ {{a}} = a
 \end{code}
 
-### Homogeneous Equality
+### Equality
+
+#### Homogeneous equality
 
 The Identity type is defined as an inductive type. Its induction principle
 is the J-eliminator.
@@ -243,7 +260,7 @@ refl : ∀ {ℓᵢ} {A : Type ℓᵢ} (a : A) → a == a
 refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 \end{code}
 
-#### J eliminator
+##### J eliminator
 
 From [HoTT-Agda](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115) *Paulin-Mohring J rule*
 
@@ -265,7 +282,7 @@ _·_ : ∀ {ℓ} {A : Type ℓ}  {a b c : A} → a == b → b == c → a == c
 idp · q = q
 \end{code}
 
-### Heterogeneous equality
+#### Heterogeneous equality
 
 \begin{code}
 data HEq {ℓ} (A : Type ℓ)
@@ -735,11 +752,83 @@ module Equivalence where
 open Equivalence
 \end{code}
 
+
+## Sigma's lemmas
+
+\begin{code}
+module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
+
+  -- Two dependent pairs are equal if they are componentwise equal.
+  Σ-componentwise
+    : {v w : Σ A P}
+    → v == w
+    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
+  Σ-componentwise  idp = (idp , idp)
+
+  Σ-bycomponents
+    : {v w : Σ A P}
+    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
+    → v == w
+  Σ-bycomponents (idp , idp) = idp
+
+  pair= = Σ-bycomponents
+
+  uppt : (x : Σ A P) → (π₁ x , π₂ x) == x
+  uppt (a , b) = idp
+
+  Σ-ap-π₁
+    : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
+    → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
+    → ap π₁ (pair= (α , γ)) == α
+  Σ-ap-π₁ idp idp = idp
+
+  ap-π₁-pair= = Σ-ap-π₁
+
+open Sigma public
+\end{code}
+
+
+## Cartesian Product
+
+\begin{code}
+module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
+
+  -- In a pair, the equality of the two components of the pairs is
+  -- equivalent to equality of the two pairs.
+  prodComponentwise
+    : {x y : A × B}
+    → (x == y)
+    → (π₁ x == π₁ y) × (π₂ x == π₂ y)
+  prodComponentwise {x = x} idp = refl (π₁ x) , refl (π₂ x)
+
+  prodByComponents
+    : {x y : A × B}
+    → (π₁ x == π₁ y) × (π₂ x == π₂ y)
+    → (x == y)
+  prodByComponents {x = a , b} (idp , idp) = refl (a , b)
+
+  -- This is in fact an equivalence.
+  prodCompInverse
+    : {x y : A × B} (b : ((π₁ x == π₁ y) × (π₂ x == π₂ y)))
+    → prodComponentwise (prodByComponents b) == b
+  prodCompInverse {x} (idp , idp) = refl (refl (π₁ x) , refl (π₂ x))
+
+  prodByCompInverse
+    : {x y : A × B} (b : x == y)
+    → prodByComponents (prodComponentwise b) == b
+  prodByCompInverse {x = x} idp = refl (refl x)
+
+open CartesianProduct
+\end{code}
+
+
 ## Function extesionality
 
 \begin{code}
 
-module FunctionExtensionality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {f g : (a : A) → B a} where
+module FunctionExtensionality {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+  {B : A → Type ℓⱼ} {f g : (a : A) → B a} where
+
   -- Application of an homotopy
   happly : f == g → ((x : A) → f x == g x)
   happly idp x = refl (f x)
@@ -785,60 +874,6 @@ module FunctionExtensionalityTransport
 
 open FunctionExtensionalityTransport
 \end{code}
-
-## Sigma
-
-\begin{code}
-module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
-
-  -- Two dependent pairs are equal if they are componentwise equal.
-  Σ-componentwise : {v w : Σ A P} → v == w → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
-  Σ-componentwise  idp = (idp , idp)
-
-  Σ-bycomponents : {v w : Σ A P} → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w) → v == w
-  Σ-bycomponents (idp , idp) = idp
-
-  pair= = Σ-bycomponents
-
-  uppt : (x : Σ A P) → (π₁ x , π₂ x) == x
-  uppt (a , b) = idp
-
-  Σ-ap-π₁ : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
-    → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
-    → ap π₁ (pair= (α , γ)) == α
-  Σ-ap-π₁ idp idp = idp
-
-  ap-π₁-pair= = Σ-ap-π₁
-
-open Sigma public
-\end{code}
-
-
-## Cartesian Product
-
-\begin{code}
-module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
-
-  -- In a pair, the equality of the two components of the pairs is
-  -- equivalent to equality of the two pairs.
-  prodComponentwise : {x y : A × B} → (x == y) → ((π₁ x == π₁ y) × (π₂ x == π₂ y))
-  prodComponentwise {x = x} idp = refl (π₁ x) , refl (π₂ x)
-
-  prodByComponents : {x y : A × B} → ((π₁ x == π₁ y) × (π₂ x == π₂ y)) → (x == y)
-  prodByComponents {x = a , b} (idp , idp) = refl (a , b)
-
-  -- This is in fact an equivalence.
-  prodCompInverse : {x y : A × B} (b : ((π₁ x == π₁ y) × (π₂ x == π₂ y))) →
-                    prodComponentwise (prodByComponents b) == b
-  prodCompInverse {x} (idp , idp) = refl (refl (π₁ x) , refl (π₂ x))
-
-  prodByCompInverse : {x y : A × B} (b : x == y) →
-                    prodByComponents (prodComponentwise b) == b
-  prodByCompInverse {x = x} idp = refl (refl x)
-
-open CartesianProduct
-\end{code}
-
 
 ## DecidableEquality
 
@@ -1590,7 +1625,7 @@ module Monoids {ℓ} where
 open Monoids
 \end{code}
 
-## Groups
+### Groups
 
 \begin{code}
 module Groups where
@@ -1618,7 +1653,7 @@ module Groups where
 open Groups
 \end{code}
 
-## Naturals
+### Naturals
 
 \begin{code}
 module Naturals where
@@ -1725,7 +1760,7 @@ module Naturals where
 open Naturals public
 \end{code}
 
-### Integers
+#### Integers
 
 \begin{code}
 module Integers where
@@ -2002,7 +2037,9 @@ module IntegerAction {ℓ} {M : Type ℓ} (grpst : GroupStructure M) where
 open IntegerAction public
 \end{code}
 
-## Intervals
+## Higher Inductive Types (HITs)
+
+### Interval
 
 Interval. An interval is defined by taking two points (two elements) and a path
 between them (an element of the equality type). The path is nontrivial.
@@ -2038,7 +2075,7 @@ module Interval where
 open Interval public
 \end{code}
 
-## Circle
+### Circle
 
 The circle type is constructed by postulating a type with
 a single element (base) and a nontrivial path (loop).
@@ -2084,6 +2121,56 @@ module Circle where
 open Circle public
 \end{code}
 
+
+### Suspension
+
+\begin{code}
+
+module Suspension where
+  module S where
+
+  private
+    data Suspₚ {ℓ} (A : Type ℓ) : Type ℓ where
+      Nₚ : Suspₚ A
+      Sₚ : Suspₚ A
+
+    data Suspₓ {ℓ} (A : Type ℓ) : Type ℓ where
+      mkSusp : Suspₚ A → (𝟙 → 𝟙) → Suspₓ A
+
+  Susp = Suspₓ
+
+  -- point-constructors
+  North : ∀ {ℓ} {A : Type ℓ} → Susp A
+  North = mkSusp Nₚ _
+
+  South : ∀ {ℓ} {A : Type ℓ} → Susp A
+  South = mkSusp Sₚ _
+
+  -- path-constructors
+  postulate
+    merid : ∀ {ℓ} {A : Type ℓ}
+          → A
+          → Path {ℓ}{Susp A} North South
+
+  -- recursion principle
+  Susp-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}{C : Type ℓⱼ}
+           → (cₙ cₛ : C)
+           → (mer   : A → cₙ == cₛ)
+           ------------------------
+           → (Susp A → C)
+  Susp-rec cₙ _ mer (mkSusp Nₚ _) = cₙ
+  Susp-rec _ cₛ mer (mkSusp Sₚ _) = cₛ
+
+  postulate
+    Susp-βrec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}{C : Type ℓⱼ}
+              → {cₙ cₛ : C} {mer : A → cₙ == cₛ}
+              → {a : A}
+              -------------------------------------------
+              → ap (Susp-rec cₙ cₛ mer) (merid a) == mer a
+
+open Suspension public
+\end{code}
+
 ## Fundamental Group
 
 Definition of the fundamental group of a type.
@@ -2116,7 +2203,7 @@ module FundamentalGroup where
 open FundamentalGroup public
 \end{code}
 
-## Circle fundamental group
+### Circle fundamental group
 
 \begin{code}
 module FundGroupCircle where
@@ -2232,3 +2319,4 @@ We based on the following Agda libraries.
 {: .links}
 
   - Basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
+  - Higher Inductive types in `hott-agda` from https://github.com/dlicata335/hott-agda/
