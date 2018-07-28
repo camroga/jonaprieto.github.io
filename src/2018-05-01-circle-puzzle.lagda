@@ -142,7 +142,7 @@ module pS-Rec (C : Type₀)
     \Sigma~S^{1}~P~\simeq~pS
   $$
 
-  where $$P (\mathsf{base}) :≡ Bool$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$
+  where $$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
 
 \begin{code}
 -- Def.
@@ -178,12 +178,13 @@ open module gdef =
     g = gdef.rec
 
     f-g : f ∘ g ∼ id
-    f-g !pS₀ = {!   !}
+    f-g !pS₀ = {!  g !pS₀ !}
     f-g !pS₁ = {!   !}
 
     g-f : g ∘ f ∼ id
     g-f (s , pₛ) = {!   !}
 \end{code}
-{: references }
+
+{: .references }
 
   - {% reference hottbook %}

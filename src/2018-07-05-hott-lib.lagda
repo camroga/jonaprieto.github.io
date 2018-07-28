@@ -1453,16 +1453,47 @@ open UnivalenceLemmas public
 
 \begin{code}
 module TransportUA where
-  postulate
-    transport-ua
-      : ∀ {ℓ} {A : Type ℓ}
-      → (B : A → Type ℓ)
-      → {x y : A}
-      → (p : x == y)
-      → (e : B x ≃ B y)
-      → ap B p == ua e
-      -----------------
-      → (u : B x) → transport B p u == (fun≃ e) u
+
+  transport-family-ap
+    : ∀ {ℓ} {A : Type ℓ}
+    → (B : A → Type ℓ)
+    → {x y : A}
+    → (p : x == y)
+    → (u : B x)
+    ---------------------------------------------------
+    → transport B p u == transport (λ X → X) (ap B p) u
+  transport-family-ap B idp u = idp
+
+  transport-family-idtoeqv
+    : ∀ {ℓ} {A : Type ℓ}
+    → (B : A → Type ℓ)
+    → {x y : A}
+    → (p : x == y)
+    → (u : B x)
+    ---------------------------------------------------
+    → transport B p u == fun≃ (idtoeqv (ap B p)) u
+  transport-family-idtoeqv B idp u = idp
+
+  transport-ua
+    : ∀ {ℓ} {A : Type ℓ}
+    → (B : A → Type ℓ)
+    → {x y : A}
+    → (p : x == y)
+    → (e : B x ≃ B y)
+    → ap B p == ua e
+    -----------------
+    → (u : B x) → transport B p u == (fun≃ e) u
+  transport-ua B idp e q u =
+    begin
+      transport B idp u
+        ==⟨ transport-family-idtoeqv B idp u ⟩
+      fun≃ (idtoeqv (ap B idp)) u
+        ==⟨ ap (λ r → fun≃ (idtoeqv r) u) q ⟩
+      fun≃ (idtoeqv (ua e)) u
+        ==⟨ ap (λ r → fun≃ r u) (ua-β e) ⟩
+      fun≃ e u
+    ∎
+
 open TransportUA public
 \end{code}
 
@@ -2167,8 +2198,9 @@ module Circle where
 
   -- Recursion principle on paths
   postulate
-    S¹-βrec : ∀{ℓ} (A : Type ℓ)
-            → (a : A) (p : a == a)
+    S¹-βrec : ∀ {ℓ} (A : Type ℓ)
+            → (a : A)
+            → (p : a == a)
             ------------------------------
             → ap (S¹-rec A a p) loop == p
 
