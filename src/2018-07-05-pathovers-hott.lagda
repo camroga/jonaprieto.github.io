@@ -440,6 +440,7 @@ module hott where
       -- Maps of an equivalence
       lemap : A ≃ B → (A → B)
       lemap = π₁
+      fun≃ = lemap
 
       remap : A ≃ B → (B → A)
       remap (f , contrf) b = π₁ (π₁ (contrf b))
@@ -972,6 +973,50 @@ module hott where
     begin≃_ e = e
 
   open EquivalenceReasoning public
+
+  module TransportUA where
+
+    transport-family-ap
+      : ∀ {ℓ} {A : Type ℓ}
+      → (B : A → Type ℓ)
+      → {x y : A}
+      → (p : x == y)
+      → (u : B x)
+      ---------------------------------------------------
+      → transport B p u == transport (λ X → X) (ap B p) u
+    transport-family-ap B idp u = idp
+
+    transport-family-idtoeqv
+      : ∀ {ℓ} {A : Type ℓ}
+      → (B : A → Type ℓ)
+      → {x y : A}
+      → (p : x == y)
+      → (u : B x)
+      ---------------------------------------------------
+      → transport B p u == fun≃ (idtoeqv (ap B p)) u
+    transport-family-idtoeqv B idp u = idp
+
+    transport-ua
+      : ∀ {ℓ} {A : Type ℓ}
+      → (B : A → Type ℓ)
+      → {x y : A}
+      → (p : x == y)
+      → (e : B x ≃ B y)
+      → ap B p == ua e
+      -----------------
+      → (u : B x) → transport B p u == (fun≃ e) u
+    transport-ua B idp e q u =
+      begin
+        transport B idp u
+          ==⟨ transport-family-idtoeqv B idp u ⟩
+        fun≃ (idtoeqv (ap B idp)) u
+          ==⟨ ap (λ r → fun≃ (idtoeqv r) u) q ⟩
+        fun≃ (idtoeqv (ua e)) u
+          ==⟨ ap (λ r → fun≃ r u) (ua-β e) ⟩
+        fun≃ e u
+      ∎
+
+  open TransportUA public
 
 open hott public
 \end{code}
@@ -1559,51 +1604,46 @@ open Lemma₁ public
 \end{code}
 
 {% comment %}
-Now, let us prove the same lemma using Univalence Axiom:
-
-```agda
-module Lemma₁UA {ℓᵢ}{ℓⱼ}
-  {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A){C : A → Type ℓⱼ}
-  where
-
-  p : B == A
-  p = ua e
-
-  p⁻¹ : A == B
-  p⁻¹ = inv p
-
-  f : B → A
-  f = lemap e
-
-  tr = transport
-
-  postulate
-    transport-ua : ∀{ℓᵢ} {A B : Type ℓᵢ} {f : A → B}{x : A}
-        → (tr _ (ua (f , _ )) x) == f x
-
-
-  lemma₁ua :  Σ A C ≃ Σ B (λ b → C (f b))
-  lemma₁ua = idtoeqv
-    (begin
-      Σ A C
-        ==⟨ inv (happly (apd (Σ {ℓⱼ = ℓⱼ}) p) C) ⟩
-      tr (λ X → _) p (Σ {ℓⱼ = ℓⱼ} B) C
-        ==⟨ happly (transport-fun p (Σ {ℓⱼ = ℓⱼ} B)) C ⟩
-      ((λ (x : A → Type _) → tr (λ X → Type _) p (Σ B (tr (λ X → (X → Type ℓⱼ)) p⁻¹ x)))) C
-        ==⟨⟩
-      tr (λ X → Type _) p (Σ B (tr (λ X → (X → Type ℓⱼ)) p⁻¹ C))
-        ==⟨ transport-const {x = _} {y = _} _ (Σ B (tr (λ X → X → Type _) p⁻¹ C)) ⟩
-      Σ B (tr (λ X → (X → Type _)) p⁻¹ C)
-        ==⟨ ap (Σ B) (transport-fun p⁻¹ C) ⟩
-      Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (tr _ ((p⁻¹) ⁻¹) b)))
-        ==⟨ ap _ involution ⟩
-      Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (tr _ p b)))
-        ==⟨ ap _ (ap C transport-ua) ⟩
-      Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (f b)))
-        ==⟨ ap _ (transport-const _ C) ⟩
-      Σ B (λ b → C (f b))
-    ∎)
-```
+\begin{code}
+-- module Lemma₁UA {ℓᵢ}{ℓⱼ}
+--   {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A){C : A → Type ℓⱼ}
+--   where
+--
+--   p : B == A
+--   p = ua e
+--
+--   p⁻¹ : A == B
+--   p⁻¹ = inv p
+--
+--   f : B → A
+--   f = lemap e
+--
+--   tr = transport
+--
+--   lemma₁ua :  Σ A C ≃ Σ B (λ b → C (f b))
+--   lemma₁ua = idtoeqv
+--     (begin
+--       Σ A C
+--         ==⟨ inv (happly (apd Σ p) C) ⟩
+--       (tr (λ X → {! ? → Type ?   !}) p (Σ B)) C
+--       --   ==⟨ happly (transport-fun p (Σ {ℓⱼ = ℓⱼ} B)) C ⟩
+--       -- ((λ (x : A → Type _) → tr (λ X → Type _) p (Σ B (tr (λ X → (X → Type ℓⱼ)) p⁻¹ x)))) C
+--       --   ==⟨⟩
+--       -- tr (λ X → Type _) p (Σ B (tr (λ X → (X → Type ℓⱼ)) p⁻¹ C))
+--       --   ==⟨ transport-const {x = _} {y = _} _ (Σ B (tr (λ X → X → Type _) p⁻¹ C)) ⟩
+--       -- Σ B (tr (λ X → (X → Type _)) p⁻¹ C)
+--       --   ==⟨ ap (Σ B) (transport-fun p⁻¹ C) ⟩
+--       -- Σ B (λ b → tr (λ X → Type ?) p⁻¹ (C (tr B ((p⁻¹) ⁻¹) b)))
+--       --   ==⟨ ap _ involution ⟩
+--       -- Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (tr B p b)))
+--       --   ==⟨ ap _ (ap C (transport-ua {!  !} {!   !} {!   !} {!   !} {!   !})) ⟩
+--       -- Σ B (λ b → tr (λ X → Type _) p⁻¹ (C (f b)))
+--       --   ==⟨ ap _ (transport-const _ C) ⟩
+--       {!   !}
+--         ==⟨ {!   !} ⟩
+--       Σ B (λ b → C (f b))
+--     ∎)
+\end{code}
 {% endcomment %}
 
 ### Lemma 2

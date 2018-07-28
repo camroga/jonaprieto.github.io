@@ -1,15 +1,14 @@
 ---
 layout: "post"
-title: "The circle and one type equivalent"
+title: "The circle"
 date: "2018-05-01"
 agda: true
 categories: type-theory
 ---
 
-{: .hidden }
+{: .hide }
   Moebius type family:
 
-  {: .equation}
     $$
     \mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
     \mathbb{S}^1 \to \mathcal{U}.
@@ -30,9 +29,8 @@ I gave a talk giving one solution using the flattening lemma:
 
 Let us define the circle and the hit $$S^{2/2}$$.
 
-{: .hidden}
 \begin{code}
-open import 2018-07-05-hott-lib
+open import 2018-07-05-mini-hott
 \end{code}
 
 ##  S¹ type

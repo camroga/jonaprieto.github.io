@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180728181650" modified="D:20180728193013"/>
+<info created="D:20180728181650" modified="D:20180729002331"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -270,9 +270,9 @@ h
 208 672
 162.645 702.172 c
 </path>
-<text matrix="1 0 0 1 -2.14179 -4.23204" transformations="translations" pos="158.748 714.482" stroke="black" type="label" width="4.981" height="6.42" depth="0" valign="baseline" style="math">0</text>
-<text matrix="1 0 0 1 1.68237 -6.17279" transformations="translations" pos="271.67 715.417" stroke="black" type="label" width="4.981" height="6.42" depth="0" valign="baseline" style="math">1</text>
-<text transformations="translations" pos="210.92 722.245" stroke="black" type="label" width="9.963" height="6.42" depth="0" valign="baseline" style="math">01</text>
-<text matrix="1 0 0 1 1.48833 -3.10538" transformations="translations" pos="209.261 681.913" stroke="black" type="label" width="9.963" height="6.42" depth="0" valign="baseline" style="math">10</text>
+<text matrix="1 0 0 1 -10.1418 -4.23204" transformations="translations" pos="158.748 714.482" stroke="black" type="label" width="15.591" height="6.815" depth="1.93" valign="baseline" style="math">pS_0</text>
+<text matrix="1 0 0 1 1.68237 -6.17279" transformations="translations" pos="271.67 715.417" stroke="black" type="label" width="15.591" height="6.815" depth="1.93" valign="baseline" style="math">pS_1</text>
+<text matrix="1 0 0 1 0 4" transformations="translations" pos="210.92 722.245" stroke="black" type="label" width="13.453" height="4.297" depth="1.93" valign="baseline" style="math">p_{01}</text>
+<text matrix="1 0 0 1 1.48833 -3.10538" transformations="translations" pos="209.261 681.913" stroke="black" type="label" width="13.453" height="4.297" depth="1.93" valign="baseline" style="math">p_{10}</text>
 </page>
 </ipe>
