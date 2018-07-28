@@ -14,9 +14,9 @@ To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
 type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
 not a good name for universes in HoTT and we rename `Set` to `Type`.
 
-This code mutates constantly and stands for only for learning purposes. At the
+This code mutates constantly and stands for only learning purposes. At the
 end of this article, the reader can find the references to the agda libraries in
-which the sources are based on.
+which we are based on.
 
 {% comment %}
 Some marks to accompany the code:
@@ -791,8 +791,6 @@ open Contractible public
 ## Equivalence
 
 \begin{code}
-
-
 module Equivalence where
 
   module DefinitionOfEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
@@ -818,6 +816,9 @@ module Equivalence where
     lemap : A ≃ B → (A → B)
     lemap = π₁
 
+    ≃-to-→ = lemap
+    fun≃   = lemap
+
     remap : A ≃ B → (B → A)
     remap (f , contrf) b = π₁ (π₁ (contrf b))
 
@@ -835,7 +836,7 @@ module Equivalence where
     rlmap-inverse-h eq = λ x → rlmap-inverse eq {x}
   open EquivalenceMaps public
 
-open Equivalence
+open Equivalence public
 \end{code}
 
 
@@ -1287,7 +1288,7 @@ module EquivalenceComposition where
 open EquivalenceComposition
 \end{code}
 
-### Sigma type
+## Equivalence with Sigma type
 
 \begin{code}
 module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
@@ -1349,8 +1350,8 @@ module Univalence where
   module UnivalenceAxiom {ℓ} {A B : Type ℓ} where
     idtoeqv : A == B → A ≃ B
     idtoeqv p = qinv-≃
-      (transport (λ x → x) p)
-      (transport (λ x → x) (inv p) , (transport-inv-l p , transport-inv-r p))
+      (transport (λ X → X) p)
+      (transport (λ X → X) (inv p) , (transport-inv-l p , transport-inv-r p))
 
     -- The Univalence axiom induces an equivalence between equalities
     -- and equivalences.
@@ -1372,14 +1373,15 @@ module Univalence where
 open Univalence public
 \end{code}
 
-Somme lemmas about Univelance
+### Univalence lemmas
 
+\begin{code}
+module UnivalenceLemmas {ℓ} where
+\end{code}
 
+- The identity equivalence creates the trivial path.
 {: .foldable}
 \begin{code}
---
-module UnivalenceLemmas {ℓ} where
-    -- The identity equivalence creates the trivial path.
   postulate
     ua-id : {A : Type ℓ} → ua idEqv == refl A
     -- ua-id {A} =
@@ -1391,6 +1393,10 @@ module UnivalenceLemmas {ℓ} where
 
     -- The composition of equivalences is preserved into composition
     -- of equalities.
+\end{code}
+-
+{: .foldable}
+\begin{code}
   postulate
     ua-comp : {A B C : Type ℓ} → (α : A ≃ B) → (β : B ≃ C) → ua (compEqv α β) == ua α · ua β
     -- ua-comp α β =
@@ -1411,8 +1417,11 @@ module UnivalenceLemmas {ℓ} where
     --         transport (λ x → x) (ua α · ua β)                           ==⟨ refl _ ⟩
     --         π₁ (idtoeqv (ua α · ua β))
     --       ∎)
+\end{code}
 
-    -- Inverses are preserved.
+- Inverses are preserved
+{: .foldable}
+\begin{code}
   postulate
     ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A
     -- ua-inv-r α =
@@ -1422,7 +1431,11 @@ module UnivalenceLemmas {ℓ} where
     --     ua idEqv                  ==⟨ ua-id ⟩
     --     refl _
     --   ∎
+\end{code}
 
+- Missing description
+{: .foldable}
+\begin{code}
   postulate
     ua-inv : {A B : Type ℓ} → (α : A ≃ B) → ua (invEqv α) == inv (ua α)
     -- ua-inv α =
@@ -1434,6 +1447,23 @@ module UnivalenceLemmas {ℓ} where
     --     inv (ua α)
     --   ∎
 open UnivalenceLemmas public
+\end{code}
+
+### Transport and Univalence
+
+\begin{code}
+module TransportUA where
+  postulate
+    transport-ua
+      : ∀ {ℓ} {A : Type ℓ}
+      → (B : A → Type ℓ)
+      → {x y : A}
+      → (p : x == y)
+      → (e : B x ≃ B y)
+      → ap B p == ua e
+      -----------------
+      → (u : B x) → transport B p u == (fun≃ e) u
+open TransportUA public
 \end{code}
 
 ## Truncation
@@ -1951,7 +1981,7 @@ module Integers where
   neg x <ᶻ pos y = ⊤
   neg x <ᶻ neg y = y <ₙ x
 
-open Integers public
+open Integers
 \end{code}
 
 ### Integer action
@@ -2083,16 +2113,16 @@ module Interval where
   postulate
     seg : Izero == Ione
 
-  -- Induction principle on points.
+  -- Recursion principle on points.
   I-rec : ∀ {ℓ} {A : Type ℓ}
         → (a b : A)
         → (p : a == b)
         --------------
         → (I → A)
-  I-rec a b p !Izero = a
-  I-rec a b p !Ione  = b
+  I-rec a _ _ !Izero = a
+  I-rec _ b _ !Ione  = b
 
-  -- Induction principle on paths.
+  -- Recursion principle on paths.
   postulate
     I-βrec : ∀ {ℓ}
       → (A : Type ℓ)
@@ -2127,7 +2157,12 @@ module Circle where
     loop : base == base
 
   -- Recursion principle on points
-  S¹-rec : ∀{ℓ} (A : Type ℓ) (a : A) (p : a == a) → (S¹ → A)
+  S¹-rec : ∀ {ℓ}
+         → (A : Type ℓ)
+         → (a : A)
+         → (p : a == a)
+         --------------
+         → (S¹ → A)
   S¹-rec A a p !base = a
 
   -- Recursion principle on paths
