@@ -2067,7 +2067,7 @@ module Interval where
   private
     -- The interval is defined as a type with a nontrivial equality
     -- between its two elements.
-    data !I : Set where
+    data !I : Type₀ where
       !Izero : !I
       !Ione : !I
 
@@ -2084,12 +2084,23 @@ module Interval where
     seg : Izero == Ione
 
   -- Induction principle on points.
-  I-ind : ∀{ℓ} {A : Type ℓ} → (a b : A) → (p : a == b) → I → A
-  I-ind a b p !Izero = a
-  I-ind a b p !Ione  = b
+  I-rec : ∀ {ℓ} {A : Type ℓ}
+        → (a b : A)
+        → (p : a == b)
+        --------------
+        → (I → A)
+  I-rec a b p !Izero = a
+  I-rec a b p !Ione  = b
 
   -- Induction principle on paths.
-  postulate I-βind : ∀{ℓ} (A : Type ℓ) → (a b : A) → (p : a == b) → ap (I-ind a b p) seg == p
+  postulate
+    I-βrec : ∀ {ℓ}
+      → (A : Type ℓ)
+      → (a b : A)
+      → (p : a == b)
+      ---------------------------
+      → ap (I-rec a b p) seg == p
+
 open Interval public
 \end{code}
 
@@ -2099,7 +2110,6 @@ The circle type is constructed by postulating a type with
 a single element (base) and a nontrivial path (loop).
 
 \begin{code}
-
 module Circle where
 
   private
@@ -2143,7 +2153,6 @@ module Circle where
             -------------------------------
             → apd (S¹-ind P x p) loop == p
 
-open Circle public
 \end{code}
 
 
@@ -2214,7 +2223,7 @@ module Suspension where
               --------------------------------------------------------
               → apd (Susp-ind C N' S' merid') (merid x) == merid' x
 
-open Suspension public
+open Suspension
 \end{code}
 
 ## Fundamental group
@@ -2252,7 +2261,7 @@ open FundamentalGroup public
 
 \begin{code}
 module FundGroupCircle where
-
+  open Circle
   -- Winds a loop n times on the circle.
   loops : ℤ → Ω S¹ base
   loops n = z-act (Ω-st S¹ base) n loop
