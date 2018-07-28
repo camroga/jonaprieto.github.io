@@ -927,6 +927,9 @@ svg {
  * Source: http://css-tricks.com/off-canvas-menu-with-css-target/#comment-207504
  */
 /* Style and "hide" the sidebar */
+.hide {
+  display: none; }
+
 .sidebar {
   position: fixed;
   top: 0;
