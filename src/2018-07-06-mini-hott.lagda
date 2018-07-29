@@ -390,9 +390,16 @@ preserve equalities.
 
 \begin{code}
 ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f : A → B)
-  →   a == b
-  → f a == f b
+   →   a == b
+   → f a == f b
 ap f idp = idp
+
+ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}
+  {a₁ a₂ : A} {b₁ b₂ : B} → (f : A → B → C)
+  → a₁ == a₂
+  → b₁ == b₂
+  → f a₁ b₁  == f a₂ b₂
+ap₂ f idp idp = idp
 \end{code}
 
 ### Lemmas

@@ -390,8 +390,8 @@ logic, type theory, categories, algebra, and of course, programming languages.
 
   - [x] [Naturals: Natural numbers](https://plfa.github.io/Naturals/)
   - [x] [Induction: Proof by induction](https://plfa.github.io/Induction/)
-  - [ ] [Relations: Inductive definition of relations](https://plfa.github.io/Relations/)
-  - [ ] [Equality: Equality and equational reasoning](https://plfa.github.io/Equality/)
+  - [x] [Relations: Inductive definition of relations](https://plfa.github.io/Relations/)
+  - [x] [Equality: Equality and equational reasoning](https://plfa.github.io/Equality/)
   - [ ] [Isomorphism: Isomorphism and embedding](https://plfa.github.io/Isomorphism/)
   - [ ] [Connectives: Conjunction, disjunction, and implication](https://plfa.github.io/Connectives/)
   - [ ] [Negation: Negation, with intuitionistic and classical Logic](https://plfa.github.io/Negation/)

@@ -10,13 +10,6 @@ In this entry, we want to show some equivalences
 between the circle and other higher inductive types.
 
 {% comment %}
-  Moebius type family:
-
-    $$
-    \mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\, 2\, (\mathsf{ua}(\mathsf{rec}_{2}\,2\,1_{2}\,0_{2})):
-    \mathbb{S}^1 \to \mathcal{U}.
-    $$
-
 
 {: . equation }
 
@@ -148,8 +141,9 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
     {Z : Type ℓ}
     (d : (a : A) → C a → Z) where
 
-  f : Σ A (λ a → C a) → Z
-  f (a , b) = (d a) b
+  private
+    f : Σ A (λ a → C a) → Z
+    f (a , b) = (d a) b
 
 
   ap-f=pair= :
@@ -166,11 +160,9 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
           tr (λ X → Z) α (d a₁ c₁)
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
           tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁)))
-                   (! ·-rinv α) ⟩
+            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩
           tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
-            ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k))
-                   (! transport-comp-h α (! α) c₁) ⟩
+            ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) (! transport-comp-h α (! α) c₁) ⟩
           tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
             ==⟨ inv (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
           (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
@@ -186,44 +178,44 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
 \end{code}
 
 \begin{code}
--- -- Def.
--- neg : Bool → Bool
--- neg true  = false
--- neg false = true
---
--- neg-eq : Bool ≃ Bool
--- neg-eq = qinv-≃ neg (neg , h , h)
---   where
---     h : neg ∘ neg ∼ id
---     h true  = idp
---     h false = idp
---
--- P : S¹ → Type₀
--- P = S¹-rec Type₀ Bool (ua neg-eq)
---
--- f :  Σ S¹ (λ b → P b) → pS
--- f (s , pₛ) = {!   !}
---
--- open module gdef =
---     pS-Rec
---       (Σ S¹ (λ b → P b))
---       (base , false)
---       (base , true)
---       (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
---       (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
---
--- ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
--- ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
---   where
---     g : pS → Σ S¹ (λ b → P b)
---     g = gdef.rec
---
---     f-g : f ∘ g ∼ id
---     f-g !pS₀ = {!  g !pS₀ !}
---     f-g !pS₁ = {!   !}
---
---     g-f : g ∘ f ∼ id
---     g-f (s , pₛ) = {!   !}
+-- Def.
+neg : Bool → Bool
+neg true  = false
+neg false = true
+
+neg-eq : Bool ≃ Bool
+neg-eq = qinv-≃ neg (neg , h , h)
+  where
+    h : neg ∘ neg ∼ id
+    h true  = idp
+    h false = idp
+
+P : S¹ → Type₀
+P = S¹-rec Type₀ Bool (ua neg-eq)
+
+f :  Σ S¹ (λ b → P b) → pS
+f (s , pₛ) = {!   !}
+
+open module gdef =
+    pS-Rec
+      (Σ S¹ (λ b → P b))
+      (base , false)
+      (base , true)
+      (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
+      (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
+
+ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
+ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
+  where
+    g : pS → Σ S¹ (λ b → P b)
+    g = gdef.rec
+
+    f-g : f ∘ g ∼ id
+    f-g !pS₀ = {!  g !pS₀ !}
+    f-g !pS₁ = {!   !}
+
+    g-f : g ∘ f ∼ id
+    g-f (s , pₛ) = {!   !}
 \end{code}
 
 {: .references }
