@@ -1,14 +1,15 @@
 ---
 layout: "post"
-title: "Mini HoTT library in Agda"
+title: "Mini HoTT library"
 date: "2018-07-05"
 categories: type-theory
 toc: true
 agda: true
 ---
 
-The following is an overview of homotopy type theory (HoTT)
-formalized in Agda. The present development was type-checked by Agda 2.5.4.
+The following is an basic overview of homotopy type theory (HoTT) formalized in
+Agda in just one-file. The present development was type-checked by Agda 2.5.4.
+No other libraries are required to type-check this one.
 
 To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
 type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
