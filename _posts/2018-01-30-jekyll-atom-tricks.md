@@ -118,7 +118,7 @@ module.exports = MarkdownImageAssistant =
           assets_dir = path.basename(atom.config.get('markdown-image-assistant.imageDir'))
       assets_path = path.join(target_file, "..", "..", assets_dir, "png-images")
 
-      # I want to storage my pics in an specific folder in a folder one-level up
+      # I want to storage my pics in a specific folder in a folder one-level up
 
 
       md5 = crypto.createHash 'md5'

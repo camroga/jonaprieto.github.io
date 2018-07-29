@@ -399,7 +399,7 @@ ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type
   → a₁ == a₂
   → b₁ == b₂
   → f a₁ b₁  == f a₂ b₂
-ap₂ f idp idp = idp
+ap₂ f idp x₁ = {! x₁  !}
 \end{code}
 
 ### Lemmas

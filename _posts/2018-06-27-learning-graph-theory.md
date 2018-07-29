@@ -115,7 +115,15 @@ Learning graphs on youtube.
 
   ![](/assets/png-images/2018-06-27-learning-graph-theory-95d01eee.png)
 
-- [ ] [06. Sum of Degrees is ALWAYS Twice the Number of Edges](https://www.youtube.com/watch?v=YoRhmz_OSBY)
+- [x] [06. Sum of Degrees is ALWAYS Twice the Number of Edges](https://www.youtube.com/watch?v=YoRhmz_OSBY)
+
+  - **Theorem**:
+
+    {: .equation}
+      $$ \sum_{v \in V(G)} \deg(v) = 2 \# E(G) $$
+
+  - **Corollary**: In any graph the number of odd degree vertices is even.
+
 - [ ] [07. Adjacency Matrix and Incidence Matrix](https://www.youtube.com/watch?v=LUDNz2bIjWI)
 - [ ] [08a. Basic Problem Set (part 1/2)](https://www.youtube.com/watch?v=Qe9e-XcEvlo)
 - [ ] [08b. Basic Problem Set (part 2/2)](https://www.youtube.com/watch?v=t0UzHk53HjM)
