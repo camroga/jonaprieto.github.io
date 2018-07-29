@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180728181650" modified="D:20180729002331"/>
+<info created="D:20180728181650" modified="D:20180729212855"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -254,25 +254,26 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<use layer="alpha" name="mark/disk(sx)" pos="160 704" size="large" stroke="black"/>
-<use name="mark/disk(sx)" pos="272 704" size="large" stroke="black"/>
+<use layer="alpha" matrix="1 0 0 1 15.4355 -0.12051" name="mark/disk(sx)" pos="160 704" size="large" stroke="black"/>
+<use matrix="1 0 0 1 0.564384 0.248147" name="mark/disk(sx)" pos="272 704" size="large" stroke="black"/>
 <path stroke="black">
 272 704 m
 112 0 0 112 160 704 272 704 a
 </path>
-<path stroke="black" arrow="normal/tiny">
-160 704 m
-224 736
-269.37 705.859 c
+<text matrix="1 0 0 1 -3.73583 -12.9296" transformations="translations" pos="158.748 714.482" stroke="black" type="label" width="15.591" height="6.815" depth="1.93" valign="baseline" style="math">pS_0</text>
+<text matrix="1 0 0 1 7.05289 -13.6143" transformations="translations" pos="271.67 715.417" stroke="black" type="label" width="15.591" height="6.815" depth="1.93" valign="baseline" style="math">pS_1</text>
+<text matrix="1 0 0 1 4.81865 34.6795" transformations="translations" pos="210.92 722.245" stroke="black" type="label" width="13.453" height="4.297" depth="1.93" valign="baseline" style="math">p_{01}</text>
+<text matrix="1 0 0 1 10.7429 -33.1143" transformations="translations" pos="209.261 681.913" stroke="black" type="label" width="13.453" height="4.297" depth="1.93" valign="baseline" style="math">p_{10}</text>
+<path matrix="1 0 0 1 0.241448 0.784089" stroke="black">
+48.4825 0 0 48.4825 224 704 e
 </path>
 <path stroke="black" arrow="normal/tiny">
-272 704 m
-208 672
-162.645 702.172 c
+271.994 713.28 m
+272.658 707.851 l
 </path>
-<text matrix="1 0 0 1 -10.1418 -4.23204" transformations="translations" pos="158.748 714.482" stroke="black" type="label" width="15.591" height="6.815" depth="1.93" valign="baseline" style="math">pS_0</text>
-<text matrix="1 0 0 1 1.68237 -6.17279" transformations="translations" pos="271.67 715.417" stroke="black" type="label" width="15.591" height="6.815" depth="1.93" valign="baseline" style="math">pS_1</text>
-<text matrix="1 0 0 1 0 4" transformations="translations" pos="210.92 722.245" stroke="black" type="label" width="13.453" height="4.297" depth="1.93" valign="baseline" style="math">p_{01}</text>
-<text matrix="1 0 0 1 1.48833 -3.10538" transformations="translations" pos="209.261 681.913" stroke="black" type="label" width="13.453" height="4.297" depth="1.93" valign="baseline" style="math">p_{10}</text>
+<path stroke="black" arrow="normal/tiny">
+176.362 696.994 m
+175.961 700.448 l
+</path>
 </page>
 </ipe>
