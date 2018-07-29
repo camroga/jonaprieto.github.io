@@ -303,7 +303,11 @@ is the symmetric property of equality.
 inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
 inv idp = idp
 
+infixl 29 _⁻¹
 _⁻¹ = inv
+
+infixr 29 !_
+!_  = inv
 \end{code}
 
 ##### Associativity of composition
@@ -470,6 +474,9 @@ transport
   → C b
 transport C idp = (λ x → x)
 
+-- synonyms
+tr = transport
+
 coe
   : ∀ {ℓ}{A B : Type ℓ}
   → A == B
@@ -588,6 +595,13 @@ transport-fun
   → (p : x == y) → (f : A x → B x)
   → transport (λ x → (A x → B x)) p f == (λ x → transport B p (f (transport A (inv p) x)))
 transport-fun idp f = idp
+
+transport-fun-h
+  : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
+  → (p : x == y) → (f : A x → B x)
+  → (b : A y)
+  → (transport (λ x → (A x → B x)) p f) b == transport B p (f (transport A (inv p) b))
+transport-fun-h idp f b = idp
 \end{code}
 
 ## Basic type lemmas
@@ -840,7 +854,7 @@ open Equivalence public
 \end{code}
 
 
-## Function extesionality
+## Function extensionality
 
 \begin{code}
 
@@ -869,7 +883,7 @@ module FunctionExtensionality {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
   funext-η : (p : f == g) → funext (happly p) == p
   funext-η p = rlmap-inverse eqFunExt
 
-open FunctionExtensionality
+open FunctionExtensionality public
 
 -- Function extensionality in the transport case
 module FunctionExtensionalityTransport

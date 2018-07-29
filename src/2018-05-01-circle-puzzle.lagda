@@ -6,7 +6,7 @@ agda: true
 categories: type-theory
 ---
 
-{: .hide }
+{% comment %}
   Moebius type family:
 
     $$
@@ -14,7 +14,6 @@ categories: type-theory
     \mathbb{S}^1 \to \mathcal{U}.
     $$
 
-{% comment %}
 
 {: . equation }
 
@@ -26,8 +25,6 @@ I gave a talk giving one solution using the flattening lemma:
 - [**Direct link PDF**](https://github.com/jonaprieto/flattenlem/files/2045561/Jonathan-Prieto-Cubides-The-Flattening-Lemma.pdf)
 
 {% endcomment %}
-
-Let us define the circle and the hit $$S^{2/2}$$.
 
 \begin{code}
 open import 2018-07-05-mini-hott
@@ -142,45 +139,86 @@ module pS-Rec (C : Type₀)
 
   where $$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
 
+
 \begin{code}
--- Def.
-neg : Bool → Bool
-neg true  = false
-neg false = true
+module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
+    {Z : Type ℓ}
+    (d : (a : A) → C a → Z) where
 
-neg-eq : Bool ≃ Bool
-neg-eq = qinv-≃ neg (neg , h , h)
-  where
-    h : neg ∘ neg ∼ id
-    h true  = idp
-    h false = idp
+  f : Σ A (λ a → C a) → Z
+  f (a , b) = (d a) b
 
-P : S¹ → Type₀
-P = S¹-rec Type₀ Bool (ua neg-eq)
 
-f :  Σ S¹ (λ b → P b) → pS
-f (s , pₛ) = {!   !}
+  ap-f=pair= :
+      {a₁ a₂ : A}
+      (α : a₁ == a₂)
+      (c₁ : C a₁) (c₂ : C a₂)
+      (γ : c₁ == c₂ [ C ↓ α ])
+      → ap f (pair= (α , γ))
+        == (begin
+            f (a₁ , c₁)
+              ==⟨⟩
+            d a₁ c₁
+              ==⟨ inv (transport-const {A = A} {P = λ _ → Z} α (d a₁ c₁)) ⟩
+            tr (λ X → Z) α (d a₁ c₁)
+              ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
+            tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
+              ==⟨ ap {a = idp} {b = α · inv α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (inv (·-rinv α)) ⟩
+            tr (λ X → Z) α (d a₁ (tr C (α · inv α) c₁))
+              ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) (inv (transport-comp-h α (inv α) c₁)) ⟩
+            tr (λ X → Z) α (d a₁ (tr C (inv α) (tr C α c₁)))
+              ==⟨ inv (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
+            (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
+              ==⟨ happly (apd d α) (tr C α c₁) ⟩
+            d a₂ (tr C α c₁)
+              ==⟨ ap (d a₂) γ ⟩
+            d a₂ c₂
+              ==⟨⟩
+            f (a₂ , c₂)
+          ∎)
+  ap-f=pair= idp c₁ .c₁ idp = idp
 
-open module gdef =
-    pS-Rec
-      (Σ S¹ (λ b → P b))
-      (base , false)
-      (base , true)
-      (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
-      (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
+\end{code}
 
-ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
-ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
-  where
-    g : pS → Σ S¹ (λ b → P b)
-    g = gdef.rec
-
-    f-g : f ∘ g ∼ id
-    f-g !pS₀ = {!  g !pS₀ !}
-    f-g !pS₁ = {!   !}
-
-    g-f : g ∘ f ∼ id
-    g-f (s , pₛ) = {!   !}
+\begin{code}
+-- -- Def.
+-- neg : Bool → Bool
+-- neg true  = false
+-- neg false = true
+--
+-- neg-eq : Bool ≃ Bool
+-- neg-eq = qinv-≃ neg (neg , h , h)
+--   where
+--     h : neg ∘ neg ∼ id
+--     h true  = idp
+--     h false = idp
+--
+-- P : S¹ → Type₀
+-- P = S¹-rec Type₀ Bool (ua neg-eq)
+--
+-- f :  Σ S¹ (λ b → P b) → pS
+-- f (s , pₛ) = {!   !}
+--
+-- open module gdef =
+--     pS-Rec
+--       (Σ S¹ (λ b → P b))
+--       (base , false)
+--       (base , true)
+--       (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
+--       (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
+--
+-- ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
+-- ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
+--   where
+--     g : pS → Σ S¹ (λ b → P b)
+--     g = gdef.rec
+--
+--     f-g : f ∘ g ∼ id
+--     f-g !pS₀ = {!  g !pS₀ !}
+--     f-g !pS₁ = {!   !}
+--
+--     g-f : g ∘ f ∼ id
+--     g-f (s , pₛ) = {!   !}
 \end{code}
 
 {: .references }
