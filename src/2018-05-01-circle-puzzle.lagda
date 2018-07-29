@@ -30,7 +30,7 @@ I gave a talk giving one solution using the flattening lemma:
 {% endcomment %}
 
 \begin{code}
-open import 2018-07-05-mini-hott
+open import 2018-07-05-mini-hott-lib
 \end{code}
 
 ##  S¹ type
@@ -159,26 +159,28 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
       (γ : c₁ == c₂ [ C ↓ α ])
       → ap f (pair= (α , γ))
         == (begin
-            f (a₁ , c₁)
-              ==⟨⟩
-            d a₁ c₁
-              ==⟨ inv (transport-const {A = A} {P = λ _ → Z} α (d a₁ c₁)) ⟩
-            tr (λ X → Z) α (d a₁ c₁)
-              ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
-            tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-              ==⟨ ap {a = idp} {b = α · inv α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (inv (·-rinv α)) ⟩
-            tr (λ X → Z) α (d a₁ (tr C (α · inv α) c₁))
-              ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) (inv (transport-comp-h α (inv α) c₁)) ⟩
-            tr (λ X → Z) α (d a₁ (tr C (inv α) (tr C α c₁)))
-              ==⟨ inv (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
-            (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
-              ==⟨ happly (apd d α) (tr C α c₁) ⟩
-            d a₂ (tr C α c₁)
-              ==⟨ ap (d a₂) γ ⟩
-            d a₂ c₂
-              ==⟨⟩
-            f (a₂ , c₂)
-          ∎)
+          f (a₁ , c₁)
+            ==⟨⟩
+          d a₁ c₁
+            ==⟨ inv (transport-const {A = A} {P = λ _ → Z} α (d a₁ c₁)) ⟩
+          tr (λ X → Z) α (d a₁ c₁)
+            ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
+          tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
+            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁)))
+                   (! ·-rinv α) ⟩
+          tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
+            ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k))
+                   (! transport-comp-h α (! α) c₁) ⟩
+          tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
+            ==⟨ inv (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
+          (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
+            ==⟨ happly (apd d α) (tr C α c₁) ⟩
+          d a₂ (tr C α c₁)
+            ==⟨ ap (d a₂) γ ⟩
+          d a₂ c₂
+            ==⟨⟩
+          f (a₂ , c₂)
+        ∎)
   ap-f=pair= idp c₁ .c₁ idp = idp
 
 \end{code}

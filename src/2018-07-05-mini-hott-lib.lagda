@@ -304,10 +304,10 @@ is the symmetric property of equality.
 inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
 inv idp = idp
 
-infixl 29 _⁻¹
+infixl 60 _⁻¹
 _⁻¹ = inv
 
-infixr 29 !_
+infixr 60 !_
 !_  = inv
 \end{code}
 
