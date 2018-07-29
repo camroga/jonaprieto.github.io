@@ -30,7 +30,7 @@ I gave a talk giving one solution using the flattening lemma:
 {% endcomment %}
 
 \begin{code}
-open import 2018-07-05-mini-hott-lib
+open import 2018-07-06-mini-hott
 \end{code}
 
 ##  S¹ type

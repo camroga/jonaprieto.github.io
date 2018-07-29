@@ -1,7 +1,7 @@
 ---
 layout: "post"
-title: "Mini HoTT library"
-date: "2018-07-05"
+title: "Mini HoTT library in Agda"
+date: "2018-07-06"
 categories: type-theory
 toc: true
 agda: true
