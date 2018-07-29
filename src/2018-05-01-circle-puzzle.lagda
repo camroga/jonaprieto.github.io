@@ -6,6 +6,9 @@ agda: true
 categories: type-theory
 ---
 
+In this entry, we want to show some equivalences
+between the circle and other higher inductive types.
+
 {% comment %}
   Moebius type family:
 
