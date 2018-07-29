@@ -118,8 +118,7 @@
   text-decoration: none; }
 
 .Agda a[href]:hover {
-  background-color: #B4EEB4;
-  padding: 2px; }
+  background-color: #B4EEB4; }
 
 * {
   -webkit-box-sizing: border-box;
