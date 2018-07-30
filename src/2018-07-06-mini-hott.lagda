@@ -473,13 +473,27 @@ module ·-Properties {ℓ} {A : Type ℓ} where
 
   ·-cancellation : {a : A} (p : a == a) → (q : a == a) → p · q == p → q == idp
   ·-cancellation {a} p q α =
+      begin
+        q                   ==⟨ ap (_· q) (inv (·-linv p)) ⟩
+        inv p · p · q       ==⟨ (·-assoc (inv p) _ _) ⟩
+        inv p · (p · q)     ==⟨ (ap (inv p ·_) α) ⟩
+        inv p · p           ==⟨ ·-linv p ⟩
+        idp
+      ∎
+
+  !-· : {a b : A}
+      → (p : a == b)
+      → (q : b == a)
+      --------------
+      → ! (p · q) == ! q · (! p)
+  !-· idp q =
     begin
-      q                   ==⟨ ap (_· q) (inv (·-linv p)) ⟩
-      inv p · p · q       ==⟨ (·-assoc (inv p) _ _) ⟩
-      inv p · (p · q)     ==⟨ (ap (inv p ·_) α) ⟩
-      inv p · p           ==⟨ ·-linv p ⟩
-      idp
+      ! q
+        ==⟨ (·-runit (inv q)) ⟩
+      ! q · idp
     ∎
+
+
 open ·-Properties public
 \end{code}
 
