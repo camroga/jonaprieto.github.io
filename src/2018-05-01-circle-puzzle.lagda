@@ -61,9 +61,11 @@ S¹-rec A a p !base = a
 
 -- Recursion principle on paths
 postulate
-  S¹-βrec : ∀ {ℓ} (A : Type ℓ)
-          → (a : A) (p : a == a)
-          ------------------------------
+  S¹-βrec : ∀ {ℓ}
+          → (A : Type ℓ)
+          → (a : A)
+          → (p : a == a)
+          -----------------------------
           → ap (S¹-rec A a p) loop == p
 
 -- Induction principle on points
@@ -90,7 +92,7 @@ postulate
 
 \begin{code}
 private
-  data !pS : Type₀ where
+  data !pS : Type lzero where
     !pS₀ : !pS
     !pS₁ : !pS
 
@@ -107,24 +109,94 @@ postulate
    p₀₁ : pS₀ == pS₁
    p₁₀ : pS₁ == pS₀
 
--- Recursion principle
-module pS-Rec (C : Type₀)
-              (c₀ c₁ : C)
-              (p₀₁'  : c₀ == c₁)
-              (p₁₀'  : c₁ == c₀) where
+-- Recursion principle on points
+pS-rec : (C : Type₀)
+       → (c₀ c₁ : C)
+       → (p₀₁'  : c₀ == c₁)
+       → (p₁₀'  : c₁ == c₀)
+       --------------------
+       → (pS → C)
+pS-rec _ c₀ _  _ _ !pS₀ = c₀
+pS-rec _ _  c₁ _ _ !pS₁ = c₁
 
-  -- Recursion principle on points
-  rec : pS → C
-  rec !pS₀ = c₀
-  rec !pS₁ = c₁
+-- Recursion principle on paths
+postulate
+  pS-βrec₀₁ : (C : Type₀)
+            → (c₀ c₁ : C)
+            → (p₀₁'  : c₀ == c₁)
+            → (p₁₀'  : c₁ == c₀)
+            -----------------------
+            → ap (pS-rec C c₀ c₁ p₀₁' p₁₀') p₀₁ == p₀₁'
 
--- -- Recursion principle on paths
-  postulate
-    βrec₀₁ : ap rec p₀₁ == p₀₁'
-    βrec₁₀ : ap rec p₁₀ == p₁₀'
+  pS-βrec₁₀ : (C : Type₀)
+            → (c₀ c₁ : C)
+            → (p₀₁'  : c₀ == c₁)
+            → (p₁₀'  : c₁ == c₀)
+            -----------------------
+            →  ap (pS-rec C c₀ c₁ p₀₁' p₁₀') p₁₀ == p₁₀'
 
 \end{code}
 
+
+\begin{code}
+private
+  f' : S¹ → pS
+  f' = S¹-rec pS
+              pS₀
+              (transport (λ p → pS₀ == pS₀) loop (p₀₁ · p₁₀))
+
+  g' : pS → S¹
+  g' = pS-rec S¹ base base (loop ²) (loop ⁻¹)
+
+  aux-path : (loop ²) · (loop ⁻¹) == loop
+  aux-path = begin
+                (loop ²) · (loop ⁻¹)
+                  ==⟨ ·-assoc loop loop (! loop) ⟩
+                loop · (loop · ! loop)
+                  ==⟨ ap (λ r → loop · r) (·-rinv loop) ⟩
+                loop · idp
+                  ==⟨ ! (·-runit loop)    ⟩
+                loop
+              ∎
+
+  -- H₁ : f' ∘ g' ∼ id
+  -- H₁ x = pS-rec _ {!   !} {!   !} {!   !} {!   !} x
+
+  H₂ : g' ∘ f' ∼ id
+  H₂ = S¹-ind _ idp q
+    where
+      q : idp == idp [ (λ z → (g' ∘ f') z == id z) ↓ loop ]
+      q =
+        begin
+          transport (λ z → (g' ∘ f') z == id z) loop idp
+            ==⟨ transport-eq-fun (g' ∘ f') id loop idp ⟩
+          ! (ap (g' ∘ f') loop) · idp · ap id loop
+            ==⟨ ap (λ r → ! (ap (g' ∘ f') loop) · idp · r) (ap-id loop) ⟩
+          ! (ap (g' ∘ f') loop) · idp · loop
+            ==⟨ ·-assoc _ idp loop ⟩
+          ! (ap (g' ∘ f') loop) · (idp · loop)
+            ==⟨ ap (λ r → ! (ap (g' ∘ f') loop) · r) (·-lunit loop) ⟩
+          ! (ap (g' ∘ f') loop) · loop
+            ==⟨ ap  (λ r → ! r · loop) (! (ap-comp f' g' loop)) ⟩
+          ! ap g' (ap f' loop) · loop
+            ==⟨ ap {A = pS₀ == pS₀} (λ r → ( ! (ap g' r)) · loop) (S¹-βrec !pS !pS₀ _) ⟩
+          ! ap g' (transport (λ p → pS₀ == pS₀) loop (p₀₁ · p₁₀)) · loop
+            ==⟨  ap {A = pS₀ == pS₀} (λ r → ! ap g' r · loop) (transport-const {P = λ _ → S¹} loop (p₀₁ · p₁₀)) ⟩
+          ! ap g' (p₀₁ · p₁₀) · loop
+            ==⟨ ap (λ r → ! r · loop)  (ap-· g' p₀₁ p₁₀) ⟩
+          ! (ap g' p₀₁ · ap g' p₁₀) · loop
+            ==⟨ ap {A = !base == !base} (λ r → ! (r · ap g' p₁₀) · loop) (pS-βrec₀₁ !S¹ !base !base (loop · loop) idp) ⟩ 
+          ! ((loop ²) · ap g' p₁₀) · loop
+            ==⟨ ap {A = !base == !base} (λ r → ! ( loop · loop · r) · loop) (pS-βrec₁₀ !S¹ !base !base idp (inv loop)) ⟩
+          ! ((loop ²) · ! loop) · loop
+            ==⟨ ap (λ r →  ! r · loop) aux-path ⟩
+          ! loop · loop
+            ==⟨ ·-linv loop ⟩
+           idp
+        ∎
+
+
+\end{code}
 ## Equivalence
 
 {: .equation}
@@ -162,7 +234,7 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
           tr (λ X → Z) α (d a₁ c₁)
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
           tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩ -- this justification is missing in HoTT-Book
+            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩
           tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) (! transport-comp-h α (! α) c₁) ⟩
           tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
@@ -195,35 +267,51 @@ neg-eq = qinv-≃ neg (neg , h , h)
 P : S¹ → Type₀
 P = S¹-rec Type₀ Bool (ua neg-eq)
 
-f :  Σ S¹ (λ b → P b) → pS
-f (s , pₛ) = {!   !}
+Pbase=Bool : P base == Bool
+Pbase=Bool = idp
 
 
-ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
-ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
-  where
-    g : pS → Σ S¹ (λ b → P b)
-    g = def.rec
-      where
-        -- 0   ↦ (base, 0)
-        -- 1   ↦ (base, 1)
-        -- p₀₁ ↦ (base, 0) == (base, 1)
-        -- p₁₀ ↦ (base, 1) == (base, 0)
-        open module def =
-          pS-Rec
-            (Σ S¹ (λ b → P b))
-            (base , false)
-            (base , true)
-            (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
-            (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
+-- ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
+-- ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
+--   where
+--     d : (b : S¹) → P b → pS
+--     d = S¹-ind (λ z → P z → pS) d̰ p̰
+--       where
+--         d̰ : P base → pS
+--         d̰ x with Pbase=Bool
+--         d̰ true  | idp = pS₀
+--         d̰ false | idp = pS₁
+--
+--         p̰ : d̰ == d̰ [ (λ z → P z → pS) ↓ loop ]
+--         p̰ = {!   !}
+--
+--     -- d b x with Pbase=Bool
+--     -- d !base true  | idp = pS₀
+--     -- d !base false | idp = pS₁
+--
+--     f :  Σ S¹ (λ b → P b) → pS
+--     f (b , x) = d b x
+--
+--     g : pS → Σ S¹ (λ b → P b)
+--     g = -- 0   ↦ (base, 0)
+--         -- 1   ↦ (base, 1)
+--         -- p₀₁ ↦ (base, 0) == (base, 1)
+--         -- p₁₀ ↦ (base, 1) == (base, 0)
+--         pS-rec
+--             (Σ S¹ (λ b → P b))
+--             (base , false)
+--             (base , true)
+--             (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
+--             (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
+--
 
 
-    f-g : f ∘ g ∼ id
-    f-g !pS₀ = {!  g !pS₀ !}
-    f-g !pS₁ = {!   !}
-
-    g-f : g ∘ f ∼ id
-    g-f (s , pₛ) = {!   !}
+    -- f-g : f ∘ g ∼ id
+    -- f-g !pS₀ = {! def  !}
+    -- f-g !pS₁ = {!   !}
+    --
+    -- g-f : g ∘ f ∼ id
+    -- g-f (s , pₛ) = {!   !}
 \end{code}
 
 {: .references }
