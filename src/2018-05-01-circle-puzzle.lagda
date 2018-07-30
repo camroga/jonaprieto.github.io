@@ -165,7 +165,7 @@ private
   H₂ : g' ∘ f' ∼ id
   H₂ = S¹-ind _ idp q
     where
-      q : idp == idp [ (λ z → (g' ∘ f') z == id z) ↓ loop ]
+      q : refl !base == refl !base [ (λ z → (g' ∘ f') z == id z) ↓ loop ]
       q =
         begin
           transport (λ z → (g' ∘ f') z == id z) loop idp
@@ -181,13 +181,16 @@ private
           ! ap g' (ap f' loop) · loop
             ==⟨ ap {A = pS₀ == pS₀} (λ r → ( ! (ap g' r)) · loop) (S¹-βrec !pS !pS₀ _) ⟩
           ! ap g' (transport (λ p → pS₀ == pS₀) loop (p₀₁ · p₁₀)) · loop
-            ==⟨  ap {A = pS₀ == pS₀} (λ r → ! ap g' r · loop) (transport-const {P = λ _ → S¹} loop (p₀₁ · p₁₀)) ⟩
+            ==⟨ ap {A = pS₀ == pS₀} (λ r → ! ap g' r · loop)
+                    (transport-const {P = λ _ → S¹} loop (p₀₁ · p₁₀)) ⟩
           ! ap g' (p₀₁ · p₁₀) · loop
             ==⟨ ap (λ r → ! r · loop)  (ap-· g' p₀₁ p₁₀) ⟩
           ! (ap g' p₀₁ · ap g' p₁₀) · loop
-            ==⟨ ap {A = !base == !base} (λ r → ! (r · ap g' p₁₀) · loop) (pS-βrec₀₁ !S¹ !base !base (loop · loop) idp) ⟩ 
+            ==⟨ ap {A = !base == !base} (λ r → ! (r · ap g' p₁₀) · loop)
+                   (pS-βrec₀₁ !S¹ !base !base (loop · loop) idp) ⟩ 
           ! ((loop ²) · ap g' p₁₀) · loop
-            ==⟨ ap {A = !base == !base} (λ r → ! ( loop · loop · r) · loop) (pS-βrec₁₀ !S¹ !base !base idp (inv loop)) ⟩
+            ==⟨ ap {A = !base == !base} (λ r → ! ( loop · loop · r) · loop)
+                   (pS-βrec₁₀ !S¹ !base !base idp (inv loop)) ⟩
           ! ((loop ²) · ! loop) · loop
             ==⟨ ap (λ r →  ! r · loop) aux-path ⟩
           ! loop · loop
