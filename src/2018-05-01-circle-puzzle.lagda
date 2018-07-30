@@ -28,7 +28,7 @@ open import 2018-07-06-mini-hott
 
 ##  S¹ type
 
-The circle is an higher inductive type with one point
+The circle is the higher inductive type with one point
 and one no trivial path called path as we show in the following
 picture.
 
@@ -50,7 +50,6 @@ base = !base
 postulate
   loop : base == base
 
--- Recursion principle on points
 -- Recursion principle on points
 S¹-rec : ∀ {ℓ}
        → (A : Type ℓ)
@@ -163,7 +162,7 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
           tr (λ X → Z) α (d a₁ c₁)
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
           tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩ -- this justification is missing in HoTT-Book 
+            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩ -- this justification is missing in HoTT-Book
           tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) (! transport-comp-h α (! α) c₁) ⟩
           tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
