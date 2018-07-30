@@ -135,6 +135,9 @@ module pS-Rec (C : Type₀)
 
   where $$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
 
+### Lemmas
+
+- Action on paths of pairs
 
 \begin{code}
 module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
@@ -160,7 +163,7 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
           tr (λ X → Z) α (d a₁ c₁)
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
           tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩
+            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩ -- this justification is missing in HoTT-Book 
           tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) (! transport-comp-h α (! α) c₁) ⟩
           tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
@@ -196,19 +199,25 @@ P = S¹-rec Type₀ Bool (ua neg-eq)
 f :  Σ S¹ (λ b → P b) → pS
 f (s , pₛ) = {!   !}
 
-open module gdef =
-    pS-Rec
-      (Σ S¹ (λ b → P b))
-      (base , false)
-      (base , true)
-      (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
-      (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
 
 ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
 ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
   where
     g : pS → Σ S¹ (λ b → P b)
-    g = gdef.rec
+    g = def.rec
+      where
+        -- 0   ↦ (base, 0)
+        -- 1   ↦ (base, 1)
+        -- p₀₁ ↦ (base, 0) == (base, 1)
+        -- p₁₀ ↦ (base, 1) == (base, 0)
+        open module def =
+          pS-Rec
+            (Σ S¹ (λ b → P b))
+            (base , false)
+            (base , true)
+            (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false))
+            (pair= (loop , transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true))
+
 
     f-g : f ∘ g ∼ id
     f-g !pS₀ = {!  g !pS₀ !}
