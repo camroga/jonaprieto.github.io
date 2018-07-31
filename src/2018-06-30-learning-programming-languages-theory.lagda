@@ -262,7 +262,7 @@ module Lec1Done where
 open Lec1Done
 \end{code}
 
-- [ ] [Proof by Induction](https://www.youtube.com/watch?v=8xFT9FPlm18)
+- [x] [Proof by Induction](https://www.youtube.com/watch?v=8xFT9FPlm18)
 
 
 {: .foldable}

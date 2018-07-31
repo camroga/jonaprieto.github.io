@@ -257,7 +257,7 @@ logic, type theory, categories, algebra, and of course, programming languages.
 
 <a id="8066" class="Keyword">open</a> <a id="8071" href="{% endraw %}{% link _posts/2018-06-30-learning-programming-languages-theory.md %}{% raw %}#651" class="Module">Lec1Done</a>{% endraw %}</pre>
 
-- [ ] [Proof by Induction](https://www.youtube.com/watch?v=8xFT9FPlm18)
+- [x] [Proof by Induction](https://www.youtube.com/watch?v=8xFT9FPlm18)
 
 
 {: .foldable}
