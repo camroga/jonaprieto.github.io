@@ -433,13 +433,16 @@ Pbase=Bool = idp
         d̰ false | idp = pS₁
 
         p̰ : d̰ == d̰ [ (λ z → P z → pS) ↓ loop ]
-        p̰ = begin
+        p̰ rewrite Pbase=Bool = begin
               transport (λ z → P z → pS) loop d̰
                 ==⟨ transport-fun loop d̰ ⟩
               (λ (x : Bool) → transport (λ z → pS) loop (d̰ (transport (λ z → P z) (! loop) x)))
-                ==⟨ ap {!   !}  (happly {!   !} {!  !}) ⟩
-              (λ (x : Bool) → transport (λ z → pS) loop (d̰ x))
+                ==⟨ funext (λ (r : Bool) → ap (λ z → transport {!λ z → pS   !} loop (d̰ z))
+                     (transport-const {lzero}{S¹}{lzero}{λ _ → Bool}{base}{base} (! loop) r)) ⟩
+              (λ (x : Bool) → transport {!   !}  loop {!   !} )
                 ==⟨ {!   !} ⟩
+              (λ (x : Bool) → transport (λ z → pS) loop (d̰ x) )
+                ==⟨ funext (λ (x : Bool) → transport-const {A = S¹}{P = λ _ → pS} loop (d̰ x)) ⟩
               (λ (x : Bool) → d̰ x)
                 ==⟨⟩
               d̰
@@ -497,7 +500,8 @@ Let us prove the homotopies:
             ! ap (f ∘ g) p₀₁ · q₀ · p₀₁
               ==⟨ ap (λ r → ! r · q₀ · p₀₁) (! ap-comp g f p₀₁) ⟩
             ! ap f (ap g p₀₁) · q₀ · p₀₁
-              ==⟨ ap (λ r → ! ap f r · q₀ · p₀₁) (pS-βrec₀₁ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
+              ==⟨ ap (λ r → ! ap f r · q₀ · p₀₁)
+                     (pS-βrec₀₁ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
             ! ap f g-p₀₁ · q₀ · p₀₁
               ==⟨ ap (λ r → ! r · q₀ · p₀₁) lemma-ap-f-γ₀₁ ⟩
             ! p₁₀ · q₀ · p₀₁
@@ -519,7 +523,8 @@ Let us prove the homotopies:
             ! ap (f ∘ g) p₁₀ · q₁ · p₁₀
               ==⟨ ap (λ r → ! r · q₁ · p₁₀) (! ap-comp g f p₁₀) ⟩
             ! ap f (ap g p₁₀) · q₁ · p₁₀
-              ==⟨ ap (λ r → ! ap f r · q₁ · p₁₀) (pS-βrec₁₀ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
+              ==⟨ ap (λ r → ! ap f r · q₁ · p₁₀)
+                     (pS-βrec₁₀ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
             ! ap f g-p₁₀ · q₁ · p₁₀
               ==⟨ ap (λ r → ! r · q₁ · p₁₀) lemma-ap-f-γ₁₀ ⟩
             ! p₀₁ · q₁ · p₁₀
@@ -534,20 +539,34 @@ Let us prove the homotopies:
 
 \begin{code}
 -- Homotopy
-    -- g-f : g ∘ f ∼ id
-    -- g-f (s , pₛ) = g-f' s pₛ
-    --   where
-    --     g-f' : (s : S¹) → (pₛ : P s) → (g ∘ f) (s , pₛ) == id (s , pₛ)
-    --     g-f' = S¹-ind {! r₀  !} {!   !} {!   !}
-    -- begin
-    --   {!   !}
-    --     ==⟨ {!   !} ⟩
-    --   {!   !}
-    --     ==⟨ {!   !} ⟩
-    --   {!   !}
-    -- ∎
+    g-f : g ∘ f ∼ id
+    g-f (s , pₛ) = g-f' s pₛ
+      where
+        g-f' : (s : S¹) → (pₛ : P s) → (g ∘ f) (s , pₛ) == id (s , pₛ)
+        g-f' = S¹-ind (λ s → (pₛ : P s) → (g ∘ f) (s , pₛ) == id (s , pₛ)) qb qpath
+
+          where
+          qb : (pₛ₁ : P base) → (g ∘ f) (base , pₛ₁) == id (base , pₛ₁)
+          qb p with Pbase=Bool
+          qb true  | idp = g-p₀₁
+          qb false | idp = g-p₁₀
+
+          qpath : qb == qb [(λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) ↓ loop ]
+          qpath =
+            begin
+              transport (λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) loop qb
+                ==⟨ {!   !}  ⟩
+              {!   !}
+                ==⟨ {!   !} ⟩
+              {!   !}
+                ==⟨ {!   !} ⟩
+              {!   !}
+                ==⟨ {!   !} ⟩
+              qb
+            ∎
+
 \end{code}
 
 {: .references }
 
-  - {% reference hottbook %}
+  {% reference hottbook %}
