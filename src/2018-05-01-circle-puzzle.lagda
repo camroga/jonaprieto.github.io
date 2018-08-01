@@ -370,13 +370,13 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
           f (a₁ , c₁)
             ==⟨⟩
           d a₁ c₁
-            ==⟨ inv (transport-const {A = A} {P = λ _ → Z} α (d a₁ c₁)) ⟩
+            ==⟨ ! (transport-const {A = A} {P = λ _ → Z} α (d a₁ c₁)) ⟩
           tr (λ X → Z) α (d a₁ c₁)
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
           tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-            ==⟨ ap {b = α · ! α} (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) (! ·-rinv α) ⟩
+            ==⟨ (! ·-rinv α) |in-ctx (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁)))  ⟩
           tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
-            ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) (! transport-comp-h α (! α) c₁) ⟩
+            ==⟨ (! transport-comp-h α (! α) c₁) |in-ctx (λ k → tr (λ X → Z) α (d a₁ k))⟩
           tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
             ==⟨ inv (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
           (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
@@ -399,7 +399,6 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
 
   where $$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
 
-
 \begin{code}
 -- Def.
 neg : Bool → Bool
@@ -413,10 +412,12 @@ neg-eq = qinv-≃ neg (neg , h , h)
     h true  = idp
     h false = idp
 
-
 P : S¹ → Type₀
 P = S¹-rec Type₀ Bool (ua neg-eq)
 
+neg-neg : (x : P base) → neg (neg x) == x
+neg-neg true  = idp
+neg-neg false = idp
 
 c01 : true == false [ P ↓ loop ]
 c01 = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true
@@ -429,6 +430,15 @@ exer1 f = true≠false {!   !}
   where
     true≠false : ¬ (true  == false)
     true≠false ()
+
+aux-lemma₀ : (x : P base) → neg x == x [ P ↓ loop ]
+aux-lemma₀ x =
+  begin
+    transport P loop (neg x)
+      ==⟨ transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) (neg x) ⟩
+    neg (neg x)
+      ==⟨ neg-neg x ⟩
+    refl x
 
 aux-lemma₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
 aux-lemma₁ x =
@@ -455,7 +465,6 @@ aux-lemma₁ x =
     neg x
   ∎
 
-
 f :  Σ S¹ P → pS
 f (b , x) = f̰ b x
   where
@@ -466,8 +475,11 @@ f (b , x) = f̰ b x
       d̰ true  = pS₁
       d̰ false = pS₀
 
-      aux-lemma₂ : neg == transport P loop
-      aux-lemma₂ = ! funext-transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq))
+      aux-lemma₂ : transport P loop == neg
+      aux-lemma₂ = funext-transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq))
+
+      _ : ( λ (x : P base) → d̰ (neg x)) == d̰
+      _ = funext (λ r → ap d̰ (! {!   !} · aux-lemma₀ r))
 
       p̰ : d̰ == d̰ [ (λ z → P z → pS) ↓ loop ]
       p̰  =
@@ -479,7 +491,7 @@ f (b , x) = f̰ b x
           (λ (x : P base) → (d̰ (transport (λ z → P z) (! loop) x)))
             ==⟨ funext (λ (pb : P base) → ap d̰ (aux-lemma₁ pb)) ⟩
           (λ (x : P base) → d̰ (neg x) )
-            ==⟨ {!   !}  ⟩ -- I got stuck here.
+            ==⟨ funext (λ r → {!   !})  ⟩ -- I got stuck here.
           d̰
          ∎
 

@@ -28,7 +28,6 @@ Some marks to accompany the code:
 {% endcomment %}
 
 \begin{code}
-
 {-# OPTIONS --without-K #-}
 
 open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ ) public
@@ -79,22 +78,18 @@ A useful convention
 The unit type is defined as record so that we also get the η-rule definitionally.
 
 \begin{code}
--- A record without fields is the unit type with a single
--- constructor.
 record ⊤ : Type₀ where
   constructor ★
 
+{-# BUILTIN UNIT ⊤ #-}
+
+-- synonyms for the data constructor
 unit = ★
 
--- synonyms
+-- synonyms for the Unit type
 Unit = ⊤
 𝟙    = ⊤
-
-{-# BUILTIN UNIT ⊤ #-}
 \end{code}
-
-Basic types of Martin-Löf type theory and some basic
-functions.
 
 ### Σ-type
 
@@ -111,10 +106,10 @@ record Σ {ℓᵢ ℓⱼ} (A : Type ℓᵢ)(C : A → Type ℓⱼ) : Type (ℓ�
     π₁ : A
     π₂ : C π₁
 
+  -- synonyms for data constructors
   proj₁ = π₁
-  fst   = π₁
-
   proj₂ = π₂
+  fst   = π₁
   snd   = π₂
 open Σ public
 \end{code}
@@ -162,17 +157,19 @@ data Bool : Type₀ where
 ### Natural numbers
 
 Natural numbers are the initial algebra for a constant and a
-successor function. The BUILTIN declaration allows us to use
-natural numbers in arabic notation.
+successor function. The `BUILTIN` declaration allows us to use
+natural numbers in Arabic notation.
 
 \begin{code}
 data ℕ : Type₀ where
   zero : ℕ
   succ : ℕ → ℕ
 
+{-# BUILTIN NATURAL ℕ #-}
+
+-- synonyms for natural numbers
 Nat = ℕ
 
-{-# BUILTIN NATURAL ℕ #-}
 \end{code}
 
 
@@ -255,16 +252,18 @@ uncurry f (x , y) = f x y
 
 ### Homogeneous equality
 
-The Identity type is defined as an inductive type. Its induction principle
-is the J-eliminator.
+The Identity type is defined as an inductive type. Its induction principle is
+the J-eliminator.
 
 \begin{code}
 infix 30 _==_
 data _==_ {ℓᵢ} {A : Type ℓᵢ} (a : A) : A → Type ℓᵢ where
   idp : a == a
 
-Path = _==_
 {-# BUILTIN EQUALITY _==_ #-}
+
+-- synonyms
+Path = _==_
 \end{code}
 
 \begin{code}
@@ -274,7 +273,7 @@ refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 
 #### J eliminator
 
-From [HoTT-Agda](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L115) *Paulin-Mohring J rule*
+*Paulin-Mohring J rule*
 
 \begin{code}
 J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a == a') → Type ℓⱼ) (d : B a idp)
@@ -362,9 +361,6 @@ The idea is that you can write the following:
 {% endraw %}
 
 where `p` is a path from `a` to `b`, `q` is a path from `b` to `c`, and so on.
-You often have to apply some equality in some context, for instance `p` could be
-`ap ctx thm` where `thm` is the interesting theorem used to prove that `a` is
-equal to `b`, and `ctx` is the context. [More info here](https://github.com/HoTT/HoTT-Agda/blob/master/core/lib/Base.agda#L270).
 
 \begin{code}
 
@@ -389,7 +385,6 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
   infix  1 begin_
   begin_ : {x y : A} → x == y → x == y
   begin_ p = p
-
 open EquationalReasoning public
 \end{code}
 
@@ -399,20 +394,51 @@ Functions are functors to equalities.  In other words, functions
 preserve equalities.
 
 \begin{code}
-ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  {a b : A} → (f : A → B)
-   →   a == b
-   → f a == f b
+ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
+   → (f : A → B)
+   → {a₁ a₂ : A} → a₁ == a₂
+   --------------------
+   → f a₁ == f a₂
 ap f idp = idp
+\end{code}
 
-ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}
-  {a₁ a₂ : A} {b₁ b₂ : B} → (f : A → B → C)
-  → a₁ == a₂
-  → b₁ == b₂
-  → f a₁ b₁  == f a₂ b₂
+Now, we can define a convention syntax sugar for `ap` in
+equational reasoning.
+
+\begin{code}
+infixl 40 ap
+syntax ap f p = p |in-ctx f
+\end{code}
+
+\begin{code}
+-- Let's suppose we have
+--    p : a == b
+--    p = _
+
+-- then if we have
+--    t : a == e
+--    t = f a =⟨ ap f p ⟩
+--        f b
+--        ∎
+
+-- change to:
+--    t : a == e
+--    t = f a =⟨ p |in-ctx f ⟩
+--        f b
+--        ∎
+\end{code}
+
+\begin{code}
+ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {b₁ b₂ : B}
+    → (f : A → B → C)
+    → {a₁ a₂ : A} → (a₁ == a₂)
+    → {b₁ b₂ : B} → (b₁ == b₂)
+    -------------------------
+    → f a₁ b₁  == f a₂ b₂
 ap₂ f idp idp = idp
 \end{code}
 
-### Lemmas
+### Lemmas 🚧
 
 \begin{code}
 ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
