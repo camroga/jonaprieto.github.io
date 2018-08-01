@@ -374,6 +374,10 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
   _==⟨⟩_ : ∀ (x {y} : A) → x == y → x == y
   _ ==⟨⟩ p = p
 
+  -- synonyms for _==⟨⟩
+  _==⟨idp⟩_ = _==⟨⟩_
+  _==⟨refl⟩_ = _==⟨⟩_
+
   infixr 2 _==⟨_⟩_
   _==⟨_⟩_ :  (x : A) {y z : A} → x == y → y == z → x == z
   _ ==⟨ p1 ⟩ p2 = p1 · p2
@@ -1341,7 +1345,7 @@ module EquivalenceComposition where
      id
    ∎)
 
-open EquivalenceComposition
+open EquivalenceComposition public
 \end{code}
 
 ## Equivalence with Sigma type
@@ -1550,6 +1554,17 @@ module TransportUA where
       fun≃ e u
     ∎
 
+
+  funext-transport-ua
+    : ∀ {ℓ} {A : Type ℓ}
+    → (B : A → Type ℓ)
+    → {x y : A}
+    → (p : x == y)
+    → (e : B x ≃ B y)
+    → ap B p == ua e
+    -----------------
+    → transport B p == (fun≃ e)
+  funext-transport-ua B p e x₁ = funext (transport-ua B p e x₁)
 open TransportUA public
 \end{code}
 
@@ -2495,5 +2510,5 @@ We based on the following Agda libraries.
 
 {: .links}
 
-  - Basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
+  - (Mostly all code from) basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
   - Higher Inductive types in `hott-agda` from https://github.com/dlicata335/hott-agda/

@@ -360,7 +360,6 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
     f : Σ A (λ a → C a) → Z
     f (a , b) = (d a) b
 
-
   ap-f=pair= :
       {a₁ a₂ : A}
       (α : a₁ == a₂)
@@ -414,172 +413,190 @@ neg-eq = qinv-≃ neg (neg , h , h)
     h true  = idp
     h false = idp
 
+
 P : S¹ → Type₀
 P = S¹-rec Type₀ Bool (ua neg-eq)
 
-Pbase=Bool : P base == Bool
-Pbase=Bool = idp
 
--- Pbase=Bool-family= : (λ z → P z) == (λ _ → Bool)
--- Pbase=Bool-family= rewrite Pbase=Bool = funext (S¹-ind (λ b → P b == Bool ) Pbase=Bool dpath)
---   where
---     dpath :  Pbase=Bool == Pbase=Bool [ (λ b → P b == Bool) ↓ loop ]
---     dpath =
---       begin
---         transport (λ b → P b == Bool) loop Pbase=Bool
---           ==⟨ transport-eq-fun-l P loop Pbase=Bool ⟩
---         ! ap P loop · Pbase=Bool
---           ==⟨ ap (λ r → ! r · Pbase=Bool) (S¹-βrec Type₀ Bool (ua (neg-eq))) ⟩
---         ! ua (neg-eq) · Pbase=Bool
---           ==⟨ ap (λ r → ! r · Pbase=Bool) {! !} ⟩
---         ! {! !} · Pbase=Bool
---           ==⟨ {! !} ⟩
---         Pbase=Bool
---       ∎
+c01 : true == false [ P ↓ loop ]
+c01 = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true
 
--- aux : transport (λ z → P z) loop == transport (λ _ → Bool) loop
--- aux  = {! !}
+c10 : false == true [ P ↓ loop ]
+c10 = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false
 
-
-ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
-ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
+exer1 : ((x : S¹) → P x) → ⊥ {lzero}
+exer1 f = true≠false {!   !}
   where
-    d : (b : S¹) → P b → pS
-    d = S¹-ind (λ z → P z → pS) d̰ p̰
-      where
-        d̰ : P base → pS
-        d̰ x with Pbase=Bool
-        d̰ true  | idp = pS₀
-        d̰ false | idp = pS₁
+    true≠false : ¬ (true  == false)
+    true≠false ()
 
-        p̰ : d̰ == d̰ [ (λ z → P z → pS) ↓ loop ]
-        p̰ rewrite Pbase=Bool =
-          begin
-            transport (λ z → P z → pS) loop d̰
-              ==⟨ transport-fun loop d̰ ⟩
-            (λ (x : P base) → transport (λ z → pS) loop (d̰ (transport (λ z → P z) (! loop) x)))
-              ==⟨ funext (λ (pb : P base) → transport-const {A = S¹}{P = λ z → pS} loop (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
-            (λ (x : P base) → (d̰ (transport (λ z → P z) (! loop) x)))
-              ==⟨ funext (λ (pb : P base) → ap d̰ {!   !}) ⟩
-            (λ (x : P base) → d̰ x)
-              ==⟨⟩
-            d̰
-           ∎
+aux-lemma₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
+aux-lemma₁ x =
+  let
+    apP!loop :  ap P (! loop) == ua (invEqv neg-eq)
+    apP!loop =
+      begin
+        ap P (! loop)
+          ==⟨ ap-inv P loop ⟩
+        ! ap P loop
+          ==⟨ ap (!_) (S¹-βrec Type₀ Bool (ua (neg-eq))) ⟩
+        ! ua (neg-eq)
+          ==⟨ ! (ua-inv neg-eq) ⟩
+        ua (invEqv neg-eq)
+      ∎
+  in
+  begin
+    transport P (! loop) x
+      ==⟨ transport-ua P (! loop) (invEqv neg-eq) apP!loop x ⟩
+    fun≃ (invEqv (neg-eq)) x
+      ==⟨⟩
+    fun≃ (neg-eq) x
+      ==⟨⟩
+    neg x
+  ∎
 
-    f :  Σ S¹ (λ b → P b) → pS
-    f (b , x) = d b x
+
+f :  Σ S¹ P → pS
+f (b , x) = f̰ b x
+  where
+  f̰ : (b : S¹) → P b → pS
+  f̰ = S¹-ind (λ z → P z → pS) d̰ p̰
+    where
+      d̰ : P base → pS
+      d̰ true  = pS₁
+      d̰ false = pS₀
+
+      aux-lemma₂ : neg == transport P loop
+      aux-lemma₂ = ! funext-transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq))
+
+      p̰ : d̰ == d̰ [ (λ z → P z → pS) ↓ loop ]
+      p̰  =
+        begin
+          transport (λ z → P z → pS) loop d̰
+            ==⟨ transport-fun loop d̰ ⟩
+          (λ (x : P base) → transport (λ z → pS) loop (d̰ (transport (λ z → P z) (! loop) x)))
+            ==⟨ funext (λ (pb : P base) → transport-const {A = S¹}{P = λ z → pS} loop (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
+          (λ (x : P base) → (d̰ (transport (λ z → P z) (! loop) x)))
+            ==⟨ funext (λ (pb : P base) → ap d̰ (aux-lemma₁ pb)) ⟩
+          (λ (x : P base) → d̰ (neg x) )
+            ==⟨ {!   !}  ⟩ -- I got stuck here.
+          d̰
+         ∎
+
+-- ΣSP-≃-pS : Σ S¹ P ≃ pS
+-- ΣSP-≃-pS = qinv-≃ f {!   !}
+
 \end{code}
 
 
 \begin{code}
--- Defs.
-    γ₀₁   = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false
-    g-p₀₁ = pair= (loop , γ₀₁)
-
-    γ₁₀   = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true
-    g-p₁₀ = pair= (loop , γ₁₀)
-
-    g : pS → Σ S¹ (λ b → P b)
-    g = -- 0   ↦ (base, 0)
-        -- 1   ↦ (base, 1)
-        -- p₀₁ ↦ (base, 0) == (base, 1)
-        -- p₁₀ ↦ (base, 1) == (base, 0)
-        pS-rec
-            (Σ S¹ (λ b → P b))
-            (base , false)
-            (base , true)
-            g-p₀₁
-            g-p₁₀
+-- -- Defs.
+--     γ₀₁   = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false
+--     g-p₀₁ = pair= (loop , γ₀₁)
+--
+--     γ₁₀   = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true
+--     g-p₁₀ = pair= (loop , γ₁₀)
+--
+--     g : pS → Σ S¹ P
+--     g = -- 0   ↦ (base, 0)
+--         -- 1   ↦ (base, 1)
+--         -- p₀₁ ↦ (base, 0) == (base, 1)
+--         -- p₁₀ ↦ (base, 1) == (base, 0)
+--         pS-rec
+--             (Σ S¹ P)
+--             (base , false)
+--             (base , true)
+--             g-p₀₁
+--             g-p₁₀
 \end{code}
 
 \begin{code}
--- Missing lemmas.
-    postulate
-      lemma-ap-f-γ₀₁ : ap f (pair= (loop , γ₀₁)) == p₁₀
-      lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₀₁
+-- -- Missing lemmas.
+--     postulate
+--       lemma-ap-f-γ₀₁ : ap f (pair= (loop , γ₀₁)) == p₀₁
+--       lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₁₀
 \end{code}
 
 Let us prove the homotopies:
 \begin{code}
 -- Homotopy
-    f-g : f ∘ g ∼ id
-    f-g = pS-ind (λ ps → (f ∘ g) ps == id ps) q₀ q₁ dpath₁ dpath₂
-      where
-
-        q₀ : (f ∘ g) pS₀ == id pS₀
-        q₀ = p₁₀
-
-        q₁ : (f ∘ g) pS₁ == id pS₁
-        q₁ = p₀₁
-
-        dpath₁ :  q₀ == q₁ [ (λ z → (f ∘ g) z == id z) ↓ p₀₁ ]
-        dpath₁ =
-          begin
-            transport (λ z → (f ∘ g) z == id z) p₀₁ q₀
-              ==⟨ transport-eq-fun (f ∘ g) id p₀₁ q₀ ⟩
-            ! ap (f ∘ g) p₀₁ · q₀ · ap id p₀₁
-              ==⟨ ap (! ap (f ∘ g) p₀₁ · q₀ ·_) (ap-id p₀₁) ⟩
-            ! ap (f ∘ g) p₀₁ · q₀ · p₀₁
-              ==⟨ ap (λ r → ! r · q₀ · p₀₁) (! ap-comp g f p₀₁) ⟩
-            ! ap f (ap g p₀₁) · q₀ · p₀₁
-              ==⟨ ap (λ r → ! ap f r · q₀ · p₀₁)
-                     (pS-βrec₀₁ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
-            ! ap f g-p₀₁ · q₀ · p₀₁
-              ==⟨ ap (λ r → ! r · q₀ · p₀₁) lemma-ap-f-γ₀₁ ⟩
-            ! p₁₀ · q₀ · p₀₁
-              ==⟨⟩
-            ! p₁₀ · p₁₀ · p₀₁
-              ==⟨ ap (_· p₀₁) (·-linv p₁₀) ⟩
-            idp · p₀₁
-              ==⟨ ·-lunit p₀₁ ⟩
-            q₁
-          ∎
-
-        dpath₂ : q₁ == q₀ [ (λ z → (f ∘ g) z == id z) ↓ p₁₀ ]
-        dpath₂ =
-          begin
-            transport (λ z → (f ∘ g) z == id z) p₁₀ q₁
-              ==⟨ transport-eq-fun (f ∘ g) id p₁₀ q₁ ⟩
-            ! ap (f ∘ g) p₁₀ · q₁ · ap id p₁₀
-              ==⟨ ap (! ap (f ∘ g) p₁₀ · q₁ ·_) (ap-id p₁₀) ⟩
-            ! ap (f ∘ g) p₁₀ · q₁ · p₁₀
-              ==⟨ ap (λ r → ! r · q₁ · p₁₀) (! ap-comp g f p₁₀) ⟩
-            ! ap f (ap g p₁₀) · q₁ · p₁₀
-              ==⟨ ap (λ r → ! ap f r · q₁ · p₁₀)
-                     (pS-βrec₁₀ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
-            ! ap f g-p₁₀ · q₁ · p₁₀
-              ==⟨ ap (λ r → ! r · q₁ · p₁₀) lemma-ap-f-γ₁₀ ⟩
-            ! p₀₁ · q₁ · p₁₀
-              ==⟨⟩
-            ! p₀₁ · p₀₁ · p₁₀
-              ==⟨ ap (_· p₁₀) (·-linv p₀₁) ⟩
-            idp · p₁₀
-              ==⟨ ·-lunit p₁₀ ⟩
-            q₀
-          ∎
+    -- f-g : f ∘ g ∼ id
+    -- f-g = pS-ind (λ ps → (f ∘ g) ps == id ps) q₀ q₁ dpath₁ dpath₂
+    --   where
+    --
+    --     q₀ : (f ∘ g) pS₀ == id pS₀
+    --     q₀ = p₀₁
+    --
+    --     q₁ : (f ∘ g) pS₁ == id pS₁
+    --     q₁ = p₀₁
+    --
+    --     dpath₁ :  q₀ == q₁ [ (λ z → (f ∘ g) z == id z) ↓ p₀₁ ]
+    --     dpath₁ =
+    --       begin
+    --         transport (λ z → (f ∘ g) z == id z) p₀₁ q₀
+    --           ==⟨ transport-eq-fun (f ∘ g) id p₀₁ q₀ ⟩
+    --         ! ap (f ∘ g) p₀₁ · q₀ · ap id p₀₁
+    --           ==⟨ ap (! ap (f ∘ g) p₀₁ · q₀ ·_) (ap-id p₀₁) ⟩
+    --         ! ap (f ∘ g) p₀₁ · q₀ · p₀₁
+    --           ==⟨ ap (λ r → ! r · q₀ · p₀₁) (! ap-comp g f p₀₁) ⟩
+    --         ! ap f (ap g p₀₁) · q₀ · p₀₁
+    --           ==⟨ ap (λ r → ! ap f r · q₀ · p₀₁)
+    --                  (pS-βrec₀₁ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
+    --         ! ap f g-p₀₁ · q₀ · p₀₁
+    --           ==⟨ ap (λ r → ! r · q₀ · p₀₁) lemma-ap-f-γ₀₁ ⟩
+    --         ! p₁₀ · q₀ · p₀₁
+    --           ==⟨⟩
+    --         ! p₁₀ · p₁₀ · p₀₁
+    --           ==⟨ ap (_· p₀₁) (·-linv p₁₀) ⟩
+    --         idp · p₀₁
+    --           ==⟨ ·-lunit p₀₁ ⟩
+    --         q₁
+    --       ∎
+    --
+    --     dpath₂ : q₁ == q₀ [ (λ z → (f ∘ g) z == id z) ↓ p₁₀ ]
+    --     dpath₂ =
+    --       begin
+    --         transport (λ z → (f ∘ g) z == id z) p₁₀ q₁
+    --           ==⟨ transport-eq-fun (f ∘ g) id p₁₀ q₁ ⟩
+    --         ! ap (f ∘ g) p₁₀ · q₁ · ap id p₁₀
+    --           ==⟨ ap (! ap (f ∘ g) p₁₀ · q₁ ·_) (ap-id p₁₀) ⟩
+    --         ! ap (f ∘ g) p₁₀ · q₁ · p₁₀
+    --           ==⟨ ap (λ r → ! r · q₁ · p₁₀) (! ap-comp g f p₁₀) ⟩
+    --         ! ap f (ap g p₁₀) · q₁ · p₁₀
+    --           ==⟨ ap (λ r → ! ap f r · q₁ · p₁₀)
+    --                  (pS-βrec₁₀ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
+    --         ! ap f g-p₁₀ · q₁ · p₁₀
+    --           ==⟨ ap (λ r → ! r · q₁ · p₁₀) lemma-ap-f-γ₁₀ ⟩
+    --         ! p₀₁ · q₁ · p₁₀
+    --           ==⟨⟩
+    --         ! p₀₁ · p₀₁ · p₁₀
+    --           ==⟨ ap (_· p₁₀) (·-linv p₀₁) ⟩
+    --         idp · p₁₀
+    --           ==⟨ ·-lunit p₁₀ ⟩
+    --         q₀
+    --       ∎
 \end{code}
 
 \begin{code}
--- Homotopy
-    g-f : g ∘ f ∼ id
-    g-f (s , pₛ) = g-f' s pₛ
-      where
-        g-f' : (s : S¹) → (pₛ : P s) → (g ∘ f) (s , pₛ) == id (s , pₛ)
-        g-f' = S¹-ind (λ s → (pₛ : P s) → (g ∘ f) (s , pₛ) == id (s , pₛ)) qb qpath
-
-          where
-          qb : (pₛ₁ : P base) → (g ∘ f) (base , pₛ₁) == id (base , pₛ₁)
-          qb p with Pbase=Bool
-          qb true  | idp = g-p₀₁
-          qb false | idp = g-p₁₀
-
-          qpath : qb == qb [(λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) ↓ loop ]
-          qpath =
-            begin
-              transport (λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) loop qb
-                ==⟨ {!   !}  ⟩
-              qb
-            ∎
+-- -- Homotopy
+--     g-f : g ∘ f ∼ id
+--     g-f (s , pₛ) = g-f' s pₛ
+--       where
+--         g-f' : (s : S¹) → (pₛ : P s) → (g ∘ f) (s , pₛ) == id (s , pₛ)
+--         g-f' = S¹-ind (λ s → (pₛ : P s) → (g ∘ f) (s , pₛ) == id (s , pₛ)) qb qpath
+--
+--           where
+--           qb : (pₛ₁ : P base) → (g ∘ f) (base , pₛ₁) == id (base , pₛ₁)
+--           qb true  = g-p₀₁
+--           qb false = g-p₁₀
+--
+--           qpath : qb == qb [(λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) ↓ loop ]
+--           qpath =
+--             begin
+--               transport (λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) loop qb
+--                 ==⟨ {!   !}  ⟩
+--               qb
+--             ∎
 
 \end{code}
 
