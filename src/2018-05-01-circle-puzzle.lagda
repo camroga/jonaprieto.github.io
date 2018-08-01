@@ -420,9 +420,29 @@ P = S¹-rec Type₀ Bool (ua neg-eq)
 Pbase=Bool : P base == Bool
 Pbase=Bool = idp
 
+-- Pbase=Bool-family= : (λ z → P z) == (λ _ → Bool)
+-- Pbase=Bool-family= rewrite Pbase=Bool = funext (S¹-ind (λ b → P b == Bool ) Pbase=Bool dpath)
+--   where
+--     dpath :  Pbase=Bool == Pbase=Bool [ (λ b → P b == Bool) ↓ loop ]
+--     dpath =
+--       begin
+--         transport (λ b → P b == Bool) loop Pbase=Bool
+--           ==⟨ transport-eq-fun-l P loop Pbase=Bool ⟩
+--         ! ap P loop · Pbase=Bool
+--           ==⟨ ap (λ r → ! r · Pbase=Bool) (S¹-βrec Type₀ Bool (ua (neg-eq))) ⟩
+--         ! ua (neg-eq) · Pbase=Bool
+--           ==⟨ ap (λ r → ! r · Pbase=Bool) {! !} ⟩
+--         ! {! !} · Pbase=Bool
+--           ==⟨ {! !} ⟩
+--         Pbase=Bool
+--       ∎
+
+-- aux : transport (λ z → P z) loop == transport (λ _ → Bool) loop
+-- aux  = {! !}
+
 
 ΣSP-≃-pS : Σ S¹ (λ b → P b) ≃ pS
-ΣSP-≃-pS = qinv-≃ {!   !} {!   !}
+ΣSP-≃-pS = qinv-≃ f (g , f-g , g-f)
   where
     d : (b : S¹) → P b → pS
     d = S¹-ind (λ z → P z → pS) d̰ p̰
@@ -433,24 +453,26 @@ Pbase=Bool = idp
         d̰ false | idp = pS₁
 
         p̰ : d̰ == d̰ [ (λ z → P z → pS) ↓ loop ]
-        p̰ rewrite Pbase=Bool = begin
-              transport (λ z → P z → pS) loop d̰
-                ==⟨ transport-fun loop d̰ ⟩
-              (λ (x : Bool) → transport (λ z → pS) loop (d̰ (transport (λ z → P z) (! loop) x)))
-                ==⟨ funext (λ (r : Bool) → ap (λ z → transport {!λ z → pS   !} loop (d̰ z))
-                     (transport-const {lzero}{S¹}{lzero}{λ _ → Bool}{base}{base} (! loop) r)) ⟩
-              (λ (x : Bool) → transport {!   !}  loop {!   !} )
-                ==⟨ {!   !} ⟩
-              (λ (x : Bool) → transport (λ z → pS) loop (d̰ x) )
-                ==⟨ funext (λ (x : Bool) → transport-const {A = S¹}{P = λ _ → pS} loop (d̰ x)) ⟩
-              (λ (x : Bool) → d̰ x)
-                ==⟨⟩
-              d̰
-            ∎
+        p̰ rewrite Pbase=Bool =
+          begin
+            transport (λ z → P z → pS) loop d̰
+              ==⟨ transport-fun loop d̰ ⟩
+            (λ (x : P base) → transport (λ z → pS) loop (d̰ (transport (λ z → P z) (! loop) x)))
+              ==⟨ funext (λ (pb : P base) → transport-const {A = S¹}{P = λ z → pS} loop (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
+            (λ (x : P base) → (d̰ (transport (λ z → P z) (! loop) x)))
+              ==⟨ funext (λ (pb : P base) → ap d̰ {!   !}) ⟩
+            (λ (x : P base) → d̰ x)
+              ==⟨⟩
+            d̰
+           ∎
 
     f :  Σ S¹ (λ b → P b) → pS
     f (b , x) = d b x
+\end{code}
 
+
+\begin{code}
+-- Defs.
     γ₀₁   = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false
     g-p₀₁ = pair= (loop , γ₀₁)
 
@@ -471,10 +493,10 @@ Pbase=Bool = idp
 \end{code}
 
 \begin{code}
+-- Missing lemmas.
     postulate
       lemma-ap-f-γ₀₁ : ap f (pair= (loop , γ₀₁)) == p₁₀
       lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₀₁
-
 \end{code}
 
 Let us prove the homotopies:
@@ -556,12 +578,6 @@ Let us prove the homotopies:
             begin
               transport (λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) loop qb
                 ==⟨ {!   !}  ⟩
-              {!   !}
-                ==⟨ {!   !} ⟩
-              {!   !}
-                ==⟨ {!   !} ⟩
-              {!   !}
-                ==⟨ {!   !} ⟩
               qb
             ∎
 
