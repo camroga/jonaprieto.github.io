@@ -242,13 +242,13 @@ The proof of the homotopy $$ f' ∘ g' \sim \mathsf{id}$$.
               (S¹-βrec !pS !pS₀ (transport (λ _ → !pS₀ == !pS₀) loop p₀₀)) ⟩
           ! (transport (λ p → !pS₀ == !pS₀) loop p₀₀ · ap f' loop) · p₀₁
             ==⟨ ap (λ r → ! (r · ap f' loop) · p₀₁)
-                   (transport-const {A = S¹}{P = λ _ → !pS₀ == !pS₀} loop p₀₀) ⟩
+                   (transport-const loop p₀₀) ⟩
           ! (p₀₀ · ap f' loop) · p₀₁
             ==⟨ ap (λ r → ! (p₀₀ · r) · p₀₁)
                    (S¹-βrec !pS !pS₀ (transport (λ _ → !pS₀ == !pS₀) loop p₀₀)) ⟩
           ! (p₀₀ · transport (λ p → !pS₀ == !pS₀) loop p₀₀) · p₀₁
             ==⟨ ap (λ r → ! (p₀₀ · r) · p₀₁)
-                   (transport-const  {A = S¹}{P = λ _ → !pS₀ == !pS₀} loop p₀₀) ⟩
+                   (transport-const loop p₀₀) ⟩
           ! (p₀₀ · p₀₀) · p₀₁
             ==⟨ ap (_· p₀₁) (!-· p₀₀ p₀₀) ⟩
           q₁ -- this choice was a posteriori :S
@@ -274,7 +274,7 @@ The proof of the homotopy $$ f' ∘ g' \sim \mathsf{id}$$.
             ==⟨ ap (λ r → r · q₁ · p₁₀)
                    (S¹-βrec !pS !pS₀ (transport (λ _ → !pS₀ == !pS₀) loop (p₀₁ · p₁₀))) ⟩
           (transport (λ p → !pS₀ == !pS₀) loop p₀₀) · q₁ · p₁₀
-            ==⟨ ap (λ r → r · q₁ · p₁₀) (transport-const {P = λ _ → !pS₀ == !pS₀} loop p₀₀) ⟩
+            ==⟨ ap (λ r → r · q₁ · p₁₀) (transport-const loop p₀₀) ⟩
           p₀₀ · q₁ · p₁₀
             ==⟨ idp ⟩
           p₀₀ · (! p₀₀ · ! p₀₀ · p₀₁) · p₁₀
@@ -321,7 +321,7 @@ The proof of the homotopy $$g' ∘ f' \sim \mathsf{id}$$:
             ==⟨ ap {A = pS₀ == pS₀} (λ r → ( ! (ap g' r)) · loop) (S¹-βrec !pS !pS₀ _) ⟩
           ! ap g' (transport (λ p → pS₀ == pS₀) loop p₀₀) · loop
             ==⟨ ap {A = pS₀ == pS₀} (λ r → ! ap g' r · loop)
-                    (transport-const {P = λ _ → S¹} loop p₀₀) ⟩
+                    (transport-const loop p₀₀) ⟩
           ! ap g' p₀₀ · loop
             ==⟨ ap (λ r → ! r · loop)  (ap-· g' p₀₁ p₁₀) ⟩
           ! (ap g' p₀₁ · ap g' p₁₀) · loop
@@ -370,7 +370,7 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
           f (a₁ , c₁)
             ==⟨⟩
           d a₁ c₁
-            ==⟨ ! (transport-const {A = A} {P = λ _ → Z} α (d a₁ c₁)) ⟩
+            ==⟨ ! (transport-const  α (d a₁ c₁)) ⟩
           tr (λ X → Z) α (d a₁ c₁)
             ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
           tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
@@ -487,7 +487,7 @@ f (b , x) = f̰ b x
           transport (λ z → P z → pS) loop d̰
             ==⟨ transport-fun loop d̰ ⟩
           (λ (x : P base) → transport (λ z → pS) loop (d̰ (transport (λ z → P z) (! loop) x)))
-            ==⟨ funext (λ (pb : P base) → transport-const {A = S¹}{P = λ z → pS} loop (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
+            ==⟨ funext (λ (pb : P base) → transport-const loop (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
           (λ (x : P base) → (d̰ (transport (λ z → P z) (! loop) x)))
             ==⟨ funext (λ (pb : P base) → ap d̰ (aux-lemma₁ pb)) ⟩
           (λ (x : P base) → d̰ (neg x) )

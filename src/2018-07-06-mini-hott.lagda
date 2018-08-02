@@ -29,7 +29,9 @@ Some marks to accompany the code:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
+\end{code}
 
+\begin{code}
 open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ ) public
 
 Type : (ℓ : Level) → Set (lsuc ℓ)
@@ -323,24 +325,27 @@ _⁻¹ = inv
 
 infixr 60 !_
 !_  = inv
+\end{code}
 
+\begin{code}
 -- another common notation
 _² : ∀ {ℓ} {A : Type ℓ} {a : A} → a == a → a == a
 p ² = p · p
 \end{code}
 
 ##### Associativity of composition
-
+- Left associativity
 \begin{code}
--- Left associativity
 ∘-lassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
   → (h : C → D) → (g : B → C) → (f : A → B)
   -----------------------------------------
   → (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
 ∘-lassoc h g f = idp {a = (λ x → h (g (f x)))}
+\end{code}
 
--- Right associativity
+- Right associativity
+\begin{code}
 ∘-rassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
   → (h : C → D) → (g : B → C) → (f : A → B)
@@ -465,16 +470,25 @@ ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type
 ap₂ f idp idp = idp
 \end{code}
 
-## 🚧 Reviewing below…
-
 ### Lemmas
 
 \begin{code}
-ap-id : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
-      → (p : a == b)
-      --------------
-      → ap id p == p
-ap-id idp = idp
+ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
+     → (f : A → B) → (p : a == b) → (q : b == c)
+     -------------------------------------------
+     → ap f (p · q) == ap f p · ap f q
+ap-· f idp q = refl (ap f q)
+\end{code}
+
+\begin{code}
+ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
+       → (f : A → B) → (p : a == b)
+       ----------------------------
+       → ap f (p ⁻¹) == (ap f p) ⁻¹
+ap-inv f idp = idp
+
+-- synonyms
+ap-! = ap-inv
 \end{code}
 
 \begin{code}
@@ -489,23 +503,19 @@ ap-comp f g idp = idp
 \end{code}
 
 \begin{code}
-ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C} (p : a == b)
+ap-id : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
+      → (p : a == b)
+      --------------
+      → ap id p == p
+ap-id idp = idp
+\end{code}
+
+\begin{code}
+ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C}
+         → (p : a == b)
+         -----------------------
          → ap (λ _ → c) p == idp
-ap-const {c = c} idp = idp {a = idp {a = c}}
-\end{code}
-
-\begin{code}
-ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
-     → (f : A → B) → (p : a == b) → (q : b == c)
-     → ap f (p · q) == ap f p · ap f q
-ap-· f idp q = idp {a = (ap f q)}
-\end{code}
-
-\begin{code}
-ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
-       → (f : A → B) → (p : a == b)
-       → ap f (inv p) == inv (ap f p)
-ap-inv f idp = idp
+ap-const {c = c} idp = refl (refl c)
 \end{code}
 
 ## Properties on the groupoid
@@ -515,80 +525,94 @@ Some properties on the groupoid structure of equalities
 \begin{code}
 module ·-Properties {ℓ} {A : Type ℓ} where
 
-  involution : {a b : A} {p : a == b} → inv (inv p) == p
-  involution {p = idp} = idp
 
-  ·-runit : {a b : A} (p : a == b) → p == p · idp
+  ·-runit : {a b : A}
+          → (p : a == b)
+          --------------
+          → p == p · idp
   ·-runit idp = idp
 
-  ·-runit-infer : {a b : A} {p : a == b} →  p · idp == p
-  ·-runit-infer {p = idp} = idp
-
-  ·-lunit : {a b : A} (p : a == b) → p == idp · p
+  ·-lunit : {a b : A}
+          → (p : a == b)
+          --------------
+          → p == idp · p
   ·-lunit idp = idp
 
-  ·-assoc : {a b c d : A} (p : a == b) → (q : b == c) → (r : c == d)
-          → (p · q) · r == p · (q · r)
-  ·-assoc idp q r = idp
-
-  ·-assoc-infer : {a b c d : A} {p : a == b}{q : b == c}{r : c == d}
-          → (p · q) · r == p · (q · r)
-  ·-assoc-infer {p = idp} = idp
-
-  ·-linv : {a b : A} (p : a == b) → (inv p) · p == idp
+  ·-linv : {a b : A}
+          → (p : a == b)
+          ----------------
+          → ! p · p == idp
   ·-linv idp = idp
 
-  ·-rinv : {a b : A} (p : a == b) → p · (inv p) == idp
+  ·-rinv : {a b : A}
+        → (p : a == b)
+        ----------------
+        → p · ! p == idp
   ·-rinv idp = idp
 
-  ·-cancellation : {a : A} (p : a == a) → (q : a == a) → p · q == p → q == idp
+  involution : {a b : A} {p : a == b}
+            ---------------
+             → ! (! p) == p
+  involution {p = idp} = idp
+
+  ·-assoc : {a b c d : A}
+          → (p : a == b) → (q : b == c) → (r : c == d)
+          --------------------------------------------
+          → p · q · r == p · (q · r)
+  ·-assoc idp q r = idp
+
+  ·-cancellation : {a : A}
+                 → (p : a == a) → (q : a == a)
+                 → p · q == p
+                 -----------------------------
+                 → q == idp
   ·-cancellation {a} p q α =
       begin
-        q                   ==⟨ ap (_· q) (inv (·-linv p)) ⟩
-        inv p · p · q       ==⟨ (·-assoc (inv p) _ _) ⟩
-        inv p · (p · q)     ==⟨ (ap (inv p ·_) α) ⟩
-        inv p · p           ==⟨ ·-linv p ⟩
+        q             ==⟨ ap (_· q) (! (·-linv p)) ⟩
+        ! p · p · q   ==⟨ (·-assoc (! p) _ _) ⟩
+        ! p · (p · q) ==⟨ (ap (! p ·_) α) ⟩
+        ! p · p       ==⟨ ·-linv p ⟩
         idp
       ∎
-
   !-· : {a b : A}
       → (p : a == b)
       → (q : b == a)
-      --------------
-      → ! (p · q) == ! q · (! p)
-  !-· idp q =
-    begin
-      ! q
-        ==⟨ (·-runit (inv q)) ⟩
-      ! q · idp
-    ∎
-
+      --------------------------
+      → ! (p · q) == ! q · ! p
+  !-· idp q = ·-runit (! q)
 
 open ·-Properties public
 \end{code}
 
+
+
 ## Transport
 
-When we transport a proof of `(P a)` over an equality `(a == b)`, we
-get a proof of `(P b)`.
+![path](/assets/ipe-images/transport-fiber-minihott.png)
 
 \begin{code}
-transport
-  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} (C : A → Type ℓⱼ) {a b : A}
-  → a == b
-  → C a
-  → C b
+transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+          → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+          → (p : a₁ == a₂)
+          -------------------------------
+          → (C a₁ → C a₂)
 transport C idp = (λ x → x)
 
 -- synonyms
-tr = transport
+tr     = transport
+transp = transport
+\end{code}
 
+\begin{code}
 coe
-  : ∀ {ℓ}{A B : Type ℓ}
+  : ∀ {ℓ} {A B : Type ℓ}
   → A == B
+  ---------
   → (A → B)
 coe p A = transport (λ X → X) p A
 \end{code}
+
+## 🚧 Reviewing below…
 
 ### Pathover
 
@@ -608,23 +632,34 @@ infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
 
+## 🚧 Reviewing below…
+
 ### Lemmas
+Some lemmas on the transport operation
 
 \begin{code}
 module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
 
-  -- Some lemmas on the transport operation.
+  lift : ∀ {a₁ a₂ : A} {ℓⱼ} {C : A → Type ℓⱼ}
+       → (u : C a₁)
+       → (α : a₁ == a₂)
+       -----------------------------------
+       → (a₁ , u) == (a₂ , transport C α u)
+  lift {a₁ = a₁} u idp = refl (a₁ , u)
 
   transport-const
-    : ∀ {ℓⱼ} {P : A → Type ℓⱼ} {x y : A}
-    → {B : Type ℓᵢ}
-    → (p : x == y)
+    : ∀ {a₁  a₂ : A} {ℓⱼ} {B : Type ℓⱼ}
+    → (p : a₁ == a₂)
     → (b : B)
     ------------------------------
     → transport (λ _ → B) p b == b
   transport-const idp _ = idp
+  transportconst = transport-const
 
-  transport-concat-r : {a : A} {x y : A} → (p : x == y) → (q : a == x) →
+  transport-concat-r
+    : {a : A} {x y : A}
+    → (p : x == y) → (q : a == x)
+    →
     transport (λ x → a == x) p q == q · p
   transport-concat-r idp q = ·-runit q
 
