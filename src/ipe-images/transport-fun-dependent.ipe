@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180322162347" modified="D:20180802225537"/>
+<info created="D:20180322162347" modified="D:20180802231448"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -382,6 +382,6 @@ h
 469.737 725.098 l
 h
 </path>
-<text matrix="1 0 0 1 -58.8205 -9.98922" transformations="translations" pos="319.371 712.733" stroke="black" type="label" width="194.547" height="8.846" depth="2.49" valign="baseline" style="math">\mathsf{tr}^{w\mapsto B (\pi_1 w, \pi_2 w)}( \mathsf{lift}(p^{-1}, a&apos;)^{-1}, f~\mathsf{tr}^{A} (p^{-1}, a&apos;))</text>
+<text matrix="1 0 0 1 -58.8205 -9.98922" transformations="translations" pos="319.371 712.733" stroke="black" type="label" width="197.868" height="8.846" depth="2.49" valign="baseline" style="math">\mathsf{tr}^{w\mapsto B (\pi_1 w, \pi_2 w)}~( \mathsf{lift}(a&apos; ,p^{-1})^{-1}, f~\mathsf{tr}^{A} (p^{-1}, a&apos;))</text>
 </page>
 </ipe>
