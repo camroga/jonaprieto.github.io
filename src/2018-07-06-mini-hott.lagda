@@ -204,12 +204,20 @@ A more sophisticated composition function that can handle dependent functions.
 
 \begin{code}
 infixr 80 _∘_
-_∘_ : ∀ {ℓᵢ ℓⱼ ℓₖ}
-    {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
+_∘_ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
     → (g : {a : A} → Π (B a) (C a))
     → (f : Π A B)
+    -------------------------------
     → Π A (λ a → C a (f a))
 g ∘ f = λ x → g (f x)
+
+-- synonym for composition
+_//_ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
+    → (f : Π A B)
+    → (g : {a : A} → Π (B a) (C a))
+    -------------------------------
+    → Π A (λ a → C a (f a))
+f // g = g ∘ f
 \end{code}
 
 ### Application
@@ -221,12 +229,12 @@ _$_ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ}
 f $ x = f x
 \end{code}
 
-
 ### Curryfication
 
 \begin{code}
 curry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
       → (∀ s → C s)
+      ---------------------
       → (∀ x y → C (x , y))
 curry f x y = f (x , y)
 \end{code}
@@ -236,6 +244,7 @@ curry f x y = f (x , y)
 \begin{code}
 uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Type k}
         → (∀ x y → C x y)
+        -------------------------
         → (∀ s → C (π₁ s) (π₂ s))
 uncurry f (x , y) = f x y
 \end{code}
@@ -243,7 +252,7 @@ uncurry f (x , y) = f x y
 ### Instance search
 
 \begin{code}
--- TODO : How to use this?
+-- how to use it ❓
 ⟨⟩ : ∀ {i} {A : Type i} {{a : A}} → A
 ⟨⟩ {{a}} = a
 \end{code}
@@ -262,7 +271,7 @@ data _==_ {ℓᵢ} {A : Type ℓᵢ} (a : A) : A → Type ℓᵢ where
 
 {-# BUILTIN EQUALITY _==_ #-}
 
--- synonyms
+-- synonyms for identity type
 Path = _==_
 \end{code}
 
@@ -279,7 +288,9 @@ refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a == a') → Type ℓⱼ) (d : B a idp)
   {a' : A} (p : a == a') → B a' p
 J {a = a} B d idp = d
+\end{code}
 
+\begin{code}
 J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a' == a) → Type ℓⱼ) (d : B a idp)
   {a' : A} (p : a' == a) → B a' p
 J' {a = a} B d idp = d
@@ -287,34 +298,36 @@ J' {a = a} B d idp = d
 
 ##### Composition of paths
 
+![path](/assets/ipe-images/path-concatenation.png)
+*Path concatenation*
+
 \begin{code}
 infixl 50 _·_
-_·_ : ∀ {ℓ} {A : Type ℓ} {a b c : A} → a == b → b == c → a == c
-idp · q = q
+_·_ : ∀ {ℓ} {A : Type ℓ} {x y z : A}
+    → (p : x == y)
+    → (q : y == z)
+    --------------
+    → x == z
+_·_ idp q = q
 \end{code}
 
 ##### Inverse of paths
 
-**Types are higher groupoids**.  If we see equalities as paths, this
-is the inverse of a path. If we see equalities classically, this
-is the symmetric property of equality.
-
 \begin{code}
-inv : ∀{ℓ} {A : Type ℓ}  {a b : A} → a == b → b == a
+inv : ∀ {ℓ} {A : Type ℓ} {a b : A} → a == b → b == a
 inv idp = idp
 
+-- synonyms for inverse path
 infixl 60 _⁻¹
 _⁻¹ = inv
 
 infixr 60 !_
 !_  = inv
 
--- another maybe common notation
-_² : ∀ {ℓ}{A : Type ℓ} {a : A} → a == a → a == a
+-- another common notation
+_² : ∀ {ℓ} {A : Type ℓ} {a : A} → a == a → a == a
 p ² = p · p
 \end{code}
-
-
 
 ##### Associativity of composition
 
@@ -323,6 +336,7 @@ p ² = p · p
 ∘-lassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
   → (h : C → D) → (g : B → C) → (f : A → B)
+  -----------------------------------------
   → (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
 ∘-lassoc h g f = idp {a = (λ x → h (g (f x)))}
 
@@ -330,6 +344,7 @@ p ² = p · p
 ∘-rassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
   → (h : C → D) → (g : B → C) → (f : A → B)
+  -----------------------------------------
   → ((h ∘ g) ∘ f) == (h ∘ (g ∘ f))
 ∘-rassoc h g f = (∘-lassoc h g f) ⁻¹
 \end{code}
@@ -385,6 +400,7 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
   infix  1 begin_
   begin_ : {x y : A} → x == y → x == y
   begin_ p = p
+
 open EquationalReasoning public
 \end{code}
 
@@ -395,9 +411,9 @@ preserve equalities.
 
 \begin{code}
 ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
-   → (f : A → B)
-   → {a₁ a₂ : A} → a₁ == a₂
-   --------------------
+   → (f : A → B) {a₁ a₂ : A}
+   → a₁ == a₂
+   --------------
    → f a₁ == f a₂
 ap f idp = idp
 \end{code}
@@ -410,40 +426,57 @@ infixl 40 ap
 syntax ap f p = p |in-ctx f
 \end{code}
 
-\begin{code}
--- Let's suppose we have
---    p : a == b
---    p = _
+Let's suppose we have
+{% raw %}
+```agda
+  p : a == b
+  p = _
+```
+{% endraw %}
+then if we have
+{% raw %}
+```agda
+  t : a == e
+  t = f a =⟨ ap f p ⟩
+      f b
+      ∎
+```
+{% endraw %}
 
--- then if we have
---    t : a == e
---    t = f a =⟨ ap f p ⟩
---        f b
---        ∎
+we can change it to:
+{% raw %}
+```agda
+  t : a == e
+  t = f a =⟨ p |in-ctx f ⟩
+      f b
+      ∎
+```
+{% endraw %}
 
--- change to:
---    t : a == e
---    t = f a =⟨ p |in-ctx f ⟩
---        f b
---        ∎
-\end{code}
+Lastly, we can also define actions on two paths:
 
 \begin{code}
 ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {b₁ b₂ : B}
     → (f : A → B → C)
     → {a₁ a₂ : A} → (a₁ == a₂)
     → {b₁ b₂ : B} → (b₁ == b₂)
-    -------------------------
+    --------------------------
     → f a₁ b₁  == f a₂ b₂
 ap₂ f idp idp = idp
 \end{code}
 
-### Lemmas 🚧
+## 🚧 Reviewing below...
+### Lemmas
 
 \begin{code}
-ap-id : ∀{ℓᵢ} {A : Type ℓᵢ} {a b : A} (p : a == b) → ap id p == p
+ap-id : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
+      → (p : a == b)
+      --------------
+      → ap id p == p
 ap-id idp = idp
+\end{code}
 
+\begin{code}
 ap-comp
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} {a b : A}
   → (f : A → B)
@@ -452,16 +485,22 @@ ap-comp
   -------------------------------
   → ap g (ap f p) == ap (g ∘ f) p
 ap-comp f g idp = idp
+\end{code}
 
+\begin{code}
 ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C} (p : a == b)
          → ap (λ _ → c) p == idp
 ap-const {c = c} idp = idp {a = idp {a = c}}
+\end{code}
 
+\begin{code}
 ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
      → (f : A → B) → (p : a == b) → (q : b == c)
      → ap f (p · q) == ap f p · ap f q
 ap-· f idp q = idp {a = (ap f q)}
+\end{code}
 
+\begin{code}
 ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
        → (f : A → B) → (p : a == b)
        → ap f (inv p) == inv (ap f p)
