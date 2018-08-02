@@ -761,7 +761,7 @@ transport-fun idp f = idp
 
 \begin{code}
 transport-fun-h
-  : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ} {B : X → Type ℓₖ} {x y : X}
   → (p : x == y) → (f : A x → B x)
   → (b : A y)
   → (tr (λ x → (A x → B x)) p f) b == tr B p (f (tr A (inv p) b))
@@ -771,6 +771,17 @@ transport-fun-h idp f b = idp
 Now, let us see when we transport dependent functions:
 
 ![path](/assets/ipe-images/transport-fun-dependent.png)
+
+\begin{code}
+transport-fun-dependent
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ} {B : (x : X) → (a : A x) → Type ℓₖ}{x y : X}
+  → (p : x == y)
+  → (f : (a : A x) → B x a)
+  → (a' : A y)
+  → (tr (λ x → (a : A x) → B x a) p f) a'
+    == tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
+transport-fun-dependent idp f a' = idp
+\end{code}
 
 ## Basic type lemmas
 
