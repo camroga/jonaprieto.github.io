@@ -1002,12 +1002,11 @@ module Equivalence where
 open Equivalence public
 \end{code}
 
-
 ## Function extensionality
 
 \begin{code}
 
-module FunctionExtensionality {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+module FunExt {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
   {B : A → Type ℓⱼ} {f g : (a : A) → B a} where
 
   -- Application of an homotopy
@@ -1032,10 +1031,10 @@ module FunctionExtensionality {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
   funext-η : (p : f == g) → funext (happly p) == p
   funext-η p = rlmap-inverse eqFunExt
 
-open FunctionExtensionality public
+open FunExt public
 
 -- Function extensionality in the transport case
-module FunctionExtensionalityTransport
+module FunExt-Transport
   {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A B : X → Type ℓⱼ} {x y : X} where
 
   funext-transport
@@ -1052,8 +1051,35 @@ module FunctionExtensionalityTransport
     : (p : x == y) → (f : A x → B x) → (g : A y → B y)
     → ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a)) → ((p ✶) f == g)
   funext-transport-r p f g = remap (funext-transport p _ _)
+open FunExt-Transport public
+\end{code}
 
-open FunctionExtensionalityTransport
+\begin{code}
+module FunExt-Transport-DFun
+  {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}{B : (x : X) → A x → Type ℓⱼ}{x y : X}
+  where
+
+  -- Lemma 2.9.6
+  funext-transport-dfun
+    : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
+    -------------------------------------------------------------------------------------------
+    → ((p ✶) f == g) ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
+  funext-transport-dfun idp f g = eqFunExt
+
+  funext-transport-dfun-l
+    : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
+    → ((p ✶) f == g)
+    ---------------------------------------------------------------------------
+     → ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
+  funext-transport-dfun-l p f g = lemap (funext-transport-dfun p _ _)
+  --
+  funext-transport-dfun-r
+    : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
+    → ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
+    --------------------------------------------------------------------------
+    → ((p ✶) f == g)
+  funext-transport-dfun-r p f g = remap (funext-transport-dfun p _ _)
+open FunExt-Transport-DFun public
 \end{code}
 
 ## Decidable equality
@@ -1449,6 +1475,31 @@ module EquivalenceComposition where
    ∎)
 
 open EquivalenceComposition public
+\end{code}
+
+
+## Equivalence reasoning
+
+\begin{code}
+module EquivalenceReasoning where
+
+  infixr 2 _≃⟨⟩_
+  _≃⟨⟩_ : ∀ {ℓ} (A {B} : Type ℓ) → A ≃ B → A ≃ B
+  _ ≃⟨⟩ e = e
+
+  infixr 2 _≃⟨_⟩_
+  _≃⟨_⟩_ : ∀ {ℓ} (A : Type ℓ) {B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
+  _ ≃⟨ e₁ ⟩ e₂ = compEqv e₁ e₂
+  --
+  infix  3 _≃∎
+  _≃∎ :  ∀ {ℓ} (A : Type ℓ) → A ≃ A
+  _≃∎ = λ A → idEqv {A = A}
+
+  infix  1 begin≃_
+  begin≃_ : ∀ {ℓ} {A B : Type ℓ} → A ≃ B → A ≃ B
+  begin≃_ e = e
+
+open EquivalenceReasoning public
 \end{code}
 
 ## Equivalence with Sigma type
