@@ -418,7 +418,7 @@ ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
 ap f idp = idp
 \end{code}
 
-Now, we can define a convention syntax sugar for `ap` in
+Now, we can define a convenient syntax sugar for `ap` in
 equational reasoning.
 
 \begin{code}
@@ -426,28 +426,28 @@ infixl 40 ap
 syntax ap f p = p |in-ctx f
 \end{code}
 
-Let's suppose we have
+Let's suppose we have a lemma:
 {% raw %}
 ```agda
-  p : a == b
-  p = _
+  lemma : a == b
+  lemma = _
 ```
 {% endraw %}
-then if we have
+used in an equational reasoning like:
 {% raw %}
 ```agda
   t : a == e
-  t = f a =⟨ ap f p ⟩
+  t = f a =⟨ ap f lemma ⟩
       f b
       ∎
 ```
 {% endraw %}
 
-we can change it to:
+Then, we can now put the lemma in front:
 {% raw %}
 ```agda
   t : a == e
-  t = f a =⟨ p |in-ctx f ⟩
+  t = f a =⟨ lemma |in-ctx f ⟩
       f b
       ∎
 ```
@@ -465,7 +465,8 @@ ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type
 ap₂ f idp idp = idp
 \end{code}
 
-## 🚧 Reviewing below...
+## 🚧 Reviewing below…
+
 ### Lemmas
 
 \begin{code}
