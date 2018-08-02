@@ -25,6 +25,21 @@ Some marks to accompany the code:
 - 👏 looks great!
 - 🔍 review please!
 - 🆘 needs refactor
+
+
+Style guide:
+
+- use `--` to make inference-alike some functions, some lemmas -
+after the signature, I'd like as much as possible a blank line, for mental pause
+- I avoided that if the signature is too short, in which case it should easier
+to understand
+- Levels using the letter ℓ and superindexes i,j,k.
+- A type family over `A`, we use C, or maybe P, I've decided yet.
+- paths should be named as p, q, α, γ, (last two cases, when there are sigmas)
+- include the most common synonym from the book or HoTT-Agda if there are
+more convenient.
+- use Sigma and Pi types as much as it's possible
+
 {% endcomment %}
 
 \begin{code}
@@ -77,7 +92,8 @@ A useful convention
 
 ### Unit type
 
-The unit type is defined as record so that we also get the η-rule definitionally.
+The unit type is defined as record so that we also get the η-rule
+definitionally.
 
 \begin{code}
 record ⊤ : Type₀ where
@@ -95,10 +111,9 @@ Unit = ⊤
 
 ### Σ-type
 
-Sigma types are a particular case of records, but records can be
-constructed using only sigma types. Note that l ⊔ q is the maximum
-of two hierarchy levels l and q. This way, we define sigma types in
-full generality, at each universe.
+Sigma types are a particular case of records, but records can be constructed
+using only sigma types. Note that l ⊔ q is the maximum of two hierarchy levels l
+and q. This way, we define sigma types in full generality, at each universe.
 
 \begin{code}
 infixr 60 _,_
@@ -120,7 +135,11 @@ open Σ public
 Shorter notation for Π-types.
 
 \begin{code}
-Π : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (P : A → Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+Π : ∀ {ℓᵢ ℓⱼ}
+  → (A : Type ℓᵢ) (P : A → Type ℓⱼ)
+  --------------------------------
+  → Type (ℓᵢ ⊔ ℓⱼ)
+
 Π A P = (x : A) → P x
 \end{code}
 
@@ -129,7 +148,11 @@ Shorter notation for Π-types.
 Product type as a particular case of the sigma
 
 \begin{code}
-_×_ : ∀ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (B : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
+_×_ : ∀ {ℓᵢ ℓⱼ}
+    → (A : Type ℓᵢ) (B : Type ℓⱼ)
+    ----------------------------
+    → Type (ℓᵢ ⊔ ℓⱼ)
+
 A × B = Σ A (λ _ → B)
 \end{code}
 
@@ -171,9 +194,7 @@ data ℕ : Type₀ where
 
 -- synonyms for natural numbers
 Nat = ℕ
-
 \end{code}
-
 
 ## Functions
 
@@ -222,6 +243,7 @@ _//_ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C :
     → (g : {a : A} → Π (B a) (C a))
     -------------------------------
     → Π A (λ a → C a (f a))
+
 f // g = g ∘ f
 \end{code}
 
@@ -230,7 +252,10 @@ f // g = g ∘ f
 \begin{code}
 infixr 0 _$_
 _$_ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ}
-    → (∀ x → B x) → (∀ x → B x)
+    → (∀ x → B x)
+    -------------
+    → (∀ x → B x)
+
 f $ x = f x
 \end{code}
 
@@ -241,6 +266,7 @@ curry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
       → (∀ s → C s)
       ---------------------
       → (∀ x y → C (x , y))
+
 curry f x y = f (x , y)
 \end{code}
 
@@ -251,6 +277,7 @@ uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Typ
         → (∀ x y → C x y)
         -------------------------
         → (∀ s → C (π₁ s) (π₂ s))
+
 uncurry f (x , y) = f x y
 \end{code}
 
@@ -281,7 +308,9 @@ Path = _==_
 \end{code}
 
 \begin{code}
-refl : ∀ {ℓᵢ} {A : Type ℓᵢ} (a : A) → a == a
+refl : ∀ {ℓᵢ} {A : Type ℓᵢ}
+     → (a : A) → a == a
+
 refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 \end{code}
 
@@ -290,14 +319,21 @@ refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 *Paulin-Mohring J rule*
 
 \begin{code}
-J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a == a') → Type ℓⱼ) (d : B a idp)
-  {a' : A} (p : a == a') → B a' p
+J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
+  → (B : (a' : A) (p : a == a') → Type ℓⱼ)
+  → (d : B a idp)
+  ----------------------------------------
+  → {a' : A} (p : a == a') → B a' p
 J {a = a} B d idp = d
 \end{code}
 
 \begin{code}
-J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A} (B : (a' : A) (p : a' == a) → Type ℓⱼ) (d : B a idp)
-  {a' : A} (p : a' == a) → B a' p
+J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
+   → (B : (a' : A) (p : a' == a) → Type ℓⱼ)
+   → (d : B a idp)
+   ----------------------------------------
+   → {a' : A} (p : a' == a) → B a' p
+
 J' {a = a} B d idp = d
 \end{code}
 
@@ -312,6 +348,7 @@ _·_ : ∀ {ℓ} {A : Type ℓ} {x y z : A}
     → (q : y == z)
     --------------
     → x == z
+
 _·_ idp q = q
 \end{code}
 
@@ -343,6 +380,7 @@ p ² = p · p
   → (h : C → D) → (g : B → C) → (f : A → B)
   -----------------------------------------
   → (h ∘ (g ∘ f)) == ((h ∘ g) ∘ f)
+
 ∘-lassoc h g f = idp {a = (λ x → h (g (f x)))}
 \end{code}
 
@@ -353,6 +391,7 @@ p ² = p · p
   → (h : C → D) → (g : B → C) → (f : A → B)
   -----------------------------------------
   → ((h ∘ g) ∘ f) == (h ∘ (g ∘ f))
+
 ∘-rassoc h g f = (∘-lassoc h g f) ⁻¹
 \end{code}
 
@@ -422,6 +461,7 @@ ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
    → a₁ == a₂
    --------------
    → f a₁ == f a₂
+
 ap f idp = idp
 \end{code}
 
@@ -469,24 +509,27 @@ ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type
     → {b₁ b₂ : B} → (b₁ == b₂)
     --------------------------
     → f a₁ b₁  == f a₂ b₂
+
 ap₂ f idp idp = idp
 \end{code}
 
 ### Lemmas
 
 \begin{code}
-ap-· : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
+ap-· : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
      → (f : A → B) → (p : a == b) → (q : b == c)
      -------------------------------------------
      → ap f (p · q) == ap f p · ap f q
+
 ap-· f idp q = refl (ap f q)
 \end{code}
 
 \begin{code}
-ap-inv : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
+ap-inv : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
        → (f : A → B) → (p : a == b)
        ----------------------------
        → ap f (p ⁻¹) == (ap f p) ⁻¹
+
 ap-inv f idp = idp
 
 -- synonyms
@@ -501,6 +544,7 @@ ap-comp
   → (p : a == b)
   -------------------------------
   → ap g (ap f p) == ap (g ∘ f) p
+
 ap-comp f g idp = idp
 \end{code}
 
@@ -509,14 +553,16 @@ ap-id : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
       → (p : a == b)
       --------------
       → ap id p == p
+
 ap-id idp = idp
 \end{code}
 
 \begin{code}
-ap-const : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C}
+ap-const : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C}
          → (p : a == b)
          -----------------------
          → ap (λ _ → c) p == idp
+
 ap-const {c = c} idp = refl (refl c)
 \end{code}
 
@@ -525,68 +571,82 @@ ap-const {c = c} idp = refl (refl c)
 Some properties on the groupoid structure of equalities
 
 \begin{code}
-module ·-Properties {ℓ} {A : Type ℓ} where
-
-
-  ·-runit : {a b : A}
-          → (p : a == b)
-          --------------
-          → p == p · idp
-  ·-runit idp = idp
-
-  ·-lunit : {a b : A}
-          → (p : a == b)
-          --------------
-          → p == idp · p
-  ·-lunit idp = idp
-
-  ·-linv : {a b : A}
-          → (p : a == b)
-          ----------------
-          → ! p · p == idp
-  ·-linv idp = idp
-
-  ·-rinv : {a b : A}
+·-runit : ∀ {ℓ} {A : Type ℓ} {a b : A}
         → (p : a == b)
-        ----------------
-        → p · ! p == idp
-  ·-rinv idp = idp
+        --------------
+        → p == p · idp
 
-  involution : {a b : A} {p : a == b}
-            ---------------
-             → ! (! p) == p
-  involution {p = idp} = idp
-
-  ·-assoc : {a b c d : A}
-          → (p : a == b) → (q : b == c) → (r : c == d)
-          --------------------------------------------
-          → p · q · r == p · (q · r)
-  ·-assoc idp q r = idp
-
-  ·-cancellation : {a : A}
-                 → (p : a == a) → (q : a == a)
-                 → p · q == p
-                 -----------------------------
-                 → q == idp
-  ·-cancellation {a} p q α =
-      begin
-        q             ==⟨ ap (_· q) (! (·-linv p)) ⟩
-        ! p · p · q   ==⟨ (·-assoc (! p) _ _) ⟩
-        ! p · (p · q) ==⟨ (ap (! p ·_) α) ⟩
-        ! p · p       ==⟨ ·-linv p ⟩
-        idp
-      ∎
-  !-· : {a b : A}
-      → (p : a == b)
-      → (q : b == a)
-      --------------------------
-      → ! (p · q) == ! q · ! p
-  !-· idp q = ·-runit (! q)
-
-open ·-Properties public
+·-runit idp = idp
 \end{code}
 
+\begin{code}
+·-lunit : ∀ {ℓ} {A : Type ℓ} {a b : A}
+        → (p : a == b)
+        --------------
+        → p == idp · p
 
+·-lunit idp = idp
+\end{code}
+
+\begin{code}
+·-linv : ∀ {ℓ} {A : Type ℓ} {a b : A}
+        → (p : a == b)
+        ----------------
+        → ! p · p == idp
+
+·-linv idp = idp
+
+·-rinv : ∀ {ℓ} {A : Type ℓ} {a b : A}
+      → (p : a == b)
+      ----------------
+      → p · ! p == idp
+
+·-rinv idp = idp
+\end{code}
+
+\begin{code}
+involution : ∀ {ℓ} {A : Type ℓ} {a b : A} {p : a == b}
+          ---------------
+           → ! (! p) == p
+
+involution {p = idp} = idp
+\end{code}
+
+\begin{code}
+·-assoc : ∀ {ℓ} {A : Type ℓ} {a b c d : A}
+        → (p : a == b) → (q : b == c) → (r : c == d)
+        --------------------------------------------
+        → p · q · r == p · (q · r)
+
+·-assoc idp q r = idp
+\end{code}
+
+\begin{code}
+·-cancellation : ∀ {ℓ} {A : Type ℓ} {a : A}
+               → (p : a == a) → (q : a == a)
+               → p · q == p
+               -----------------------------
+               → q == idp
+
+·-cancellation {a} p q α =
+    begin
+      q             ==⟨ ap (_· q) (! (·-linv p)) ⟩
+      ! p · p · q   ==⟨ (·-assoc (! p) _ _) ⟩
+      ! p · (p · q) ==⟨ (ap (! p ·_) α) ⟩
+      ! p · p       ==⟨ ·-linv p ⟩
+      idp
+    ∎
+\end{code}
+
+\begin{code}
+!-· : ∀ {ℓ} {A : Type ℓ} {a b : A}
+    → (p : a == b)
+    → (q : b == a)
+    --------------------------
+    → ! (p · q) == ! q · ! p
+
+!-· idp q = ·-runit (! q)
+\end{code}
 
 ## Transport
 
@@ -598,6 +658,7 @@ transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
           → (p : a₁ == a₂)
           -------------------------------
           → (C a₁ → C a₂)
+
 transport C idp = (λ x → x)
 
 -- synonyms
@@ -610,16 +671,17 @@ _✶ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
    → (p : a₁ == a₂)
    -------------------------------
    → (C a₁ → C a₂)
+
 _✶ {ℓᵢ}{ℓⱼ}{A}{C} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} C
 
 \end{code}
 
 \begin{code}
-coe
-  : ∀ {ℓ} {A B : Type ℓ}
-  → A == B
-  ---------
-  → (A → B)
+coe : ∀ {ℓ} {A B : Type ℓ}
+    → A == B
+    ---------
+    → (A → B)
+
 coe p A = transport (λ X → X) p A
 \end{code}
 
@@ -636,124 +698,180 @@ also denoted by `PathOver C α c₁ c₂`.
 
 \begin{code}
 PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
-        → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
-PathOver C α c₁ c₂ = transport C α c₁ == c₂
+        → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂)
+        ----------------------------------------
+        → Type ℓⱼ
 
+PathOver C α c₁ c₂ = transport C α c₁ == c₂
+\end{code}
+
+\begin{code}
 infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
 
-## 🚧 Reviewing below…
 
 ### Lemmas
 Some lemmas on the transport operation
 
 \begin{code}
-module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
+lift : ∀ {ℓᵢ} {A : Type ℓᵢ} {a₁ a₂ : A} {ℓⱼ} {C : A → Type ℓⱼ}
+     → (u : C a₁)
+     → (α : a₁ == a₂)
+     -----------------------------------
+     → (a₁ , u) == (a₂ , transport C α u)
 
-  lift : ∀ {a₁ a₂ : A} {ℓⱼ} {C : A → Type ℓⱼ}
-       → (u : C a₁)
-       → (α : a₁ == a₂)
-       -----------------------------------
-       → (a₁ , u) == (a₂ , transport C α u)
-  lift {a₁ = a₁} u idp = refl (a₁ , u)
-
-  transport-const
-    : ∀ {a₁  a₂ : A} {ℓⱼ} {B : Type ℓⱼ}
-    → (p : a₁ == a₂)
-    → (b : B)
-    ------------------------------
-    → transport (λ _ → B) p b == b
-  transport-const idp _ = idp
-  transportconst = transport-const
-
-  transport-concat-r
-    : {a : A} {x y : A}
-    → (p : x == y) → (q : a == x)
-    →
-    transport (λ x → a == x) p q == q · p
-  transport-concat-r idp q = ·-runit q
-
-  transport-concat-l : {a : A} {x y : A} → (p : x == y) → (q : x == a) →
-    transport (λ x → x == a) p q == (inv p) · q
-  transport-concat-l idp q = idp
-
-  transport-concat : {x y : A} → (p : x == y) → (q : x == x) →
-    transport (λ x → x == x) p q == (inv p) · q · p
-  transport-concat idp q = ·-runit q
-
-  transport-eq-fun
-    : ∀ {ℓⱼ} {B : Type ℓⱼ}
-    → (f g : A → B) {x y : A}
-    → (p : x == y)
-    → (q : f x == g x)
-    ---------------------------------------------------------------
-    → transport (λ z → f z == g z) p q == ! (ap f p) · q · (ap g p)
-  transport-eq-fun f g idp q = ·-runit q
-
-  transport-comp : ∀{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ} (p : a == b) (q : b == c)
-                   → ((transport P q) ∘ (transport P p)) == transport P (p · q)
-  transport-comp {P = P} idp q = idp {a = (transport P q)}
-
-  transport-comp-h : ∀{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ} (p : a == b) (q : b == c) (x : P a)
-                   → ((transport P q) ∘ (transport P p)) x == transport P (p · q) x
-  transport-comp-h {P = P} idp q x = idp {a =  (transport P q x)}
-
-open Transport-Properties public
+lift {a₁ = a₁} u idp = refl (a₁ , u)
 \end{code}
 
 \begin{code}
-transport-eq-fun-l : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (f : A → B) {x y : A}
-                     → (p : x == y) (q : f x == b)
-                     → transport (λ z → f z == b) p q == inv (ap f p) · q
+transport-const
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {a₁  a₂ : A} {ℓⱼ} {B : Type ℓⱼ}
+  → (p : a₁ == a₂)
+  → (b : B)
+  ------------------------------
+  → transport (λ _ → B) p b == b
+
+transport-const idp _ = idp
+\end{code}
+
+\begin{code}
+transport-concat-r
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {a : A} {x y : A}
+  → (p : x == y) → (q : a == x)
+  →  transport (λ x → a == x) p q == q · p
+
+transport-concat-r idp q = ·-runit q
+\end{code}
+
+\begin{code}
+transport-concat-l
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {a : A} {x y : A}
+  → (p : x == y)
+  → (q : x == a)
+  ---------------------------------------------
+  → transport (λ x → x == a) p q == ! p · q
+transport-concat-l idp q = idp
+\end{code}
+
+\begin{code}
+transport-concat
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {x y : A}
+  → (p : x == y) → (q : x == x)
+  → transport (λ x → x == x) p q == ! p · q · p
+
+transport-concat idp q = ·-runit q
+\end{code}
+
+\begin{code}
+transport-eq-fun
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {ℓⱼ} {B : Type ℓⱼ}
+  → (f g : A → B) {x y : A}
+  → (p : x == y)
+  → (q : f x == g x)
+  ---------------------------------------------------------------
+  → transport (λ z → f z == g z) p q == ! (ap f p) · q · (ap g p)
+
+transport-eq-fun f g idp q = ·-runit q
+\end{code}
+
+\begin{code}
+transport-comp
+  : ∀ {ℓᵢ} {A : Type ℓᵢ}{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ}
+  → (p : a == b) → (q : b == c)
+  ------------------------------------------------------------
+  → ((transport P q) ∘ (transport P p)) == transport P (p · q)
+
+transport-comp {P = P} idp q = idp {a = (transport P q)}
+\end{code}
+
+\begin{code}
+transport-comp-h
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {ℓⱼ} {a b c : A} {P : A → Type ℓⱼ}
+  → (p : a == b) → (q : b == c) → (x : P a)
+  ----------------------------------------------------------------
+  → ((transport P q) ∘ (transport P p)) x == transport P (p · q) x
+
+transport-comp-h {P = P} idp q x = idp {a =  (transport P q x)}
+\end{code}
+
+\begin{code}
+transport-eq-fun-l
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (f : A → B) {x y : A}
+  → (p : x == y) (q : f x == b)
+  --------------------------------------------------
+  → transport (λ z → f z == b) p q == ! (ap f p) · q
+
 transport-eq-fun-l {b = b} f p q =
   begin
-    transport (λ z → f z == b) p q     ==⟨ transport-eq-fun f (λ _ → b) p q ⟩
-    inv (ap f p) · q · ap (λ _ → b) p  ==⟨ ap (inv (ap f p) · q ·_) (ap-const p) ⟩
-    inv (ap f p) · q · idp             ==⟨ inv (·-runit _) ⟩
-    inv (ap f p) · q
+    transport (λ z → f z == b) p q   ==⟨ transport-eq-fun f (λ _ → b) p q ⟩
+    ! (ap f p) · q · ap (λ _ → b) p  ==⟨ ap (! (ap f p) · q ·_) (ap-const p) ⟩
+    ! (ap f p) · q · idp             ==⟨ ! (·-runit _) ⟩
+    ! (ap f p) · q
   ∎
 \end{code}
+
 \begin{code}
-transport-eq-fun-r : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (g : A → B) {x y : A}
-                     → (p : x == y) (q : b == g x)
-                     → transport (λ z → b == g z) p q == q · (ap g p)
+transport-eq-fun-r
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (g : A → B) {x y : A}
+  → (p : x == y) (q : b == g x)
+  ------------------------------------------------
+  → transport (λ z → b == g z) p q == q · (ap g p)
+
 transport-eq-fun-r {b = b} g p q =
   begin
-    transport (λ z → b == g z) p q      ==⟨ transport-eq-fun (λ _ → b) g p q ⟩
-    inv (ap (λ _ → b) p) · q · ap g p   ==⟨ ·-assoc (inv (ap (λ _ → b) p)) q (ap g p) ⟩
-    inv (ap (λ _ → b) p) · (q · ap g p) ==⟨ ap (λ u → inv u · (q · ap g p)) (ap-const p) ⟩
+    transport (λ z → b == g z) p q    ==⟨ transport-eq-fun (λ _ → b) g p q ⟩
+    ! (ap (λ _ → b) p) · q · ap g p   ==⟨ ·-assoc (! (ap (λ _ → b) p)) q (ap g p) ⟩
+    ! (ap (λ _ → b) p) · (q · ap g p) ==⟨ ap (λ u → ! u · (q · ap g p)) (ap-const p) ⟩
     (q · ap g p)
   ∎
 \end{code}
 
 \begin{code}
-transport-inv-l : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (b : B)
-              → transport (λ v → v) p (transport (λ v → v) (inv p) b) == b
-transport-inv-l idp b = idp
+transport-inv-l
+  : ∀ {ℓ} {A B : Type ℓ}
+  → (p : A == B) → (b : B)
+  ------------------------------------------------------------
+  → transport (λ v → v) p (transport (λ v → v) (inv p) b) == b
 
-transport-inv-r : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (a : A)
-              → transport (λ v → v) (inv p) (transport (λ v → v) p a) == a
+transport-inv-l idp b = idp
+\end{code}
+
+\begin{code}
+transport-inv-r
+  : ∀ {ℓ} {A B : Type ℓ}
+  → (p : A == B) → (a : A)
+  ------------------------------------------------------------
+  → transport (λ v → v) (inv p) (transport (λ v → v) p a) == a
+
 transport-inv-r idp b = idp
 \end{code}
-\begin{code}
-transport-family : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {P : B → Type ℓₖ}
-                 → {f : A → B} → {x y : A} → (p : x == y) → (u : P (f x))
-                 → transport (P ∘ f) p u == transport P (ap f p) u
-transport-family idp u = idp
 
+\begin{code}
+transport-family
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {P : B → Type ℓₖ}
+  → {f : A → B} → {x y : A}
+  → (p : x == y) → (u : P (f x))
+  -------------------------------------------------
+  → transport (P ∘ f) p u == transport P (ap f p) u
+transport-family idp u = idp
+\end{code}
+
+\begin{code}
 transport-family-id
-  : ∀{ℓᵢ ℓₖ} {A : Type ℓᵢ} {P : A → Type ℓₖ}
+  : ∀ {ℓᵢ ℓₖ} {A : Type ℓᵢ} {P : A → Type ℓₖ}
   → {x y : A} → (p : x == y) → (u : P x)
+  ----------------------------------------------
   → transport (λ a → P a) p u == transport P p u
 transport-family-id idp u = idp
 \end{code}
 
 \begin{code}
 transport-fun
-  : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
   → (p : x == y) → (f : A x → B x)
-  → tr (λ x → (A x → B x)) p f == (λ x → tr B p (f (tr A (inv p) x)))
+  -------------------------------------------------------------------
+  → tr (λ x → (A x → B x)) p f == (λ x → tr B p (f (tr A (! p) x)))
 transport-fun idp f = idp
 \end{code}
 
@@ -764,7 +882,8 @@ transport-fun-h
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ} {B : X → Type ℓₖ} {x y : X}
   → (p : x == y) → (f : A x → B x)
   → (b : A y)
-  → (tr (λ x → (A x → B x)) p f) b == tr B p (f (tr A (inv p) b))
+  --------------------------------------------------------------
+  → (tr (λ x → (A x → B x)) p f) b == tr B p (f (tr A (! p) b))
 transport-fun-h idp f b = idp
 \end{code}
 
@@ -774,14 +893,18 @@ Now, let us see when we transport dependent functions:
 
 \begin{code}
 transport-fun-dependent
-  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ} {B : (x : X) → (a : A x) → Type ℓₖ}{x y : X}
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
+      {B : (x : X) → (a : A x) → Type ℓₖ}{x y : X}
   → (p : x == y)
   → (f : (a : A x) → B x a)
+  -------------------------------------------------------------------
   → (a' : A y)
   → (tr (λ x → (a : A x) → B x a) p f) a'
     == tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
 transport-fun-dependent idp f a' = idp
 \end{code}
+
+# 🚧 Reviewing below...
 
 ## Basic type lemmas
 
@@ -859,7 +982,7 @@ open CartesianProduct
 More properties and lemmas on equality, transporting and function application.
 
 \begin{code}
-apd : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
+apd : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
     → (f : (a : A) → P a) → (p : a == b)
     → transport P p (f a) == f b
 apd f idp = idp
@@ -1773,10 +1896,10 @@ module Truncation where
   ∣ x ∣ = !∣ x ∣
 
   -- Any two elements of the truncated type are equal
-  postulate trunc : ∀{ℓ} {A : Type ℓ} → isProp ∥ A ∥
+  postulate trunc : ∀ {ℓ} {A : Type ℓ} → isProp ∥ A ∥
 
   -- Recursion principle
-  trunc-rec : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isProp P → (A → P) → ∥ A ∥ → P
+  trunc-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isProp P → (A → P) → ∥ A ∥ → P
   trunc-rec _ f !∣ x ∣ = f x
 \end{code}
 
@@ -1797,18 +1920,18 @@ module SetTruncation where
   ∥_∥₀ : ∀ {ℓ} (A : Type ℓ) → Type ℓ
   ∥ A ∥₀ = !∥ A ∥₀
 
-  ∣_∣₀ : ∀{ℓ} {X : Type ℓ} → X → ∥ X ∥₀
+  ∣_∣₀ : ∀ {ℓ} {X : Type ℓ} → X → ∥ X ∥₀
   ∣ x ∣₀ = !∣ x ∣₀
 
   -- Any two equalities on the truncated type are equal
-  postulate strunc : ∀{ℓ} {A : Type ℓ} → isSet ∥ A ∥₀
+  postulate strunc : ∀ {ℓ} {A : Type ℓ} → isSet ∥ A ∥₀
 
   -- Recursion principle
-  strunc-rec : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isSet P → (A → P) → ∥ A ∥₀ → P
+  strunc-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isSet P → (A → P) → ∥ A ∥₀ → P
   strunc-rec _ f !∣ x ∣₀ = f x
 
   -- Induction principle
-  strunc-ind : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : ∥ A ∥₀ → Type ℓⱼ} → ((a : ∥ A ∥₀) → isSet (B a))
+  strunc-ind : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : ∥ A ∥₀ → Type ℓⱼ} → ((a : ∥ A ∥₀) → isSet (B a))
              → (g : (a : A) → B ∣ a ∣₀) → (a : ∥ A ∥₀) → B a
   strunc-ind _ g !∣ x ∣₀ = g x
 \end{code}
@@ -1830,39 +1953,39 @@ module Quotients where
     data _!/_ {ℓ} (A : Type ℓ) (r : QRel A) : Type (lsuc ℓ) where
       ![_] : A → (A !/ r)
 
-  _/_ : ∀{ℓ} (A : Type ℓ) (r : QRel A) → Type (lsuc ℓ)
+  _/_ : ∀ {ℓ} (A : Type ℓ) (r : QRel A) → Type (lsuc ℓ)
   A / r = (A !/ r)
 
-  [_] : ∀{ℓ} {A : Type ℓ} → A → {r : QRel A} → (A / r)
+  [_] : ∀ {ℓ} {A : Type ℓ} → A → {r : QRel A} → (A / r)
   [ a ] = ![ a ]
 
   -- Equalities induced by the relation
-  postulate Req : ∀{ℓ} {A : Type ℓ} {r : QRel A}
+  postulate Req : ∀ {ℓ} {A : Type ℓ} {r : QRel A}
                  → {a b : A} → R {{r}} a b → [ a ] {r} == [ b ]
 
   -- The quotient of a set is again a set
-  postulate Rtrunc : ∀{ℓ} {A : Type ℓ} {r : QRel A} → isSet (A / r)
+  postulate Rtrunc : ∀ {ℓ} {A : Type ℓ} {r : QRel A} → isSet (A / r)
 
   -- Recursion principle
-  QRel-rec : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : Type ℓⱼ}
+  QRel-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : Type ℓⱼ}
             → (f : A → B) → ((x y : A) → R {{r}} x y → f x == f y) → A / r → B
   QRel-rec f p ![ x ] = f x
 
   -- Induction principle
-  QRel-ind : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : A / r → Type ℓⱼ}
+  QRel-ind : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : A / r → Type ℓⱼ}
             → (f : ((a : A) → B [ a ]))
             → ((x y : A) → (o : R {{r}} x y) → (transport B (Req o) (f x)) == f y)
             → (z : A / r) → B z
   QRel-ind f p ![ x ] = f x
 
   -- Recursion in two arguments
-  QRel-rec-bi : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : Type ℓⱼ}
+  QRel-rec-bi : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : Type ℓⱼ}
               → (f : A → A → B) → ((x y z t : A) → R {{r}} x y → R {{r}} z t → f x z == f y t)
               → A / r → A / r → B
   QRel-rec-bi f p ![ x ] ![ y ] = f x y
 
 
-  Qrel-prod : ∀{ℓᵢ}{A : Type ℓᵢ} (r : QRel A) → QRel (A × A)
+  Qrel-prod : ∀ {ℓᵢ}{A : Type ℓᵢ} (r : QRel A) → QRel (A × A)
   Qrel-prod r = record { R = λ { (a , b) (c , d) → (R {{r}} a c) × (R {{r}} b d) }
                        ; Aset = isSet-prod (Aset {{r}}) (Aset {{r}})
                        ; Rprop = λ { (x , y) (z , w) → isProp-prod (Rprop {{r}} x z) (Rprop {{r}} y w)} }
@@ -2472,7 +2595,7 @@ module Circle where
 
   -- Induction principle on paths
   postulate
-    S¹-βind : ∀{ℓ} (P : S¹ → Type ℓ)
+    S¹-βind : ∀ {ℓ} (P : S¹ → Type ℓ)
             → (x : P base)
             → (p : x == x [ P ↓ loop ])
             -------------------------------
@@ -2561,20 +2684,20 @@ group given by proofs of the equality (a=a).
 module FundamentalGroup where
 
   -- Definition of the fundamental group.
-  Ω : ∀{ℓ} (A : Type ℓ) → (a : A) → Type ℓ
+  Ω : ∀ {ℓ} (A : Type ℓ) → (a : A) → Type ℓ
   Ω A a = (a == a)
 
   -- Its group structure.
-  Ω-st : ∀{ℓ} (A : Type ℓ) → (a : A) → GroupStructure (Ω A a)
+  Ω-st : ∀ {ℓ} (A : Type ℓ) → (a : A) → GroupStructure (Ω A a)
   Ω-st A a = group-structure _·_ (refl a)
     (λ a → inv (·-lunit a)) (λ a → inv (·-runit a))
     (λ x y z → inv (·-assoc x y z))
     inv ·-rinv ·-linv
 
-  Ω-gr : ∀{ℓ} (A : Type ℓ) → (a : A) → Group {ℓ}
+  Ω-gr : ∀ {ℓ} (A : Type ℓ) → (a : A) → Group {ℓ}
   Ω-gr A a = group (a == a) (Ω-st A a)
 
-  Ω-st-r : ∀{ℓ} (A : Type ℓ) → (a : A) → GroupStructure (Ω A a)
+  Ω-st-r : ∀ {ℓ} (A : Type ℓ) → (a : A) → GroupStructure (Ω A a)
   Ω-st-r A a = group-structure (λ x y → y · x) (refl a)
     (λ a → inv (·-runit a)) (λ a → inv (·-lunit a))
     (λ x y z → ·-assoc z y x)

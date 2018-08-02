@@ -26,7 +26,8 @@ _posts/%.md : src/%.md
 	cp $< $@
 
 _posts/%.md : src/%.lagda
-	agda2html --verbose --link-to-agda-stdlib --jekyll-root=_posts/ -i $< -o $@
+	agda2html --version
+	agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
 
 assets/ipe-images/%.png : src/ipe-images/%.ipe
 	iperender -png -resolution 400 $< $@
