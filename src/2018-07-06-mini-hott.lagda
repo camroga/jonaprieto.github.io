@@ -603,6 +603,15 @@ transport C idp = (λ x → x)
 -- synonyms
 tr     = transport
 transp = transport
+
+-- Star notation for transport
+_✶ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+   → {C : A → Type ℓⱼ} {a₁ a₂ : A}
+   → (p : a₁ == a₂)
+   -------------------------------
+   → (C a₁ → C a₂)
+_✶ {ℓᵢ}{ℓⱼ}{A}{C} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} C
+
 \end{code}
 
 \begin{code}
@@ -690,10 +699,6 @@ module Transport-Properties {ℓᵢ} {A : Type ℓᵢ} where
                    → ((transport P q) ∘ (transport P p)) x == transport P (p · q) x
   transport-comp-h {P = P} idp q x = idp {a =  (transport P q x)}
 
-  -- A shorter notation for transport.
-  _✶ : ∀ {ℓⱼ} {P : A → Type ℓⱼ} {a b : A} → a == b → P a → P b
-  _✶ {ℓⱼ} {P} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} P
-
 open Transport-Properties public
 \end{code}
 
@@ -708,7 +713,8 @@ transport-eq-fun-l {b = b} f p q =
     inv (ap f p) · q · idp             ==⟨ inv (·-runit _) ⟩
     inv (ap f p) · q
   ∎
-
+\end{code}
+\begin{code}
 transport-eq-fun-r : ∀{ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (g : A → B) {x y : A}
                      → (p : x == y) (q : b == g x)
                      → transport (λ z → b == g z) p q == q · (ap g p)
@@ -719,7 +725,9 @@ transport-eq-fun-r {b = b} g p q =
     inv (ap (λ _ → b) p) · (q · ap g p) ==⟨ ap (λ u → inv u · (q · ap g p)) (ap-const p) ⟩
     (q · ap g p)
   ∎
+\end{code}
 
+\begin{code}
 transport-inv-l : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (b : B)
               → transport (λ v → v) p (transport (λ v → v) (inv p) b) == b
 transport-inv-l idp b = idp
@@ -727,7 +735,8 @@ transport-inv-l idp b = idp
 transport-inv-r : ∀{ℓ} {A B : Type ℓ} → (p : A == B) → (a : A)
               → transport (λ v → v) (inv p) (transport (λ v → v) p a) == a
 transport-inv-r idp b = idp
-
+\end{code}
+\begin{code}
 transport-family : ∀{ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {P : B → Type ℓₖ}
                  → {f : A → B} → {x y : A} → (p : x == y) → (u : P (f x))
                  → transport (P ∘ f) p u == transport P (ap f p) u
@@ -738,20 +747,30 @@ transport-family-id
   → {x y : A} → (p : x == y) → (u : P x)
   → transport (λ a → P a) p u == transport P p u
 transport-family-id idp u = idp
+\end{code}
 
+\begin{code}
 transport-fun
   : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
   → (p : x == y) → (f : A x → B x)
-  → transport (λ x → (A x → B x)) p f == (λ x → transport B p (f (transport A (inv p) x)))
+  → tr (λ x → (A x → B x)) p f == (λ x → tr B p (f (tr A (inv p) x)))
 transport-fun idp f = idp
+\end{code}
 
+![path](/assets/ipe-images/transport-fun.png)
+
+\begin{code}
 transport-fun-h
   : ∀{ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
   → (p : x == y) → (f : A x → B x)
   → (b : A y)
-  → (transport (λ x → (A x → B x)) p f) b == transport B p (f (transport A (inv p) b))
+  → (tr (λ x → (A x → B x)) p f) b == tr B p (f (tr A (inv p) b))
 transport-fun-h idp f b = idp
 \end{code}
+
+Now, let us see when we transport dependent functions:
+
+![path](/assets/ipe-images/transport-fun-dependent.png)
 
 ## Basic type lemmas
 
@@ -1032,8 +1051,11 @@ module FunExt {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
   funext-η p = rlmap-inverse eqFunExt
 
 open FunExt public
+\end{code}
 
--- Function extensionality in the transport case
+- Function extensionality in the transport case
+
+\begin{code}
 module FunExt-Transport
   {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A B : X → Type ℓⱼ} {x y : X} where
 
@@ -1059,7 +1081,7 @@ module FunExt-Transport-DFun
   {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}{B : (x : X) → A x → Type ℓⱼ}{x y : X}
   where
 
-  -- Lemma 2.9.6
+  -- Lemma 2.9.7
   funext-transport-dfun
     : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
     -------------------------------------------------------------------------------------------
