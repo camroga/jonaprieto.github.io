@@ -154,7 +154,7 @@ data Bool : Type₀ where
   false : Bool
 \end{code}
 
-* Booleans can be defined by using a coproduct.
+*Booleans can be also defined using the coproduct.*
 
 ### Natural numbers
 
@@ -196,7 +196,10 @@ idf A = λ x → x
 Constant function at some point `b` is `cst b`
 
 \begin{code}
-cst : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} (b : B) → (A → B)
+cst : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
+    → (b : B)
+    ---------
+    → (A → B)
 cst b = λ _ → b
 \end{code}
 
@@ -301,7 +304,6 @@ J' {a = a} B d idp = d
 ##### Composition of paths
 
 ![path](/assets/ipe-images/path-concatenation.png)
-*Path concatenation*
 
 \begin{code}
 infixl 50 _·_
@@ -612,8 +614,6 @@ coe
 coe p A = transport (λ X → X) p A
 \end{code}
 
-## 🚧 Reviewing below…
-
 ### Pathover
 
 Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
@@ -622,6 +622,8 @@ Pathover type is as the shorthand for the path between the transport along a
 path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C
 a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
 also denoted by `PathOver C α c₁ c₂`.
+
+![path](/assets/ipe-images/pathover-3-minihott.png)
 
 \begin{code}
 PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
