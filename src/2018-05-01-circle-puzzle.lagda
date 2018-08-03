@@ -346,7 +346,6 @@ Finally,
   S¹-≃-pS = qinv-≃ f' (g' , H₁ , H₂)
 \end{code}
 
-
 ### Lemma 2
 
 - Action on paths of pairs
@@ -378,7 +377,7 @@ module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
           tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
             ==⟨ (! transport-comp-h α (! α) c₁) |in-ctx (λ k → tr (λ X → Z) α (d a₁ k))⟩
           tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
-            ==⟨ inv (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
+            ==⟨ ! (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
           (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
             ==⟨ happly (apd d α) (tr C α c₁) ⟩
           d a₂ (tr C α c₁)

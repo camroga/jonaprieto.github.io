@@ -15,21 +15,20 @@ agda: true
 {: .only-website }
   *This is a work in progress jointly with Marc Bezem.*
 
-The type of Pathover which is often denoted by `PathOver` can be defined in at
-least five different ways, all equivalent as we show later in this document (See
-also {% cite Licata2015 %}).
+The type of pathovers can be defined in at least five different ways, all
+equivalent as we show later in this document (see also {% cite Licata2015 %}).
 
-Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
+Let `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
 Using the same notation from {% cite hottbook %}, one of the definitions for the
 Pathover type is as the shorthand for the path between the transport along a
 path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the fiber `C
-a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
+a₂`. That is, a pathover is a term that inhabits the type `(transport C α c₁) = c₂`
 also denoted by `PathOver C α c₁ c₂`.
 
 ![path](/assets/ipe-images/pathovers-total-space-pathover.png)
 *Figure 1. PathOvers and paths in the total space.*
 
-The term of a *pathover* was formally defined in {% cite Licata2015%} and also
+The term *pathover* was formally defined in {% cite Licata2015%} and also
 briefly mentioned in Section 2.3 in {% cite hottbook %} as a path in the total
 space of `C` which "lies over" `α`.
 
@@ -38,8 +37,7 @@ which the path `q : (a₁, c₁) = (a₂, c₂)` is projected down onto `α : a�
 it follows from the figure showed above. `Σ A C` is the total space and
 "projecting down" means `ap π₁ q = α` where `π₁ : Σ A C → A`.
 
-We formalize such a correspondence by showing the following equivalence
-in two different ways.
+We formalize such a correspondence by showing the following equivalence,
 
 {: .equation}
   $$
@@ -47,7 +45,8 @@ in two different ways.
     \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
   $$
 
-We also show some results about Σ-types that make the second proof of the
+We give two proofs of this equivalence. The second proof uses
+some results about Σ-types that make the second proof of the
 equivalence a little shorter. We also believe they can be useful in other
 contexts.
 
@@ -1030,7 +1029,7 @@ HEq₂ A B α a b = Path (coe α a) b
 \end{code}
 
 - \begin{code}
-HEq₃  : ∀ {ℓ} (A : Type ℓ)(B : Type ℓ) (α : A == B)(a : A)(b : B) → Type ℓ
+HEq₃ : ∀ {ℓ} (A : Type ℓ)(B : Type ℓ) (α : A == B)(a : A)(b : B) → Type ℓ
 HEq₃ A B α a b = Path a (coe (inv α) b)
 \end{code}
 
@@ -1055,12 +1054,12 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
   HEq₁-to-HEq₂ : {α : A == B}{a : A}{b : B}
                → HEq₁ A B α a b
                → HEq₂ A B α a b
-  HEq₁-to-HEq₂ {idp} {a} {.a} idp = idp
+  HEq₁-to-HEq₂ {idp} idp = idp
 
   HEq₂-to-HEq₁ : {α : A == B}{a : A}{b : B}
                → HEq₂ A B α a b
                → HEq₁ A B α a b
-  HEq₂-to-HEq₁ {idp} {a} {.a} idp = idp
+  HEq₂-to-HEq₁ {idp} idp = idp
 
   HEq₁-≃-HEq₂ : {α : A == B}{a : A}{b : B}
              → HEq₁ A B α a b ≃ HEq₂ A B α a b
@@ -1091,7 +1090,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
   HEq₃-to-HEq₂ : {α : A == B}{a : A}{b : B}
                → HEq₃ A B α a b
                → HEq₂ A B α a b
-  HEq₃-to-HEq₂ {idp} {a} {.a} idp = idp
+  HEq₃-to-HEq₂ {idp} idp = idp
 
   HEq₂-≃-HEq₃ : {α : A == B}{a : A}{b : B}
              → HEq₂ A B α a b ≃ HEq₃ A B α a b
@@ -1123,7 +1122,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
   HEq₄-to-HEq₃ : {α : A == B}{a : A}{b : B}
                → HEq₄ A B α a b
                → HEq₃ A B α a b
-  HEq₄-to-HEq₃ {idp} {a} {.a} idp = idp
+  HEq₄-to-HEq₃ {idp} idp = idp
 
   HEq₃-≃-HEq₄ : {α : A == B}{a : A}{b : B}
              → HEq₃ A B α a b ≃ HEq₄ A B α a b

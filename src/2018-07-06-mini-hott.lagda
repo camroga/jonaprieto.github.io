@@ -870,7 +870,7 @@ transport-family-id idp u = idp
 transport-fun
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
   → (p : x == y) → (f : A x → B x)
-  -------------------------------------------------------------------
+  -----------------------------------------------------------------
   → tr (λ x → (A x → B x)) p f == (λ x → tr B p (f (tr A (! p) x)))
 transport-fun idp f = idp
 \end{code}
