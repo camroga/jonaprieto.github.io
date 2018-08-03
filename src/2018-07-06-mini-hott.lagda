@@ -7,9 +7,9 @@ toc: true
 agda: true
 ---
 
-The following is an basic overview of homotopy type theory (HoTT) formalized in
-Agda in just one-file. The present development was type-checked by Agda 2.5.4.
-No other libraries are required to type-check this one.
+This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
+only one file and has been type-checked by Agda 2.5.4. No other libraries are
+required to type-check this file.
 
 To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
 type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
@@ -75,7 +75,9 @@ Its eliminator:
 
 \begin{code}
 -- Ex falso quodlibet
-exfalso : ∀ {ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
+exfalso
+  : ∀ {ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
+
 exfalso ()
 
 -- synonyms of exfalso
@@ -86,7 +88,9 @@ Empty-elim = exfalso
 A useful convention
 \begin{code}
 -- Negation
-¬ : ∀ {ℓ} → Type ℓ → Type ℓ
+¬
+  : ∀ {ℓ} → Type ℓ → Type ℓ
+
 ¬ A = (A → ⊥ {lzero})
 \end{code}
 
@@ -135,7 +139,8 @@ open Σ public
 Shorter notation for Π-types.
 
 \begin{code}
-Π : ∀ {ℓᵢ ℓⱼ}
+Π
+  : ∀ {ℓᵢ ℓⱼ}
   → (A : Type ℓᵢ) (P : A → Type ℓⱼ)
   --------------------------------
   → Type (ℓᵢ ⊔ ℓⱼ)
@@ -148,10 +153,11 @@ Shorter notation for Π-types.
 Product type as a particular case of the sigma
 
 \begin{code}
-_×_ : ∀ {ℓᵢ ℓⱼ}
-    → (A : Type ℓᵢ) (B : Type ℓⱼ)
-    ----------------------------
-    → Type (ℓᵢ ⊔ ℓⱼ)
+_×_
+  : ∀ {ℓᵢ ℓⱼ}
+  → (A : Type ℓᵢ) (B : Type ℓⱼ)
+  ----------------------------
+  → Type (ℓᵢ ⊔ ℓⱼ)
 
 A × B = Σ A (λ _ → B)
 \end{code}
@@ -202,13 +208,19 @@ Nat = ℕ
 
 The identity function with implicit type.
 \begin{code}
-id : ∀ {ℓ} {A : Type ℓ} → A → A
+id
+  : ∀ {ℓ} {A : Type ℓ}
+  → A → A
+
 id a = a
 \end{code}
 
 The identity function on a type `A` is `idf A`.
 \begin{code}
-idf : ∀ {ℓᵢ} (A : Type ℓᵢ) → (A → A)
+idf
+  : ∀ {ℓᵢ}
+  → (A : Type ℓᵢ) → (A → A)
+
 idf A = λ x → x
 \end{code}
 
@@ -217,10 +229,12 @@ idf A = λ x → x
 Constant function at some point `b` is `cst b`
 
 \begin{code}
-cst : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
-    → (b : B)
-    ---------
-    → (A → B)
+cst
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
+  → (b : B)
+  ---------
+  → (A → B)
+
 cst b = λ _ → b
 \end{code}
 
@@ -230,19 +244,22 @@ A more sophisticated composition function that can handle dependent functions.
 
 \begin{code}
 infixr 80 _∘_
-_∘_ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
-    → (g : {a : A} → Π (B a) (C a))
-    → (f : Π A B)
-    -------------------------------
-    → Π A (λ a → C a (f a))
+_∘_
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
+  → (g : {a : A} → Π (B a) (C a))
+  → (f : Π A B)
+  -------------------------------
+  → Π A (λ a → C a (f a))
+
 g ∘ f = λ x → g (f x)
 
 -- synonym for composition
-_//_ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
-    → (f : Π A B)
-    → (g : {a : A} → Π (B a) (C a))
-    -------------------------------
-    → Π A (λ a → C a (f a))
+_//_
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
+  → (f : Π A B)
+  → (g : {a : A} → Π (B a) (C a))
+  -------------------------------
+  → Π A (λ a → C a (f a))
 
 f // g = g ∘ f
 \end{code}
@@ -251,10 +268,11 @@ f // g = g ∘ f
 
 \begin{code}
 infixr 0 _$_
-_$_ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ}
-    → (∀ x → B x)
-    -------------
-    → (∀ x → B x)
+_$_
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : A → Type ℓⱼ}
+  → (∀ x → B x)
+  -------------
+  → (∀ x → B x)
 
 f $ x = f x
 \end{code}
@@ -262,10 +280,11 @@ f $ x = f x
 ### Curryfication
 
 \begin{code}
-curry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
-      → (∀ s → C s)
-      ---------------------
-      → (∀ x y → C (x , y))
+curry
+  : ∀ {i j k} {A : Type i} {B : A → Type j} {C : Σ A B → Type k}
+  → (∀ s → C s)
+  ---------------------
+  → (∀ x y → C (x , y))
 
 curry f x y = f (x , y)
 \end{code}
@@ -273,10 +292,11 @@ curry f x y = f (x , y)
 ### Uncurryfication
 
 \begin{code}
-uncurry : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Type k}
-        → (∀ x y → C x y)
-        -------------------------
-        → (∀ s → C (π₁ s) (π₂ s))
+uncurry
+  : ∀ {i j k} {A : Type i} {B : A → Type j} {C : ∀ x → B x → Type k}
+  → (∀ x y → C x y)
+  -------------------------
+  → (∀ s → C (π₁ s) (π₂ s))
 
 uncurry f (x , y) = f x y
 \end{code}
@@ -285,7 +305,9 @@ uncurry f (x , y) = f x y
 
 \begin{code}
 -- how to use it ❓
-⟨⟩ : ∀ {i} {A : Type i} {{a : A}} → A
+⟨⟩
+  : ∀ {i} {A : Type i} {{a : A}} → A
+
 ⟨⟩ {{a}} = a
 \end{code}
 
@@ -308,8 +330,11 @@ Path = _==_
 \end{code}
 
 \begin{code}
-refl : ∀ {ℓᵢ} {A : Type ℓᵢ}
-     → (a : A) → a == a
+refl
+  : ∀ {ℓᵢ} {A : Type ℓᵢ}
+  → (a : A)
+  ---------
+  → a == a
 
 refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 \end{code}
@@ -319,43 +344,52 @@ refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 *Paulin-Mohring J rule*
 
 \begin{code}
-J : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
+J
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
   → (B : (a' : A) (p : a == a') → Type ℓⱼ)
   → (d : B a idp)
   ----------------------------------------
   → {a' : A} (p : a == a') → B a' p
+
 J {a = a} B d idp = d
 \end{code}
 
 \begin{code}
-J' : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
-   → (B : (a' : A) (p : a' == a) → Type ℓⱼ)
-   → (d : B a idp)
-   ----------------------------------------
-   → {a' : A} (p : a' == a) → B a' p
+J'
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
+  → (B : (a' : A) (p : a' == a) → Type ℓⱼ)
+  → (d : B a idp)
+  ----------------------------------------
+  → {a' : A} (p : a' == a) → B a' p
 
 J' {a = a} B d idp = d
 \end{code}
 
-##### Composition of paths
-
-![path](/assets/ipe-images/path-concatenation.png)
+#### Composition of paths
 
 \begin{code}
 infixl 50 _·_
-_·_ : ∀ {ℓ} {A : Type ℓ} {x y z : A}
-    → (p : x == y)
-    → (q : y == z)
-    --------------
-    → x == z
+_·_
+  : ∀ {ℓ} {A : Type ℓ} {x y z : A}
+  → (p : x == y)
+  → (q : y == z)
+  --------------
+  → x == z
 
 _·_ idp q = q
 \end{code}
 
-##### Inverse of paths
+![path](/assets/ipe-images/path-concatenation.png)
+
+#### Inverse of paths
 
 \begin{code}
-inv : ∀ {ℓ} {A : Type ℓ} {a b : A} → a == b → b == a
+inv
+  : ∀ {ℓ} {A : Type ℓ} {a b : A}
+  → a == b
+  --------
+  → b == a
+
 inv idp = idp
 
 -- synonyms for inverse path
@@ -366,13 +400,8 @@ infixr 60 !_
 !_  = inv
 \end{code}
 
-\begin{code}
--- another common notation
-_² : ∀ {ℓ} {A : Type ℓ} {a : A} → a == a → a == a
-p ² = p · p
-\end{code}
+#### Associativity of composition
 
-##### Associativity of composition
 - Left associativity
 \begin{code}
 ∘-lassoc
@@ -399,16 +428,15 @@ p ² = p · p
 
 \begin{code}
 data HEq {ℓ} (A : Type ℓ)
-            : (B : Type ℓ)
-            → (α : A == B) (a : A) (b : B)
-            → Type ℓ where
+           : (B : Type ℓ)
+           → (α : A == B) (a : A) (b : B)
+           → Type ℓ where
   idp : ∀ {a : A} → HEq A A idp a a
 \end{code}
 
 ## Equational reasoning
 
 Equational reasoning is a way to write readable chains of equalities.
-The idea is that you can write the following:
 
 {% raw %}
 ```agda
@@ -424,43 +452,71 @@ The idea is that you can write the following:
 where `p` is a path from `a` to `b`, `q` is a path from `b` to `c`, and so on.
 
 \begin{code}
-
 module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
+\end{code}
 
+\begin{code}
+--
   infixr 2 _==⟨⟩_
-  _==⟨⟩_ : ∀ (x {y} : A) → x == y → x == y
+  _==⟨⟩_
+    : ∀ (x {y} : A)
+    → x == y → x == y
+
   _ ==⟨⟩ p = p
 
   -- synonyms for _==⟨⟩
-  _==⟨idp⟩_ = _==⟨⟩_
+  _==⟨idp⟩_  = _==⟨⟩_
   _==⟨refl⟩_ = _==⟨⟩_
-
-  infixr 2 _==⟨_⟩_
-  _==⟨_⟩_ :  (x : A) {y z : A} → x == y → y == z → x == z
-  _ ==⟨ p1 ⟩ p2 = p1 · p2
-
-  infix  3 _∎
-  _∎ : (x : A) → x == x
-  _∎ = λ x → idp
-
-  infix  1 begin_
-  begin_ : {x y : A} → x == y → x == y
-  begin_ p = p
-
-open EquationalReasoning public
 \end{code}
 
+\begin{code}
+-- chain
+  infixr 2 _==⟨_⟩_
+  _==⟨_⟩_
+    : (x : A) {y z : A}
+    → x == y
+    → y == z
+    → x == z
+
+  _ ==⟨ thm ⟩ q = thm · q
+\end{code}
+
+\begin{code}
+-- Q.E.D
+  infix 3 _∎
+  _∎
+    : (x : A)
+    → x == x
+
+  _∎ = λ x → idp
+\end{code}
+
+\begin{code}
+-- Begin
+  infix 1 begin_
+  begin_
+    : {x y : A}
+    → x == y
+    → x == y
+
+  begin_ p = p
+\end{code}
+
+\begin{code}
+open EquationalReasoning public
+\end{code}
 ## Actions on paths
 
 Functions are functors to equalities.  In other words, functions
 preserve equalities.
 
 \begin{code}
-ap : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
-   → (f : A → B) {a₁ a₂ : A}
-   → a₁ == a₂
-   --------------
-   → f a₁ == f a₂
+ap
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
+  → (f : A → B) {a₁ a₂ : A}
+  → a₁ == a₂
+  --------------
+  → f a₁ == f a₂
 
 ap f idp = idp
 \end{code}
@@ -503,12 +559,13 @@ Then, we can now put the lemma in front:
 Lastly, we can also define actions on two paths:
 
 \begin{code}
-ap₂ : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {b₁ b₂ : B}
-    → (f : A → B → C)
-    → {a₁ a₂ : A} → (a₁ == a₂)
-    → {b₁ b₂ : B} → (b₁ == b₂)
-    --------------------------
-    → f a₁ b₁  == f a₂ b₂
+ap₂
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {b₁ b₂ : B}
+  → (f : A → B → C)
+  → {a₁ a₂ : A} → (a₁ == a₂)
+  → {b₁ b₂ : B} → (b₁ == b₂)
+  --------------------------
+  → f a₁ b₁  == f a₂ b₂
 
 ap₂ f idp idp = idp
 \end{code}
@@ -516,19 +573,21 @@ ap₂ f idp idp = idp
 ### Lemmas
 
 \begin{code}
-ap-· : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
-     → (f : A → B) → (p : a == b) → (q : b == c)
-     -------------------------------------------
-     → ap f (p · q) == ap f p · ap f q
+ap-·
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
+  → (f : A → B) → (p : a == b) → (q : b == c)
+  -------------------------------------------
+  → ap f (p · q) == ap f p · ap f q
 
 ap-· f idp q = refl (ap f q)
 \end{code}
 
 \begin{code}
-ap-inv : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
-       → (f : A → B) → (p : a == b)
-       ----------------------------
-       → ap f (p ⁻¹) == (ap f p) ⁻¹
+ap-inv
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
+  → (f : A → B) → (p : a == b)
+  ----------------------------
+  → ap f (p ⁻¹) == (ap f p) ⁻¹
 
 ap-inv f idp = idp
 
@@ -549,19 +608,21 @@ ap-comp f g idp = idp
 \end{code}
 
 \begin{code}
-ap-id : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
-      → (p : a == b)
-      --------------
-      → ap id p == p
+ap-id
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
+  → (p : a == b)
+  --------------
+  → ap id p == p
 
 ap-id idp = idp
 \end{code}
 
 \begin{code}
-ap-const : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C}
-         → (p : a == b)
-         -----------------------
-         → ap (λ _ → c) p == idp
+ap-const
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C}
+  → (p : a == b)
+  -----------------------
+  → ap (λ _ → c) p == idp
 
 ap-const {c = c} idp = refl (refl c)
 \end{code}
@@ -571,62 +632,72 @@ ap-const {c = c} idp = refl (refl c)
 Some properties on the groupoid structure of equalities
 
 \begin{code}
-·-runit : ∀ {ℓ} {A : Type ℓ} {a b : A}
-        → (p : a == b)
-        --------------
-        → p == p · idp
+·-runit
+  : ∀ {ℓ} {A : Type ℓ} {a b : A}
+  → (p : a == b)
+  --------------
+  → p == p · idp
 
 ·-runit idp = idp
 \end{code}
 
 \begin{code}
-·-lunit : ∀ {ℓ} {A : Type ℓ} {a b : A}
-        → (p : a == b)
-        --------------
-        → p == idp · p
+·-lunit
+  : ∀ {ℓ} {A : Type ℓ} {a b : A}
+  → (p : a == b)
+  --------------
+  → p == idp · p
 
 ·-lunit idp = idp
 \end{code}
 
 \begin{code}
-·-linv : ∀ {ℓ} {A : Type ℓ} {a b : A}
-        → (p : a == b)
-        ----------------
-        → ! p · p == idp
+·-linv
+  : ∀ {ℓ} {A : Type ℓ} {a b : A}
+  → (p : a == b)
+  ----------------
+  → ! p · p == idp
 
 ·-linv idp = idp
+\end{code}
 
-·-rinv : ∀ {ℓ} {A : Type ℓ} {a b : A}
-      → (p : a == b)
-      ----------------
-      → p · ! p == idp
+\begin{code}
+·-rinv
+  : ∀ {ℓ} {A : Type ℓ} {a b : A}
+  → (p : a == b)
+  ----------------
+  → p · ! p == idp
 
 ·-rinv idp = idp
 \end{code}
 
 \begin{code}
-involution : ∀ {ℓ} {A : Type ℓ} {a b : A} {p : a == b}
-          ---------------
-           → ! (! p) == p
+involution
+  : ∀ {ℓ} {A : Type ℓ} {a b : A}
+  → {p : a == b}
+  ---------------
+  → ! (! p) == p
 
 involution {p = idp} = idp
 \end{code}
 
 \begin{code}
-·-assoc : ∀ {ℓ} {A : Type ℓ} {a b c d : A}
-        → (p : a == b) → (q : b == c) → (r : c == d)
-        --------------------------------------------
-        → p · q · r == p · (q · r)
+·-assoc
+  : ∀ {ℓ} {A : Type ℓ} {a b c d : A}
+  → (p : a == b) → (q : b == c) → (r : c == d)
+  --------------------------------------------
+  → p · q · r == p · (q · r)
 
 ·-assoc idp q r = idp
 \end{code}
 
 \begin{code}
-·-cancellation : ∀ {ℓ} {A : Type ℓ} {a : A}
-               → (p : a == a) → (q : a == a)
-               → p · q == p
-               -----------------------------
-               → q == idp
+·-cancellation
+  : ∀ {ℓ} {A : Type ℓ} {a : A}
+  → (p : a == a) → (q : a == a)
+  → p · q == p
+  -----------------------------
+  → q == idp
 
 ·-cancellation {a} p q α =
     begin
@@ -639,11 +710,12 @@ involution {p = idp} = idp
 \end{code}
 
 \begin{code}
-!-· : ∀ {ℓ} {A : Type ℓ} {a b : A}
-    → (p : a == b)
-    → (q : b == a)
-    --------------------------
-    → ! (p · q) == ! q · ! p
+!-·
+  : ∀ {ℓ} {A : Type ℓ} {a b : A}
+  → (p : a == b)
+  → (q : b == a)
+  --------------------------
+  → ! (p · q) == ! q · ! p
 
 !-· idp q = ·-runit (! q)
 \end{code}
@@ -653,11 +725,12 @@ involution {p = idp} = idp
 ![path](/assets/ipe-images/transport-fiber-minihott.png)
 
 \begin{code}
-transport : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
-          → (C : A → Type ℓⱼ) {a₁ a₂ : A}
-          → (p : a₁ == a₂)
-          -------------------------------
-          → (C a₁ → C a₂)
+transport
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+  → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+  → (p : a₁ == a₂)
+  -------------------------------
+  → (C a₁ → C a₂)
 
 transport C idp = (λ x → x)
 
@@ -666,21 +739,22 @@ tr     = transport
 transp = transport
 
 -- Star notation for transport
-_✶ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
-   → {C : A → Type ℓⱼ} {a₁ a₂ : A}
-   → (p : a₁ == a₂)
-   -------------------------------
-   → (C a₁ → C a₂)
+_✶
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : A → Type ℓⱼ} {a₁ a₂ : A}
+  → (p : a₁ == a₂)
+  ----------------
+  → (C a₁ → C a₂)
 
 _✶ {ℓᵢ}{ℓⱼ}{A}{C} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} C
 
 \end{code}
 
 \begin{code}
-coe : ∀ {ℓ} {A B : Type ℓ}
-    → A == B
-    ---------
-    → (A → B)
+coe
+  : ∀ {ℓ} {A B : Type ℓ}
+  → A == B
+  ---------
+  → (A → B)
 
 coe p A = transport (λ X → X) p A
 \end{code}
@@ -697,10 +771,11 @@ also denoted by `PathOver C α c₁ c₂`.
 ![path](/assets/ipe-images/pathover-3-minihott.png)
 
 \begin{code}
-PathOver : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
-        → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂)
-        ----------------------------------------
-        → Type ℓⱼ
+PathOver
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+  → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂)
+  ----------------------------------------
+  → Type ℓⱼ
 
 PathOver C α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
@@ -712,14 +787,16 @@ syntax PathOver B p u v = u == v [ B ↓ p ]
 
 
 ### Lemmas
+
 Some lemmas on the transport operation
 
 \begin{code}
-lift : ∀ {ℓᵢ} {A : Type ℓᵢ} {a₁ a₂ : A} {ℓⱼ} {C : A → Type ℓⱼ}
-     → (u : C a₁)
-     → (α : a₁ == a₂)
-     -----------------------------------
-     → (a₁ , u) == (a₂ , transport C α u)
+lift
+  : ∀ {ℓᵢ} {A : Type ℓᵢ} {a₁ a₂ : A} {ℓⱼ} {C : A → Type ℓⱼ}
+  → (u : C a₁)
+  → (α : a₁ == a₂)
+  ------------------------------------
+  → (a₁ , u) == (a₂ , transport C α u)
 
 lift {a₁ = a₁} u idp = refl (a₁ , u)
 \end{code}
@@ -738,7 +815,9 @@ transport-const idp _ = idp
 \begin{code}
 transport-concat-r
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a : A} {x y : A}
-  → (p : x == y) → (q : a == x)
+  → (p : x == y)
+  → (q : a == x)
+  ----------------------------------------
   →  transport (λ x → a == x) p q == q · p
 
 transport-concat-r idp q = ·-runit q
@@ -749,7 +828,7 @@ transport-concat-l
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a : A} {x y : A}
   → (p : x == y)
   → (q : x == a)
-  ---------------------------------------------
+  ------------------------------------------
   → transport (λ x → x == a) p q == ! p · q
 transport-concat-l idp q = idp
 \end{code}
@@ -758,6 +837,7 @@ transport-concat-l idp q = idp
 transport-concat
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {x y : A}
   → (p : x == y) → (q : x == x)
+  ---------------------------------------------
   → transport (λ x → x == x) p q == ! p · q · p
 
 transport-concat idp q = ·-runit q
@@ -782,7 +862,7 @@ transport-comp
   ------------------------------------------------------------
   → ((transport P q) ∘ (transport P p)) == transport P (p · q)
 
-transport-comp {P = P} idp q = idp {a = (transport P q)}
+transport-comp {P = P} idp q = refl (transport P q)
 \end{code}
 
 \begin{code}
@@ -792,7 +872,7 @@ transport-comp-h
   ----------------------------------------------------------------
   → ((transport P q) ∘ (transport P p)) x == transport P (p · q) x
 
-transport-comp-h {P = P} idp q x = idp {a =  (transport P q x)}
+transport-comp-h {P = P} idp q x = refl (transport P q x)
 \end{code}
 
 \begin{code}
@@ -828,23 +908,43 @@ transport-eq-fun-r {b = b} g p q =
 \end{code}
 
 \begin{code}
-transport-inv-l
+transport-inv
+  : ∀ {ℓᵢ ℓⱼ} {X : Type ℓᵢ}{A : X → Type ℓⱼ}{x y : X}
+  → (p : x == y)
+  → {a : A y}
+  --------------------------------------
+  → tr (λ v → A v) p (tr A (! p) a) == a
+
+transport-inv {A = A}  idp {a = a} =
+  begin
+    tr (λ v → A v) idp (tr A (! idp) a)
+      ==⟨ idp ⟩
+    tr A (! idp · idp) a
+      ==⟨⟩
+    tr A idp a
+      ==⟨ idp ⟩
+    a
+  ∎
+\end{code}
+
+\begin{code}
+coe-inv-l
   : ∀ {ℓ} {A B : Type ℓ}
   → (p : A == B) → (b : B)
   ------------------------------------------------------------
   → transport (λ v → v) p (transport (λ v → v) (inv p) b) == b
 
-transport-inv-l idp b = idp
+coe-inv-l idp b = idp
 \end{code}
 
 \begin{code}
-transport-inv-r
+coe-inv-r
   : ∀ {ℓ} {A B : Type ℓ}
   → (p : A == B) → (a : A)
   ------------------------------------------------------------
-  → transport (λ v → v) (inv p) (transport (λ v → v) p a) == a
+  → transport (λ v → v) (! p) (transport (λ v → v) p a) == a
 
-transport-inv-r idp b = idp
+coe-inv-r idp b = idp
 \end{code}
 
 \begin{code}
@@ -854,6 +954,7 @@ transport-family
   → (p : x == y) → (u : P (f x))
   -------------------------------------------------
   → transport (P ∘ f) p u == transport P (ap f p) u
+
 transport-family idp u = idp
 \end{code}
 
@@ -863,6 +964,7 @@ transport-family-id
   → {x y : A} → (p : x == y) → (u : P x)
   ----------------------------------------------
   → transport (λ a → P a) p u == transport P p u
+
 transport-family-id idp u = idp
 \end{code}
 
@@ -872,6 +974,7 @@ transport-fun
   → (p : x == y) → (f : A x → B x)
   -----------------------------------------------------------------
   → tr (λ x → (A x → B x)) p f == (λ x → tr B p (f (tr A (! p) x)))
+
 transport-fun idp f = idp
 \end{code}
 
@@ -884,157 +987,274 @@ transport-fun-h
   → (b : A y)
   --------------------------------------------------------------
   → (tr (λ x → (A x → B x)) p f) b == tr B p (f (tr A (! p) b))
+
 transport-fun-h idp f b = idp
 \end{code}
 
-Now, let us see when we transport dependent functions:
+Now, when we transport dependent functions this is what we got:
 
 ![path](/assets/ipe-images/transport-fun-dependent.png)
 
 \begin{code}
 transport-fun-dependent
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
-      {B : (x : X) → (a : A x) → Type ℓₖ}{x y : X}
+  → {B : (x : X) → (a : A x) → Type ℓₖ}{x y : X}
   → (p : x == y)
   → (f : (a : A x) → B x a)
   -------------------------------------------------------------------
   → (a' : A y)
   → (tr (λ x → (a : A x) → B x a) p f) a'
     == tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
+
 transport-fun-dependent idp f a' = idp
 \end{code}
-
-# 🚧 Reviewing below...
 
 ## Basic type lemmas
 
 ### Sigma type
 
+Our context:
+
 \begin{code}
 module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
+\end{code}
 
-  -- Two dependent pairs are equal if they are componentwise equal.
+\begin{code}
+-- Two dependent pairs are equal if they are componentwise equal.
   Σ-componentwise
     : {v w : Σ A P}
     → v == w
+    ----------------------------------------------
     → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
-  Σ-componentwise  idp = (idp , idp)
 
+  Σ-componentwise  idp = (idp , idp)
+\end{code}
+
+\begin{code}
+--
   Σ-bycomponents
     : {v w : Σ A P}
     → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
+    -----------------------------------------------
     → v == w
+
   Σ-bycomponents (idp , idp) = idp
 
   pair= = Σ-bycomponents
+\end{code}
 
+\begin{code}
+-- Uniqueness principle property for products
   uppt : (x : Σ A P) → (π₁ x , π₂ x) == x
   uppt (a , b) = idp
+\end{code}
 
+\begin{code}
+-- Lemma.
   Σ-ap-π₁
     : {a₁ a₂ : A} {b₁ : P a₁} {b₂ : P a₂}
-    → (α : a₁ == a₂) → (γ : transport P α b₁ == b₂)
+    → (α : a₁ == a₂)
+    → (γ : transport P α b₁ == b₂)
+    ------------------------------
     → ap π₁ (pair= (α , γ)) == α
+
   Σ-ap-π₁ idp idp = idp
 
+  -- synonym for this lemma
   ap-π₁-pair= = Σ-ap-π₁
+\end{code}
 
+\begin{code}
 open Sigma public
 \end{code}
 
+\begin{code}
+transport-fun-dependent-bezem
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
+      {B : (x : X) → (a : A x) → Type ℓₖ} {x y : X}
+  → (p : x == y)
+  → (f : (a : A x) → B x a)
+  → (a' : A y)
+  -------------------------
+  → (tr (λ x → (a : A x) → B x a) p f) a'
+  == tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , transport-inv p )) (f (tr A (! p) a'))
+
+transport-fun-dependent-bezem idp f a' = idp
+\end{code}
 
 ### Cartesian product
 
 \begin{code}
 module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 
-  -- In a pair, the equality of the two components of the pairs is
-  -- equivalent to equality of the two pairs.
   prodComponentwise
     : {x y : A × B}
     → (x == y)
+    ---------------------------------
     → (π₁ x == π₁ y) × (π₂ x == π₂ y)
+
   prodComponentwise {x = x} idp = refl (π₁ x) , refl (π₂ x)
 
   prodByComponents
     : {x y : A × B}
     → (π₁ x == π₁ y) × (π₂ x == π₂ y)
+    ---------------------------------
     → (x == y)
+
   prodByComponents {x = a , b} (idp , idp) = refl (a , b)
 
-  -- This is in fact an equivalence.
   prodCompInverse
-    : {x y : A × B} (b : ((π₁ x == π₁ y) × (π₂ x == π₂ y)))
+    : {x y : A × B}
+    → (b : (π₁ x == π₁ y) × (π₂ x == π₂ y))
+    ---------------------------------------------
     → prodComponentwise (prodByComponents b) == b
+
   prodCompInverse {x} (idp , idp) = refl (refl (π₁ x) , refl (π₂ x))
 
   prodByCompInverse
-    : {x y : A × B} (b : x == y)
+    : {x y : A × B}
+    → (b : x == y)
+    ---------------------------------------------
     → prodByComponents (prodComponentwise b) == b
+
   prodByCompInverse {x = x} idp = refl (refl x)
 
 open CartesianProduct
 \end{code}
 
-
 ## Action on dependent paths
 
-More properties and lemmas on equality, transporting and function application.
-
 \begin{code}
-apd : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
-    → (f : (a : A) → P a) → (p : a == b)
-    → transport P p (f a) == f b
+apd
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
+  → (f : (a : A) → P a) → (p : a == b)
+  ------------------------------------
+  → transport P p (f a) == f b
+
 apd f idp = idp
 \end{code}
 
 ## Homotopy
 
-In a type-theoretical sense, a homotopy between two
-functions is a family of equalities between their applications.
+> In a type-theoretical sense, a homotopy between two
+> functions is a family of equalities between their applications.
 
+The context:
 \begin{code}
 module Homotopy {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
-  -- A homotopy is a natural isomorphism between two functions, we will write
-  -- f ∼ g when (f x == g x) for all x.
-  homotopy : (f g : ((x : A) → P x)) → Type (ℓᵢ ⊔ ℓⱼ)
-  homotopy f g = (x : A) → f x == g x
+\end{code}
 
+Let $$f , g : \prod\limits_{(x:A)} P(x)$$ be two sections of a
+type family $$P : A \to \mathcal{U}$$. A **homotopy** from $$f$$ to $$g$$
+is a dependent function of type
+
+$$
+(f \sim g) :\equiv \prod\limits_{x : A} (f(x) = g(x)).
+$$
+
+\begin{code}
+  homotopy
+    : (f g : Π A P)
+    ---------------
+    → Type (ℓᵢ ⊔ ℓⱼ)
+
+  homotopy f g = ∀ (x : A) → f x == g x
+
+  -- The notation for homotopy
   _∼_ : (f g : ((x : A) → P x)) → Type (ℓᵢ ⊔ ℓⱼ)
   f ∼ g = homotopy f g
+\end{code}
 
-  -- Homotopy is an equivalence relation
-  h-refl : (f : (x : A) → P x) → f ∼ f
+\begin{code}
+-- Homotopy is an equivalence relation
+  h-refl
+    : (f : Π A P)
+    -------------
+    → f ∼ f
+
   h-refl f x = idp
+\end{code}
 
-  h-simm : (f g : (x : A) → P x) → f ∼ g → g ∼ f
-  h-simm f g u x = inv (u x)
+\begin{code}
+  h-sym
+    : (f g : Π A P)
+    → f ∼ g
+    -------
+    → g ∼ f
 
-  h-comp : (f g h : (x : A) → P x) → f ∼ g → g ∼ h → f ∼ h
-  h-comp f g h u v x = (u x)·(v x)
+  h-sym _ _ e x = ! (e x)
+\end{code}
 
-  _●_ : {f g h : (x : A) → P x} → f ∼ g → g ∼ h → f ∼ h
-  α ● β = h-comp _ _ _ α β
+\begin{code}
+  h-comp
+    : {f g h : Π A P}
+    → f ∼ g
+    → g ∼ h
+    -------
+    → f ∼ h
+  h-comp u v x = (u x)·(v x)
+\end{code}
 
+\begin{code}
+  -- synonym for h-comp
+  _●_
+    : {f g h : Π A P}
+    → f ∼ g
+    → g ∼ h
+    -------
+    → f ∼ h
+  α ● β = h-comp α β
+\end{code}
+
+\begin{code}
 open Homotopy public
 \end{code}
 
-### Composition
+### Composition with homotopies
 
 \begin{code}
--- Composition with homotopies
 module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} where
-  hl-comp : (f g : A → B) → (j k : B → C) → f ∼ g → j ∼ k → (j ∘ f) ∼ (k ∘ g)
-  hl-comp f g j k α β x = ap j (α x) · β (g x)
+\end{code}
 
-  rcomp-∼ : (f : A → B) → {j k : B → C} → j ∼ k → (j ∘ f) ∼ (k ∘ f)
-  rcomp-∼ f β = hl-comp _ _ _ _ (h-refl f) β
+\begin{code}
+  hl-comp
+    : {f g : A → B}
+    → {j k : B → C}
+    → f ∼ g
+    → j ∼ k
+    -------------------
+    → (j ∘ f) ∼ (k ∘ g)
 
-  lcomp-∼ : {f g : A → B} → (j : B → C) → f ∼ g → (j ∘ f) ∼ (j ∘ g)
-  lcomp-∼ j α = hl-comp _ _ _ _ α (h-refl j)
+  hl-comp {g = g}{j = j} α β x = ap j (α x) · β (g x)
+\end{code}
 
+\begin{code}
+  rcomp-∼
+    : (f : A → B)
+    → {j k : B → C}
+    → j ∼ k
+    -------------------
+    → (j ∘ f) ∼ (k ∘ f)
+
+  rcomp-∼ f β = hl-comp (h-refl f) β
+\end{code}
+
+\begin{code}
+  lcomp-∼
+    : {f g : A → B}
+    → (j : B → C)
+    → f ∼ g
+    -------------------
+    → (j ∘ f) ∼ (j ∘ g)
+
+  lcomp-∼ j α = hl-comp α (h-refl j)
+\end{code}
+
+\begin{code}
 open HomotopyComposition
 \end{code}
+
+# 🚧🚧🚧🚧🚧🚧🚧🚧[ Constructing ]🚧🚧🚧🚧🚧🚧🚧🚧🚧
 
 ### Naturality
 
@@ -1217,10 +1437,19 @@ module FunExt-Transport-DFun
 
   -- Lemma 2.9.7
   funext-transport-dfun
-    : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
+    : (p : x == y)
+    → (f : (a : A x) → B x a)
+    → (g : (a : A y) → B y a)
     -------------------------------------------------------------------------------------------
     → ((p ✶) f == g) ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
   funext-transport-dfun idp f g = eqFunExt
+
+  -- funext-transport-dfun₂
+  --   : (p : x == y)
+       -- → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
+  --   -------------------------------------------------------------------------------------------
+  --   → ((p ✶) f == g) ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , transport-inv {! p  !})) (f a) == g ((p ✶) a))
+  -- funext-transport-dfun₂ idp f g = eqFunExt
 
   funext-transport-dfun-l
     : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
@@ -1518,7 +1747,7 @@ module Quasiinverses {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
   biinv-qinv f ((h , α) , (g , β)) = g , (β , δ)
     where
       γ1 : g ∼ ((h ∘ f) ∘ g)
-      γ1 = rcomp-∼ g (h-simm (h ∘ f) id α)
+      γ1 = rcomp-∼ g (h-sym (h ∘ f) id α)
 
       γ2 : ((h ∘ f) ∘ g) ∼ (h ∘ (f ∘ g))
       γ2 x = idp
@@ -1664,7 +1893,7 @@ open EquivalenceReasoning public
 module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
 
   pair=Equiv : {v w : Σ A P}
-    → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w) ≃ v == w
+    → Σ (π₁ v == π₁ w) (λ p → tr (λ a → P a) p (π₂ v) == π₂ w) ≃ v == w
   pair=Equiv = qinv-≃ Σ-bycomponents (Σ-componentwise , HΣ₁ , HΣ₂)
     where
       HΣ₁ : Σ-bycomponents ∘ Σ-componentwise ∼ id
@@ -1721,7 +1950,7 @@ module Univalence where
     idtoeqv : A == B → A ≃ B
     idtoeqv p = qinv-≃
       (transport (λ X → X) p)
-      (transport (λ X → X) (inv p) , (transport-inv-l p , transport-inv-r p))
+      (transport (λ X → X) (inv p) , (coe-inv-l p , coe-inv-r p))
 
     -- The Univalence axiom induces an equivalence between equalities
     -- and equivalences.

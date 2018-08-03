@@ -51,6 +51,13 @@ base = !base
 postulate
   loop : base == base
 
+-- for loop^2
+_²
+  : ∀ {ℓ} {A : Type ℓ} {a : A}
+  → a == a → a == a
+
+p ² = p · p
+
 -- Recursion principle on points
 S¹-rec : ∀ {ℓ}
        → (A : Type ℓ)
@@ -569,28 +576,29 @@ f-g = pS-ind (λ ps → (f ∘ g) ps == id ps) q₀ q₁ dpath₁ dpath₂
       ∎
     --
     dpath₂ : q₁ == q₀ [ (λ z → (f ∘ g) z == id z) ↓ p₁₀ ]
-    dpath₂ = begin
-            transport (λ z → (f ∘ g) z == id z) p₁₀ q₁
-              ==⟨ transport-eq-fun (f ∘ g) id p₁₀ q₁ ⟩
-            ! ap (f ∘ g) p₁₀ · q₁ · ap id p₁₀
-              ==⟨ ap (! ap (f ∘ g) p₁₀ · q₁ ·_) (ap-id p₁₀) ⟩
-            ! ap (f ∘ g) p₁₀ · q₁ · p₁₀
-              ==⟨ ap (λ r → ! r · q₁ · p₁₀) (! ap-comp g f p₁₀) ⟩
-            ! ap f (ap g p₁₀) · q₁ · p₁₀
-              ==⟨ ap (λ r → ! ap f r · q₁ · p₁₀)
-                     (pS-βrec₁₀ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
-            ! ap f g-p₁₀ · q₁ · p₁₀
-              ==⟨ ap (λ r → ! r · q₁ · p₁₀) lemma-ap-f-γ₁₀ ⟩
-            ! p₁₀ · q₁ · p₁₀
-              ==⟨⟩
-            ! p₁₀ · (p₁₀ · p₀₁) · p₁₀
-              ==⟨ ! (·-assoc (! p₁₀) p₁₀ p₀₁) |in-ctx (_· p₁₀) ⟩
-            (! p₁₀ · p₁₀) · p₀₁ · p₁₀
-              ==⟨ ·-linv p₁₀ |in-ctx (λ r → r · p₀₁ · p₁₀) ⟩
-            idp ·  p₀₁ · p₁₀
-              ==⟨⟩
-            q₀
-          ∎
+    dpath₂ =
+      begin
+        transport (λ z → (f ∘ g) z == id z) p₁₀ q₁
+          ==⟨ transport-eq-fun (f ∘ g) id p₁₀ q₁ ⟩
+        ! ap (f ∘ g) p₁₀ · q₁ · ap id p₁₀
+          ==⟨ ap (! ap (f ∘ g) p₁₀ · q₁ ·_) (ap-id p₁₀) ⟩
+        ! ap (f ∘ g) p₁₀ · q₁ · p₁₀
+          ==⟨ ap (λ r → ! r · q₁ · p₁₀) (! ap-comp g f p₁₀) ⟩
+        ! ap f (ap g p₁₀) · q₁ · p₁₀
+          ==⟨ ap (λ r → ! ap f r · q₁ · p₁₀)
+                 (pS-βrec₁₀ ((Σ S¹ (λ b → P b))) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
+        ! ap f g-p₁₀ · q₁ · p₁₀
+          ==⟨ ap (λ r → ! r · q₁ · p₁₀) lemma-ap-f-γ₁₀ ⟩
+        ! p₁₀ · q₁ · p₁₀
+          ==⟨⟩
+        ! p₁₀ · (p₁₀ · p₀₁) · p₁₀
+          ==⟨ ! (·-assoc (! p₁₀) p₁₀ p₀₁) |in-ctx (_· p₁₀) ⟩
+        (! p₁₀ · p₁₀) · p₀₁ · p₁₀
+          ==⟨ ·-linv p₁₀ |in-ctx (λ r → r · p₀₁ · p₁₀) ⟩
+        idp ·  p₀₁ · p₁₀
+          ==⟨⟩
+        q₀
+      ∎
 \end{code}
 
 \begin{code}
@@ -603,7 +611,7 @@ g-f (s , pₛ) = g-f' s pₛ
 
       where
       qb : (pₛ₁ : P base) → (g ∘ f) (base , pₛ₁) == id (base , pₛ₁)
-      qb true = {!   !}
+      qb true  = {!   !}
       qb false = {!   !}
 
       qpath : qb == qb [(λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) ↓ loop ]
