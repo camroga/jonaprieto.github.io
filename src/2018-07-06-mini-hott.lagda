@@ -697,15 +697,15 @@ involution {p = idp} = idp
   → (p : a == a) → (q : a == a)
   → p · q == p
   -----------------------------
-  → q == idp
+  → q == refl a
 
-·-cancellation {a} p q α =
+·-cancellation {a = a} p q α =
     begin
       q             ==⟨ ap (_· q) (! (·-linv p)) ⟩
       ! p · p · q   ==⟨ (·-assoc (! p) _ _) ⟩
       ! p · (p · q) ==⟨ (ap (! p ·_) α) ⟩
       ! p · p       ==⟨ ·-linv p ⟩
-      idp
+      refl a
     ∎
 \end{code}
 
@@ -745,8 +745,7 @@ _✶
   ----------------
   → (C a₁ → C a₂)
 
-_✶ {ℓᵢ}{ℓⱼ}{A}{C} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} C
-
+_✶ {ℓᵢ}{ℓⱼ}{C = C} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} C
 \end{code}
 
 \begin{code}
@@ -809,7 +808,7 @@ transport-const
   ------------------------------
   → transport (λ _ → B) p b == b
 
-transport-const idp _ = idp
+transport-const idp b = refl b
 \end{code}
 
 \begin{code}
@@ -931,8 +930,8 @@ transport-inv {A = A}  idp {a = a} =
 coe-inv-l
   : ∀ {ℓ} {A B : Type ℓ}
   → (p : A == B) → (b : B)
-  ------------------------------------------------------------
-  → transport (λ v → v) p (transport (λ v → v) (inv p) b) == b
+  ----------------------------------------------------------
+  → transport (λ v → v) p (transport (λ v → v) (! p) b) == b
 
 coe-inv-l idp b = idp
 \end{code}
@@ -941,7 +940,7 @@ coe-inv-l idp b = idp
 coe-inv-r
   : ∀ {ℓ} {A B : Type ℓ}
   → (p : A == B) → (a : A)
-  ------------------------------------------------------------
+  -----------------------------------------------------------
   → transport (λ v → v) (! p) (transport (λ v → v) p a) == a
 
 coe-inv-r idp b = idp
@@ -998,7 +997,7 @@ Now, when we transport dependent functions this is what we got:
 \begin{code}
 transport-fun-dependent
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
-  → {B : (x : X) → (a : A x) → Type ℓₖ}{x y : X}
+  → {B : (x : X) → (a : A x) → Type ℓₖ} {x y : X}
   → (p : x == y)
   → (f : (a : A x) → B x a)
   -------------------------------------------------------------------
@@ -1070,8 +1069,8 @@ open Sigma public
 
 \begin{code}
 transport-fun-dependent-bezem
-  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
-      {B : (x : X) → (a : A x) → Type ℓₖ} {x y : X}
+  : ∀ {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
+      {B : (x : X) → (a : A x) → Type ℓⱼ} {x y : X}
   → (p : x == y)
   → (f : (a : A x) → B x a)
   → (a' : A y)
@@ -1296,8 +1295,14 @@ Contractible types with a center of contraction.
 module Fibers {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  where
 
   -- The fiber of a map over a point is given by
-  fib : (f : A → B) → B → Type (ℓᵢ ⊔ ℓⱼ)
+  fib
+    : (f : A → B)
+    → (b : B)
+    ---------------
+    → Type (ℓᵢ ⊔ ℓⱼ)
+
   fib f b = Σ A (λ a → f a == b)
+
 
   -- A function applied over the fiber returns the original point
   fib-eq : {f : A → B} → {b : B} → (h : fib f b) → f (π₁ h) == b
@@ -1335,17 +1340,23 @@ module Equivalence where
     -- preimage.
     isContrMap : (f : A → B) → Type (ℓᵢ ⊔ ℓⱼ)
     isContrMap f = (b : B) → isContr (fib f b)
+\end{code}
 
+\begin{code}
     -- There exists an equivalence between two types if there exists a
     -- contractible function between them.
     isEquiv : (f : A → B) → Type (ℓᵢ ⊔ ℓⱼ)
     isEquiv = isContrMap
   open DefinitionOfEquivalence public
+\end{code}
 
+\begin{code}
   -- Equivalence of types.
   _≃_ : ∀ {ℓᵢ ℓⱼ}  (A : Type ℓᵢ) (B : Type ℓⱼ) → Type (ℓᵢ ⊔ ℓⱼ)
   A ≃ B = Σ (A → B) isEquiv
+\end{code}
 
+\begin{code}
   module EquivalenceMaps {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 
     -- Maps of an equivalence
@@ -1371,7 +1382,9 @@ module Equivalence where
     rlmap-inverse-h : (eq : A ≃ B) → ((remap eq) ∘ (lemap eq)) ∼ id
     rlmap-inverse-h eq = λ x → rlmap-inverse eq {x}
   open EquivalenceMaps public
+\end{code}
 
+\begin{code}
 open Equivalence public
 \end{code}
 
@@ -1381,29 +1394,43 @@ open Equivalence public
 
 module FunExt {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
   {B : A → Type ℓⱼ} {f g : (a : A) → B a} where
+\end{code}
 
+\begin{code}
   -- Application of an homotopy
   happly : f == g → ((x : A) → f x == g x)
   happly idp x = refl (f x)
+\end{code}
 
+\begin{code}
   -- The axiom of function extensionality postulates that the
   -- application of homotopies is an equivalence.
   postulate axiomFunExt : isEquiv happly
+\end{code}
 
+\begin{code}
   eqFunExt : (f == g) ≃ ((x : A) → f x == g x)
   eqFunExt = happly , axiomFunExt
+\end{code}
 
+\begin{code}
   -- From this, the usual notion of function extensionality follows.
   funext : ((x : A) → f x == g x) → f == g
   funext = remap eqFunExt
+\end{code}
 
+\begin{code}
   -- Beta and eta rules for function extensionality
   funext-β : (h : ((x : A) → f x == g x)) → happly (funext h) == h
   funext-β h = lrmap-inverse eqFunExt
+\end{code}
 
+\begin{code}
   funext-η : (p : f == g) → funext (happly p) == p
   funext-η p = rlmap-inverse eqFunExt
+\end{code}
 
+\begin{code}
 open FunExt public
 \end{code}
 
@@ -1412,21 +1439,42 @@ open FunExt public
 \begin{code}
 module FunExt-Transport
   {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A B : X → Type ℓⱼ} {x y : X} where
+\end{code}
 
+\begin{code}
   funext-transport
     : (p : x == y) → (f : A x → B x) → (g : A y → B y)
+    ------------------------------------------------------------
     → ((p ✶) f == g) ≃ ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a))
+
   funext-transport idp f g = eqFunExt
+\end{code}
 
+\begin{code}
   funext-transport-l
-    : (p : x == y) → (f : A x → B x) → (g : A y → B y)
-    → ((p ✶) f == g) → ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a))
-  funext-transport-l p f g = lemap (funext-transport p _ _)
+    : (p : x == y)
+    → (f : A x → B x)
+    → (g : A y → B y)
+    → ((p ✶) f == g)
+    -------------------------------------------
+    → ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a))
 
+  funext-transport-l p f g = lemap (funext-transport p _ _)
+\end{code}
+
+\begin{code}
   funext-transport-r
-    : (p : x == y) → (f : A x → B x) → (g : A y → B y)
-    → ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a)) → ((p ✶) f == g)
+    : (p : x == y)
+    → (f : A x → B x)
+    → (g : A y → B y)
+    → ((a : A(x)) → (p ✶) (f a) == g ((p ✶) a))
+    -------------------------------------------
+    → ((p ✶) f == g)
+
   funext-transport-r p f g = remap (funext-transport p _ _)
+\end{code}
+
+\begin{code}
 open FunExt-Transport public
 \end{code}
 
@@ -1440,16 +1488,11 @@ module FunExt-Transport-DFun
     : (p : x == y)
     → (f : (a : A x) → B x a)
     → (g : (a : A y) → B y a)
-    -------------------------------------------------------------------------------------------
-    → ((p ✶) f == g) ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
-  funext-transport-dfun idp f g = eqFunExt
+    ----------------------------------------------------------------------------
+    → ((p ✶) f == g)
+      ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
 
-  -- funext-transport-dfun₂
-  --   : (p : x == y)
-       -- → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
-  --   -------------------------------------------------------------------------------------------
-  --   → ((p ✶) f == g) ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , transport-inv {! p  !})) (f a) == g ((p ✶) a))
-  -- funext-transport-dfun₂ idp f g = eqFunExt
+  funext-transport-dfun idp f g = eqFunExt
 
   funext-transport-dfun-l
     : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
@@ -1459,7 +1502,9 @@ module FunExt-Transport-DFun
   funext-transport-dfun-l p f g = lemap (funext-transport-dfun p _ _)
   --
   funext-transport-dfun-r
-    : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
+    : (p : x == y)
+    → (f : (a : A x) → B x a)
+    → (g : (a : A y) → B y a)
     → ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
     --------------------------------------------------------------------------
     → ((p ✶) f == g)
@@ -1947,6 +1992,7 @@ module Univalence where
 
   -- Voevodsky's Univalence Axiom.
   module UnivalenceAxiom {ℓ} {A B : Type ℓ} where
+
     idtoeqv : A == B → A ≃ B
     idtoeqv p = qinv-≃
       (transport (λ X → X) p)
@@ -2105,6 +2151,48 @@ module TransportUA where
     → transport B p == (fun≃ e)
   funext-transport-ua B p e x₁ = funext (transport-ua B p e x₁)
 open TransportUA public
+\end{code}
+
+\begin{code}
+funext-transport-dfun-bezem
+  : ∀ {ℓᵢ ℓⱼ}{X : Type ℓᵢ}{A : X → Type ℓⱼ}{B : (x : X) → A x → Type ℓⱼ} {x y : X}
+  → (p : x == y)
+  → (f : (a : A x) → B x a)
+  → (g : (a : A y) → B y a)
+  → (a : A y)
+  ------------------------------------------------------------------------------------
+  → (tr (λ x → (a : A x) → B x a) p f) a == g a
+  ≃  tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , transport-inv p)) (f (((! p) ✶) a)) == g a
+
+funext-transport-dfun-bezem idp f g a = idEqv
+\end{code}
+
+\begin{code}
+funext-transport-dfun-bezem-l
+  : ∀ {ℓᵢ ℓⱼ}{X : Type ℓᵢ}{A : X → Type ℓⱼ}{B : (x : X) → A x → Type ℓⱼ} {x y : X}
+  → (p : x == y)
+  → (f : (a : A x) → B x a)
+  → (g : (a : A y) → B y a)
+  → (a : A y)
+  → (tr (λ x → (a : A x) → B x a) p f) a == g a
+  ------------------------------------------------------------------------------------
+  →  tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , transport-inv p)) (f (((! p) ✶) a)) == g a
+
+funext-transport-dfun-bezem-l p f g a x₁ = lemap (funext-transport-dfun-bezem p f g a) x₁
+\end{code}
+
+\begin{code}
+funext-transport-dfun-bezem-r
+  : ∀ {ℓᵢ ℓⱼ}{X : Type ℓᵢ}{A : X → Type ℓⱼ}{B : (x : X) → A x → Type ℓⱼ} {x y : X}
+  → (p : x == y)
+  → (f : (a : A x) → B x a)
+  → (g : (a : A y) → B y a)
+  → (a : A y)
+  →  tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , transport-inv p)) (f (((! p) ✶) a)) == g a
+  ------------------------------------------------------------------------------------
+  → (tr (λ x → (a : A x) → B x a) p f) a == g a
+
+funext-transport-dfun-bezem-r p f g a x₁ = remap (funext-transport-dfun-bezem p f g a) x₁
 \end{code}
 
 ## Truncation

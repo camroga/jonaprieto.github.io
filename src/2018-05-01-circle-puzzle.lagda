@@ -611,19 +611,31 @@ g-f (s , pₛ) = g-f' s pₛ
 
       where
       qb : (pₛ₁ : P base) → (g ∘ f) (base , pₛ₁) == id (base , pₛ₁)
-      qb true  = {!   !}
-      qb false = {!   !}
+      qb true  = refl (base , true)
+      qb false = refl (base , false)
 
       qpath : qb == qb [(λ z → (pₛ₁ : P z) → (g ∘ f) (z , pₛ₁) == id (z , pₛ₁)) ↓ loop ]
       qpath =
-        begin
-          transport (λ w → (b : P w) → (g ∘ f) (w , b) == id (w , b)) loop qb
-            ==⟨ {!   !} ⟩
-          {!   !}
-            ==⟨ {!   !} ⟩
-          {!   !}
+        funext-transport-dfun-r
+          loop
           qb
-        ∎
+          qb
+          {!   !}
+        where
+          helper : (a : P base) → tr  ((λ w → ( (g ∘ f) (π₁ w , π₂ w) == id (π₁ w , π₂ w) ))) (lift a loop) (qb a) == qb ((loop ✶) a)
+          helper true =
+            begin
+                tr  ((λ w → ( (g ∘ f) (π₁ w , π₂ w) == id (π₁ w , π₂ w) ))) (lift true loop) (refl (base , true))
+              ==⟨ {!   !} ⟩
+                  {!   !}
+              ==⟨ {!   !} ⟩
+                  {!   !}
+              ==⟨ {!   !} ⟩
+                  {!? , ?  !}
+              ==⟨ {!   !} ⟩
+                  qb ((loop ✶) true)
+              ∎
+          helper false = {!   !}
 
 \end{code}
 
