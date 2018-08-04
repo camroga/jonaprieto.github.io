@@ -219,7 +219,9 @@ The identity function on a type `A` is `idf A`.
 \begin{code}
 idf
   : ∀ {ℓᵢ}
-  → (A : Type ℓᵢ) → (A → A)
+  → (A : Type ℓᵢ)
+  ---------------
+  → (A → A)
 
 idf A = λ x → x
 \end{code}

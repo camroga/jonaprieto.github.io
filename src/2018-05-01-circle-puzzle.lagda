@@ -620,21 +620,30 @@ g-f (s , pₛ) = g-f' s pₛ
           loop
           qb
           qb
-          {!   !}
+          helper
         where
-          helper : (a : P base) → tr  ((λ w → ( (g ∘ f) (π₁ w , π₂ w) == id (π₁ w , π₂ w) ))) (lift a loop) (qb a) == qb ((loop ✶) a)
+          helper : (a : P base) → tr  ((λ w → ( (g ∘ f) (π₁ w , π₂ w) == id (π₁ w , π₂ w) ))) (lift a loop) (qb a) == qb (tr (λ x → P x) loop a)
           helper true =
             begin
-                tr  ((λ w → ( (g ∘ f) (π₁ w , π₂ w) == id (π₁ w , π₂ w) ))) (lift true loop) (refl (base , true))
-              ==⟨ {!   !} ⟩
-                  {!   !}
-              ==⟨ {!   !} ⟩
-                  {!   !}
-              ==⟨ {!   !} ⟩
-                  {!? , ?  !}
-              ==⟨ {!   !} ⟩
-                  qb ((loop ✶) true)
+              tr  ((λ w → ( (g ∘ f) (π₁ w , π₂ w) == id (π₁ w , π₂ w) ))) (lift true loop) (refl (base , true))
+                ==⟨ transport-eq-fun (λ w →  (g ∘ f) (π₁ w , π₂ w)) (λ w →  id (π₁ w , π₂ w)) (lift true loop) (refl (base , true)) ⟩
+            ! (ap (λ w →  (g ∘ f) (π₁ w , π₂ w)) (lift true loop)) · idp · ap (λ w → id (π₁ w , π₂ w)) (lift true loop)
+                ==⟨ ap (λ r → r · ap (λ w → id (π₁ w , π₂ w)) (lift true loop)) (! (·-runit (! (ap (λ w →  (g ∘ f) (π₁ w , π₂ w)) (lift true loop))))) ⟩
+            (! (ap (λ w → (g ∘ f) (π₁ w , π₂ w)) (lift true loop))) · ap (λ w → id (π₁ w , π₂ w)) (lift true loop)
+                ==⟨ ap ((! (ap (λ w → (g ∘ f) (π₁ w , π₂ w)) (lift true loop))) ·_) (ap-id (lift true loop)) ⟩
+            (! (ap (λ w → (g ∘ f) (π₁ w , π₂ w)) (lift true loop))) · lift true loop
+                ==⟨ ap (λ r → ! r · lift true loop) (! (ap-comp f g (lift true loop))) ⟩
+            ! (ap g (ap f (lift true loop))) · lift true loop
+                ==⟨ ap (λ r → ! ap g r · lift true loop) {!lemma-ap-f-₁₀   !} ⟩
+            ! ap g {!    !} · lift true loop
+                ==⟨ {!   !} ⟩
+            {!   !}
+                ==⟨ {!   !} ⟩
+           {!  !}
+                ==⟨ {!   !} ⟩
+            {!   !}
               ∎
+
           helper false = {!   !}
 
 \end{code}
