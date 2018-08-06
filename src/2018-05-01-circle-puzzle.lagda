@@ -706,16 +706,16 @@ g-f (s , b) = g-f' s b
           auxAP idp = idp
 
           auxCfalse1 : ∀ {x y : P base}
-              → (q : tr P loop x == y)
-              → pair= (loop , refl (tr P loop x)) · pair= (refl base , q) == pair= (loop , q)
+              → (q : tr (λ x → P x) loop x == y)
+              → pair= (loop , refl (tr (λ z → P z) loop x)) · pair= (refl base , q) == pair= (loop , q)
 
           auxCfalse1 {x = x} idp =
             begin
-                pair= (loop , refl (tr P loop x)) · pair= (refl base , idp)
+                pair= (loop , refl (tr (λ z → P z) loop x)) · pair= (refl base , idp)
             ==⟨ idp ⟩
-                pair= (loop , refl (tr P loop x)) · idp
+                pair= (loop , refl (tr (λ z → P z) loop x)) · idp
             ==⟨ ! ·-runit (pair= (loop , refl (tr P loop x))) ⟩
-                pair= (loop , refl (tr P loop x))
+                pair= (loop , refl (tr (λ z → P z) loop x))
             ==⟨ idp ⟩
                 pair= (loop , idp)
             ∎
@@ -744,7 +744,7 @@ g-f (s , b) = g-f' s b
                           · ap (λ x → ctp x) γ₀₁
                           )
                           (c false)
-            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ( (pair= (loop , refl (tr (λ z → P z) loop false))) · r ) (c false)) (auxAP γ₀₁) ⟩
+            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ((pair= (loop , refl (tr (λ z → P z) loop false))) · r ) (c false)) (auxAP {p = loop} γ₀₁) ⟩
              tr (λ w → (g ∘ f) w == id w)
                           ((pair= (loop , refl (tr (λ z → P z) loop false)))
                           ·  pair= (refl base , γ₀₁))
@@ -831,7 +831,7 @@ g-f (s , b) = g-f' s b
                           · ap (λ x → ctp x) γ₁₀
                           )
                           (c true)
-            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ( (pair= (loop , refl (tr (λ z → P z) loop true))) · r ) (c true)) (auxAP γ₁₀) ⟩
+            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ( (pair= (loop , refl (tr (λ z → P z) loop true))) · r ) (c true)) (auxAP {p = loop}  γ₁₀) ⟩
              tr (λ w → (g ∘ f) w == id w)
                           ((pair= (loop , refl (tr (λ z → P z) loop true)))
                           ·  pair= (refl base , γ₁₀))
