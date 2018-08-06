@@ -1042,6 +1042,12 @@ module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
   Σ-bycomponents (idp , idp) = idp
 
   pair= = Σ-bycomponents
+
+  lift-pair=
+    : ∀ {x y : A} {u : P x}
+    → (p : x == y)
+    → lift {A = A}{C = P} u p == pair= (p , refl (tr P p u))
+  lift-pair= idp = idp
 \end{code}
 
 \begin{code}
@@ -1492,7 +1498,7 @@ module FunExt-Transport-DFun
     → (g : (a : A y) → B y a)
     ----------------------------------------------------------------------------
     → ((p ✶) f == g)
-      ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
+      ≃ ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , refl (tr A p a))) (f a) == g ((p ✶) a))
 
   funext-transport-dfun idp f g = eqFunExt
 
@@ -1500,16 +1506,18 @@ module FunExt-Transport-DFun
     : (p : x == y) → (f : (a : A x) → B x a) → (g : (a : A y) → B y a)
     → ((p ✶) f == g)
     ---------------------------------------------------------------------------
-     → ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
+    → ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , refl (tr A p a))) (f a) == g ((p ✶) a))
+
   funext-transport-dfun-l p f g = lemap (funext-transport-dfun p _ _)
-  --
+
   funext-transport-dfun-r
     : (p : x == y)
     → (f : (a : A x) → B x a)
     → (g : (a : A y) → B y a)
-    → ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (lift a p) (f a) == g ((p ✶) a))
+    → ((a : A x) → tr (λ w → B (π₁ w) (π₂ w)) (pair= (p , refl (tr A p a))) (f a) == g ((p ✶) a))
     --------------------------------------------------------------------------
     → ((p ✶) f == g)
+
   funext-transport-dfun-r p f g = remap (funext-transport-dfun p _ _)
 open FunExt-Transport-DFun public
 \end{code}
