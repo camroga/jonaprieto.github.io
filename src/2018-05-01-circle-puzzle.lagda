@@ -898,6 +898,10 @@ g-f (s , b) = g-f' s b
                  c (tr (λ x → P x) loop true)
               ∎
 
+
+eqCirPs : Σ S¹ P ≃ pS
+eqCirPs = qinv-≃ f (g , f-g , g-f)
+
 \end{code}
 
 
