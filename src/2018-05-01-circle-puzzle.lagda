@@ -700,10 +700,10 @@ g-f (s , b) = g-f' s b
 
 
         where
-          auxCfalse0 : ∀ {x y : P base}{p : base == base}
-              → (q : tr P {!p!} x == y)
-              →  ap (λ (w : P base) → (base , w)) q ==  pair= (refl base , q)
-          auxCfalse0 idp = idp
+          auxAP : ∀ {x y : P base}{p : base == base}
+              → (q : tr (λ x → P x) p x == y)
+              →  ap (λ w → ctp w ) q ==  pair= (refl base , q)
+          auxAP idp = idp
 
           auxCfalse1 : ∀ {x y : P base}
               → (q : tr P loop x == y)
@@ -744,7 +744,7 @@ g-f (s , b) = g-f' s b
                           · ap (λ x → ctp x) γ₀₁
                           )
                           (c false)
-            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ( (pair= (loop , refl (tr (λ z → P z) loop false))) · r ) (c false)) (auxCfalse0 γ₀₁) ⟩
+            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ( (pair= (loop , refl (tr (λ z → P z) loop false))) · r ) (c false)) (auxAP γ₀₁) ⟩
              tr (λ w → (g ∘ f) w == id w)
                           ((pair= (loop , refl (tr (λ z → P z) loop false)))
                           ·  pair= (refl base , γ₀₁))
@@ -831,7 +831,7 @@ g-f (s , b) = g-f' s b
                           · ap (λ x → ctp x) γ₁₀
                           )
                           (c true)
-            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ( (pair= (loop , refl (tr (λ z → P z) loop true))) · r ) (c true)) (auxCfalse0 γ₁₀) ⟩
+            ==⟨ ap (λ r → tr (λ w → (g ∘ f) w == id w) ( (pair= (loop , refl (tr (λ z → P z) loop true))) · r ) (c true)) (auxAP γ₁₀) ⟩
              tr (λ w → (g ∘ f) w == id w)
                           ((pair= (loop , refl (tr (λ z → P z) loop true)))
                           ·  pair= (refl base , γ₁₀))
