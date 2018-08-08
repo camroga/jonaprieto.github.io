@@ -99,6 +99,7 @@ A useful convention
 The unit type is defined as record so that we also get the η-rule
 definitionally.
 
+No elimination rule.
 \begin{code}
 record ⊤ : Type₀ where
   constructor ★
