@@ -127,7 +127,19 @@ adjointify ff (f , η , ε) = {!   !} -- check the notes
 \begin{code}
 -- Exercise 6: Prove that A is contractible iff A ≃ 1
 contr→trivial : {A : Set} → isContr A → A ≃ ⊤
-contr→trivial p = {!  !} --
+contr→trivial {A} (ctr , p) = qinv-≃ f (g , f-g , g-f)
+  where
+    f : A → ⊤
+    f = λ _ → unit
+
+    g : ⊤ → A
+    g = λ _ → ctr
+
+    f-g : f ∘ g ∼ id
+    f-g ★ = idp
+
+    g-f : g ∘ f ∼ id
+    g-f a = p a
 \end{code}
 
 \begin{code}
