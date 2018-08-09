@@ -144,7 +144,7 @@ contr→trivial {A} (ctr , p) = qinv-≃ f (g , f-g , g-f)
 
 \begin{code}
 trivial→contr : {A : Set} → A ≃ ⊤ → isContr A
-trivial→contr q = {!  !}
+trivial→contr {A} e = (remap e) unit , λ (a : A) → (rlmap-inverse-h e) a
 \end{code}
 
 ## Exercise 7: Extract an equivalence from a Voevodsky equivalence
