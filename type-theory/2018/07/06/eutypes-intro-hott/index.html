@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+        EUTypes 2018 - HoTT |
+      
+      jonaprieto ∷ WorkInProgress</title><!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="EUTypes 2018 - HoTT" />
+<meta name="author" content="Jonathan Prieto-Cubides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This file contains the exercises of An Introduction to Homotopy Type Theory, a course given by Fredrik Nordvall Forsberg in EUTypes summer school 2018 in Ohrid, Macedonia." />
+<meta property="og:description" content="This file contains the exercises of An Introduction to Homotopy Type Theory, a course given by Fredrik Nordvall Forsberg in EUTypes summer school 2018 in Ohrid, Macedonia." />
+<link rel="canonical" href="http://jonaprieto.github.io/type-theory/2018/07/06/eutypes-intro-hott/" />
+<meta property="og:url" content="http://jonaprieto.github.io/type-theory/2018/07/06/eutypes-intro-hott/" />
+<meta property="og:site_name" content="jonaprieto" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-07-06T00:00:00+02:00" />
+<script type="application/ld+json">
+{"description":"This file contains the exercises of An Introduction to Homotopy Type Theory, a course given by Fredrik Nordvall Forsberg in EUTypes summer school 2018 in Ohrid, Macedonia.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/type-theory/2018/07/06/eutypes-intro-hott/","headline":"EUTypes 2018 - HoTT","dateModified":"2018-08-09T20:10:50+02:00","datePublished":"2018-07-06T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/type-theory/2018/07/06/eutypes-intro-hott/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta name="description" content="This file contains the exercises of An Introduction to Homotopy Type Theory, a course given by Fredrik Nordvall Forsberg in EUTypes summer school 2018 in Ohr...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.ico">
+  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+
+
+</head>
+
+
+
+
+  <body>
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    <!--  -->
+    <!-- 
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/hott-timeline-videos/">HoTT Videos Timeline</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">List of references</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/plans/">Plans</a>
+        
+      
+    
+      
+        
+      
+     -->
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
+    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+  </nav>
+</div>
+
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+
+
+<div class="post">
+
+  <div class="print-version">
+    <center>
+      <h1>EUTypes 2018 - HoTT </h1><br/>
+        <div class="print-authors">
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">
+                
+                  Jonathan Prieto-Cubides
+                
+              </div>
+              <div class="print-author-affiliation">
+                
+                  University of Bergen
+                
+                </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="print-date">06 July 2018</div>
+        
+        
+    </center>
+  </div>
+
+  
+  <div class="main-heading">
+    <div class="main-title">
+      <div class="main-title-prefix"> Latest change:</div>
+      <div class="main-commit-message">
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda">
+              Fixing some typos</a>
+      </div>
+    </div>
+
+    <div class="main-last-date">
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda">c8d646d </a> on  09 Aug 2018
+    </div>
+  </div>
+  
+  <h1 class="post-title">EUTypes 2018 - HoTT
+    <div class="github-links">
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-08-09-eutypes-intro-hott.lagda" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
+    </div>
+  </h1>
+  
+  <div class="toc">
+    <nav>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#exercise-1-prove-the-theorem-on-slide-5">Exercise 1: prove the theorem on slide 5</a></li>
+  <li><a href="#exercise-2-here-is-another-characterisation-of-propositions">Exercise 2: here is another characterisation of propositions:</a></li>
+  <li><a href="#exercise-3-prove-the-vacuum-cord-principle-on-slide-8">Exercise 3: prove the vacuum cord principle on slide 8</a></li>
+  <li><a href="#exercise-4-closure-properties-harder">Exercise 4: Closure properties (harder)</a></li>
+  <li><a href="#exercise-7-extract-an-equivalence-from-a-voevodsky-equivalence">Exercise 7: Extract an equivalence from a Voevodsky equivalence</a></li>
+  <li><a href="#exercise-8-construct-a-bi-functional-relation-from-an-equivalence">Exercise 8: Construct a “bi-functional relation” from an equivalence</a></li>
+</ul>
+
+    </nav>
+  </div>
+  
+  <p>This file contains the exercises of <em>An Introduction
+to Homotopy Type Theory</em>, a course given by <a href="https://personal.cis.strath.ac.uk/fredrik.nordvall-forsberg/">Fredrik Nordvall Forsberg</a>
+in <a href="https://sites.google.com/view/2018eutypesschool/">EUTypes summer school 2018</a> in Ohrid, Macedonia.</p>
+
+<p>Links:</p>
+<ul>
+  <li>https://personal.cis.strath.ac.uk/fredrik.nordvall-forsberg/ohrid-school-hott2018/</li>
+  <li>Mini-HoTT Agda library: https://tinyurl.com/mini-hott</li>
+</ul>
+
+<pre class="Agda"><a id="575" class="Symbol">{-#</a> <a id="579" class="Keyword">OPTIONS</a> <a id="587" class="Option">--without-K</a> <a id="599" class="Symbol">#-}</a>
+<a id="603" class="Keyword">open</a> <a id="608" class="Keyword">import</a> <a id="615" href="/type-theory/2018/07/06/mini-hott/" class="Module">2018-07-06-mini-hott</a>
+<a id="636" class="Keyword">module</a> <a id="643" href="/type-theory/2018/07/06/eutypes-intro-hott/" class="Module">_</a> <a id="645" class="Keyword">where</a></pre>
+
+<h2 id="exercise-1-prove-the-theorem-on-slide-5">Exercise 1: prove the theorem on slide 5</h2>
+
+<pre class="Agda"><a id="contr→prop"></a><a id="723" href="/type-theory/2018/07/06/eutypes-intro-hott/#723" class="Function">contr→prop</a> <a id="734" class="Symbol">:</a> <a id="736" class="Symbol">{</a><a id="737" href="/type-theory/2018/07/06/eutypes-intro-hott/#737" class="Bound">A</a> <a id="739" class="Symbol">:</a> <a id="741" class="PrimitiveType">Set</a><a id="744" class="Symbol">}</a> <a id="746" class="Symbol">-&gt;</a> <a id="749" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="757" href="/type-theory/2018/07/06/eutypes-intro-hott/#737" class="Bound">A</a> <a id="759" class="Symbol">-&gt;</a> <a id="762" href="/type-theory/2018/07/06/mini-hott/#33287" class="Function">isProp</a> <a id="769" href="/type-theory/2018/07/06/eutypes-intro-hott/#737" class="Bound">A</a>
+<a id="771" href="/type-theory/2018/07/06/eutypes-intro-hott/#723" class="Function">contr→prop</a> <a id="782" class="Symbol">(</a><a id="783" href="/type-theory/2018/07/06/eutypes-intro-hott/#783" class="Bound">w</a> <a id="785" href="/type-theory/2018/07/06/mini-hott/#2150" class="InductiveConstructor Operator">,</a> <a id="787" href="/type-theory/2018/07/06/eutypes-intro-hott/#787" class="Bound">d</a><a id="788" class="Symbol">)</a> <a id="790" href="/type-theory/2018/07/06/eutypes-intro-hott/#790" class="Bound">x</a> <a id="792" href="/type-theory/2018/07/06/eutypes-intro-hott/#792" class="Bound">y</a> <a id="794" class="Symbol">=</a> <a id="796" class="Symbol">((</a><a id="798" href="/type-theory/2018/07/06/eutypes-intro-hott/#787" class="Bound">d</a> <a id="800" href="/type-theory/2018/07/06/eutypes-intro-hott/#790" class="Bound">x</a><a id="801" class="Symbol">)</a> <a id="803" href="/type-theory/2018/07/06/mini-hott/#6571" class="Function Operator">⁻¹</a><a id="805" class="Symbol">)</a> <a id="807" href="/type-theory/2018/07/06/mini-hott/#6226" class="Function Operator">·</a> <a id="809" href="/type-theory/2018/07/06/eutypes-intro-hott/#787" class="Bound">d</a> <a id="811" href="/type-theory/2018/07/06/eutypes-intro-hott/#792" class="Bound">y</a>
+
+<a id="contr-if-inhabited→prop"></a><a id="814" href="/type-theory/2018/07/06/eutypes-intro-hott/#814" class="Function">contr-if-inhabited→prop</a> <a id="838" class="Symbol">:</a> <a id="840" class="Symbol">{</a><a id="841" href="/type-theory/2018/07/06/eutypes-intro-hott/#841" class="Bound">A</a> <a id="843" class="Symbol">:</a> <a id="845" class="PrimitiveType">Set</a><a id="848" class="Symbol">}</a> <a id="850" class="Symbol">-&gt;</a> <a id="853" class="Symbol">(</a><a id="854" href="/type-theory/2018/07/06/eutypes-intro-hott/#841" class="Bound">A</a> <a id="856" class="Symbol">-&gt;</a> <a id="859" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="867" href="/type-theory/2018/07/06/eutypes-intro-hott/#841" class="Bound">A</a><a id="868" class="Symbol">)</a> <a id="870" class="Symbol">-&gt;</a> <a id="873" href="/type-theory/2018/07/06/mini-hott/#33287" class="Function">isProp</a> <a id="880" href="/type-theory/2018/07/06/eutypes-intro-hott/#841" class="Bound">A</a>
+<a id="882" href="/type-theory/2018/07/06/eutypes-intro-hott/#814" class="Function">contr-if-inhabited→prop</a> <a id="906" class="Symbol">{</a><a id="907" href="/type-theory/2018/07/06/eutypes-intro-hott/#907" class="Bound">A</a><a id="908" class="Symbol">}</a> <a id="910" href="/type-theory/2018/07/06/eutypes-intro-hott/#910" class="Bound">g</a> <a id="912" href="/type-theory/2018/07/06/eutypes-intro-hott/#912" class="Bound">x</a> <a id="914" href="/type-theory/2018/07/06/eutypes-intro-hott/#914" class="Bound">y</a> <a id="916" class="Symbol">=</a> <a id="918" href="/type-theory/2018/07/06/eutypes-intro-hott/#723" class="Function">contr→prop</a> <a id="929" class="Symbol">(</a><a id="930" href="/type-theory/2018/07/06/eutypes-intro-hott/#910" class="Bound">g</a> <a id="932" href="/type-theory/2018/07/06/eutypes-intro-hott/#912" class="Bound">x</a><a id="933" class="Symbol">)</a> <a id="935" href="/type-theory/2018/07/06/eutypes-intro-hott/#912" class="Bound">x</a> <a id="937" href="/type-theory/2018/07/06/eutypes-intro-hott/#914" class="Bound">y</a>
+
+<a id="prop→set"></a><a id="940" href="/type-theory/2018/07/06/eutypes-intro-hott/#940" class="Function">prop→set</a> <a id="949" class="Symbol">:</a> <a id="951" class="Symbol">{</a><a id="952" href="/type-theory/2018/07/06/eutypes-intro-hott/#952" class="Bound">A</a> <a id="954" class="Symbol">:</a> <a id="956" class="PrimitiveType">Set</a><a id="959" class="Symbol">}</a> <a id="961" class="Symbol">-&gt;</a> <a id="964" href="/type-theory/2018/07/06/mini-hott/#33287" class="Function">isProp</a> <a id="971" href="/type-theory/2018/07/06/eutypes-intro-hott/#952" class="Bound">A</a> <a id="973" class="Symbol">-&gt;</a> <a id="976" href="/type-theory/2018/07/06/mini-hott/#34277" class="Function">isSet</a> <a id="982" href="/type-theory/2018/07/06/eutypes-intro-hott/#952" class="Bound">A</a>
+<a id="984" href="/type-theory/2018/07/06/eutypes-intro-hott/#940" class="Function">prop→set</a>  <a id="994" class="Symbol">=</a> <a id="996" class="Symbol">{!    !}</a></pre>
+
+<h2 id="exercise-2-here-is-another-characterisation-of-propositions">Exercise 2: here is another characterisation of propositions:</h2>
+
+<pre class="Agda"><a id="prop→all-contr"></a><a id="1096" href="/type-theory/2018/07/06/eutypes-intro-hott/#1096" class="Function">prop→all-contr</a> <a id="1111" class="Symbol">:</a> <a id="1113" class="Symbol">{</a><a id="1114" href="/type-theory/2018/07/06/eutypes-intro-hott/#1114" class="Bound">A</a> <a id="1116" class="Symbol">:</a> <a id="1118" class="PrimitiveType">Set</a><a id="1121" class="Symbol">}</a> <a id="1123" class="Symbol">-&gt;</a> <a id="1126" href="/type-theory/2018/07/06/mini-hott/#33287" class="Function">isProp</a> <a id="1133" href="/type-theory/2018/07/06/eutypes-intro-hott/#1114" class="Bound">A</a> <a id="1135" class="Symbol">-&gt;</a> <a id="1138" class="Symbol">((</a><a id="1140" href="/type-theory/2018/07/06/eutypes-intro-hott/#1140" class="Bound">x</a> <a id="1142" href="/type-theory/2018/07/06/eutypes-intro-hott/#1142" class="Bound">y</a> <a id="1144" class="Symbol">:</a> <a id="1146" href="/type-theory/2018/07/06/eutypes-intro-hott/#1114" class="Bound">A</a><a id="1147" class="Symbol">)</a> <a id="1149" class="Symbol">-&gt;</a> <a id="1152" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="1160" class="Symbol">(</a><a id="1161" href="/type-theory/2018/07/06/eutypes-intro-hott/#1140" class="Bound">x</a> <a id="1163" href="/type-theory/2018/07/06/mini-hott/#5392" class="Datatype Operator">==</a> <a id="1166" href="/type-theory/2018/07/06/eutypes-intro-hott/#1142" class="Bound">y</a><a id="1167" class="Symbol">))</a>
+<a id="1170" href="/type-theory/2018/07/06/eutypes-intro-hott/#1096" class="Function">prop→all-contr</a> <a id="1185" href="/type-theory/2018/07/06/eutypes-intro-hott/#1185" class="Bound">f</a> <a id="1187" href="/type-theory/2018/07/06/eutypes-intro-hott/#1187" class="Bound">x</a> <a id="1189" href="/type-theory/2018/07/06/eutypes-intro-hott/#1189" class="Bound">y</a> <a id="1191" class="Symbol">=</a> <a id="1193" class="Symbol">(</a> <a id="1195" href="/type-theory/2018/07/06/eutypes-intro-hott/#1185" class="Bound">f</a> <a id="1197" href="/type-theory/2018/07/06/eutypes-intro-hott/#1187" class="Bound">x</a> <a id="1199" href="/type-theory/2018/07/06/eutypes-intro-hott/#1189" class="Bound">y</a>  <a id="1202" href="/type-theory/2018/07/06/mini-hott/#2150" class="InductiveConstructor Operator">,</a> <a id="1204" class="Symbol">λ</a> <a id="1206" href="/type-theory/2018/07/06/eutypes-intro-hott/#1206" class="Bound">p</a> <a id="1208" class="Symbol">→</a> <a id="1210" class="Symbol">((</a><a id="1212" href="/type-theory/2018/07/06/eutypes-intro-hott/#940" class="Function">prop→set</a> <a id="1221" href="/type-theory/2018/07/06/eutypes-intro-hott/#1185" class="Bound">f</a><a id="1222" class="Symbol">)</a> <a id="1224" href="/type-theory/2018/07/06/eutypes-intro-hott/#1187" class="Bound">x</a> <a id="1226" href="/type-theory/2018/07/06/eutypes-intro-hott/#1189" class="Bound">y</a><a id="1227" class="Symbol">)</a> <a id="1229" class="Symbol">(</a><a id="1230" href="/type-theory/2018/07/06/eutypes-intro-hott/#1185" class="Bound">f</a> <a id="1232" href="/type-theory/2018/07/06/eutypes-intro-hott/#1187" class="Bound">x</a> <a id="1234" href="/type-theory/2018/07/06/eutypes-intro-hott/#1189" class="Bound">y</a><a id="1235" class="Symbol">)</a> <a id="1237" href="/type-theory/2018/07/06/eutypes-intro-hott/#1206" class="Bound">p</a><a id="1238" class="Symbol">)</a>
+
+<a id="all-contr→prop"></a><a id="1241" href="/type-theory/2018/07/06/eutypes-intro-hott/#1241" class="Function">all-contr→prop</a> <a id="1256" class="Symbol">:</a> <a id="1258" class="Symbol">{</a><a id="1259" href="/type-theory/2018/07/06/eutypes-intro-hott/#1259" class="Bound">A</a> <a id="1261" class="Symbol">:</a> <a id="1263" class="PrimitiveType">Set</a><a id="1266" class="Symbol">}</a> <a id="1268" class="Symbol">-&gt;</a> <a id="1271" class="Symbol">((</a><a id="1273" href="/type-theory/2018/07/06/eutypes-intro-hott/#1273" class="Bound">x</a> <a id="1275" href="/type-theory/2018/07/06/eutypes-intro-hott/#1275" class="Bound">y</a> <a id="1277" class="Symbol">:</a> <a id="1279" href="/type-theory/2018/07/06/eutypes-intro-hott/#1259" class="Bound">A</a><a id="1280" class="Symbol">)</a> <a id="1282" class="Symbol">-&gt;</a> <a id="1285" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="1293" class="Symbol">(</a><a id="1294" href="/type-theory/2018/07/06/eutypes-intro-hott/#1273" class="Bound">x</a> <a id="1296" href="/type-theory/2018/07/06/mini-hott/#5392" class="Datatype Operator">==</a> <a id="1299" href="/type-theory/2018/07/06/eutypes-intro-hott/#1275" class="Bound">y</a><a id="1300" class="Symbol">))</a> <a id="1303" class="Symbol">-&gt;</a> <a id="1306" href="/type-theory/2018/07/06/mini-hott/#33287" class="Function">isProp</a> <a id="1313" href="/type-theory/2018/07/06/eutypes-intro-hott/#1259" class="Bound">A</a>
+<a id="1315" href="/type-theory/2018/07/06/eutypes-intro-hott/#1241" class="Function">all-contr→prop</a> <a id="1330" href="/type-theory/2018/07/06/eutypes-intro-hott/#1330" class="Bound">g</a> <a id="1332" class="Symbol">=</a> <a id="1334" class="Symbol">λ</a> <a id="1336" href="/type-theory/2018/07/06/eutypes-intro-hott/#1336" class="Bound">x</a> <a id="1338" href="/type-theory/2018/07/06/eutypes-intro-hott/#1338" class="Bound">y</a> <a id="1340" class="Symbol">→</a> <a id="1342" href="/type-theory/2018/07/06/eutypes-intro-hott/#723" class="Function">contr→prop</a> <a id="1353" class="Symbol">(</a><a id="1354" href="/type-theory/2018/07/06/eutypes-intro-hott/#1336" class="Bound">x</a> <a id="1356" href="/type-theory/2018/07/06/mini-hott/#2150" class="InductiveConstructor Operator">,</a> <a id="1358" class="Symbol">λ</a> <a id="1360" href="/type-theory/2018/07/06/eutypes-intro-hott/#1360" class="Bound">w</a> <a id="1362" class="Symbol">→</a> <a id="1364" href="/type-theory/2018/07/06/mini-hott/#2252" class="Function">fst</a> <a id="1368" class="Symbol">(</a><a id="1369" href="/type-theory/2018/07/06/eutypes-intro-hott/#1330" class="Bound">g</a> <a id="1371" href="/type-theory/2018/07/06/eutypes-intro-hott/#1336" class="Bound">x</a> <a id="1373" href="/type-theory/2018/07/06/eutypes-intro-hott/#1338" class="Bound">y</a><a id="1374" class="Symbol">)</a> <a id="1376" href="/type-theory/2018/07/06/mini-hott/#6226" class="Function Operator">·</a> <a id="1378" class="Symbol">(</a><a id="1379" href="/type-theory/2018/07/06/mini-hott/#2252" class="Function">fst</a> <a id="1383" class="Symbol">(</a><a id="1384" href="/type-theory/2018/07/06/eutypes-intro-hott/#1330" class="Bound">g</a> <a id="1386" href="/type-theory/2018/07/06/eutypes-intro-hott/#1338" class="Bound">y</a> <a id="1388" href="/type-theory/2018/07/06/eutypes-intro-hott/#1360" class="Bound">w</a><a id="1389" class="Symbol">)))</a> <a id="1393" href="/type-theory/2018/07/06/eutypes-intro-hott/#1336" class="Bound">x</a> <a id="1395" href="/type-theory/2018/07/06/eutypes-intro-hott/#1338" class="Bound">y</a>
+
+<a id="1398" class="Comment">-- does this suggest a pattern in the definition of homotopy n-types?</a></pre>
+
+<h2 id="exercise-3-prove-the-vacuum-cord-principle-on-slide-8">Exercise 3: prove the vacuum cord principle on slide 8</h2>
+
+<pre class="Agda"><a id="vacuum-cord"></a><a id="1552" href="/type-theory/2018/07/06/eutypes-intro-hott/#1552" class="Function">vacuum-cord</a> <a id="1564" class="Symbol">:</a> <a id="1566" class="Symbol">{</a><a id="1567" href="/type-theory/2018/07/06/eutypes-intro-hott/#1567" class="Bound">A</a> <a id="1569" class="Symbol">:</a> <a id="1571" class="PrimitiveType">Set</a><a id="1574" class="Symbol">}</a> <a id="1576" class="Symbol">-&gt;</a> <a id="1579" class="Symbol">(</a><a id="1580" href="/type-theory/2018/07/06/eutypes-intro-hott/#1580" class="Bound">a</a> <a id="1582" class="Symbol">:</a> <a id="1584" href="/type-theory/2018/07/06/eutypes-intro-hott/#1567" class="Bound">A</a><a id="1585" class="Symbol">)</a> <a id="1587" class="Symbol">-&gt;</a> <a id="1590" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="1598" class="Symbol">(</a><a id="1599" href="/type-theory/2018/07/06/mini-hott/#2072" class="Record">Σ</a> <a id="1601" href="/type-theory/2018/07/06/eutypes-intro-hott/#1567" class="Bound">A</a> <a id="1603" class="Symbol">(λ</a> <a id="1606" href="/type-theory/2018/07/06/eutypes-intro-hott/#1606" class="Bound">x</a> <a id="1608" class="Symbol">→</a> <a id="1610" href="/type-theory/2018/07/06/eutypes-intro-hott/#1606" class="Bound">x</a> <a id="1612" href="/type-theory/2018/07/06/mini-hott/#5392" class="Datatype Operator">==</a> <a id="1615" href="/type-theory/2018/07/06/eutypes-intro-hott/#1580" class="Bound">a</a><a id="1616" class="Symbol">))</a>
+<a id="1619" href="/type-theory/2018/07/06/eutypes-intro-hott/#1552" class="Function">vacuum-cord</a> <a id="1631" href="/type-theory/2018/07/06/eutypes-intro-hott/#1631" class="Bound">a</a> <a id="1633" class="Symbol">=</a> <a id="1635" class="Symbol">{!   !}</a></pre>
+
+<h2 id="exercise-4-closure-properties-harder">Exercise 4: Closure properties (harder)</h2>
+
+<pre class="Agda"><a id="contr-is-contr"></a><a id="1712" href="/type-theory/2018/07/06/eutypes-intro-hott/#1712" class="Function">contr-is-contr</a> <a id="1727" class="Symbol">:</a> <a id="1729" class="Symbol">{</a><a id="1730" href="/type-theory/2018/07/06/eutypes-intro-hott/#1730" class="Bound">A</a> <a id="1732" class="Symbol">:</a> <a id="1734" class="PrimitiveType">Set</a><a id="1737" class="Symbol">}</a> <a id="1739" class="Symbol">-&gt;</a> <a id="1742" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="1750" href="/type-theory/2018/07/06/eutypes-intro-hott/#1730" class="Bound">A</a> <a id="1752" class="Symbol">-&gt;</a> <a id="1755" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="1763" class="Symbol">(</a><a id="1764" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="1772" href="/type-theory/2018/07/06/eutypes-intro-hott/#1730" class="Bound">A</a><a id="1773" class="Symbol">)</a>
+<a id="1775" href="/type-theory/2018/07/06/eutypes-intro-hott/#1712" class="Function">contr-is-contr</a> <a id="1790" href="/type-theory/2018/07/06/eutypes-intro-hott/#1790" class="Bound">p</a> <a id="1792" class="Symbol">=</a> <a id="1794" class="Symbol">{!   !}</a>
+
+<a id="prop-is-prop-always"></a><a id="1803" href="/type-theory/2018/07/06/eutypes-intro-hott/#1803" class="Function">prop-is-prop-always</a> <a id="1823" class="Symbol">:</a> <a id="1825" class="Symbol">{</a><a id="1826" href="/type-theory/2018/07/06/eutypes-intro-hott/#1826" class="Bound">A</a> <a id="1828" class="Symbol">:</a> <a id="1830" class="PrimitiveType">Set</a><a id="1833" class="Symbol">}</a> <a id="1835" class="Symbol">-&gt;</a> <a id="1838" href="/type-theory/2018/07/06/mini-hott/#33287" class="Function">isProp</a> <a id="1845" class="Symbol">(</a><a id="1846" href="/type-theory/2018/07/06/mini-hott/#33287" class="Function">isProp</a> <a id="1853" href="/type-theory/2018/07/06/eutypes-intro-hott/#1826" class="Bound">A</a><a id="1854" class="Symbol">)</a>
+<a id="1856" href="/type-theory/2018/07/06/eutypes-intro-hott/#1803" class="Function">prop-is-prop-always</a> <a id="1876" class="Symbol">=</a> <a id="1878" class="Symbol">λ</a> <a id="1880" href="/type-theory/2018/07/06/eutypes-intro-hott/#1880" class="Bound">x</a> <a id="1882" href="/type-theory/2018/07/06/eutypes-intro-hott/#1882" class="Bound">y</a> <a id="1884" class="Symbol">→</a> <a id="1886" class="Symbol">{!   !}</a> <a id="1894" class="Comment">-- Done with funext twice and using isSet of x</a></pre>
+
+<pre class="Agda"><a id="adjointify"></a><a id="1966" href="/type-theory/2018/07/06/eutypes-intro-hott/#1966" class="Function">adjointify</a> <a id="1977" class="Symbol">:</a> <a id="1979" class="Symbol">{</a><a id="1980" href="/type-theory/2018/07/06/eutypes-intro-hott/#1980" class="Bound">A</a> <a id="1982" href="/type-theory/2018/07/06/eutypes-intro-hott/#1982" class="Bound">B</a> <a id="1984" class="Symbol">:</a> <a id="1986" class="PrimitiveType">Set</a><a id="1989" class="Symbol">}</a> <a id="1991" class="Symbol">-&gt;</a> <a id="1994" class="Symbol">(</a><a id="1995" href="/type-theory/2018/07/06/eutypes-intro-hott/#1995" class="Bound">f</a> <a id="1997" class="Symbol">:</a> <a id="1999" href="/type-theory/2018/07/06/eutypes-intro-hott/#1980" class="Bound">A</a> <a id="2001" class="Symbol">-&gt;</a> <a id="2004" href="/type-theory/2018/07/06/eutypes-intro-hott/#1982" class="Bound">B</a><a id="2005" class="Symbol">)</a> <a id="2007" class="Symbol">-&gt;</a> <a id="2010" href="/type-theory/2018/07/06/mini-hott/#40424" class="Function">qinv</a> <a id="2015" href="/type-theory/2018/07/06/eutypes-intro-hott/#1995" class="Bound">f</a> <a id="2017" class="Symbol">-&gt;</a> <a id="2020" href="/type-theory/2018/07/06/mini-hott/#27389" class="Function">isEquiv</a> <a id="2028" href="/type-theory/2018/07/06/eutypes-intro-hott/#1995" class="Bound">f</a>
+<a id="2030" href="/type-theory/2018/07/06/eutypes-intro-hott/#1966" class="Function">adjointify</a> <a id="2041" href="/type-theory/2018/07/06/eutypes-intro-hott/#2041" class="Bound">ff</a> <a id="2044" class="Symbol">(</a><a id="2045" href="/type-theory/2018/07/06/eutypes-intro-hott/#2045" class="Bound">f</a> <a id="2047" href="/type-theory/2018/07/06/mini-hott/#2150" class="InductiveConstructor Operator">,</a> <a id="2049" href="/type-theory/2018/07/06/eutypes-intro-hott/#2049" class="Bound">η</a> <a id="2051" href="/type-theory/2018/07/06/mini-hott/#2150" class="InductiveConstructor Operator">,</a> <a id="2053" href="/type-theory/2018/07/06/eutypes-intro-hott/#2053" class="Bound">ε</a><a id="2054" class="Symbol">)</a> <a id="2056" class="Symbol">=</a> <a id="2058" class="Symbol">{!   !}</a> <a id="2066" class="Comment">-- check the notes</a>
+
+<a id="2086" class="Comment">-- Exercise 6: Prove that A is contractible iff A ≃ 1</a>
+<a id="contr→trivial"></a><a id="2140" href="/type-theory/2018/07/06/eutypes-intro-hott/#2140" class="Function">contr→trivial</a> <a id="2154" class="Symbol">:</a> <a id="2156" class="Symbol">{</a><a id="2157" href="/type-theory/2018/07/06/eutypes-intro-hott/#2157" class="Bound">A</a> <a id="2159" class="Symbol">:</a> <a id="2161" class="PrimitiveType">Set</a><a id="2164" class="Symbol">}</a> <a id="2166" class="Symbol">-&gt;</a> <a id="2169" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="2177" href="/type-theory/2018/07/06/eutypes-intro-hott/#2157" class="Bound">A</a> <a id="2179" class="Symbol">-&gt;</a> <a id="2182" href="/type-theory/2018/07/06/eutypes-intro-hott/#2157" class="Bound">A</a> <a id="2184" href="/type-theory/2018/07/06/mini-hott/#27545" class="Function Operator">≃</a> <a id="2186" href="/type-theory/2018/07/06/mini-hott/#1626" class="Record">⊤</a>
+<a id="2188" href="/type-theory/2018/07/06/eutypes-intro-hott/#2140" class="Function">contr→trivial</a> <a id="2202" href="/type-theory/2018/07/06/eutypes-intro-hott/#2202" class="Bound">p</a> <a id="2204" class="Symbol">=</a> <a id="2206" class="Symbol">{!  !}</a> <a id="2213" class="Comment">--</a>
+
+<a id="trivial→contr"></a><a id="2217" href="/type-theory/2018/07/06/eutypes-intro-hott/#2217" class="Function">trivial→contr</a> <a id="2231" class="Symbol">:</a> <a id="2233" class="Symbol">{</a><a id="2234" href="/type-theory/2018/07/06/eutypes-intro-hott/#2234" class="Bound">A</a> <a id="2236" class="Symbol">:</a> <a id="2238" class="PrimitiveType">Set</a><a id="2241" class="Symbol">}</a> <a id="2243" class="Symbol">-&gt;</a> <a id="2246" href="/type-theory/2018/07/06/eutypes-intro-hott/#2234" class="Bound">A</a> <a id="2248" href="/type-theory/2018/07/06/mini-hott/#27545" class="Function Operator">≃</a> <a id="2250" href="/type-theory/2018/07/06/mini-hott/#1626" class="Record">⊤</a> <a id="2252" class="Symbol">-&gt;</a> <a id="2255" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="2263" href="/type-theory/2018/07/06/eutypes-intro-hott/#2234" class="Bound">A</a>
+<a id="2265" href="/type-theory/2018/07/06/eutypes-intro-hott/#2217" class="Function">trivial→contr</a> <a id="2279" href="/type-theory/2018/07/06/eutypes-intro-hott/#2279" class="Bound">q</a> <a id="2281" class="Symbol">=</a> <a id="2283" class="Symbol">{!  !}</a></pre>
+
+<h2 id="exercise-7-extract-an-equivalence-from-a-voevodsky-equivalence">Exercise 7: Extract an equivalence from a Voevodsky equivalence</h2>
+
+<pre class="Agda"><a id="fib"></a><a id="2383" href="/type-theory/2018/07/06/eutypes-intro-hott/#2383" class="Function">fib</a> <a id="2387" class="Symbol">:</a> <a id="2389" class="Symbol">{</a><a id="2390" href="/type-theory/2018/07/06/eutypes-intro-hott/#2390" class="Bound">A</a> <a id="2392" href="/type-theory/2018/07/06/eutypes-intro-hott/#2392" class="Bound">B</a> <a id="2394" class="Symbol">:</a> <a id="2396" class="PrimitiveType">Set</a><a id="2399" class="Symbol">}</a> <a id="2401" class="Symbol">-&gt;</a> <a id="2404" class="Symbol">(</a><a id="2405" href="/type-theory/2018/07/06/eutypes-intro-hott/#2405" class="Bound">f</a> <a id="2407" class="Symbol">:</a> <a id="2409" href="/type-theory/2018/07/06/eutypes-intro-hott/#2390" class="Bound">A</a> <a id="2411" class="Symbol">-&gt;</a> <a id="2414" href="/type-theory/2018/07/06/eutypes-intro-hott/#2392" class="Bound">B</a><a id="2415" class="Symbol">)</a> <a id="2417" class="Symbol">-&gt;</a> <a id="2420" href="/type-theory/2018/07/06/eutypes-intro-hott/#2392" class="Bound">B</a> <a id="2422" class="Symbol">-&gt;</a> <a id="2425" class="PrimitiveType">Set</a>
+<a id="2429" href="/type-theory/2018/07/06/eutypes-intro-hott/#2383" class="Function">fib</a> <a id="2433" class="Symbol">{</a><a id="2434" href="/type-theory/2018/07/06/eutypes-intro-hott/#2434" class="Bound">A</a><a id="2435" class="Symbol">}</a> <a id="2437" href="/type-theory/2018/07/06/eutypes-intro-hott/#2437" class="Bound">f</a> <a id="2439" href="/type-theory/2018/07/06/eutypes-intro-hott/#2439" class="Bound">y</a> <a id="2441" class="Symbol">=</a> <a id="2443" href="/type-theory/2018/07/06/mini-hott/#2072" class="Record">Σ</a> <a id="2445" href="/type-theory/2018/07/06/eutypes-intro-hott/#2434" class="Bound">A</a> <a id="2447" class="Symbol">λ</a> <a id="2449" href="/type-theory/2018/07/06/eutypes-intro-hott/#2449" class="Bound">x</a> <a id="2451" class="Symbol">→</a> <a id="2453" href="/type-theory/2018/07/06/eutypes-intro-hott/#2437" class="Bound">f</a> <a id="2455" href="/type-theory/2018/07/06/eutypes-intro-hott/#2449" class="Bound">x</a> <a id="2457" href="/type-theory/2018/07/06/mini-hott/#5392" class="Datatype Operator">==</a> <a id="2460" href="/type-theory/2018/07/06/eutypes-intro-hott/#2439" class="Bound">y</a>
+
+<a id="voevoedsky→equiv"></a><a id="2463" href="/type-theory/2018/07/06/eutypes-intro-hott/#2463" class="Function">voevoedsky→equiv</a> <a id="2480" class="Symbol">:</a> <a id="2482" class="Symbol">{</a><a id="2483" href="/type-theory/2018/07/06/eutypes-intro-hott/#2483" class="Bound">A</a> <a id="2485" href="/type-theory/2018/07/06/eutypes-intro-hott/#2485" class="Bound">B</a> <a id="2487" class="Symbol">:</a> <a id="2489" class="PrimitiveType">Set</a><a id="2492" class="Symbol">}</a> <a id="2494" class="Symbol">-&gt;</a> <a id="2497" class="Symbol">(</a><a id="2498" href="/type-theory/2018/07/06/eutypes-intro-hott/#2498" class="Bound">f</a> <a id="2500" class="Symbol">:</a> <a id="2502" href="/type-theory/2018/07/06/eutypes-intro-hott/#2483" class="Bound">A</a> <a id="2504" class="Symbol">-&gt;</a> <a id="2507" href="/type-theory/2018/07/06/eutypes-intro-hott/#2485" class="Bound">B</a><a id="2508" class="Symbol">)</a> <a id="2510" class="Symbol">-&gt;</a>
+                   <a id="2532" class="Symbol">((</a><a id="2534" href="/type-theory/2018/07/06/eutypes-intro-hott/#2534" class="Bound">y</a> <a id="2536" class="Symbol">:</a> <a id="2538" href="/type-theory/2018/07/06/eutypes-intro-hott/#2485" class="Bound">B</a><a id="2539" class="Symbol">)</a> <a id="2541" class="Symbol">-&gt;</a> <a id="2544" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="2552" class="Symbol">(</a><a id="2553" href="/type-theory/2018/07/06/eutypes-intro-hott/#2383" class="Function">fib</a> <a id="2557" href="/type-theory/2018/07/06/eutypes-intro-hott/#2498" class="Bound">f</a> <a id="2559" href="/type-theory/2018/07/06/eutypes-intro-hott/#2534" class="Bound">y</a><a id="2560" class="Symbol">))</a> <a id="2563" class="Symbol">-&gt;</a> <a id="2566" href="/type-theory/2018/07/06/mini-hott/#27389" class="Function">isEquiv</a> <a id="2574" href="/type-theory/2018/07/06/eutypes-intro-hott/#2498" class="Bound">f</a>
+<a id="2576" href="/type-theory/2018/07/06/eutypes-intro-hott/#2463" class="Function">voevoedsky→equiv</a> <a id="2593" href="/type-theory/2018/07/06/eutypes-intro-hott/#2593" class="Bound">f</a> <a id="2595" href="/type-theory/2018/07/06/eutypes-intro-hott/#2595" class="Bound">p</a> <a id="2597" class="Symbol">=</a> <a id="2599" class="Symbol">{!  !}</a></pre>
+
+<h2 id="exercise-8-construct-a-bi-functional-relation-from-an-equivalence">Exercise 8: Construct a “bi-functional relation” from an equivalence</h2>
+<pre class="Agda"><a id="equiv→bifun"></a><a id="2703" href="/type-theory/2018/07/06/eutypes-intro-hott/#2703" class="Function">equiv→bifun</a> <a id="2715" class="Symbol">:</a> <a id="2717" class="Symbol">{</a><a id="2718" href="/type-theory/2018/07/06/eutypes-intro-hott/#2718" class="Bound">A</a> <a id="2720" href="/type-theory/2018/07/06/eutypes-intro-hott/#2720" class="Bound">B</a> <a id="2722" class="Symbol">:</a> <a id="2724" class="PrimitiveType">Set</a><a id="2727" class="Symbol">}</a> <a id="2729" class="Symbol">-&gt;</a> <a id="2732" class="Symbol">(</a><a id="2733" href="/type-theory/2018/07/06/eutypes-intro-hott/#2733" class="Bound">f</a> <a id="2735" class="Symbol">:</a> <a id="2737" href="/type-theory/2018/07/06/eutypes-intro-hott/#2718" class="Bound">A</a> <a id="2739" class="Symbol">-&gt;</a> <a id="2742" href="/type-theory/2018/07/06/eutypes-intro-hott/#2720" class="Bound">B</a><a id="2743" class="Symbol">)</a> <a id="2745" class="Symbol">-&gt;</a> <a id="2748" href="/type-theory/2018/07/06/mini-hott/#27389" class="Function">isEquiv</a> <a id="2756" href="/type-theory/2018/07/06/eutypes-intro-hott/#2733" class="Bound">f</a> <a id="2758" class="Symbol">-&gt;</a>
+              <a id="2775" href="/type-theory/2018/07/06/mini-hott/#2072" class="Record">Σ</a> <a id="2777" class="Symbol">(</a><a id="2778" href="/type-theory/2018/07/06/eutypes-intro-hott/#2718" class="Bound">A</a> <a id="2780" class="Symbol">-&gt;</a> <a id="2783" href="/type-theory/2018/07/06/eutypes-intro-hott/#2720" class="Bound">B</a> <a id="2785" class="Symbol">-&gt;</a> <a id="2788" class="PrimitiveType">Set</a><a id="2791" class="Symbol">)</a> <a id="2793" class="Symbol">λ</a> <a id="2795" href="/type-theory/2018/07/06/eutypes-intro-hott/#2795" class="Bound">R</a> <a id="2797" class="Symbol">→</a>
+                <a id="2815" href="/type-theory/2018/07/06/mini-hott/#2072" class="Record">Σ</a> <a id="2817" class="Symbol">((</a><a id="2819" href="/type-theory/2018/07/06/eutypes-intro-hott/#2819" class="Bound">a</a> <a id="2821" class="Symbol">:</a> <a id="2823" href="/type-theory/2018/07/06/eutypes-intro-hott/#2718" class="Bound">A</a><a id="2824" class="Symbol">)</a> <a id="2826" class="Symbol">→</a> <a id="2828" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="2836" class="Symbol">(</a><a id="2837" href="/type-theory/2018/07/06/mini-hott/#2072" class="Record">Σ</a> <a id="2839" href="/type-theory/2018/07/06/eutypes-intro-hott/#2720" class="Bound">B</a> <a id="2841" class="Symbol">λ</a> <a id="2843" href="/type-theory/2018/07/06/eutypes-intro-hott/#2843" class="Bound">b</a> <a id="2845" class="Symbol">→</a> <a id="2847" href="/type-theory/2018/07/06/eutypes-intro-hott/#2795" class="Bound">R</a> <a id="2849" href="/type-theory/2018/07/06/eutypes-intro-hott/#2819" class="Bound">a</a> <a id="2851" href="/type-theory/2018/07/06/eutypes-intro-hott/#2843" class="Bound">b</a><a id="2852" class="Symbol">))</a> <a id="2855" class="Symbol">λ</a> <a id="2857" href="/type-theory/2018/07/06/eutypes-intro-hott/#2857" class="Bound">_</a> <a id="2859" class="Symbol">→</a>
+                  <a id="2879" class="Symbol">((</a><a id="2881" href="/type-theory/2018/07/06/eutypes-intro-hott/#2881" class="Bound">b</a> <a id="2883" class="Symbol">:</a> <a id="2885" href="/type-theory/2018/07/06/eutypes-intro-hott/#2720" class="Bound">B</a><a id="2886" class="Symbol">)</a> <a id="2888" class="Symbol">→</a> <a id="2890" href="/type-theory/2018/07/06/mini-hott/#26751" class="Function">isContr</a> <a id="2898" class="Symbol">(</a><a id="2899" href="/type-theory/2018/07/06/mini-hott/#2072" class="Record">Σ</a> <a id="2901" href="/type-theory/2018/07/06/eutypes-intro-hott/#2718" class="Bound">A</a> <a id="2903" class="Symbol">λ</a> <a id="2905" href="/type-theory/2018/07/06/eutypes-intro-hott/#2905" class="Bound">a</a> <a id="2907" class="Symbol">→</a> <a id="2909" href="/type-theory/2018/07/06/eutypes-intro-hott/#2795" class="Bound">R</a> <a id="2911" href="/type-theory/2018/07/06/eutypes-intro-hott/#2905" class="Bound">a</a> <a id="2913" href="/type-theory/2018/07/06/eutypes-intro-hott/#2881" class="Bound">b</a><a id="2914" class="Symbol">))</a>
+<a id="2917" href="/type-theory/2018/07/06/eutypes-intro-hott/#2703" class="Function">equiv→bifun</a> <a id="2929" href="/type-theory/2018/07/06/eutypes-intro-hott/#2929" class="Bound">f</a> <a id="2931" href="/type-theory/2018/07/06/eutypes-intro-hott/#2931" class="Bound">p</a> <a id="2933" class="Symbol">=</a> <a id="2935" class="Symbol">{!  !}</a></pre>
+
+
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+
+  <div class="github-links">
+    <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-08-09-eutypes-intro-hott.lagda" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/d43475ab9b47e469df42f9412f5a9458ac8d646d/src/2018-08-09-eutypes-intro-hott.lagda" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
+  </div>
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      
+    
+      
+    
+      
+        <li>
+          <h3>
+            <a href="/type-theory/2018/07/06/mini-hott/">
+              Mini HoTT library in Agda
+              
+                <small>06 Jul 2018</small>
+              
+            </a>
+          </h3>
+        </li>
+      
+    
+  </ul>
+
+
+</div>
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://jonaprieto-blog.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    <!-- Import jQuery -->
+<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/assets/linkify.min.js"></script>
+<script src="/assets/linkify-jquery.min.js"></script>
+
+<script type="text/javascript">
+$('.references').linkify();
+$('.bibliography').linkify();
+$('.links').linkify();
+
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
+  }
+);
+</script>
+
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
+<script type="text/javascript">
+ $("script[type='math/tex']").replaceWith(
+     function(){
+         var tex = $(this).text();
+         return "&zwnj;$$" + tex + "$$&zwnj;";
+     });
+ $("script[type='math/tex; mode=display']").replaceWith(
+     function(){
+         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
+     });
+</script>
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var autoHeight = $(this).height();
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+     $(this).height(lineHeight);
+     // $(this).height(2.0 * lineHeight);
+     $(this).css('overflow','hidden');
+     $(this).click(function(){
+         if ($(this).height() == autoHeight) {
+             // $(this).height(2.0 * lineHeight);
+             $(this).height(lineHeight);
+             plus.show();
+         }
+         else {
+             $(this).height('auto');
+             plus.hide();
+         }
+     });
+ });
+</script>
+<script type="text/javascript">
+
+  $('.cited-references').hide();
+  const refs = $(".references");
+  $('.references').append( $('.cited-references').html());
+  if ( refs.text() != ""){
+     refs.prepend("<h3>References</h3>");
+  }
+  else{
+    if ($(".cited-references").text() != ""){
+      $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+      $(".cited-references").show();
+      $(".toc nav>ul").append(
+        "<li><a href='#refs'>References</a></li>"
+      );
+    }
+
+  }
+
+</script>
+
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  </body>
+</html>
