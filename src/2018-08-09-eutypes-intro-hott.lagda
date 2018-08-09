@@ -92,12 +92,31 @@ vacuum-cord {A} a = ((a , idp) , f)
 
 \begin{code}
 contr-is-contr : {A : Set} → isContr A → isContr (isContr A)
-contr-is-contr p = {!   !}
+contr-is-contr {A} (c , p) = (c , p) , ctr
+  where
+    ctr : (x : isContr A) → c , p == x
+    ctr (xc , xp) = pair= (p xc , t)
+      where
+        t : transport (λ x → (a : A) → x == a) (p xc) p == xp
+        t =
+          begin
+              transport (λ x → (a : A) → x == a) (p xc) p
+          ==⟨ dependent-back-and-forth (p xc) p ⟩
+              (λ (a : A) → tr {!   !} {! !  !} {!   !})
+          ==⟨ {!   !} ⟩
+              {!   !}
+          ==⟨ {!   !} ⟩
+              {!   !}
+          ==⟨ {!   !} ⟩
+              xp
+          ∎
+
 \end{code}
 
 \begin{code}
 prop-is-prop-always : {A : Set} → isProp (isProp A)
-prop-is-prop-always = λ x y → {!   !} -- Done with funext twice and using isSet of x
+prop-is-prop-always {A} =
+  λ x y → funext (λ a → funext (λ b → prop→set x a b (x a b) (y a b)))
 \end{code}
 
 \begin{code}

@@ -959,6 +959,9 @@ transport-fun
   → tr (λ x → (A x → B x)) p f == (λ x → tr B p (f (tr A (! p) x)))
 
 transport-fun idp f = idp
+
+-- synonyms
+back-and-forth = transport-fun
 \end{code}
 
 ![path](/assets/ipe-images/transport-fun.png)
@@ -972,6 +975,9 @@ transport-fun-h
   → (tr (λ x → (A x → B x)) p f) b == tr B p (f (tr A (! p) b))
 
 transport-fun-h idp f b = idp
+
+-- synonyms
+back-and-forth-h = transport-fun-h
 \end{code}
 
 Now, when we transport dependent functions this is what we got:
@@ -979,7 +985,7 @@ Now, when we transport dependent functions this is what we got:
 ![path](/assets/ipe-images/transport-fun-dependent.png)
 
 \begin{code}
-transport-fun-dependent
+transport-fun-dependent-h
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
   → {B : (x : X) → (a : A x) → Type ℓₖ} {x y : X}
   → (p : x == y)
@@ -989,7 +995,26 @@ transport-fun-dependent
   → (tr (λ x → (a : A x) → B x a) p f) a'
     == tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
 
-transport-fun-dependent idp f a' = idp
+transport-fun-dependent-h idp f a' = idp
+
+-- synonyms
+dependent-back-and-forth-h = transport-fun-dependent-h
+\end{code}
+
+\begin{code}
+transport-fun-dependent
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
+  → {B : (x : X) → (a : A x) → Type ℓₖ} {x y : X}
+  → (p : x == y)
+  → (f : (a : A x) → B x a)
+  ---------------------------------------------------------------------
+  → (tr (λ x → (a : A x) → B x a) p f)
+    == λ (a' : A y) → tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
+
+transport-fun-dependent idp f = idp
+
+-- synonyms
+dependent-back-and-forth = transport-fun-dependent
 \end{code}
 
 ## Basic type lemmas
