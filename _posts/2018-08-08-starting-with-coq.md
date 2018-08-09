@@ -6,9 +6,7 @@ categories: learning
 coq: true
 ---
 
-
 This is just a test and it's not working.
-
 
 <textarea id="coq-1">
 Print nat.
