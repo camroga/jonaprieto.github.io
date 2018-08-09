@@ -10,7 +10,7 @@ agda: true
 This file contains the exercises of *An Introduction
 to Homotopy Type Theory*, a course given by [Fredrik Nordvall Forsberg](https://personal.cis.strath.ac.uk/fredrik.nordvall-forsberg/)
 in [EUTypes summer school 2018](https://sites.google.com/view/2018eutypesschool/) in Ohrid, Macedonia.
-I'll be adding the solutions as long as I have time to think about it. 
+I'll be adding the solutions as long as I have time to think about it.
 
 {: .links }
   - Links:
@@ -71,7 +71,21 @@ all-contr→prop g = λ x y → contr→prop (x , λ w → fst (g x y) · (fst (
 
 \begin{code}
 vacuum-cord : {A : Set} → (a : A) → isContr (Σ A (λ x → x == a))
-vacuum-cord a = {!   !}
+vacuum-cord {A} a = ((a , idp) , f)
+  where
+    f : (x : Σ A (λ x₁ → x₁ == a)) → a , idp == x
+    f (b , d) = pair= ((! d) , t)
+      where
+        t : transport (λ x → x == a) (! d) idp == d
+        t = begin
+          transport (λ x → x == a) (! d) idp
+            ==⟨ transport-concat-l (! d) idp ⟩
+          ! (! d) · idp
+            ==⟨ ! (·-runit (! ! d)) ⟩
+          ! (! d)
+            ==⟨ involution ⟩
+          d
+          ∎
 \end{code}
 
 ## Exercise 4: Closure properties (harder)
