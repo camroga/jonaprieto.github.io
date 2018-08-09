@@ -1630,18 +1630,18 @@ module HLevels where
       triang : {y z : A} {p : y == z} → (f a y) · p == f a z
       triang {y}{p = idp} = inv (·-runit (f a y))
 
-      lemma : {y z : A} (p : y == z) → p == inv (f a y) · (f a z)
+      lemma : {y z : A} (p : y == z) → p == ! (f a y) · (f a z)
       lemma {y} {z} p =
         begin
-          p                         ==⟨ ap (_· p) (inv (·-linv (f a y))) ⟩
-          inv (f a y) · f a y · p   ==⟨ ·-assoc (inv (f a y)) (f a y) p ⟩
-          inv (f a y) · (f a y · p) ==⟨ ap (inv (f a y) ·_) triang ⟩
-          inv (f a y) · (f a z)
+          p                       ==⟨ ap (_· p) (inv (·-linv (f a y))) ⟩
+          ! (f a y) · f a y · p   ==⟨ ·-assoc (! (f a y)) (f a y) p ⟩
+          ! (f a y) · (f a y · p) ==⟨ ap (! (f a y) ·_) triang ⟩
+          ! (f a y) · (f a z)
         ∎
 
   -- Contractible types are Propositions.
   contrIsProp : ∀ {ℓ}  {A : Type ℓ} → isContr A → isProp A
-  contrIsProp (a , p) x y = inv (p x) · p y
+  contrIsProp (a , p) x y = ! (p x) · p y
 
   -- To be contractible is itself a proposition.
   isContrIsProp : ∀ {ℓ}  {A : Type ℓ} → isProp (isContr A)
