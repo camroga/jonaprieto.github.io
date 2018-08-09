@@ -11,36 +11,14 @@ This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
 only one file and has been type-checked by Agda 2.5.4. No other libraries are
 required to type-check this file.
 
+**URL link**: https://tinyurl.com/mini-hott.
+
 To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
 type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
 not a good name for universes in HoTT and we rename `Set` to `Type`.
 
-This code mutates constantly and stands for only learning purposes. At the
-end of this article, the reader can find the references to the agda libraries in
-which we are based on.
-
-{% comment %}
-Some marks to accompany the code:
-
-- 👏 looks great!
-- 🔍 review please!
-- 🆘 needs refactor
-
-
-Style guide:
-
-- use `--` to make inference-alike some functions, some lemmas -
-after the signature, I'd like as much as possible a blank line, for mental pause
-- I avoided that if the signature is too short, in which case it should easier
-to understand
-- Levels using the letter ℓ and superindexes i,j,k.
-- A type family over `A`, we use C, or maybe P, I've decided yet.
-- paths should be named as p, q, α, γ, (last two cases, when there are sigmas)
-- include the most common synonym from the book or HoTT-Agda if there are
-more convenient.
-- use Sigma and Pi types as much as it's possible
-
-{% endcomment %}
+This code is working in progress and it's for my own learning purposes.
+Please check out the references at the end of this article.
 
 \begin{code}
 {-# OPTIONS --without-K #-}
@@ -1003,7 +981,7 @@ transport-fun-dependent
   → {B : (x : X) → (a : A x) → Type ℓₖ} {x y : X}
   → (p : x == y)
   → (f : (a : A x) → B x a)
-  -------------------------------------------------------------------
+  ---------------------------------------------------------------------
   → (a' : A y)
   → (tr (λ x → (a : A x) → B x a) p f) a'
     == tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
@@ -1043,11 +1021,18 @@ module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
   Σ-bycomponents (idp , idp) = idp
 
   pair= = Σ-bycomponents
+\end{code}
 
+A trivial consequence is the following identification:
+
+\begin{code}
+--
   lift-pair=
     : ∀ {x y : A} {u : P x}
     → (p : x == y)
+    --------------------------------------------------------
     → lift {A = A}{C = P} u p == pair= (p , refl (tr P p u))
+
   lift-pair= idp = idp
 \end{code}
 
@@ -1262,7 +1247,7 @@ module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type �
 open HomotopyComposition
 \end{code}
 
-# 🚧🚧🚧🚧🚧🚧🚧🚧[ Constructing ]🚧🚧🚧🚧🚧🚧🚧🚧🚧
+## 🚧🚧🚧🚧🚧[ In construction ]🚧🚧🚧🚧🚧
 
 ### Naturality
 
@@ -1582,7 +1567,7 @@ module Propositions where
               → isProp A → isProp B → isProp (A × B)
   isProp-prod p q x y = prodByComponents ((p _ _) , (q _ _))
 
-open Propositions
+open Propositions public
 \end{code}
 
 ### Sets
@@ -1616,7 +1601,7 @@ module Sets where
      q
     ∎
 
-open Sets
+open Sets public
 \end{code}
 
 ### Lemmas
@@ -1662,7 +1647,7 @@ module HLevels where
       AisSet : isSet A
       AisSet = propIsSet (contrIsProp (a , p))
 
-open HLevels
+open HLevels public
 \end{code}
 
 
@@ -1694,7 +1679,7 @@ module EquivalenceProp {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
       y
     ∎
 
-open EquivalenceProp
+open EquivalenceProp public
 \end{code}
 
 
@@ -3142,11 +3127,12 @@ module FundGroupCircle where
   preserves-composition n m = z-act+ (Ω-st S¹ base) n m loop
 \end{code}
 
+
 ## Agda references
 
 We based on the following Agda libraries.
 
 {: .links}
 
-  - (Mostly all code from) basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
+  - (Mostly all base code at the beginning was taken from) basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
   - Higher Inductive types in `hott-agda` from https://github.com/dlicata335/hott-agda/
