@@ -1,0 +1,353 @@
+coq-pkgs/Coq/ltac:
+	mkdir -p coq-pkgs/Coq/ltac
+Coq_ltac_VO:=$(wildcard $(COQDIR)/plugins/ltac/*.vo)
+Coq_ltac_CMA:=$(wildcard $(COQDIR)/plugins/ltac/*_plugin.cmo)
+Coq_ltac: coq-pkgs/Coq/ltac $(Coq_ltac_VO) $(Coq_ltac_CMA)
+	$(shell for i in $(Coq_ltac_VO);  do cp -a $$i coq-pkgs/Coq/ltac/`basename $$i`; done)
+	$(shell for i in $(Coq_ltac_CMA); do cp -a $$i coq-pkgs/Coq/ltac/`basename $$i`; done)
+
+coq-pkgs/Coq/syntax:
+	mkdir -p coq-pkgs/Coq/syntax
+Coq_syntax_VO:=$(wildcard $(COQDIR)/plugins/syntax/*.vo)
+Coq_syntax_CMA:=$(wildcard $(COQDIR)/plugins/syntax/*_plugin.cmo)
+Coq_syntax: coq-pkgs/Coq/syntax $(Coq_syntax_VO) $(Coq_syntax_CMA)
+	$(shell for i in $(Coq_syntax_VO);  do cp -a $$i coq-pkgs/Coq/syntax/`basename $$i`; done)
+	$(shell for i in $(Coq_syntax_CMA); do cp -a $$i coq-pkgs/Coq/syntax/`basename $$i`; done)
+
+coq-pkgs/Coq/decl_mode:
+	mkdir -p coq-pkgs/Coq/decl_mode
+Coq_decl_mode_VO:=$(wildcard $(COQDIR)/plugins/decl_mode/*.vo)
+Coq_decl_mode_CMA:=$(wildcard $(COQDIR)/plugins/decl_mode/*_plugin.cmo)
+Coq_decl_mode: coq-pkgs/Coq/decl_mode $(Coq_decl_mode_VO) $(Coq_decl_mode_CMA)
+	$(shell for i in $(Coq_decl_mode_VO);  do cp -a $$i coq-pkgs/Coq/decl_mode/`basename $$i`; done)
+	$(shell for i in $(Coq_decl_mode_CMA); do cp -a $$i coq-pkgs/Coq/decl_mode/`basename $$i`; done)
+
+coq-pkgs/Coq/cc:
+	mkdir -p coq-pkgs/Coq/cc
+Coq_cc_VO:=$(wildcard $(COQDIR)/plugins/cc/*.vo)
+Coq_cc_CMA:=$(wildcard $(COQDIR)/plugins/cc/*_plugin.cmo)
+Coq_cc: coq-pkgs/Coq/cc $(Coq_cc_VO) $(Coq_cc_CMA)
+	$(shell for i in $(Coq_cc_VO);  do cp -a $$i coq-pkgs/Coq/cc/`basename $$i`; done)
+	$(shell for i in $(Coq_cc_CMA); do cp -a $$i coq-pkgs/Coq/cc/`basename $$i`; done)
+
+coq-pkgs/Coq/firstorder:
+	mkdir -p coq-pkgs/Coq/firstorder
+Coq_firstorder_VO:=$(wildcard $(COQDIR)/plugins/firstorder/*.vo)
+Coq_firstorder_CMA:=$(wildcard $(COQDIR)/plugins/firstorder/*_plugin.cmo)
+Coq_firstorder: coq-pkgs/Coq/firstorder $(Coq_firstorder_VO) $(Coq_firstorder_CMA)
+	$(shell for i in $(Coq_firstorder_VO);  do cp -a $$i coq-pkgs/Coq/firstorder/`basename $$i`; done)
+	$(shell for i in $(Coq_firstorder_CMA); do cp -a $$i coq-pkgs/Coq/firstorder/`basename $$i`; done)
+
+coq-pkgs/Coq/setoid_ring:
+	mkdir -p coq-pkgs/Coq/setoid_ring
+Coq_setoid_ring_VO:=$(wildcard $(COQDIR)/plugins/setoid_ring/*.vo)
+Coq_setoid_ring_CMA:=$(wildcard $(COQDIR)/plugins/setoid_ring/*_plugin.cmo)
+Coq_setoid_ring: coq-pkgs/Coq/setoid_ring $(Coq_setoid_ring_VO) $(Coq_setoid_ring_CMA)
+	$(shell for i in $(Coq_setoid_ring_VO);  do cp -a $$i coq-pkgs/Coq/setoid_ring/`basename $$i`; done)
+	$(shell for i in $(Coq_setoid_ring_CMA); do cp -a $$i coq-pkgs/Coq/setoid_ring/`basename $$i`; done)
+
+coq-pkgs/Coq/extraction:
+	mkdir -p coq-pkgs/Coq/extraction
+Coq_extraction_VO:=$(wildcard $(COQDIR)/plugins/extraction/*.vo)
+Coq_extraction_CMA:=$(wildcard $(COQDIR)/plugins/extraction/*_plugin.cmo)
+Coq_extraction: coq-pkgs/Coq/extraction $(Coq_extraction_VO) $(Coq_extraction_CMA)
+	$(shell for i in $(Coq_extraction_VO);  do cp -a $$i coq-pkgs/Coq/extraction/`basename $$i`; done)
+	$(shell for i in $(Coq_extraction_CMA); do cp -a $$i coq-pkgs/Coq/extraction/`basename $$i`; done)
+
+coq-pkgs/Coq/funind:
+	mkdir -p coq-pkgs/Coq/funind
+Coq_funind_VO:=$(wildcard $(COQDIR)/plugins/funind/*.vo)
+Coq_funind_CMA:=$(wildcard $(COQDIR)/plugins/funind/*_plugin.cmo)
+Coq_funind: coq-pkgs/Coq/funind $(Coq_funind_VO) $(Coq_funind_CMA)
+	$(shell for i in $(Coq_funind_VO);  do cp -a $$i coq-pkgs/Coq/funind/`basename $$i`; done)
+	$(shell for i in $(Coq_funind_CMA); do cp -a $$i coq-pkgs/Coq/funind/`basename $$i`; done)
+
+coq-pkgs/Coq/quote:
+	mkdir -p coq-pkgs/Coq/quote
+Coq_quote_VO:=$(wildcard $(COQDIR)/plugins/quote/*.vo)
+Coq_quote_CMA:=$(wildcard $(COQDIR)/plugins/quote/*_plugin.cmo)
+Coq_quote: coq-pkgs/Coq/quote $(Coq_quote_VO) $(Coq_quote_CMA)
+	$(shell for i in $(Coq_quote_VO);  do cp -a $$i coq-pkgs/Coq/quote/`basename $$i`; done)
+	$(shell for i in $(Coq_quote_CMA); do cp -a $$i coq-pkgs/Coq/quote/`basename $$i`; done)
+
+coq-pkgs/Coq/fourier:
+	mkdir -p coq-pkgs/Coq/fourier
+Coq_fourier_VO:=$(wildcard $(COQDIR)/plugins/fourier/*.vo)
+Coq_fourier_CMA:=$(wildcard $(COQDIR)/plugins/fourier/*_plugin.cmo)
+Coq_fourier: coq-pkgs/Coq/fourier $(Coq_fourier_VO) $(Coq_fourier_CMA)
+	$(shell for i in $(Coq_fourier_VO);  do cp -a $$i coq-pkgs/Coq/fourier/`basename $$i`; done)
+	$(shell for i in $(Coq_fourier_CMA); do cp -a $$i coq-pkgs/Coq/fourier/`basename $$i`; done)
+
+coq-pkgs/Coq/omega:
+	mkdir -p coq-pkgs/Coq/omega
+Coq_omega_VO:=$(wildcard $(COQDIR)/plugins/omega/*.vo)
+Coq_omega_CMA:=$(wildcard $(COQDIR)/plugins/omega/*_plugin.cmo)
+Coq_omega: coq-pkgs/Coq/omega $(Coq_omega_VO) $(Coq_omega_CMA)
+	$(shell for i in $(Coq_omega_VO);  do cp -a $$i coq-pkgs/Coq/omega/`basename $$i`; done)
+	$(shell for i in $(Coq_omega_CMA); do cp -a $$i coq-pkgs/Coq/omega/`basename $$i`; done)
+
+coq-pkgs/Coq/micromega:
+	mkdir -p coq-pkgs/Coq/micromega
+Coq_micromega_VO:=$(wildcard $(COQDIR)/plugins/micromega/*.vo)
+Coq_micromega_CMA:=$(wildcard $(COQDIR)/plugins/micromega/*_plugin.cmo)
+Coq_micromega: coq-pkgs/Coq/micromega $(Coq_micromega_VO) $(Coq_micromega_CMA)
+	$(shell for i in $(Coq_micromega_VO);  do cp -a $$i coq-pkgs/Coq/micromega/`basename $$i`; done)
+	$(shell for i in $(Coq_micromega_CMA); do cp -a $$i coq-pkgs/Coq/micromega/`basename $$i`; done)
+
+coq-pkgs/Coq/romega:
+	mkdir -p coq-pkgs/Coq/romega
+Coq_romega_VO:=$(wildcard $(COQDIR)/plugins/romega/*.vo)
+Coq_romega_CMA:=$(wildcard $(COQDIR)/plugins/romega/*_plugin.cmo)
+Coq_romega: coq-pkgs/Coq/romega $(Coq_romega_VO) $(Coq_romega_CMA)
+	$(shell for i in $(Coq_romega_VO);  do cp -a $$i coq-pkgs/Coq/romega/`basename $$i`; done)
+	$(shell for i in $(Coq_romega_CMA); do cp -a $$i coq-pkgs/Coq/romega/`basename $$i`; done)
+
+coq-pkgs/Coq/nsatz:
+	mkdir -p coq-pkgs/Coq/nsatz
+Coq_nsatz_VO:=$(wildcard $(COQDIR)/plugins/nsatz/*.vo)
+Coq_nsatz_CMA:=$(wildcard $(COQDIR)/plugins/nsatz/*_plugin.cmo)
+Coq_nsatz: coq-pkgs/Coq/nsatz $(Coq_nsatz_VO) $(Coq_nsatz_CMA)
+	$(shell for i in $(Coq_nsatz_VO);  do cp -a $$i coq-pkgs/Coq/nsatz/`basename $$i`; done)
+	$(shell for i in $(Coq_nsatz_CMA); do cp -a $$i coq-pkgs/Coq/nsatz/`basename $$i`; done)
+
+coq-pkgs/Coq/ssrmatching:
+	mkdir -p coq-pkgs/Coq/ssrmatching
+Coq_ssrmatching_VO:=$(wildcard $(COQDIR)/plugins/ssrmatching/*.vo)
+Coq_ssrmatching_CMA:=$(wildcard $(COQDIR)/plugins/ssrmatching/*_plugin.cmo)
+Coq_ssrmatching: coq-pkgs/Coq/ssrmatching $(Coq_ssrmatching_VO) $(Coq_ssrmatching_CMA)
+	$(shell for i in $(Coq_ssrmatching_VO);  do cp -a $$i coq-pkgs/Coq/ssrmatching/`basename $$i`; done)
+	$(shell for i in $(Coq_ssrmatching_CMA); do cp -a $$i coq-pkgs/Coq/ssrmatching/`basename $$i`; done)
+
+coq-pkgs/Coq/ssr:
+	mkdir -p coq-pkgs/Coq/ssr
+Coq_ssr_VO:=$(wildcard $(COQDIR)/plugins/ssr/*.vo)
+Coq_ssr_CMA:=$(wildcard $(COQDIR)/plugins/ssr/*_plugin.cmo)
+Coq_ssr: coq-pkgs/Coq/ssr $(Coq_ssr_VO) $(Coq_ssr_CMA)
+	$(shell for i in $(Coq_ssr_VO);  do cp -a $$i coq-pkgs/Coq/ssr/`basename $$i`; done)
+	$(shell for i in $(Coq_ssr_CMA); do cp -a $$i coq-pkgs/Coq/ssr/`basename $$i`; done)
+
+coq-pkgs/Coq/Init:
+	mkdir -p coq-pkgs/Coq/Init
+Coq_Init_VO:=$(wildcard $(COQDIR)/theories/Init/*.vo)
+Coq_Init_CMA:=$(wildcard $(COQDIR)/theories/Init/*_plugin.cmo)
+Coq_Init: coq-pkgs/Coq/Init $(Coq_Init_VO) $(Coq_Init_CMA)
+	$(shell for i in $(Coq_Init_VO);  do cp -a $$i coq-pkgs/Coq/Init/`basename $$i`; done)
+	$(shell for i in $(Coq_Init_CMA); do cp -a $$i coq-pkgs/Coq/Init/`basename $$i`; done)
+
+coq-pkgs/Coq/Unicode:
+	mkdir -p coq-pkgs/Coq/Unicode
+Coq_Unicode_VO:=$(wildcard $(COQDIR)/theories/Unicode/*.vo)
+Coq_Unicode_CMA:=$(wildcard $(COQDIR)/theories/Unicode/*_plugin.cmo)
+Coq_Unicode: coq-pkgs/Coq/Unicode $(Coq_Unicode_VO) $(Coq_Unicode_CMA)
+	$(shell for i in $(Coq_Unicode_VO);  do cp -a $$i coq-pkgs/Coq/Unicode/`basename $$i`; done)
+	$(shell for i in $(Coq_Unicode_CMA); do cp -a $$i coq-pkgs/Coq/Unicode/`basename $$i`; done)
+
+coq-pkgs/Coq/Bool:
+	mkdir -p coq-pkgs/Coq/Bool
+Coq_Bool_VO:=$(wildcard $(COQDIR)/theories/Bool/*.vo)
+Coq_Bool_CMA:=$(wildcard $(COQDIR)/theories/Bool/*_plugin.cmo)
+Coq_Bool: coq-pkgs/Coq/Bool $(Coq_Bool_VO) $(Coq_Bool_CMA)
+	$(shell for i in $(Coq_Bool_VO);  do cp -a $$i coq-pkgs/Coq/Bool/`basename $$i`; done)
+	$(shell for i in $(Coq_Bool_CMA); do cp -a $$i coq-pkgs/Coq/Bool/`basename $$i`; done)
+
+coq-pkgs/Coq/Logic:
+	mkdir -p coq-pkgs/Coq/Logic
+Coq_Logic_VO:=$(wildcard $(COQDIR)/theories/Logic/*.vo)
+Coq_Logic_CMA:=$(wildcard $(COQDIR)/theories/Logic/*_plugin.cmo)
+Coq_Logic: coq-pkgs/Coq/Logic $(Coq_Logic_VO) $(Coq_Logic_CMA)
+	$(shell for i in $(Coq_Logic_VO);  do cp -a $$i coq-pkgs/Coq/Logic/`basename $$i`; done)
+	$(shell for i in $(Coq_Logic_CMA); do cp -a $$i coq-pkgs/Coq/Logic/`basename $$i`; done)
+
+coq-pkgs/Coq/Program:
+	mkdir -p coq-pkgs/Coq/Program
+Coq_Program_VO:=$(wildcard $(COQDIR)/theories/Program/*.vo)
+Coq_Program_CMA:=$(wildcard $(COQDIR)/theories/Program/*_plugin.cmo)
+Coq_Program: coq-pkgs/Coq/Program $(Coq_Program_VO) $(Coq_Program_CMA)
+	$(shell for i in $(Coq_Program_VO);  do cp -a $$i coq-pkgs/Coq/Program/`basename $$i`; done)
+	$(shell for i in $(Coq_Program_CMA); do cp -a $$i coq-pkgs/Coq/Program/`basename $$i`; done)
+
+coq-pkgs/Coq/Classes:
+	mkdir -p coq-pkgs/Coq/Classes
+Coq_Classes_VO:=$(wildcard $(COQDIR)/theories/Classes/*.vo)
+Coq_Classes_CMA:=$(wildcard $(COQDIR)/theories/Classes/*_plugin.cmo)
+Coq_Classes: coq-pkgs/Coq/Classes $(Coq_Classes_VO) $(Coq_Classes_CMA)
+	$(shell for i in $(Coq_Classes_VO);  do cp -a $$i coq-pkgs/Coq/Classes/`basename $$i`; done)
+	$(shell for i in $(Coq_Classes_CMA); do cp -a $$i coq-pkgs/Coq/Classes/`basename $$i`; done)
+
+coq-pkgs/Coq/Structures:
+	mkdir -p coq-pkgs/Coq/Structures
+Coq_Structures_VO:=$(wildcard $(COQDIR)/theories/Structures/*.vo)
+Coq_Structures_CMA:=$(wildcard $(COQDIR)/theories/Structures/*_plugin.cmo)
+Coq_Structures: coq-pkgs/Coq/Structures $(Coq_Structures_VO) $(Coq_Structures_CMA)
+	$(shell for i in $(Coq_Structures_VO);  do cp -a $$i coq-pkgs/Coq/Structures/`basename $$i`; done)
+	$(shell for i in $(Coq_Structures_CMA); do cp -a $$i coq-pkgs/Coq/Structures/`basename $$i`; done)
+
+coq-pkgs/Coq/Relations:
+	mkdir -p coq-pkgs/Coq/Relations
+Coq_Relations_VO:=$(wildcard $(COQDIR)/theories/Relations/*.vo)
+Coq_Relations_CMA:=$(wildcard $(COQDIR)/theories/Relations/*_plugin.cmo)
+Coq_Relations: coq-pkgs/Coq/Relations $(Coq_Relations_VO) $(Coq_Relations_CMA)
+	$(shell for i in $(Coq_Relations_VO);  do cp -a $$i coq-pkgs/Coq/Relations/`basename $$i`; done)
+	$(shell for i in $(Coq_Relations_CMA); do cp -a $$i coq-pkgs/Coq/Relations/`basename $$i`; done)
+
+coq-pkgs/Coq/Setoids:
+	mkdir -p coq-pkgs/Coq/Setoids
+Coq_Setoids_VO:=$(wildcard $(COQDIR)/theories/Setoids/*.vo)
+Coq_Setoids_CMA:=$(wildcard $(COQDIR)/theories/Setoids/*_plugin.cmo)
+Coq_Setoids: coq-pkgs/Coq/Setoids $(Coq_Setoids_VO) $(Coq_Setoids_CMA)
+	$(shell for i in $(Coq_Setoids_VO);  do cp -a $$i coq-pkgs/Coq/Setoids/`basename $$i`; done)
+	$(shell for i in $(Coq_Setoids_CMA); do cp -a $$i coq-pkgs/Coq/Setoids/`basename $$i`; done)
+
+coq-pkgs/Coq/Arith:
+	mkdir -p coq-pkgs/Coq/Arith
+Coq_Arith_VO:=$(wildcard $(COQDIR)/theories/Arith/*.vo)
+Coq_Arith_CMA:=$(wildcard $(COQDIR)/theories/Arith/*_plugin.cmo)
+Coq_Arith: coq-pkgs/Coq/Arith $(Coq_Arith_VO) $(Coq_Arith_CMA)
+	$(shell for i in $(Coq_Arith_VO);  do cp -a $$i coq-pkgs/Coq/Arith/`basename $$i`; done)
+	$(shell for i in $(Coq_Arith_CMA); do cp -a $$i coq-pkgs/Coq/Arith/`basename $$i`; done)
+
+coq-pkgs/Coq/PArith:
+	mkdir -p coq-pkgs/Coq/PArith
+Coq_PArith_VO:=$(wildcard $(COQDIR)/theories/PArith/*.vo)
+Coq_PArith_CMA:=$(wildcard $(COQDIR)/theories/PArith/*_plugin.cmo)
+Coq_PArith: coq-pkgs/Coq/PArith $(Coq_PArith_VO) $(Coq_PArith_CMA)
+	$(shell for i in $(Coq_PArith_VO);  do cp -a $$i coq-pkgs/Coq/PArith/`basename $$i`; done)
+	$(shell for i in $(Coq_PArith_CMA); do cp -a $$i coq-pkgs/Coq/PArith/`basename $$i`; done)
+
+coq-pkgs/Coq/NArith:
+	mkdir -p coq-pkgs/Coq/NArith
+Coq_NArith_VO:=$(wildcard $(COQDIR)/theories/NArith/*.vo)
+Coq_NArith_CMA:=$(wildcard $(COQDIR)/theories/NArith/*_plugin.cmo)
+Coq_NArith: coq-pkgs/Coq/NArith $(Coq_NArith_VO) $(Coq_NArith_CMA)
+	$(shell for i in $(Coq_NArith_VO);  do cp -a $$i coq-pkgs/Coq/NArith/`basename $$i`; done)
+	$(shell for i in $(Coq_NArith_CMA); do cp -a $$i coq-pkgs/Coq/NArith/`basename $$i`; done)
+
+coq-pkgs/Coq/ZArith:
+	mkdir -p coq-pkgs/Coq/ZArith
+Coq_ZArith_VO:=$(wildcard $(COQDIR)/theories/ZArith/*.vo)
+Coq_ZArith_CMA:=$(wildcard $(COQDIR)/theories/ZArith/*_plugin.cmo)
+Coq_ZArith: coq-pkgs/Coq/ZArith $(Coq_ZArith_VO) $(Coq_ZArith_CMA)
+	$(shell for i in $(Coq_ZArith_VO);  do cp -a $$i coq-pkgs/Coq/ZArith/`basename $$i`; done)
+	$(shell for i in $(Coq_ZArith_CMA); do cp -a $$i coq-pkgs/Coq/ZArith/`basename $$i`; done)
+
+coq-pkgs/Coq/QArith:
+	mkdir -p coq-pkgs/Coq/QArith
+Coq_QArith_VO:=$(wildcard $(COQDIR)/theories/QArith/*.vo)
+Coq_QArith_CMA:=$(wildcard $(COQDIR)/theories/QArith/*_plugin.cmo)
+Coq_QArith: coq-pkgs/Coq/QArith $(Coq_QArith_VO) $(Coq_QArith_CMA)
+	$(shell for i in $(Coq_QArith_VO);  do cp -a $$i coq-pkgs/Coq/QArith/`basename $$i`; done)
+	$(shell for i in $(Coq_QArith_CMA); do cp -a $$i coq-pkgs/Coq/QArith/`basename $$i`; done)
+
+coq-pkgs/Coq/Lists:
+	mkdir -p coq-pkgs/Coq/Lists
+Coq_Lists_VO:=$(wildcard $(COQDIR)/theories/Lists/*.vo)
+Coq_Lists_CMA:=$(wildcard $(COQDIR)/theories/Lists/*_plugin.cmo)
+Coq_Lists: coq-pkgs/Coq/Lists $(Coq_Lists_VO) $(Coq_Lists_CMA)
+	$(shell for i in $(Coq_Lists_VO);  do cp -a $$i coq-pkgs/Coq/Lists/`basename $$i`; done)
+	$(shell for i in $(Coq_Lists_CMA); do cp -a $$i coq-pkgs/Coq/Lists/`basename $$i`; done)
+
+coq-pkgs/Coq/Vectors:
+	mkdir -p coq-pkgs/Coq/Vectors
+Coq_Vectors_VO:=$(wildcard $(COQDIR)/theories/Vectors/*.vo)
+Coq_Vectors_CMA:=$(wildcard $(COQDIR)/theories/Vectors/*_plugin.cmo)
+Coq_Vectors: coq-pkgs/Coq/Vectors $(Coq_Vectors_VO) $(Coq_Vectors_CMA)
+	$(shell for i in $(Coq_Vectors_VO);  do cp -a $$i coq-pkgs/Coq/Vectors/`basename $$i`; done)
+	$(shell for i in $(Coq_Vectors_CMA); do cp -a $$i coq-pkgs/Coq/Vectors/`basename $$i`; done)
+
+coq-pkgs/Coq/Reals:
+	mkdir -p coq-pkgs/Coq/Reals
+Coq_Reals_VO:=$(wildcard $(COQDIR)/theories/Reals/*.vo)
+Coq_Reals_CMA:=$(wildcard $(COQDIR)/theories/Reals/*_plugin.cmo)
+Coq_Reals: coq-pkgs/Coq/Reals $(Coq_Reals_VO) $(Coq_Reals_CMA)
+	$(shell for i in $(Coq_Reals_VO);  do cp -a $$i coq-pkgs/Coq/Reals/`basename $$i`; done)
+	$(shell for i in $(Coq_Reals_CMA); do cp -a $$i coq-pkgs/Coq/Reals/`basename $$i`; done)
+
+coq-pkgs/Coq/Sets:
+	mkdir -p coq-pkgs/Coq/Sets
+Coq_Sets_VO:=$(wildcard $(COQDIR)/theories/Sets/*.vo)
+Coq_Sets_CMA:=$(wildcard $(COQDIR)/theories/Sets/*_plugin.cmo)
+Coq_Sets: coq-pkgs/Coq/Sets $(Coq_Sets_VO) $(Coq_Sets_CMA)
+	$(shell for i in $(Coq_Sets_VO);  do cp -a $$i coq-pkgs/Coq/Sets/`basename $$i`; done)
+	$(shell for i in $(Coq_Sets_CMA); do cp -a $$i coq-pkgs/Coq/Sets/`basename $$i`; done)
+
+coq-pkgs/Coq/FSets:
+	mkdir -p coq-pkgs/Coq/FSets
+Coq_FSets_VO:=$(wildcard $(COQDIR)/theories/FSets/*.vo)
+Coq_FSets_CMA:=$(wildcard $(COQDIR)/theories/FSets/*_plugin.cmo)
+Coq_FSets: coq-pkgs/Coq/FSets $(Coq_FSets_VO) $(Coq_FSets_CMA)
+	$(shell for i in $(Coq_FSets_VO);  do cp -a $$i coq-pkgs/Coq/FSets/`basename $$i`; done)
+	$(shell for i in $(Coq_FSets_CMA); do cp -a $$i coq-pkgs/Coq/FSets/`basename $$i`; done)
+
+coq-pkgs/Coq/MSets:
+	mkdir -p coq-pkgs/Coq/MSets
+Coq_MSets_VO:=$(wildcard $(COQDIR)/theories/MSets/*.vo)
+Coq_MSets_CMA:=$(wildcard $(COQDIR)/theories/MSets/*_plugin.cmo)
+Coq_MSets: coq-pkgs/Coq/MSets $(Coq_MSets_VO) $(Coq_MSets_CMA)
+	$(shell for i in $(Coq_MSets_VO);  do cp -a $$i coq-pkgs/Coq/MSets/`basename $$i`; done)
+	$(shell for i in $(Coq_MSets_CMA); do cp -a $$i coq-pkgs/Coq/MSets/`basename $$i`; done)
+
+coq-pkgs/Coq/Sorting:
+	mkdir -p coq-pkgs/Coq/Sorting
+Coq_Sorting_VO:=$(wildcard $(COQDIR)/theories/Sorting/*.vo)
+Coq_Sorting_CMA:=$(wildcard $(COQDIR)/theories/Sorting/*_plugin.cmo)
+Coq_Sorting: coq-pkgs/Coq/Sorting $(Coq_Sorting_VO) $(Coq_Sorting_CMA)
+	$(shell for i in $(Coq_Sorting_VO);  do cp -a $$i coq-pkgs/Coq/Sorting/`basename $$i`; done)
+	$(shell for i in $(Coq_Sorting_CMA); do cp -a $$i coq-pkgs/Coq/Sorting/`basename $$i`; done)
+
+coq-pkgs/Coq/Wellfounded:
+	mkdir -p coq-pkgs/Coq/Wellfounded
+Coq_Wellfounded_VO:=$(wildcard $(COQDIR)/theories/Wellfounded/*.vo)
+Coq_Wellfounded_CMA:=$(wildcard $(COQDIR)/theories/Wellfounded/*_plugin.cmo)
+Coq_Wellfounded: coq-pkgs/Coq/Wellfounded $(Coq_Wellfounded_VO) $(Coq_Wellfounded_CMA)
+	$(shell for i in $(Coq_Wellfounded_VO);  do cp -a $$i coq-pkgs/Coq/Wellfounded/`basename $$i`; done)
+	$(shell for i in $(Coq_Wellfounded_CMA); do cp -a $$i coq-pkgs/Coq/Wellfounded/`basename $$i`; done)
+
+coq-pkgs/Coq/Strings:
+	mkdir -p coq-pkgs/Coq/Strings
+Coq_Strings_VO:=$(wildcard $(COQDIR)/theories/Strings/*.vo)
+Coq_Strings_CMA:=$(wildcard $(COQDIR)/theories/Strings/*_plugin.cmo)
+Coq_Strings: coq-pkgs/Coq/Strings $(Coq_Strings_VO) $(Coq_Strings_CMA)
+	$(shell for i in $(Coq_Strings_VO);  do cp -a $$i coq-pkgs/Coq/Strings/`basename $$i`; done)
+	$(shell for i in $(Coq_Strings_CMA); do cp -a $$i coq-pkgs/Coq/Strings/`basename $$i`; done)
+
+coq-pkgs/Coq/Numbers:
+	mkdir -p coq-pkgs/Coq/Numbers
+Coq_Numbers_VO:=$(wildcard $(COQDIR)/theories/Numbers/*.vo)
+Coq_Numbers_CMA:=$(wildcard $(COQDIR)/theories/Numbers/*_plugin.cmo)
+Coq_Numbers: coq-pkgs/Coq/Numbers $(Coq_Numbers_VO) $(Coq_Numbers_CMA)
+	$(shell for i in $(Coq_Numbers_VO);  do cp -a $$i coq-pkgs/Coq/Numbers/`basename $$i`; done)
+	$(shell for i in $(Coq_Numbers_CMA); do cp -a $$i coq-pkgs/Coq/Numbers/`basename $$i`; done)
+
+coq-pkgs/Coq/Numbers/NatInt:
+	mkdir -p coq-pkgs/Coq/Numbers/NatInt
+Coq_Numbers_NatInt_VO:=$(wildcard $(COQDIR)/theories/Numbers/NatInt/*.vo)
+Coq_Numbers_NatInt_CMA:=$(wildcard $(COQDIR)/theories/Numbers/NatInt/*_plugin.cmo)
+Coq_Numbers_NatInt: coq-pkgs/Coq/Numbers/NatInt $(Coq_Numbers_NatInt_VO) $(Coq_Numbers_NatInt_CMA)
+	$(shell for i in $(Coq_Numbers_NatInt_VO);  do cp -a $$i coq-pkgs/Coq/Numbers/NatInt/`basename $$i`; done)
+	$(shell for i in $(Coq_Numbers_NatInt_CMA); do cp -a $$i coq-pkgs/Coq/Numbers/NatInt/`basename $$i`; done)
+
+coq-pkgs/Coq/Numbers/Natural/Abstract:
+	mkdir -p coq-pkgs/Coq/Numbers/Natural/Abstract
+Coq_Numbers_Natural_Abstract_VO:=$(wildcard $(COQDIR)/theories/Numbers/Natural/Abstract/*.vo)
+Coq_Numbers_Natural_Abstract_CMA:=$(wildcard $(COQDIR)/theories/Numbers/Natural/Abstract/*_plugin.cmo)
+Coq_Numbers_Natural_Abstract: coq-pkgs/Coq/Numbers/Natural/Abstract $(Coq_Numbers_Natural_Abstract_VO) $(Coq_Numbers_Natural_Abstract_CMA)
+	$(shell for i in $(Coq_Numbers_Natural_Abstract_VO);  do cp -a $$i coq-pkgs/Coq/Numbers/Natural/Abstract/`basename $$i`; done)
+	$(shell for i in $(Coq_Numbers_Natural_Abstract_CMA); do cp -a $$i coq-pkgs/Coq/Numbers/Natural/Abstract/`basename $$i`; done)
+
+coq-pkgs/Coq/Numbers/Natural/Peano:
+	mkdir -p coq-pkgs/Coq/Numbers/Natural/Peano
+Coq_Numbers_Natural_Peano_VO:=$(wildcard $(COQDIR)/theories/Numbers/Natural/Peano/*.vo)
+Coq_Numbers_Natural_Peano_CMA:=$(wildcard $(COQDIR)/theories/Numbers/Natural/Peano/*_plugin.cmo)
+Coq_Numbers_Natural_Peano: coq-pkgs/Coq/Numbers/Natural/Peano $(Coq_Numbers_Natural_Peano_VO) $(Coq_Numbers_Natural_Peano_CMA)
+	$(shell for i in $(Coq_Numbers_Natural_Peano_VO);  do cp -a $$i coq-pkgs/Coq/Numbers/Natural/Peano/`basename $$i`; done)
+	$(shell for i in $(Coq_Numbers_Natural_Peano_CMA); do cp -a $$i coq-pkgs/Coq/Numbers/Natural/Peano/`basename $$i`; done)
+
+coq-pkgs/Coq/Numbers/Integer/Abstract:
+	mkdir -p coq-pkgs/Coq/Numbers/Integer/Abstract
+Coq_Numbers_Integer_Abstract_VO:=$(wildcard $(COQDIR)/theories/Numbers/Integer/Abstract/*.vo)
+Coq_Numbers_Integer_Abstract_CMA:=$(wildcard $(COQDIR)/theories/Numbers/Integer/Abstract/*_plugin.cmo)
+Coq_Numbers_Integer_Abstract: coq-pkgs/Coq/Numbers/Integer/Abstract $(Coq_Numbers_Integer_Abstract_VO) $(Coq_Numbers_Integer_Abstract_CMA)
+	$(shell for i in $(Coq_Numbers_Integer_Abstract_VO);  do cp -a $$i coq-pkgs/Coq/Numbers/Integer/Abstract/`basename $$i`; done)
+	$(shell for i in $(Coq_Numbers_Integer_Abstract_CMA); do cp -a $$i coq-pkgs/Coq/Numbers/Integer/Abstract/`basename $$i`; done)
+
+libs-auto: Coq_Init Coq_Unicode Coq_Bool Coq_Logic Coq_Program Coq_Classes Coq_Structures Coq_Relations Coq_Setoids Coq_Arith Coq_PArith Coq_NArith Coq_ZArith Coq_QArith Coq_Lists Coq_Vectors Coq_Reals Coq_Sets Coq_FSets Coq_MSets Coq_Sorting Coq_Wellfounded Coq_Strings Coq_Numbers Coq_Numbers_NatInt Coq_Numbers_Natural_Abstract Coq_Numbers_Natural_Peano Coq_Numbers_Integer_Abstract Coq_ltac Coq_syntax Coq_decl_mode Coq_cc Coq_firstorder Coq_setoid_ring Coq_extraction Coq_funind Coq_quote Coq_fourier Coq_omega Coq_micromega Coq_romega Coq_nsatz Coq_ssrmatching Coq_ssr
