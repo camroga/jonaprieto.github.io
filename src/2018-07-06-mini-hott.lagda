@@ -11,7 +11,10 @@ This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
 only one file and has been type-checked by Agda 2.5.4. No other libraries are
 required to type-check this file.
 
-**URL link**: https://tinyurl.com/mini-hott.
+{: .links }
+  **URL link**: https://tinyurl.com/mini-hott.
+
+## Preamble
 
 To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
 type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is

@@ -11,9 +11,10 @@ This file contains the exercises of *An Introduction
 to Homotopy Type Theory*, a course given by [Fredrik Nordvall Forsberg](https://personal.cis.strath.ac.uk/fredrik.nordvall-forsberg/)
 in [EUTypes summer school 2018](https://sites.google.com/view/2018eutypesschool/) in Ohrid, Macedonia.
 
-Links:
-  - https://personal.cis.strath.ac.uk/fredrik.nordvall-forsberg/ohrid-school-hott2018/
-  - Mini-HoTT Agda library: https://tinyurl.com/mini-hott
+{: .links }
+  Links:
+    - https://personal.cis.strath.ac.uk/fredrik.nordvall-forsberg/ohrid-school-hott2018/
+    - Mini-HoTT Agda library: https://tinyurl.com/mini-hott
 
 \begin{code}
 {-# OPTIONS --without-K #-}
