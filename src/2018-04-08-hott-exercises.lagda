@@ -1047,7 +1047,7 @@ $$(2 \simeq 2) \simeq 2$$.
   href="https://www.youtube.com/watch?v=IlfQjWqrK6I">the equality reflection
   rule</a> which says that if there is an element $$p : \mathsf{Id}(x,y) $$,
   then in fact $$ x :\equiv y$$. Prove that for any $$p : \mathsf{Id}(x,x)$$ we
-  have $$p :\equiv \mathsf{refl}_x$$.
+  have $$p \equiv \mathsf{refl}_x$$.
 
   <p class="equation">
   $$
@@ -1079,13 +1079,13 @@ $$(2 \simeq 2) \simeq 2$$.
   </p>
 
   Now, $$\mathsf{refl}_x$$ and $$p : x = y$$ in the formulation of path induction
-  is well-typed. Therefore, by path induction, we show that
+  are well-typed. Therefore, by path induction, we show that
   $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
   \prod_{y : A} \prod_{p : x \equiv y }\ p \equiv \mathsf{refl}_{x}$$.
-  It sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and it is,
+  It sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and this is
   $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x = \mathsf{refl}_x$$.
-  By equation reflection rule, since we have an inhabitant of $$p \equiv
-  \mathsf{refl}_x$$, these are judgemental equal,i.e., $$p \equiv \mathsf{refl}_x$$.
+  By the equation reflection rule, since we have an inhabitant of $$p \equiv
+  \mathsf{refl}_x$$, we conclude these terms are judgemental equal,i.e., $$p \equiv \mathsf{refl}_x$$.
 </div>
 
 ### Exercise 2.17

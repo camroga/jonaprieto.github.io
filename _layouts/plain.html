@@ -130,10 +130,21 @@ Qed.</textarea>
   </div> <!-- /#code-wrapper -->
   </div> <!-- /#ide-wrapper -->
 
+  <script type="text/javascript">
+    var textarea_fields = document.querySelectorAll('textarea');
+    var jscoq_ids = [];
+    var textarea_ids = textarea_fields.forEach(function(e,d){
+      console.log(e.id)
+      if (e.id.length > 0) {
+        jscoq_ids.push( e.id );
+      }
+    });
+  </script>
+
   <script src="{{ "/assets/jscoq/ui-js/jscoq-loader.js" | prepend: site.baseurl }}" type="text/javascript"></script>
   <script type="text/javascript">
-
-    var jscoq_ids  = ['addnC', 'prime_above1', 'prime_above2', 'prime_above3', 'prime_above4', 'coq-1', 'coq-2' ];
+    console.log(jscoq_ids);
+    // var jscoq_ids = ["coq-1"];
     var jscoq_opts = {
         prelude:   false,
         mock:      false,

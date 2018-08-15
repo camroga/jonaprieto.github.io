@@ -16,4 +16,5 @@ group :jekyll_plugins do
    gem 'csl-styles'
    gem 'jekyll-scholar'
    gem 'pygments.rb'
+   gem 'jekyll-include-cache'
 end

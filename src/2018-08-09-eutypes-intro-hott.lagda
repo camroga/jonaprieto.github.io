@@ -25,6 +25,63 @@ open import 2018-07-06-mini-hott
 module _ where
 \end{code}
 
+## Exercise
+
+Use paths over paths to state and prove that the empty vector is a unit for
+vector concatenation, and that vector concatenation is associative. (Hint: you
+will need to generalise `ap_f` to paths over paths.)
+
+\begin{code}
+data Vec (A : Type₀) : Nat → Type₀ where
+  nil  : Vec A zero
+  cons : ∀ {n : Nat} → (a : A) → Vec A n → Vec A (succ n)
+
+_+Nat_ : Nat → Nat → Nat
+_+Nat_ zero n = n
+_+Nat_ (succ n) m = succ (n +Nat m)
+
+
+n+0=n : (n : Nat) → (n +Nat zero) == n
+n+0=n zero = idp
+n+0=n (succ n) = ap succ (n+0=n n)
+
+concat
+  : ∀ {A : Type₀}{n m : Nat}
+  → Vec A n → Vec A m
+  → Vec A (n +Nat m)
+
+concat nil b = b
+concat (cons a xs) b = cons a (concat xs b)
+
+-- infixl 40 _<>_
+syntax concat v u = v <> u
+
+[]-runit : ∀ {A : Type₀} {n : Nat} {v : Vec A n} → concat nil v == v
+[]-runit = idp
+
+[]-lunit : ∀ {A : Type₀} {n : Nat} (v : Vec A n)
+        → concat v nil == v [ Vec A ↓ (n+0=n n) ]
+[]-lunit {A} {.0} nil = idp
+[]-lunit {A} {(succ n)} (cons a v) = apOver succ (cons a) (n+0=n n) ([]-lunit v)
+
+
++Nat-assoc : (i j k : Nat) → (i +Nat (j +Nat k)) == ((i +Nat j) +Nat k)
++Nat-assoc zero j k = idp
++Nat-assoc (succ i) j k = ap succ (+Nat-assoc i j k)
+
+[]-assoc
+  : ∀ {A : Type₀}{n m p : Nat}
+  → {v₁ : Vec A n} → {v₂ : Vec A m} → {v₃ : Vec A p}
+  → (v₁ <> (v₂ <> v₃)) == ((v₁ <> v₂) <> v₃) [ Vec A ↓ (+Nat-assoc n m p) ]
+  --------------------------------------------------
+
+[]-assoc {A} {.0} {m} {p} {nil} {v₂} {v₃} = idp
+[]-assoc {A} {(succ n)} {.0} {.0} {cons a v₁} {nil} {nil} = {!   !}
+[]-assoc {A} {.(succ _)} {.0} {.(succ _)} {cons a v₁} {nil} {cons a₁ v₃} = {!   !}
+[]-assoc {A} {.(succ _)} {.(succ _)} {.0} {cons a v₁} {cons a₁ v₂} {nil} = {!   !}
+[]-assoc {A} {.(succ _)} {.(succ _)} {.(succ _)} {cons a v₁} {cons a₁ v₂} {cons a₂ v₃} = {!   !}
+\end{code}
+
 ## Exercise 1: prove the theorem on slide 5
 
 \begin{code}
@@ -85,7 +142,7 @@ vacuum-cord {A} a = ((a , idp) , f)
           ! (! d)
             ==⟨ involution ⟩
           d
-          ∎
+                  ∎
 \end{code}
 
 ## Exercise 4: Closure properties (harder)
@@ -120,8 +177,8 @@ prop-is-prop-always {A} =
 \end{code}
 
 \begin{code}
-adjointify : {A B : Set} → (f : A → B) → qinv f → isEquiv f
-adjointify ff (f , η , ε) = {!   !} -- check the notes
+adjointify : {A B : Set} → (f : A → B) → qinv f → ishae f
+adjointify f = qinv-ishae {f = f}
 \end{code}
 
 \begin{code}
@@ -149,22 +206,29 @@ trivial→contr {A} e = (remap e) unit , λ (a : A) → (rlmap-inverse-h e) a
 
 ## Exercise 7: Extract an equivalence from a Voevodsky equivalence
 
-\begin{code}
+```
 fib : {A B : Set} → (f : A → B) → B → Set
-fib {A} f y = Σ A λ x → f x == y
-\end{code}
+fib {A} f y = Σ A (λ x → f x == y)
+```
 
 \begin{code}
 voevoedsky→equiv : {A B : Set} → (f : A → B) →
                    ((y : B) → isContr (fib f y)) → isEquiv f
-voevoedsky→equiv f p = {!  !}
+voevoedsky→equiv {A}{B} f p b = ctr , λ (x : fib f b) → {!   !}
+  where
+    ctr : fib f b
+    ctr = fst (p b)
 \end{code}
 
 ## Exercise 8: Construct a "bi-functional relation" from an equivalence
+
 \begin{code}
-equiv→bifun : {A B : Set} → (f : A → B) → isEquiv f →
-              Σ (A → B → Set) λ R →
-                Σ ((a : A) → isContr (Σ B λ b → R a b)) λ _ →
-                  ((b : B) → isContr (Σ A λ a → R a b))
+equiv→bifun
+  : {A B : Set}
+  → (f : A → B)
+  → isEquiv f
+  → Σ (A → B → Set)
+        (λ R →
+          Σ ((a : A) → isContr (Σ B λ b → R a b)) (λ _ → ((b : B) → isContr (Σ A λ a → R a b))))
 equiv→bifun f p = {!  !}
 \end{code}

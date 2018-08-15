@@ -768,7 +768,6 @@ infix 30 PathOver
 syntax PathOver B p u v = u == v [ B ↓ p ]
 \end{code}
 
-
 ### Lemmas
 
 Some lemmas on the transport operation
@@ -1016,6 +1015,24 @@ transport-fun-dependent idp f = idp
 -- synonyms
 dependent-back-and-forth = transport-fun-dependent
 \end{code}
+
+Suggest by Fredrik:
+
+\begin{code}
+apOver
+  : {A A' : Type₀}
+  → {B : A → Type₀}
+  → {B' : A' → Type₀}
+  → (f : A → A') (g : {x : A} → B x → B' (f x))
+  → {a a' : A}
+  → (p : a == a') {b : B a}{b' : B a'}
+  → b == b' [ B ↓ p ]
+  ------------------------------------
+  → g b == g b' [ B' ↓ ap f p ]
+
+apOver f g idp q = ap g q
+\end{code}
+
 
 ## Basic type lemmas
 
@@ -1334,7 +1351,7 @@ module Fibers {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  where
   fib-image : {f : A → B} → {a : A} → fib f (f a)
   fib-image {f} {a} = a , refl (f a)
 
-open Fibers
+open Fibers public
 \end{code}
 
 ## Contractible types
@@ -2240,7 +2257,11 @@ module Truncation where
   postulate trunc : ∀ {ℓ} {A : Type ℓ} → isProp ∥ A ∥
 
   -- Recursion principle
-  trunc-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isProp P → (A → P) → ∥ A ∥ → P
+  trunc-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ}
+            → isProp P
+            → (A → P)
+            ---------
+            → ∥ A ∥ → P
   trunc-rec _ f !∣ x ∣ = f x
 \end{code}
 

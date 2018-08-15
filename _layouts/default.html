@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  {% include head.html %}
+{% include_cached head.html %}
 
 {% if page.title contains "Timeline" %}
     <style>
@@ -16,7 +16,7 @@
 
   <body>
 
-    {% include sidebar.html %}
+    {% include_cached sidebar.html %}
 
     <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
          content to avoid any CSS collisions with our real content. -->
@@ -42,7 +42,7 @@
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    {% include footer.html %}
+    {% include_cached footer.html %}
 
     <script>
       (function(document) {
