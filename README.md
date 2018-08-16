@@ -1,2 +1,0 @@
-
-https://devhints.io/jekyll
