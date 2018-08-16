@@ -1,6 +1,6 @@
 ---
 layout: "plain"
-title: "Coq in Typeschool 2018"
+title: "Coq playground"
 date: "2018-08-08"
 categories: learning
 coq: true

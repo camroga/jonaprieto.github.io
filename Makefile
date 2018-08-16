@@ -1,33 +1,31 @@
-agda := $(wildcard src/*.lagda)
-agdai := $(wildcard src/*.agdai)
-originalmd := $(wildcard src/*.md)
-ipeImages := $(wildcard src/ipe-images/*.ipe)
-latexitImages := $(wildcard src/latexit-images/*.png)
-copyPasteImages := $(wildcard src/assets/*.png)
+srcNotesAgda := $(wildcard src/notes/*.lagda)
+srcNotesMd   := $(wildcard src/notes/*.md)
 
-# no for publishing in the website
-dotlagda := $(wildcard src/latex-agda/*.lagda)
-texlagda := $(subst src/latex-agda/,assets/latex-agda/,$(subst .lagda,.tex,$(dotlagda)))
-pdflagda := $(subst src/latex-agda/,assets/latex-agda/,$(subst .lagda,.pdf,$(dotlagda)))
+mdNotesAgda  := $(subst src/notes,_posts,$(subst .lagda,.md,$(srcNotesAgda)))
+mdNotesMd    := $(subst src/notes,_posts,$(srcNotesMd))
 
-markdownOrig := $(subst src/,_posts/,$(originalmd))
-markdownAgda := $(subst src/,_posts/,$(subst .lagda,.md,$(agda)))
-ipeImagesPNG     := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
-latexitImagesPNG := $(subst src/latexit-images/,assets/latexit-images/,$(latexitImages))
-copyPasteImagesPNG := $(subst src/assets/,assets/,$(copyPasteImages))
+ipeImages    := $(wildcard src/ipe-images/*.ipe)
+ipeImagesPNG := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
 
-all:  _posts/ $(markdownOrig) $(markdownAgda) $(copyPasteImagesPNG) $(ipeImagesPNG) $(latexitImagesPNG) $(pdflagda)
+all:  $(mdNotesAgda) \
+      $(mdNotesMd) \
+      $(ipeImagesPNG) \
+      _posts/
 
 _posts/ :
-	rm -Rf -d _posts
-	mkdir -p _posts
+	- rm -Rf -d _posts
+	- mkdir -p _posts
 
-_posts/%.md : src/%.md
-	cp $< $@
+_posts/%.md : src/notes/%.md
+	- cp $< $@
+  - @echo "==================================================================="
 
-_posts/%.md : src/%.lagda
-	agda2html --version
-	agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
+
+_posts/%.md : src/notes/%.lagda
+	- agda2html --version
+	- agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
+  - @echo "==================================================================="
+
 
 assets/ipe-images/%.png : src/ipe-images/%.ipe
 	iperender -png -resolution 400 $< $@
@@ -37,18 +35,10 @@ assets/latexit-images/%.png : src/latexit-images/%.png
 
 assets/%.png : src/assets/%.png
 	cp $< $@
-# assets/latex-agda/%.tex : src/latex-agda/%.lagda
-# 	- cd src/latex-agda && agda --latex --latex-dir=./../../assets/latex-agda $(notdir $<)
-#
-# assets/latex-agda/%.pdf : assets/latex-agda/%.tex
-# 	- latexmk -cd -e -f -silent -pdf -interaction=nonstopmode -synctex=1 $<
-
-
-# serve website using jekyll
 
 .phony: serve
 serve:
-	ruby -S bundle exec jekyll liveserve -l --force_polling --watch --incremental --trace --verbose --future
+	ruby -S bundle exec jekyll liveserve -l --force_polling --watch --incremental
 
 # remove all auxiliary files
 .phony: clean
@@ -57,8 +47,6 @@ clean:
 ifneq ($(strip $(agdai)),)
 	rm $(agdai)
 endif
-
-
 
 # remove all generated files
 .phony: clobber
@@ -70,11 +58,10 @@ endif
 	rm -Rf _posts/
 
 # install bundler, and gem dependencies
+.phony: setup
 setup:
 	ruby -S gem install bundler --no-ri --no-rdoc
 	ruby -S bundle install
-.phony: setup
-
 
 # install agda, agda-stdlib, and agda2html
 travis-setup:\

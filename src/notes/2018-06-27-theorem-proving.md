@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Proving"
+title: "Isabelle"
 date: "2018-06-27"
 categories: learning
 published: true
@@ -10,7 +10,7 @@ toc: true
 
 ## Isabelle/HOL
 
-My main reference is {% cite TobiasNipkow2016 %}
+Following {% cite TobiasNipkow2016 %}
 
 ![](/assets/png-images/2018-06-27-theorem-proving-d1fc95b9.png)
 

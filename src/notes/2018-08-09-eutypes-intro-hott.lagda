@@ -2,7 +2,7 @@
 layout: "post"
 title: "EUTypes 2018 - HoTT"
 date: "2018-07-06"
-categories: type-theory
+categories: learning
 toc: true
 agda: true
 ---
@@ -37,7 +37,7 @@ data Vec (A : Type₀) : Nat → Type₀ where
   cons : ∀ {n : Nat} → (a : A) → Vec A n → Vec A (succ n)
 
 _+Nat_ : Nat → Nat → Nat
-_+Nat_ zero n = n
+_+Nat_ zero     n = n
 _+Nat_ (succ n) m = succ (n +Nat m)
 
 
