@@ -5,6 +5,9 @@ date: "2018-06-27"
 categories: learning
 published: true
 toc: true
+latex: true
+references: true
+agda: true
 ---
 
 Just for fun, let's to follow the [Brilliant](https://brilliant.org) chapters

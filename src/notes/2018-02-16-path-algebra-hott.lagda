@@ -2,7 +2,10 @@
 layout: "post"
 title: "Path Algebra in HoTT"
 date: "2018-02-16"
+latex: true
+references: true
 agda: true
+gallery: true
 categories: type-theory
 ---
 

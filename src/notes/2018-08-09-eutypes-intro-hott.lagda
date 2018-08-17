@@ -5,6 +5,8 @@ date: "2018-07-06"
 categories: learning
 toc: true
 agda: true
+latex: true
+linkify: true
 ---
 
 This file contains the exercises of *An Introduction

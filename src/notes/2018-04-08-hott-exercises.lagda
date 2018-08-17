@@ -2,9 +2,12 @@
 layout: "post"
 title: "HoTT exercises"
 date: "2018-04-08"
+latex: true
+references: true
 agda: true
 categories: type-theory
 toc: true
+
 ---
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.

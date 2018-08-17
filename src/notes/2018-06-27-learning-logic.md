@@ -4,6 +4,9 @@ title: "Logic"
 date: "2018-06-27"
 categories: learning
 published: true
+latex: true
+references: true
+agda: true
 ---
 
 - resolution

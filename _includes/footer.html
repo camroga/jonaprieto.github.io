@@ -1,24 +1,18 @@
-<!-- Import jQuery -->
-<!-- <script type="text/javascript" src="{{ "/assets/jquery.js" | prepend: site.baseurl }}"></script> -->
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="{{ "/assets/linkify.min.js"| prepend: site.baseurl }}"></script>
-<script src="{{ "/assets/linkify-jquery.min.js"| prepend: site.baseurl }}"></script>
+<script src="{{ site.baseurl }}/assets/jquery.min.js"></script>
+
+{% if page.linkify %}
+<script src="{{ site.baseurl }}/assets/linkify.min.js"></script>
+<script src="{{ site.baseurl }}/assets/linkify-jquery.min.js"></script>
 
 <script type="text/javascript">
 $('.references').linkify();
 $('.bibliography').linkify();
 $('.links').linkify();
-
-// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
-$('.algolia-modified a').map(
-  function(){
-    var modifiedDate = $(this).text();
-    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
-  }
-);
 </script>
+{% endif %}
 
+{% if page.latex %}
 <!-- Script which renders TeX using tex.s2cms.ru -->
 <script src="//tex.s2cms.ru/latex.js"></script>
 <script type="text/javascript">
@@ -35,6 +29,8 @@ $('.algolia-modified a').map(
                 "</p>";
      });
 </script>
+{% endif %}
+
 <script type="text/javascript">
 WebFontConfig = {
  google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
@@ -47,6 +43,7 @@ WebFontConfig = {
    })(document);
 </script>
 
+{% if page.agda %}
 <script type="text/javascript">
  $('pre.foldable').each(function(){
      var autoHeight = $(this).height();
@@ -91,22 +88,29 @@ WebFontConfig = {
      });
  });
 </script>
+{% endif %}
+
+{% if page.algolia %}
 <script type="text/javascript">
-
-  $('.cited-references').hide();
-  const refs = $(".references");
-  $('.references').append( $('.cited-references').html());
-  if ( refs.text() != ""){
-     refs.prepend("<h3>References</h3>");
+// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
+$('.algolia-modified a').map(
+  function(){
+    var modifiedDate = $(this).text();
+    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
   }
-  else{
-    if ($(".cited-references").text() != ""){
-      $(".cited-references").prepend("<h2 id='refs'>References</h2>");
-      $(".cited-references").show();
-      $(".toc nav>ul").append(
-        "<li><a href='#refs'>References</a></li>"
-      );
-    }
+);
+</script>
+{% endif %}
 
+
+{% if page.references %}
+<script type="text/javascript">
+  if ( $('div').hasClass('cited-references') ){
+    if ( $('div').hasClass('references') ){
+      $('.cite-references').append( $('.references').html() );
+    }
+    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }
 </script>
+{% endif %}

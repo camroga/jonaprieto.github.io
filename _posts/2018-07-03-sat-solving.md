@@ -4,6 +4,7 @@ title: "SAT solvers"
 date: "2018-07-03"
 categories: learning
 published: true
+references: true
 ---
 
 This will contain some thoughts about sat solving. See the references.

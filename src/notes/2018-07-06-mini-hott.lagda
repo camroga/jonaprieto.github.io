@@ -6,14 +6,14 @@ categories: type-theory
 toc: true
 agda: true
 gallery: true
+latex: true
 ---
 
 This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
 only one file and has been type-checked by Agda 2.5.4. No other libraries are
 required to type-check this file.
 
-{: .links }
-  **URL link**: https://tinyurl.com/mini-hott.
+  - **URL link**: [https://tinyurl.com/mini-hott](https://tinyurl.com/mini-hott).
 
 ## Preamble
 

@@ -3,8 +3,9 @@ title: "Function Type"
 layout: "post"
 date: "2018-02-10"
 categories: type-theory
+latex: true
+references: true
 agda: true
-
 ---
 
 # Function Type Rules

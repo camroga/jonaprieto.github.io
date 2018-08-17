@@ -4,6 +4,9 @@ title: "Graphs"
 date: "2018-06-27"
 categories: learning
 published: true
+latex: true
+references: true
+agda: true
 ---
 
 Learning graphs on youtube.

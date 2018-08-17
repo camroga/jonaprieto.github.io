@@ -37,7 +37,7 @@
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    {% include_cached footer.html %}
+    {% include footer.html %}
 
     <script>
       (function(document) {
@@ -58,10 +58,10 @@
     </script>
 
     {% if page.gallery %}
-    <script src="{{ "/assets/galleryjs"| prepend: site.baseurl }}/lightgallery.js"></script>
-    <!-- lightgallery plugins -->
-    <script src="{{ "/assets/galleryjs"| prepend: site.baseurl }}/lg-thumbnail.min.js"></script>
-    <script src="{{ "/assets/galleryjs"| prepend: site.baseurl }}/lg-fullscreen.min.js"></script>
+    <script src="{{site.baseurl}}/assets/galleryjs/lightgallery.js"></script>
+
+    <script src="{{site.baseurl}}/assets/galleryjs/lg-thumbnail.min.js"></script>
+    <script src="{{site.baseurl}}/assets/galleryjs/lg-fullscreen.min.js"></script>
 
     <script  type="text/javascript">
       $(document).ready(function() {

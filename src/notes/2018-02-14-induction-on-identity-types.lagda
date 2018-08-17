@@ -2,8 +2,10 @@
 layout: "post"
 title: "Induction on Identity Types"
 date: "2018-02-14"
-agda: true
 categories: type-theory
+latex: true
+references: true
+agda: true
 ---
 
 We present here a new type former to introduce identities.

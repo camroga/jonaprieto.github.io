@@ -5,7 +5,7 @@ date: "2018-05-01"
 agda: true
 toc: true
 categories: type-theory
-gallery:true
+gallery: true
 ---
 
 In this entry, we want to show some equivalences

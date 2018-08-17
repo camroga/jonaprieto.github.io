@@ -4,6 +4,9 @@ title: "Types"
 date: "2018-06-27"
 categories: learning
 published: true
+latex: true
+references: true
+agda: true
 ---
 
 Texts from many sources. See a good list of resources to learn

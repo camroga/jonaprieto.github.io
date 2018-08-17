@@ -5,6 +5,7 @@ date: "2018-06-30"
 categories: learning
 agda: true
 toc: true
+references: true
 ---
 
 Functional programming is an exciting field that combines many disciplines like

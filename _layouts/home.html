@@ -1,5 +1,6 @@
 ---
 layout: default
+algolia: true
 ---
 
 <div class="home">
@@ -20,7 +21,7 @@ layout: default
     </div>
   </div>
   {% endif %}
-  
+
   <div id="search-searchbar"></div>
   <br/>
   <div> Notes</div>
@@ -29,46 +30,10 @@ layout: default
 
 </div>
 <br/>
-<!-- {% if jekyll.environment == "development" %}
-<div id="archives">
-{% for category in site.categories %}
-{% capture category_name %}{{ category | first }}{% endcapture %}
-  {% if category_name contains "learning" %}
-  <div id="#{{ category_name | slugize }}">🐥 Topics</div>
-  <div class="post-list">
-    {% for post in site.categories[category_name] %}
-    <div class="algolia">
-      <div class="algolia-date">{{post.date  | date: '%d/%m/%Y'}} </div>
-      <div class="algolia-title"><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></div>
-      <div class="algolia-message"><small> {{post.git.last_commit.message}}</small></div>
-      <div class="algolia-modified"><a href="{{site.github.repository_url}}/commit/{{post.git.last_commit.long_sha}}">{{post.git.last_commit.commit_date}}</a></div>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-  {% if category_name contains "thoughts" %}
-  <br/>
-  <div id="#{{ category_name | slugize }}">🐿  Random</div>
-  <div class="post-list">
-    {% for post in site.categories[category_name] %}
-    <div class="algolia">
-      <div class="algolia-date">{{post.date  | date: '%d/%m/%Y'}} </div>
-      <div class="algolia-title"><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></div>
-      <div class="algolia-message"><small> {{post.git.last_commit.message}}</small></div>
-      <div class="algolia-modified"><a href="{{site.github.repository_url}}/commit/{{post.git.last_commit.long_sha}}">{{post.git.last_commit.commit_date}}</a></div>
-    </div>
-    {% endfor %}
-  </div>
-  {% endif %}
-
-{% endfor %}
-</div>
-{% endif %} -->
 
 <div> <a href="http://github.com/jonaprieto/" style="color:#515151" target="_blank">🐞 Repositories</a></div>
 <div> <a href="{{ site.baseurl }}/references" style="color:#515151">🐞 References</a></div>
 <div class="written-by"> Written by <a href="{{ site.baseurl }}{% link about.md %}">Jonathan Prieto-Cubides</a> </div>
 
 
-{% include_cached algolia-home.html %}
+{% include algolia-home.html %}

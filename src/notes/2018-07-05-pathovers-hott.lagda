@@ -11,6 +11,8 @@ categories: type-theory
 toc: true
 agda: true
 gallery: true
+latex: true
+linkify: true
 ---
 
 {: .only-website }

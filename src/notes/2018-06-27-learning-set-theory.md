@@ -4,6 +4,9 @@ title: "Set theory"
 date: "2018-06-27"
 categories: learning
 published: true
+latex: true
+references: true
+agda: true
 ---
 
 <div class="references" markdown="1">

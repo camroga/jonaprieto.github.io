@@ -5,6 +5,7 @@ date: "2018-07-08"
 categories: learning
 published: true
 toc: true
+linkify: true
 ---
 
 Interval analysis literature search.

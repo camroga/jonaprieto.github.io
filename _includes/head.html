@@ -2,7 +2,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>
     {% if page.use_site_title %}
       {{ site.title }}
@@ -16,11 +15,13 @@
   {%- seo title=false -%}
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
 
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/main.css">
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/public/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="{{ site.baseurl }}/public/favicon.ico">
-  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  {% if page.latex %}
+  <link rel="preload" as="script" href="{{site.baseurl}}/assets/js/latex.js" >
+  {% endif %}
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 
@@ -35,7 +36,6 @@
 
   {% if page.title contains "Timeline" %}
   <!-- TIMELINE -->
-  <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
-  <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/timeline.js"></script>
   {% endif %}
 </head>

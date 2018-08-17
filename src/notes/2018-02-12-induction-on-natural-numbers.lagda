@@ -2,9 +2,11 @@
 layout: "post"
 title: "Induction on Natural Numbers"
 date: "2018-02-12"
-agda: true
 toc: true
 categories: type-theory
+latex: true
+references: true
+agda: true
 ---
 
 The induction principle comes from a generalization of a dependent function that

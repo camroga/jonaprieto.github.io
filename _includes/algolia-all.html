@@ -1,5 +1,6 @@
 <script src="{{ site.baseurl }}/assets/js/moment.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/instantsearch.min.js"></script>
+
 <script>
 const search = instantsearch({
   appId: '{{ site.algolia.application_id }}',
@@ -10,7 +11,7 @@ const search = instantsearch({
       'title',
       'content',
     ],
-    facetFilters: ['type:post', "categories:-learning", "categories:-thoughts"]
+    facetFilters: [ 'type:post' ]
   },
   searchFunction: function(helper) {
     if (helper.getState().query === '') {
@@ -56,7 +57,7 @@ const hitTemplate = function(hit) {
   <div class="post-list">
       <div class="algolia">
       <div class="algolia-date">${date}</div>
-        <div class="algolia-title"><a href=".${url}">${title}</a></div>
+        <div class="algolia-title"><a href="${url}">${title}</a></div>
         <div class="algolia-message"><small> ${message} </small></div>
         <div class="algolia-modified">
         <a href=${commiturl}>${lastDate}</a>
@@ -91,7 +92,7 @@ const hitTemplate = function(hit) {
 search.addWidget(
   instantsearch.widgets.searchBox({
     container: '#search-searchbar',
-    placeholder: '',
+    placeholder: 'search in plans',
     autofocus: true
   })
 );
@@ -110,12 +111,9 @@ search.start();
 </script>
 
 <style>
-
-.search-searchbar {
-  padding-top: 10px;
-}
-
 .ais-search-box {
   max-width: 100%;
+  /* margin-bottom: 15px; */
+  /* padding-top: 5px; */
 }
 </style>
