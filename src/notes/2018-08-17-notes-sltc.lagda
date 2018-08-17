@@ -20,12 +20,10 @@ The following source code tested with:
 - Agda v2.5.4
 - Agda Standard Library v0.16
 
-The original content was firstly exposed here:
+The original content was firstly exposed at EAFIT in Seminar of Logic:
 
-  - **Direct PDF file**: [EAFIT Logic seminar](https://github.com/jonaprieto/stlctalk/raw/master/slides/slides.pdf)
-  - [https://github.com/jonaprieto/stlctalk](https://github.com/jonaprieto/stlctalk).
-
-
+  - [Slides](https://github.com/jonaprieto/stlctalk/raw/master/slides/slides.pdf).
+  - Repository: [https://github.com/jonaprieto/stlctalk](https://github.com/jonaprieto/stlctalk).
 
 {: .foldable }
 \begin{code}
@@ -617,8 +615,7 @@ module Typecheck {U : Set} (UEq : IsDecEquivalence {A = U} _≡_) where
       helper (_∙_ {τ = σ} t Γ⊢t₂:τ′) = Γ⊬t₂:_ (σ -by- Γ⊢t₂:τ′)
 \end{code}
 
-
-## References
+### References
 
 - Barendregt, Henk, Wil Dekkers, and Richard Statman (2013). *Lambda calculus with types*. Cambridge University Press.
 - Danielsson, Nils Anders. [*Normalisation for the simply typed lambda calculus*](http://www.cse.chalmers.se/~nad/listings/simply-typed/).
