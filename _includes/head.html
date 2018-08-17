@@ -4,14 +4,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>
-      {%- if page.use_site_title -%}
+    {% if page.use_site_title %}
       {{ site.title }}
-      {%- else -%}
+    {% else %}
       {% if page.title %}
         {{ page.title }} |
       {% endif %}
-      {{ site.title }} {{ site.tagline }}
-      {%- endif -%}
+        {{ site.title }} {{ site.tagline }}
+    {% endif %}
   </title>
   {%- seo title=false -%}
   <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
@@ -38,6 +38,4 @@
   <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
   <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
   {% endif %}
-
-
 </head>

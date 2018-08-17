@@ -5,6 +5,7 @@ date: "2018-05-01"
 agda: true
 toc: true
 categories: type-theory
+gallery:true
 ---
 
 In this entry, we want to show some equivalences
@@ -35,7 +36,7 @@ The circle is the higher inductive type with one point
 and one no trivial path called path as we show in the following
 picture.
 
-![path](/assets/ipe-images/circle.png)
+![path](/assets/ipe-images/circle.png){: width="%50" }
 *Figure 1. The circle type `S¹`.*
 
 \begin{code}
@@ -99,7 +100,7 @@ module _ where
 
 ## `pS` type
 
-![path](/assets/ipe-images/tour-type.png)
+![path](/assets/ipe-images/tour-type.png){: width="%50" }
 *Figure 2. `pS` Type.*
 
 \begin{code}

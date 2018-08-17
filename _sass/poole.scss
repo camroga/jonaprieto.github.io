@@ -225,15 +225,14 @@ blockquote p:last-child {
 .only-website {
   display: inherit;
 }
-.post img:hover {
-  width: -webkit-fill-available;
-}
+// .post img:hover {
+  // width: -webkit-fill-available;
+// }
 .post img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    padding: 20px;
+    padding: 15px;
 
 }
 
@@ -252,6 +251,7 @@ table {
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
 }
+
 td,
 th {
   padding: .25rem .5rem;

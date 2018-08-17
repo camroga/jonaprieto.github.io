@@ -5,6 +5,7 @@ date: "2018-07-06"
 categories: type-theory
 toc: true
 agda: true
+gallery: true
 ---
 
 This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
@@ -363,7 +364,7 @@ _·_
 _·_ idp q = q
 \end{code}
 
-![path](/assets/ipe-images/path-concatenation.png)
+![path](/assets/ipe-images/path-concatenation.png){: width="60%" }
 
 #### Inverse of paths
 
@@ -706,7 +707,7 @@ involution {p = idp} = idp
 
 ## Transport
 
-![path](/assets/ipe-images/transport-fiber-minihott.png)
+![path](/assets/ipe-images/transport-fiber-minihott.png){: width="60%" }
 
 \begin{code}
 transport
@@ -751,7 +752,7 @@ path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
 a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
 also denoted by `PathOver C α c₁ c₂`.
 
-![path](/assets/ipe-images/pathover-3-minihott.png)
+![path](/assets/ipe-images/pathover-3-minihott.png){: width="60%" }
 
 \begin{code}
 PathOver
@@ -963,7 +964,7 @@ transport-fun idp f = idp
 back-and-forth = transport-fun
 \end{code}
 
-![path](/assets/ipe-images/transport-fun.png)
+![path](/assets/ipe-images/transport-fun.png){: width="100%" }
 
 \begin{code}
 transport-fun-h
@@ -981,7 +982,7 @@ back-and-forth-h = transport-fun-h
 
 Now, when we transport dependent functions this is what we got:
 
-![path](/assets/ipe-images/transport-fun-dependent.png)
+![path](/assets/ipe-images/transport-fun-dependent.png){: width="100%" }
 
 \begin{code}
 transport-fun-dependent-h

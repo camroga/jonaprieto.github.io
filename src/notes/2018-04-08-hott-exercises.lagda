@@ -593,7 +593,7 @@ Notice how the recursor of the coproduct matches with the elimination
 rule of the disjunction conective also called *case analysis*. That's follows from the
 [**propositions-as-types**](https://ncatlab.org/nlab/show/propositions+as+types).
 
-![path](/assets/latexit-images/disj-elimination.png)
+![path](/assets/latexit-images/disj-elimination.png){: width="%50" }
 
 Finally, the induction principle for the coproduct:
 
@@ -871,7 +871,7 @@ Prove that if $$p : x \equiv y$$, then the function
 $$(p \cdot -) : (y \equiv z) \to (x \equiv z)$$ is an equivalence.
 </div>
 
-![path-triangle](/assets/ipe-images/path-triangle.png)
+![path-triangle](/assets/ipe-images/path-triangle.png){: width="%50" }
 
 <div class="proof">
 Solution. <br/>

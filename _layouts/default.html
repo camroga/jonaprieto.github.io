@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include_cached head.html %}
+{% include head.html %}
 
 {% if page.title contains "Timeline" %}
     <style>
@@ -15,18 +15,13 @@
 {% endif %}
 
   <body>
-
     {% include_cached sidebar.html %}
-
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
     <div class="wrap">
       <div class="masthead">
         <div class="container">
           <h3 class="masthead-title">
             <a href="{{site.author.url}}"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
-
             <small style="text-decoration:left">{{ site.tagline }}{% if page.url == "/" %}<span class="modifications">(<span class="additions">+{{site.git.total_additions}}</span>/<span class="substractions">-{{site.git.total_subtractions}}</span>)</span>
             {% endif %}</small>
           </h3>
@@ -46,8 +41,8 @@
 
     <script>
       (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
+        var toggle   = document.querySelector('.sidebar-toggle');
+        var sidebar  = document.querySelector('#sidebar');
         var checkbox = document.querySelector('#sidebar-checkbox');
 
         document.addEventListener('click', function(e) {
@@ -61,5 +56,34 @@
         }, false);
       })(document);
     </script>
+
+    {% if page.gallery %}
+    <script src="{{ "/assets/galleryjs"| prepend: site.baseurl }}/lightgallery.js"></script>
+    <!-- lightgallery plugins -->
+    <script src="{{ "/assets/galleryjs"| prepend: site.baseurl }}/lg-thumbnail.min.js"></script>
+    <script src="{{ "/assets/galleryjs"| prepend: site.baseurl }}/lg-fullscreen.min.js"></script>
+
+    <script  type="text/javascript">
+      $(document).ready(function() {
+        $('.post img').wrap(function(){
+          return "<div class='gallery' data-src='" + $( this ).attr("src") + "'></div>";
+        });
+
+        lightGallery(document.querySelector('.post'),
+          { selector     : ".gallery"
+          // , mode         : 'slide'
+          , thumbnail    : true
+          , animateThumb: false
+          , closable     : true
+          , counter      : true
+          , enableTouch  : true
+          , enableDrag   : true
+          , showThumbByDefault   : false
+          , thumbWidth           : 90
+          , thumbMargin          : 5,
+          });
+      });
+    </script>
+    {% endif %}
   </body>
 </html>

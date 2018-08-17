@@ -10,6 +10,7 @@ date: "2018-07-05"
 categories: type-theory
 toc: true
 agda: true
+gallery: true
 ---
 
 {: .only-website }
@@ -25,7 +26,7 @@ path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
 a₂`. That is, a pathover is a term that inhabits the type `(transport C α c₁) = c₂`
 also denoted by `PathOver C α c₁ c₂`.
 
-![path](/assets/ipe-images/pathovers-total-space-pathover.png)
+![path](/assets/ipe-images/pathovers-total-space-pathover.png){: width="60%"}
 *Figure 1. PathOvers and paths in the total space.*
 
 The term *pathover* was formally defined in {% cite Licata2015%} and also
@@ -1197,7 +1198,7 @@ PathOver₃ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁
 PathOver₃ C α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
-![path](/assets/ipe-images/pathover-3.png)
+![path](/assets/ipe-images/pathover-3.png){: width="60%"}
 *Figure 2. Pathover₃.*
 
 - \begin{code}
@@ -1206,7 +1207,7 @@ PathOver₄ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁
 PathOver₄ C α c₁ c₂ = c₁ == transport C (α ⁻¹) c₂
 \end{code}
 
-![path](/assets/ipe-images/pathover-4.png)
+![path](/assets/ipe-images/pathover-4.png){: width="60%"}{: width="60%"}
 *Figure 2. Pathover₄.*
 
 - \begin{code}
@@ -1430,7 +1431,7 @@ We prove this equivalence by the quasi-inverse function `Σ-to-==[↓]`. Therefo
 we define its inverse, the function `==[↓]-to-Σ` and we show the respective
 homotopies, `Σ-to-==[↓] ∘ ==[↓]-to-Σ ~ id` and `==[↓]-to-Σ ∘ Σ-to-==[↓] ~ id`.
 
-![path](/assets/ipe-images/pathovers-total-space-syntax-sugar.png)
+![path](/assets/ipe-images/pathovers-total-space-syntax-sugar.png){: width="60%"}
 *Figure 4. Pathovers and paths in the total space.*
 
 - The function `Σ-to-==[↓]` maps a term of the sigma type in the equation above

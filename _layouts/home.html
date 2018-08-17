@@ -3,16 +3,15 @@ layout: default
 ---
 
 <div class="home">
-
-
   {{ content }}
   {% if site.github %}
   <div class="main-heading">
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-            <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">
-              {{site.git.last_commit.message}}</a>
+        <a href="{{site.github.repository_url}}/commit/{{site.github.build_revision}}">
+          {{site.git.last_commit.message}}
+        </a>
       </div>
     </div>
 
@@ -21,6 +20,7 @@ layout: default
     </div>
   </div>
   {% endif %}
+  
   <div id="search-searchbar"></div>
   <br/>
   <div> Notes</div>
