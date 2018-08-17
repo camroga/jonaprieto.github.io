@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>
     
       
@@ -32,7 +31,7 @@
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
-  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 
@@ -87,6 +86,12 @@
     
       
         
+          <a class="sidebar-nav-item" href="/all/">All</a>
+        
+      
+    
+      
+        
           <a class="sidebar-nav-item" href="/references/">List of references</a>
         
       
@@ -122,13 +127,13 @@
   <div class="main-title">
     <div class="main-title-prefix"> Latest change:</div>
     <div class="main-commit-message">
-          <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bfee2817b6d3d36f01b819793ae3aa6cd137a277">
-            [ gallery ] first attempt</a>
+          <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/4ea07c8897cc32ade7d1028e85e8e665baca4098">
+            [ stlc ] first revisions</a>
     </div>
   </div>
 
   <div class="main-last-date">
-    Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/bfee2817b6d3d36f01b819793ae3aa6cd137a277">137a277 </a> on  17 Aug 2018
+    Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/4ea07c8897cc32ade7d1028e85e8e665baca4098">aca4098 </a> on  18 Aug 2018
   </div>
 </div>
 
@@ -142,11 +147,8 @@
 <div> <a href="/references" style="color:#515151">🐞 References List </a></div>
   <div class="written-by"> Written by <a href="/about/">Jonathan Prieto-Cubides</a> </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.7.3/dist/instantsearch-theme-algolia.min.css">
+  <script src="/assets/js/moment.min.js"></script>
+<script src="/assets/js/instantsearch.min.js"></script>
 
 <script>
 const search = instantsearch({
@@ -275,43 +277,13 @@ search.start();
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    <!-- Import jQuery -->
-<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
+    
+<script src="/assets/jquery.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/assets/linkify.min.js"></script>
-<script src="/assets/linkify-jquery.min.js"></script>
 
-<script type="text/javascript">
-$('.references').linkify();
-$('.bibliography').linkify();
-$('.links').linkify();
 
-// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
-$('.algolia-modified a').map(
-  function(){
-    var modifiedDate = $(this).text();
-    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
-  }
-);
-</script>
 
-<!-- Script which renders TeX using tex.s2cms.ru -->
-<script src="//tex.s2cms.ru/latex.js"></script>
-<script type="text/javascript">
- $("script[type='math/tex']").replaceWith(
-     function(){
-         var tex = $(this).text();
-         return "&zwnj;$$" + tex + "$$&zwnj;";
-     });
- $("script[type='math/tex; mode=display']").replaceWith(
-     function(){
-         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
-         return "<p class=\"equation\">" +
-                 "$$" + tex + "$$" +
-                "</p>";
-     });
-</script>
+
 <script type="text/javascript">
 WebFontConfig = {
  google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
@@ -324,69 +296,12 @@ WebFontConfig = {
    })(document);
 </script>
 
-<script type="text/javascript">
- $('pre.foldable').each(function(){
-     var autoHeight = $(this).height();
-     var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-     $(this).height(lineHeight);
-     // $(this).height(2.0 * lineHeight);
-     $(this).css('overflow','hidden');
-     $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             // $(this).height(2.0 * lineHeight);
-             $(this).height(lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
-     });
- });
-</script>
-<script type="text/javascript">
 
-  $('.cited-references').hide();
-  const refs = $(".references");
-  $('.references').append( $('.cited-references').html());
-  if ( refs.text() != ""){
-     refs.prepend("<h3>References</h3>");
-  }
-  else{
-    if ($(".cited-references").text() != ""){
-      $(".cited-references").prepend("<h2 id='refs'>References</h2>");
-      $(".cited-references").show();
-      $(".toc nav>ul").append(
-        "<li><a href='#refs'>References</a></li>"
-      );
-    }
 
-  }
-</script>
+
+
+
+
 
 
     <script>

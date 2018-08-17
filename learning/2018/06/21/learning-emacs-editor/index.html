@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>
     
       
@@ -34,7 +33,7 @@
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
-  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 
@@ -84,6 +83,12 @@
       
         
           <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/all/">All</a>
         
       
     
@@ -163,13 +168,13 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md">137a277 </a> on  17 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md">aca4098 </a> on  18 Aug 2018
     </div>
   </div>
   
   <h1 class="post-title">Emacs
     <div class="github-links">
-      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-21-learning-emacs-editor.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-21-learning-emacs-editor.md" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
     </div>
   </h1>
   
@@ -412,15 +417,23 @@ side the frame with all the commands (add this
   <ol class="bibliography"></ol>
   </div>
 
-  <div class="github-links">
-    <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-06-21-learning-emacs-editor.md" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/23d69d2780b19c7ee8606cb28cefd9717a3cde2b/src/2018-06-21-learning-emacs-editor.md" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
-  </div>
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
     
+      
+        <li>
+          <h3>
+            <a href="/type-theory/2018/08/17/notes-sltc/">
+              Simple Typed Lambda Calculus
+              
+                <small>17 Aug 2018</small>
+              
+            </a>
+          </h3>
+        </li>
       
     
       
@@ -458,43 +471,13 @@ s.setAttribute('data-timestamp', +new Date());
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    <!-- Import jQuery -->
-<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
+    
+<script src="/assets/jquery.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/assets/linkify.min.js"></script>
-<script src="/assets/linkify-jquery.min.js"></script>
 
-<script type="text/javascript">
-$('.references').linkify();
-$('.bibliography').linkify();
-$('.links').linkify();
 
-// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
-$('.algolia-modified a').map(
-  function(){
-    var modifiedDate = $(this).text();
-    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
-  }
-);
-</script>
 
-<!-- Script which renders TeX using tex.s2cms.ru -->
-<script src="//tex.s2cms.ru/latex.js"></script>
-<script type="text/javascript">
- $("script[type='math/tex']").replaceWith(
-     function(){
-         var tex = $(this).text();
-         return "&zwnj;$$" + tex + "$$&zwnj;";
-     });
- $("script[type='math/tex; mode=display']").replaceWith(
-     function(){
-         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
-         return "<p class=\"equation\">" +
-                 "$$" + tex + "$$" +
-                "</p>";
-     });
-</script>
+
 <script type="text/javascript">
 WebFontConfig = {
  google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
@@ -507,69 +490,12 @@ WebFontConfig = {
    })(document);
 </script>
 
-<script type="text/javascript">
- $('pre.foldable').each(function(){
-     var autoHeight = $(this).height();
-     var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-     $(this).height(lineHeight);
-     // $(this).height(2.0 * lineHeight);
-     $(this).css('overflow','hidden');
-     $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             // $(this).height(2.0 * lineHeight);
-             $(this).height(lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
-     });
- });
-</script>
-<script type="text/javascript">
 
-  $('.cited-references').hide();
-  const refs = $(".references");
-  $('.references').append( $('.cited-references').html());
-  if ( refs.text() != ""){
-     refs.prepend("<h3>References</h3>");
-  }
-  else{
-    if ($(".cited-references").text() != ""){
-      $(".cited-references").prepend("<h2 id='refs'>References</h2>");
-      $(".cited-references").show();
-      $(".toc nav>ul").append(
-        "<li><a href='#refs'>References</a></li>"
-      );
-    }
 
-  }
-</script>
+
+
+
+
 
 
     <script>

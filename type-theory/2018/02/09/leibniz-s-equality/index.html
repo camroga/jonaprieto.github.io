@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>
     
       
@@ -26,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-02-09T00:00:00+01:00" />
 <script type="application/ld+json">
-{"description":"Leibniz characterised the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if .","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/type-theory/2018/02/09/leibniz-s-equality/","headline":"Leibniz’s Equality","dateModified":"2018-08-16T19:07:31+02:00","datePublished":"2018-02-09T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/type-theory/2018/02/09/leibniz-s-equality/"},"@context":"http://schema.org"}</script>
+{"description":"Leibniz characterised the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if .","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/type-theory/2018/02/09/leibniz-s-equality/","headline":"Leibniz’s Equality","dateModified":"2018-08-17T22:57:32+02:00","datePublished":"2018-02-09T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/type-theory/2018/02/09/leibniz-s-equality/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="Leibniz characterised the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if .">
 
@@ -34,7 +33,9 @@
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
-  <link rel="preload" as="script" href="//tex.s2cms.ru/latex.js" >
+  
+  <link rel="preload" as="script" href="/assets/js/latex.js" >
+  
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
 
@@ -84,6 +85,12 @@
       
         
           <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/all/">All</a>
         
       
     
@@ -157,19 +164,19 @@
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda">
-              polishing the structure of the blog</a>
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/src/2018-02-09-leibniz-s-equality.lagda">
+              STLC added to review concepts</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda">137a277 </a> on  17 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/src/2018-02-09-leibniz-s-equality.lagda">aca4098 </a> on  18 Aug 2018
     </div>
   </div>
   
   <h1 class="post-title">Leibniz's Equality
     <div class="github-links">
-      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-02-09-leibniz-s-equality.lagda" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/f63fa6c780164ee27b238ce85b886541e1374cfd/src/2018-02-09-leibniz-s-equality.lagda" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/src/2018-02-09-leibniz-s-equality.lagda" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-02-09-leibniz-s-equality.lagda" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/f63fa6c780164ee27b238ce85b886541e1374cfd/src/2018-02-09-leibniz-s-equality.lagda" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
     </div>
   </h1>
   
@@ -182,8 +189,8 @@
 <p>To denote the equality between two elements we use the symbol (<code>_≡_</code>).
 In Agda we will formalize such a notation of equality with <code>Eq</code> type.</p>
 
-<pre class="Agda"><a id="Eq"></a><a id="529" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="532" class="Symbol">:</a> <a id="534" class="Symbol">∀</a> <a id="536" class="Symbol">{</a><a id="537" href="/type-theory/2018/02/09/leibniz-s-equality/#537" class="Bound">A</a> <a id="539" class="Symbol">:</a> <a id="541" class="PrimitiveType">Set</a><a id="544" class="Symbol">}</a> <a id="546" class="Symbol">→</a> <a id="548" class="Symbol">(</a><a id="549" href="/type-theory/2018/02/09/leibniz-s-equality/#549" class="Bound">x</a> <a id="551" href="/type-theory/2018/02/09/leibniz-s-equality/#551" class="Bound">y</a> <a id="553" class="Symbol">:</a> <a id="555" href="/type-theory/2018/02/09/leibniz-s-equality/#537" class="Bound">A</a><a id="556" class="Symbol">)</a> <a id="558" class="Symbol">→</a> <a id="560" class="PrimitiveType">Set₁</a>
-<a id="565" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="568" class="Symbol">{</a><a id="569" href="/type-theory/2018/02/09/leibniz-s-equality/#569" class="Bound">A</a><a id="570" class="Symbol">}</a> <a id="572" href="/type-theory/2018/02/09/leibniz-s-equality/#572" class="Bound">x</a> <a id="574" href="/type-theory/2018/02/09/leibniz-s-equality/#574" class="Bound">y</a> <a id="576" class="Symbol">=</a> <a id="578" class="Symbol">(</a><a id="579" href="/type-theory/2018/02/09/leibniz-s-equality/#579" class="Bound">P</a> <a id="581" class="Symbol">:</a> <a id="583" href="/type-theory/2018/02/09/leibniz-s-equality/#569" class="Bound">A</a> <a id="585" class="Symbol">→</a> <a id="587" class="PrimitiveType">Set</a><a id="590" class="Symbol">)</a> <a id="592" class="Symbol">→</a> <a id="594" class="Symbol">(</a><a id="595" href="/type-theory/2018/02/09/leibniz-s-equality/#579" class="Bound">P</a> <a id="597" href="/type-theory/2018/02/09/leibniz-s-equality/#572" class="Bound">x</a> <a id="599" class="Symbol">→</a> <a id="601" href="/type-theory/2018/02/09/leibniz-s-equality/#579" class="Bound">P</a> <a id="603" href="/type-theory/2018/02/09/leibniz-s-equality/#574" class="Bound">y</a><a id="604" class="Symbol">)</a></pre>
+<pre class="Agda"><a id="Eq"></a><a id="558" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="561" class="Symbol">:</a> <a id="563" class="Symbol">∀</a> <a id="565" class="Symbol">{</a><a id="566" href="/type-theory/2018/02/09/leibniz-s-equality/#566" class="Bound">A</a> <a id="568" class="Symbol">:</a> <a id="570" class="PrimitiveType">Set</a><a id="573" class="Symbol">}</a> <a id="575" class="Symbol">→</a> <a id="577" class="Symbol">(</a><a id="578" href="/type-theory/2018/02/09/leibniz-s-equality/#578" class="Bound">x</a> <a id="580" href="/type-theory/2018/02/09/leibniz-s-equality/#580" class="Bound">y</a> <a id="582" class="Symbol">:</a> <a id="584" href="/type-theory/2018/02/09/leibniz-s-equality/#566" class="Bound">A</a><a id="585" class="Symbol">)</a> <a id="587" class="Symbol">→</a> <a id="589" class="PrimitiveType">Set₁</a>
+<a id="594" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="597" class="Symbol">{</a><a id="598" href="/type-theory/2018/02/09/leibniz-s-equality/#598" class="Bound">A</a><a id="599" class="Symbol">}</a> <a id="601" href="/type-theory/2018/02/09/leibniz-s-equality/#601" class="Bound">x</a> <a id="603" href="/type-theory/2018/02/09/leibniz-s-equality/#603" class="Bound">y</a> <a id="605" class="Symbol">=</a> <a id="607" class="Symbol">(</a><a id="608" href="/type-theory/2018/02/09/leibniz-s-equality/#608" class="Bound">P</a> <a id="610" class="Symbol">:</a> <a id="612" href="/type-theory/2018/02/09/leibniz-s-equality/#598" class="Bound">A</a> <a id="614" class="Symbol">→</a> <a id="616" class="PrimitiveType">Set</a><a id="619" class="Symbol">)</a> <a id="621" class="Symbol">→</a> <a id="623" class="Symbol">(</a><a id="624" href="/type-theory/2018/02/09/leibniz-s-equality/#608" class="Bound">P</a> <a id="626" href="/type-theory/2018/02/09/leibniz-s-equality/#601" class="Bound">x</a> <a id="628" class="Symbol">→</a> <a id="630" href="/type-theory/2018/02/09/leibniz-s-equality/#608" class="Bound">P</a> <a id="632" href="/type-theory/2018/02/09/leibniz-s-equality/#603" class="Bound">y</a><a id="633" class="Symbol">)</a></pre>
 
 <p>We can think about this equality definition saying that <script type="math/tex">x</script> is equal to <script type="math/tex">y</script>
 if and only if every property (unary predicate variable <script type="math/tex">P</script>) that <script type="math/tex">x</script>
@@ -193,25 +200,25 @@ satisfies, <script type="math/tex">y</script> satisfies as well.</p>
   <li>Reflexivity</li>
 </ul>
 
-<pre class="Agda"><a id="refl"></a><a id="837" href="/type-theory/2018/02/09/leibniz-s-equality/#837" class="Function">refl</a> <a id="842" class="Symbol">:</a> <a id="844" class="Symbol">∀</a> <a id="846" class="Symbol">{</a><a id="847" href="/type-theory/2018/02/09/leibniz-s-equality/#847" class="Bound">A</a> <a id="849" class="Symbol">:</a> <a id="851" class="PrimitiveType">Set</a><a id="854" class="Symbol">}</a> <a id="856" class="Symbol">→</a> <a id="858" class="Symbol">(</a><a id="859" href="/type-theory/2018/02/09/leibniz-s-equality/#859" class="Bound">x</a> <a id="861" class="Symbol">:</a> <a id="863" href="/type-theory/2018/02/09/leibniz-s-equality/#847" class="Bound">A</a><a id="864" class="Symbol">)</a> <a id="866" class="Symbol">→</a> <a id="868" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="871" href="/type-theory/2018/02/09/leibniz-s-equality/#859" class="Bound">x</a> <a id="873" href="/type-theory/2018/02/09/leibniz-s-equality/#859" class="Bound">x</a>
-<a id="875" href="/type-theory/2018/02/09/leibniz-s-equality/#837" class="Function">refl</a> <a id="880" class="Symbol">{</a><a id="881" href="/type-theory/2018/02/09/leibniz-s-equality/#881" class="Bound">A</a><a id="882" class="Symbol">}</a> <a id="884" href="/type-theory/2018/02/09/leibniz-s-equality/#884" class="Bound">x</a> <a id="886" class="Symbol">=</a> <a id="888" class="Symbol">λ</a> <a id="890" href="/type-theory/2018/02/09/leibniz-s-equality/#890" class="Bound">P</a> <a id="892" href="/type-theory/2018/02/09/leibniz-s-equality/#892" class="Bound">Px₁</a> <a id="896" class="Symbol">→</a> <a id="898" href="/type-theory/2018/02/09/leibniz-s-equality/#892" class="Bound">Px₁</a></pre>
+<pre class="Agda"><a id="refl"></a><a id="866" href="/type-theory/2018/02/09/leibniz-s-equality/#866" class="Function">refl</a> <a id="871" class="Symbol">:</a> <a id="873" class="Symbol">∀</a> <a id="875" class="Symbol">{</a><a id="876" href="/type-theory/2018/02/09/leibniz-s-equality/#876" class="Bound">A</a> <a id="878" class="Symbol">:</a> <a id="880" class="PrimitiveType">Set</a><a id="883" class="Symbol">}</a> <a id="885" class="Symbol">→</a> <a id="887" class="Symbol">(</a><a id="888" href="/type-theory/2018/02/09/leibniz-s-equality/#888" class="Bound">x</a> <a id="890" class="Symbol">:</a> <a id="892" href="/type-theory/2018/02/09/leibniz-s-equality/#876" class="Bound">A</a><a id="893" class="Symbol">)</a> <a id="895" class="Symbol">→</a> <a id="897" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="900" href="/type-theory/2018/02/09/leibniz-s-equality/#888" class="Bound">x</a> <a id="902" href="/type-theory/2018/02/09/leibniz-s-equality/#888" class="Bound">x</a>
+<a id="904" href="/type-theory/2018/02/09/leibniz-s-equality/#866" class="Function">refl</a> <a id="909" class="Symbol">{</a><a id="910" href="/type-theory/2018/02/09/leibniz-s-equality/#910" class="Bound">A</a><a id="911" class="Symbol">}</a> <a id="913" href="/type-theory/2018/02/09/leibniz-s-equality/#913" class="Bound">x</a> <a id="915" class="Symbol">=</a> <a id="917" class="Symbol">λ</a> <a id="919" href="/type-theory/2018/02/09/leibniz-s-equality/#919" class="Bound">P</a> <a id="921" href="/type-theory/2018/02/09/leibniz-s-equality/#921" class="Bound">Px₁</a> <a id="925" class="Symbol">→</a> <a id="927" href="/type-theory/2018/02/09/leibniz-s-equality/#921" class="Bound">Px₁</a></pre>
 
 <ul>
   <li>Transitivity</li>
 </ul>
 
-<pre class="Agda"><a id="trans"></a><a id="943" href="/type-theory/2018/02/09/leibniz-s-equality/#943" class="Function">trans</a> <a id="949" class="Symbol">:</a> <a id="951" class="Symbol">∀</a> <a id="953" class="Symbol">{</a><a id="954" href="/type-theory/2018/02/09/leibniz-s-equality/#954" class="Bound">A</a> <a id="956" class="Symbol">:</a> <a id="958" class="PrimitiveType">Set</a><a id="961" class="Symbol">}</a> <a id="963" class="Symbol">→</a> <a id="965" class="Symbol">(</a><a id="966" href="/type-theory/2018/02/09/leibniz-s-equality/#966" class="Bound">x</a> <a id="968" href="/type-theory/2018/02/09/leibniz-s-equality/#968" class="Bound">y</a> <a id="970" href="/type-theory/2018/02/09/leibniz-s-equality/#970" class="Bound">z</a> <a id="972" class="Symbol">:</a> <a id="974" href="/type-theory/2018/02/09/leibniz-s-equality/#954" class="Bound">A</a><a id="975" class="Symbol">)</a> <a id="977" class="Symbol">→</a> <a id="979" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="982" href="/type-theory/2018/02/09/leibniz-s-equality/#966" class="Bound">x</a> <a id="984" href="/type-theory/2018/02/09/leibniz-s-equality/#968" class="Bound">y</a> <a id="986" class="Symbol">→</a> <a id="988" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="991" href="/type-theory/2018/02/09/leibniz-s-equality/#968" class="Bound">y</a> <a id="993" href="/type-theory/2018/02/09/leibniz-s-equality/#970" class="Bound">z</a> <a id="995" class="Symbol">→</a> <a id="997" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="1000" href="/type-theory/2018/02/09/leibniz-s-equality/#966" class="Bound">x</a> <a id="1002" href="/type-theory/2018/02/09/leibniz-s-equality/#970" class="Bound">z</a>
-<a id="1004" href="/type-theory/2018/02/09/leibniz-s-equality/#943" class="Function">trans</a> <a id="1010" class="Symbol">{</a><a id="1011" href="/type-theory/2018/02/09/leibniz-s-equality/#1011" class="Bound">A</a><a id="1012" class="Symbol">}</a> <a id="1014" href="/type-theory/2018/02/09/leibniz-s-equality/#1014" class="Bound">x</a> <a id="1016" href="/type-theory/2018/02/09/leibniz-s-equality/#1016" class="Bound">y</a> <a id="1018" href="/type-theory/2018/02/09/leibniz-s-equality/#1018" class="Bound">z</a> <a id="1020" href="/type-theory/2018/02/09/leibniz-s-equality/#1020" class="Bound">x≡y</a> <a id="1024" href="/type-theory/2018/02/09/leibniz-s-equality/#1024" class="Bound">P₁</a> <a id="1027" href="/type-theory/2018/02/09/leibniz-s-equality/#1027" class="Bound">y≡z</a> <a id="1031" href="/type-theory/2018/02/09/leibniz-s-equality/#1031" class="Bound">P₂</a> <a id="1034" class="Symbol">=</a> <a id="1036" href="/type-theory/2018/02/09/leibniz-s-equality/#1024" class="Bound">P₁</a> <a id="1039" href="/type-theory/2018/02/09/leibniz-s-equality/#1027" class="Bound">y≡z</a> <a id="1043" class="Symbol">(</a><a id="1044" href="/type-theory/2018/02/09/leibniz-s-equality/#1020" class="Bound">x≡y</a> <a id="1048" href="/type-theory/2018/02/09/leibniz-s-equality/#1027" class="Bound">y≡z</a> <a id="1052" href="/type-theory/2018/02/09/leibniz-s-equality/#1031" class="Bound">P₂</a><a id="1054" class="Symbol">)</a></pre>
+<pre class="Agda"><a id="trans"></a><a id="972" href="/type-theory/2018/02/09/leibniz-s-equality/#972" class="Function">trans</a> <a id="978" class="Symbol">:</a> <a id="980" class="Symbol">∀</a> <a id="982" class="Symbol">{</a><a id="983" href="/type-theory/2018/02/09/leibniz-s-equality/#983" class="Bound">A</a> <a id="985" class="Symbol">:</a> <a id="987" class="PrimitiveType">Set</a><a id="990" class="Symbol">}</a> <a id="992" class="Symbol">→</a> <a id="994" class="Symbol">(</a><a id="995" href="/type-theory/2018/02/09/leibniz-s-equality/#995" class="Bound">x</a> <a id="997" href="/type-theory/2018/02/09/leibniz-s-equality/#997" class="Bound">y</a> <a id="999" href="/type-theory/2018/02/09/leibniz-s-equality/#999" class="Bound">z</a> <a id="1001" class="Symbol">:</a> <a id="1003" href="/type-theory/2018/02/09/leibniz-s-equality/#983" class="Bound">A</a><a id="1004" class="Symbol">)</a> <a id="1006" class="Symbol">→</a> <a id="1008" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="1011" href="/type-theory/2018/02/09/leibniz-s-equality/#995" class="Bound">x</a> <a id="1013" href="/type-theory/2018/02/09/leibniz-s-equality/#997" class="Bound">y</a> <a id="1015" class="Symbol">→</a> <a id="1017" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="1020" href="/type-theory/2018/02/09/leibniz-s-equality/#997" class="Bound">y</a> <a id="1022" href="/type-theory/2018/02/09/leibniz-s-equality/#999" class="Bound">z</a> <a id="1024" class="Symbol">→</a> <a id="1026" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="1029" href="/type-theory/2018/02/09/leibniz-s-equality/#995" class="Bound">x</a> <a id="1031" href="/type-theory/2018/02/09/leibniz-s-equality/#999" class="Bound">z</a>
+<a id="1033" href="/type-theory/2018/02/09/leibniz-s-equality/#972" class="Function">trans</a> <a id="1039" class="Symbol">{</a><a id="1040" href="/type-theory/2018/02/09/leibniz-s-equality/#1040" class="Bound">A</a><a id="1041" class="Symbol">}</a> <a id="1043" href="/type-theory/2018/02/09/leibniz-s-equality/#1043" class="Bound">x</a> <a id="1045" href="/type-theory/2018/02/09/leibniz-s-equality/#1045" class="Bound">y</a> <a id="1047" href="/type-theory/2018/02/09/leibniz-s-equality/#1047" class="Bound">z</a> <a id="1049" href="/type-theory/2018/02/09/leibniz-s-equality/#1049" class="Bound">x≡y</a> <a id="1053" href="/type-theory/2018/02/09/leibniz-s-equality/#1053" class="Bound">P₁</a> <a id="1056" href="/type-theory/2018/02/09/leibniz-s-equality/#1056" class="Bound">y≡z</a> <a id="1060" href="/type-theory/2018/02/09/leibniz-s-equality/#1060" class="Bound">P₂</a> <a id="1063" class="Symbol">=</a> <a id="1065" href="/type-theory/2018/02/09/leibniz-s-equality/#1053" class="Bound">P₁</a> <a id="1068" href="/type-theory/2018/02/09/leibniz-s-equality/#1056" class="Bound">y≡z</a> <a id="1072" class="Symbol">(</a><a id="1073" href="/type-theory/2018/02/09/leibniz-s-equality/#1049" class="Bound">x≡y</a> <a id="1077" href="/type-theory/2018/02/09/leibniz-s-equality/#1056" class="Bound">y≡z</a> <a id="1081" href="/type-theory/2018/02/09/leibniz-s-equality/#1060" class="Bound">P₂</a><a id="1083" class="Symbol">)</a></pre>
 
 <ul>
   <li>Symmetry</li>
 </ul>
 
-<pre class="Agda"><a id="sym"></a><a id="1093" href="/type-theory/2018/02/09/leibniz-s-equality/#1093" class="Function">sym</a> <a id="1097" class="Symbol">:</a> <a id="1099" class="Symbol">∀</a> <a id="1101" class="Symbol">{</a><a id="1102" href="/type-theory/2018/02/09/leibniz-s-equality/#1102" class="Bound">A</a> <a id="1104" class="Symbol">:</a> <a id="1106" class="PrimitiveType">Set</a><a id="1109" class="Symbol">}</a> <a id="1111" class="Symbol">→</a> <a id="1113" class="Symbol">(</a><a id="1114" href="/type-theory/2018/02/09/leibniz-s-equality/#1114" class="Bound">x</a> <a id="1116" href="/type-theory/2018/02/09/leibniz-s-equality/#1116" class="Bound">y</a> <a id="1118" class="Symbol">:</a> <a id="1120" href="/type-theory/2018/02/09/leibniz-s-equality/#1102" class="Bound">A</a><a id="1121" class="Symbol">)</a> <a id="1123" class="Symbol">→</a> <a id="1125" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="1128" href="/type-theory/2018/02/09/leibniz-s-equality/#1114" class="Bound">x</a> <a id="1130" href="/type-theory/2018/02/09/leibniz-s-equality/#1116" class="Bound">y</a> <a id="1132" class="Symbol">→</a> <a id="1134" href="/type-theory/2018/02/09/leibniz-s-equality/#529" class="Function">Eq</a> <a id="1137" href="/type-theory/2018/02/09/leibniz-s-equality/#1116" class="Bound">y</a> <a id="1139" href="/type-theory/2018/02/09/leibniz-s-equality/#1114" class="Bound">x</a>
-<a id="1141" href="/type-theory/2018/02/09/leibniz-s-equality/#1093" class="Function">sym</a> <a id="1145" class="Symbol">{</a><a id="1146" href="/type-theory/2018/02/09/leibniz-s-equality/#1146" class="Bound">A</a><a id="1147" class="Symbol">}</a> <a id="1149" href="/type-theory/2018/02/09/leibniz-s-equality/#1149" class="Bound">x</a> <a id="1151" href="/type-theory/2018/02/09/leibniz-s-equality/#1151" class="Bound">y</a> <a id="1153" href="/type-theory/2018/02/09/leibniz-s-equality/#1153" class="Bound">x≡y</a> <a id="1157" href="/type-theory/2018/02/09/leibniz-s-equality/#1157" class="Bound">P</a> <a id="1159" class="Symbol">=</a> <a id="1161" href="/type-theory/2018/02/09/leibniz-s-equality/#1153" class="Bound">x≡y</a> <a id="1165" href="/type-theory/2018/02/09/leibniz-s-equality/#1190" class="Function">p₁</a> <a id="1168" class="Symbol">(λ</a> <a id="1171" href="/type-theory/2018/02/09/leibniz-s-equality/#1171" class="Bound">z</a> <a id="1173" class="Symbol">→</a> <a id="1175" href="/type-theory/2018/02/09/leibniz-s-equality/#1171" class="Bound">z</a><a id="1176" class="Symbol">)</a>
-  <a id="1180" class="Keyword">where</a>
-    <a id="1190" href="/type-theory/2018/02/09/leibniz-s-equality/#1190" class="Function">p₁</a> <a id="1193" class="Symbol">:</a> <a id="1195" href="/type-theory/2018/02/09/leibniz-s-equality/#1146" class="Bound">A</a> <a id="1197" class="Symbol">→</a> <a id="1199" class="PrimitiveType">Set</a>
-    <a id="1207" href="/type-theory/2018/02/09/leibniz-s-equality/#1190" class="Function">p₁</a> <a id="1210" class="Symbol">=</a> <a id="1212" class="Symbol">λ</a> <a id="1214" href="/type-theory/2018/02/09/leibniz-s-equality/#1214" class="Bound">z</a> <a id="1216" class="Symbol">→</a> <a id="1218" href="/type-theory/2018/02/09/leibniz-s-equality/#1157" class="Bound">P</a> <a id="1220" href="/type-theory/2018/02/09/leibniz-s-equality/#1214" class="Bound">z</a> <a id="1222" class="Symbol">→</a> <a id="1224" href="/type-theory/2018/02/09/leibniz-s-equality/#1157" class="Bound">P</a> <a id="1226" href="/type-theory/2018/02/09/leibniz-s-equality/#1149" class="Bound">x</a></pre>
+<pre class="Agda"><a id="sym"></a><a id="1122" href="/type-theory/2018/02/09/leibniz-s-equality/#1122" class="Function">sym</a> <a id="1126" class="Symbol">:</a> <a id="1128" class="Symbol">∀</a> <a id="1130" class="Symbol">{</a><a id="1131" href="/type-theory/2018/02/09/leibniz-s-equality/#1131" class="Bound">A</a> <a id="1133" class="Symbol">:</a> <a id="1135" class="PrimitiveType">Set</a><a id="1138" class="Symbol">}</a> <a id="1140" class="Symbol">→</a> <a id="1142" class="Symbol">(</a><a id="1143" href="/type-theory/2018/02/09/leibniz-s-equality/#1143" class="Bound">x</a> <a id="1145" href="/type-theory/2018/02/09/leibniz-s-equality/#1145" class="Bound">y</a> <a id="1147" class="Symbol">:</a> <a id="1149" href="/type-theory/2018/02/09/leibniz-s-equality/#1131" class="Bound">A</a><a id="1150" class="Symbol">)</a> <a id="1152" class="Symbol">→</a> <a id="1154" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="1157" href="/type-theory/2018/02/09/leibniz-s-equality/#1143" class="Bound">x</a> <a id="1159" href="/type-theory/2018/02/09/leibniz-s-equality/#1145" class="Bound">y</a> <a id="1161" class="Symbol">→</a> <a id="1163" href="/type-theory/2018/02/09/leibniz-s-equality/#558" class="Function">Eq</a> <a id="1166" href="/type-theory/2018/02/09/leibniz-s-equality/#1145" class="Bound">y</a> <a id="1168" href="/type-theory/2018/02/09/leibniz-s-equality/#1143" class="Bound">x</a>
+<a id="1170" href="/type-theory/2018/02/09/leibniz-s-equality/#1122" class="Function">sym</a> <a id="1174" class="Symbol">{</a><a id="1175" href="/type-theory/2018/02/09/leibniz-s-equality/#1175" class="Bound">A</a><a id="1176" class="Symbol">}</a> <a id="1178" href="/type-theory/2018/02/09/leibniz-s-equality/#1178" class="Bound">x</a> <a id="1180" href="/type-theory/2018/02/09/leibniz-s-equality/#1180" class="Bound">y</a> <a id="1182" href="/type-theory/2018/02/09/leibniz-s-equality/#1182" class="Bound">x≡y</a> <a id="1186" href="/type-theory/2018/02/09/leibniz-s-equality/#1186" class="Bound">P</a> <a id="1188" class="Symbol">=</a> <a id="1190" href="/type-theory/2018/02/09/leibniz-s-equality/#1182" class="Bound">x≡y</a> <a id="1194" href="/type-theory/2018/02/09/leibniz-s-equality/#1219" class="Function">p₁</a> <a id="1197" class="Symbol">(λ</a> <a id="1200" href="/type-theory/2018/02/09/leibniz-s-equality/#1200" class="Bound">z</a> <a id="1202" class="Symbol">→</a> <a id="1204" href="/type-theory/2018/02/09/leibniz-s-equality/#1200" class="Bound">z</a><a id="1205" class="Symbol">)</a>
+  <a id="1209" class="Keyword">where</a>
+    <a id="1219" href="/type-theory/2018/02/09/leibniz-s-equality/#1219" class="Function">p₁</a> <a id="1222" class="Symbol">:</a> <a id="1224" href="/type-theory/2018/02/09/leibniz-s-equality/#1175" class="Bound">A</a> <a id="1226" class="Symbol">→</a> <a id="1228" class="PrimitiveType">Set</a>
+    <a id="1236" href="/type-theory/2018/02/09/leibniz-s-equality/#1219" class="Function">p₁</a> <a id="1239" class="Symbol">=</a> <a id="1241" class="Symbol">λ</a> <a id="1243" href="/type-theory/2018/02/09/leibniz-s-equality/#1243" class="Bound">z</a> <a id="1245" class="Symbol">→</a> <a id="1247" href="/type-theory/2018/02/09/leibniz-s-equality/#1186" class="Bound">P</a> <a id="1249" href="/type-theory/2018/02/09/leibniz-s-equality/#1243" class="Bound">z</a> <a id="1251" class="Symbol">→</a> <a id="1253" href="/type-theory/2018/02/09/leibniz-s-equality/#1186" class="Bound">P</a> <a id="1255" href="/type-theory/2018/02/09/leibniz-s-equality/#1178" class="Bound">x</a></pre>
 
 <blockquote>
   <p>The principle of identity of indiscernibles states that two objects
@@ -226,15 +233,23 @@ This is also known as “Leibniz’s Law”… in <a href="https://ncatlab.org/n
   <ol class="bibliography"></ol>
   </div>
 
-  <div class="github-links">
-    <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda" download target="_blank">Raw</a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda" target="_blank">View source </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/src/2018-02-09-leibniz-s-equality.lagda" target="_blank"> Edit </a> | <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/dfa1b9675ec416eac07e86f699cb3969301c8870/src/2018-02-09-leibniz-s-equality.lagda" target="_blank"> History</a> | <a  href="#" onclick="window.print();return false;" target="_blank"> Print</a></small>
-  </div>
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
     
+      
+        <li>
+          <h3>
+            <a href="/type-theory/2018/08/17/notes-sltc/">
+              Simple Typed Lambda Calculus
+              
+                <small>17 Aug 2018</small>
+              
+            </a>
+          </h3>
+        </li>
       
     
       
@@ -272,26 +287,11 @@ s.setAttribute('data-timestamp', +new Date());
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    <!-- Import jQuery -->
-<!-- <script type="text/javascript" src="/assets/jquery.js"></script> -->
+    
+<script src="/assets/jquery.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="/assets/linkify.min.js"></script>
-<script src="/assets/linkify-jquery.min.js"></script>
 
-<script type="text/javascript">
-$('.references').linkify();
-$('.bibliography').linkify();
-$('.links').linkify();
 
-// moment(moment(modifiedDate).format('YYYYMMDD')).fromNow();
-$('.algolia-modified a').map(
-  function(){
-    var modifiedDate = $(this).text();
-    $(this).text(moment(moment(modifiedDate).format('YYYYMMDD')).fromNow());
-  }
-);
-</script>
 
 <!-- Script which renders TeX using tex.s2cms.ru -->
 <script src="//tex.s2cms.ru/latex.js"></script>
@@ -309,6 +309,8 @@ $('.algolia-modified a').map(
                 "</p>";
      });
 </script>
+
+
 <script type="text/javascript">
 WebFontConfig = {
  google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
@@ -320,6 +322,7 @@ WebFontConfig = {
       s.parentNode.insertBefore(wf, s);
    })(document);
 </script>
+
 
 <script type="text/javascript">
  $('pre.foldable').each(function(){
@@ -365,25 +368,22 @@ WebFontConfig = {
      });
  });
 </script>
+
+
+
+
+
+
 <script type="text/javascript">
-
-  $('.cited-references').hide();
-  const refs = $(".references");
-  $('.references').append( $('.cited-references').html());
-  if ( refs.text() != ""){
-     refs.prepend("<h3>References</h3>");
-  }
-  else{
-    if ($(".cited-references").text() != ""){
-      $(".cited-references").prepend("<h2 id='refs'>References</h2>");
-      $(".cited-references").show();
-      $(".toc nav>ul").append(
-        "<li><a href='#refs'>References</a></li>"
-      );
+  if ( $('div').hasClass('cited-references') ){
+    if ( $('div').hasClass('references') ){
+      $('.cite-references').append( $('.references').html() );
     }
-
+    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }
 </script>
+
 
 
     <script>
