@@ -25,18 +25,28 @@ The original content was firstly exposed here:
   - **Direct PDF file**: [EAFIT Logic seminar](https://github.com/jonaprieto/stlctalk/raw/master/slides/slides.pdf)
   - [https://github.com/jonaprieto/stlctalk](https://github.com/jonaprieto/stlctalk).
 
+
+
+{: .foldable }
+\begin{code}
+-- Agda Imports
+
+open import Data.String using (String)
+open import Relation.Nullary.Decidable using (False)
+open import Relation.Binary using (IsDecEquivalence)
+open import Relation.Binary.PropositionalEquality using (_≡_; subst)
+
+\end{code}
+
 ### Syntax
 
 First definition of Typed Lambda Calculus
 
 \begin{code}
-open import Data.String using (String)
-
 Name : Set
 Name = String
 
 module Syntax (Type : Set) where
-
 
   data Formal : Set where
     _∶_ : Name → Type → Formal
@@ -52,35 +62,35 @@ module Syntax (Type : Set) where
 #### Examples
 
 \begin{code}
+
   private
-    postulate A : Type
+    postulate
+      A : Type
 
     x = var "x"
     y = var "y"
     z = var "z"
 
-    -- λx.x
+    -- λ(x:A).x
     I : Expr
     I = lam ("x" ∶ A) x
 
-    -- λxy.x
+    -- λ(x,y:A).x
     K : Expr
     K = lam ("x" ∶ A) (lam ("y" ∶ A) x)
 
-    -- λxyz.xz(yz)
+    -- λ(x,y,z:A).xz(yz)
     S : Expr
     S =
       lam ("x" ∶ A)
         (lam ("y" ∶ A)
           (lam ("z" ∶ A)
             ((x ∙ z) ∙ (y ∙ z))))
-
-
 \end{code}
 
 ### Bound
 
-Lambda Terms using De Bruijn indexes.
+Lambda terms using De Bruijn indexes.
 
 \begin{code}
 
@@ -90,10 +100,14 @@ module Bound (Type : Set) where
   open import Data.Fin    using (Fin; #_; suc)
   open import Data.String using (_≟_)
   open import Data.Vec    using (Vec; _∷_; [])
-  open import Relation.Nullary.Decidable using (False)
 
   module S = Syntax Type
   open S hiding (Expr; module Expr) public
+\end{code}
+
+Syntax using indexes.
+
+\begin{code}
 
   data Expr (n : ℕ) : Set where
     var : Fin n  → Expr n
@@ -102,6 +116,8 @@ module Bound (Type : Set) where
 
   infixl 20 _∙_
 
+  -- The context for variables: vector of fixed length
+  -- of strings.
   Binder : ℕ → Set
   Binder = Vec Name
 
@@ -112,23 +128,29 @@ module Bound (Type : Set) where
   infixl 3 _⊢_⇝_
   data _⊢_⇝_ : ∀ {n} → Binder n → S.Expr → Expr n → Set where
 
-    var-zero  : ∀ {n x} {Γ : Binder n}
-              → Γ , x ⊢ var x ⇝ var (# 0)
+    var-zero
+      : ∀ {n x} {Γ : Binder n}
+      ---------------------------
+      → Γ , x ⊢ var x ⇝ var (# 0)
 
-    var-suc   : ∀ {n x y k} {Γ : Binder n} {p : False (x ≟ y)}
-              → Γ ⊢ var x ⇝ var k
-              → Γ , y ⊢ var x ⇝ var (suc k)
+    var-suc
+      : ∀ {n x y k} {Γ : Binder n} {p : False (x ≟ y)}
+      → Γ ⊢ var x ⇝ var k
+      -----------------------------
+      → Γ , y ⊢ var x ⇝ var (suc k)
 
-    lam       : ∀ {n x τ t t′} {Γ : Binder n}
-              → Γ , x ⊢ t ⇝ t′
-              --------------------------------
-              → Γ ⊢ lam (x ∶ τ) t ⇝ lam τ t′
+    lam
+      : ∀ {n x A t t'} {Γ : Binder n}
+      → Γ , x ⊢ t ⇝ t'
+      ------------------------------
+      → Γ ⊢ lam (x ∶ A) t ⇝ lam A t'
 
-    _∙_       : ∀ {n t₁ t₁′ t₂ t₂′} {Γ : Binder n}
-              → Γ ⊢ t₁ ⇝ t₁′
-              → Γ ⊢ t₂ ⇝ t₂′
-              -------------------------
-              → Γ ⊢ t₁ ∙ t₂ ⇝ t₁′ ∙ t₂′
+    _∙_
+      : ∀ {n t₁ t₁' t₂ t₂'} {Γ : Binder n}
+      → Γ ⊢ t₁ ⇝ t₁'
+      → Γ ⊢ t₂ ⇝ t₂'
+      -------------------------
+      → Γ ⊢ t₁ ∙ t₂ ⇝ t₁' ∙ t₂'
 \end{code}
 
 #### Examples
@@ -160,7 +182,7 @@ module Bound (Type : Set) where
 
     P : Γ ⊢ lam ("x" ∶ A) (lam ("y" ∶ A) (lam ("z" ∶ A) (var "x")))
            ⇝ lam A (lam A (lam A (var (# 2))))
-    P = {! !}
+    P = lam (lam (lam (var-suc (var-suc var-zero))))
 \end{code}
 
 ### Scopecheck
@@ -168,8 +190,11 @@ module Bound (Type : Set) where
 Check representation of λ-terms using de Bruijn indexes.
 Get a λ-term using de Bruijn indexes by given a λ-term with names.
 
+{: .foldable }
 \begin{code}
-open import Data.Product hiding (∃-syntax; ∄-syntax) renaming (_,_ to _-and-_)
+-- ∃-syntax and ∄-syntax
+
+open import Data.Product hiding (∃-syntax; ∄-syntax) renaming (_,_ to _-by-_)
 open import Data.Product using (∃; ∄)
 
 ∃-syntax : ∀ {a b} {A : Set a} → (A → Set b) → Set _
@@ -181,8 +206,9 @@ syntax ∃-syntax (λ x → B) = ∃[ x ] B
 syntax ∄-syntax (λ x → B) = ∄[ x ] B
 \end{code}
 
-
+{: .foldable }
 \begin{code}
+
 module Scopecheck (Type : Set) where
 
   open Bound Type public
@@ -199,76 +225,97 @@ module Scopecheck (Type : Set) where
   open import Relation.Nullary                      using (Dec; no; yes)
   open import Relation.Nullary.Decidable
     using (fromWitnessFalse; fromWitness; toWitness; True)
+\end{code}
 
-  ------------------------------------------------------------------------------
+\begin{code}
 
-  name-dec : ∀ {n} {Γ : Binder n} {x y : Name} {t : Expr (suc n)}
-           → Γ , y ⊢ var x ⇝ t
-           → x ≡ y ⊎ ∃[ t′ ] (Γ ⊢ var x ⇝ t′)
+  name-dec
+    : ∀ {n} {Γ : Binder n} {x y : Name} {t : Expr (suc n)}
+    → Γ , y ⊢ var x ⇝ t
+    ----------------------------------
+    → x ≡ y ⊎ ∃[ t′ ] (Γ ⊢ var x ⇝ t′)
 
-  name-dec {n}{Γ}{x}{.x} {.(var (# 0))} var-zero = inj₁ refl
-  name-dec {n}{Γ}{x}{y}  {.(var (suc k))}
-    (var-suc {n = .n} {x = .x} {y = .y} {k} {Γ = .Γ} {p} Γ,y⊢varx⇝vark)
-    = inj₂ (var k -and- Γ,y⊢varx⇝vark)
-  --          ↪ witness
+  name-dec var-zero = inj₁ refl
+  name-dec {t = var (suc k)} (var-suc w) = inj₂ (var k -by- w)
+                                  --  ↪ witness
+\end{code}
 
-  ⊢subst : ∀ {n} {x y} {Γ : Binder n} {t}
-         → x ≡ y
-         → Γ , x ⊢ var x ⇝ t
-         → Γ , y ⊢ var x ⇝ t
+
+\begin{code}
+
+  ⊢subst
+    : ∀ {n} {x y} {Γ : Binder n} {t}
+     → x ≡ y
+     → Γ , x ⊢ var x ⇝ t
+     -------------------
+     → Γ , y ⊢ var x ⇝ t
+
   ⊢subst {n}{x}{y}{Γ}{t} x≡y Γ,x⊢varx⇝t
    = subst (λ z → Γ , z ⊢ var x ⇝ t) x≡y Γ,x⊢varx⇝t
+\end{code}
 
+\begin{code}
+  find-name
+    : ∀ {n}
+    → (Γ : Binder n) → (x : Name)
+    ------------------------------
+    → Dec (∃[ t ] (Γ ⊢ var x ⇝ t))
 
-  find-name : ∀ {n}
-            → (Γ : Binder n)
-            → (x : Name)
-            → Dec (∃[ t ] (Γ ⊢ var x ⇝ t))
-
+  -- By induction on the variable context:
   find-name [] x = no helper
     where
       helper : ∄[ t ] ([] ⊢ var x ⇝ t)
-      helper (_ -and- ())
+      helper (_ -by- ())
 
-  find-name (y ∷ Γ) x with x ≟ y
-  ... | yes x≡y = yes (var (# 0) -and- ⊢subst x≡y var-zero)
-  ... | no  x≢y
-    with find-name Γ x
-  ...  | yes (var k   -and- Γ⊢x⇝vark)
-    = yes $ var (suc k) -and- var-suc {p = fromWitnessFalse x≢y} Γ⊢x⇝vark
-  ...  | yes (lam _ _ -and- ())
-  ...  | yes (_ ∙ _   -and- ())
-  ...  | no ∄t⟨Γ⊢varx⇝t⟩ = no helper
-       where
-         helper : ∄[ t ] (Γ , y ⊢ var x ⇝ t)
-         helper (t -and- Γ,y⊢varx⇝t)
-           with name-dec Γ,y⊢varx⇝t
-         ...  | inj₁ x≡y                     = x≢y x≡y
-         ...  | inj₂ p@(t′ -and- Γ⊢varx⇝t′) = ∄t⟨Γ⊢varx⇝t⟩ p
+  find-name (y ∷ Γ) x
+    with x ≟ y
+  ...  | yes x≡y = yes (var (# 0) -by- ⊢subst x≡y var-zero)
+  ...  | no  x≢y
+       with find-name Γ x
+          -- case analysis for the output of the recursion
+  ...     | yes (lam _ _ -by- ())
+  ...     | yes (_ ∙ _   -by- ())
+  ...     | yes (var k -by- Γ⊢x⇝vark)
+            = yes $ var (suc k) -by- var-suc {p = fromWitnessFalse x≢y} Γ⊢x⇝vark
+  ...     | no ∄t⟨Γ⊢varx⇝t⟩ = no helper
+          where
+            helper : ∄[ t ] (Γ , y ⊢ var x ⇝ t)
+            helper (t -by- Γ,y⊢varx⇝t)
+              with name-dec Γ,y⊢varx⇝t
+            ...  | inj₁ x≡y                    = x≢y x≡y
+            ...  | inj₂ p@(t′ -by- Γ⊢varx⇝t′) = ∄t⟨Γ⊢varx⇝t⟩ p
+\end{code}
 
-  check : ∀ {n}
-        → (Γ : Binder n)
-        → (t : S.Expr)
-        → Dec (∃[ t′ ] (Γ ⊢ t ⇝ t′))
+We want to determine if given a variable context and a term,
+it is possible to find its encoding using De Bruijn indexes.
+If so, we got its respective construction for that lambda term.
 
+\begin{code}
+  check
+    : ∀ {n}
+    → (Γ : Binder n)
+    → (t : S.Expr)
+    → Dec (∃[ t′ ] (Γ ⊢ t ⇝ t′))
+
+  -- By induction on the term syntax.
   check Γ (var x) = find-name Γ x
   check Γ (lam (x ∶ τ) t)
-    with check (Γ , x) t
-  ...  | yes (t′ -and- Γ,x⊢t⇝t′)
-         = yes (lam τ t′ -and- lam Γ,x⊢t⇝t′)
+    with check (Γ , x) t                          -- TODO: under revision.
+  ...  | yes (t′ -by- Γ,x⊢t⇝t′)
+         = yes (lam τ t′ -by- lam Γ,x⊢t⇝t′)
   ...  | no ∄t′⟨Γ,x⊢t⇝t′⟩ = no helper
        where
          helper : ∄[ t′ ] (Γ ⊢ lam (x ∶ τ) t ⇝ t′)
-         helper (var x′ -and- ())
-         helper (_ ∙ _  -and- ())
-         helper (lam .τ t′ -and- lam Γ,x⊢t⇝t′)
-           = ∄t′⟨Γ,x⊢t⇝t′⟩ (t′ -and- Γ,x⊢t⇝t′)
+         helper (var x′ -by- ())
+         helper (_ ∙ _  -by- ())
+         helper (lam .τ t′ -by- lam Γ,x⊢t⇝t′)
+           = ∄t′⟨Γ,x⊢t⇝t′⟩ (t′ -by- Γ,x⊢t⇝t′)
 
   check Γ (t₁ ∙ t₂)
     with check Γ t₁ | check Γ t₂
-  ...  | yes (t₁′ -and- Γ⊢t₁⇝t₁′) | (yes (t₂′ -and- Γ⊢t₂⇝t₂′))
-         = yes (t₁′ ∙ t₂′ -and- Γ⊢t₁⇝t₁′ ∙ Γ⊢t₂⇝t₂′)
-  ...  | yes (t₁′ -and- Γ⊢t₁⇝t₁′) | (no ∄t⟨Γ⊢t₂⇝t⟩) = no helper
+  ...  | yes (t₁′ -by- Γ⊢t₁⇝t₁′) | (yes (t₂′ -by- Γ⊢t₂⇝t₂′))
+         = yes (t₁′ ∙ t₂′ -by- Γ⊢t₁⇝t₁′ ∙ Γ⊢t₂⇝t₂′)
+  ...  | yes (t₁′ -by- Γ⊢t₁⇝t₁′) | (no ∄t⟨Γ⊢t₂⇝t⟩) = no helper
        where
          appʳ : ∀ {n} {Γ : Binder n} {t₁ t₂ t₁′ t₂′}
               → Γ ⊢ t₁ ∙ t₂ ⇝ t₁′ ∙ t₂′
@@ -276,10 +323,10 @@ module Scopecheck (Type : Set) where
          appʳ (_ ∙ Γ⊢t₂⇝t₂′) = Γ⊢t₂⇝t₂′
 
          helper : ∄[ t ] (Γ ⊢ t₁ ∙ t₂ ⇝ t)
-         helper (var _ -and- ())
-         helper (lam _ _ -and- ())
-         helper (t₁″ ∙ t₂″ -and- Γ⊢t₁∙t₂⇝t)
-           = ∄t⟨Γ⊢t₂⇝t⟩ (t₂″ -and- appʳ Γ⊢t₁∙t₂⇝t)
+         helper (var _ -by- ())
+         helper (lam _ _ -by- ())
+         helper (t₁″ ∙ t₂″ -by- Γ⊢t₁∙t₂⇝t)
+           = ∄t⟨Γ⊢t₂⇝t⟩ (t₂″ -by- appʳ Γ⊢t₁∙t₂⇝t)
 
   ... | no ∄t⟨Γ⊢t₁⇝t⟩  | _ = no helper
       where
@@ -289,10 +336,10 @@ module Scopecheck (Type : Set) where
         appˡ (Γ⊢t₁⇝t₁′ ∙ _) = Γ⊢t₁⇝t₁′
 
         helper : ∄[ t₁′ ] (Γ ⊢ (t₁ ∙ t₂) ⇝ t₁′)
-        helper (var _ -and- ())
-        helper (lam _ _ -and- ())
-        helper (t₁″ ∙ t₂″ -and- Γ⊢t₁∙t₂⇝t)
-          = ∄t⟨Γ⊢t₁⇝t⟩ (t₁″ -and- appˡ Γ⊢t₁∙t₂⇝t)
+        helper (var _ -by- ())
+        helper (lam _ _ -by- ())
+        helper (t₁″ ∙ t₂″ -by- Γ⊢t₁∙t₂⇝t)
+          = ∄t⟨Γ⊢t₁⇝t⟩ (t₁″ -by- appˡ Γ⊢t₁∙t₂⇝t)
 
   -- Go from a representation that uses Names to one that uses de Bruijn indices
   scope : (t : S.Expr) → {p : True (check [] t)} → Expr 0
@@ -349,15 +396,12 @@ module Typing (U : Set) where
     base : U    → Type
     _↣_  : Type → Type → Type
 
-  ------------------------------------------------------------------------------
-
   open Bound Type hiding (_,_)
 
-  open import Data.Nat   using (ℕ; suc)
-  open import Data.Vec   using (Vec; _∷_; lookup; [])
-  open import Data.Fin   using (Fin; #_)
+  open import Data.Nat using (ℕ; suc)
+  open import Data.Vec using (Vec; _∷_; lookup; [])
+  open import Data.Fin using (Fin; #_)
 
-  ------------------------------------------------------------------------------
 
   Ctxt : ℕ → Set
   Ctxt = Vec Type
@@ -410,21 +454,17 @@ module Typing (U : Set) where
       B : Type
       C : Type
 
-    S : [] ⊢ lam (A ↣ (B ↣ C))
-                 (lam (A ↣ B)
-                      (lam A
-                        ((var (# 2)) ∙ (var (# 0))) ∙ ((var (# 1)) ∙ (var (# 0))) ))
-           ∶ (A ↣ (B ↣ C)) ↣ (A ↣ B) ↣ A ↣ C
-    S = {!   !} --  tLam (tLam (tLam ((tVar ∙ tVar) ∙ (tVar ∙ tVar))))
+    -- S : [] ⊢ lam (A ↣ (B ↣ C))
+    --              (lam (A ↣ B)
+    --                   (lam A
+    --                     ((var (# 2)) ∙ (var (# 0))) ∙ ((var (# 1)) ∙ (var (# 0))) ))
+    --        ∶ (A ↣ (B ↣ C)) ↣ (A ↣ B) ↣ A ↣ C
+    -- S = tLam (tLam ((tLam ({! tVar  !} ∙ {!   !})) ∙ ({! tVar  !} ∙ {!   !}))) --  tLam (tLam (tLam ((tVar ∙ tVar) ∙ (tVar ∙ tVar))))
 \end{code}
 
 ## Type-checking
 
 \begin{code}
-
-open import Relation.Binary using (IsDecEquivalence)
-open import Relation.Binary.PropositionalEquality using (_≡_; subst)
-
 module Typecheck {U : Set} (UEq : IsDecEquivalence {A = U} _≡_) where
 
   ------------------------------------------------------------------------------
@@ -436,7 +476,7 @@ module Typecheck {U : Set} (UEq : IsDecEquivalence {A = U} _≡_) where
   open Bound Type
 
   open import Data.Nat      hiding (_≟_)
-  open import Data.Product  hiding (∃-syntax; ∄-syntax) renaming (_,_ to _-and-_)
+  open import Data.Product  hiding (∃-syntax; ∄-syntax) renaming (_,_ to _-by-_)
   open import Data.Product  using (∃; ∄)
   open import Data.Vec      using (Vec; _∷_; lookup)
 
@@ -490,48 +530,48 @@ module Typecheck {U : Set} (UEq : IsDecEquivalence {A = U} _≡_) where
   infer : ∀ {n} Γ (t : Expr n) → Dec (∃[ τ ] (Γ ⊢ t ∶ τ))
 
   -- Var case.
-  infer Γ (var x) = yes (lookup x Γ -and- tVar)
+  infer Γ (var x) = yes (lookup x Γ -by- tVar)
 
   -- Abstraction case.
   infer Γ (lam τ t) with infer (τ ∷ Γ) t
-  ... | yes (σ -and- Γ,τ⊢t:σ) = yes (τ ↣ σ -and- tLam Γ,τ⊢t:σ)
+  ... | yes (σ -by- Γ,τ⊢t:σ) = yes (τ ↣ σ -by- tLam Γ,τ⊢t:σ)
   ... | no  Γ,τ⊬t:σ = no helper
     where
       helper : ∄[ τ′ ] (Γ ⊢ lam τ t ∶ τ′)
-      helper (base A -and- ())
-      helper (.τ ↣ σ -and- tLam Γ,τ⊢t:σ) = Γ,τ⊬t:σ (σ -and- Γ,τ⊢t:σ)
+      helper (base A -by- ())
+      helper (.τ ↣ σ -by- tLam Γ,τ⊢t:σ) = Γ,τ⊬t:σ (σ -by- Γ,τ⊢t:σ)
 
   -- Application case.
   infer Γ (t₁ ∙ t₂) with infer Γ t₁ | infer Γ t₂
   ... | no  ∄τ⟨Γ⊢t₁:τ⟩ | _ = no helper
       where
         helper : ∄[ σ ] (Γ ⊢ t₁ ∙ t₂ ∶ σ)
-        helper (τ -and- Γ⊢t₁:τ ∙ _) = ∄τ⟨Γ⊢t₁:τ⟩ (_ ↣ τ -and- Γ⊢t₁:τ)
+        helper (τ -by- Γ⊢t₁:τ ∙ _) = ∄τ⟨Γ⊢t₁:τ⟩ (_ ↣ τ -by- Γ⊢t₁:τ)
 
-  ... | yes (base x -and- Γ⊢t₁:base) | _ = no helper
+  ... | yes (base x -by- Γ⊢t₁:base) | _ = no helper
       where
         helper : ∄[ σ ] (Γ ⊢ t₁ ∙ t₂ ∶ σ)
-        helper (τ -and- Γ⊢t₁:_↣_ ∙ _)
+        helper (τ -by- Γ⊢t₁:_↣_ ∙ _)
           with ⊢-inj Γ⊢t₁:_↣_ Γ⊢t₁:base
         ...  | ()
 
-  ... | yes (τ₁ ↣ τ₂ -and- Γ⊢t₁:τ₁↣τ₂) | no  ∄τ⟨Γ⊢t₂:τ⟩ = no helper
+  ... | yes (τ₁ ↣ τ₂ -by- Γ⊢t₁:τ₁↣τ₂) | no  ∄τ⟨Γ⊢t₂:τ⟩ = no helper
       where
         helper : ∄[ σ ] (Γ ⊢ t₁ ∙ t₂ ∶ σ)
-        helper (τ -and- Γ⊢t₁:τ₁′↣τ₂′ ∙ Γ⊢t₂:τ)
+        helper (τ -by- Γ⊢t₁:τ₁′↣τ₂′ ∙ Γ⊢t₂:τ)
           with ⊢-inj Γ⊢t₁:τ₁↣τ₂ Γ⊢t₁:τ₁′↣τ₂′
-        ...  | refl = ∄τ⟨Γ⊢t₂:τ⟩ (τ₁ -and- Γ⊢t₂:τ)
+        ...  | refl = ∄τ⟨Γ⊢t₂:τ⟩ (τ₁ -by- Γ⊢t₂:τ)
 
-  ... | yes (τ₁ ↣ τ₂ -and- Γ⊢t₁:τ₁↣τ₂) | yes (τ₁′ -and- Γ⊢t₂:τ₁′)
+  ... | yes (τ₁ ↣ τ₂ -by- Γ⊢t₁:τ₁↣τ₂) | yes (τ₁′ -by- Γ⊢t₂:τ₁′)
       with τ₁ T≟ τ₁′
-  ...  | yes τ₁≡τ₁′ = yes (τ₂ -and- Γ⊢t₁:τ₁↣τ₂ ∙ helper)
+  ...  | yes τ₁≡τ₁′ = yes (τ₂ -by- Γ⊢t₁:τ₁↣τ₂ ∙ helper)
        where
          helper : Γ ⊢ t₂  ∶ τ₁
          helper = subst (_⊢_∶_ Γ t₂) (sym τ₁≡τ₁′) Γ⊢t₂:τ₁′
   ...  | no  τ₁≢τ₁′ = no helper
        where
          helper : ∄[ σ ] (Γ ⊢ t₁ ∙ t₂ ∶ σ)
-         helper (_ -and- Γ⊢t₁:τ↣τ₂ ∙ Γ⊢t₂:τ₁)
+         helper (_ -by- Γ⊢t₁:τ↣τ₂ ∙ Γ⊢t₂:τ₁)
            with ⊢-inj  Γ⊢t₁:τ↣τ₂ Γ⊢t₁:τ₁↣τ₂
          ...  | refl = τ₁≢τ₁′ (⊢-inj Γ⊢t₂:τ₁ Γ⊢t₂:τ₁′)
 
@@ -561,7 +601,7 @@ module Typecheck {U : Set} (UEq : IsDecEquivalence {A = U} _≡_) where
 
   -- Application case.
   check Γ (t₁ ∙ t₂) σ with infer Γ t₂
-  ... | yes (τ -and- Γ⊢t₂:τ)
+  ... | yes (τ -by- Γ⊢t₂:τ)
       with check Γ t₁ (τ ↣ σ)
   ...    | yes Γ⊢t₁:τ↣σ = yes (Γ⊢t₁:τ↣σ ∙ Γ⊢t₂:τ)
   ...    | no  Γ⊬t₁:τ↣σ = no helper
@@ -574,7 +614,7 @@ module Typecheck {U : Set} (UEq : IsDecEquivalence {A = U} _≡_) where
   check Γ (t₁ ∙ t₂) σ | no Γ⊬t₂:_ = no helper
     where
       helper : ¬ Γ ⊢ t₁ ∙ t₂ ∶ σ
-      helper (_∙_ {τ = σ} t Γ⊢t₂:τ′) = Γ⊬t₂:_ (σ -and- Γ⊢t₂:τ′)
+      helper (_∙_ {τ = σ} t Γ⊢t₂:τ′) = Γ⊬t₂:_ (σ -by- Γ⊢t₂:τ′)
 \end{code}
 
 
