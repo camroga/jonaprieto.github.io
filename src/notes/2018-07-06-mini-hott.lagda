@@ -694,6 +694,98 @@ involution {p = idp} = idp
     ∎
 \end{code}
 
+Moving a term from one side to the other is a common task,
+so let's define a two functions for that.
+
+\begin{code}
+·-left-to-right-r
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
+  → {p : a == b} → {q : b == c} → {r : a == c}
+  → p · q == r
+  --------------
+  → p == r · ! q
+
+·-left-to-right-r {a = a}{b = b}{c = c} {p} {q} {r} α =
+  begin
+    p
+      ==⟨ ·-runit p ⟩
+    p · refl b
+      ==⟨ ap (p ·_) (! (·-rinv q)) ⟩
+    p · (q · ! q)
+      ==⟨ ! (·-assoc p q (! q)) ⟩
+    (p · q) · ! q
+      ==⟨ ap (_· ! q) α ⟩
+    r · ! q
+  ∎
+\end{code}
+
+\begin{code}
+·-left-to-right-l
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
+  → {p : a == b} → {q : b == c} → {r : a == c}
+  → p · q == r
+  ---------------
+  → q == ! p · r
+
+·-left-to-right-l {a = a}{b = b}{c = c} {p} {q} {r} α =
+  begin
+    q
+      ==⟨ ·-lunit q ⟩
+    refl b · q
+      ==⟨ ap (_· q) (! (·-linv p)) ⟩
+    (! p · p) · q
+      ==⟨ ·-assoc (! p) p q ⟩
+    ! p · (p · q)
+      ==⟨ ap (! p ·_) α ⟩
+    ! p · r
+  ∎
+\end{code}
+
+\begin{code}
+·-right-to-left-r
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
+  → {p : a == c} → {q : a == b} → {r : b == c}
+  → p == q · r
+  --------------------------------------------
+  → p · ! r == q
+
+·-right-to-left-r {a = a}{b = b}{c = c} {p} {q} {r} α =
+  begin
+    p · ! r
+      ==⟨ ap (_· ! r) α ⟩
+    (q · r) · ! r
+      ==⟨ ·-assoc q r (! r) ⟩
+    q · (r · ! r)
+      ==⟨ ap (q ·_) (·-rinv r) ⟩
+    q · refl b
+      ==⟨ ! (·-runit q) ⟩
+    q
+    ∎
+\end{code}
+
+\begin{code}
+·-right-to-left-l
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
+  → {p : a == c} → {q : a == b} → {r : b == c}
+  → p == q · r
+  ---------------
+  → ! q · p == r
+
+·-right-to-left-l {a = a}{b = b}{c = c} {p} {q} {r} α =
+  begin
+    ! q · p
+      ==⟨ ap (! q ·_) α ⟩
+    ! q · (q · r)
+      ==⟨ ! (·-assoc (! q) q r) ⟩
+    (! q · q) · r
+      ==⟨ ap (_· r) (·-linv q) ⟩
+    refl b · r
+      ==⟨ ! (·-lunit r) ⟩
+    r
+  ∎
+\end{code}
+
+
 \begin{code}
 !-·
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -1231,7 +1323,7 @@ $$
     → g ∼ h
     -------
     → f ∼ h
-  h-comp u v x = (u x)·(v x)
+  h-comp u v x = (u x) · (v x)
 \end{code}
 
 \begin{code}
@@ -1264,7 +1356,7 @@ module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type �
     -------------------
     → (j ∘ f) ∼ (k ∘ g)
 
-  hl-comp {g = g}{j = j} α β x = ap j (α x) · β (g x)
+  hl-comp {g = g}{j = j} f-g j-k = λ x → ap j (f-g x) · j-k (g x)
 \end{code}
 
 \begin{code}
@@ -1275,7 +1367,7 @@ module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type �
     -------------------
     → (j ∘ f) ∼ (k ∘ f)
 
-  rcomp-∼ f β = hl-comp (h-refl f) β
+  rcomp-∼ f j-k = hl-comp (h-refl f) j-k
 \end{code}
 
 \begin{code}
@@ -1293,36 +1385,49 @@ module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type �
 open HomotopyComposition
 \end{code}
 
-## 🚧🚧🚧🚧🚧[ In construction ]🚧🚧🚧🚧🚧
-
 ### Naturality
+
+\begin{code}
+module Naturality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
+\end{code}
 
 Homotopy is natural, meaning that it satisfies the following
 square commutative diagram.
 
-\begin{code}
+![path](/assets/ipe-images/h-naturality.png){: width="60%" }
 
-module Naturality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
-  h-naturality : {f g : A → B} (H : f ∼ g) → {x y : A} → (p : x == y)
-               → H x · ap g p == ap f p · H y
-  h-naturality H {x = x} idp = inv (·-runit (H x))
+\begin{code}
+  h-naturality
+    : {f g : A → B} → {x y : A}
+    → (H : f ∼ g)
+    → (p : x == y)
+    ------------------------------
+    → H x · ap g p == ap f p · H y
+
+  h-naturality {x = x} H idp = inv (·-runit (H x))
 open Naturality
 \end{code}
 
 A particular case of naturality on the identity function.
 \begin{code}
-h-naturality-id : ∀ {ℓ} {A : Type ℓ} {f : A → A} (H : f ∼ id) → {x : A}
-                → H (f x) == ap f (H x)
-h-naturality-id {f = f} H {x = x} =
+h-naturality-id
+  : ∀ {ℓ} {A : Type ℓ} {f : A → A} → {x : A}
+  → (H : f ∼ id)
+  -----------------------
+  → H (f x) == ap f (H x)
+
+h-naturality-id {f = f} {x = x} H =
   begin
-    H (f x)                            ==⟨ ·-runit (H (f x)) ⟩
-    H (f x) · (refl (f x))             ==⟨ ap (H (f x) ·_) (inv (·-rinv (H x))) ⟩
-    H (f x) · (H x · inv (H x))        ==⟨ inv (·-assoc (H (f x)) _ (inv (H x))) ⟩
-    H (f x) · H x · inv (H x)          ==⟨ ap (λ u → H (f x) · u · inv (H x)) (inv (ap-id _)) ⟩
-    H (f x) · ap id (H x) · inv (H x)  ==⟨ ap (_· inv (H x)) (h-naturality H (H x)) ⟩
-    ap f (H x) · H x · inv (H x)       ==⟨ ·-assoc (ap f (H x)) _ (inv (H x)) ⟩
-    ap f (H x) · (H x · inv (H x))     ==⟨ ap (ap f (H x) ·_) (·-rinv (H x)) ⟩
-    ap f (H x) · refl (f x)            ==⟨ inv (·-runit (ap f (H x))) ⟩
+    H (f x)
+      ==⟨ ·-runit (H (f x)) ⟩
+    H (f x) · refl (f x)
+      ==⟨ ap (H (f x) ·_) (! (·-rinv (H x))) ⟩
+    H (f x) · ((H x) · (! (H x)))
+      ==⟨ ap (H (f x) ·_) (ap (_· (! (H x))) (! ap-id (H x))) ⟩
+    H (f x) · (ap id (H x) · ! (H x))
+      ==⟨ ! (·-assoc (H (f x)) (ap id (H x)) (! (H x))) ⟩
+    (H (f x) · ap id (H x)) · ! (H x)
+      ==⟨ ·-right-to-left-r (h-naturality H (H x)) ⟩
     ap f (H x)
   ∎
 \end{code}
