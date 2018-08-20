@@ -39,6 +39,8 @@ The sources of this blog are open source. The blog is using the following projec
 - Since April 2018 I changed to [https://tex.s2cms.com/](https://tex.s2cms.com/) to render `Latex` instead of `KaTeX`
 - `timelinejs` to show some test timelines
 - `linkify` to replace any url address to anchor tags
+- `yarn` for javascript dependencies
+- `gulp+browserSync` for development
 
 ### License
 

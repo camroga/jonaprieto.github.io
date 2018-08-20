@@ -1,11 +1,11 @@
-srcNotesAgda := $(wildcard src/notes/*.lagda)
-srcNotesMd   := $(wildcard src/notes/*.md)
+srcNotesAgda := $(wildcard _src/notes/*.lagda)
+srcNotesMd   := $(wildcard _src/notes/*.md)
 
-mdNotesAgda  := $(subst src/notes,_posts,$(subst .lagda,.md,$(srcNotesAgda)))
-mdNotesMd    := $(subst src/notes,_posts,$(srcNotesMd))
+mdNotesAgda  := $(subst _src/notes,_posts,$(subst .lagda,.md,$(srcNotesAgda)))
+mdNotesMd    := $(subst _src/notes,_posts,$(srcNotesMd))
 
-ipeImages    := $(wildcard src/ipe-images/*.ipe)
-ipeImagesPNG := $(subst src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
+ipeImages    := $(wildcard _src/ipe-images/*.ipe)
+ipeImagesPNG := $(subst _src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
 
 all:  $(mdNotesAgda) \
       $(mdNotesMd) \
@@ -16,24 +16,24 @@ _posts/ :
 	- rm -Rf -d _posts
 	- mkdir -p _posts
 
-_posts/%.md : src/notes/%.md
+_posts/%.md : _src/notes/%.md
 	- cp $< $@
   - @echo "==================================================================="
 
 
-_posts/%.md : src/notes/%.lagda
+_posts/%.md : _src/notes/%.lagda
 	- agda2html --version
 	- agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
   - @echo "==================================================================="
 
 
-assets/ipe-images/%.png : src/ipe-images/%.ipe
+assets/ipe-images/%.png : _src/ipe-images/%.ipe
 	iperender -png -resolution 400 $< $@
 
-assets/latexit-images/%.png : src/latexit-images/%.png
+assets/latexit-images/%.png : _src/latexit-images/%.png
 	cp $< $@
 
-assets/%.png : src/assets/%.png
+assets/%.png : _src/assets/%.png
 	cp $< $@
 
 .phony: serve

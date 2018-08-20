@@ -19,7 +19,7 @@ var messages = {
 
 gulp.task('jekyll-dev', function (done) {
   browserSync.notify(messages.jekyllDev);
-  const jekyll = child.spawn('jekyll', ['build'], {stdio: 'inherit'})
+  const jekyll = child.spawn('jekyll', ['build', '--incremental', '--limit_posts' , '10'], {stdio: 'inherit'})
  .on('close', done);
 });
 
@@ -57,8 +57,8 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
 
   gulp.watch(['_sass/**/*.scss','_sass/*.scss'], ['sass']);
   gulp.watch(['_js/**/*.js'], ['scripts']);
-  gulp.watch(['src/notes/*.lagda','src/notes/*.md'], ['make']);
-  gulp.watch(['*.html', '_layouts/*.html', '_posts/*', '_includes/*.html', '_drafts/*', '**/*.html'], ['jekyll-rebuild']);
+  gulp.watch(['_src/notes/*.lagda','_src/notes/*.md'], ['make']);
+  gulp.watch(['*.html', '*.md', '_layouts/*.html', '_posts/*', '_includes/*.html', '_drafts/*', '**/*.html'], ['jekyll-rebuild']);
 
 });
 
