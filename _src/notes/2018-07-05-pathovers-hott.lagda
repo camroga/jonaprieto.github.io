@@ -8,6 +8,7 @@ coauthor: "Marc Bezem"
 coauthor_affiliation: "University of Bergen"
 date: "2018-07-05"
 categories: type-theory
+references: true
 toc: true
 agda: true
 gallery: true

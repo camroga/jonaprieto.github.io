@@ -32,7 +32,7 @@ gulp.task('sass', function(){
         .pipe(sass({onError: browserSync.notify}))
         .pipe(concat('main.css'))
         .pipe(gulp.dest('_site/assets'))
-        .pipe(browserSync.reload({stream:true}))
+        .pipe(browserSync.reload({stream:true, message: "Sass updated!"}))
         .pipe(gulp.dest('assets'));
 });
 
