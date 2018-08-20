@@ -10,7 +10,6 @@ const imagemin     = require('gulp-imagemin');
 const child        = require('child_process');
 const gutil        = require('gulp-util');
 
-const sassFiles     = '_sass/**/*.?(s)css';
 const scriptFiles  = '_js/**/*.js';
 
 var messages = {
@@ -28,8 +27,8 @@ gulp.task('jekyll-rebuild', ['jekyll-dev'], function () {
   browserSync.reload();
 });
 
-gulp.task('sass', () => {
-  return gulp.src(sassFiles)
+gulp.task('sass', function(){
+  return gulp.src(['_sass/main.scss'])
         .pipe(sass({onError: browserSync.notify}))
         .pipe(concat('main.css'))
         .pipe(gulp.dest('_site/assets'))
@@ -89,7 +88,7 @@ gulp.task('jekyll-prod', function (done) {
 });
 
 gulp.task('sass-prod', () => {
-  return gulp.src(sassFiles)
+  return gulp.src(['_sass/main.scss'])
             .pipe(sass({onError: browserSync.notify}))
             .pipe(concat('main.css'))
             .pipe(cssnano())
