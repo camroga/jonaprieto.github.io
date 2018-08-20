@@ -30,6 +30,7 @@
 <meta name="description" content="Type theory">
 
   <link rel="stylesheet" href="/assets/main.css">
+  <link rel="preload" as="script" href="/assets/main.js" >
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/apple-touch-icon-precomposed.png">
   <link rel="shortcut icon" href="/public/favicon.ico">
@@ -70,8 +71,6 @@
 
     <!--  -->
     <!-- 
-      
-    
       
     
       
@@ -170,7 +169,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/src/2018-02-09-type-theory-journey.lagda">2bc2151 </a> on  19 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/src/2018-02-09-type-theory-journey.lagda">df03fe4 </a> on  20 Aug 2018
     </div>
   </div>
   
@@ -395,7 +394,9 @@ WebFontConfig = {
 </script>
 
 
+<!-- FOLDABLE  -->
 <script type="text/javascript">
+var newHeight;
  $('pre.foldable').each(function(){
      var autoHeight = $(this).height();
      var lineHeight = parseFloat($(this).css('line-height'));
@@ -423,19 +424,29 @@ WebFontConfig = {
          'background-color' : '#C1E0FF'});
      plus.append(verLine);
      plus.append(horLine);
-     $(this).height(lineHeight);
-     // $(this).height(2.0 * lineHeight);
+
+     // The line stars at 1 line
+     newHeight = (parseFloat($(this).attr('until')) - 1) * lineHeight;
+
+     console.log( "Until> ", newHeight);
+     if ( newHeight <= 0 ){
+       newHeight = lineHeight;
+     }
+
+     $(this).height(newHeight);
      $(this).css('overflow','hidden');
+
      $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             // $(this).height(2.0 * lineHeight);
-             $(this).height(lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
+       if ($(this).height() == autoHeight) {
+         console.log("==newHeight");
+         $(this).height(newHeight);
+         plus.show();
+       }
+       else{
+         console.log("!=newHeight");
+         $(this).height('auto');
+         plus.hide();
+       }
      });
  });
 </script>
