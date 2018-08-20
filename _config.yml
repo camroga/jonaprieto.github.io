@@ -42,6 +42,9 @@ exclude:
   - .observr
   - .travis.yml
   - fix-references.sh
+  - package.json
+  - gulpfile.js
+  - node_modules
 
 include:
   - .nojekyll

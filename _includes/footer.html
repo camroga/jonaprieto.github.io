@@ -44,7 +44,9 @@ WebFontConfig = {
 </script>
 
 {% if page.agda %}
+<!-- FOLDABLE  -->
 <script type="text/javascript">
+var newHeight;
  $('pre.foldable').each(function(){
      var autoHeight = $(this).height();
      var lineHeight = parseFloat($(this).css('line-height'));
@@ -72,19 +74,29 @@ WebFontConfig = {
          'background-color' : '#C1E0FF'});
      plus.append(verLine);
      plus.append(horLine);
-     $(this).height(lineHeight);
-     // $(this).height(2.0 * lineHeight);
+
+     // The line stars at 1 line
+     newHeight = (parseFloat($(this).attr('until')) - 1) * lineHeight;
+
+     console.log( "Until> ", newHeight);
+     if ( newHeight <= 0 ){
+       newHeight = lineHeight;
+     }
+
+     $(this).height(newHeight);
      $(this).css('overflow','hidden');
+
      $(this).click(function(){
-         if ($(this).height() == autoHeight) {
-             // $(this).height(2.0 * lineHeight);
-             $(this).height(lineHeight);
-             plus.show();
-         }
-         else {
-             $(this).height('auto');
-             plus.hide();
-         }
+       if ($(this).height() == autoHeight) {
+         console.log("==newHeight");
+         $(this).height(newHeight);
+         plus.show();
+       }
+       else{
+         console.log("!=newHeight");
+         $(this).height('auto');
+         plus.hide();
+       }
      });
  });
 </script>

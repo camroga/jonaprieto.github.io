@@ -53,12 +53,17 @@ To join two paths when one ends where the other starts, we
 define the _concatenation_ operator between paths denoted by the symbol (`_·_`).
 Let's see its picture.
 
-![path](/assets/ipe-images/path-concatenation.png)
+![path](/assets/ipe-images/path-concatenation.png){: width="%40" }
 
+{: .foldable until="6"  }
 \begin{code}
 infixr 20 _·_
-_·_ : ∀ {A : Set}
-    → {x y z : A} → (p : x ≡ y) → (q : y ≡ z) → x ≡ z
+_·_ : ∀ {A : Set} {x y z : A}
+    → (p : x ≡ y)
+    → (q : y ≡ z)
+    ------------
+    → x ≡ z
+
 _·_ {A} {x} {y} {z} p q = D₁ x y p z q
   where
     D₂ : (x z : A) (q : x ≡ z) → x ≡ z

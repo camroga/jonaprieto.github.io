@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180819163559" modified="D:20180819163559"/>
+<info created="D:20180819163559" modified="D:20180819193128"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -262,9 +262,8 @@ h
 <text matrix="1 0 0 1 88 0" transformations="translations" pos="188 772" stroke="black" type="label" width="11.192" height="6.926" depth="1.93" valign="baseline" style="math">f y
 </text>
 <text matrix="1 0 0 1 -12 -56" transformations="translations" pos="188 772" stroke="black" type="label" width="10.803" height="4.297" depth="1.93" valign="baseline" style="math">g x</text>
-<text matrix="1 0 0 1 44 -96" transformations="translations" pos="188 772" stroke="black" type="label" width="10.803" height="4.297" depth="1.93" valign="baseline" style="math">g x</text>
-<text matrix="1 0 0 1 88 -56" transformations="translations" pos="188 772" stroke="black" type="label" width="10.982" height="6.926" depth="1.93" valign="baseline" style="math">h y</text>
-<path stroke="black" arrow="normal/tiny">
+<text matrix="1 0 0 1 88 -56" transformations="translations" pos="188 772" stroke="black" type="label" width="10.351" height="4.297" depth="1.93" valign="baseline" style="math">g y</text>
+<path stroke="darkred" arrow="normal/tiny">
 192 768 m
 220 760
 248 776
@@ -282,14 +281,14 @@ h
 184 744
 192 720 c
 </path>
-<path stroke="black" arrow="normal/tiny">
+<path stroke="darkred" arrow="normal/tiny">
 272 768 m
 264 740
 272 720 c
 </path>
-<text matrix="1 0 0 1 -12 0" transformations="translations" pos="224 772" stroke="black" type="label" width="27.539" height="6.926" depth="1.93" valign="baseline" style="math">\mathsf{ap}~f~p</text>
-<text matrix="1 0 0 1 -8 -60" transformations="translations" pos="224 772" stroke="black" type="label" width="26.698" height="4.435" depth="1.93" valign="baseline" style="math">\mathsf{ap}~g~p</text>
-<text matrix="1 0 0 1 -12 -4" transformations="translations" pos="180 744" stroke="black" type="label" width="18.106" height="6.808" depth="0" valign="baseline" style="math">H~x</text>
-<text matrix="1 0 0 1 92 -4" transformations="translations" pos="180 744" stroke="black" type="label" width="17.654" height="6.815" depth="1.93" valign="baseline" style="math">H~y</text>
+<text matrix="1 0 0 1 -8 0" transformations="translations" pos="224 772" stroke="black" type="label" width="12.956" height="3.468" depth="0.96" valign="baseline" size="tiny" style="math">\mathsf{ap} f p</text>
+<text matrix="1 0 0 1 -4 -56" transformations="translations" pos="224 772" stroke="black" type="label" width="12.629" height="2.222" depth="0.96" valign="baseline" size="tiny" style="math">\mathsf{ap} g p</text>
+<text matrix="1 0 0 1 -4 -4" transformations="translations" pos="180 744" stroke="black" type="label" width="9.845" height="3.404" depth="0" valign="baseline" size="tiny" style="math">H x</text>
+<text matrix="1 0 0 1 92 -4" transformations="translations" pos="180 744" stroke="black" type="label" width="9.719" height="3.412" depth="0.96" valign="baseline" size="tiny" style="math">H y</text>
 </page>
 </ipe>

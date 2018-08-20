@@ -695,37 +695,14 @@ involution {p = idp} = idp
 \end{code}
 
 Moving a term from one side to the other is a common task,
-so let's define a two functions for that.
-
-\begin{code}
-·-left-to-right-r
-  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
-  → {p : a == b} → {q : b == c} → {r : a == c}
-  → p · q == r
-  --------------
-  → p == r · ! q
-
-·-left-to-right-r {a = a}{b = b}{c = c} {p} {q} {r} α =
-  begin
-    p
-      ==⟨ ·-runit p ⟩
-    p · refl b
-      ==⟨ ap (p ·_) (! (·-rinv q)) ⟩
-    p · (q · ! q)
-      ==⟨ ! (·-assoc p q (! q)) ⟩
-    (p · q) · ! q
-      ==⟨ ap (_· ! q) α ⟩
-    r · ! q
-  ∎
-\end{code}
+so let's define some handy functions for that.
 
 \begin{code}
 ·-left-to-right-l
-  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
-  → {p : a == b} → {q : b == c} → {r : a == c}
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == b} {q : b == c} {r : a == c}
   → p · q == r
-  ---------------
-  → q == ! p · r
+  ------------------
+  →     q == ! p · r
 
 ·-left-to-right-l {a = a}{b = b}{c = c} {p} {q} {r} α =
   begin
@@ -742,11 +719,31 @@ so let's define a two functions for that.
 \end{code}
 
 \begin{code}
+·-left-to-right-r
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == b} {q : b == c} {r : a == c}
+  → p · q == r
+  -------------------
+  →      p == r · ! q
+
+·-left-to-right-r {a = a}{b = b}{c = c} {p} {q} {r} α =
+  begin
+    p
+      ==⟨ ·-runit p ⟩
+    p · refl b
+      ==⟨ ap (p ·_) (! (·-rinv q)) ⟩
+    p · (q · ! q)
+      ==⟨ ! (·-assoc p q (! q)) ⟩
+    (p · q) · ! q
+      ==⟨ ap (_· ! q) α ⟩
+    r · ! q
+  ∎
+\end{code}
+
+\begin{code}
 ·-right-to-left-r
-  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
-  → {p : a == c} → {q : a == b} → {r : b == c}
-  → p == q · r
-  --------------------------------------------
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == c} {q : a == b} {r : b == c}
+  →       p == q · r
+  -------------------
   → p · ! r == q
 
 ·-right-to-left-r {a = a}{b = b}{c = c} {p} {q} {r} α =
@@ -765,10 +762,9 @@ so let's define a two functions for that.
 
 \begin{code}
 ·-right-to-left-l
-  : ∀ {ℓ} {A : Type ℓ} {a b c : A}
-  → {p : a == c} → {q : a == b} → {r : b == c}
-  → p == q · r
-  ---------------
+  : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == c} {q : a == b} {r : b == c}
+  →       p == q · r
+  ------------------
   → ! q · p == r
 
 ·-right-to-left-l {a = a}{b = b}{c = c} {p} {q} {r} α =
@@ -777,7 +773,7 @@ so let's define a two functions for that.
       ==⟨ ap (! q ·_) α ⟩
     ! q · (q · r)
       ==⟨ ! (·-assoc (! q) q r) ⟩
-    (! q · q) · r
+    ! q · q · r
       ==⟨ ap (_· r) (·-linv q) ⟩
     refl b · r
       ==⟨ ! (·-lunit r) ⟩
@@ -785,6 +781,7 @@ so let's define a two functions for that.
   ∎
 \end{code}
 
+Finally, when we invert a path composition this is what we got.
 
 \begin{code}
 !-·
@@ -1394,7 +1391,7 @@ module Naturality {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 Homotopy is natural, meaning that it satisfies the following
 square commutative diagram.
 
-![path](/assets/ipe-images/h-naturality.png){: width="60%" }
+![path](/assets/ipe-images/h-naturality.png){: width="40%" }
 
 \begin{code}
   h-naturality
@@ -2029,18 +2026,32 @@ module EquivalenceComposition where
   -- Composition of equivalences
   idEqv : ∀ {ℓ} {A : Type ℓ} → A ≃ A
   idEqv = id , λ a → (a , refl a) , λ { (_ , idp) → refl (a , refl a) }
+\end{code}
 
-  compEqv : ∀ {ℓ} {A B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
-  compEqv {ℓ} {A} {B} {C} eqf eqg = qinv-≃ (π₁ qcomp) (π₂ qcomp)
+\begin{code}
+--
+  compEqv
+    : ∀ {ℓ} {A B C : Type ℓ}
+    → A ≃ B
+    → B ≃ C
+    -------
+    → A ≃ C
+
+  compEqv {A = A} {C = C} eq-f eq-g = qinv-≃ (π₁ qcomp) (π₂ qcomp)
    where
      qcomp : Σ (A → C) qinv
-     qcomp = qinv-comp (≃-qinv eqf) (≃-qinv eqg)
+     qcomp = qinv-comp (≃-qinv eq-f) (≃-qinv eq-g)
 
+  -- synonym:
+  ≃-trans = compEqv
+\end{code}
+
+\begin{code}
   invEqv : ∀ {ℓ} {A B : Type ℓ} → A ≃ B → B ≃ A
-  invEqv {ℓ} {A} {B} eqf = qinv-≃ (π₁ qcinv) (π₂ qcinv)
+  invEqv {ℓ} {A} {B} eq-f = qinv-≃ (π₁ qcinv) (π₂ qcinv)
    where
      qcinv : Σ (B → A) qinv
-     qcinv = qinv-inv (≃-qinv eqf)
+     qcinv = qinv-inv (≃-qinv eq-f)
 
   -- Lemmas about composition
   compEqv-inv : ∀ {ℓ} {A B : Type ℓ} → (α : A ≃ B) → compEqv α (invEqv α) == idEqv

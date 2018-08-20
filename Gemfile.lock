@@ -24,10 +24,10 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
-    eventmachine (1.2.6)
+    eventmachine (1.2.7)
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.23)
+    ffi (1.9.25)
     filesize (0.1.1)
     forwardable-extended (2.6.0)
     hawkins (2.0.5)
@@ -64,8 +64,6 @@ GEM
     jekyll-github-metadata (2.9.4)
       jekyll (~> 3.1)
       octokit (~> 4.0, != 4.4.0)
-    jekyll-include-cache (0.1.0)
-      jekyll (~> 3.3)
     jekyll-last-modified-at (1.0.1)
       jekyll (~> 3.3)
       posix-spawn (~> 0.3.9)
@@ -81,7 +79,7 @@ GEM
     jekyll-watch (2.0.0)
       listen (~> 3.0)
     json (2.1.0)
-    kramdown (1.16.2)
+    kramdown (1.17.0)
     latex-decode (0.3.1)
     liquid (4.0.0)
     listen (3.1.5)
@@ -106,13 +104,13 @@ GEM
       forwardable-extended (~> 2.6)
     posix-spawn (0.3.13)
     progressbar (1.9.0)
-    public_suffix (2.0.5)
+    public_suffix (3.0.2)
     pygments.rb (1.2.1)
       multi_json (>= 1.0.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rouge (2.2.1)
+    rouge (3.1.1)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
     sass (3.5.6)
@@ -136,7 +134,6 @@ DEPENDENCIES
   jekyll-algolia (~> 1.4, >= 1.4.7)
   jekyll-feed (~> 0.6)
   jekyll-github-metadata
-  jekyll-include-cache
   jekyll-last-modified-at
   jekyll-scholar
   jekyll-seo-tag
@@ -146,4 +143,4 @@ DEPENDENCIES
   unicode
 
 BUNDLED WITH
-   1.16.3
+   1.16.4
