@@ -167,7 +167,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/1d521fde20e864ac977075802b5ee7e3cdf03fe4/src/2018-05-01-circle-puzzle.lagda">66f0fc6 </a> on  20 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/1d521fde20e864ac977075802b5ee7e3cdf03fe4/src/2018-05-01-circle-puzzle.lagda">cea183d </a> on  21 Aug 2018
     </div>
   </div>
   
@@ -1149,22 +1149,20 @@ var newHeight;
      // The line stars at 1 line
      newHeight = (parseFloat($(this).attr('until')) - 1) * lineHeight;
 
-     console.log( "Until> ", newHeight);
-     if ( newHeight <= 0 ){
+     if ( newHeight <= 0 || isNaN(newHeight) ){
        newHeight = lineHeight;
      }
+     console.log( "Until> ", newHeight);
 
      $(this).height(newHeight);
      $(this).css('overflow','hidden');
 
      $(this).click(function(){
        if ($(this).height() == autoHeight) {
-         console.log("==newHeight");
          $(this).height(newHeight);
          plus.show();
        }
        else{
-         console.log("!=newHeight");
          $(this).height('auto');
          plus.hide();
        }

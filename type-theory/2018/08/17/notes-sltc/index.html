@@ -169,7 +169,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/4dd5aaf4f66539170d0cc712477df80c19e85263/src/2018-08-17-notes-sltc.lagda">66f0fc6 </a> on  20 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/4dd5aaf4f66539170d0cc712477df80c19e85263/src/2018-08-17-notes-sltc.lagda">cea183d </a> on  21 Aug 2018
     </div>
   </div>
   
@@ -886,22 +886,20 @@ var newHeight;
      // The line stars at 1 line
      newHeight = (parseFloat($(this).attr('until')) - 1) * lineHeight;
 
-     console.log( "Until> ", newHeight);
-     if ( newHeight <= 0 ){
+     if ( newHeight <= 0 || isNaN(newHeight) ){
        newHeight = lineHeight;
      }
+     console.log( "Until> ", newHeight);
 
      $(this).height(newHeight);
      $(this).css('overflow','hidden');
 
      $(this).click(function(){
        if ($(this).height() == autoHeight) {
-         console.log("==newHeight");
          $(this).height(newHeight);
          plus.show();
        }
        else{
-         console.log("!=newHeight");
          $(this).height('auto');
          plus.hide();
        }
