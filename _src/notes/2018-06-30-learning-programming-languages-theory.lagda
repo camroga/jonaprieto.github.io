@@ -17,8 +17,8 @@ _ = Set -- Trick for .lagda in jekyll
 
 ## [Advanced Functional Programming CS410-17 by Conor McBride](https://github.com/pigworker/CS410-17/)
 
-- [x] [Programs and Proofs](https://www.youtube.com/watch?v=O4oczQry9Jw)
-- [x] [more Programs and Proofs, Introducing "with"](https://www.youtube.com/watch?v=qcVZxQTouDk)
+- [x] [Programs and Proofs](https://www.youtube.com/watch?v=O4oczQry9Jw) 2018-06-30
+- [x] [more Programs and Proofs, Introducing "with"](https://www.youtube.com/watch?v=qcVZxQTouDk)  2018-07-08
 
 {: .foldable}
 \begin{code}
@@ -263,8 +263,10 @@ module Lec1Done where
 open Lec1Done
 \end{code}
 
-- [x] [Proof by Induction](https://www.youtube.com/watch?v=8xFT9FPlm18)
+--------------------------------------------------------------------------------
 
+- [x] [Proof by Induction](https://www.youtube.com/watch?v=8xFT9FPlm18) 2018-08-06
+- [x] [Sigma, Difference, Vector Take](https://www.youtube.com/watch?v=OZeDRtRmgkw) 2018-08-21
 
 {: .foldable}
 \begin{code}
@@ -375,7 +377,8 @@ module Lec2Done where
         about it. -}
 \end{code}
 
-- [ ] [Sigma, Difference, Vector Take](https://www.youtube.com/watch?v=OZeDRtRmgkw)
+--------------------------------------------------------------------------------
+
 - [ ] [How Rewrite Works](https://www.youtube.com/watch?v=b5salYMZoyM)
 - [ ] [A Comedy of (Entirely Non-Deliberate) Errors](https://www.youtube.com/watch?v=RW4aC_6n0yQ)
 - [ ] ["Dominoes", no really, this time](https://www.youtube.com/watch?v=2LxtHeZlaVw)
@@ -396,11 +399,11 @@ module Lec2Done where
 
 ### Part 1: Logical Foundations
 
-  - [x] [Naturals: Natural numbers](https://plfa.github.io/Naturals/)
-  - [x] [Induction: Proof by induction](https://plfa.github.io/Induction/)
-  - [x] [Relations: Inductive definition of relations](https://plfa.github.io/Relations/)
-  - [x] [Equality: Equality and equational reasoning](https://plfa.github.io/Equality/)
-  - [ ] [Isomorphism: Isomorphism and embedding](https://plfa.github.io/Isomorphism/)
+  - [x] [Naturals: Natural numbers](https://plfa.github.io/Naturals/) 2018-06-28
+  - [x] [Induction: Proof by induction](https://plfa.github.io/Induction/) 2018-07-05
+  - [x] [Relations: Inductive definition of relations](https://plfa.github.io/Relations/) 2018-07-14
+  - [x] [Equality: Equality and equational reasoning](https://plfa.github.io/Equality/) 2018-07-29
+  - [x] [Isomorphism: Isomorphism and embedding](https://plfa.github.io/Isomorphism/) 2018-08-19
   - [ ] [Connectives: Conjunction, disjunction, and implication](https://plfa.github.io/Connectives/)
   - [ ] [Negation: Negation, with intuitionistic and classical Logic](https://plfa.github.io/Negation/)
   - [ ] [Quantifiers: Universals and existentials](https://plfa.github.io/Quantifiers/)

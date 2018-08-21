@@ -3,7 +3,10 @@ layout: "post"
 title: "Categories"
 date: "2018-06-14"
 categories: learning
+gallery: true
+latex: true
 ---
+
 
 This is my attempt to save some resources to learn category theory. Maybe could be the starting point for someone else.
 
@@ -31,34 +34,43 @@ This is my attempt to save some resources to learn category theory. Maybe could 
 
 #### [Category Theory for Programmers by Barotsz Milewski](https://www.youtube.com/watch?v=I8LbkfSSR58&list=PLbgaMIhjbmEnaH_LTkxLI7FMa2HsnawM_)
 
-- [x] [1.1: Motivation and Philosophy](https://www.youtube.com/watch?v=I8LbkfSSR58)
-- [x] [1.2: What is a category?](https://www.youtube.com/watch?v=p54Hd7AmVFU)
-- [x] [2.1: Functions, epimorphisms](https://www.youtube.com/watch?v=O2lZkr-aAqk)
-- [x] [2.2: Monomorphisms, simple types](https://www.youtube.com/watch?v=NcT7CGPICzo)
-- [x] [3.1: Examples of categories, orders, monoids](https://www.youtube.com/watch?v=aZjhqkD6k6w)
-- [x] [3.2: Kleisli category](https://www.youtube.com/watch?v=i9CU4CuHADQ)
-- [x] [4.1: Terminal and initial objects](https://www.youtube.com/watch?v=zer1aFgj4aU)
-- [x] [4.2: Products](https://www.youtube.com/watch?v=Bsdl_NKbNnU)
-- [x] [5.1: Coproducts, sum types](https://www.youtube.com/watch?v=LkIRsNj9T-8)
-- [x] [5.2: Algebraic data types](https://www.youtube.com/watch?v=w1WMykh7AxA)
-- [x] [6.1: Functors](https://www.youtube.com/watch?v=FyoQjkwsy7o)
+- [x] [1.1: Motivation and Philosophy](https://www.youtube.com/watch?v=I8LbkfSSR58) 2018-06-16
+- [x] [1.2: What is a category?](https://www.youtube.com/watch?v=p54Hd7AmVFU) 2018-06-16
+- [x] [2.1: Functions, epimorphisms](https://www.youtube.com/watch?v=O2lZkr-aAqk) 2018-06-16
+- [x] [2.2: Monomorphisms, simple types](https://www.youtube.com/watch?v=NcT7CGPICzo) 2018-06-18
+- [x] [3.1: Examples of categories, orders, monoids](https://www.youtube.com/watch?v=aZjhqkD6k6w) 2018-06-25
+- [x] [3.2: Kleisli category](https://www.youtube.com/watch?v=i9CU4CuHADQ) 2018-06-26
+- [x] [4.1: Terminal and initial objects](https://www.youtube.com/watch?v=zer1aFgj4aU) 2018-07-03
+- [x] [4.2: Products](https://www.youtube.com/watch?v=Bsdl_NKbNnU) 2018-07-07
+- [x] [5.1: Coproducts, sum types](https://www.youtube.com/watch?v=LkIRsNj9T-8) 2018-07-07
+- [x] [5.2: Algebraic data types](https://www.youtube.com/watch?v=w1WMykh7AxA) 2018-07-14
+- [x] [6.1: Functors](https://www.youtube.com/watch?v=FyoQjkwsy7o) 2018-07-17
 
   ![](/assets/png-images/2018-06-14-learning-category-theory-104f71d8.png)
 
   Functors can be:
     * **Faithful** - (injective on *hom-sets*)
     * **Ful**     -  (surjective on *hom-sets*)
-    * **Faitful and Ful**  - the best functor xD
+    * **Faitful and Ful**  - the best functor
 
-  Important functos:
+  Important functors:
 
     - constant functor $$\Delta_{c}$$
 
       ![](/assets/png-images/2018-06-14-learning-category-theory-3ed5e2ea.png)
 
-- [ ] [6.2: Functors in programming](https://www.youtube.com/watch?v=EO86S2EZssc)
-- [ ] [7.1: Functoriality, bifunctors](https://www.youtube.com/watch?v=pUQ0mmbIdxs)
-- [ ] [7.2: Monoidal Categories, Functoriality of ADTs, Profunctors](https://www.youtube.com/watch?v=wtIKd8AhJOc)
+- [x] [6.2: Functors in programming](https://www.youtube.com/watch?v=EO86S2EZssc) 2018-07-24
+- [x] [7.1: Functoriality, bifunctors](https://www.youtube.com/watch?v=pUQ0mmbIdxs) 2018-08-04
+- [x] [7.2: Monoidal Categories, Functoriality of ADTs, Profunctors](https://www.youtube.com/watch?v=wtIKd8AhJOc)2018-08-21
+
+  ![](/assets/png-images/2018-06-14-learning-category-theory-ce8cb077.png)
+
+  - We define the Unit as a terminal object (Review)
+  - Is Unit, the unit in the monoid? Yes.
+  - The monoidal category structure (one terminal object and the categorical product)
+  - The monoidal category has a *tensor product*?
+  - ADT (abstract data types) are functorial? the product is functorial.
+
 - [ ] [8.1: Function objects, exponentials](https://www.youtube.com/watch?v=REqRzMI26Nw)
 - [ ] [8.2: Type algebra, Curry-Howard-Lambek isomorphism](https://www.youtube.com/watch?v=iXZR1v3YN-8)
 - [ ] [9.1: Natural transformations](https://www.youtube.com/watch?v=2LJC-XD5Ffo)

@@ -3,9 +3,9 @@ layout: default
 comments: true
 ---
 {% if page.agda %}
-  {% assign filepath = page.path | replace: '_posts', 'src' | replace: '.md', '.lagda' %}
+  {% assign filepath = page.path | replace: '_posts', '_src' | replace: '.md', '.lagda' %}
 {% else %}
-  {% assign filepath = page.path | replace: '_posts', 'src' %}
+  {% assign filepath = page.path | replace: '_posts', '_src' %}
 {% endif %}
 {% assign viewsource = site.github.repository_url | append: "/blob/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 {% assign editsource = site.github.repository_url | append: "/edit/sources/" | append: filepath %}
@@ -91,6 +91,7 @@ comments: true
 
 </div>
 
+{% if page.related_posts %}
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
@@ -109,9 +110,25 @@ comments: true
       {% endunless %}
     {% endfor %}
   </ul>
-
-
 </div>
+{% endif %}
+
+
+<div class="citation">
+<h2> Citation </h2>
+If you are considering to cite this post for any reason,
+we suggest to use the following:
+<pre class="bibtex"
+     data-author="{{  post.author }}"
+     data-coauthor="{{  post.coauthor }}"
+     data-date="{{  post.date }}"
+     data-id="{{  page.url  }}"
+     data-title="{{ page.title}}"
+     data-url="{{ site.url}}{{ page.url}}"
+></pre>
+</div>
+
+{% if page.disqus %}
 <div id="disqus_thread"></div>
 <script>
 
@@ -132,3 +149,5 @@ s.setAttribute('data-timestamp', +new Date());
 })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+{% endif %}

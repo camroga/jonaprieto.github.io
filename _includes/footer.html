@@ -124,4 +124,28 @@ $('.algolia-modified a').map(
     $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }
 </script>
+
+<script type="text/javascript">
+$('.citation pre').each(function(){
+    var pre = $(this);
+    var title = $(this).data('title');
+    var id = $(this).data('id');
+    var tag = id.split('/')[ id.length() - 2 ];
+    var url = $(this).data('url');
+    var coauthor=$(this).data('coauthor');
+    if (coauthor != ""){
+      coauthor = " and " + coauthor;
+    }
+    pre.append(
+"@online{jonaprieto" + id + ",\n" +
+"  author ={Jonathan Prieto-Cubides" +  coauthor + "},\n" +
+"  title  ={" + title + "},\n" +
+"  url    ={" + url   + "}\n" +
+"}\n"
+);
+  });
+
+$('.citation').show();
+</script>
+
 {% endif %}

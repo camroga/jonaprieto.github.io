@@ -7,6 +7,7 @@ toc: true
 agda: true
 gallery: true
 latex: true
+references: true
 ---
 
 This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
@@ -238,7 +239,7 @@ _∘_
 
 g ∘ f = λ x → g (f x)
 
--- synonym for composition
+-- synonym for composition (diagrammatic version)
 _//_
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
   → (f : Π A B)
@@ -328,6 +329,7 @@ refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 
 *Paulin-Mohring J rule*
 
+{: .foldable until="6" }
 \begin{code}
 J
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
@@ -339,6 +341,7 @@ J
 J {a = a} B d idp = d
 \end{code}
 
+{: .foldable until="6" }
 \begin{code}
 J'
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
@@ -352,6 +355,7 @@ J' {a = a} B d idp = d
 
 #### Composition of paths
 
+{: .foldable until="6" }
 \begin{code}
 infixl 50 _·_
 _·_
@@ -388,6 +392,8 @@ infixr 60 !_
 #### Associativity of composition
 
 - Left associativity
+
+{: .foldable until="5" }
 \begin{code}
 ∘-lassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
@@ -399,6 +405,8 @@ infixr 60 !_
 \end{code}
 
 - Right associativity
+
+{: .foldable until="5" }
 \begin{code}
 ∘-rassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
@@ -495,6 +503,7 @@ open EquationalReasoning public
 Functions are functors to equalities.  In other words, functions
 preserve equalities.
 
+{: .foldable until="6" }
 \begin{code}
 ap
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
@@ -543,6 +552,7 @@ Then, we can now put the lemma in front:
 
 Lastly, we can also define actions on two paths:
 
+{: .foldable until="7" }
 \begin{code}
 ap₂
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {b₁ b₂ : B}
@@ -557,6 +567,7 @@ ap₂ f idp idp = idp
 
 ### Lemmas
 
+{: .foldable until="5" }
 \begin{code}
 ap-·
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
@@ -567,6 +578,7 @@ ap-·
 ap-· f idp q = refl (ap f q)
 \end{code}
 
+{: .foldable until="5" }
 \begin{code}
 ap-inv
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
@@ -580,6 +592,7 @@ ap-inv f idp = idp
 ap-! = ap-inv
 \end{code}
 
+{: .foldable until="7" }
 \begin{code}
 ap-comp
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} {a b : A}
@@ -592,6 +605,7 @@ ap-comp
 ap-comp f g idp = idp
 \end{code}
 
+{: .foldable until="5" }
 \begin{code}
 ap-id
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
@@ -602,6 +616,7 @@ ap-id
 ap-id idp = idp
 \end{code}
 
+{: .foldable until="5" }
 \begin{code}
 ap-const
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C}
@@ -616,6 +631,7 @@ ap-const {c = c} idp = refl (refl c)
 
 Some properties on the groupoid structure of equalities
 
+{: .foldable until="5" }
 \begin{code}
 ·-runit
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -626,6 +642,7 @@ Some properties on the groupoid structure of equalities
 ·-runit idp = idp
 \end{code}
 
+{: .foldable until="5" }
 \begin{code}
 ·-lunit
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -636,6 +653,7 @@ Some properties on the groupoid structure of equalities
 ·-lunit idp = idp
 \end{code}
 
+{: .foldable until="5" }
 \begin{code}
 ·-linv
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -646,6 +664,7 @@ Some properties on the groupoid structure of equalities
 ·-linv idp = idp
 \end{code}
 
+{: .foldable until="5" }
 \begin{code}
 ·-rinv
   : ∀ {ℓ} {A : Type ℓ} {a b : A}

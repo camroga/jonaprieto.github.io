@@ -11,7 +11,7 @@ co-supervised by [Bjørn Ian
 Dundas](https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html).
 We mostly work nowadays in type theory. It's fun.
 
-Before came to Norway, I lived in Medellín, Colombia where I did my Master
+Before came to Norway, I lived two years in Medellín, Colombia where I did my Master
 in the Mathematical Sciences Department at [Universidad
 EAFIT](http://www.eafit.edu.co/) under the
 [advisory](http://www1.eafit.edu.co/asr/supervised-students.html) of [Andrés
