@@ -187,7 +187,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/2018-02-12-induction-on-natural-numbers.lagda">07b747c </a> on  23 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/2018-02-12-induction-on-natural-numbers.lagda">bea3d48 </a> on  23 Aug 2018
     </div>
   </div>
   
@@ -632,6 +632,9 @@ by defining two equations:</p>
   <ol class="bibliography"></ol>
   </div>
 
+
+  
+
 </div>
 
 
@@ -686,6 +689,7 @@ WebFontConfig = {
 <!-- FOLDABLE  -->
 <script type="text/javascript">
 var newHeight;
+
  $('pre.foldable').each(function(){
      var autoHeight = $(this).height();
      var lineHeight = parseFloat($(this).css('line-height'));
@@ -715,26 +719,44 @@ var newHeight;
      plus.append(horLine);
 
      // The line stars at 1 line
-     newHeight = (parseFloat($(this).attr('until')) - 1) * lineHeight;
-
-     if ( newHeight <= 0 || isNaN(newHeight) ){
-       newHeight = lineHeight;
+     var until = parseFloat($(this).attr('until'));
+     if ( until == 0){
+       $(this).hide();
      }
-     console.log( "Until> ", newHeight);
+     else{
+       newHeight = (parseFloat($(this).attr('until')) - 1 ) * lineHeight;
 
-     $(this).height(newHeight);
-     $(this).css('overflow','hidden');
+       if ( newHeight < lineHeight || isNaN(newHeight) ){
+         newHeight = lineHeight;
+       }
+       console.log( "Until> ", newHeight);
 
-     $(this).click(function(){
-       if ($(this).height() == autoHeight) {
-         $(this).height(newHeight);
-         plus.show();
-       }
-       else{
-         $(this).height('auto');
-         plus.hide();
-       }
-     });
+       $(this).height(newHeight);
+       $(this).css('overflow','hidden');
+
+       console.log('height:', $(this).height());
+       console.log('autoHeight:', autoHeight);
+       console.log('newHeight:', newHeight);
+
+       $(this).click(function(){
+        console.log("entro");
+        lastClick = $(this);
+        console.log('?height:', $(this).height());
+        console.log('height:', $(this).height());
+        console.log('autoHeight:', autoHeight);
+        console.log('newHeight:', newHeight);
+        console.log('\n');
+
+         if ($(this).height() >= autoHeight) {
+           $(this).height(newHeight);
+           plus.show();
+         }
+         else{
+           $(this).height('auto');
+           plus.hide();
+         }
+       });
+     }
  });
 </script>
 

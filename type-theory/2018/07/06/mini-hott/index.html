@@ -187,7 +187,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/6651393e6e95e242e6b86ee7fa025935007b747c/_src/2018-07-06-mini-hott.lagda">07b747c </a> on  23 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/6651393e6e95e242e6b86ee7fa025935007b747c/_src/2018-07-06-mini-hott.lagda">bea3d48 </a> on  23 Aug 2018
     </div>
   </div>
   
@@ -3278,27 +3278,32 @@ group given by proofs of the equality (a=a).</p>
   <ol class="bibliography"><li><span id="hottbook">Univalent Foundations Program, T. (2013). <i>Homotopy Type Theory: Univalent Foundations of Mathematics</i>. Retrieved from http://saunders.phil.cmu.edu/book/hott-online.pdf</span></li></ol>
   </div>
 
+
+  
+  <div class="citation">
+  <h2 id="citation"> Citation </h2>
+  If you want to cite the content of this post,
+  we suggest to use the following latex bibtex entry.
+  This is generated automatically.
+
+  <br/>
+  <br/>
+  <pre class="bibtex"
+       data-bibtextag =""
+       data-bibtexauthors =""
+       data-year ="2018"
+       data-lastchecked ="2018-08-23"
+       data-originalyear ="2018-07-06"
+       data-title ="Mini HoTT library in Agda"
+       data-url ="http://jonaprieto.github.io/type-theory/2018/07/06/mini-hott/"
+  ></pre>
+  </div>
+  
+
 </div>
 
 
 
-
-<div class="citation">
-<h2 id="citation"> Citation </h2>
-If you are considering to cite this post for any reason,
-we suggest to use the following latex bibtex entry:
-<br/>
-<br/>
-<pre class="bibtex"
-     data-author=""
-     data-coauthor=""
-     data-year="2018"
-     data-lastchecked="2018-08-23"
-     data-originalyear="2018-07-06"
-     data-title="Mini HoTT library in Agda"
-     data-url="http://jonaprieto.github.io/type-theory/2018/07/06/mini-hott/"
-></pre>
-</div>
 
 
 
@@ -3349,6 +3354,7 @@ WebFontConfig = {
 <!-- FOLDABLE  -->
 <script type="text/javascript">
 var newHeight;
+
  $('pre.foldable').each(function(){
      var autoHeight = $(this).height();
      var lineHeight = parseFloat($(this).css('line-height'));
@@ -3378,26 +3384,44 @@ var newHeight;
      plus.append(horLine);
 
      // The line stars at 1 line
-     newHeight = (parseFloat($(this).attr('until')) - 1) * lineHeight;
-
-     if ( newHeight <= 0 || isNaN(newHeight) ){
-       newHeight = lineHeight;
+     var until = parseFloat($(this).attr('until'));
+     if ( until == 0){
+       $(this).hide();
      }
-     console.log( "Until> ", newHeight);
+     else{
+       newHeight = (parseFloat($(this).attr('until')) - 1 ) * lineHeight;
 
-     $(this).height(newHeight);
-     $(this).css('overflow','hidden');
+       if ( newHeight < lineHeight || isNaN(newHeight) ){
+         newHeight = lineHeight;
+       }
+       console.log( "Until> ", newHeight);
 
-     $(this).click(function(){
-       if ($(this).height() == autoHeight) {
-         $(this).height(newHeight);
-         plus.show();
-       }
-       else{
-         $(this).height('auto');
-         plus.hide();
-       }
-     });
+       $(this).height(newHeight);
+       $(this).css('overflow','hidden');
+
+       console.log('height:', $(this).height());
+       console.log('autoHeight:', autoHeight);
+       console.log('newHeight:', newHeight);
+
+       $(this).click(function(){
+        console.log("entro");
+        lastClick = $(this);
+        console.log('?height:', $(this).height());
+        console.log('height:', $(this).height());
+        console.log('autoHeight:', autoHeight);
+        console.log('newHeight:', newHeight);
+        console.log('\n');
+
+         if ($(this).height() >= autoHeight) {
+           $(this).height(newHeight);
+           plus.show();
+         }
+         else{
+           $(this).height('auto');
+           plus.hide();
+         }
+       });
+     }
  });
 </script>
 
@@ -3425,31 +3449,31 @@ var pre, title, id, tag, url, coauthor, year, lastchecked, originalyear;
 $('.citation').hide();
 $('.citation pre').each(function(){
 
-    var pre      = $(this);
-    var title    = $(this).data('title');
-    var id       = $(this).data('url');
-    var year     = $(this).data('year');
-
-    var tag      = id.split('/')[ id.length - 2 ];
-    var url      = $(this).data('url');
-    var coauthor = $(this).data('coauthor');
-
-    var lastchecked  = $(this).data('lastchecked');
+    var pre           = $(this);
+    var title         = $(this).data('title');
+    var id            = $(this).data('url');
+    var year          = $(this).data('year');
+    var lastchecked   = $(this).data('lastchecked');
     var originalyear  = $(this).data('originalyear');
+    var url           = $(this).data('url');
 
-    if (coauthor != ""){
-      coauthor = " and " + coauthor;
+    var bibtextag     = $(this).data('bibtextag');
+    var bibtexauthors = $(this).data('bibtexauthors');
+
+    if (bibtexauthors == ""){
+      bibtexauthors="Prieto-Cubides, Jonathan";
     }
-pre.append(
-"@online{jonaprieto-" + tag + ",\n" +
-"  author  = { Jonathan Prieto-Cubides" +  coauthor + " },\n" +
-"  title   = { " + title + " },\n" +
-"  url     = { \\url{" + url   + "} }\n" +
-"  year    = { " + year  + " }\n" +
-"  lastchecked  = { " + lastchecked  + " }\n" +
-"  originalyear = { " + originalyear  + " }\n" +
-"}\n"
-);
+
+    pre.append(
+    "@online{ " + bibtextag + ",\n" +
+    "  author  = { " + bibtexauthors   +" },\n" +
+    "  title   = { " + title + " },\n" +
+    "  url     = { \\url{" + url   + "} }\n" +
+    "  year    = { " + year  + " }\n" +
+    "  lastchecked  = { " + lastchecked  + " }\n" +
+    "  originalyear = { " + originalyear  + " }\n" +
+    "}\n"
+    );
   });
 
 $('.citation').show();
