@@ -18,7 +18,8 @@ showcitation: true
 ---
 
 {: .only-website }
-  *This is a work in progress jointly with Marc Bezem.*
+  *This is a work in progress jointly with Marc Bezem. Some of the following proofs are collapsed or hidden to reduce
+  the size of the document. Nevertheless, the reader can click on them to open the full description.*
 
 In this entry, we want to show some equivalences
 between the circle and other higher inductive types.
@@ -268,7 +269,11 @@ Induction principle on paths:
 
 **Lemma 1** . $$ \mathsf{S}^{1} \simeq \mathsf{pS}. $$
 
-**Proof**.
+**Proof**. We proceed as usual. Defining the outgoing functions and proving
+the homotopies. We prove the equivalence by quasiinverse equivalence.
+
+Let `p₀₀` be the path defined as follows. We want to correspond this path with
+the `loop` path in order to show the equivalence.
 
 \begin{code}
 p₀₀ : pS₀ == pS₀
@@ -276,7 +281,6 @@ p₀₀ = p₀₁ · p₁₀
 \end{code}
 
 #### Outgoing functions
-
 
 \begin{code}
 module Lemma₁ where
@@ -568,6 +572,7 @@ Two auxiliar lemmas for the latter:
 {: .foldable until="1" }
 \begin{code}
 aux-lemma₀ : (x : P base) → neg x == x [ P ↓ loop ]
+
 aux-lemma₀ x =
   (begin
     transport P loop (neg x)
@@ -584,6 +589,7 @@ aux-lemma₀ x =
 {: .foldable until="1" }
 \begin{code}
 aux-lemma₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
+
 aux-lemma₁ x =
   let
     apP!loop :  ap P (! loop) == ua (invEqv neg-eq)
