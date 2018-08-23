@@ -158,7 +158,6 @@ commit :
 			git add --all && \
 			git commit -m "[ notes ] changes on $(shell date +"%Y-%m-%d time:%H:%M.%S")." && \
 			git push origin master;\
-			cd .. && jekyll algolia\
 		else \
 			echo "[!] run first:\n\t $$ make init-master"; \
 		fi
