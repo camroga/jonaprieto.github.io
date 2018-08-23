@@ -2,7 +2,7 @@ require 'rbconfig'
 
 module Jekyll
   module GitMetadata
-    warn "jonaprieto.github.io:".yellow + "!"
+    warn "jonaprieto's blog".yellow + "!"
     class Generator < Jekyll::Generator
 
       # safe true

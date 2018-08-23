@@ -6,6 +6,8 @@ author: "Jonathan Prieto-Cubides"
 author_affiliation: "University of Bergen"
 coauthor: "Marc Bezem"
 coauthor_affiliation: "University of Bergen"
+bibtexcitation: "Prieto-Cubides, Jonathan and Bezem, Marc"
+bibtextag: "prietobezem:pathovers"
 date: "2018-07-05"
 categories: type-theory
 references: true

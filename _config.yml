@@ -31,11 +31,10 @@ scholar:
   locale: en
   sort_by: 'year,month'
   order: 'descending'
-  # group_by: 'year'
   use_raw_bibtex_entry: true
 
 exclude:
-  - src/
+  - _src
   - Gemfile
   - Gemfile.lock
   - Makefile
@@ -52,6 +51,7 @@ include:
 future: true
 
 # ----------------------------------------------------------------------------
+
 algolia:
   application_id: '6LC140UUTA'
   index_name: 'notes'

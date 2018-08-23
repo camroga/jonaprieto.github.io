@@ -47,6 +47,7 @@ WebFontConfig = {
 <!-- FOLDABLE  -->
 <script type="text/javascript">
 var newHeight;
+
  $('pre.foldable').each(function(){
      var autoHeight = $(this).height();
      var lineHeight = parseFloat($(this).css('line-height'));
@@ -76,26 +77,44 @@ var newHeight;
      plus.append(horLine);
 
      // The line stars at 1 line
-     newHeight = (parseFloat($(this).attr('until')) - 1) * lineHeight;
-
-     if ( newHeight <= 0 || isNaN(newHeight) ){
-       newHeight = lineHeight;
+     var until = parseFloat($(this).attr('until'));
+     if ( until == 0){
+       $(this).hide();
      }
-     console.log( "Until> ", newHeight);
+     else{
+       newHeight = (parseFloat($(this).attr('until')) - 1 ) * lineHeight;
 
-     $(this).height(newHeight);
-     $(this).css('overflow','hidden');
+       if ( newHeight < lineHeight || isNaN(newHeight) ){
+         newHeight = lineHeight;
+       }
+       console.log( "Until> ", newHeight);
 
-     $(this).click(function(){
-       if ($(this).height() == autoHeight) {
-         $(this).height(newHeight);
-         plus.show();
-       }
-       else{
-         $(this).height('auto');
-         plus.hide();
-       }
-     });
+       $(this).height(newHeight);
+       $(this).css('overflow','hidden');
+
+       console.log('height:', $(this).height());
+       console.log('autoHeight:', autoHeight);
+       console.log('newHeight:', newHeight);
+
+       $(this).click(function(){
+        console.log("entro");
+        lastClick = $(this);
+        console.log('?height:', $(this).height());
+        console.log('height:', $(this).height());
+        console.log('autoHeight:', autoHeight);
+        console.log('newHeight:', newHeight);
+        console.log('\n');
+
+         if ($(this).height() >= autoHeight) {
+           $(this).height(newHeight);
+           plus.show();
+         }
+         else{
+           $(this).height('auto');
+           plus.hide();
+         }
+       });
+     }
  });
 </script>
 {% endif %}
@@ -133,31 +152,31 @@ var pre, title, id, tag, url, coauthor, year, lastchecked, originalyear;
 $('.citation').hide();
 $('.citation pre').each(function(){
 
-    var pre      = $(this);
-    var title    = $(this).data('title');
-    var id       = $(this).data('url');
-    var year     = $(this).data('year');
-
-    var tag      = id.split('/')[ id.length - 2 ];
-    var url      = $(this).data('url');
-    var coauthor = $(this).data('coauthor');
-
-    var lastchecked  = $(this).data('lastchecked');
+    var pre           = $(this);
+    var title         = $(this).data('title');
+    var id            = $(this).data('url');
+    var year          = $(this).data('year');
+    var lastchecked   = $(this).data('lastchecked');
     var originalyear  = $(this).data('originalyear');
+    var url           = $(this).data('url');
 
-    if (coauthor != ""){
-      coauthor = " and " + coauthor;
+    var bibtextag     = $(this).data('bibtextag');
+    var bibtexauthors = $(this).data('bibtexauthors');
+
+    if (bibtexauthors == ""){
+      bibtexauthors="Prieto-Cubides, Jonathan";
     }
-pre.append(
-"@online{jonaprieto-" + tag + ",\n" +
-"  author  = { Jonathan Prieto-Cubides" +  coauthor + " },\n" +
-"  title   = { " + title + " },\n" +
-"  url     = { \\url{" + url   + "} }\n" +
-"  year    = { " + year  + " }\n" +
-"  lastchecked  = { " + lastchecked  + " }\n" +
-"  originalyear = { " + originalyear  + " }\n" +
-"}\n"
-);
+
+    pre.append(
+    "@online{ " + bibtextag + ",\n" +
+    "  author  = { " + bibtexauthors   +" },\n" +
+    "  title   = { " + title + " },\n" +
+    "  url     = { \\url{" + url   + "} }\n" +
+    "  year    = { " + year  + " }\n" +
+    "  lastchecked  = { " + lastchecked  + " }\n" +
+    "  originalyear = { " + originalyear  + " }\n" +
+    "}\n"
+    );
   });
 
 $('.citation').show();

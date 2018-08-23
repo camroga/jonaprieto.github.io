@@ -1,45 +1,62 @@
 ---
 layout: "post"
-title: "The circle"
+title: "Circle Equivalences"
 date: "2018-05-01"
-agda: true
-toc: true
+author: "Jonathan Prieto-Cubides"
+author_affiliation: "University of Bergen"
+coauthor: "Marc Bezem"
+coauthor_affiliation: "University of Bergen"
+bibtexauthors: "Prieto-Cubides, Jonathan and Bezem, Marc"
+bibtextag: "prietobezem:circle"
+date: "2018-07-05"
 categories: type-theory
+references: true
+toc: true
+agda: true
 gallery: true
+latex: true
+showcitation: true
 ---
+
+{: .only-website }
+  *This is a work in progress jointly with Marc Bezem.*
 
 In this entry, we want to show some equivalences
 between the circle and other higher inductive types.
 
 {% comment %}
 
-{: . equation }
+{: .equation }
 
   $$\sum\,{\mathbb{S}^1}\,(\mathsf{rec}_{\mathbb{S}^1}\, \mathcal{U}\,  2\,
   (\mathsf{ua}(\mathsf{rec}_{2}2 1_{2} 0_{2}))) \simeq \mathbb{S}^1.$$
 
-I gave a talk giving one solution using the flattening lemma:
+Using the flattening lemma we can prove this equivalence:
 
 - [**Direct link PDF**](https://github.com/jonaprieto/flattenlem/files/2045561/Jonathan-Prieto-Cubides-The-Flattening-Lemma.pdf)
 
 {% endcomment %}
 
+
 \begin{code}
 {-# OPTIONS --without-K #-}
+
 open import 2018-07-06-mini-hott
 module _ where
 \end{code}
 
 ##  S¹ type
 
-The circle is the higher inductive type with one point
-and one no trivial path called path as we show in the following
-picture.
+The circle is the higher inductive type with one point and one no trivial path
+called *path* as we can see in the following picture.
 
-![path](/assets/ipe-images/circle.png){: width="%50" }
+![path](/assets/ipe-images/circle.png){: width="%30" }
 *Figure 1. The circle type `S¹`.*
 
+### Definition
+
 \begin{code}
+-- Definition of the Circle S¹ using an Agda hack.
 module _ where
   private
     data !S¹ : Type₀ where
@@ -54,56 +71,91 @@ module _ where
   -- Nontrivial path on the circle.
   postulate
     loop : base == base
-
-  -- for loop^2
-  _² : ∀ {ℓ} {A : Type ℓ} {a : A}
-    → a == a → a == a
-
-  p ² = p · p
-
-  -- Recursion principle on points
-  S¹-rec : ∀ {ℓ}
-     → (A : Type ℓ)
-     → (a : A)
-     → (p : a == a)
-     --------------
-     → (S¹ → A)
-  S¹-rec A a p !base = a
-
-  -- Recursion principle on paths
-  postulate
-    S¹-βrec : ∀ {ℓ}
-            → (A : Type ℓ)
-            → (a : A)
-            → (p : a == a)
-            -----------------------------
-            → ap (S¹-rec A a p) loop == p
-
-  -- Induction principle on points
-  S¹-ind : ∀ {ℓ} (P : S¹ → Type ℓ)
-         → (x : P base)
-         → (x == x [ P ↓ loop ])
-         --------------------------
-         → ((t : S¹) → P t)
-  S¹-ind P x p !base = x
-
-  -- Induction principle on paths
-  postulate
-    S¹-βind : ∀ {ℓ} (P : S¹ → Type ℓ)
-            → (x : P base)
-            → (p : x == x [ P ↓ loop ])
-            -------------------------------
-            → apd (S¹-ind P x p) loop == p
 \end{code}
 
+{: .foldable until="0" }
+\begin{code}
+  -- Def. loop^2
+  _²
+    : ∀ {ℓ} {A : Type ℓ} {a : A}
+    → a == a
+    --------
+    → a == a
 
+  p ² = p · p
+\end{code}
+
+### Recursion principle
+
+Recursion principle on points:
+
+\begin{code}
+  -- Def.
+  S¹-rec
+    : ∀ {ℓ}
+    → (A : Type ℓ)
+    → (a : A)
+    → (p : a == a)
+    --------------
+    → (S¹ → A)
+
+  S¹-rec A a p !base = a
+\end{code}
+
+Recursion on paths:
+
+\begin{code}
+  -- Postulate.
+  postulate
+    S¹-βrec
+      : ∀ {ℓ}
+      → (A : Type ℓ)
+      → (a : A)
+      → (p : a == a)
+      -----------------------------
+      → ap (S¹-rec A a p) loop == p
+\end{code}
+
+### Induction principle
+
+Induction principle on points;
+
+\begin{code}
+  -- Def.
+  S¹-ind
+    : ∀ {ℓ} (P : S¹ → Type ℓ)
+    → (x : P base)
+    → (x == x [ P ↓ loop ])
+    ------------------------
+    → ((t : S¹) → P t)
+
+  S¹-ind P x p !base = x
+\end{code}
+
+Induction principle on paths:
+
+\begin{code}
+  -- Postulate.
+  postulate
+    S¹-βind
+      : ∀ {ℓ} (P : S¹ → Type ℓ)
+      → (x : P base)
+      → (p : x == x [ P ↓ loop ])
+      -------------------------------
+      → apd (S¹-ind P x p) loop == p
+\end{code}
 
 ## `pS` type
 
-![path](/assets/ipe-images/tour-type.png){: width="%50" }
+The `pS` type as the figure below shows, it is a circle with two edges
+in opposite direction between two points. Notice this HIT is just different
+form the suspension of booleans (Σ 2) by reversing one arrow.
+
+![path](/assets/ipe-images/tour-type.png){: width="%40" }
 *Figure 2. `pS` Type.*
 
 \begin{code}
+-- Definition of pS type using an Agda hack.
 module _ where
   private
     data #!pS : Type lzero where
@@ -123,308 +175,374 @@ module _ where
   pS₁ = !ps #!pS₁ _
 
   postulate
-     p₀₁ : pS₀ == pS₁
-     p₁₀ : pS₁ == pS₀
+    p₀₁ : pS₀ == pS₁
+    p₁₀ : pS₁ == pS₀
+\end{code}
 
-  -- Recursion principle on points
-  pS-rec : (C : Type₀)
-         → (c₀ c₁ : C)
-         → (p₀₁'  : c₀ == c₁)
-         → (p₁₀'  : c₁ == c₀)
-         --------------------
-         → (pS → C)
+### Recursion
+
+Recursion principle on points:
+
+\begin{code}
+  -- Def.
+  pS-rec
+    : (C : Type₀)
+    → (c₀ c₁ : C)
+    → (p₀₁'  : c₀ == c₁)
+    → (p₁₀'  : c₁ == c₀)
+    --------------------
+    → (pS → C)
+
   pS-rec C c₀ c₁ p₀₁' p₁₀' (!ps #!pS₀ x₁) = c₀
   pS-rec C c₀ c₁ p₀₁' p₁₀' (!ps #!pS₁ x₁) = c₁
+\end{code}
 
-  -- Recursion principle on paths
+Recursion principle on paths:
+
+\begin{code}
+  -- Postulate.
   postulate
-    pS-βrec₀₁ : (C : Type₀)
-              → (c₀ c₁ : C)
-              → (p₀₁'  : c₀ == c₁)
-              → (p₁₀'  : c₁ == c₀)
-              -----------------------
-              → ap (pS-rec C c₀ c₁ p₀₁' p₁₀') p₀₁ == p₀₁'
+    pS-βrec₀₁
+      : (C : Type₀)
+      → (c₀ c₁ : C)
+      → (p₀₁'  : c₀ == c₁)
+      → (p₁₀'  : c₁ == c₀)
+      -------------------------------------------
+      → ap (pS-rec C c₀ c₁ p₀₁' p₁₀') p₀₁ == p₀₁'
 
-    pS-βrec₁₀ : (C : Type₀)
-              → (c₀ c₁ : C)
-              → (p₀₁'  : c₀ == c₁)
-              → (p₁₀'  : c₁ == c₀)
-              -----------------------
-              →  ap (pS-rec C c₀ c₁ p₀₁' p₁₀') p₁₀ == p₁₀'
+    pS-βrec₁₀
+      : (C : Type₀)
+      → (c₀ c₁ : C)
+      → (p₀₁'  : c₀ == c₁)
+      → (p₁₀'  : c₁ == c₀)
+      --------------------------------------------
+      →  ap (pS-rec C c₀ c₁ p₀₁' p₁₀') p₁₀ == p₁₀'
+\end{code}
 
-  -- Induction principle on points
-  pS-ind : ∀ {ℓ} (C : pS → Type ℓ)
-         → (c₀ : C pS₀)
-         → (c₁ : C pS₁)
-         → (q₁ : c₀ == c₁ [ C ↓ p₀₁ ] )
-         → (q₂ : c₁ == c₀ [ C ↓ p₁₀ ] )
-         -------------------------------
-         → ((t : pS) → C t)
+### Induction principle
+
+Induction principle on points:
+
+\begin{code}
+  -- Def.
+  pS-ind
+    : ∀ {ℓ} (C : pS → Type ℓ)
+    → (c₀ : C pS₀)
+    → (c₁ : C pS₁)
+    → (q₁ : c₀ == c₁ [ C ↓ p₀₁ ])
+    → (q₂ : c₁ == c₀ [ C ↓ p₁₀ ])
+    -----------------------------
+    → ((t : pS) → C t)
+
   pS-ind C c₀ c₁ q₁ q₂ (!ps #!pS₀ x₁) = c₀
   pS-ind C c₀ c₁ q₁ q₂ (!ps #!pS₁ x₁) = c₁
+\end{code}
 
+Induction principle on paths:
+
+\begin{code}
+  -- Postulate.
   postulate
-    pS-βind₀₁ : ∀ {ℓ} (C : pS → Type ℓ)
-              → (c₀   : C pS₀)
-              → (c₁   : C pS₁)
-              → (p₀₁' : c₀ == c₁ [ C ↓ p₀₁ ] )
-              → (p₁₀' : c₁ == c₀ [ C ↓ p₁₀ ] )
-              → ((t : pS) → C t)
-              -------------------------------
-              → apd (pS-ind C c₀ c₁ p₀₁' p₁₀') p₀₁ == p₀₁'
+    pS-βind₀₁
+      : ∀ {ℓ} (C : pS → Type ℓ)
+      → (c₀   : C pS₀)
+      → (c₁   : C pS₁)
+      → (p₀₁' : c₀ == c₁ [ C ↓ p₀₁ ])
+      → (p₁₀' : c₁ == c₀ [ C ↓ p₁₀ ])
+      → ((t : pS) → C t)
+      --------------------------------------------
+      → apd (pS-ind C c₀ c₁ p₀₁' p₁₀') p₀₁ == p₀₁'
 
-    pS-βind₁₀ : ∀ {ℓ} (C : pS → Type ℓ)
-              → (c₀   : C pS₀)
-              → (c₁   : C pS₁)
-              → (p₀₁' : c₀ == c₁ [ C ↓ p₀₁ ] )
-              → (p₁₀' : c₁ == c₀ [ C ↓ p₁₀ ] )
-              → ((t : pS) → C t)
-              -------------------------------
-              → apd (pS-ind C c₀ c₁ p₀₁' p₁₀') p₁₀ == p₁₀'
+    pS-βind₁₀
+      : ∀ {ℓ} (C : pS → Type ℓ)
+      → (c₀   : C pS₀)
+      → (c₁   : C pS₁)
+      → (p₀₁' : c₀ == c₁ [ C ↓ p₀₁ ])
+      → (p₁₀' : c₁ == c₀ [ C ↓ p₁₀ ])
+      → ((t : pS) → C t)
+      -------------------------------------------
+      → apd (pS-ind C c₀ c₁ p₀₁' p₁₀') p₁₀ == p₁₀'
 \end{code}
 
 
+## S¹ ≃ pS
 
-
-
-## Equivalences
-
-### Lemma 1
-
-{: .equation }
-
-  $$ \mathsf{S}^{1} \simeq \mathsf{pS}. $$
+**Lemma 1** . $$ \mathsf{S}^{1} \simeq \mathsf{pS}. $$
 
 **Proof**.
 
-Let us define the outgoing functions:
-
 \begin{code}
--- Defs.
-private
-  p₀₀ : pS₀ == pS₀
-  p₀₀ = p₀₁ · p₁₀
-
-  f' : S¹ → pS
-  f' = S¹-rec pS
-              pS₀
-              (transport (λ p → pS₀ == pS₀) loop p₀₀)
-
-  g' : pS → S¹
-  g' = pS-rec S¹ base base (loop ²) (loop ⁻¹)
+p₀₀ : pS₀ == pS₀
+p₀₀ = p₀₁ · p₁₀
 \end{code}
 
-In the following, we will need the following term:
+#### Outgoing functions
+
+
 \begin{code}
--- Def.
-  aux-path : (loop ²) · (loop ⁻¹) == loop
-  aux-path = begin
-                (loop ²) · (loop ⁻¹)
-                  ==⟨ ·-assoc loop loop (! loop) ⟩
-                loop · (loop · ! loop)
-                  ==⟨ ap (λ r → loop · r) (·-rinv loop) ⟩
-                loop · idp
-                  ==⟨ ! (·-runit loop)    ⟩
-                loop
-              ∎
+module Lemma₁ where
+
+  private
+    f : S¹ → pS
+    f = S¹-rec pS pS₀ (transport (λ p → pS₀ == pS₀) loop p₀₀)
+
+    g : pS → S¹
+    g = pS-rec S¹ base base (loop ²) (loop ⁻¹)
 \end{code}
 
+####  f ∘ g ~ id
 
+To prove the homotopy $$ f ∘ g \sim \mathsf{id}$$,
+we prove for the pS₁ case and the case for paths.
 
-The proof of the homotopy $$ f' ∘ g' \sim \mathsf{id}$$.
+- Case on pS₁:
+
+{: .foldable until="2" }
+\begin{code}
+  -- Def.
+  q₁ : f (g pS₁) == pS₁
+  q₁ = ! p₀₀ · ! p₀₀ · p₀₁
+\end{code}
+
+Case on paths:
+
+{: .foldable until="2" }
+\begin{code}
+  -- Def.
+  dpath₀ :  refl pS₀ == q₁ [ (λ z → (f ∘ g) z == id z) ↓ p₀₁ ]
+  dpath₀ =
+    begin
+      transport (λ z → (f ∘ g) z == id z) p₀₁ idp
+        ==⟨ transport-eq-fun (f ∘ g) id p₀₁ idp ⟩
+      ! ap (f ∘ g) p₀₁ · idp · ap id p₀₁
+        ==⟨ ·-assoc _ idp (ap id p₀₁) ⟩
+      ! ap (f ∘ g) p₀₁ · (idp · ap id p₀₁)
+        ==⟨ ap (λ r → ! ap (f ∘ g) p₀₁ · r) (·-lunit (ap id p₀₁)) ⟩
+      ! ap (f ∘ g) p₀₁  · (ap id p₀₁)
+        ==⟨ ap (λ r → ! ap (f ∘ g) p₀₁ · r) (ap-id p₀₁) ⟩
+      ! ap (f ∘ g) p₀₁ · p₀₁
+        ==⟨ ap (λ r → ! r · p₀₁) (! (ap-comp g f p₀₁)) ⟩
+      ! ap f (ap g p₀₁) · p₀₁
+        ==⟨ ap (λ r → ! ap f r · p₀₁) (pS-βrec₀₁ S¹ base base (loop · loop) idp) ⟩
+      ! ap f (loop ²) · p₀₁
+        ==⟨ ap (λ r → ! r · p₀₁) (ap-· f loop loop) ⟩
+      ! (ap f loop · ap f loop) · p₀₁
+        ==⟨ ap (λ r → ! (r · ap f loop) · p₀₁)
+          (S¹-βrec pS pS₀ (transport (λ _ → pS₀ == pS₀) loop p₀₀)) ⟩
+      ! (transport (λ p → pS₀ == pS₀) loop p₀₀ · ap f loop) · p₀₁
+        ==⟨ ap (λ r → ! (r · ap f loop) · p₀₁) (transport-const loop p₀₀) ⟩
+      ! (p₀₀ · ap f loop) · p₀₁
+        ==⟨ ap (λ r → ! (p₀₀ · r) · p₀₁)
+               (S¹-βrec pS pS₀ (transport (λ _ → pS₀ == pS₀) loop p₀₀)) ⟩
+      ! (p₀₀ · transport (λ p → pS₀ == pS₀) loop p₀₀) · p₀₁
+        ==⟨ ap (λ r → ! (p₀₀ · r) · p₀₁)(transport-const loop p₀₀) ⟩
+      ! (p₀₀ · p₀₀) · p₀₁
+        ==⟨ ap (_· p₀₁) (!-· p₀₀ p₀₀) ⟩
+      q₁
+    ∎
+\end{code}
+
+{: .foldable until="2" }
+\begin{code}
+  -- Def.
+  dpath₁ : q₁ == refl pS₀ [ (λ z → (f ∘ g) z == id z) ↓ p₁₀ ]
+  dpath₁ =
+    begin
+      transport  (λ z → (f ∘ g) z == id z) p₁₀ q₁
+        ==⟨ transport-eq-fun (f ∘ g) id p₁₀ q₁ ⟩
+      ! ap (f ∘ g) p₁₀ · q₁ · ap id p₁₀
+        ==⟨ ap (λ r → ! ap (f ∘ g) p₁₀ · q₁ · r) (ap-id p₁₀) ⟩
+      ! ap (f ∘ g) p₁₀ · q₁ · p₁₀
+        ==⟨ ap (λ r → ! r · q₁ · p₁₀) (! (ap-comp g f p₁₀)) ⟩
+      ! ap f (ap g p₁₀) · q₁ · p₁₀
+        ==⟨ ap (λ r → ! ap f r · q₁ · p₁₀) (pS-βrec₁₀ S¹ base base idp (! loop)) ⟩
+      ! ap f (! loop) · q₁ · p₁₀
+        ==⟨ ap (λ r → ! r · q₁ · p₁₀) (ap-inv f loop) ⟩
+      (! ! ap f loop) · q₁ · p₁₀
+        ==⟨ ap (λ r → r · q₁ · p₁₀) (involution {p = ap f loop}) ⟩
+      ap f loop · q₁ · p₁₀
+        ==⟨ ap (λ r → r · q₁ · p₁₀)
+               (S¹-βrec pS pS₀
+               (transport (λ _ → pS₀ == pS₀) loop (p₀₁ · p₁₀))) ⟩
+      (transport (λ p → pS₀ == pS₀) loop p₀₀) · q₁ · p₁₀
+        ==⟨ ap (λ r → r · q₁ · p₁₀) (transport-const loop p₀₀) ⟩
+      p₀₀ · q₁ · p₁₀
+        ==⟨ idp ⟩
+      p₀₀ · (! p₀₀ · ! p₀₀ · p₀₁) · p₁₀
+        ==⟨ ap (λ r → p₀₀ · r · p₁₀) (·-assoc (! p₀₀) (! p₀₀) p₀₁) ⟩
+      p₀₀ · (! p₀₀ · (! p₀₀ · p₀₁)) · p₁₀
+        ==⟨ ap (λ r → r · p₁₀) (! (·-assoc p₀₀ (! p₀₀) (! p₀₀ · p₀₁))) ⟩
+      (p₀₀ · ! p₀₀ ) · (! p₀₀ · p₀₁) · p₁₀
+        ==⟨ ap (λ r → r · (! p₀₀ · p₀₁) · p₁₀)  (·-rinv p₀₀) ⟩
+      idp · (! p₀₀ · p₀₁) · p₁₀
+        ==⟨ ap (_· p₁₀) ( ! ·-lunit ((! p₀₀ · p₀₁))) ⟩
+      (! p₀₀ · p₀₁) · p₁₀
+        ==⟨ ·-assoc (! p₀₀) p₀₁ p₁₀ ⟩
+      ! p₀₀ · (p₀₁ · p₁₀)
+        ==⟨⟩
+      ! p₀₀ · p₀₀
+        ==⟨ ·-linv p₀₀ ⟩
+      idp
+        ==⟨⟩
+      refl pS₀
+    ∎
+\end{code}
+
+Finally, by path induction on `pS` type, we got the homotopy.
 
 \begin{code}
--- Homotopy.
-  H₁ : f' ∘ g' ∼ id
+  -- Homotopy.
+  H₁ : f ∘ g ∼ id
   H₁ = pS-ind _ (refl pS₀) q₁ dpath₀ dpath₁
-    where
-      q₁ : f' (g' pS₁) == pS₁
-      q₁ = ! p₀₀ · ! p₀₀ · p₀₁
-
-      dpath₀ :  refl pS₀ == q₁ [ (λ z → (f' ∘ g') z == id z) ↓ p₀₁ ]
-      dpath₀ =
-        begin
-          transport (λ z → (f' ∘ g') z == id z) p₀₁ idp
-            ==⟨ transport-eq-fun (f' ∘ g') id p₀₁ idp ⟩
-          ! ap (f' ∘ g') p₀₁ · idp · ap id p₀₁
-            ==⟨ ·-assoc _ idp (ap id p₀₁) ⟩
-          ! ap (f' ∘ g') p₀₁ · (idp · ap id p₀₁)
-            ==⟨ ap (λ r → ! ap (f' ∘ g') p₀₁ · r) (·-lunit (ap id p₀₁)) ⟩
-          ! ap (f' ∘ g') p₀₁  · (ap id p₀₁)
-            ==⟨ ap (λ r → ! ap (f' ∘ g') p₀₁ · r) (ap-id p₀₁) ⟩
-          ! ap (f' ∘ g') p₀₁ · p₀₁
-            ==⟨ ap (λ r → ! r · p₀₁) (! (ap-comp g' f' p₀₁)) ⟩
-          ! ap f' (ap g' p₀₁) · p₀₁
-            ==⟨ ap (λ r → ! ap f' r · p₀₁) (pS-βrec₀₁ S¹ base base (loop · loop) idp) ⟩
-          ! ap f' (loop ²) · p₀₁
-            ==⟨ ap (λ r → ! r · p₀₁) (ap-· f' loop loop) ⟩
-          ! (ap f' loop · ap f' loop) · p₀₁
-            ==⟨ ap (λ r → ! (r · ap f' loop) · p₀₁)
-              (S¹-βrec pS pS₀ (transport (λ _ → pS₀ == pS₀) loop p₀₀)) ⟩
-          ! (transport (λ p → pS₀ == pS₀) loop p₀₀ · ap f' loop) · p₀₁
-            ==⟨ ap (λ r → ! (r · ap f' loop) · p₀₁)
-                   (transport-const loop p₀₀) ⟩
-          ! (p₀₀ · ap f' loop) · p₀₁
-            ==⟨ ap (λ r → ! (p₀₀ · r) · p₀₁)
-                   (S¹-βrec pS pS₀ (transport (λ _ → pS₀ == pS₀) loop p₀₀)) ⟩
-          ! (p₀₀ · transport (λ p → pS₀ == pS₀) loop p₀₀) · p₀₁
-            ==⟨ ap (λ r → ! (p₀₀ · r) · p₀₁)
-                   (transport-const loop p₀₀) ⟩
-          ! (p₀₀ · p₀₀) · p₀₁
-            ==⟨ ap (_· p₀₁) (!-· p₀₀ p₀₀) ⟩
-          q₁ -- this choice was a posteriori :S
-        ∎
-
-
-      dpath₁ : q₁ == refl pS₀ [ (λ z → (f' ∘ g') z == id z) ↓ p₁₀ ]
-      dpath₁ =
-        begin
-          transport  (λ z → (f' ∘ g') z == id z) p₁₀ q₁
-            ==⟨ transport-eq-fun (f' ∘ g') id p₁₀ q₁ ⟩
-          ! ap (f' ∘ g') p₁₀ · q₁ · ap id p₁₀
-            ==⟨ ap (λ r → ! ap (f' ∘ g') p₁₀ · q₁ · r) (ap-id p₁₀) ⟩
-          ! ap (f' ∘ g') p₁₀ · q₁ · p₁₀
-            ==⟨ ap (λ r → ! r · q₁ · p₁₀) (! (ap-comp g' f' p₁₀)) ⟩
-          ! ap f' (ap g' p₁₀) · q₁ · p₁₀
-            ==⟨ ap (λ r → ! ap f' r · q₁ · p₁₀) (pS-βrec₁₀ S¹ base base idp (! loop)) ⟩
-          ! ap f' (! loop) · q₁ · p₁₀
-            ==⟨ ap (λ r → ! r · q₁ · p₁₀) (ap-inv f' loop) ⟩
-          (! ! ap f' loop) · q₁ · p₁₀
-            ==⟨ ap (λ r → r · q₁ · p₁₀) (involution {p = ap f' loop}) ⟩
-          ap f' loop · q₁ · p₁₀
-            ==⟨ ap (λ r → r · q₁ · p₁₀)
-                   (S¹-βrec pS pS₀
-                   (transport (λ _ → pS₀ == pS₀) loop (p₀₁ · p₁₀))) ⟩
-          (transport (λ p → pS₀ == pS₀) loop p₀₀) · q₁ · p₁₀
-            ==⟨ ap (λ r → r · q₁ · p₁₀) (transport-const loop p₀₀) ⟩
-          p₀₀ · q₁ · p₁₀
-            ==⟨ idp ⟩
-          p₀₀ · (! p₀₀ · ! p₀₀ · p₀₁) · p₁₀
-            ==⟨ ap (λ r → p₀₀ · r · p₁₀) (·-assoc (! p₀₀) (! p₀₀) p₀₁) ⟩
-          p₀₀ · (! p₀₀ · (! p₀₀ · p₀₁)) · p₁₀
-            ==⟨ ap (λ r → r · p₁₀) (! (·-assoc p₀₀ (! p₀₀) (! p₀₀ · p₀₁))) ⟩
-          (p₀₀ · ! p₀₀ ) · (! p₀₀ · p₀₁) · p₁₀
-            ==⟨ ap (λ r → r · (! p₀₀ · p₀₁) · p₁₀)  (·-rinv p₀₀) ⟩
-          idp · (! p₀₀ · p₀₁) · p₁₀
-            ==⟨ ap (_· p₁₀) ( ! ·-lunit ((! p₀₀ · p₀₁))) ⟩
-          (! p₀₀ · p₀₁) · p₁₀
-            ==⟨ ·-assoc (! p₀₀) p₀₁ p₁₀ ⟩
-          ! p₀₀ · (p₀₁ · p₁₀)
-            ==⟨⟩
-          ! p₀₀ · p₀₀
-            ==⟨ ·-linv p₀₀ ⟩
-          idp
-            ==⟨⟩
-          refl pS₀
-        ∎
 \end{code}
 
-The proof of the homotopy $$g' ∘ f' \sim \mathsf{id}$$:
+####  g ∘ f ~ id
+
+To prove this homotopy $$g ∘ f \sim \mathsf{id}$$, we proceed by induction on
+the circle. For the `base` case, `refl base` works since `g (f base)` is
+definitionally equal to `base`.
 
 \begin{code}
--- Homotopy
-  H₂ : g' ∘ f' ∼ id
-  H₂ = S¹-ind _ (refl base) q
-    where
-      q : refl base == refl base [ (λ z → (g' ∘ f') z == id z) ↓ loop ]
-      q =
-        begin
-          transport (λ z → (g' ∘ f') z == id z) loop idp
-            ==⟨ transport-eq-fun (g' ∘ f') id loop idp ⟩
-          ! (ap (g' ∘ f') loop) · idp · ap id loop
-            ==⟨ ap (λ r → ! (ap (g' ∘ f') loop) · idp · r) (ap-id loop) ⟩
-          ! (ap (g' ∘ f') loop) · idp · loop
-            ==⟨ ·-assoc _ idp loop ⟩
-          ! (ap (g' ∘ f') loop) · (idp · loop)
-            ==⟨ ap (λ r → ! (ap (g' ∘ f') loop) · r) (·-lunit loop) ⟩
-          ! (ap (g' ∘ f') loop) · loop
-            ==⟨ ap  (λ r → ! r · loop) (! (ap-comp f' g' loop)) ⟩
-          ! ap g' (ap f' loop) · loop
-            ==⟨ ap {A = pS₀ == pS₀} (λ r → ( ! (ap g' r)) · loop)
-                                    (S¹-βrec pS pS₀ _) ⟩
-          ! ap g' (transport (λ p → pS₀ == pS₀) loop p₀₀) · loop
-            ==⟨ ap {A = pS₀ == pS₀} (λ r → ! ap g' r · loop)
-                    (transport-const loop p₀₀) ⟩
-          ! ap g' p₀₀ · loop
-            ==⟨ ap (λ r → ! r · loop)  (ap-· g' p₀₁ p₁₀) ⟩
-          ! (ap g' p₀₁ · ap g' p₁₀) · loop
-            ==⟨ ap {A = base == base} (λ r → ! (r · ap g' p₁₀) · loop)
-                   (pS-βrec₀₁ S¹ base base (loop · loop) idp) ⟩
-          ! ((loop ²) · ap g' p₁₀) · loop
-            ==⟨ ap {A = base == base} (λ r → ! ( loop · loop · r) · loop)
-                   (pS-βrec₁₀ S¹ base base idp (inv loop)) ⟩
-          ! ((loop ²) · ! loop) · loop
-            ==⟨ ap (λ r →  ! r · loop) aux-path ⟩
-          ! loop · loop
-            ==⟨ ·-linv loop ⟩
-           idp
-        ∎
+  -- Def.
+  H₂-base : base == base
+  H₂-base = refl base
 \end{code}
 
-Finally,
+The rest is how we prove the case for action on `loop`.
+
+We will need the term `aux-path` which is:
+
+{: .foldable until="2"}
+\begin{code}
+  -- Def.
+  aux-path : (loop ²) · (loop ⁻¹) == loop
+  aux-path =
+    begin
+      (loop ²) · (loop ⁻¹)
+        ==⟨ ·-assoc loop loop (! loop) ⟩
+      loop · (loop · ! loop)
+        ==⟨ ap (loop ·_) (·-rinv loop) ⟩
+      loop · idp
+        ==⟨ ! (·-runit loop) ⟩
+      loop
+    ∎
+\end{code}
+
+{: .foldable until="2" }
+\begin{code}
+  -- Def.
+  H₂-loop : refl base == refl base [ (λ z → (g ∘ f) z == id z) ↓ loop ]
+  H₂-loop =
+    begin
+      transport (λ z → (g ∘ f) z == id z) loop idp
+        ==⟨ transport-eq-fun (g ∘ f) id loop idp ⟩
+      ! (ap (g ∘ f) loop) · idp · ap id loop
+        ==⟨ ap (λ r → ! (ap (g ∘ f) loop) · idp · r) (ap-id loop) ⟩
+      ! (ap (g ∘ f) loop) · idp · loop
+        ==⟨ ·-assoc _ idp loop ⟩
+      ! (ap (g ∘ f) loop) · (idp · loop)
+        ==⟨ ap (λ r → ! (ap (g ∘ f) loop) · r) (·-lunit loop) ⟩
+      ! (ap (g ∘ f) loop) · loop
+        ==⟨ ap  (λ r → ! r · loop) (! (ap-comp f g loop)) ⟩
+      ! ap g (ap f loop) · loop
+        ==⟨ ap {A = pS₀ == pS₀} (λ r → ( ! (ap g r)) · loop)
+                                (S¹-βrec pS pS₀ _) ⟩
+      ! ap g (transport (λ p → pS₀ == pS₀) loop p₀₀) · loop
+        ==⟨ ap {A = pS₀ == pS₀} (λ r → ! ap g r · loop)
+                (transport-const loop p₀₀) ⟩
+      ! ap g p₀₀ · loop
+        ==⟨ ap (λ r → ! r · loop)  (ap-· g p₀₁ p₁₀) ⟩
+      ! (ap g p₀₁ · ap g p₁₀) · loop
+        ==⟨ ap {A = base == base} (λ r → ! (r · ap g p₁₀) · loop)
+               (pS-βrec₀₁ S¹ base base (loop · loop) idp) ⟩
+      ! ((loop ²) · ap g p₁₀) · loop
+        ==⟨ ap {A = base == base} (λ r → ! ( loop · loop · r) · loop)
+               (pS-βrec₁₀ S¹ base base idp (inv loop)) ⟩
+      ! ((loop ²) · ! loop) · loop
+        ==⟨ ap (λ r →  ! r · loop) aux-path ⟩
+      ! loop · loop
+        ==⟨ ·-linv loop ⟩
+       idp
+    ∎
+\end{code}
 
 \begin{code}
--- The equivalence by quasi-inverse:
+  -- Homotopy
+  H₂ : g ∘ f ∼ id
+  H₂ = S¹-ind _ H₂-base H₂-loop
+\end{code}
+
+Finally, we complete the proof of the equivalence.
+
+\begin{code}
+  -- Equivalence.
   S¹-≃-pS : S¹ ≃ pS
-  S¹-≃-pS = qinv-≃ f' (g' , H₁ , H₂)
+  S¹-≃-pS = qinv-≃ f (g , H₁ , H₂)
 \end{code}
 
+## Action on paths of pairs
 
-### Lemma 2
+Action on paths of pairs appears as Lemma 6.12.7 in {% cite hottbook %}.
 
-- Action on paths of pairs
+Let's define out context for this lemma:
 
 \begin{code}
-module _ {ℓ} {A : Type ℓ}(C : A → Type ℓ)
-    {Z : Type ℓ}
-    (d : (a : A) → C a → Z) where
+module  Lemma₂ {ℓ}
+  {A : Type ℓ}
+  (C : A → Type ℓ)
+  {Z : Type ℓ}
+  (d : (a : A) → C a → Z) where
 
   private
     f : Σ A (λ a → C a) → Z
     f (a , b) = (d a) b
+\end{code}
 
-  ap-f=pair= :
-      {a₁ a₂ : A}
-      (α : a₁ == a₂)
-      (c₁ : C a₁) (c₂ : C a₂)
-      (γ : c₁ == c₂ [ C ↓ α ])
-      → ap f (pair= (α , γ))
-        == (begin
-          f (a₁ , c₁)
-            ==⟨⟩
-          d a₁ c₁
-            ==⟨ ! (transport-const  α (d a₁ c₁)) ⟩
-          tr (λ X → Z) α (d a₁ c₁)
-            ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
-          tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-            ==⟨ (! ·-rinv α) |in-ctx (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁)))  ⟩
-          tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
-            ==⟨ (! transport-comp-h α (! α) c₁) |in-ctx (λ k → tr (λ X → Z) α (d a₁ k))⟩
-          tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
-            ==⟨ ! (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
-          (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
-            ==⟨ happly (apd d α) (tr C α c₁) ⟩
-          d a₂ (tr C α c₁)
-            ==⟨ ap (d a₂) γ ⟩
-          d a₂ c₂
-            ==⟨⟩
-          f (a₂ , c₂)
-        ∎)
+And this lemma says:
+
+\begin{code}
+  -- Lemma.
+  ap-f=pair=
+    : {a₁ a₂ : A}
+    → (α : a₁ == a₂)
+    → (c₁ : C a₁) (c₂ : C a₂)
+    → (γ : c₁ == c₂ [ C ↓ α ])
+    ---------------------------
+    → ap f (pair= (α , γ))
+        ==
+     (begin
+        f (a₁ , c₁)
+          ==⟨⟩
+        d a₁ c₁
+          ==⟨ ! (transport-const  α (d a₁ c₁)) ⟩
+        tr (λ X → Z) α (d a₁ c₁)
+          ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
+        tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
+          ==⟨ (! ·-rinv α) |in-ctx (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁)))  ⟩
+        tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
+          ==⟨ (! transport-comp-h α (! α) c₁) |in-ctx (λ k → tr (λ X → Z) α (d a₁ k))⟩
+        tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
+          ==⟨ ! (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
+        (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
+          ==⟨ happly (apd d α) (tr C α c₁) ⟩
+        d a₂ (tr C α c₁)
+          ==⟨ ap (d a₂) γ ⟩
+        d a₂ c₂
+          ==⟨⟩
+        f (a₂ , c₂)
+      ∎)
+
   ap-f=pair= idp c₁ .c₁ idp = idp
 \end{code}
 
+##  Σ S¹ P ≃ pS
 
-
-### Lemma 3
-
-{: .equation}
-  $$
-    \Sigma~S^{1}~P~\simeq~pS
-  $$
-
-  where $$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
+**Lemma 3.** $$ \Sigma~S^{1}~P~\simeq~pS $$ where
+$$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
 
 \begin{code}
+module Lemma₃ where
+
 -- Def.
 neg : Bool → Bool
 neg true  = false
@@ -436,35 +554,36 @@ neg-eq = qinv-≃ neg (neg , h , h)
     h : neg ∘ neg ∼ id
     h true  = idp
     h false = idp
+\end{code}
 
+Now, using the negation function as an equivalence, we define the family of types `P`
+over the circle S¹.
+
+\begin{code}
 P : S¹ → Type₀
 P = S¹-rec Type₀ Bool (ua neg-eq)
+\end{code}
 
-neg-neg : (x : P base) → neg (neg x) == x
-neg-neg true  = idp
-neg-neg false = idp
+Two auxiliar lemmas for the latter:
 
-c01 : true == false [ P ↓ loop ]
-c01 = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) true
-
-c10 : false == true [ P ↓ loop ]
-c10 = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false
-
--- exer1 : ((x : S¹) → P x) → ⊥ {lzero}
--- exer1 f = true≠false {!   !}
---   where
---     true≠false : ¬ (      true  == false)
---     true≠false ()
-
+{: .foldable until="1" }
+\begin{code}
 aux-lemma₀ : (x : P base) → neg x == x [ P ↓ loop ]
 aux-lemma₀ x =
-  begin
+  (begin
     transport P loop (neg x)
       ==⟨ transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) (neg x) ⟩
     neg (neg x)
       ==⟨ neg-neg x ⟩
-    refl x
+    refl x)
+  where
+    neg-neg : (x : P base) → neg (neg x) == x
+    neg-neg true  = idp
+    neg-neg false = idp
+\end{code}
 
+{: .foldable until="1" }
+\begin{code}
 aux-lemma₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
 aux-lemma₁ x =
   let
@@ -489,7 +608,11 @@ aux-lemma₁ x =
       ==⟨⟩
     neg x
   ∎
+\end{code}
 
+### f : Σ S¹ P → pS
+
+\begin{code}
 f :  Σ S¹ P → pS
 f (b , x) = f̰ b x
   where
@@ -500,23 +623,25 @@ f (b , x) = f̰ b x
       d̰ true  = pS₁
       d̰ false = pS₀
 
-      aux-lemma₂ : (x : P base) → d̰ (neg x) == d̰ x
-      aux-lemma₂ true  = p₀₁
-      aux-lemma₂ false = p₁₀
-
       p̰ : d̰ == d̰ [ (λ z → P z → pS) ↓ loop ]
       p̰  =
-        begin
+        (begin
           transport (λ z → P z → pS) loop d̰
             ==⟨ transport-fun loop d̰ ⟩
-          (λ (x : P base) → transport (λ z → pS) loop (d̰ (transport (λ z → P z) (! loop) x)))
-            ==⟨ funext (λ (pb : P base) → transport-const loop (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
+          (λ (x : P base) → transport (λ z → pS) loop
+                              (d̰ (transport (λ z → P z) (! loop) x)))
+            ==⟨ funext (λ (pb : P base) → transport-const loop
+                              (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
           (λ (x : P base) → (d̰ (transport (λ z → P z) (! loop) x)))
             ==⟨ funext (λ (pb : P base) → ap d̰ (aux-lemma₁ pb)) ⟩
           (λ (x : P base) → d̰ (neg x) )
             ==⟨ funext aux-lemma₂ ⟩
           d̰
-         ∎
+         ∎)
+       where
+         aux-lemma₂ : (x : P base) → d̰ (neg x) == d̰ x
+         aux-lemma₂ true  = p₀₁
+         aux-lemma₂ false = p₁₀
 \end{code}
 
 \begin{code}
@@ -532,7 +657,11 @@ g-p₀₁ = pair= (loop , γ₀₁)
 
 g-p₁₀ : (base , true ) == ( base , false)
 g-p₁₀ = pair= (loop , γ₁₀)
+\end{code}
 
+### g : pS → Σ S¹ P
+
+\begin{code}
 g : pS → Σ S¹ P
 g = -- 0   ↦ (base, 0)
     -- 1   ↦ (base, 1)
@@ -553,8 +682,7 @@ postulate
   lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₁₀
 \end{code}
 
-Let us prove the homotopies:
-
+### f ∘ g ∼ id
 
 \begin{code}
 -- Homotopy
@@ -619,12 +747,12 @@ f-g = pS-ind (λ ps → (f ∘ g) ps == id ps) q₀ q₁ dpath₁ dpath₂
       ∎
 \end{code}
 
+### g ∘ f ∼ id
+
+Taking inspiration from Flattening lemma's proof in Section 6
+in {% cite hottbook %}, we got the following proof.
 
 \begin{code}
--- Homotopy
--- auxpair= : pair= (loop , refl (tr P loop true)) == pair= (loop , γ₁₀)  · ! pair= (loop , {!  !})
--- auxpair=  = {! !} -- ap (λ r → pair= ( loop , r)) (! (·-rinv γ₁₀))
-
 g-f : g ∘ f ∼ id
 g-f (s , b) = g-f' s b
   where
@@ -698,7 +826,6 @@ g-f (s , b) = g-f' s b
 
       cpath : transport Q loop c == c
       cpath = funext-transport-dfun-r loop c c helper
-
 
         where
           auxAP : ∀ {x y : P base}{p : base == base}
@@ -791,8 +918,6 @@ g-f (s , b) = g-f' s b
 
     -------
 
-
-
           auxCtrue1 : ∀ {x y : P base}
               → (q : tr P loop x == y)
               → pair= (loop , refl (tr P loop x)) · pair= (refl base , q) == pair= (loop , q)
@@ -876,7 +1001,6 @@ g-f (s , b) = g-f' s b
           auxCtrue5 =
             auxCtrue4 auxCtrue3
 
-
           helper : (b : P base)
                  → tr (λ w → (g ∘ f) w == id w) (pair= (loop , refl (tr (λ z → P z) loop b)))
                   (c b) == c (tr (λ x → P x) loop b)
@@ -898,14 +1022,11 @@ g-f (s , b) = g-f' s b
               ==⟨ ! auxCtrue2 ⟩
                  c (tr (λ x → P x) loop true)
               ∎
-
-
-eqCirPs : Σ S¹ P ≃ pS
-eqCirPs = qinv-≃ f (g , f-g , g-f)
-
 \end{code}
 
+Finally, the equivalence:
 
-{: .references }
-
-  {% reference hottbook %}
+\begin{code}
+ΣS¹P-≃-pS : Σ S¹ P ≃ pS
+ΣS¹P-≃-pS = qinv-≃ f (g , f-g , g-f)
+\end{code}

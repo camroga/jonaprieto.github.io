@@ -67,13 +67,14 @@ Two types of process interaction require synchronization: *competition* and
 
 ### Synchronization: Competition
 
-This type of process interaction occurs when processes have to compete to
-execute some statements and only one process at a time (or a bounded number of
+This type of process interaction occurs when **processes have to compete to
+execute some statements** and **only one process at a time** (or a bounded number of
 them) is allowed to execute them
 
 - Example: *resource allocation is a typical example of process competition*.
 
 
+--------------------------------------------------------------------------------
 
 ## Video lectures
 

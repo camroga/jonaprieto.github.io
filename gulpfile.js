@@ -17,10 +17,10 @@ var messages = {
   jekyllProd: 'Running: $ jekyll build for prod'
 };
 
+// , '--limit_posts' , '10'
 gulp.task('jekyll-dev', function (done) {
   browserSync.notify(messages.jekyllDev);
   const jekyll = child.spawn('jekyll', ['build', '--incremental'
-    // , '--limit_posts' , '10'
   ], {stdio: 'inherit'})
  .on('close', done);
 });
@@ -89,6 +89,11 @@ gulp.task('jekyll-prod', function (done) {
               .on('close', done);
 });
 
+gulp.task('jekyll-algolia', function (done) {
+  return child.spawn('jekyll', ['algolia'], {stdio: 'inherit'})
+              .on('close', done);
+});
+
 gulp.task('sass-prod', () => {
   return gulp.src(['_sass/main.scss'])
             .pipe(sass({onError: browserSync.notify}))
@@ -106,9 +111,10 @@ gulp.task('scripts-prod', function() {
              .pipe(gulp.dest('_site/assets'))
              .pipe(browserSync.reload({stream:true}))
              .pipe(gulp.dest('assets'));
+
 });
 
 // DEFAULT
 gulp.task('default', ['sass', 'jekyll-dev', 'browser-sync']);
 
-gulp.task('build', ['scripts-prod', 'sass-prod', 'jekyll-prod', 'ipe-images', 'png-images']);
+gulp.task('build', ['scripts-prod', 'sass-prod', 'jekyll-prod', 'ipe-images', 'png-images', 'jekyll-algolia']);

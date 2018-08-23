@@ -89,7 +89,32 @@ comments: true
   {% bibliography --cited %}
   </div>
 
+
+  {% if page.showcitation %}
+  <div class="citation">
+  <h2 id="citation"> Citation </h2>
+  If you want to cite the content of this post,
+  we suggest to use the following latex bibtex entry.
+  This is generated automatically.
+
+  <br/>
+  <br/>
+  <pre class="bibtex"
+       data-bibtextag ="{{ page.bibtextag }}"
+       data-bibtexauthors ="{{ page.bibtexauthors  }}"
+       data-year ="{{ page.date | date: '%Y' }}"
+       data-lastchecked ="{{ site.time | date: '%Y-%m-%d' }}"
+       data-originalyear ="{{ page.date | date: '%Y-%m-%d' }}"
+       data-title ="{{ page.title}}"
+       data-url ="{{ site.url}}{{ page.url}}"
+  ></pre>
+  </div>
+  {% endif %}
+
 </div>
+
+
+
 
 {% if page.related_posts %}
 <div class="related">
@@ -112,26 +137,6 @@ comments: true
   </ul>
 </div>
 {% endif %}
-
-{% if page.showcitation %}
-<div class="citation">
-<h2 id="citation"> Citation </h2>
-If you are considering to cite this post for any reason,
-we suggest to use the following latex bibtex entry:
-<br/>
-<br/>
-<pre class="bibtex"
-     data-author="{{ page.author }}"
-     data-coauthor="{{ page.coauthor }}"
-     data-year="{{ page.date | date: '%Y' }}"
-     data-lastchecked="{{ site.time | date: '%Y-%m-%d' }}"
-     data-originalyear="{{ page.date | date: '%Y-%m-%d' }}"
-     data-title="{{ page.title}}"
-     data-url="{{ site.url}}{{ page.url}}"
-></pre>
-</div>
-{% endif %}
-
 {% if page.disqus %}
 <div id="disqus_thread"></div>
 <script>

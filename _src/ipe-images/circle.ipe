@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180728181650" modified="D:20180731123611"/>
+<info created="D:20180728181650" modified="D:20180823204536"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -254,15 +254,22 @@ h
 <page>
 <layer name="alpha"/>
 <view layers="alpha" active="alpha"/>
-<use layer="alpha" matrix="1 0 0 1 64 16" name="mark/disk(sx)" pos="160 704" size="large" stroke="black"/>
-<text matrix="1 0 0 1 42.4215 2.5925" transformations="translations" pos="158.748 714.482" stroke="black" type="label" width="18.182" height="6.918" depth="0" valign="baseline" style="math">\mathsf{base}</text>
-<path matrix="1 0 0 1 64 16" stroke="black">
+<use layer="alpha" matrix="1 0 0 1 65.2334 14.1616" name="mark/disk(sx)" pos="160 704" size="small" stroke="black"/>
+<text matrix="1 0 0 1 45.5623 0.417024" transformations="translations" pos="158.748 714.482" stroke="black" type="label" width="18.182" height="6.918" depth="0" valign="baseline" style="math">\mathsf{base}</text>
+<path matrix="0.693986 0 0 0.768135 113.582 177.565" stroke="black">
 27.5359 0 0 27.5359 188.509 704.281 e
 </path>
-<path matrix="1 0 0 1 64 16" stroke="black" arrow="normal/tiny">
+<path matrix="0.999596 -0.0284277 0.0284277 0.999596 44.3316 20.6945" stroke="black" arrow="normal/tiny">
 161.995 696.818 m
 161.173 700.939 l
 </path>
-<text matrix="1 0 0 1 56.7474 19.5687" transformations="translations" pos="185.561 734.304" stroke="black" type="label" width="17.767" height="6.926" depth="1.93" valign="baseline" style="math">\mathsf{loop}</text>
+<text matrix="1 0 0 1 51.0029 -45.8271" transformations="translations" pos="185.561 734.304" stroke="black" type="label" width="17.767" height="6.926" depth="1.93" valign="baseline" style="math">\mathsf{loop}</text>
+<path stroke="white">
+192 768 m
+192 672 l
+288 672 l
+288 768 l
+h
+</path>
 </page>
 </ipe>
