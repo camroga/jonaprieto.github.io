@@ -14,6 +14,7 @@ agda: true
 gallery: true
 latex: true
 linkify: true
+showcitation: true
 ---
 
 {: .only-website }

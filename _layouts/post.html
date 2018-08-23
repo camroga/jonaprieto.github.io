@@ -72,7 +72,7 @@ comments: true
   {% endif %}
   <h1 class="post-title">{{ page.title }}
     <div class="github-links">
-      <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a><a href="{{viewsource}}" target="_blank">View source</a><a href="{{editsource}}" target="_blank">Edit</a><a href="{{history}}" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
+      <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a><a href="{{viewsource}}" target="_blank">View source</a><a href="{{editsource}}" target="_blank">Edit</a><a href="{{history}}" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a>{% if page.showcitation %}<a  href="#citation">Cite</a>{% endif %}</small>
     </div>
   </h1>
   {% if page.toc %}
@@ -113,20 +113,24 @@ comments: true
 </div>
 {% endif %}
 
-
+{% if page.showcitation %}
 <div class="citation">
-<h2> Citation </h2>
+<h2 id="citation"> Citation </h2>
 If you are considering to cite this post for any reason,
-we suggest to use the following:
+we suggest to use the following latex bibtex entry:
+<br/>
+<br/>
 <pre class="bibtex"
-     data-author="{{  post.author }}"
-     data-coauthor="{{  post.coauthor }}"
-     data-date="{{  post.date }}"
-     data-id="{{  page.url  }}"
+     data-author="{{ page.author }}"
+     data-coauthor="{{ page.coauthor }}"
+     data-year="{{ page.date | date: '%Y' }}"
+     data-lastchecked="{{ site.time | date: '%Y-%m-%d' }}"
+     data-originalyear="{{ page.date | date: '%Y-%m-%d' }}"
      data-title="{{ page.title}}"
      data-url="{{ site.url}}{{ page.url}}"
 ></pre>
 </div>
+{% endif %}
 
 {% if page.disqus %}
 <div id="disqus_thread"></div>

@@ -19,7 +19,9 @@ var messages = {
 
 gulp.task('jekyll-dev', function (done) {
   browserSync.notify(messages.jekyllDev);
-  const jekyll = child.spawn('jekyll', ['build', '--incremental', '--limit_posts' , '5'], {stdio: 'inherit'})
+  const jekyll = child.spawn('jekyll', ['build', '--incremental'
+    // , '--limit_posts' , '10'
+  ], {stdio: 'inherit'})
  .on('close', done);
 });
 

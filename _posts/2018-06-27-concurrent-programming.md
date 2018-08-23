@@ -34,7 +34,7 @@ agda: true
 We consider process that are:
 
   - *“Reliable”* means that each process results from the correct execution of
-  - the code of the corresponding algorithm
+    the code of the corresponding algorithm
 
   - *“Asynchronous”* means that there is no timing assumption on the time it
     takes for a process to proceed from a state transition to the next one
@@ -72,6 +72,7 @@ execute some statements and only one process at a time (or a bounded number of
 them) is allowed to execute them
 
 - Example: *resource allocation is a typical example of process competition*.
+
 
 
 ## Video lectures

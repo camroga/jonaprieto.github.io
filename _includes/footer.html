@@ -124,23 +124,38 @@ $('.algolia-modified a').map(
     $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }
 </script>
+{% endif %}
 
+{% if page.showcitation %}
 <script type="text/javascript">
+var pre, title, id, tag, url, coauthor, year, lastchecked, originalyear;
+
+$('.citation').hide();
 $('.citation pre').each(function(){
-    var pre = $(this);
-    var title = $(this).data('title');
-    var id = $(this).data('id');
-    var tag = id.split('/')[ id.length() - 2 ];
-    var url = $(this).data('url');
-    var coauthor=$(this).data('coauthor');
+
+    var pre      = $(this);
+    var title    = $(this).data('title');
+    var id       = $(this).data('url');
+    var year     = $(this).data('year');
+
+    var tag      = id.split('/')[ id.length - 2 ];
+    var url      = $(this).data('url');
+    var coauthor = $(this).data('coauthor');
+
+    var lastchecked  = $(this).data('lastchecked');
+    var originalyear  = $(this).data('originalyear');
+
     if (coauthor != ""){
       coauthor = " and " + coauthor;
     }
-    pre.append(
-"@online{jonaprieto" + id + ",\n" +
-"  author ={Jonathan Prieto-Cubides" +  coauthor + "},\n" +
-"  title  ={" + title + "},\n" +
-"  url    ={" + url   + "}\n" +
+pre.append(
+"@online{jonaprieto-" + tag + ",\n" +
+"  author  = { Jonathan Prieto-Cubides" +  coauthor + " },\n" +
+"  title   = { " + title + " },\n" +
+"  url     = { \\url{" + url   + "} }\n" +
+"  year    = { " + year  + " }\n" +
+"  lastchecked  = { " + lastchecked  + " }\n" +
+"  originalyear = { " + originalyear  + " }\n" +
 "}\n"
 );
   });

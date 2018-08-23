@@ -8,6 +8,7 @@ agda: true
 gallery: true
 latex: true
 references: true
+showcitation: true
 ---
 
 This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
