@@ -1,16 +1,16 @@
-const gulp         = require('gulp');
-var browserSync    = require('browser-sync').create();
-const sass         = require('gulp-sass');
-const concat       = require('gulp-concat');
+const gulp        = require('gulp');
+var browserSync   = require('browser-sync').create();
+const sass        = require('gulp-sass');
+const concat      = require('gulp-concat');
 
-const cssnano      = require('gulp-cssnano');
-const uglify       = require('gulp-uglify');
-const imagemin     = require('gulp-imagemin');
+const cssnano     = require('gulp-cssnano');
+const uglify      = require('gulp-uglify');
+const imagemin    = require('gulp-imagemin');
 
-const child        = require('child_process');
-const gutil        = require('gulp-util');
+const child       = require('child_process');
+const gutil       = require('gulp-util');
 
-const scriptFiles  = '_js/**/*.js';
+const scriptFiles = '_js/**/*.js';
 
 var messages = {
   jekyllDev  : 'Running: $ jekyll build for dev',
@@ -19,9 +19,11 @@ var messages = {
 
 gulp.task('jekyll-dev', function (done) {
   browserSync.notify(messages.jekyllDev);
-  const jekyll = child.spawn('jekyll'
-                            , ['build', '--incremental'], {stdio: 'inherit'})
- .on('close', done);
+  const jekyll = child.spawn( 'jekyll'
+                            , ['build', '--incremental']
+                            , {stdio: 'inherit'}
+                            )
+                      .on('close', done);
 });
 
 gulp.task('jekyll-rebuild', ['jekyll-dev'], function () {
@@ -30,19 +32,19 @@ gulp.task('jekyll-rebuild', ['jekyll-dev'], function () {
 
 gulp.task('sass', function(){
   return gulp.src(['_sass/main.scss'])
-        .pipe(sass({onError: browserSync.notify}))
-        .pipe(concat('main.css'))
-        .pipe(gulp.dest('_site/assets'))
-        .pipe(browserSync.reload({stream:true, message: "Sass updated!"}))
-        .pipe(gulp.dest('assets'));
+             .pipe(sass({onError: browserSync.notify}))
+             .pipe(concat('main.css'))
+             .pipe(gulp.dest('_site/assets'))
+             .pipe(browserSync.reload({stream:true, message: "Sass updated!"}))
+             .pipe(gulp.dest('assets'));
 });
 
 gulp.task('scripts', function() {
-  return  gulp.src(scriptFiles)
-              .pipe(concat('main.js'))
-              .pipe(gulp.dest('_site/assets'))
-              .pipe(browserSync.reload({stream:true}))
-              .pipe(gulp.dest('assets'));
+  return gulp.src(scriptFiles)
+             .pipe(concat('main.js'))
+             .pipe(gulp.dest('_site/assets'))
+             .pipe(browserSync.reload({stream:true}))
+             .pipe(gulp.dest('assets'));
 });
 
 gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
@@ -68,14 +70,14 @@ gulp.task('make', function (){
 
 gulp.task('ipe-images', () => function(){
 	return gulp.src('assets/ipe-images/*.png')
-          		.pipe(imagemin())
-          		.pipe(gulp.dest('_site/assets/ipe-images'))
+          	 .pipe(imagemin())
+             .pipe(gulp.dest('_site/assets/ipe-images'))
 });
 
 gulp.task('png-images', () => function(){
 	return gulp.src('assets/png-images/*.png')
-          		.pipe(imagemin())
-          		.pipe(gulp.dest('_site/assets/png-images'))
+          	 .pipe(imagemin())
+          	 .pipe(gulp.dest('_site/assets/png-images'))
 });
 
 // Production
