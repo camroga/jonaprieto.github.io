@@ -196,7 +196,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-05-01-circle-puzzle.lagda">3ed85c4 </a> on  25 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-05-01-circle-puzzle.lagda">b5ba283 </a> on  25 Aug 2018
     </div>
   </div>
   
@@ -1370,15 +1370,15 @@ $('.citation pre').each(function(){
     var url           = $(this).data('url');
 
     var bibtextag     = $(this).data('bibtextag');
-    var bibtexauthors = $(this).data('bibtexauthors');
+    var bibtexcitation = $(this).data('bibtexcitation');
 
-    if (bibtexauthors == ""){
-      bibtexauthors="Prieto-Cubides, Jonathan";
+    if (bibtexcitation == ""){
+      bibtexcitation="Prieto-Cubides, Jonathan";
     }
 
     pre.append(
     "@online{ " + bibtextag + ",\n" +
-    "  author  = { " + bibtexauthors   +" },\n" +
+    "  author  = { " + bibtexcitation   +" },\n" +
     "  title   = { " + title + " },\n" +
     "  url     = { \\url{" + url   + "} }\n" +
     "  year    = { " + year  + " }\n" +
