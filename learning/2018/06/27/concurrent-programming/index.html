@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-06-27T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"Keywords","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/06/27/concurrent-programming/","headline":"Concurrency","dateModified":"2018-08-23T21:01:32+02:00","datePublished":"2018-06-27T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/06/27/concurrent-programming/"},"@context":"http://schema.org"}</script>
+{"description":"Keywords","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/06/27/concurrent-programming/","headline":"Concurrency","dateModified":"2018-08-25T15:35:19+02:00","datePublished":"2018-06-27T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/06/27/concurrent-programming/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="Keywords">
 
@@ -181,19 +181,19 @@
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d775ec42b904f0e308b104739720b9036bea3d48/_src/2018-06-27-concurrent-programming.lagda">
-              Fixing template errors</a>
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-06-27-concurrent-programming.lagda">
+              Many updates</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d775ec42b904f0e308b104739720b9036bea3d48/_src/2018-06-27-concurrent-programming.lagda">c126632 </a> on  23 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-06-27-concurrent-programming.lagda">3ed85c4 </a> on  25 Aug 2018
     </div>
   </div>
   
   <h1 class="post-title">Concurrency
     <div class="github-links">
-      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/d775ec42b904f0e308b104739720b9036bea3d48/_src/2018-06-27-concurrent-programming.lagda" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d775ec42b904f0e308b104739720b9036bea3d48/_src/2018-06-27-concurrent-programming.lagda" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/_src/2018-06-27-concurrent-programming.lagda" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/d775ec42b904f0e308b104739720b9036bea3d48/_src/2018-06-27-concurrent-programming.lagda" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-06-27-concurrent-programming.lagda" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-06-27-concurrent-programming.lagda" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/_src/2018-06-27-concurrent-programming.lagda" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-06-27-concurrent-programming.lagda" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
     </div>
   </h1>
   
@@ -250,11 +250,11 @@ through a communication medium, e.g., a <strong>shared memory</strong>.</p>
 
 <ul>
   <li>
-    <p><em>“Reliable”</em> means that each process results from the correct execution of
+    <p><strong>Reliable</strong> means that each process results from the correct execution of
 the code of the corresponding algorithm</p>
   </li>
   <li>
-    <p><em>“Asynchronous”</em> means that there is no timing assumption on the time it
+    <p><strong>Asynchronous</strong> means that there is no timing assumption on the time it
 takes for a process to proceed from a state transition to the next one
 (which means that an asynchronous sequential process proceeds at an
 arbitrary speed).</p>
@@ -501,10 +501,8 @@ var newHeight;
 
 <script type="text/javascript">
   if ( $('div').hasClass('cited-references') ){
-    if ( $('div').hasClass('references') ){
-      $('.cite-references').append( $('.references').html() );
-      $('.references').hide();
-    }
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
     $(".cited-references").prepend("<h2 id='refs'>References</h2>");
     $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }

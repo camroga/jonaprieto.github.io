@@ -185,7 +185,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/77eaf2203dc18e99e5e9e39640a8eb0577c25a20/_src/2018-06-30-learning-programming-languages-theory.lagda">c126632 </a> on  23 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/77eaf2203dc18e99e5e9e39640a8eb0577c25a20/_src/2018-06-30-learning-programming-languages-theory.lagda">3ed85c4 </a> on  25 Aug 2018
     </div>
   </div>
   
@@ -746,10 +746,8 @@ var newHeight;
 
 <script type="text/javascript">
   if ( $('div').hasClass('cited-references') ){
-    if ( $('div').hasClass('references') ){
-      $('.cite-references').append( $('.references').html() );
-      $('.references').hide();
-    }
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
     $(".cited-references").prepend("<h2 id='refs'>References</h2>");
     $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }

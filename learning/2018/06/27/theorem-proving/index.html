@@ -185,7 +185,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/2018-06-27-theorem-proving.md">c126632 </a> on  23 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/2018-06-27-theorem-proving.md">3ed85c4 </a> on  25 Aug 2018
     </div>
   </div>
   
@@ -462,10 +462,8 @@ WebFontConfig = {
 
 <script type="text/javascript">
   if ( $('div').hasClass('cited-references') ){
-    if ( $('div').hasClass('references') ){
-      $('.cite-references').append( $('.references').html() );
-      $('.references').hide();
-    }
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
     $(".cited-references").prepend("<h2 id='refs'>References</h2>");
     $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+      
+        Function Type |
+      
+        jonaprieto ∷ WorkInProgress
+    
+  </title><!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Function Type" />
+<meta name="author" content="Jonathan Prieto-Cubides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Function Type Rules" />
+<meta property="og:description" content="Function Type Rules" />
+<link rel="canonical" href="http://jonaprieto.github.io/learning/2018/02/10/learning-functions-in-type-theory/" />
+<meta property="og:url" content="http://jonaprieto.github.io/learning/2018/02/10/learning-functions-in-type-theory/" />
+<meta property="og:site_name" content="jonaprieto" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-10T00:00:00+01:00" />
+<script type="application/ld+json">
+{"description":"Function Type Rules","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/02/10/learning-functions-in-type-theory/","headline":"Function Type","dateModified":"2018-08-25T15:35:19+02:00","datePublished":"2018-02-10T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/02/10/learning-functions-in-type-theory/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta name="description" content="Function Type Rules">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="preload" as="script" href="/assets/main.js" >
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="preload" as="script" href="/assets/js/latex.js" >
+  
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+</head>
+
+
+
+
+  <body>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    <!--  -->
+    <!-- 
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/all/">All</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">List of references</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/plans/">Plans</a>
+        
+      
+     -->
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
+    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+  </nav>
+</div>
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+
+
+<div class="post">
+
+  <div class="print-version">
+    <center>
+      <h1>Function Type </h1><br/>
+        <div class="print-authors">
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">
+                
+                  Jonathan Prieto-Cubides
+                
+              </div>
+              <div class="print-author-affiliation">
+                
+                  University of Bergen
+                
+                </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="print-date">10 February 2018</div>
+        
+        
+    </center>
+  </div>
+
+  
+  <div class="main-heading">
+    <div class="main-title">
+      <div class="main-title-prefix"> Latest change:</div>
+      <div class="main-commit-message">
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-02-10-learning-functions-in-type-theory.lagda">
+              Many updates</a>
+      </div>
+    </div>
+
+    <div class="main-last-date">
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-02-10-learning-functions-in-type-theory.lagda">3ed85c4 </a> on  25 Aug 2018
+    </div>
+  </div>
+  
+  <h1 class="post-title">Function Type
+    <div class="github-links">
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-02-10-learning-functions-in-type-theory.lagda" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-02-10-learning-functions-in-type-theory.lagda" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/_src/2018-02-10-learning-functions-in-type-theory.lagda" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/fafa262c7a5a54b9e2f9561ef5b86f218ba52bc1/_src/2018-02-10-learning-functions-in-type-theory.lagda" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
+    </div>
+  </h1>
+  
+  <h1 id="function-type-rules">Function Type Rules</h1>
+
+<p>In type theory we do not define a function since this is an undefined concept
+also refer to it as a <em>primitive notion</em>. In contrast to set theory where we
+have the function as the relationship between two sets, the domain and the
+codomain.</p>
+
+<p>In type theory, the function also called <em>map</em> is introduced as follows:</p>
+
+<ul>
+  <li>
+    <p>name of the type or symbol: <code>(_→_)</code></p>
+  </li>
+  <li>formation rule:
+    <pre><code>Γ ⊢ A  and Γ ⊢ B then Γ ⊢ f : A → B
+</code></pre>
+  </li>
+  <li>introduction rule (λ-abstraction):
+    <pre><code>Γ , x : A ⊢ t : B then Γ ⊢ λ (x : A) . t : A → B
+</code></pre>
+  </li>
+  <li>elimination rule:
+    <pre><code>Γ ⊢ λ (x : A) . t : A → B and Γ ⊢ y : A then Γ ⊢ (λ (x : A) . t) y : B
+</code></pre>
+  </li>
+  <li>computation rule (also called β-reduction or β-conversion):
+    <pre><code>Γ ⊢ (λ (x : A) . t) y : B then Γ ⊢ t[ x := y] : B
+</code></pre>
+    <p>We use the last notation <code>t[x := y]</code> to say that replace every occurrance of
+<script type="math/tex">x</script> in the term <script type="math/tex">t</script> by <script type="math/tex">y</script>.</p>
+  </li>
+  <li>simplication rule (also called η-conversion):
+    <pre><code>Γ ⊢ λ (x : A) . f x : A → B then Γ ⊢ f : A → B
+</code></pre>
+    <p>This conversion is also given by a definitional equality:</p>
+  </li>
+</ul>
+
+<pre class="Agda"><a id="1182" class="Keyword">open</a> <a id="1187" class="Keyword">import</a> <a id="1194" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="1232" class="Keyword">using</a> <a id="1238" class="Symbol">(</a><a id="1239" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">_≡_</a><a id="1242" class="Symbol">;</a> <a id="1244" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a><a id="1248" class="Symbol">)</a>
+
+<a id="1251" class="Keyword">postulate</a>
+  <a id="A"></a><a id="1263" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a> <a id="B"></a><a id="1265" href="/learning/2018/02/10/learning-functions-in-type-theory/#1265" class="Postulate">B</a> <a id="1267" class="Symbol">:</a> <a id="1269" class="PrimitiveType">Set</a>
+  <a id="t"></a><a id="1275" href="/learning/2018/02/10/learning-functions-in-type-theory/#1275" class="Postulate">t</a> <a id="1277" class="Symbol">:</a> <a id="1279" href="/learning/2018/02/10/learning-functions-in-type-theory/#1265" class="Postulate">B</a>
+
+<a id="f"></a><a id="1282" href="/learning/2018/02/10/learning-functions-in-type-theory/#1282" class="Function">f</a> <a id="1284" class="Symbol">:</a> <a id="1286" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a> <a id="1288" class="Symbol">→</a> <a id="1290" href="/learning/2018/02/10/learning-functions-in-type-theory/#1265" class="Postulate">B</a>
+<a id="1292" href="/learning/2018/02/10/learning-functions-in-type-theory/#1282" class="Function">f</a> <a id="1294" href="/learning/2018/02/10/learning-functions-in-type-theory/#1294" class="Bound">x</a> <a id="1296" class="Symbol">=</a> <a id="1298" href="/learning/2018/02/10/learning-functions-in-type-theory/#1275" class="Postulate">t</a>
+
+<a id="f₁"></a><a id="1301" href="/learning/2018/02/10/learning-functions-in-type-theory/#1301" class="Function">f₁</a> <a id="1304" class="Symbol">:</a> <a id="1306" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a> <a id="1308" class="Symbol">→</a> <a id="1310" href="/learning/2018/02/10/learning-functions-in-type-theory/#1265" class="Postulate">B</a>
+<a id="1312" href="/learning/2018/02/10/learning-functions-in-type-theory/#1301" class="Function">f₁</a> <a id="1315" class="Symbol">=</a> <a id="1317" class="Symbol">λ</a> <a id="1319" href="/learning/2018/02/10/learning-functions-in-type-theory/#1319" class="Bound">x</a> <a id="1321" class="Symbol">→</a> <a id="1323" href="/learning/2018/02/10/learning-functions-in-type-theory/#1282" class="Function">f</a> <a id="1325" href="/learning/2018/02/10/learning-functions-in-type-theory/#1319" class="Bound">x</a>
+
+<a id="f≡f₁"></a><a id="1328" href="/learning/2018/02/10/learning-functions-in-type-theory/#1328" class="Function">f≡f₁</a> <a id="1333" class="Symbol">:</a> <a id="1335" href="/learning/2018/02/10/learning-functions-in-type-theory/#1282" class="Function">f</a> <a id="1337" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1339" href="/learning/2018/02/10/learning-functions-in-type-theory/#1301" class="Function">f₁</a>
+<a id="1342" href="/learning/2018/02/10/learning-functions-in-type-theory/#1328" class="Function">f≡f₁</a> <a id="1347" class="Symbol">=</a> <a id="1349" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a></pre>
+
+<p>Related:</p>
+
+<ul>
+  <li>Two functions are <em>judgemental</em> equal if they are equal by α-conversion,
+that is, if after renaming the variable names they are definitionally equal.</li>
+</ul>
+
+<pre class="Agda"><a id="g"></a><a id="1542" href="/learning/2018/02/10/learning-functions-in-type-theory/#1542" class="Function">g</a> <a id="1544" class="Symbol">:</a>  <a id="1547" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a> <a id="1549" class="Symbol">→</a> <a id="1551" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a> <a id="1553" class="Symbol">→</a> <a id="1555" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a>
+<a id="1557" href="/learning/2018/02/10/learning-functions-in-type-theory/#1542" class="Function">g</a> <a id="1559" class="Symbol">=</a> <a id="1561" class="Symbol">λ</a> <a id="1563" href="/learning/2018/02/10/learning-functions-in-type-theory/#1563" class="Bound">x</a> <a id="1565" href="/learning/2018/02/10/learning-functions-in-type-theory/#1565" class="Bound">y</a> <a id="1567" class="Symbol">→</a> <a id="1569" href="/learning/2018/02/10/learning-functions-in-type-theory/#1565" class="Bound">y</a>
+
+<a id="h"></a><a id="1572" href="/learning/2018/02/10/learning-functions-in-type-theory/#1572" class="Function">h</a> <a id="1574" class="Symbol">:</a> <a id="1576" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a> <a id="1578" class="Symbol">→</a> <a id="1580" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a> <a id="1582" class="Symbol">→</a> <a id="1584" href="/learning/2018/02/10/learning-functions-in-type-theory/#1263" class="Postulate">A</a>
+<a id="1586" href="/learning/2018/02/10/learning-functions-in-type-theory/#1572" class="Function">h</a> <a id="1588" class="Symbol">=</a>  <a id="1591" class="Symbol">λ</a> <a id="1593" href="/learning/2018/02/10/learning-functions-in-type-theory/#1593" class="Bound">w</a> <a id="1595" href="/learning/2018/02/10/learning-functions-in-type-theory/#1595" class="Bound">z</a> <a id="1597" class="Symbol">→</a> <a id="1599" href="/learning/2018/02/10/learning-functions-in-type-theory/#1595" class="Bound">z</a></pre>
+
+<p>Both <script type="math/tex">g</script> and <script type="math/tex">h</script> function produce the same result.
+Then if we sustitute in <script type="math/tex">h</script>, <script type="math/tex">w</script> by <script type="math/tex">x</script>, and <script type="math/tex">z</script> by <script type="math/tex">y</script>,
+we get the definition of <script type="math/tex">g</script>, so at the end, <script type="math/tex">g</script> and <script type="math/tex">h</script> are
+<em>judgemental</em> equal.</p>
+
+<pre class="Agda"><a id="g≡h"></a><a id="1837" href="/learning/2018/02/10/learning-functions-in-type-theory/#1837" class="Function">g≡h</a> <a id="1841" class="Symbol">:</a> <a id="1843" href="/learning/2018/02/10/learning-functions-in-type-theory/#1542" class="Function">g</a> <a id="1845" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="1847" href="/learning/2018/02/10/learning-functions-in-type-theory/#1572" class="Function">h</a>
+<a id="1849" href="/learning/2018/02/10/learning-functions-in-type-theory/#1837" class="Function">g≡h</a> <a id="1853" class="Symbol">=</a> <a id="1855" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a></pre>
+
+<h1 id="functional-extensionality">Functional extensionality</h1>
+
+<p>Very related to the above matter is the <a href="https://ncatlab.org/nlab/show/function+extensionality"><em>functional extensionality</em></a>
+axiom that establishes the pointwise equality between two functions.
+This axiom has the following type:</p>
+
+<pre class="Agda"><a id="2144" class="Keyword">postulate</a>
+  <a id="FunExt"></a><a id="2156" href="/learning/2018/02/10/learning-functions-in-type-theory/#2156" class="Postulate">FunExt</a>
+    <a id="2167" class="Symbol">:</a> <a id="2169" class="Symbol">∀</a> <a id="2171" class="Symbol">{</a><a id="2172" href="/learning/2018/02/10/learning-functions-in-type-theory/#2172" class="Bound">A</a> <a id="2174" href="/learning/2018/02/10/learning-functions-in-type-theory/#2174" class="Bound">B</a> <a id="2176" class="Symbol">:</a> <a id="2178" class="PrimitiveType">Set</a><a id="2181" class="Symbol">}</a>
+    <a id="2187" class="Symbol">→</a> <a id="2189" class="Symbol">∀</a> <a id="2191" class="Symbol">{</a><a id="2192" href="/learning/2018/02/10/learning-functions-in-type-theory/#2192" class="Bound">f</a> <a id="2194" href="/learning/2018/02/10/learning-functions-in-type-theory/#2194" class="Bound">g</a> <a id="2196" class="Symbol">:</a> <a id="2198" href="/learning/2018/02/10/learning-functions-in-type-theory/#2172" class="Bound">A</a> <a id="2200" class="Symbol">→</a> <a id="2202" href="/learning/2018/02/10/learning-functions-in-type-theory/#2174" class="Bound">B</a><a id="2203" class="Symbol">}</a>
+    <a id="2209" class="Symbol">→</a> <a id="2211" class="Symbol">(∀</a> <a id="2214" class="Symbol">(</a><a id="2215" href="/learning/2018/02/10/learning-functions-in-type-theory/#2215" class="Bound">x</a> <a id="2217" class="Symbol">:</a> <a id="2219" href="/learning/2018/02/10/learning-functions-in-type-theory/#2172" class="Bound">A</a><a id="2220" class="Symbol">)</a> <a id="2222" class="Symbol">→</a> <a id="2224" href="/learning/2018/02/10/learning-functions-in-type-theory/#2192" class="Bound">f</a> <a id="2226" href="/learning/2018/02/10/learning-functions-in-type-theory/#2215" class="Bound">x</a> <a id="2228" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2230" href="/learning/2018/02/10/learning-functions-in-type-theory/#2194" class="Bound">g</a> <a id="2232" href="/learning/2018/02/10/learning-functions-in-type-theory/#2215" class="Bound">x</a><a id="2233" class="Symbol">)</a>
+    <a id="2239" class="Symbol">→</a> <a id="2241" href="/learning/2018/02/10/learning-functions-in-type-theory/#2192" class="Bound">f</a> <a id="2243" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2245" href="/learning/2018/02/10/learning-functions-in-type-theory/#2194" class="Bound">g</a></pre>
+
+<p>Then, let’s use this axiom in a complete example, proving that two defintions
+of the add function are indeed equal. The example also includes a reference
+to a note presented later about
+<a href="https://jonaprieto.github.io/2018/02/14/induction-on-identity-types/">induction on natural numbers</a>:</p>
+
+<p>The definitions:</p>
+
+<pre class="Agda"><a id="𝒰"></a><a id="2579" href="/learning/2018/02/10/learning-functions-in-type-theory/#2579" class="Function">𝒰</a> <a id="2581" class="Symbol">=</a> <a id="2583" class="PrimitiveType">Set</a>
+<a id="2587" class="Keyword">data</a> <a id="ℕ"></a><a id="2592" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2594" class="Symbol">:</a> <a id="2596" href="/learning/2018/02/10/learning-functions-in-type-theory/#2579" class="Function">𝒰</a> <a id="2598" class="Keyword">where</a>
+ <a id="ℕ.zero"></a><a id="2605" href="/learning/2018/02/10/learning-functions-in-type-theory/#2605" class="InductiveConstructor">zero</a> <a id="2610" class="Symbol">:</a> <a id="2612" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a>
+ <a id="ℕ.suc"></a><a id="2615" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a>  <a id="2620" class="Symbol">:</a> <a id="2622" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2624" class="Symbol">→</a> <a id="2626" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a>
+
+<a id="add"></a><a id="2629" href="/learning/2018/02/10/learning-functions-in-type-theory/#2629" class="Function">add</a> <a id="2633" class="Symbol">:</a> <a id="2635" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2637" class="Symbol">→</a> <a id="2639" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2641" class="Symbol">→</a> <a id="2643" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a>
+<a id="2645" href="/learning/2018/02/10/learning-functions-in-type-theory/#2629" class="Function">add</a> <a id="2649" class="Symbol">=</a> <a id="2651" href="/learning/2018/02/10/learning-functions-in-type-theory/#2708" class="Function">recℕ</a> <a id="2656" class="Symbol">(</a><a id="2657" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2659" class="Symbol">→</a> <a id="2661" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a><a id="2662" class="Symbol">)</a> <a id="2664" class="Symbol">(λ</a> <a id="2667" href="/learning/2018/02/10/learning-functions-in-type-theory/#2667" class="Bound">m</a> <a id="2669" class="Symbol">→</a> <a id="2671" href="/learning/2018/02/10/learning-functions-in-type-theory/#2667" class="Bound">m</a><a id="2672" class="Symbol">)</a> <a id="2674" class="Symbol">(λ</a> <a id="2677" href="/learning/2018/02/10/learning-functions-in-type-theory/#2677" class="Bound">n</a> <a id="2679" href="/learning/2018/02/10/learning-functions-in-type-theory/#2679" class="Bound">g</a> <a id="2681" href="/learning/2018/02/10/learning-functions-in-type-theory/#2681" class="Bound">m</a> <a id="2683" class="Symbol">→</a> <a id="2685" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a> <a id="2689" class="Symbol">(</a><a id="2690" href="/learning/2018/02/10/learning-functions-in-type-theory/#2679" class="Bound">g</a> <a id="2692" href="/learning/2018/02/10/learning-functions-in-type-theory/#2681" class="Bound">m</a><a id="2693" class="Symbol">))</a>
+  <a id="2698" class="Keyword">where</a>
+    <a id="2708" href="/learning/2018/02/10/learning-functions-in-type-theory/#2708" class="Function">recℕ</a> <a id="2713" class="Symbol">:</a> <a id="2715" class="Symbol">(</a><a id="2716" href="/learning/2018/02/10/learning-functions-in-type-theory/#2716" class="Bound">C</a> <a id="2718" class="Symbol">:</a> <a id="2720" href="/learning/2018/02/10/learning-functions-in-type-theory/#2579" class="Function">𝒰</a><a id="2721" class="Symbol">)</a> <a id="2723" class="Symbol">→</a> <a id="2725" href="/learning/2018/02/10/learning-functions-in-type-theory/#2716" class="Bound">C</a> <a id="2727" class="Symbol">→</a> <a id="2729" class="Symbol">(</a><a id="2730" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2732" class="Symbol">→</a> <a id="2734" href="/learning/2018/02/10/learning-functions-in-type-theory/#2716" class="Bound">C</a> <a id="2736" class="Symbol">→</a> <a id="2738" href="/learning/2018/02/10/learning-functions-in-type-theory/#2716" class="Bound">C</a><a id="2739" class="Symbol">)</a> <a id="2741" class="Symbol">→</a> <a id="2743" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2745" class="Symbol">→</a> <a id="2747" href="/learning/2018/02/10/learning-functions-in-type-theory/#2716" class="Bound">C</a>
+    <a id="2753" href="/learning/2018/02/10/learning-functions-in-type-theory/#2708" class="Function">recℕ</a> <a id="2758" href="/learning/2018/02/10/learning-functions-in-type-theory/#2758" class="Bound">C</a> <a id="2760" href="/learning/2018/02/10/learning-functions-in-type-theory/#2760" class="Bound">c₀</a> <a id="2763" href="/learning/2018/02/10/learning-functions-in-type-theory/#2763" class="Bound">cₛ</a> <a id="2766" href="/learning/2018/02/10/learning-functions-in-type-theory/#2605" class="InductiveConstructor">zero</a>    <a id="2774" class="Symbol">=</a> <a id="2776" href="/learning/2018/02/10/learning-functions-in-type-theory/#2760" class="Bound">c₀</a>
+    <a id="2783" href="/learning/2018/02/10/learning-functions-in-type-theory/#2708" class="Function">recℕ</a> <a id="2788" href="/learning/2018/02/10/learning-functions-in-type-theory/#2788" class="Bound">C</a> <a id="2790" href="/learning/2018/02/10/learning-functions-in-type-theory/#2790" class="Bound">c₀</a> <a id="2793" href="/learning/2018/02/10/learning-functions-in-type-theory/#2793" class="Bound">cₛ</a> <a id="2796" class="Symbol">(</a><a id="2797" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a> <a id="2801" href="/learning/2018/02/10/learning-functions-in-type-theory/#2801" class="Bound">n</a><a id="2802" class="Symbol">)</a> <a id="2804" class="Symbol">=</a> <a id="2806" href="/learning/2018/02/10/learning-functions-in-type-theory/#2793" class="Bound">cₛ</a> <a id="2809" href="/learning/2018/02/10/learning-functions-in-type-theory/#2801" class="Bound">n</a> <a id="2811" class="Symbol">(</a><a id="2812" href="/learning/2018/02/10/learning-functions-in-type-theory/#2708" class="Function">recℕ</a> <a id="2817" href="/learning/2018/02/10/learning-functions-in-type-theory/#2788" class="Bound">C</a> <a id="2819" href="/learning/2018/02/10/learning-functions-in-type-theory/#2790" class="Bound">c₀</a> <a id="2822" href="/learning/2018/02/10/learning-functions-in-type-theory/#2793" class="Bound">cₛ</a> <a id="2825" href="/learning/2018/02/10/learning-functions-in-type-theory/#2801" class="Bound">n</a><a id="2826" class="Symbol">)</a>
+
+<a id="add₂"></a><a id="2829" href="/learning/2018/02/10/learning-functions-in-type-theory/#2829" class="Function">add₂</a> <a id="2834" class="Symbol">:</a> <a id="2836" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2838" class="Symbol">→</a> <a id="2840" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a> <a id="2842" class="Symbol">→</a> <a id="2844" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a>
+<a id="2846" href="/learning/2018/02/10/learning-functions-in-type-theory/#2829" class="Function">add₂</a> <a id="2851" href="/learning/2018/02/10/learning-functions-in-type-theory/#2605" class="InductiveConstructor">zero</a>    <a id="2859" href="/learning/2018/02/10/learning-functions-in-type-theory/#2859" class="Bound">m</a> <a id="2861" class="Symbol">=</a> <a id="2863" href="/learning/2018/02/10/learning-functions-in-type-theory/#2859" class="Bound">m</a>
+<a id="2865" href="/learning/2018/02/10/learning-functions-in-type-theory/#2829" class="Function">add₂</a> <a id="2870" class="Symbol">(</a><a id="2871" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a> <a id="2875" href="/learning/2018/02/10/learning-functions-in-type-theory/#2875" class="Bound">n</a><a id="2876" class="Symbol">)</a> <a id="2878" href="/learning/2018/02/10/learning-functions-in-type-theory/#2878" class="Bound">m</a> <a id="2880" class="Symbol">=</a> <a id="2882" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a> <a id="2886" class="Symbol">(</a><a id="2887" href="/learning/2018/02/10/learning-functions-in-type-theory/#2829" class="Function">add₂</a> <a id="2892" href="/learning/2018/02/10/learning-functions-in-type-theory/#2875" class="Bound">n</a> <a id="2894" href="/learning/2018/02/10/learning-functions-in-type-theory/#2878" class="Bound">m</a><a id="2895" class="Symbol">)</a>
+
+<a id="_+_"></a><a id="2898" href="/learning/2018/02/10/learning-functions-in-type-theory/#2898" class="Function Operator">_+_</a> <a id="2902" class="Symbol">=</a> <a id="2904" href="/learning/2018/02/10/learning-functions-in-type-theory/#2629" class="Function">add</a>
+<a id="2908" class="Keyword">infix</a> <a id="2914" class="Number">6</a> <a id="2916" href="/learning/2018/02/10/learning-functions-in-type-theory/#2898" class="Function Operator">_+_</a></pre>
+
+<p>By function extensionality axiom :</p>
+
+<pre class="Agda"><a id="add≡add₂"></a><a id="2981" href="/learning/2018/02/10/learning-functions-in-type-theory/#2981" class="Function">add≡add₂</a> <a id="2990" class="Symbol">:</a> <a id="2992" href="/learning/2018/02/10/learning-functions-in-type-theory/#2629" class="Function">add</a> <a id="2996" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="2998" href="/learning/2018/02/10/learning-functions-in-type-theory/#2829" class="Function">add₂</a>
+<a id="3003" href="/learning/2018/02/10/learning-functions-in-type-theory/#2981" class="Function">add≡add₂</a> <a id="3012" class="Symbol">=</a> <a id="3014" href="/learning/2018/02/10/learning-functions-in-type-theory/#2156" class="Postulate">FunExt</a> <a id="3021" class="Symbol">(λ</a> <a id="3024" href="/learning/2018/02/10/learning-functions-in-type-theory/#3024" class="Bound">n</a> <a id="3026" class="Symbol">→</a> <a id="3028" href="/learning/2018/02/10/learning-functions-in-type-theory/#2156" class="Postulate">FunExt</a> <a id="3035" class="Symbol">λ</a> <a id="3037" href="/learning/2018/02/10/learning-functions-in-type-theory/#3037" class="Bound">m</a> <a id="3039" class="Symbol">→</a> <a id="3041" href="/learning/2018/02/10/learning-functions-in-type-theory/#3138" class="Function">helper</a> <a id="3048" href="/learning/2018/02/10/learning-functions-in-type-theory/#3024" class="Bound">n</a> <a id="3050" href="/learning/2018/02/10/learning-functions-in-type-theory/#3037" class="Bound">m</a><a id="3051" class="Symbol">)</a>
+  <a id="3055" class="Keyword">where</a>
+    <a id="3065" href="/learning/2018/02/10/learning-functions-in-type-theory/#3065" class="Function">+-cong</a> <a id="3072" class="Symbol">:</a> <a id="3074" class="Symbol">∀</a> <a id="3076" class="Symbol">{</a><a id="3077" href="/learning/2018/02/10/learning-functions-in-type-theory/#3077" class="Bound">n</a> <a id="3079" href="/learning/2018/02/10/learning-functions-in-type-theory/#3079" class="Bound">m</a> <a id="3081" class="Symbol">:</a> <a id="3083" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a><a id="3084" class="Symbol">}</a> <a id="3086" class="Symbol">→</a> <a id="3088" href="/learning/2018/02/10/learning-functions-in-type-theory/#3077" class="Bound">n</a> <a id="3090" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3092" href="/learning/2018/02/10/learning-functions-in-type-theory/#3079" class="Bound">m</a> <a id="3094" class="Symbol">→</a> <a id="3096" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a> <a id="3100" href="/learning/2018/02/10/learning-functions-in-type-theory/#3077" class="Bound">n</a> <a id="3102" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3104" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a> <a id="3108" href="/learning/2018/02/10/learning-functions-in-type-theory/#3079" class="Bound">m</a>
+    <a id="3114" href="/learning/2018/02/10/learning-functions-in-type-theory/#3065" class="Function">+-cong</a> <a id="3121" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="3126" class="Symbol">=</a> <a id="3128" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>
+
+    <a id="3138" href="/learning/2018/02/10/learning-functions-in-type-theory/#3138" class="Function">helper</a> <a id="3145" class="Symbol">:</a> <a id="3147" class="Symbol">(</a><a id="3148" href="/learning/2018/02/10/learning-functions-in-type-theory/#3148" class="Bound">n</a> <a id="3150" href="/learning/2018/02/10/learning-functions-in-type-theory/#3150" class="Bound">m</a> <a id="3152" class="Symbol">:</a> <a id="3154" href="/learning/2018/02/10/learning-functions-in-type-theory/#2592" class="Datatype">ℕ</a><a id="3155" class="Symbol">)</a> <a id="3157" class="Symbol">→</a> <a id="3159" href="/learning/2018/02/10/learning-functions-in-type-theory/#2629" class="Function">add</a> <a id="3163" href="/learning/2018/02/10/learning-functions-in-type-theory/#3148" class="Bound">n</a> <a id="3165" href="/learning/2018/02/10/learning-functions-in-type-theory/#3150" class="Bound">m</a> <a id="3167" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3169" href="/learning/2018/02/10/learning-functions-in-type-theory/#2829" class="Function">add₂</a> <a id="3174" href="/learning/2018/02/10/learning-functions-in-type-theory/#3148" class="Bound">n</a> <a id="3176" href="/learning/2018/02/10/learning-functions-in-type-theory/#3150" class="Bound">m</a>
+    <a id="3182" href="/learning/2018/02/10/learning-functions-in-type-theory/#3138" class="Function">helper</a> <a id="3189" href="/learning/2018/02/10/learning-functions-in-type-theory/#2605" class="InductiveConstructor">zero</a>    <a id="3197" href="/learning/2018/02/10/learning-functions-in-type-theory/#3197" class="Bound">m</a> <a id="3199" class="Symbol">=</a> <a id="3201" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a>
+    <a id="3210" href="/learning/2018/02/10/learning-functions-in-type-theory/#3138" class="Function">helper</a> <a id="3217" class="Symbol">(</a><a id="3218" href="/learning/2018/02/10/learning-functions-in-type-theory/#2615" class="InductiveConstructor">suc</a> <a id="3222" href="/learning/2018/02/10/learning-functions-in-type-theory/#3222" class="Bound">n</a><a id="3223" class="Symbol">)</a> <a id="3225" href="/learning/2018/02/10/learning-functions-in-type-theory/#3225" class="Bound">m</a> <a id="3227" class="Symbol">=</a> <a id="3229" href="/learning/2018/02/10/learning-functions-in-type-theory/#3065" class="Function">+-cong</a> <a id="3236" class="Symbol">(</a><a id="3237" href="/learning/2018/02/10/learning-functions-in-type-theory/#3138" class="Function">helper</a> <a id="3244" href="/learning/2018/02/10/learning-functions-in-type-theory/#3222" class="Bound">n</a> <a id="3246" href="/learning/2018/02/10/learning-functions-in-type-theory/#3225" class="Bound">m</a><a id="3247" class="Symbol">)</a></pre>
+
+<hr />
+
+<ul>
+  <li>In <em>Agda standard library</em></li>
+</ul>
+
+<p>In the the library <code>stdlib</code>, there is a section for <a href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#4385">function
+extensionality</a> showed in the following excerpts.</p>
+
+<p>Some imports:</p>
+
+<pre class="Agda"><a id="3596" class="Keyword">open</a> <a id="3601" class="Keyword">import</a> <a id="3608" href="https://agda.github.io/agda-stdlib/Level.html" class="Module">Level</a>
+<a id="3614" class="Keyword">open</a> <a id="3619" class="Keyword">import</a> <a id="3626" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html" class="Module">Relation.Binary.PropositionalEquality</a> <a id="3664" class="Keyword">using</a> <a id="3670" class="Symbol">(</a><a id="3671" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075" class="Function">cong</a><a id="3675" class="Symbol">)</a>
+<a id="3677" class="Keyword">open</a> <a id="3682" class="Keyword">import</a> <a id="3689" href="https://agda.github.io/agda-stdlib/Function.html" class="Module">Function</a> <a id="3698" class="Keyword">using</a> <a id="3704" class="Symbol">(</a><a id="3705" href="https://agda.github.io/agda-stdlib/Function.html#759" class="Function Operator">_∘_</a><a id="3708" class="Symbol">;</a> <a id="3710" href="https://agda.github.io/agda-stdlib/Function.html#1881" class="Function Operator">_$_</a><a id="3713" class="Symbol">)</a></pre>
+
+<pre class="Agda"><a id="Extensionality"></a><a id="3740" href="/learning/2018/02/10/learning-functions-in-type-theory/#3740" class="Function">Extensionality</a> <a id="3755" class="Symbol">:</a> <a id="3757" class="Symbol">(</a><a id="3758" href="/learning/2018/02/10/learning-functions-in-type-theory/#3758" class="Bound">a</a> <a id="3760" href="/learning/2018/02/10/learning-functions-in-type-theory/#3760" class="Bound">b</a> <a id="3762" class="Symbol">:</a> <a id="3764" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#408" class="Postulate">Level</a><a id="3769" class="Symbol">)</a> <a id="3771" class="Symbol">→</a> <a id="3773" class="PrimitiveType">Set</a> <a id="3777" class="Symbol">_</a>
+<a id="3779" href="/learning/2018/02/10/learning-functions-in-type-theory/#3740" class="Function">Extensionality</a> <a id="3794" href="/learning/2018/02/10/learning-functions-in-type-theory/#3794" class="Bound">a</a> <a id="3796" href="/learning/2018/02/10/learning-functions-in-type-theory/#3796" class="Bound">b</a> <a id="3798" class="Symbol">=</a>
+  <a id="3802" class="Symbol">{</a><a id="3803" href="/learning/2018/02/10/learning-functions-in-type-theory/#3803" class="Bound">A</a> <a id="3805" class="Symbol">:</a> <a id="3807" class="PrimitiveType">Set</a> <a id="3811" href="/learning/2018/02/10/learning-functions-in-type-theory/#3794" class="Bound">a</a><a id="3812" class="Symbol">}</a> <a id="3814" class="Symbol">{</a><a id="3815" href="/learning/2018/02/10/learning-functions-in-type-theory/#3815" class="Bound">B</a> <a id="3817" class="Symbol">:</a> <a id="3819" href="/learning/2018/02/10/learning-functions-in-type-theory/#3803" class="Bound">A</a> <a id="3821" class="Symbol">→</a> <a id="3823" class="PrimitiveType">Set</a> <a id="3827" href="/learning/2018/02/10/learning-functions-in-type-theory/#3796" class="Bound">b</a><a id="3828" class="Symbol">}</a> <a id="3830" class="Symbol">{</a><a id="3831" href="/learning/2018/02/10/learning-functions-in-type-theory/#3831" class="Bound">f</a> <a id="3833" href="/learning/2018/02/10/learning-functions-in-type-theory/#3833" class="Bound">g</a> <a id="3835" class="Symbol">:</a> <a id="3837" class="Symbol">(</a><a id="3838" href="/learning/2018/02/10/learning-functions-in-type-theory/#3838" class="Bound">x</a> <a id="3840" class="Symbol">:</a> <a id="3842" href="/learning/2018/02/10/learning-functions-in-type-theory/#3803" class="Bound">A</a><a id="3843" class="Symbol">)</a> <a id="3845" class="Symbol">→</a> <a id="3847" href="/learning/2018/02/10/learning-functions-in-type-theory/#3815" class="Bound">B</a> <a id="3849" href="/learning/2018/02/10/learning-functions-in-type-theory/#3838" class="Bound">x</a><a id="3850" class="Symbol">}</a> <a id="3852" class="Symbol">→</a>
+  <a id="3856" class="Symbol">(∀</a> <a id="3859" href="/learning/2018/02/10/learning-functions-in-type-theory/#3859" class="Bound">x</a> <a id="3861" class="Symbol">→</a> <a id="3863" href="/learning/2018/02/10/learning-functions-in-type-theory/#3831" class="Bound">f</a> <a id="3865" href="/learning/2018/02/10/learning-functions-in-type-theory/#3859" class="Bound">x</a> <a id="3867" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3869" href="/learning/2018/02/10/learning-functions-in-type-theory/#3833" class="Bound">g</a> <a id="3871" href="/learning/2018/02/10/learning-functions-in-type-theory/#3859" class="Bound">x</a><a id="3872" class="Symbol">)</a> <a id="3874" class="Symbol">→</a> <a id="3876" href="/learning/2018/02/10/learning-functions-in-type-theory/#3831" class="Bound">f</a> <a id="3878" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="3880" href="/learning/2018/02/10/learning-functions-in-type-theory/#3833" class="Bound">g</a></pre>
+
+<p>If extensionality holds for a given universe level, then it also
+holds for lower ones.</p>
+
+<pre class="Agda"><a id="extensionality-for-lower-levels"></a><a id="3995" href="/learning/2018/02/10/learning-functions-in-type-theory/#3995" class="Function">extensionality-for-lower-levels</a>
+  <a id="4029" class="Symbol">:</a> <a id="4031" class="Symbol">∀</a> <a id="4033" class="Symbol">{</a><a id="4034" href="/learning/2018/02/10/learning-functions-in-type-theory/#4034" class="Bound">a₁</a> <a id="4037" href="/learning/2018/02/10/learning-functions-in-type-theory/#4037" class="Bound">b₁</a><a id="4039" class="Symbol">}</a> <a id="4041" href="/learning/2018/02/10/learning-functions-in-type-theory/#4041" class="Bound">a₂</a> <a id="4044" href="/learning/2018/02/10/learning-functions-in-type-theory/#4044" class="Bound">b₂</a>
+  <a id="4049" class="Symbol">→</a> <a id="4051" href="/learning/2018/02/10/learning-functions-in-type-theory/#3740" class="Function">Extensionality</a> <a id="4066" class="Symbol">(</a><a id="4067" href="/learning/2018/02/10/learning-functions-in-type-theory/#4034" class="Bound">a₁</a> <a id="4070" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#657" class="Primitive Operator">⊔</a> <a id="4072" href="/learning/2018/02/10/learning-functions-in-type-theory/#4041" class="Bound">a₂</a><a id="4074" class="Symbol">)</a> <a id="4076" class="Symbol">(</a><a id="4077" href="/learning/2018/02/10/learning-functions-in-type-theory/#4037" class="Bound">b₁</a> <a id="4080" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#657" class="Primitive Operator">⊔</a> <a id="4082" href="/learning/2018/02/10/learning-functions-in-type-theory/#4044" class="Bound">b₂</a><a id="4084" class="Symbol">)</a>
+  <a id="4088" class="Symbol">→</a> <a id="4090" href="/learning/2018/02/10/learning-functions-in-type-theory/#3740" class="Function">Extensionality</a> <a id="4105" href="/learning/2018/02/10/learning-functions-in-type-theory/#4034" class="Bound">a₁</a> <a id="4108" href="/learning/2018/02/10/learning-functions-in-type-theory/#4037" class="Bound">b₁</a>
+
+<a id="4112" href="/learning/2018/02/10/learning-functions-in-type-theory/#3995" class="Function">extensionality-for-lower-levels</a> <a id="4144" href="/learning/2018/02/10/learning-functions-in-type-theory/#4144" class="Bound">a₂</a> <a id="4147" href="/learning/2018/02/10/learning-functions-in-type-theory/#4147" class="Bound">b₂</a> <a id="4150" href="/learning/2018/02/10/learning-functions-in-type-theory/#4150" class="Bound">ext</a> <a id="4154" href="/learning/2018/02/10/learning-functions-in-type-theory/#4154" class="Bound">f≡g</a> <a id="4158" class="Symbol">=</a>
+  <a id="4162" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075" class="Function">cong</a> <a id="4167" class="Symbol">(λ</a> <a id="4170" href="/learning/2018/02/10/learning-functions-in-type-theory/#4170" class="Bound">h</a> <a id="4172" class="Symbol">→</a> <a id="4174" href="https://agda.github.io/agda-stdlib/Level.html#420" class="Field">lower</a> <a id="4180" href="https://agda.github.io/agda-stdlib/Function.html#759" class="Function Operator">∘</a> <a id="4182" href="/learning/2018/02/10/learning-functions-in-type-theory/#4170" class="Bound">h</a> <a id="4184" href="https://agda.github.io/agda-stdlib/Function.html#759" class="Function Operator">∘</a> <a id="4186" href="https://agda.github.io/agda-stdlib/Level.html#407" class="InductiveConstructor">lift</a><a id="4190" class="Symbol">)</a> <a id="4192" href="https://agda.github.io/agda-stdlib/Function.html#1881" class="Function Operator">$</a>
+    <a id="4198" href="/learning/2018/02/10/learning-functions-in-type-theory/#4150" class="Bound">ext</a> <a id="4202" class="Symbol">(</a><a id="4203" href="https://agda.github.io/agda-stdlib/Relation.Binary.PropositionalEquality.html#1075" class="Function">cong</a> <a id="4208" class="Symbol">(</a><a id="4209" href="https://agda.github.io/agda-stdlib/Level.html#407" class="InductiveConstructor">lift</a> <a id="4214" class="Symbol">{</a><a id="4215" class="Argument">ℓ</a> <a id="4217" class="Symbol">=</a> <a id="4219" href="/learning/2018/02/10/learning-functions-in-type-theory/#4147" class="Bound">b₂</a><a id="4221" class="Symbol">})</a> <a id="4224" href="https://agda.github.io/agda-stdlib/Function.html#759" class="Function Operator">∘</a> <a id="4226" href="/learning/2018/02/10/learning-functions-in-type-theory/#4154" class="Bound">f≡g</a> <a id="4230" href="https://agda.github.io/agda-stdlib/Function.html#759" class="Function Operator">∘</a> <a id="4232" href="https://agda.github.io/agda-stdlib/Level.html#420" class="Field">lower</a> <a id="4238" class="Symbol">{</a><a id="4239" class="Argument">ℓ</a> <a id="4241" class="Symbol">=</a> <a id="4243" href="/learning/2018/02/10/learning-functions-in-type-theory/#4144" class="Bound">a₂</a><a id="4245" class="Symbol">})</a></pre>
+
+<p>Functional extensionality implies a form of extensionality for
+Π-types.</p>
+
+<pre class="Agda"><a id="∀-extensionality"></a><a id="4346" href="/learning/2018/02/10/learning-functions-in-type-theory/#4346" class="Function">∀-extensionality</a>
+  <a id="4365" class="Symbol">:</a> <a id="4367" class="Symbol">∀</a> <a id="4369" class="Symbol">{</a><a id="4370" href="/learning/2018/02/10/learning-functions-in-type-theory/#4370" class="Bound">a</a> <a id="4372" href="/learning/2018/02/10/learning-functions-in-type-theory/#4372" class="Bound">b</a><a id="4373" class="Symbol">}</a>
+  <a id="4377" class="Symbol">→</a> <a id="4379" href="/learning/2018/02/10/learning-functions-in-type-theory/#3740" class="Function">Extensionality</a> <a id="4394" href="/learning/2018/02/10/learning-functions-in-type-theory/#4370" class="Bound">a</a> <a id="4396" class="Symbol">(</a><a id="4397" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#627" class="Primitive">Level.suc</a> <a id="4407" href="/learning/2018/02/10/learning-functions-in-type-theory/#4372" class="Bound">b</a><a id="4408" class="Symbol">)</a>
+  <a id="4412" class="Symbol">→</a> <a id="4414" class="Symbol">{</a><a id="4415" href="/learning/2018/02/10/learning-functions-in-type-theory/#4415" class="Bound">A</a> <a id="4417" class="Symbol">:</a> <a id="4419" class="PrimitiveType">Set</a> <a id="4423" href="/learning/2018/02/10/learning-functions-in-type-theory/#4370" class="Bound">a</a><a id="4424" class="Symbol">}</a> <a id="4426" class="Symbol">(</a><a id="4427" href="/learning/2018/02/10/learning-functions-in-type-theory/#4427" class="Bound">B₁</a> <a id="4430" href="/learning/2018/02/10/learning-functions-in-type-theory/#4430" class="Bound">B₂</a> <a id="4433" class="Symbol">:</a> <a id="4435" href="/learning/2018/02/10/learning-functions-in-type-theory/#4415" class="Bound">A</a> <a id="4437" class="Symbol">→</a> <a id="4439" class="PrimitiveType">Set</a> <a id="4443" href="/learning/2018/02/10/learning-functions-in-type-theory/#4372" class="Bound">b</a><a id="4444" class="Symbol">)</a>
+  <a id="4448" class="Symbol">→</a> <a id="4450" class="Symbol">(∀</a> <a id="4453" href="/learning/2018/02/10/learning-functions-in-type-theory/#4453" class="Bound">x</a> <a id="4455" class="Symbol">→</a> <a id="4457" href="/learning/2018/02/10/learning-functions-in-type-theory/#4427" class="Bound">B₁</a> <a id="4460" href="/learning/2018/02/10/learning-functions-in-type-theory/#4453" class="Bound">x</a> <a id="4462" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4464" href="/learning/2018/02/10/learning-functions-in-type-theory/#4430" class="Bound">B₂</a> <a id="4467" href="/learning/2018/02/10/learning-functions-in-type-theory/#4453" class="Bound">x</a><a id="4468" class="Symbol">)</a> <a id="4470" class="Symbol">→</a> <a id="4472" class="Symbol">(∀</a> <a id="4475" href="/learning/2018/02/10/learning-functions-in-type-theory/#4475" class="Bound">x</a> <a id="4477" class="Symbol">→</a> <a id="4479" href="/learning/2018/02/10/learning-functions-in-type-theory/#4427" class="Bound">B₁</a> <a id="4482" href="/learning/2018/02/10/learning-functions-in-type-theory/#4475" class="Bound">x</a><a id="4483" class="Symbol">)</a> <a id="4485" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#83" class="Datatype Operator">≡</a> <a id="4487" class="Symbol">(∀</a> <a id="4490" href="/learning/2018/02/10/learning-functions-in-type-theory/#4490" class="Bound">x</a> <a id="4492" class="Symbol">→</a> <a id="4494" href="/learning/2018/02/10/learning-functions-in-type-theory/#4430" class="Bound">B₂</a> <a id="4497" href="/learning/2018/02/10/learning-functions-in-type-theory/#4490" class="Bound">x</a><a id="4498" class="Symbol">)</a>
+
+<a id="4501" href="/learning/2018/02/10/learning-functions-in-type-theory/#4346" class="Function">∀-extensionality</a> <a id="4518" href="/learning/2018/02/10/learning-functions-in-type-theory/#4518" class="Bound">ext</a> <a id="4522" href="/learning/2018/02/10/learning-functions-in-type-theory/#4522" class="Bound">B₁</a> <a id="4525" href="/learning/2018/02/10/learning-functions-in-type-theory/#4525" class="Bound">B₂</a> <a id="4528" href="/learning/2018/02/10/learning-functions-in-type-theory/#4528" class="Bound">B₁≡B₂</a> <a id="4534" class="Keyword">with</a> <a id="4539" href="/learning/2018/02/10/learning-functions-in-type-theory/#4518" class="Bound">ext</a> <a id="4543" href="/learning/2018/02/10/learning-functions-in-type-theory/#4528" class="Bound">B₁≡B₂</a>
+<a id="4549" href="/learning/2018/02/10/learning-functions-in-type-theory/#4346" class="Function">∀-extensionality</a> <a id="4566" href="/learning/2018/02/10/learning-functions-in-type-theory/#4566" class="Bound">ext</a> <a id="4570" href="/learning/2018/02/10/learning-functions-in-type-theory/#4570" class="Bound">B</a> <a id="4572" class="DottedPattern Symbol">.</a><a id="4573" href="/learning/2018/02/10/learning-functions-in-type-theory/#4570" class="DottedPattern Bound">B</a>  <a id="4576" href="/learning/2018/02/10/learning-functions-in-type-theory/#4576" class="Bound">B₁≡B₂</a> <a id="4582" class="Symbol">|</a> <a id="4584" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a> <a id="4589" class="Symbol">=</a> <a id="4591" href="https://agda.github.io/agda-stdlib/Agda.Builtin.Equality.html#140" class="InductiveConstructor">refl</a></pre>
+
+
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+
+
+  
+
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+<script src="/assets/jquery.min.js"></script>
+
+
+
+
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
+<script type="text/javascript">
+ $("script[type='math/tex']").replaceWith(
+     function(){
+         var tex = $(this).text();
+         return "&zwnj;$$" + tex + "$$&zwnj;";
+     });
+ $("script[type='math/tex; mode=display']").replaceWith(
+     function(){
+         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
+     });
+</script>
+
+
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+
+<!-- FOLDABLE  -->
+<script type="text/javascript">
+var newHeight;
+
+ $('pre.foldable').each(function(){
+     var autoHeight = $(this).height();
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+
+     // The line stars at 1 line
+     var until = parseFloat($(this).attr('until'));
+     if ( until == 0){
+       $(this).hide();
+     }
+     else{
+       newHeight = (parseFloat($(this).attr('until')) - 1 ) * lineHeight;
+
+       if ( newHeight < lineHeight || isNaN(newHeight) ){
+         newHeight = lineHeight;
+       }
+       console.log( "Until> ", newHeight);
+
+       $(this).height(newHeight);
+       $(this).css('overflow','hidden');
+
+       console.log('height:', $(this).height());
+       console.log('autoHeight:', autoHeight);
+       console.log('newHeight:', newHeight);
+
+       $(this).click(function(){
+        console.log("entro");
+        lastClick = $(this);
+        console.log('?height:', $(this).height());
+        console.log('height:', $(this).height());
+        console.log('autoHeight:', autoHeight);
+        console.log('newHeight:', newHeight);
+        console.log('\n');
+
+         if ($(this).height() >= autoHeight) {
+           $(this).height(newHeight);
+           plus.show();
+         }
+         else{
+           $(this).height('auto');
+           plus.hide();
+         }
+       });
+     }
+ });
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+  if ( $('div').hasClass('cited-references') ){
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
+    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
+  }
+</script>
+
+
+
+
+
+    <script>
+      (function(document) {
+        var toggle   = document.querySelector('.sidebar-toggle');
+        var sidebar  = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+
+    
+  </body>
+</html>
