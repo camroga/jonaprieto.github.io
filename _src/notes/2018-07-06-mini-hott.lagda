@@ -28,9 +28,7 @@ Please check out the references at the end of this article.
 
 \begin{code}
 {-# OPTIONS --without-K #-}
-\end{code}
 
-\begin{code}
 open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ ) public
 
 Type : (ℓ : Level) → Set (lsuc ℓ)
@@ -300,6 +298,13 @@ uncurry f (x , y) = f x y
 
 ## Equality type
 
+In HoTT, we have a different interpretation of type theory in which the
+set-theoretical notion of *sets* for *types* is replaced by the topological notion
+of *spaces*. A type judgment like `x : A` means that the point `x`‌‌ is *in* the topological
+space `A`‌‌. Furthermore, we include the *Identity type* as a primary type.
+The inhabitants of an these identity types will not be longer interpreted as
+*proofs of equalities* but as *paths* in a Path space, an Identity type.
+
 ### Homogeneous equality
 
 The Identity type is defined as an inductive type. Its induction principle is
@@ -327,6 +332,10 @@ refl {ℓᵢ}{A} a = idp {ℓᵢ = ℓᵢ}{A = A}
 \end{code}
 
 #### J eliminator
+
+The elimination principle for the identity type is the path induction. It allows
+us to define an outgoing function from the identity type to a dependent type ‌‌
+as we see in the `J` definition below.
 
 *Paulin-Mohring J rule*
 
@@ -3312,7 +3321,6 @@ module FundGroupCircle where
   preserves-composition : ∀ n m → loops (n +ᶻ m) == loops n · loops m
   preserves-composition n m = z-act+ (Ω-st S¹ base) n m loop
 \end{code}
-
 
 ## Agda references
 

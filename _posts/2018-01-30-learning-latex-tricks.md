@@ -2,7 +2,7 @@
 layout: "post"
 title: "Latex tricks"
 date: "2018-01-30"
-categories: tools
+categories: learning
 linkify: true
 ---
 

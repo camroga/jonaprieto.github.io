@@ -2,7 +2,7 @@
 layout: "post"
 title: "Type theories"
 date: "2018-02-09"
-categories: type-theory
+categories: learning
 latex: true
 references: true
 agda: true

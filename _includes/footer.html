@@ -135,10 +135,8 @@ $('.algolia-modified a').map(
 {% if page.references %}
 <script type="text/javascript">
   if ( $('div').hasClass('cited-references') ){
-    if ( $('div').hasClass('references') ){
-      $('.cite-references').append( $('.references').html() );
-      $('.references').hide();
-    }
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
     $(".cited-references").prepend("<h2 id='refs'>References</h2>");
     $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
   }

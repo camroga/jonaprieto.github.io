@@ -6,7 +6,7 @@ categories: learning
 published: true
 latex: true
 references: true
-agda: true
+gallery: true
 ---
 
 - resolution

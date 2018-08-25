@@ -45,7 +45,7 @@ open import 2018-07-06-mini-hott
 module _ where
 \end{code}
 
-##  S¹ type
+##  `S¹` type
 
 The circle is the higher inductive type with one point and one no trivial path
 called *path* as we can see in the following picture.
@@ -179,7 +179,7 @@ module _ where
     p₁₀ : pS₁ == pS₀
 \end{code}
 
-### Recursion
+### Recursion principle
 
 Recursion principle on points:
 
@@ -265,7 +265,7 @@ Induction principle on paths:
 \end{code}
 
 
-## S¹ ≃ pS
+## `S¹ ≃ pS`
 
 **Lemma 1** . $$ \mathsf{S}^{1} \simeq \mathsf{pS}. $$
 
@@ -293,14 +293,13 @@ module Lemma₁ where
     g = pS-rec S¹ base base (loop ²) (loop ⁻¹)
 \end{code}
 
-####  f ∘ g ~ id
+####  `f ∘ g ~ id`
 
 To prove the homotopy $$ f ∘ g \sim \mathsf{id}$$,
 we prove for the pS₁ case and the case for paths.
 
-- Case on pS₁:
+- Case on `pS₁`:
 
-{: .foldable until="2" }
 \begin{code}
   -- Def.
   q₁ : f (g pS₁) == pS₁
@@ -490,7 +489,7 @@ Action on paths of pairs appears as Lemma 6.12.7 in {% cite hottbook %}.
 Let's define out context for this lemma:
 
 \begin{code}
-module  Lemma₂ {ℓ}
+module Lemma₂ {ℓ}
   {A : Type ℓ}
   (C : A → Type ℓ)
   {Z : Type ℓ}
@@ -505,7 +504,7 @@ And this lemma says:
 
 \begin{code}
   -- Lemma.
-  ap-f=pair=
+  ap-f-pair=
     : {a₁ a₂ : A}
     → (α : a₁ == a₂)
     → (c₁ : C a₁) (c₂ : C a₂)
@@ -535,7 +534,8 @@ And this lemma says:
         f (a₂ , c₂)
       ∎)
 
-  ap-f=pair= idp c₁ .c₁ idp = idp
+  ap-f-pair= idp c₁ .c₁ idp = idp
+open Lemma₂
 \end{code}
 
 ##  Σ S¹ P ≃ pS
@@ -617,6 +617,7 @@ aux-lemma₁ x =
 
 ### f : Σ S¹ P → pS
 
+{: .foldable until="11" }
 \begin{code}
 f :  Σ S¹ P → pS
 f (b , x) = f̰ b x
@@ -681,10 +682,96 @@ g = -- 0   ↦ (base, 0)
 \end{code}
 
 \begin{code}
+ct : P base → pS
+ct true  = pS₁
+ct false = pS₀
+
+ctp : P base → Σ S¹ P
+ctp b = base , b
+
+ptp : (y : P base) → ctp y == ctp (neg y)
+ptp true  = pair= (loop , γ₁₀)
+ptp false = pair= (loop , γ₀₁)
+
+c : (b : P base) → (g ∘ f) (base , b) == id (base , b)
+c true  = refl (base , true)
+c false = refl (base , false)
+
+Q : (s : S¹) → Type _
+Q = (λ z → (b : P z) → (g ∘ f) (z , b) == id (z , b))
+
 -- Missing lemmas.
 postulate
   lemma-ap-f-γ₀₁ : ap f (pair= (loop , γ₀₁)) == p₀₁
-  lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₁₀
+
+d : (a : S¹) → (c : P a) → pS
+d a c = f (a , c)
+
+module L2 = Lemma₂ {_} {S¹} P {pS} d
+
+lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₁₀
+lemma-ap-f-γ₁₀ =
+  begin
+    ap f (pair= (loop , γ₁₀))
+      ==⟨ {!   !} ⟩ -- L2.ap-f-pair= loop true false γ₁₀ ⟩
+    ap {! c !} (ptp true)
+      ==⟨ {!   !} ⟩
+    {!   !}
+      ==⟨ {!   !} ⟩
+    {!   !}
+      ==⟨ {!   !} ⟩
+    p₁₀
+  ∎
+
+
+p : (b : P base) → tr (λ w → (g ∘ f) w == id w) (ptp b) (c b) == c (neg b)
+p true  =
+  begin
+    tr (λ w → (g ∘ f) w == id w) (ptp true) (c true)
+      ==⟨ idp ⟩
+    tr (λ w → (g ∘ f) w == id w) (pair= (loop , γ₁₀)) idp
+      ==⟨ transport-eq-fun (g ∘ f) id (pair= (loop , γ₁₀)) idp ⟩
+    ! ap (g ∘ f) (pair= (loop , γ₁₀)) · idp · ap id (pair= (loop , γ₁₀))
+      ==⟨ ap (λ r → ! (ap (g ∘ f) (pair= (loop , γ₁₀))) · idp · r) (ap-id (pair= (loop , γ₁₀))) ⟩
+    ! ap (g ∘ f) (pair= (loop , γ₁₀)) · idp · (pair= (loop , γ₁₀))
+      ==⟨ ap (λ r → r · pair= (loop , γ₁₀)) (! (·-runit (! ap (g ∘ f) (pair= (loop , γ₁₀))))) ⟩
+    ! ap (g ∘ f) (pair= (loop , γ₁₀)) · (pair= (loop , γ₁₀))
+      ==⟨ ap (λ r → ! r · pair= (loop , γ₁₀)) (! ap-comp f g (pair= (loop , γ₁₀))) ⟩
+    ! ap g (ap f (pair= (loop , γ₁₀))) · (pair= (loop , γ₁₀))
+      ==⟨ ap (λ r → ! ap g r · pair= (loop , γ₁₀)) lemma-ap-f-γ₁₀ ⟩
+    ! ap g p₁₀ · (pair= (loop , γ₁₀))
+      ==⟨ ap (λ r → ! r · pair= (loop , γ₁₀)) (pS-βrec₁₀ (Σ S¹ P) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
+    ! g-p₁₀ · (pair= (loop , γ₁₀))
+      ==⟨ idp ⟩
+    ! (pair= (loop , γ₁₀)) · (pair= (loop , γ₁₀))
+      ==⟨ ·-linv (pair= (loop , γ₁₀)) ⟩
+    idp
+  ∎
+
+p false =
+  begin
+    tr (λ w → (g ∘ f) w == id w) (ptp false) (c false)
+      ==⟨ idp ⟩
+    tr (λ w → (g ∘ f) w == id w) (pair= (loop , γ₀₁)) idp
+      ==⟨ transport-eq-fun (g ∘ f) id (pair= (loop , γ₀₁)) idp ⟩
+    ! ap (g ∘ f) (pair= (loop , γ₀₁)) · idp · ap id (pair= (loop , γ₀₁))
+      ==⟨ ap (λ r → ! (ap (g ∘ f) (pair= (loop , γ₀₁))) · idp · r) (ap-id (pair= (loop , γ₀₁))) ⟩
+    ! ap (g ∘ f) (pair= (loop , γ₀₁)) · idp · (pair= (loop , γ₀₁))
+      ==⟨ ap (λ r → r · pair= (loop , γ₀₁)) (! (·-runit (! ap (g ∘ f) (pair= (loop , γ₀₁))))) ⟩
+    ! ap (g ∘ f) (pair= (loop , γ₀₁)) · (pair= (loop , γ₀₁))
+      ==⟨ ap (λ r → ! r · pair= (loop , γ₀₁)) (! ap-comp f g (pair= (loop , γ₀₁))) ⟩
+    ! ap g (ap f (pair= (loop , γ₀₁))) · (pair= (loop , γ₀₁))
+      ==⟨ ap (λ r → ! ap g r · pair= (loop , γ₀₁)) lemma-ap-f-γ₀₁ ⟩
+    ! ap g p₀₁ · (pair= (loop , γ₀₁))
+      ==⟨ ap (λ r → ! r · pair= (loop , γ₀₁)) (pS-βrec₀₁ (Σ S¹ P) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
+    ! g-p₀₁ · (pair= (loop , γ₀₁))
+      ==⟨ idp ⟩
+    ! (pair= (loop , γ₀₁)) · (pair= (loop , γ₀₁))
+      ==⟨ ·-linv (pair= (loop , γ₀₁)) ⟩
+    idp
+  ∎
+
+-- {! ap-f-pair= {A = S¹}(P){Z = P base} ? loop true false γ₁₀  !}
 \end{code}
 
 ### f ∘ g ∼ id
@@ -764,70 +851,7 @@ g-f (s , b) = g-f' s b
     g-f' : (s : S¹) → (b : P s) → (g ∘ f) (s , b) == id (s , b)
     g-f' = S¹-ind (λ s → (b : P s) → (g ∘ f) (s , b) == id (s , b)) c cpath
       where
-      ct : P base → pS
-      ct true  = pS₁
-      ct false = pS₀
 
-      ctp : P base → Σ S¹ P
-      ctp b = base , b
-
-      ptp : (y : P base) → ctp y == ctp (neg y)
-      ptp true  = pair= (loop , γ₁₀)
-      ptp false = pair= (loop , γ₀₁)
-
-      c : (b : P base) → (g ∘ f) (base , b) == id (base , b)
-      c true  = refl (base , true)
-      c false = refl (base , false)
-
-      p : (b : P base) → tr (λ w → (g ∘ f) w == id w) (ptp b) (c b) == c (neg b)
-      p true  =
-        begin
-          tr (λ w → (g ∘ f) w == id w) (ptp true) (c true)
-            ==⟨ idp ⟩
-          tr (λ w → (g ∘ f) w == id w) (pair= (loop , γ₁₀)) idp
-            ==⟨ transport-eq-fun (g ∘ f) id (pair= (loop , γ₁₀)) idp ⟩
-          ! ap (g ∘ f) (pair= (loop , γ₁₀)) · idp · ap id (pair= (loop , γ₁₀))
-            ==⟨ ap (λ r → ! (ap (g ∘ f) (pair= (loop , γ₁₀))) · idp · r) (ap-id (pair= (loop , γ₁₀))) ⟩
-          ! ap (g ∘ f) (pair= (loop , γ₁₀)) · idp · (pair= (loop , γ₁₀))
-            ==⟨ ap (λ r → r · pair= (loop , γ₁₀)) (! (·-runit (! ap (g ∘ f) (pair= (loop , γ₁₀))))) ⟩
-          ! ap (g ∘ f) (pair= (loop , γ₁₀)) · (pair= (loop , γ₁₀))
-            ==⟨ ap (λ r → ! r · pair= (loop , γ₁₀)) (! ap-comp f g (pair= (loop , γ₁₀))) ⟩
-          ! ap g (ap f (pair= (loop , γ₁₀))) · (pair= (loop , γ₁₀))
-            ==⟨ ap (λ r → ! ap g r · pair= (loop , γ₁₀)) lemma-ap-f-γ₁₀ ⟩
-          ! ap g p₁₀ · (pair= (loop , γ₁₀))
-            ==⟨ ap (λ r → ! r · pair= (loop , γ₁₀)) (pS-βrec₁₀ (Σ S¹ P) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
-          ! g-p₁₀ · (pair= (loop , γ₁₀))
-            ==⟨ idp ⟩
-          ! (pair= (loop , γ₁₀)) · (pair= (loop , γ₁₀))
-            ==⟨ ·-linv (pair= (loop , γ₁₀)) ⟩
-          idp
-        ∎
-
-      p false =
-        begin
-          tr (λ w → (g ∘ f) w == id w) (ptp false) (c false)
-            ==⟨ idp ⟩
-          tr (λ w → (g ∘ f) w == id w) (pair= (loop , γ₀₁)) idp
-            ==⟨ transport-eq-fun (g ∘ f) id (pair= (loop , γ₀₁)) idp ⟩
-          ! ap (g ∘ f) (pair= (loop , γ₀₁)) · idp · ap id (pair= (loop , γ₀₁))
-            ==⟨ ap (λ r → ! (ap (g ∘ f) (pair= (loop , γ₀₁))) · idp · r) (ap-id (pair= (loop , γ₀₁))) ⟩
-          ! ap (g ∘ f) (pair= (loop , γ₀₁)) · idp · (pair= (loop , γ₀₁))
-            ==⟨ ap (λ r → r · pair= (loop , γ₀₁)) (! (·-runit (! ap (g ∘ f) (pair= (loop , γ₀₁))))) ⟩
-          ! ap (g ∘ f) (pair= (loop , γ₀₁)) · (pair= (loop , γ₀₁))
-            ==⟨ ap (λ r → ! r · pair= (loop , γ₀₁)) (! ap-comp f g (pair= (loop , γ₀₁))) ⟩
-          ! ap g (ap f (pair= (loop , γ₀₁))) · (pair= (loop , γ₀₁))
-            ==⟨ ap (λ r → ! ap g r · pair= (loop , γ₀₁)) lemma-ap-f-γ₀₁ ⟩
-          ! ap g p₀₁ · (pair= (loop , γ₀₁))
-            ==⟨ ap (λ r → ! r · pair= (loop , γ₀₁)) (pS-βrec₀₁ (Σ S¹ P) (base , false) (base , true) g-p₀₁ g-p₁₀) ⟩
-          ! g-p₀₁ · (pair= (loop , γ₀₁))
-            ==⟨ idp ⟩
-          ! (pair= (loop , γ₀₁)) · (pair= (loop , γ₀₁))
-            ==⟨ ·-linv (pair= (loop , γ₀₁)) ⟩
-          idp
-        ∎
-
-      Q : (s : S¹) → Type _
-      Q = (λ z → (b : P z) → (g ∘ f) (z , b) == id (z , b))
 
       cpath : transport Q loop c == c
       cpath = funext-transport-dfun-r loop c c helper

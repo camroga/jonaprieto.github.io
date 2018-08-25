@@ -47,7 +47,3 @@ satisfies, $$y$$ satisfies as well.
 > The principle of identity of indiscernibles states that two objects
 are identical if they have all the same properties.
 This is also known as “Leibniz’s Law”... in [https://ncatlab.org/nlab/show/identity+of+indiscernibles](https://ncatlab.org/nlab/show/identity+of+indiscernibles)
-
-{: .references}
-
-  {% reference Abel2018 %}

@@ -61,9 +61,7 @@ This is my attempt to save some resources to learn category theory. Maybe could 
 
 - [x] [6.2: Functors in programming](https://www.youtube.com/watch?v=EO86S2EZssc) 2018-07-24
 - [x] [7.1: Functoriality, bifunctors](https://www.youtube.com/watch?v=pUQ0mmbIdxs) 2018-08-04
-- [x] [7.2: Monoidal Categories, Functoriality of ADTs, Profunctors](https://www.youtube.com/watch?v=wtIKd8AhJOc)2018-08-21
-
-  ![](/assets/png-images/2018-06-14-learning-category-theory-ce8cb077.png)
+- [x] [7.2: Monoidal Categories, Functoriality of ADTs, Profunctors](https://www.youtube.com/watch?v=wtIKd8AhJOc) 2018-08-21
 
   - We define the Unit as a terminal object (Review)
   - Is Unit, the unit in the monoid? Yes.

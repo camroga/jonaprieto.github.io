@@ -2,7 +2,7 @@
 title: "Function Type"
 layout: "post"
 date: "2018-02-10"
-categories: type-theory
+categories: learning
 latex: true
 references: true
 agda: true
