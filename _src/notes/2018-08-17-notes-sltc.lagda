@@ -1,6 +1,6 @@
 ---
 layout: "post"
-title: "Simple Typed Lambda Calculus"
+title: "Simple Typed Lambda Calculus In Agda"
 date: "2018-08-17"
 categories: type-theory
 toc: true
@@ -15,12 +15,12 @@ type-checking for this type system. We refactor the implementation by
 in particular the [Scopecheck](https://github.com/jonaprieto/stlctalk/blob/master/src/Scopecheck.agda)
 and [Typecheck](https://github.com/jonaprieto/stlctalk/blob/master/src/Typecheck.agda) module.
 
-The following source code tested with:
+The following source code was tested with:
 
 - Agda v2.5.4
 - Agda Standard Library v0.16
 
-The original content was firstly exposed at EAFIT in Seminar of Logic:
+The original content was firstly exposed in the seminar of logic at Universidad EAFIT.
 
   - [Slides](https://github.com/jonaprieto/stlctalk/raw/master/slides/slides.pdf).
   - Repository: [https://github.com/jonaprieto/stlctalk](https://github.com/jonaprieto/stlctalk).
@@ -119,13 +119,11 @@ Syntax using indexes.
   Binder : ℕ → Set
   Binder = Vec Name
 
-  infixl 5 _,_
   _,_ : ∀ {n} → Binder n → Name → Binder (suc n)
   Γ , x = x ∷ Γ
+  infixl 5 _,_
 
-  infixl 3 _⊢_⇝_
   data _⊢_⇝_ : ∀ {n} → Binder n → S.Expr → Expr n → Set where
-
     var-zero
       : ∀ {n x} {Γ : Binder n}
       ---------------------------
@@ -149,6 +147,7 @@ Syntax using indexes.
       → Γ ⊢ t₂ ⇝ t₂'
       -------------------------
       → Γ ⊢ t₁ ∙ t₂ ⇝ t₁' ∙ t₂'
+  infixl 3 _⊢_⇝_
 \end{code}
 
 #### Examples

@@ -1415,7 +1415,7 @@ syntax PathOver C α c₁ c₂ = c₁ == c₂ [ C ↓ α ]
 
 ## Total spaces
 
-### Theorem 1
+### Theorem
 
 Let be `A : Type`, a path `α : a₁ == a₂` of two terms `a₁, a₂ : A` and a type
 family `C : A → Type`. If `c₁ : C a₁` and `c₂ : C a₂` then the type of the
@@ -1429,8 +1429,7 @@ equivalence,
     \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
   $$
 
-<div class="proof">
-Proof.<br/>
+**Proof.**
 
 \begin{code}
 module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
@@ -1521,7 +1520,6 @@ Since the function `Σ-to-==[↓]` is quasi-inverse by definition using `==[↓]
         , H₂           -- homotopy: ==[↓]-to-Σ ∘ Σ-to-==[↓] ∼ id
         )
 \end{code}
-</div>
 
 In the remaining of this section, we prove some useful results
 about sigma types that allow us to give a shorter proof of the
@@ -1663,8 +1661,8 @@ If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 {: .equation}
   $$\Sigma_{(w\,:\,\Sigma\,A\,C)}\ \(\mathsf{\pi_{1}}~w = a\,\simeq\,C~a.$$
 
-<div class="proof">
-  Proof.<br/>
+
+**Proof.**
 
 \begin{code}
 module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
@@ -1720,7 +1718,6 @@ module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
 open Lemma₂ public
 \end{code}
 
-</div>
 
 ### Lemma 3
 
@@ -1730,8 +1727,7 @@ If we have $$ e :\Pi\,(a : A)~C\,a \simeq D~a$$ then
 {: .equation}
   $$\Sigma\,A\,C~\simeq~\Sigma\,A\,D.$$
 
-<div class="proof">
-Proof.<br/>
+Proof.
 
 \begin{code}
 module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
@@ -1767,7 +1763,6 @@ module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
 
 open Lemma₃ public
 \end{code}
-</div>
 
 ### Extra proof
 
@@ -1784,8 +1779,7 @@ where $$a₁, a₂ : A$$, $$c₁ : C~a₁$$, $$c₂ : C~a₂$$ and $$\alpha : a�
 Using the previous lemmas, the following is an alternative proof of the theorem
 `Σ-≃-==[↓]`.
 
-<div class="proof">
-Proof.<br/>
+**Proof.**
 
 Our context for this proof:
 
@@ -1802,8 +1796,10 @@ module _ {ℓ}
 \begin{code}
 -- Theorem.
   private
+
     Σ-≃-==[↓] :
       Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap π₁ q == α) ≃ PathOver C α c₁ c₂
+
     Σ-≃-==[↓] =
       begin≃
         Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap π₁ q == α)
@@ -1817,7 +1813,6 @@ module _ {ℓ}
         PathOver C α c₁ c₂
       ≃∎
 \end{code}
-</div>
 
 ## Agda Libraries
 
