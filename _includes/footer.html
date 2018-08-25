@@ -159,15 +159,15 @@ $('.citation pre').each(function(){
     var url           = $(this).data('url');
 
     var bibtextag     = $(this).data('bibtextag');
-    var bibtexauthors = $(this).data('bibtexauthors');
+    var bibtexcitation = $(this).data('bibtexcitation');
 
-    if (bibtexauthors == ""){
-      bibtexauthors="Prieto-Cubides, Jonathan";
+    if (bibtexcitation == ""){
+      bibtexcitation="Prieto-Cubides, Jonathan";
     }
 
     pre.append(
     "@online{ " + bibtextag + ",\n" +
-    "  author  = { " + bibtexauthors   +" },\n" +
+    "  author  = { " + bibtexcitation   +" },\n" +
     "  title   = { " + title + " },\n" +
     "  url     = { \\url{" + url   + "} }\n" +
     "  year    = { " + year  + " }\n" +
