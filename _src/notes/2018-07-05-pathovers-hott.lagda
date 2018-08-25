@@ -22,6 +22,8 @@ showcitation: true
 {: .only-website }
   *This is a work in progress jointly with Marc Bezem.*
 
+## Introduction
+
 The type of pathovers can be defined in at least five different ways, all
 equivalent as we show later in this document (see also {% cite Licata2015 %}).
 
@@ -1427,7 +1429,8 @@ equivalence,
     \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
   $$
 
-**Proof.**
+<div class="proof">
+Proof.<br/>
 
 \begin{code}
 module _ {ℓᵢ ℓⱼ}{A : Type ℓᵢ}{C : A → Type ℓⱼ}{a₁ a₂ : A} where
@@ -1518,6 +1521,7 @@ Since the function `Σ-to-==[↓]` is quasi-inverse by definition using `==[↓]
         , H₂           -- homotopy: ==[↓]-to-Σ ∘ Σ-to-==[↓] ∼ id
         )
 \end{code}
+</div>
 
 In the remaining of this section, we prove some useful results
 about sigma types that allow us to give a shorter proof of the
@@ -1527,7 +1531,7 @@ equivalence proved above.
 
 If $$A\,,~B : U$$ and $$C: A → U$$ and $$f: B \simeq A$$, then
 
-{: .equation}
+{: .equation }
   $$\Sigma\,{A}\,C\,\simeq\,\Sigma\,B\,(C ∘ f).$$
 
 \begin{code}
@@ -1659,6 +1663,9 @@ If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 {: .equation}
   $$\Sigma_{(w\,:\,\Sigma\,A\,C)}\ \(\mathsf{\pi_{1}}~w = a\,\simeq\,C~a.$$
 
+<div class="proof">
+  Proof.<br/>
+
 \begin{code}
 module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
 
@@ -1689,7 +1696,7 @@ module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
         paireq : a , transport C p c ==  a' , c
         paireq = pair= (inv p , c')
 
-        patho :  transport (λ w → π₁ w == a) paireq idp == p
+        patho : transport (λ w → π₁ w == a) paireq idp == p
         patho
           = begin
             transport (λ w → π₁ w == ((λ _ → a) w)) paireq idp
@@ -1713,6 +1720,8 @@ module Lemma₂ {ℓ} {A : Type ℓ}{C : A → Type ℓ}(a : A) where
 open Lemma₂ public
 \end{code}
 
+</div>
+
 ### Lemma 3
 
 If $$A : U$$ and for two type families $$C,\ D: A → U$$.
@@ -1720,6 +1729,9 @@ If we have $$ e :\Pi\,(a : A)~C\,a \simeq D~a$$ then
 
 {: .equation}
   $$\Sigma\,A\,C~\simeq~\Sigma\,A\,D.$$
+
+<div class="proof">
+Proof.<br/>
 
 \begin{code}
 module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
@@ -1755,28 +1767,40 @@ module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
 
 open Lemma₃ public
 \end{code}
+</div>
 
 ### Extra proof
 
 Let us recall the equivalence.
 
-$$
- \sum\limits_{q\,:\,(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{\pi_{1}}~q~= \alpha)
-  \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
-$$
+{: .equation}
+  $$
+   \sum\limits_{q\,:\,(a₁ , c₁) = (a₂ , c₂)} \ (\mathsf{ap}~\mathsf{\pi_{1}}~q~= \alpha)
+    \simeq \mathsf{PathOver}~C~\alpha~c₁~c₂.
+  $$
 
 where $$a₁, a₂ : A$$, $$c₁ : C~a₁$$, $$c₂ : C~a₂$$ and $$\alpha : a₁ = a₂$$.
 
+Using the previous lemmas, the following is an alternative proof of the theorem
+`Σ-≃-==[↓]`.
+
+<div class="proof">
+Proof.<br/>
+
+Our context for this proof:
+
 \begin{code}
-module _ {ℓ}{A : Type ℓ}{C : A → Type ℓ}
-  {a₁ a₂ : A} (α : a₁ == a₂){c₁ : C a₁}{c₂ : C a₂} where
+module _ {ℓ}
+  {A : Type ℓ}
+  {C : A → Type ℓ}
+  {a₁ a₂ : A}
+  (α : a₁ == a₂)
+  {c₁ : C a₁}
+  {c₂ : C a₂} where
 \end{code}
 
-Using the previous lemmas, the following is an alternative proof
-of the theorem `Σ-≃-==[↓]`.
-
 \begin{code}
--- Alternative proof of the theorem Σ-≃-==[↓].
+-- Theorem.
   private
     Σ-≃-==[↓] :
       Σ ((a₁ , c₁) == ( a₂ , c₂)) (λ q → ap π₁ q == α) ≃ PathOver C α c₁ c₂
@@ -1793,16 +1817,7 @@ of the theorem `Σ-≃-==[↓]`.
         PathOver C α c₁ c₂
       ≃∎
 \end{code}
-
-{% comment %}
-Now, let us use Univalence Axiom to prove the main theorem:
-
-\begin{code}
-module _ {ℓᵢ}{ℓⱼ} {A : Type ℓᵢ}{P : A → Type ℓⱼ} where
-  -- Working in progress
-\end{code}
-
-{% endcomment %}
+</div>
 
 ## Agda Libraries
 
