@@ -302,7 +302,7 @@ In HoTT, we have a different interpretation of type theory in which the
 set-theoretical notion of *sets* for *types* is replaced by the topological notion
 of *spaces*. A type judgment like `x : A` means that the point `x`‌‌ is *in* the topological
 space `A`‌‌. Furthermore, we include the *Identity type* as a primary type.
-The inhabitants of an these identity types will not be longer interpreted as
+The inhabitants of these identity types will not be longer interpreted as
 *proofs of equalities* but as *paths* in a Path space, an Identity type.
 
 ### Homogeneous equality

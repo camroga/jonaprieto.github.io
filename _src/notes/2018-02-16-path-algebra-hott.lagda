@@ -6,7 +6,7 @@ latex: true
 references: true
 agda: true
 gallery: true
-categories: type-theory
+categories: learning
 ---
 
 In Univalence we have a different interpretation of type theory. We replace the

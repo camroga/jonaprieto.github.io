@@ -419,7 +419,7 @@ n+0≡n₂ (suc n) = suc-cong (n+0≡n₂ n)
 \end{code}
 
 
-## Alternative induction principle
+## Alternative induction
 
 <div class="exercise">
 Assuming the ordinary induction principle (i.e., <a href="#induction">indℕ</a>)
@@ -527,7 +527,6 @@ us to define functions `f : ℕ → C` where `C : 𝒰` by defining two equation
 + `f(0) ≡ c₀` for `c₀ : C`
 
 + `f(suc n) ≡ cₛ(n, f(n))` for `cₛ : ℕ → C → C`
-
 
 {: .references }
 
