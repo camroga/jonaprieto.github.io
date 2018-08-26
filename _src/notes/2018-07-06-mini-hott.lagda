@@ -17,9 +17,9 @@ This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
 only one file and has been type-checked by Agda 2.5.4. No other libraries are
 required to type-check this file.
 
-  {: .only-website }
+{: .only-website }
 
-    - **URL link**: [https://tinyurl.com/mini-hott](https://tinyurl.com/mini-hott).
+  **URL link**: [https://tinyurl.com/mini-hott](https://tinyurl.com/mini-hott).
 
 To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
 type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
@@ -345,7 +345,7 @@ as we see in the `J` definition below.
 
 *Paulin-Mohring J rule*
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 J
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
@@ -357,7 +357,7 @@ J
 J {a = a} B d idp = d
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 J'
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {a : A}
@@ -371,7 +371,7 @@ J' {a = a} B d idp = d
 
 #### Composition of paths
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 _·_
   : ∀ {ℓ} {A : Type ℓ} {x y z : A}
@@ -410,7 +410,7 @@ infixr 60 !_
 
 - Left associativity
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ∘-lassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
@@ -423,7 +423,7 @@ infixr 60 !_
 
 - Right associativity
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ∘-rassoc
   : ∀ {ℓ} {A B C D : Type ℓ}
@@ -523,7 +523,7 @@ open EquationalReasoning public
 Functions are functors to equalities.  In other words, functions
 preserve equalities.
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 ap
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
@@ -572,7 +572,7 @@ Then, we can now put the lemma in front:
 
 Lastly, we can also define actions on two paths:
 
-{: .foldable until="8" }
+{: .foldable until="7" }
 \begin{code}
 ap₂
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ}  {b₁ b₂ : B}
@@ -587,7 +587,7 @@ ap₂ f idp idp = idp
 
 ### Lemmas
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ap-·
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b c : A}
@@ -598,7 +598,7 @@ ap-·
 ap-· f idp q = refl (ap f q)
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ap-inv
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {a b : A}
@@ -612,7 +612,7 @@ ap-inv f idp = idp
 ap-! = ap-inv
 \end{code}
 
-{: .foldable until="8" }
+{: .foldable until="7" }
 \begin{code}
 ap-comp
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} {a b : A}
@@ -625,7 +625,7 @@ ap-comp
 ap-comp f g idp = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ap-id
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a b : A}
@@ -636,7 +636,7 @@ ap-id
 ap-id idp = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ap-const
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : Type ℓⱼ} {a b : A} {c : C}
@@ -651,7 +651,7 @@ ap-const {c = c} idp = refl (refl c)
 
 Some properties on the groupoid structure of equalities
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-runit
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -662,7 +662,7 @@ Some properties on the groupoid structure of equalities
 ·-runit idp = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-lunit
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -673,7 +673,7 @@ Some properties on the groupoid structure of equalities
 ·-lunit idp = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-linv
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -684,7 +684,7 @@ Some properties on the groupoid structure of equalities
 ·-linv idp = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-rinv
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -695,7 +695,7 @@ Some properties on the groupoid structure of equalities
 ·-rinv idp = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 involution
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -706,7 +706,7 @@ involution
 involution {p = idp} = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-assoc
   : ∀ {ℓ} {A : Type ℓ} {a b c d : A}
@@ -717,7 +717,7 @@ involution {p = idp} = idp
 ·-assoc idp q r = idp
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 ·-cancellation
   : ∀ {ℓ} {A : Type ℓ} {a : A}
@@ -739,7 +739,7 @@ involution {p = idp} = idp
 Moving a term from one side to the other is a common task,
 so let's define some handy functions for that.
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-left-to-right-l
   : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == b} {q : b == c} {r : a == c}
@@ -761,7 +761,7 @@ so let's define some handy functions for that.
   ∎
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-left-to-right-r
   : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == b} {q : b == c} {r : a == c}
@@ -783,7 +783,7 @@ so let's define some handy functions for that.
   ∎
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-right-to-left-r
   : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == c} {q : a == b} {r : b == c}
@@ -805,7 +805,7 @@ so let's define some handy functions for that.
     ∎
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 ·-right-to-left-l
   : ∀ {ℓ} {A : Type ℓ} {a b c : A} {p : a == c} {q : a == b} {r : b == c}
@@ -829,7 +829,7 @@ so let's define some handy functions for that.
 
 Finally, when we invert a path composition this is what we got.
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 !-·
   : ∀ {ℓ} {A : Type ℓ} {a b : A}
@@ -845,7 +845,7 @@ Finally, when we invert a path composition this is what we got.
 
 ![path](/assets/ipe-images/transport-fiber-minihott.png){: width="60%" }
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
@@ -865,7 +865,7 @@ transp = transport
 
 Star notation for transport
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 _✶
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {C : A → Type ℓⱼ} {a₁ a₂ : A}
@@ -876,7 +876,7 @@ _✶
 _✶ {ℓᵢ}{ℓⱼ}{C = C} = transport {ℓᵢ = ℓᵢ} {ℓⱼ = ℓⱼ} C
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="5" }
 \begin{code}
 coe
   : ∀ {ℓ} {A B : Type ℓ}
@@ -917,7 +917,7 @@ syntax PathOver B p u v = u == v [ B ↓ p ]
 
 Some lemmas on the transport operation
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 lift
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a₁ a₂ : A} {ℓⱼ} {C : A → Type ℓⱼ}
@@ -929,7 +929,7 @@ lift
 lift {a₁ = a₁} u idp = refl (a₁ , u)
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-const
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a₁  a₂ : A} {ℓⱼ} {B : Type ℓⱼ}
@@ -941,7 +941,7 @@ transport-const
 transport-const idp b = refl b
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-concat-r
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a : A} {x y : A}
@@ -953,7 +953,7 @@ transport-concat-r
 transport-concat-r idp q = ·-runit q
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-concat-l
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {a : A} {x y : A}
@@ -965,7 +965,7 @@ transport-concat-l
 transport-concat-l idp q = idp
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-concat
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {x y : A}
@@ -977,7 +977,7 @@ transport-concat
 transport-concat idp q = ·-runit q
 \end{code}
 
-{: .foldable until="8" }
+{: .foldable until="7" }
 \begin{code}
 transport-eq-fun
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {ℓⱼ} {B : Type ℓⱼ}
@@ -990,7 +990,7 @@ transport-eq-fun
 transport-eq-fun f g idp q = ·-runit q
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-comp
   : ∀ {ℓᵢ} {A : Type ℓᵢ}{ℓⱼ} {a b c : A} {P : A → Type ℓⱼ}
@@ -1002,7 +1002,7 @@ transport-comp
 transport-comp {P = P} idp q = refl (transport P q)
 \end{code}
 
-{: .foldable until="8" }
+{: .foldable until="7" }
 \begin{code}
 transport-comp-h
   : ∀ {ℓᵢ} {A : Type ℓᵢ} {ℓⱼ} {a b c : A} {P : A → Type ℓⱼ}
@@ -1015,7 +1015,7 @@ transport-comp-h
 transport-comp-h {P = P} idp q x = refl (transport P q x)
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-eq-fun-l
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B} (f : A → B) {x y : A}
@@ -1033,7 +1033,7 @@ transport-eq-fun-l {b = b} f p q =
   ∎
 \end{code}
 
-{: .foldable until="8" }
+{: .foldable until="7" }
 \begin{code}
 transport-eq-fun-r
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} {b : B}
@@ -1052,7 +1052,7 @@ transport-eq-fun-r {b = b} g p q =
   ∎
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-inv
   : ∀ {ℓᵢ ℓⱼ} {X : Type ℓᵢ}{A : X → Type ℓⱼ}{x y : X}
@@ -1073,7 +1073,7 @@ transport-inv {A = A}  idp {a = a} =
   ∎
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 coe-inv-l
   : ∀ {ℓ} {A B : Type ℓ}
@@ -1085,7 +1085,7 @@ coe-inv-l
 coe-inv-l idp b = idp
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 coe-inv-r
   : ∀ {ℓ} {A B : Type ℓ}
@@ -1097,7 +1097,7 @@ coe-inv-r
 coe-inv-r idp b = idp
 \end{code}
 
-{: .foldable until="8" }
+{: .foldable until="7" }
 \begin{code}
 transport-family
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {P : B → Type ℓₖ}
@@ -1110,7 +1110,7 @@ transport-family
 transport-family idp u = idp
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-family-id
   : ∀ {ℓᵢ ℓₖ} {A : Type ℓᵢ} {P : A → Type ℓₖ} → {x y : A}
@@ -1122,7 +1122,7 @@ transport-family-id
 transport-family-id idp u = idp
 \end{code}
 
-{: .foldable until="7" }
+{: .foldable until="6" }
 \begin{code}
 transport-fun
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
@@ -1132,14 +1132,16 @@ transport-fun
   → tr (λ x → (A x → B x)) p f == (λ x → tr B p (f (tr A (! p) x)))
 
 transport-fun idp f = idp
+\end{code}
 
+\begin{code}
 -- synonyms
 back-and-forth = transport-fun
 \end{code}
 
 ![path](/assets/ipe-images/transport-fun.png){: width="100%" }
 
-{: .foldable until="8" }
+{: .foldable until="7" }
 \begin{code}
 transport-fun-h
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
@@ -1150,7 +1152,9 @@ transport-fun-h
   → (tr (λ x → (A x → B x)) p f) b == tr B p (f (tr A (! p) b))
 
 transport-fun-h idp f b = idp
+\end{code}
 
+\begin{code}
 -- synonyms
 back-and-forth-h = transport-fun-h
 \end{code}
@@ -1159,7 +1163,7 @@ Now, when we transport dependent functions this is what we got:
 
 ![path](/assets/ipe-images/transport-fun-dependent.png){: width="100%" }
 
-{: .foldable until="10" }
+{: .foldable until="9" }
 \begin{code}
 transport-fun-dependent-h
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
@@ -1172,12 +1176,14 @@ transport-fun-dependent-h
     == tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
 
 transport-fun-dependent-h idp f a' = idp
+\end{code}
 
+\begin{code}
 -- synonyms
 dependent-back-and-forth-h = transport-fun-dependent-h
 \end{code}
 
-{: .foldable until="10" }
+{: .foldable until="9" }
 \begin{code}
 transport-fun-dependent
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
@@ -1190,14 +1196,16 @@ transport-fun-dependent
       → tr (λ w → B (π₁ w) (π₂ w)) (! lift a' (! p)) (f (tr A (! p) a'))
 
 transport-fun-dependent idp f = idp
+\end{code}
 
+\begin{code}
 -- synonyms
 dependent-back-and-forth = transport-fun-dependent
 \end{code}
 
 Action on PathOvers, this was suggested by Fredrik Nordvall:
 
-{: .foldable until="10"}
+{: .foldable until="9"}
 \begin{code}
 apOver
   : {A A' : Type₀} {C : A → Type₀} {C' : A' → Type₀}  -- types
@@ -1224,7 +1232,7 @@ module Sigma {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
 
 Two dependent pairs are equal if they are componentwise equal.
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
   -- Lemma.
   Σ-componentwise
@@ -1236,7 +1244,7 @@ Two dependent pairs are equal if they are componentwise equal.
   Σ-componentwise  idp = (idp , idp)
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
   -- Lemma.
   Σ-bycomponents
@@ -1253,7 +1261,7 @@ Two dependent pairs are equal if they are componentwise equal.
 
 A trivial consequence is the following identification:
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
 -- Lemma.
   lift-pair=
@@ -1271,7 +1279,7 @@ A trivial consequence is the following identification:
   uppt (a , b) = idp
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
 -- Lemma.
   Σ-ap-π₁
@@ -1291,7 +1299,7 @@ A trivial consequence is the following identification:
 open Sigma public
 \end{code}
 
-{: .foldable until="11"}
+{: .foldable until="10"}
 \begin{code}
 transport-fun-dependent-bezem
   : ∀ {ℓᵢ ℓⱼ} {X : Type ℓᵢ} {A : X → Type ℓⱼ}
@@ -1313,7 +1321,7 @@ transport-fun-dependent-bezem idp f a' = idp
 module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
   -- Lemma.
   prodComponentwise
@@ -1325,7 +1333,7 @@ module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} wher
   prodComponentwise {x = x} idp = refl (π₁ x) , refl (π₂ x)
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
   -- Lemma.
   prodByComponents
@@ -1337,7 +1345,7 @@ module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} wher
   prodByComponents {x = a , b} (idp , idp) = refl (a , b)
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
   -- Lemma.
   prodCompInverse
@@ -1349,7 +1357,7 @@ module CartesianProduct {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} wher
   prodCompInverse {x} (idp , idp) = refl (refl (π₁ x) , refl (π₂ x))
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
   -- Lemma.
   prodByCompInverse
@@ -1367,7 +1375,7 @@ open CartesianProduct
 
 ## Action on dependent paths
 
-{: .foldable until="6"}
+{: .foldable until="5"}
 \begin{code}
 apd
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}  {P : A → Type ℓⱼ} {a b : A}
@@ -1395,7 +1403,7 @@ is a dependent function of type
 {: .equation }
   $$ (f \sim g) :\equiv \prod\limits_{x : A} (f(x) = g(x)). $$
 
-{: .foldable until="6"}
+{: .foldable until="5"}
 \begin{code}
   -- Lemma.
   homotopy
@@ -1412,7 +1420,7 @@ is a dependent function of type
   f ∼ g = homotopy f g
 \end{code}
 
-{: .foldable until="6"}
+{: .foldable until="5"}
 \begin{code}
   -- Homotopy is an equivalence relation
   h-refl
@@ -1423,7 +1431,7 @@ is a dependent function of type
   h-refl f x = idp
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="6"}
 \begin{code}
   -- Lemma.
   h-sym
@@ -1435,7 +1443,7 @@ is a dependent function of type
   h-sym _ _ e x = ! (e x)
 \end{code}
 
-{: .foldable until="8"}
+{: .foldable until="7"}
 \begin{code}
   -- Lemma.
   h-comp
@@ -1448,7 +1456,7 @@ is a dependent function of type
   h-comp u v x = (u x) · (v x)
 \end{code}
 
-{: .foldable until="8"}
+{: .foldable until="7"}
 \begin{code}
   -- synonym for h-comp
   _●_
@@ -1471,7 +1479,7 @@ open Homotopy public
 module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} where
 \end{code}
 
-{: .foldable until="9"}
+{: .foldable until="8"}
 \begin{code}
   -- Lemma.
   hl-comp
@@ -1486,7 +1494,7 @@ module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type �
 \end{code}
 
 
-{: .foldable until="8"}
+{: .foldable until="7"}
 \begin{code}
   -- Lemma.
   rcomp-∼
@@ -1499,7 +1507,7 @@ module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type �
   rcomp-∼ f j-k = hl-comp (h-refl f) j-k
 \end{code}
 
-{: .foldable until="8"}
+{: .foldable until="7"}
 \begin{code}
   -- Lemma.
   lcomp-∼
@@ -1527,7 +1535,7 @@ square commutative diagram.
 
 ![path](/assets/ipe-images/h-naturality.png){: width="40%" }
 
-{: .foldable until="8"}
+{: .foldable until="7"}
 \begin{code}
   -- Lemma.
   h-naturality
@@ -1543,7 +1551,7 @@ open Naturality
 
 A particular case of naturality on the identity function.
 
-{: .foldable until="6"}
+{: .foldable until="5"}
 \begin{code}
 h-naturality-id
   : ∀ {ℓ} {A : Type ℓ} {f : A → A} → {x : A}

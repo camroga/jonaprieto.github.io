@@ -138,9 +138,8 @@ coe
 coe p A = transport (λ X → X) p A
 \end{code}
 
-{: .foldable .only-website}
+{: .foldable .only-website until="1"}
 \begin{code}
-
 --- Basic HoTT types, functions and theorems.
 
 module hott where
@@ -1084,9 +1083,8 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₂-~-HEq₁ idp = idp
 \end{code}
 
-{: .foldable .only-website}
+{: .foldable .only-website until="1"}
 \begin{code}
-
 -- HEq₂-≃-HEq₃
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1116,9 +1114,8 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 \end{code}
 
 
-{: .foldable .only-website}
+{: .foldable .only-website until="1"}
 \begin{code}
-
 -- HEq₃-≃-HEq₄
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1147,9 +1144,8 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₄-~-HEq₃ idp = idp
 \end{code}
 
-{: .foldable .only-website}
+{: .foldable .only-website until="1"}
 \begin{code}
-
 -- HEq₄-≃-HEq₁
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1267,9 +1263,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 {: .print-version}
 
 
-{: .foldable .only-website }
+{: .foldable .only-website until="1"}
 \begin{code}
-
 -- PathOver₂-≃-PathOver₃
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1301,9 +1296,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₃~PathOver₂ idp = idp
 \end{code}
 
-{: .foldable .only-website}
+{: .foldable .only-website until="1"}
 \begin{code}
-
 -- PathOver₃-≃-PathOver₄
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1335,9 +1329,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₄~PathOver₃ idp = idp
 \end{code}
 
-{: .foldable .only-website}
+{: .foldable .only-website until="1"}
 \begin{code}
-
 -- PathOver₄-≃-PathOver₅
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1369,9 +1362,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₅~PathOver₄ idp = idp
 \end{code}
 
-{: .foldable .only-website}
+{: .foldable .only-website until="1"}
 \begin{code}
-
 -- PathOver₅-≃-PathOver₁
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
