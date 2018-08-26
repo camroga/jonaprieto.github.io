@@ -187,7 +187,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/2018-06-27-learning-group-theory.lagda">00c1d82 </a> on  26 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/2018-06-27-learning-group-theory.lagda">8a87921 </a> on  26 Aug 2018
     </div>
   </div>
   
@@ -288,10 +288,7 @@ WebFontConfig = {
 
 <!-- FOLDABLE  -->
 <script type="text/javascript">
-var newHeight;
-
  $('pre.foldable').each(function(){
-     var autoHeight = $(this).height();
      var lineHeight = parseFloat($(this).css('line-height'));
      var plus    = $("<div></div>");
      var horLine = $("<div></div>");
@@ -318,41 +315,38 @@ var newHeight;
      plus.append(verLine);
      plus.append(horLine);
 
-     // The line stars at 1 line
      var until = parseFloat($(this).attr('until'));
-     if ( until == 0){
+     if ( isNaN(until) ) { until= 1; }
+     if ( until <= 0 ){
        $(this).hide();
      }
      else{
-       newHeight = (parseFloat($(this).attr('until')) - 1 ) * lineHeight;
+       var newHeight = ((1.3 * until) + 1.0) + "rem";
+       //                               ^^^----------- for the padding
+       //                ^^-- line-height
 
-       if ( newHeight < lineHeight || isNaN(newHeight) ){
-         newHeight = lineHeight;
-       }
-       console.log( "Until> ", newHeight);
-
-       $(this).height(newHeight);
-       $(this).css('overflow','hidden');
-
-       console.log('height:', $(this).height());
-       console.log('autoHeight:', autoHeight);
-       console.log('newHeight:', newHeight);
+       // console.log('afuera-until: ', until);
+       // console.log('afuera-newheight: ', newHeight );
+       $(this).css("padding", "0.5rem 1rem");
+       $(this).css("overflow", "hidden");
+       $(this).css("height", newHeight);
+       $(this).attr("original", "false");
 
        $(this).click(function(){
-        console.log("entro");
-        lastClick = $(this);
-        console.log('?height:', $(this).height());
-        console.log('height:', $(this).height());
-        console.log('autoHeight:', autoHeight);
-        console.log('newHeight:', newHeight);
-        console.log('\n');
 
-         if ($(this).height() >= autoHeight) {
-           $(this).height(newHeight);
+         // console.log('dentro-original: ', $(this).attr('original') );
+         // console.log('dentro-newheight: ', newHeight );
+
+         if ( $(this).attr('original') == "true" ) {
+           $(this).css("overflow", "hidden");
+           $(this).css("height", newHeight);
+           $(this).attr("original", "false");
+           $(this).css("padding", "0.5rem 1rem");
            plus.show();
          }
-         else{
+         else {
            $(this).height('auto');
+           $(this).attr("original", "true");
            plus.hide();
          }
        });
