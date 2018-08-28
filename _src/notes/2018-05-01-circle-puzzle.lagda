@@ -120,7 +120,7 @@ Recursion on paths:
 
 ### Induction principle
 
-Induction principle on points;
+Induction principle on points:
 
 \begin{code}
   -- Def.
@@ -486,7 +486,8 @@ Finally, we complete the proof of the equivalence.
 
 ## Action on paths of pairs
 
-Action on paths of pairs appears as Lemma 6.12.7 in {% cite hottbook %}.
+We need to understand how is the action on paths of pairs which appears as Lemma
+6.12.7 in {% cite hottbook %}.
 
 Let's define out context for this lemma:
 

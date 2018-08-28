@@ -152,7 +152,7 @@ $('.citation pre').each(function(){
     var originalyear  = $(this).data('originalyear');
     var url           = $(this).data('url');
 
-    var bibtextag     = $(this).data('bibtextag');
+    var bibtexauthors     = $(this).data('bibtexauthors');
     var bibtexcitation = $(this).data('bibtexcitation');
 
     if (bibtexcitation == ""){
@@ -160,7 +160,7 @@ $('.citation pre').each(function(){
     }
 
     pre.append(
-    "@online{ " + bibtextag + ",\n" +
+    "@online{ " + bibtexauthors + ",\n" +
     "  author  = { " + bibtexcitation +" },\n" +
     "  title   = { " + title + " },\n" +
     "  url     = { \\url{" + url   + "} }\n" +
