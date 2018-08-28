@@ -653,7 +653,7 @@ f (b , x) = f̰ b x
 \end{code}
 
 \begin{code}
--- -- Defs.
+-- Defs.
 γ₀₁   : tr P loop false == true
 γ₀₁   = transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) false
 
@@ -687,31 +687,45 @@ g = -- 0   ↦ (base, 0)
 ct : P base → pS
 ct true  = pS₁
 ct false = pS₀
+\end{code}
 
+\begin{code}
 ctp : P base → Σ S¹ P
 ctp b = base , b
+\end{code}
 
+\begin{code}
 ptp : (y : P base) → ctp y == ctp (neg y)
 ptp true  = pair= (loop , γ₁₀)
 ptp false = pair= (loop , γ₀₁)
+\end{code}
 
+\begin{code}
 c : (b : P base) → (g ∘ f) (base , b) == id (base , b)
 c true  = refl (base , true)
 c false = refl (base , false)
+\end{code}
 
+\begin{code}
 Q : (s : S¹) → Type _
 Q = (λ z → (b : P z) → (g ∘ f) (z , b) == id (z , b))
+\end{code}
 
+\begin{code}
 
 d : (a : S¹) → (c : P a) → pS
 d a c = f (a , c)
 
 module L2 = Lemma₂ {_} {S¹} P {pS} d
+\end{code}
 
+\begin{code}
 postulate -- Lemma 6.12.8
   lemma-ap-f-γ₀₁ : ap f (pair= (loop , γ₀₁)) == p₀₁
   lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₁₀
+\end{code}
 
+\begin{code}
 p : (b : P base) → tr (λ w → (g ∘ f) w == id w) (ptp b) (c b) == c (neg b)
 p true  =
   begin
@@ -800,7 +814,7 @@ f-g = pS-ind (λ ps → (f ∘ g) ps == id ps) q₀ q₁ dpath₁ dpath₂
           ==⟨⟩
         q₁
       ∎
-    --
+
     dpath₂ : q₁ == q₀ [ (λ z → (f ∘ g) z == id z) ↓ p₁₀ ]
     dpath₂ =
       begin
@@ -839,7 +853,6 @@ g-f (s , b) = g-f' s b
     g-f' : (s : S¹) → (b : P s) → (g ∘ f) (s , b) == id (s , b)
     g-f' = S¹-ind (λ s → (b : P s) → (g ∘ f) (s , b) == id (s , b)) c cpath
       where
-
 
       cpath : transport Q loop c == c
       cpath = funext-transport-dfun-r loop c c helper
