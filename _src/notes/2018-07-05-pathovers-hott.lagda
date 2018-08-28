@@ -20,7 +20,10 @@ showcitation: true
 ---
 
 {: .only-website }
-  *This is a work in progress jointly with Marc Bezem.*
+  *This is a work in progress jointly with Marc Bezem. Some of
+  the following proofs are collapsed or hidden to reduce the size of the document.
+  Nevertheless, the reader can click on them to open the full description.
+  Pictures are also clickable.*
 
 ## Introduction
 
