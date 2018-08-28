@@ -702,29 +702,15 @@ c false = refl (base , false)
 Q : (s : S¹) → Type _
 Q = (λ z → (b : P z) → (g ∘ f) (z , b) == id (z , b))
 
--- Missing lemmas.
-postulate
-  lemma-ap-f-γ₀₁ : ap f (pair= (loop , γ₀₁)) == p₀₁
 
 d : (a : S¹) → (c : P a) → pS
 d a c = f (a , c)
 
 module L2 = Lemma₂ {_} {S¹} P {pS} d
 
-lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₁₀
-lemma-ap-f-γ₁₀ =
-  begin
-    ap f (pair= (loop , γ₁₀))
-      ==⟨ {!   !} ⟩ -- L2.ap-f-pair= loop true false γ₁₀ ⟩
-    ap {! c !} (ptp true)
-      ==⟨ {!   !} ⟩
-    {!   !}
-      ==⟨ {!   !} ⟩
-    {!   !}
-      ==⟨ {!   !} ⟩
-    p₁₀
-  ∎
-
+postulate -- Lemma 6.12.8
+  lemma-ap-f-γ₀₁ : ap f (pair= (loop , γ₀₁)) == p₀₁
+  lemma-ap-f-γ₁₀ : ap f (pair= (loop , γ₁₀)) == p₁₀
 
 p : (b : P base) → tr (λ w → (g ∘ f) w == id w) (ptp b) (c b) == c (neg b)
 p true  =
