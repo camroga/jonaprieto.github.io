@@ -1522,7 +1522,7 @@ equivalence proved above.
 
 ### Lemma 1
 
-If $$A\,,~B : 𝒰$$ and $$C: A → 𝒰$$ and $$e: B \simeq A$$, then
+If $$A\,,~B : U$$ and $$C: A → U$$ and $$e: B \simeq A$$, then
 
 {: .equation }
   $$\Sigma\,{A}\,C\,\simeq\,\Sigma\,B\,(C ∘ e).$$
@@ -1651,7 +1651,7 @@ open Lemma₁ public
 
 ### Lemma 2
 
-If $$A: 𝒰$$ and $$C: A → 𝒰$$ and $$a: A$$ then
+If $$A: U$$ and $$C: A → U$$ and $$a: A$$ then
 
 {: .equation}
   $$\Sigma_{(w\,:\,\Sigma\,A\,C)}\ \(\mathsf{\pi_{1}}~w~=_{A}~a\,\simeq\,C~a.$$
@@ -1716,7 +1716,7 @@ open Lemma₂ public
 
 ### Lemma 3
 
-If $$A : 𝒰$$ and for two type families $$C,\ D: A → 𝒰$$.
+If $$A : U$$ and for two type families $$C,\ D: A → U$$.
 If we have $$ e :\Pi\,(a : A)~C\,a \simeq D~a$$, then
 
 {: .equation}
@@ -1759,7 +1759,7 @@ module Lemma₃ {ℓ} {A : Type ℓ}{C : A → Type ℓ}{D : A → Type ℓ}
 open Lemma₃ public
 \end{code}
 
-### Altenative proof
+### Alternative proof
 
 Let us recall the equivalence.
 
