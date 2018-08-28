@@ -187,7 +187,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/26918cd67f8d52ed536ff846e1e2624033ed85c4/_src/notes/2018-02-12-induction-on-natural-numbers.lagda">e331deb </a> on  28 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/26918cd67f8d52ed536ff846e1e2624033ed85c4/_src/notes/2018-02-12-induction-on-natural-numbers.lagda">f241b14 </a> on  28 Aug 2018
     </div>
   </div>
   
@@ -864,7 +864,7 @@ $('.citation pre').each(function(){
     var originalyear  = $(this).data('originalyear');
     var url           = $(this).data('url');
 
-    var bibtextag     = $(this).data('bibtextag');
+    var bibtexauthors     = $(this).data('bibtexauthors');
     var bibtexcitation = $(this).data('bibtexcitation');
 
     if (bibtexcitation == ""){
@@ -872,7 +872,7 @@ $('.citation pre').each(function(){
     }
 
     pre.append(
-    "@online{ " + bibtextag + ",\n" +
+    "@online{ " + bibtexauthors + ",\n" +
     "  author  = { " + bibtexcitation +" },\n" +
     "  title   = { " + title + " },\n" +
     "  url     = { \\url{" + url   + "} }\n" +
