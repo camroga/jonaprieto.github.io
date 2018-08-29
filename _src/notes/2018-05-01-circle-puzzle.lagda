@@ -274,9 +274,10 @@ Induction principle on paths:
 **Proof**. We proceed as usual. Defining the outgoing functions and proving
 the homotopies. We prove the equivalence by quasiinverse equivalence.
 
-Let `p₀₀` be the path defined as follows. We want to correspond this path with
-the `loop` path in order to show the equivalence. This choice makes sense because
-`p₀₁` imitates the loop by making a closed circuit with the arrows.
+For this equivalence, we need to find a proper candidate to correspond
+with the `loop` path of `S¹`. Our propose is `p₀₀`, the path `p₀₁ · p₁₀`.
+This choice makes sense because
+`p₀₀` suggests a loop, closing the circuit with the arrows.
 
 \begin{code}
 p₀₀ : pS₀ == pS₀
@@ -288,14 +289,14 @@ p₀₀ = p₀₁ · p₁₀
 We define the function `f` that goes from `S¹` to `pS` type.
 Which it means we need to use the recursion principle of the circle.
 We map `base` to `pS₀` and the action on `loop` to
-`(transport (λ p → pS₀ == pS₀) loop p₀₀)`.
+`(tr (λ p → pS₀ == pS₀) loop p₀₀)`.
 
 \begin{code}
 module Lemma₁ where
 
   private
     f : S¹ → pS
-    f = S¹-rec pS pS₀ (transport (λ p → pS₀ == pS₀) loop p₀₀)
+    f = S¹-rec pS pS₀ (tr (λ p → pS₀ == pS₀) loop p₀₀)
 \end{code}
 
 For the inverse function of `f` we have `g` which goes from `pS` to `S¹`. `g` is
@@ -303,8 +304,9 @@ defined by the recursion principle of `pS` type. The correspondence in this case
 maps all the points to `base` in S¹, and the arrows `p₀₁` and `p₁₀` to `loop ²`
 and `loop ⁻¹` respectively. The reason for these last choices is because their
 concatenation gives a `loop` which is exactly the correspondence that we want to
-have. Another possible choices would be if we take instead `loop` and `refl base`
-but that would give us a different proof.
+have. Another possible choices would be if we take instead `loop` and `refl
+base` but that would give us a different proof and `p₀₀` could be something
+else.
 
 \begin{code}
   -- Inverse
@@ -520,6 +522,7 @@ we made its definition private since it can interfere with other
 definitions of the same symbol `f`.
 
 \begin{code}
+-- Def.
   private
     f : Σ A (λ a → C a) → Z
     f (a , b) = (d a) b
@@ -567,6 +570,7 @@ Therefore, we inhabit the lemma with a proof of reflexivity.
       ∎)
 
   ap-f-pair= idp c₁ .c₁ idp = idp
+
 open Lemma₂
 \end{code}
 
