@@ -616,6 +616,12 @@ the function `f`.
 
 ### `f : Σ S¹ P → pS`
 
+To define `f` we need to use the recursor principle of Sigma types which gives
+in the following the pair `(b , x)` and we must provide a definition for its
+uncurried version `f̰ : (b : S¹) → P b → pS`. To define `f̰` we use recursion on
+the circle. We maps `base` to `d̰` and `p̰` as evidence of the pathover of `d̰`
+along the `loop` in family `(λ z → P z → pS)`.
+
 {: .foldable until="11" }
 \begin{code}
 f :  Σ S¹ P → pS
@@ -638,15 +644,14 @@ f (b , x) = f̰ b x
             ==⟨ funext (λ (pb : P base) → transport-const loop
                               (d̰ (transport (λ z → P z) (! loop) pb))) ⟩
           (λ (x : P base) → (d̰ (transport (λ z → P z) (! loop) x)))
-            ==⟨ funext (λ (pb : P base) → ap d̰ (aux-lemma₁ pb)) ⟩
+            ==⟨ funext (λ (pb : P base) → ap d̰ (helper₁ pb)) ⟩
           (λ (x : P base) → d̰ (neg x) )
-            ==⟨ funext aux-lemma₂ ⟩
+            ==⟨ funext helper₂ ⟩
           d̰
          ∎)
        where
-
-         aux-lemma₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
-         aux-lemma₁ x =
+         helper₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
+         helper₁ x =
            let
              apP!loop :  ap P (! loop) == ua (invEqv neg-eq)
              apP!loop =
@@ -670,9 +675,9 @@ f (b , x) = f̰ b x
              neg x
            ∎
 
-         aux-lemma₂ : (x : P base) → d̰ (neg x) == d̰ x
-         aux-lemma₂ true  = p₀₁
-         aux-lemma₂ false = p₁₀
+         helper₂ : (x : P base) → d̰ (neg x) == d̰ x
+         helper₂ true  = p₀₁
+         helper₂ false = p₁₀
 \end{code}
 
 \begin{code}
