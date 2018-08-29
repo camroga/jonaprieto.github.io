@@ -275,7 +275,8 @@ Induction principle on paths:
 the homotopies. We prove the equivalence by quasiinverse equivalence.
 
 Let `p₀₀` be the path defined as follows. We want to correspond this path with
-the `loop` path in order to show the equivalence.
+the `loop` path in order to show the equivalence. This choice makes sense because
+`p₀₁` imitates the loop by making a closed circuit with the arrows.
 
 \begin{code}
 p₀₀ : pS₀ == pS₀
@@ -284,23 +285,41 @@ p₀₀ = p₀₁ · p₁₀
 
 #### Outgoing functions
 
+We define the function `f` that goes from `S¹` to `pS` type.
+Which it means we need to use the recursion principle of the circle.
+We map `base` to `pS₀` and the action on `loop` to
+`(transport (λ p → pS₀ == pS₀) loop p₀₀)`.
+
 \begin{code}
 module Lemma₁ where
 
   private
     f : S¹ → pS
     f = S¹-rec pS pS₀ (transport (λ p → pS₀ == pS₀) loop p₀₀)
+\end{code}
 
+For the inverse function of `f` we have `g` which goes from `pS` to `S¹`. `g` is
+defined by the recursion principle of `pS` type. The correspondence in this case
+maps all the points to `base` in S¹, and the arrows `p₀₁` and `p₁₀` to `loop ²`
+and `loop ⁻¹` respectively. The reason for these last choices is because their
+concatenation gives a `loop` which is exactly the correspondence that we want to
+have. Another possible choices would be if we take instead `loop` and `refl base`
+but that would give us a different proof.
+
+\begin{code}
+  -- Inverse
     g : pS → S¹
     g = pS-rec S¹ base base (loop ²) (loop ⁻¹)
 \end{code}
 
+Now, let's prove the respective homotopies to show the equivalence.
+
 ####  `f ∘ g ~ id`
 
-To prove the homotopy $$ f ∘ g \sim \mathsf{id}$$,
-we prove for the pS₁ case and the case for paths.
+To prove the homotopy $$f ∘ g \sim \mathsf{id}$$, we also need recursion
+principle of `pS` type as it follows.
 
-- Case on `pS₁`:
+- Case `pS₁`:
 
 \begin{code}
   -- Def.
@@ -402,42 +421,25 @@ Finally, by path induction on `pS` type, we got the homotopy.
 
 ####  g ∘ f ~ id
 
-To prove this homotopy $$g ∘ f \sim \mathsf{id}$$, we proceed by induction on
+To prove the homotopy $$g ∘ f \sim \mathsf{id}$$, we proceed by induction on
 the circle. For the `base` case, `refl base` works since `g (f base)` is
 definitionally equal to `base`.
 
+
 \begin{code}
   -- Def.
-  H₂-base : base == base
+  H₂-base : g (f base) == base
   H₂-base = refl base
 \end{code}
 
-The rest is how we prove the case for action on `loop`.
-
-We will need the term `aux-path` which is:
-
-{: .foldable until="2"}
-\begin{code}
-  -- Def.
-  aux-path : (loop ²) · (loop ⁻¹) == loop
-  aux-path =
-    begin
-      (loop ²) · (loop ⁻¹)
-        ==⟨ ·-assoc loop loop (! loop) ⟩
-      loop · (loop · ! loop)
-        ==⟨ ap (loop ·_) (·-rinv loop) ⟩
-      loop · idp
-        ==⟨ ! (·-runit loop) ⟩
-      loop
-    ∎
-\end{code}
+Action on `loop` case:
 
 {: .foldable until="2" }
 \begin{code}
   -- Def.
   H₂-loop : refl base == refl base [ (λ z → (g ∘ f) z == id z) ↓ loop ]
   H₂-loop =
-    begin
+    (begin
       transport (λ z → (g ∘ f) z == id z) loop idp
         ==⟨ transport-eq-fun (g ∘ f) id loop idp ⟩
       ! (ap (g ∘ f) loop) · idp · ap id loop
@@ -467,7 +469,19 @@ We will need the term `aux-path` which is:
       ! loop · loop
         ==⟨ ·-linv loop ⟩
        idp
-    ∎
+    ∎)
+    where
+      aux-path : (loop ²) · (loop ⁻¹) == loop
+      aux-path =
+        begin
+          (loop ²) · (loop ⁻¹)
+            ==⟨ ·-assoc loop loop (! loop) ⟩
+          loop · (loop · ! loop)
+            ==⟨ ap (loop ·_) (·-rinv loop) ⟩
+          loop · idp
+            ==⟨ ! (·-runit loop) ⟩
+          loop
+        ∎
 \end{code}
 
 \begin{code}
@@ -476,7 +490,8 @@ We will need the term `aux-path` which is:
   H₂ = S¹-ind _ H₂-base H₂-loop
 \end{code}
 
-Finally, we complete the proof of the equivalence.
+Now, everything we needed to prove the equivalence is
+and the equivalence is by quasiinverse equivalence.
 
 \begin{code}
   -- Equivalence.
@@ -486,10 +501,11 @@ Finally, we complete the proof of the equivalence.
 
 ## Action on paths of pairs
 
-We need to understand how is the action on paths of pairs which appears as Lemma
+For the following equivalence, `Σ S¹ P ≃ pS`, we need first to
+understand how is the action on paths of pairs, which appears as Lemma
 6.12.7 in {% cite hottbook %}.
 
-Let's define out context for this lemma:
+In context:
 
 \begin{code}
 module Lemma₂ {ℓ}
@@ -497,13 +513,24 @@ module Lemma₂ {ℓ}
   (C : A → Type ℓ)
   {Z : Type ℓ}
   (d : (a : A) → C a → Z) where
+\end{code}
 
+The function `f` is curried version of the function `d`,
+we made its definition private since it can interfere with other
+definitions of the same symbol `f`.
+
+\begin{code}
   private
     f : Σ A (λ a → C a) → Z
     f (a , b) = (d a) b
 \end{code}
 
-And this lemma says:
+What we want to prove is that action on pairs is identified with a no trivial
+composition as it follows. Once we do path induction on `α` we have `a₂ = a₁`
+and ‵α = idp`. We proceed doing path induction on the pathover `γ` which is now
+a path in the same fiber `C c₁` transporting along the reflexivity path and
+`c₁ = c₂`, `γ = idp`. All this gives us trivial paths in the composition.
+Therefore, we inhabit the lemma with a proof of reflexivity.
 
 \begin{code}
   -- Lemma.
@@ -523,9 +550,11 @@ And this lemma says:
         tr (λ X → Z) α (d a₁ c₁)
           ==⟨ ap (λ k → tr (λ X → Z) α (d a₁ k)) idp ⟩
         tr (λ X → Z) α (d a₁ (tr C (refl a₁) c₁))
-          ==⟨ (! ·-rinv α) |in-ctx (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁)))  ⟩
+          ==⟨ (! ·-rinv α)
+            |in-ctx (λ k → tr (λ X → Z) α (d a₁ (tr C k c₁))) ⟩
         tr (λ X → Z) α (d a₁ (tr C (α · ! α) c₁))
-          ==⟨ (! transport-comp-h α (! α) c₁) |in-ctx (λ k → tr (λ X → Z) α (d a₁ k))⟩
+          ==⟨ (! transport-comp-h α (! α) c₁)
+          |in-ctx (λ k → tr (λ X → Z) α (d a₁ k))⟩
         tr (λ X → Z) α (d a₁ (tr C (! α) (tr C α c₁)))
           ==⟨ ! (transport-fun-h α (d a₁) (tr C α c₁)) ⟩
         (tr (λ x → (C x → Z)) α (d a₁)) (tr C α c₁)
@@ -541,7 +570,7 @@ And this lemma says:
 open Lemma₂
 \end{code}
 
-##  Σ S¹ P ≃ pS
+## `Σ S¹ P ≃ pS`
 
 **Lemma 3.** $$ \Sigma~S^{1}~P~\simeq~pS $$ where
 $$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
@@ -618,7 +647,7 @@ aux-lemma₁ x =
   ∎
 \end{code}
 
-### f : Σ S¹ P → pS
+### `f : Σ S¹ P → pS`
 
 {: .foldable until="11" }
 \begin{code}
@@ -668,7 +697,7 @@ g-p₁₀ : (base , true ) == ( base , false)
 g-p₁₀ = pair= (loop , γ₁₀)
 \end{code}
 
-### g : pS → Σ S¹ P
+### `g : pS → Σ S¹ P`
 
 \begin{code}
 g : pS → Σ S¹ P
@@ -777,7 +806,7 @@ p false =
 -- {! ap-f-pair= {A = S¹}(P){Z = P base} ? loop true false γ₁₀  !}
 \end{code}
 
-### f ∘ g ∼ id
+### `f ∘ g ∼ id`
 
 \begin{code}
 -- Homotopy
@@ -842,7 +871,7 @@ f-g = pS-ind (λ ps → (f ∘ g) ps == id ps) q₀ q₁ dpath₁ dpath₂
       ∎
 \end{code}
 
-### g ∘ f ∼ id
+### `g ∘ f ∼ id`
 
 Taking inspiration from Flattening lemma's proof in Section 6
 in {% cite hottbook %}, we got the following proof.
