@@ -579,6 +579,12 @@ open Lemma₂
 **Lemma 3.** $$ \Sigma~S^{1}~P~\simeq~pS $$ where
 $$P (\mathsf{base}) :≡ \mathsf{Bool}$$ and $$\mathsf{ap~P~loop~=~ua~(neg)}$$.
 
+`P` is a type family defined by the recursion principle of the circle.
+When it is the `base` case, `P base` is definitionally equal to the booleans `Bool`,
+and when `P` is acting on `loop`, we must have a path `Bool == Bool`, which is
+possible by Univalence Axiom and the equivalence `neg`, the negation of a boolean.
+Let's define this type family formally.
+
 \begin{code}
 module Lemma₃ where
 
@@ -587,6 +593,7 @@ neg : Bool → Bool
 neg true  = false
 neg false = true
 
+-- Equiv.
 neg-eq : Bool ≃ Bool
 neg-eq = qinv-≃ neg (neg , h , h)
   where
@@ -595,61 +602,17 @@ neg-eq = qinv-≃ neg (neg , h , h)
     h false = idp
 \end{code}
 
-Now, using the negation function as an equivalence, we define the family of types `P`
-over the circle S¹.
+The type family `P : S¹ → Type₀`.
 
 \begin{code}
 P : S¹ → Type₀
 P = S¹-rec Type₀ Bool (ua neg-eq)
 \end{code}
 
-Two auxiliar lemmas for the latter:
-
-{: .foldable until="1" }
-\begin{code}
-aux-lemma₀ : (x : P base) → neg x == x [ P ↓ loop ]
-
-aux-lemma₀ x =
-  (begin
-    transport P loop (neg x)
-      ==⟨ transport-ua P loop neg-eq (S¹-βrec Type₀ Bool (ua neg-eq)) (neg x) ⟩
-    neg (neg x)
-      ==⟨ neg-neg x ⟩
-    refl x)
-  where
-    neg-neg : (x : P base) → neg (neg x) == x
-    neg-neg true  = idp
-    neg-neg false = idp
-\end{code}
-
-{: .foldable until="1" }
-\begin{code}
-aux-lemma₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
-
-aux-lemma₁ x =
-  let
-    apP!loop :  ap P (! loop) == ua (invEqv neg-eq)
-    apP!loop =
-      begin
-        ap P (! loop)
-          ==⟨ ap-inv P loop ⟩
-        ! ap P loop
-          ==⟨ ap (!_) (S¹-βrec Type₀ Bool (ua (neg-eq))) ⟩
-        ! ua (neg-eq)
-          ==⟨ ! (ua-inv neg-eq) ⟩
-        ua (invEqv neg-eq)
-      ∎
-  in
-  begin
-    transport P (! loop) x
-      ==⟨ transport-ua P (! loop) (invEqv neg-eq) apP!loop x ⟩
-    fun≃ (invEqv (neg-eq)) x
-      ==⟨⟩
-    fun≃ (neg-eq) x
-      ==⟨⟩
-    neg x
-  ∎
-\end{code}
+**Proof.** We proceed as usual to show the equivalence.
+We define the outgoing functions `f : Σ S¹ P → pS`, `g : pS → Σ S¹ P`
+and the homotopies `f ∘ g ~ id` and `g ∘ f ∼ id`. Let's start defining
+the function `f`.
 
 ### `f : Σ S¹ P → pS`
 
@@ -681,6 +644,32 @@ f (b , x) = f̰ b x
           d̰
          ∎)
        where
+
+         aux-lemma₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
+         aux-lemma₁ x =
+           let
+             apP!loop :  ap P (! loop) == ua (invEqv neg-eq)
+             apP!loop =
+               begin
+                 ap P (! loop)
+                   ==⟨ ap-inv P loop ⟩
+                 ! ap P loop
+                   ==⟨ ap (!_) (S¹-βrec Type₀ Bool (ua (neg-eq))) ⟩
+                 ! ua (neg-eq)
+                   ==⟨ ! (ua-inv neg-eq) ⟩
+                 ua (invEqv neg-eq)
+               ∎
+           in
+           begin
+             transport P (! loop) x
+               ==⟨ transport-ua P (! loop) (invEqv neg-eq) apP!loop x ⟩
+             fun≃ (invEqv (neg-eq)) x
+               ==⟨⟩
+             fun≃ (neg-eq) x
+               ==⟨⟩
+             neg x
+           ∎
+
          aux-lemma₂ : (x : P base) → d̰ (neg x) == d̰ x
          aux-lemma₂ true  = p₀₁
          aux-lemma₂ false = p₁₀
