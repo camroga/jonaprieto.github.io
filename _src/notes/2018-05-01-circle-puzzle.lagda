@@ -649,6 +649,7 @@ family `(λ z → P z → pS)`.
   ct false = pS₀
 \end{code}
 
+{: .foldable until="2" }
 \begin{code}
   -- Def.
   p̰ : ct == ct [ (λ z → P z → pS) ↓ loop ]
@@ -836,22 +837,25 @@ Finally, our homotopy holds:
 
 ### `g ∘ f ∼ id`
 
-This homotopy is a very more complex. To show that for all `x : S¹` it holds
-`g (f x) == id x` we must proceed by induction three times.
-We perform this in the following order: Sigma induction, Circle induction and `pS` induction.
+This homotopy is a very more complex. To show that for all `x : S¹` it holds `g
+(f x) == id x` we must proceed by induction three times. We perform this in the
+following order: Sigma induction, Circle induction and `pS` induction.
 
-Since the last two cases are induction on HITs, these inductions take into account the action on
-their path constructors. We have taken inspiration to finish this proof from
-Flattening lemma's proof in Section 6 in {% cite hottbook %}.
+Since the last two cases are induction on HITs, these inductions take into
+account the action on their path constructors. We have taken inspiration to
+finish this proof from Flattening lemma's proof in Section 6 in {% cite hottbook
+%}.
 
-By Sigma induction, we must to provide the uncurried function `g-f'` of `g-f : g ∘ f ∼ id`,
-that has type ` Π (s : S¹) Π (b : P s).(g ∘ f) (s , b) == id (s , b)`. Therefere,
-the next step is by induction on the circle. For the `base` case we have `c` defined as fallows.
-For acting on paths, we define a short name `Q` for the type family `λ z → (b : P z) → (g ∘ f) (z , b) == id (z , b)`
-in order to get a pathover between `c` and itself along `loop` in the type family `Q`,
-this path is `cpath`. Showing this `cpath` evidence requires a few auxiliar lemmas that interested
-reader can make them explicity by clicking on the helpers section below. The equivalance follows
-by showing that `f` defines a quasiinverse equivalence (`ΣS¹P-≃-pS`).
+By Sigma induction, we must to provide the uncurried function `g-f'` of `g-f : g
+∘ f ∼ id`, that has type `Π (s : S¹) Π (b : P s).(g ∘ f) (s , b) == id (s , b)`.
+Therefore, the next step is by induction on the circle. For the `base` case we
+have `c` defined as fallows. For acting on paths, we define a short name `Q` for
+the type family `λ z → (b : P z) → (g ∘ f) (z , b) == id (z , b)` in order to
+get a pathover between `c` and itself along `loop` in the type family `Q`, this
+path is `cpath`.  To define `cpath` we require a few auxiliary lemmas that
+an interested reader can make them explicit by clicking on the helpers section
+below. The equivalence follows by showing that `f` defines a quasiinverse
+equivalence (`ΣS¹P-≃-pS`).
 
 \begin{code}
   -- Def.

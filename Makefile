@@ -22,8 +22,8 @@ _posts/%.md : _src/notes/%.md
 
 
 _posts/%.md : _src/notes/%.lagda
-	- agda2html --version
-	- agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
+	- time agda2html --version
+	- time agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
   - @echo "==================================================================="
 
 
