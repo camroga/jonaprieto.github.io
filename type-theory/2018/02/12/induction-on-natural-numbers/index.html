@@ -187,7 +187,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/26918cd67f8d52ed536ff846e1e2624033ed85c4/_src/notes/2018-02-12-induction-on-natural-numbers.lagda">0db64d7 </a> on  29 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/26918cd67f8d52ed536ff846e1e2624033ed85c4/_src/notes/2018-02-12-induction-on-natural-numbers.lagda">3bea9c0 </a> on  29 Aug 2018
     </div>
   </div>
   
@@ -705,7 +705,7 @@ us to define functions <code>f : ℕ → C</code> where <code>C : 𝒰</code> by
   <br/>
   <pre class="bibtex"
        data-bibtextag =""
-       data-bibtexcitation =""
+       data-bibtexauthors =""
        data-year ="2018"
        data-lastchecked ="2018-08-29"
        data-originalyear ="2018-02-12"
@@ -864,16 +864,16 @@ $('.citation pre').each(function(){
     var originalyear  = $(this).data('originalyear');
     var url           = $(this).data('url');
 
-    var bibtexauthors     = $(this).data('bibtexauthors');
-    var bibtexcitation = $(this).data('bibtexcitation');
+    var bibtextag     = $(this).data('bibtextag');
+    var bibtexauthors = $(this).data('bibtexauthors');
 
     if (bibtexcitation == ""){
       bibtexcitation = "Prieto-Cubides, Jonathan";
     }
 
     pre.append(
-    "@online{ " + bibtexauthors + ",\n" +
-    "  author  = { " + bibtexcitation +" },\n" +
+    "@online{ " + bibtextag + ",\n" +
+    "  author  = { " + bibtexauthors +" },\n" +
     "  title   = { " + title + " },\n" +
     "  url     = { \\url{" + url   + "} }\n" +
     "  year    = { " + year  + " }\n" +

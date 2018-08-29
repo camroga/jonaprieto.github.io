@@ -187,7 +187,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/590340d2dc57230b4a1be1d70704f46548a87921/_src/notes/2018-07-06-mini-hott.lagda">0db64d7 </a> on  29 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/590340d2dc57230b4a1be1d70704f46548a87921/_src/notes/2018-07-06-mini-hott.lagda">3bea9c0 </a> on  29 Aug 2018
     </div>
   </div>
   
@@ -3341,7 +3341,7 @@ group given by proofs of the equality (a=a).</p>
   <br/>
   <pre class="bibtex"
        data-bibtextag =""
-       data-bibtexcitation =""
+       data-bibtexauthors =""
        data-year ="2018"
        data-lastchecked ="2018-08-29"
        data-originalyear ="2018-07-06"
@@ -3500,16 +3500,16 @@ $('.citation pre').each(function(){
     var originalyear  = $(this).data('originalyear');
     var url           = $(this).data('url');
 
-    var bibtexauthors     = $(this).data('bibtexauthors');
-    var bibtexcitation = $(this).data('bibtexcitation');
+    var bibtextag     = $(this).data('bibtextag');
+    var bibtexauthors = $(this).data('bibtexauthors');
 
     if (bibtexcitation == ""){
       bibtexcitation = "Prieto-Cubides, Jonathan";
     }
 
     pre.append(
-    "@online{ " + bibtexauthors + ",\n" +
-    "  author  = { " + bibtexcitation +" },\n" +
+    "@online{ " + bibtextag + ",\n" +
+    "  author  = { " + bibtexauthors +" },\n" +
     "  title   = { " + title + " },\n" +
     "  url     = { \\url{" + url   + "} }\n" +
     "  year    = { " + year  + " }\n" +

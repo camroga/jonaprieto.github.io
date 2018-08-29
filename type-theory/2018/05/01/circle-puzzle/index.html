@@ -196,7 +196,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/4850502cbbc5b3f3f1e7e10c686e49c7e0db64d7/_src/notes/2018-05-01-circle-puzzle.lagda">0db64d7 </a> on  29 Aug 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/4850502cbbc5b3f3f1e7e10c686e49c7e0db64d7/_src/notes/2018-05-01-circle-puzzle.lagda">3bea9c0 </a> on  29 Aug 2018
     </div>
   </div>
   
@@ -1222,7 +1222,7 @@ in <a href="#hottbook">(Univalent Foundations Program, 2013)</a>, we got the fol
   <br/>
   <pre class="bibtex"
        data-bibtextag ="prietobezem:circle"
-       data-bibtexcitation =""
+       data-bibtexauthors ="Prieto-Cubides, Jonathan and Bezem, Marc"
        data-year ="2018"
        data-lastchecked ="2018-08-29"
        data-originalyear ="2018-05-01"
@@ -1381,16 +1381,16 @@ $('.citation pre').each(function(){
     var originalyear  = $(this).data('originalyear');
     var url           = $(this).data('url');
 
-    var bibtexauthors     = $(this).data('bibtexauthors');
-    var bibtexcitation = $(this).data('bibtexcitation');
+    var bibtextag     = $(this).data('bibtextag');
+    var bibtexauthors = $(this).data('bibtexauthors');
 
     if (bibtexcitation == ""){
       bibtexcitation = "Prieto-Cubides, Jonathan";
     }
 
     pre.append(
-    "@online{ " + bibtexauthors + ",\n" +
-    "  author  = { " + bibtexcitation +" },\n" +
+    "@online{ " + bibtextag + ",\n" +
+    "  author  = { " + bibtexauthors +" },\n" +
     "  title   = { " + title + " },\n" +
     "  url     = { \\url{" + url   + "} }\n" +
     "  year    = { " + year  + " }\n" +
