@@ -13,7 +13,7 @@ logic, type theory, categories, algebra, and of course, programming languages.
 
 <pre class="Agda">{% raw %}<a id="307" href="{% endraw %}{{ site.baseurl }}{% link _posts/2018-06-30-learning-programming-languages-theory.md %}{% raw %}#307" class="Function">_</a> <a id="309" class="Symbol">=</a> <a id="311" class="PrimitiveType">Set</a> <a id="315" class="Comment">-- Trick for .lagda in jekyll</a>{% endraw %}</pre>
 
-## [Advanced Functional Programming CS410-17 by Conor McBride](https://github.com/pigworker/CS410-17/)
+## Advanced Functional Programming CS410-17 by [Conor McBride](https://github.com/pigworker/CS410-17/)
 
 - [x] [Programs and Proofs](https://www.youtube.com/watch?v=O4oczQry9Jw) 2018-06-30
 - [x] [more Programs and Proofs, Introducing "with"](https://www.youtube.com/watch?v=qcVZxQTouDk)  2018-07-08
@@ -388,7 +388,7 @@ logic, type theory, categories, algebra, and of course, programming languages.
 - [ ] [The Zipper (Differentiating Polynomial Types)](https://www.youtube.com/watch?v=-3MiZ80WldY)
 
 
-## [Programming Language Foundations in Agda by Wen Kokke and Philip Wadler](https://plfa.github.io/)
+## Programming Language Foundations in Agda by [Wen Kokke and Philip Wadler](https://plfa.github.io/)
 
 ### Part 1: Logical Foundations
 
@@ -397,8 +397,8 @@ logic, type theory, categories, algebra, and of course, programming languages.
   - [x] [Relations: Inductive definition of relations](https://plfa.github.io/Relations/) 2018-07-14
   - [x] [Equality: Equality and equational reasoning](https://plfa.github.io/Equality/) 2018-07-29
   - [x] [Isomorphism: Isomorphism and embedding](https://plfa.github.io/Isomorphism/) 2018-08-19
-  - [ ] [Connectives: Conjunction, disjunction, and implication](https://plfa.github.io/Connectives/)
-  - [ ] [Negation: Negation, with intuitionistic and classical Logic](https://plfa.github.io/Negation/)
+  - [x] [Connectives: Conjunction, disjunction, and implication](https://plfa.github.io/Connectives/) 2018-08-26
+  - [x] [Negation: Negation, with intuitionistic and classical Logic](https://plfa.github.io/Negation/) 2018-09-02
   - [ ] [Quantifiers: Universals and existentials](https://plfa.github.io/Quantifiers/)
   - [ ] [Lists: Lists and higher-order functions](https://plfa.github.io/Lists/)
   - [ ] [Decidable: Booleans and decision procedures](https://plfa.github.io/Decidable/)
