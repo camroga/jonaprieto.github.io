@@ -1051,29 +1051,46 @@ HEq₄ A .A idp a b = Path a b
 
 ### Equivalences
 
+The following equivalences are all provable by path-induction, we do path
+induction on the path `α` from the definition above and depending on the
+heterogeneous equality definition we chose we might be need other path
+induction. The convention for the equivalences is `HEqᵢ-≃-HEqⱼ` to denote the
+evidence of the equivalence between the type `HEqᵢ` and `HEqⱼ`.
+
 {:.print-version}
   Let us prove the equivalence between the types `HEq₁` and `HEq₂`.
-  The other equivalences are proved in a similar way but they are available
-  on the website of this document.
+  The other equivalences are proved in a similar way and they are available
+  on the website that supports this document.
 
 \begin{code}
-
 -- HEq₁-≃-HEq₂
-
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
+\end{code}
 
-  HEq₁-to-HEq₂ : {α : A == B}{a : A}{b : B}
-               → HEq₁ A B α a b
-               → HEq₂ A B α a b
+\begin{code}
+-- Outgoing functions
+  HEq₁-to-HEq₂
+    : {α : A == B}{a : A}{b : B}
+    → HEq₁ A B α a b
+    → HEq₂ A B α a b
+
   HEq₁-to-HEq₂ {idp} idp = idp
 
-  HEq₂-to-HEq₁ : {α : A == B}{a : A}{b : B}
-               → HEq₂ A B α a b
-               → HEq₁ A B α a b
-  HEq₂-to-HEq₁ {idp} idp = idp
+  HEq₂-to-HEq₁
+    : {α : A == B}{a : A}{b : B}
+    → HEq₂ A B α a b
+    → HEq₁ A B α a b
 
-  HEq₁-≃-HEq₂ : {α : A == B}{a : A}{b : B}
-             → HEq₁ A B α a b ≃ HEq₂ A B α a b
+  HEq₂-to-HEq₁ {idp} idp = idp
+\end{code}
+
+Finally, we provide the evidence of the equivalence.
+\begin{code}
+-- Equivalence
+  HEq₁-≃-HEq₂
+    : {α : A == B}{a : A}{b : B}
+    → HEq₁ A B α a b ≃ HEq₂ A B α a b
+
   HEq₁-≃-HEq₂ {idp} {a} {b} =
     qinv-≃ HEq₁-to-HEq₂ (HEq₂-to-HEq₁ , HEq₁-~-HEq₂ , HEq₂-~-HEq₁)
     where
@@ -1088,6 +1105,8 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
 
 {: .foldable .only-website until="1"}
 \begin{code}
+-- Other equivalences:  HEq₂-≃-HEq₃, HEq₃-≃-HEq₄, HEq₄-≃-HEq₁
+
 -- HEq₂-≃-HEq₃
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1114,11 +1133,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₃-~-HEq₂ : ( p : HEq₂ A B idp a b)
                   → ( HEq₃-to-HEq₂ (HEq₂-to-HEq₃ p ) == p)
       HEq₃-~-HEq₂ idp = idp
-\end{code}
 
-
-{: .foldable .only-website until="1"}
-\begin{code}
 -- HEq₃-≃-HEq₄
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1145,10 +1160,7 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₄-~-HEq₃ : ( p : HEq₃ A B idp a b)
                   → ( HEq₄-to-HEq₃ (HEq₃-to-HEq₄ p ) == p)
       HEq₄-~-HEq₃ idp = idp
-\end{code}
 
-{: .foldable .only-website until="1"}
-\begin{code}
 -- HEq₄-≃-HEq₁
 
 module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
@@ -1177,6 +1189,9 @@ module _ {ℓ}(A : Type ℓ) (B : Type ℓ) where
       HEq₁-~-HEq₄ idp = idp
 \end{code}
 
+We prefer to use definition `HEq₁` as the definition by default for
+heterogeneous equality. We later on refer to this type as `HEq`.
+
 \begin{code}
 HEq = HEq₁
 \end{code}
@@ -1185,45 +1200,94 @@ HEq = HEq₁
 
 As we mentioned above, Pathover can be defined in at least five different ways.
 An inductive definition, using the heterogeneous equality, transporting along
-homogeneous equalities and the last one by using path-induction.
+homogeneous equalities and the last one by path-induction on the identity type.
 
-- \begin{code}
-data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A} :
-      {a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ where
-      idp : {c₁ : C a₁} → PathOver₁ C idp c₁ c₁
+<ul>
+
+<li>
+\begin{code}
+data PathOver₁ {ℓᵢ ℓⱼ} {A : Set ℓᵢ} (C : A → Type ℓⱼ) {a₁ : A}
+  : {a₂ : A} (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ where
+  idp : ∀ {c₁ : C a₁} → PathOver₁ C idp c₁ c₁
 \end{code}
+</li>
 
-- \begin{code}
-PathOver₂ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} → (C : A → Type ℓⱼ) {a₁ a₂ : A}
-          → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂) → Type ℓⱼ
+<li>
+\begin{code}
+PathOver₂
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+  → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+  → (α : a₁ == a₂)
+  → (c₁ : C a₁)
+  → (c₂ : C a₂)
+  -------------------
+  → Type ℓⱼ
+
 PathOver₂ {A = A} C {a₁} {a₂} α c₁ c₂ = HEq (C a₁) (C a₂) (ap C α) c₁ c₂
 \end{code}
+</li>
 
-- \begin{code}
-PathOver₃ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
-          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+<li>
+\begin{code}
+PathOver₃
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+  → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+  → (α : a₁ == a₂)
+  → (c₁ : C a₁)
+  → (c₂ : C a₂)
+  -------------------
+  → Type ℓⱼ
+
 PathOver₃ C α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
 ![path](/assets/ipe-images/pathover-3.png){: width="60%"}
 *Figure 2. Pathover₃.*
 
-- \begin{code}
-PathOver₄ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
-          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+</li>
+
+<li>
+\begin{code}
+PathOver₄
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+  → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+  → (α : a₁ == a₂)
+  → (c₁ : C a₁)
+  → (c₂ : C a₂)
+  -------------------
+  → Type ℓⱼ
+
 PathOver₄ C α c₁ c₂ = c₁ == transport C (α ⁻¹) c₂
 \end{code}
 
 ![path](/assets/ipe-images/pathover-4.png){: width="60%"}{: width="60%"}
 *Figure 2. Pathover₄.*
+</li>
 
-- \begin{code}
-PathOver₅ : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
-          → (α : a₁ == a₂) (c₁ : C a₁)(c₂ : C a₂) → Type ℓⱼ
+<li>
+\begin{code}
+PathOver₅
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+  → (C : A → Type ℓⱼ) {a₁ a₂ : A}
+  → (α : a₁ == a₂)
+  → (c₁ : C a₁)
+  → (c₂ : C a₂)
+  -------------------
+  → Type ℓⱼ
+
 PathOver₅ _ idp c₁ c₂ = c₁ == c₂
 \end{code}
+</li>
+</ul>
 
 ### Equivalences
+
+The following equivalences are all provable by path-induction, we do path
+induction on the path `α` from the definition above and depending on the
+heterogeneous equality definition we chose we might be need other path
+induction. The convention for the equivalences is `PathOverᵢ-≃-PathOverⱼ` to
+denote the evidence of the equivalence between the type `PathOverᵢ` and
+`PathOverⱼ`.
 
 {:.print-version}
   Let us prove the equivalence between the types `PathOver₁` and `PathOver₂`.
@@ -1231,20 +1295,28 @@ PathOver₅ _ idp c₁ c₂ = c₁ == c₂
   on the website of this document.
 
 \begin{code}
-
 -- PathOver₁-≃-PathOver₂
-
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
-  PathOver₁-to-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₁ C α c₁ c₂
-         → PathOver₂ C α c₁ c₂
+-- Outgoing functions
+  PathOver₁-to-PathOver₂
+    : ∀ {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+    → PathOver₁ C α c₁ c₂
+    → PathOver₂ C α c₁ c₂
+
   PathOver₁-to-PathOver₂ {α = idp} idp = idp
 
-  PathOver₂-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
-         → PathOver₂ C α c₁ c₂
-         → PathOver₁ C α c₁ c₂
+  PathOver₂-to-PathOver₁
+    : ∀ {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
+    → PathOver₂ C α c₁ c₂
+    → PathOver₁ C α c₁ c₂
+
   PathOver₂-to-PathOver₁ {α = idp} idp = idp
+\end{code}
+
+Finally, we provide the evidence of the equivalence.
+\begin{code}
+-- Equivalence
 
   PathOver₁-≃-PathOver₂ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
         → PathOver₁ C α c₁ c₂ ≃ PathOver₂ C α c₁ c₂
@@ -1263,13 +1335,12 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₂~PathOver₁ idp = idp
 \end{code}
 
-{: .print-version}
-
-
-{: .foldable .only-website until="1"}
+{: .foldable .only-website until="2"}
 \begin{code}
--- PathOver₂-≃-PathOver₃
+-- Other equivalences:
+-- PathOver₂-≃-PathOver₃, PathOver₃-≃-PathOver₄, PathOver₄-≃-PathOver₅, PathOver₁-≃-PathOver₁
 
+-- PathOver₂-≃-PathOver₃
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₂-to-PathOver₃ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
@@ -1297,12 +1368,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₃~PathOver₂ : (p : PathOver₂ C idp c₁ c₂)
           → PathOver₃-to-PathOver₂ (PathOver₂-to-PathOver₃ p) == p
       PathOver₃~PathOver₂ idp = idp
-\end{code}
 
-{: .foldable .only-website until="1"}
-\begin{code}
 -- PathOver₃-≃-PathOver₄
-
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₃-to-PathOver₄ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
@@ -1330,10 +1397,7 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₄~PathOver₃ : (p : PathOver₃ C idp c₁ c₂)
           → PathOver₄-to-PathOver₃ (PathOver₃-to-PathOver₄ p) == p
       PathOver₄~PathOver₃ idp = idp
-\end{code}
 
-{: .foldable .only-website until="1"}
-\begin{code}
 -- PathOver₄-≃-PathOver₅
 
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
@@ -1363,12 +1427,8 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₅~PathOver₄ : (p : PathOver₄ C idp c₁ c₂)
           → PathOver₅-to-PathOver₄ (PathOver₄-to-PathOver₅ p) == p
       PathOver₅~PathOver₄ idp = idp
-\end{code}
 
-{: .foldable .only-website until="1"}
-\begin{code}
 -- PathOver₅-≃-PathOver₁
-
 module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
 
   PathOver₅-to-PathOver₁ : {a₁ a₂ : A} {α : a₁ == a₂} {c₁ : C a₁}{c₂ : C a₂}
@@ -1398,8 +1458,9 @@ module _ {ℓ} (A : Type ℓ) (C : A → Type ℓ) where
       PathOver₁~PathOver₅ idp = idp
 \end{code}
 
-The third definition is from {% cite hottbook %} in Section 2.3.
-The syntax sugar for pathovers is from {% cite hott-in:agda %}.
+By default, we use the third definition because it is the same definition used in
+{% cite hottbook %} in Section 2.3. The syntax sugar for pathovers is used in {% cite
+hott-in:agda %}.
 
 \begin{code}
 PathOver = PathOver₃
@@ -1527,12 +1588,20 @@ If $$A\,,~B : U$$ and $$C: A → U$$ and $$e: B \simeq A$$, then
 {: .equation }
   $$\Sigma\,{A}\,C\,\simeq\,\Sigma\,B\,(C ∘ e).$$
 
+**Proof.**
+
+Our context:
 \begin{code}
 module Lemma₁ {ℓᵢ}{ℓⱼ}
   {A : Type ℓᵢ} {B : Type ℓᵢ} (e : B ≃ A) {C : A → Type ℓⱼ} where
+\end{code}
 
+We extract the functions and the homotopies from the equivalence `e : B ≃ A`
+to use them later.
+
+\begin{code}
+-- Def.
   private
-
     f : B → A
     f = lemap e
 
@@ -1550,16 +1619,30 @@ module Lemma₁ {ℓᵢ}{ℓⱼ}
 
     τ : (b : B) → ap f (β b) == α (f b)
     τ = ishae.τ ishaef
+\end{code}
 
+Now, we proceed to define the outgoing functions from $$\Sigma\,{A}\,C$$ to
+$$\Sigma\,B\,(C ∘ e)$$ and conversely.
+
+\begin{code}
+-- Def.
   ΣAC-to-ΣBCf : Σ A C → Σ B (λ b → C (f b))
   ΣAC-to-ΣBCf (a , c) = f⁻¹ a , c'
     where
       c' : C (f (f⁻¹ a))
       c' = transport C ((α a) ⁻¹) c
+\end{code}
 
+\begin{code}
+-- Def.
   ΣBCf-to-ΣAC : Σ B (λ b → C (f b)) → Σ A C
   ΣBCf-to-ΣAC (b , c') = f b , c'
+\end{code}
 
+Evidence of the homotopies necessary to show the equivalence:
+
+\begin{code}
+-- Homotopies
   private
     H₁ : ΣAC-to-ΣBCf ∘ ΣBCf-to-ΣAC ∼ id
     H₁ (b , c') = pair= (β b , patho)
@@ -1599,9 +1682,20 @@ module Lemma₁ {ℓᵢ}{ℓⱼ}
             ==⟨⟩
           c
         ∎
+\end{code}
 
+Finally, we now are able to prove the equivalence using the terms defined above.
+
+{: .foldable until="8"}
+\begin{code}
+-- Equivalence
   lemma₁ :  Σ A C ≃ Σ B (λ b → C (f b))
-  lemma₁ = qinv-≃ ΣAC-to-ΣBCf ( ΣBCf-to-ΣAC , H₁ , H₂)
+  lemma₁ = qinv-≃
+            ΣAC-to-ΣBCf    -- the quasi-inverse
+            ( ΣBCf-to-ΣAC  -- its inverse
+            , H₁           -- ΣAC-to-ΣBCf ∘ ΣBCf-to-ΣAC ∼ id
+            , H₂           -- ΣBCf-to-ΣAC ∘ ΣAC-to-ΣBCf ∼ id
+            )
 
 open Lemma₁ public
 \end{code}
