@@ -658,45 +658,66 @@ family `(λ z → P z → pS)`.
     (begin
       transport (λ z → P z → pS) loop ct
         ==⟨ transport-fun loop ct ⟩
-      (λ (x : P base) → transport (λ z → pS) loop
-                          (ct (transport (λ z → P z) (! loop) x)))
-        ==⟨ funext (λ (pb : P base) → transport-const loop
-                          (ct (transport (λ z → P z) (! loop) pb))) ⟩
-      (λ (x : P base) → (ct (transport (λ z → P z) (! loop) x)))
-        ==⟨ funext (λ (pb : P base) → ap ct (helper₁ pb)) ⟩
-      (λ (x : P base) → ct (neg x) )
+      ff
+        ==⟨ funext (λ x → (ff-gg' x) · (gg-hh' x)) ⟩
+      hh
         ==⟨ funext helper₂ ⟩
       ct
      ∎)
      where
-       helper₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
-       helper₁ x =
-         let
-           apP!loop :  ap P (! loop) == ua (invEqv neg-eq)
-           apP!loop =
-             begin
-               ap P (! loop)
-                 ==⟨ ap-inv P loop ⟩
-               ! ap P loop
-                 ==⟨ ap (!_) (S¹-βrec Type₀ Bool (ua (neg-eq))) ⟩
-               ! ua (neg-eq)
-                 ==⟨ ! (ua-inv neg-eq) ⟩
-               ua (invEqv neg-eq)
-             ∎
-         in
-         begin
-           transport P (! loop) x
-             ==⟨ transport-ua P (! loop) (invEqv neg-eq) apP!loop x ⟩
-           fun≃ (invEqv (neg-eq)) x
-             ==⟨⟩
-           fun≃ (neg-eq) x
-             ==⟨⟩
-           neg x
-         ∎
+     helper₁ : (x : P base) → x == neg x [ P ↓ ! loop ]
+     helper₁ x =
+       let
+         apP!loop :  ap P (! loop) == ua (invEqv neg-eq)
+         apP!loop =
+           begin
+             ap P (! loop)
+               ==⟨ ap-inv P loop ⟩
+             ! ap P loop
+               ==⟨ ap (!_) (S¹-βrec Type₀ Bool (ua (neg-eq))) ⟩
+             ! ua (neg-eq)
+               ==⟨ ! (ua-inv neg-eq) ⟩
+             ua (invEqv neg-eq)
+           ∎
+       in
+       begin
+         transport P (! loop) x
+           ==⟨ transport-ua P (! loop) (invEqv neg-eq) apP!loop x ⟩
+         fun≃ (invEqv (neg-eq)) x
+           ==⟨⟩
+         fun≃ (neg-eq) x
+           ==⟨⟩
+         neg x
+       ∎
 
-       helper₂ : (x : P base) → ct (neg x) == ct x
-       helper₂ true  = p₀₁
-       helper₂ false = p₁₀
+     helper₂ : (x : P base) → ct (neg x) == ct x
+     helper₂ true  = p₀₁
+     helper₂ false = p₁₀
+
+     ff : (x : P base) → pS
+     ff = (λ (x : P base) → transport (λ z → pS) loop
+                          (ct (transport (λ z → P z) (! loop) x)))
+
+     gg : (x : P base) → pS
+     gg = (λ (x : P base) → (ct (transport (λ z → P z) (! loop) x)))
+
+     ff-gg' : (x : P base) → ff x == gg x
+     ff-gg' = (λ (pb : P base) → transport-const loop
+                       (ct (transport (λ z → P z) (! loop) pb)))
+
+     ff-gg : ff == gg
+     ff-gg = funext ff-gg'
+
+     hh : (x : P base) → pS
+     hh = λ (x : P base) → ct (neg x)
+
+     gg-hh' : (x : P base) → gg x == hh x
+     gg-hh' = (λ (pb : P base) → ap ct (helper₁ pb))
+
+     gg-hh : gg == hh
+     gg-hh = funext gg-hh'
+
+
 \end{code}
 
 \begin{code}
