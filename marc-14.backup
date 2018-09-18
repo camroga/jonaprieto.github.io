@@ -1,0 +1,16 @@
+(begin
+  transport (λ z → P z → pS) loop ct
+    ==⟨ transport-fun loop ct ⟩
+  f :=  (λ (x : P base) → transport (λ z → pS) loop (ct (transport (λ z → P z) (! loop) x)))
+    ==⟨ funext (λ (pb : P base) → transport-const loop (ct (transport (λ z → P z) (! loop) pb))) ⟩
+  g:= (λ (x : P base) → (ct (transport (λ z → P z) (! loop) x)))
+    ==⟨ funext (λ (pb : P base) → ap ct (helper₁ pb)) ⟩
+  h:= (λ (x : P base) → ct (neg x) )
+    ==⟨ funext helper₂ ⟩
+  ct
+ ∎)
+
+ q>fh : f =h
+ q>fh funext q'>fh
+  where
+    q'>fh = x. (p'>fg x) . (p'>gh x)
