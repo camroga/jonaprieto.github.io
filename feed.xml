@@ -1,41 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-20T14:51:08+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-20T14:51:01+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
-Some conventions used here:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-20T20:29:14+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-20T20:23:14+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
+Some conventions used here
+( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question  and 🏁 : goal, and 🔧 :fixing).&lt;/p&gt;
+
+&lt;h3 id=&quot;research-topics&quot;&gt;Research topics&lt;/h3&gt;
+
+&lt;p&gt;The goals and topics can change along the time, nowadays
+I’m working on the following.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(homotopy) type theory&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;📆 : todo&lt;/li&gt;
-  &lt;li&gt;🚶 :‍ reading&lt;/li&gt;
-  &lt;li&gt;✍️ : writing&lt;/li&gt;
-  &lt;li&gt;❓ : question&lt;/li&gt;
-  &lt;li&gt;🏁 : goal&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;goals&quot;&gt;Goals&lt;/h3&gt;
-
-&lt;p&gt;The goals can change along the time doing this research but
-at least we have some candidates or current topics:&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HoTT&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/pathorvers&quot;&gt;pathovers&lt;/a&gt;: almost finished ✍️&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/pathorvers&quot;&gt;circle equivalences&lt;/a&gt;: with one postulate  ✍️&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/pathorvers&quot;&gt;pathovers&lt;/a&gt;: proofs finished, fixing the writing ✍️&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/pathorvers&quot;&gt;circle equivalences&lt;/a&gt;: removing a postulate  ✍️&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/mini-hott&quot;&gt;mini-hott&lt;/a&gt;: a mini hott library for Agda ✍️&lt;/li&gt;
-  &lt;li&gt;❓ The graph associated to a HIT is the graph generated where
+  &lt;li&gt;❓ A HIT can be seen as graph where
     &lt;ul&gt;
-      &lt;li&gt;each point-constructor is a node&lt;/li&gt;
+      &lt;li&gt;each point-constructor is a node,&lt;/li&gt;
       &lt;li&gt;each path-constructor is an edge&lt;/li&gt;
     &lt;/ul&gt;
-
-    &lt;p&gt;change the direction of one edge generates a HIT equivalent?&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Graphs&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;❓ By changing the direction of one edge, can we get another HIT equivalent ?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Formal graph theory&lt;/strong&gt;&lt;/p&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;🚶 Find a &lt;em&gt;good&lt;/em&gt; predicate for planar graphs. &lt;script type=&quot;math/tex&quot;&gt;A : Type&lt;/script&gt;,&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;🚶 What is a &lt;em&gt;good&lt;/em&gt; characterization for planar graphs. What really does
+&lt;em&gt;good&lt;/em&gt; means? good from the verification point of view or the most suitable
+to use dependent type theory, or HoTT❓&lt;/p&gt;
+
+    &lt;p&gt;When &lt;script type=&quot;math/tex&quot;&gt;A : Type&lt;/script&gt; when want to have a property like &lt;code&gt;isPlanar&lt;/code&gt; such that it
+is not a proposition in the HoTT context.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre class=&quot;equation&quot;&gt;&lt;code&gt;$$ \sum_{g:\mathsf{Graph}(A)}~\mathsf{isPlanar_{A}(g)}.$$
-&lt;/code&gt;&lt;/pre&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{g:\mathsf{Graph}(A)}~\mathsf{isPlanar_{A}(g)}.&lt;/script&gt;
 
 &lt;hr /&gt;
 
@@ -81,14 +82,21 @@ review in future sessions.&lt;/li&gt;
 &lt;h3 id=&quot;formalization-of-graphs&quot;&gt;Formalization of graphs&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Papers relevant to formalizations of graphs&lt;/li&gt;
+  &lt;li&gt;Papers relevant to formalizations of graphs:&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Inductive definitions&lt;/strong&gt;. Using inductive definitions allows us to
+have for free an inductive principle to prove properties.
+One issue using these kind of definitions is the difficulty that represents to
+reason about their constructions. Which it’s taking care of the order of the step
+in the construction. So, how can we have a relation between these constructions
+in such a away, a graph can be obtained by (homotopic?) constructions?.&lt;/p&gt;
 
 &lt;h4 id=&quot;yamamoto-nishizaki-hagiya--toda-1995&quot;&gt;&lt;a href=&quot;#yamamoto&quot;&gt;(Yamamoto, Nishizaki, Hagiya, &amp;amp; Toda, 1995)&lt;/a&gt;&lt;/h4&gt;
 
 &lt;p&gt;In this paper, the authors show as their main result, the formalization of the
-Euler formula. To achieve this they define inductively planar graphs by using
-cycles.&lt;/p&gt;
+Euler formula. To achieve this they define inductively planar graphs by using the notion
+of cycles. The formalization was done in &lt;code&gt;HOL&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h4 id=&quot;bauer--nipkow-2002&quot;&gt;&lt;a href=&quot;#BauerN02&quot;&gt;(Bauer &amp;amp; Nipkow, 2002)&lt;/a&gt;&lt;/h4&gt;
 
@@ -107,7 +115,28 @@ inductively planar graphs. This definition has three constructors:&lt;/p&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;bauer-2005&quot;&gt;&lt;a href=&quot;#Bauer&quot;&gt;(Bauer, 2005)&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Continuing with near triangulations, Bauer in this thesis has an extra
+constructor for it.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-bitacora-c68ebbd9.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;He ends up Chapter 2 with the following summary of formalizations of
+planar graphs.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-bitacora-485765ed.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Triangles vs. Polygons: The definition using triangles is by far eas- ier.
+This simplifies proofs about the construction. If faces of arbi- trary
+length can be added, the graph modifications and proofs about those are more
+complex. On the other hand, a formalization based on triangles requires
+operations to delete edges in order to construct non-triangular graphs,
+which complicates a verification. Directed&lt;/p&gt;
+&lt;/blockquote&gt;
+
 &lt;h4 id=&quot;mokhov-andrey-mokhov--andrey-2017&quot;&gt;&lt;a href=&quot;#Mokhov2017&quot;&gt;(Mokhov, Andrey, Mokhov, &amp;amp; Andrey, 2017)&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;Alga. Missing description.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -121,7 +150,7 @@ inductively planar graphs. This definition has three constructors:&lt;/p&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144&quot;&gt;Why are planar graphs so exceptional?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/&quot;&gt;Kalai’s Post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs&quot;&gt;Generalizations of Planar Graphs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">This is my bitacora. Some conventions used here:</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-09-18T11:59:28+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-09-18T11:59:28+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 
