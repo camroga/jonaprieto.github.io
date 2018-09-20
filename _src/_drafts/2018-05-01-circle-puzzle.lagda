@@ -705,19 +705,11 @@ family `(λ z → P z → pS)`.
      ff-gg' = (λ (pb : P base) → transport-const loop
                        (ct (transport (λ z → P z) (! loop) pb)))
 
-     ff-gg : ff == gg
-     ff-gg = funext ff-gg'
-
      hh : (x : P base) → pS
      hh = λ (x : P base) → ct (neg x)
 
      gg-hh' : (x : P base) → gg x == hh x
      gg-hh' = (λ (pb : P base) → ap ct (helper₁ pb))
-
-     gg-hh : gg == hh
-     gg-hh = funext gg-hh'
-
-
 \end{code}
 
 \begin{code}
@@ -754,10 +746,10 @@ equalities, this is by using the `pair=` function.
 
   g : pS → Σ S¹ P
   g = pS-rec (Σ S¹ P)
-            (ctp false)  -- false ↦ (base , false)
-            (ctp true)   -- true ↦ (base , true)
-            (ptp false)  -- p₀₁ ↦ (base , false) = (base , true)
-            (ptp true)   -- p₁₀ ↦ (base , true ) = (base , false)
+             (ctp false)  -- false ↦ (base , false)
+             (ctp true)   -- true ↦ (base , true)
+             (ptp false)  -- p₀₁ ↦ (base , false) = (base , true)
+             (ptp true)   -- p₁₀ ↦ (base , true) = (base , false)
 \end{code}
 
 
@@ -788,17 +780,21 @@ on the proof terms. Let's see.
   G false = γ₁₀
 
   H : (b : P base) → {!  !}
-  H true  = ap (f̰ base) (G true)  · p₁₀
-  H false = ap (f̰ base) (G false) · p₀₁
+  H true  = (ap (f̰ base) γ₀₁) · p₁₀
+  H false = (ap (f̰ base) γ₁₀) · p₀₁
 
-  H' : {!   !}
-  H' = {!   !}
+ -- apd f̰ loop : transport (λ z → P z → pS) loop (f̰ base) == f̰ base
+
+  H' : (x : P base) → transport (λ z → P z → pS) loop (f̰ base) x == f̰ base x
+  H' true  = H true
+  H' false = H false
 
   O : apd f̰ loop == funext H'
-  O = {!   !}
+  O = {!    !}
 
-  module app = Lemma₂ {A = S¹} P {Z = pS} f̰
-  t = app.L6-12-8 loop false true γ₀₁
+  module lem = Lemma₂ {A = S¹} P {Z = pS} f̰
+  t = lem.L6-12-8 loop false true γ₀₁
 
+  ffff = {! t  !}
 \end{code}
 -------------------------------------------------------------------------------
