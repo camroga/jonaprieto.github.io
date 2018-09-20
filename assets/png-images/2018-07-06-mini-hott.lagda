@@ -191,7 +191,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/c4f28f442c4609eb0fe2795033803790551d3f6b/assets/png-images/2018-07-06-mini-hott.lagda">f754399 </a> on  20 Sep 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/c4f28f442c4609eb0fe2795033803790551d3f6b/assets/png-images/2018-07-06-mini-hott.lagda">a200346 </a> on  20 Sep 2018
     </div>
   </div>
   
