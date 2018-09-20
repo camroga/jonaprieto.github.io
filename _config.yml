@@ -56,11 +56,11 @@ algolia:
   application_id: '6LC140UUTA'
   index_name: 'notes'
   search_only_api_key: '038508bea0ee72e992b18935df862622'
-  extensions_to_index: 'html,md,lagda,agda'
+  extensions_to_index: 'html,md'
   nodes_to_index:
     'p,blockquote'
   files_to_exclude:
-      - src/*
+      - _src/*
       - index.html
       - _index.html
   settings:
