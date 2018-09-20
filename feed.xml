@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-20T13:45:07+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-20T13:36:15+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-20T14:34:44+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-20T14:34:33+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
 Some conventions used here:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;📆 : todo&lt;/li&gt;
   &lt;li&gt;🚶 :‍ reading&lt;/li&gt;
   &lt;li&gt;✍️ : writing&lt;/li&gt;
-  &lt;li&gt;❓ : question, no idea&lt;/li&gt;
+  &lt;li&gt;❓ : question&lt;/li&gt;
   &lt;li&gt;🏁 : goal&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -31,10 +31,10 @@ at least we have some candidates or current topics:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Graphs&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;🚶 Find a &lt;em&gt;good&lt;/em&gt; predicate for planar graphs&lt;/li&gt;
+  &lt;li&gt;🚶 Find a &lt;em&gt;good&lt;/em&gt; predicate for planar graphs. &lt;script type=&quot;math/tex&quot;&gt;A : Type&lt;/script&gt;,&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre class=&quot;equation&quot;&gt;&lt;code&gt;$$ \sum_{g:\mathsf{Graph}}~\mathsf{isPlanar(g)}$$
+&lt;pre class=&quot;equation&quot;&gt;&lt;code&gt;$$ \sum_{g:\mathsf{Graph}(A)}~\mathsf{isPlanar_{A}(g)}.$$
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;hr /&gt;
