@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-20T14:34:44+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-20T14:34:33+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-20T14:51:08+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-20T14:51:01+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
 Some conventions used here:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -84,7 +84,7 @@ review in future sessions.&lt;/li&gt;
   &lt;li&gt;Papers relevant to formalizations of graphs&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;tammet-1996&quot;&gt;&lt;a href=&quot;#Tammet1996&quot;&gt;(Tammet, 1996)&lt;/a&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;yamamoto-nishizaki-hagiya--toda-1995&quot;&gt;&lt;a href=&quot;#yamamoto&quot;&gt;(Yamamoto, Nishizaki, Hagiya, &amp;amp; Toda, 1995)&lt;/a&gt;&lt;/h4&gt;
 
 &lt;p&gt;In this paper, the authors show as their main result, the formalization of the
 Euler formula. To achieve this they define inductively planar graphs by using
