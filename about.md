@@ -4,24 +4,26 @@ permalink: /about/
 title: About
 ---
 
-I'm a Ph.D. student in the first-year at [University of
+I'm a Ph.D. student at [University of
 Bergen](https://www.uib.no/en/ii) under the advisory of [Marc
 Bezem](https://cas.oslo.no/fellows/marc-bezem-article2086-828.html) and
-co-supervised by [Bjørn Ian
-Dundas](https://cas.oslo.no/fellows/bjorn-ian-dundas-article2087-828.html).
-We mostly work nowadays in type theory. It's fun.
+co-supervised by [Håkon Robbestad](http://staff.math.su.se/gylterud/).
+We are working on type theory and some connections with other branches
+of mathematics.
 
-Before came to Norway, I lived two years in Medellín, Colombia where I did my Master
-in the Mathematical Sciences Department at [Universidad
-EAFIT](http://www.eafit.edu.co/) under the
+Before, I lived two years in [Medellín, Colombia](https://www.google.no/search?q=medellin+colombia&newwindow=1&safe=active&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjb6-m_5MzdAhXLl4sKHcolC0AQ_AUIDigB&biw=1152&bih=638)
+where I did my Master
+under the
 [advisory](http://www1.eafit.edu.co/asr/supervised-students.html) of [Andrés
 Sicard-Ramírez](http://www1.eafit.edu.co/asr/) in the group of the [Logic and
 Computation](http://scienti.colciencias.gov.co:8080/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008091)
-research group.
+research group in the Mathematical Sciences Department at [Universidad
+EAFIT](http://www.eafit.edu.co/). I've got my bachelor in mathematics from [Universidad
+Sergio Arboleda](https://www.usergioarboleda.edu.co).
 
-My current interests for research are mostly the connections between computer
+My current interests for research are mostly about the connections between computer
 science and mathematics such as verification, type theory, functional
-programming, logic, proof-assistants, among others related.
+programming, logic and proof-assistants.
 
 - [My Github](http://github.com/jonaprieto)
 - [My CV](http://github.com/jonaprieto/curriculum-vitae)
@@ -49,9 +51,20 @@ The sources of this blog are open source. The blog is using the following projec
 
 Copyright (c) 2018 Jonathan Prieto-Cubides.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
