@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-21T13:29:16+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-20T20:23:14+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-21T21:10:39+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-21T21:10:30+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
 Some conventions used here
 ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question  and 🏁 : goal, and 🔧 :fixing).&lt;/p&gt;
 
@@ -13,23 +13,17 @@ I’m working on the following.&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/pathorvers&quot;&gt;pathovers&lt;/a&gt;: proofs finished, fixing the writing ✍️&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/pathorvers&quot;&gt;circle equivalences&lt;/a&gt;: removing a postulate  ✍️&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://tinyurl.com/mini-hott&quot;&gt;mini-hott&lt;/a&gt;: a mini hott library for Agda ✍️&lt;/li&gt;
-  &lt;li&gt;❓ A HIT can be seen as graph where
-    &lt;ul&gt;
-      &lt;li&gt;each point-constructor is a node,&lt;/li&gt;
-      &lt;li&gt;each path-constructor is an edge&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;A HIT can be seen as graph where each point-constructor is a node,
+each path-constructor is an edge. By changing the direction of one edge, can we get another HIT equivalent❓&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;❓ By changing the direction of one edge, can we get another HIT equivalent ?&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Formal graph theory&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;🚶 What is a &lt;em&gt;good&lt;/em&gt; characterization for planar graphs. What really does
-&lt;em&gt;good&lt;/em&gt; means? good from the verification point of view or the most suitable
-to use dependent type theory, or HoTT❓&lt;/p&gt;
+&lt;em&gt;good&lt;/em&gt; means? good from the verification point of view or to be most suitable
+to use (depend, hott) type theory❓&lt;/p&gt;
 
     &lt;p&gt;When &lt;script type=&quot;math/tex&quot;&gt;A : Type&lt;/script&gt; when want to have a property like &lt;code&gt;isPlanar&lt;/code&gt; such that it
 is not a proposition in the HoTT context.&lt;/p&gt;
