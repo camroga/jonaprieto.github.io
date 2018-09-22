@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-21T21:10:39+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-21T21:10:30+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-22T23:15:18+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-22T23:15:10+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
 Some conventions used here
 ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question  and 🏁 : goal, and 🔧 :fixing).&lt;/p&gt;
 
@@ -144,7 +144,7 @@ which complicates a verification. Directed&lt;/p&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144&quot;&gt;Why are planar graphs so exceptional?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/&quot;&gt;Kalai’s Post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs&quot;&gt;Generalizations of Planar Graphs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-09-21T13:29:09+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-09-22T23:15:10+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 
@@ -230,82 +230,91 @@ then, we can compute recursively the solution by following that’s equal to&lt;
   &lt;/li&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Exercise 2.23.
     &lt;ul&gt;
-      &lt;li&gt;a)
-```
-def Majority(A):
+      &lt;li&gt;a) Algorithm Majority
+        &lt;pre&gt;&lt;code&gt;def Majority(A):
 if len(A) == 1:
  return A[0]
 half1 =  Majority(first half)
 half2 =  Majority(second half)
 check half1 in all the array to be the majority element
-if it’s not check with half2 in all the array
-else: there is no majority element&lt;/li&gt;
+if it's not check with half2 in all the array
+else: there is no majority element
+&lt;/code&gt;&lt;/pre&gt;
+      &lt;/li&gt;
+      &lt;li&gt;b) Algorithm: &lt;a href=&quot;https://www.cs.utexas.edu/~moore/best-ideas/mjrty/example.html#step13&quot;&gt;MJRTY - A Fast Majority Vote Algorithm&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;Exercise 3.1: Just perform a DFS&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;
+    &lt;p&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Exercise 3.2
+&lt;img src=&quot;/assets/png-images/2018-08-24-learning-inf234-850e4ac8.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Exercise 3.3.
+Kahn’ Topological Sort algorithm:
+&lt;img src=&quot;/assets/png-images/2018-08-24-learning-inf234-6fa99409.png&quot; alt=&quot;&quot; /&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Sources (A,B) and the sinks (G, H)&lt;/li&gt;
+      &lt;li&gt;How many toposorts the graph has? 8.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;    - b) Algorithm: [MJRTY - A Fast Majority Vote Algorithm](https://www.cs.utexas.edu/~moore/best-ideas/mjrty/example.html#step13)
+&lt;h2 id=&quot;2018-09-10&quot;&gt;2018-09-10&lt;/h2&gt;
 
-  - [x] Exercise 3.1: Just perform a DFS
-  - [ ] Exercise 3.2
-    ![](/assets/png-images/2018-08-24-learning-inf234-850e4ac8.png)
+&lt;ul&gt;
+  &lt;li&gt;DFS, DFS tree, DFS forest construction in O(n + m) where n is #vertices and m is #edges
+    &lt;ul&gt;
+      &lt;li&gt;👨‍🎓 When drawing always make the arrows (dotted) to point out the exploration traces.&lt;/li&gt;
+      &lt;li&gt;tree edges are the first edges in the DFS from parent to child, if the child
+is already discovered then a edge parent-child becomes a forward edge.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Connected Component in O(n+m):
+    &lt;ul&gt;
+      &lt;li&gt;Run a DFS for all vertices, if a vertex is unvisited the there is a component
+with that vertex, and continue with next vertex.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Check the type of edges&lt;/strong&gt;:&lt;/li&gt;
+&lt;/ul&gt;
 
-  - [ ] Exercise 3.3.
-    Kahn' Topological Sort algorithm:
-    ![](/assets/png-images/2018-08-24-learning-inf234-6fa99409.png)
-    - Sources (A,B) and the sinks (G, H)
-    - How many toposorts the graph has? 8.
+&lt;p&gt;Review the pre/post numbers for each vertex in the exploration of the graph:
+For instance: &lt;code&gt;pre(u) &amp;lt; pre(v) &amp;lt; post(v) &amp;lt; post(u)&lt;/code&gt;:
+&lt;img src=&quot;/assets/png-images/2018-08-24-learning-inf234-05b9e04d.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-## 2018-09-10
+&lt;p&gt;And then we have:&lt;/p&gt;
 
-  - DFS, DFS tree, DFS forest construction in O(n + m) where n is #vertices and m is #edges
-    - 👨‍🎓 When drawing always make the arrows (dotted) to point out the exploration traces.
-    - tree edges are the first edges in the DFS from parent to child, if the child
-    is already discovered then a edge parent-child becomes a forward edge.
-  - Connected Component in O(n+m):
-    - Run a DFS for all vertices, if a vertex is unvisited the there is a component
-    with that vertex, and continue with next vertex.
-  - **Check the type of edges**:
+&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-08-24-learning-inf234-64d0ba82.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-  Review the pre/post numbers for each vertex in the exploration of the graph:
-For instance: `pre(u) &amp;lt; pre(v) &amp;lt; post(v) &amp;lt; post(u)`:
-![](/assets/png-images/2018-08-24-learning-inf234-05b9e04d.png)
+&lt;ul&gt;
+  &lt;li&gt;DAG (Directed acyclic graphs) ( a cycle has not repeated points)&lt;/li&gt;
+&lt;/ul&gt;
 
-And then we have:
+&lt;h2 id=&quot;2018-09-14&quot;&gt;2018-09-14&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm&quot;&gt;Tarjan’ Strongly connected component algorithm&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm&quot;&gt;Kosaraju’ Strongly connected component algorithm&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;meta graph (DFS too)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-![](/assets/png-images/2018-08-24-learning-inf234-64d0ba82.png)
+&lt;pre&gt;&lt;code&gt;  Kosaraju's Algorithm:
 
-  - DAG (Directed acyclic graphs) ( a cycle has not repeated points)
-
-## 2018-09-14
-  - [Tarjan' Strongly connected component algorithm](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm)
-  - [Kosaraju' Strongly connected component algorithm](https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm)
-    - meta graph (DFS too)
-
+  1. For each vertex u of the graph, mark u as unvisited. Let L be empty.
+  2. For each vertex u of the graph do Visit(u), where Visit(u) is the recursive subroutine:
+      If u is unvisited then:
+        - Mark u as visited.
+        - For each out-neighbour v of u, do Visit(v).
+        - Prepend u to L.
+      Otherwise do nothing.
+  3. For each element u of L in order, do Assign(u,u) where Assign(u,root) is the recursive subroutine:
+     If u has not been assigned to a component then:
+      - Assign u as belonging to the component whose root is root.
+      - For each in-neighbour v of u, do Assign(v,root).
+    Otherwise do nothing.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Kosaraju’s Algorithm:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;For each vertex u of the graph, mark u as unvisited. Let L be empty.&lt;/li&gt;
-  &lt;li&gt;For each vertex u of the graph do Visit(u), where Visit(u) is the recursive subroutine:
- If u is unvisited then:
-    &lt;ul&gt;
-      &lt;li&gt;Mark u as visited.&lt;/li&gt;
-      &lt;li&gt;For each out-neighbour v of u, do Visit(v).&lt;/li&gt;
-      &lt;li&gt;Prepend u to L.
- Otherwise do nothing.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;For each element u of L in order, do Assign(u,u) where Assign(u,root) is the recursive subroutine:
-If u has not been assigned to a component then:
-    &lt;ul&gt;
-      &lt;li&gt;Assign u as belonging to the component whose root is root.&lt;/li&gt;
-      &lt;li&gt;For each in-neighbour v of u, do Assign(v,root).
- Otherwise do nothing.
-```&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
 
 &lt;h2 id=&quot;2018-09-17&quot;&gt;2018-09-17&lt;/h2&gt;
 &lt;ul&gt;
