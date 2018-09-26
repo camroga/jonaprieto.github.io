@@ -120,7 +120,7 @@ Learning graphs on youtube.
 
 - [x] [06. Sum of Degrees is ALWAYS Twice the Number of Edges](https://www.youtube.com/watch?v=YoRhmz_OSBY)
 
-  - **Theorem**:
+  - **Theorem**: When $$G$$ is an undirected graph the following holds
 
     {: .equation}
       $$ \sum_{v \in V(G)} \deg(v) = 2 \# E(G) $$
