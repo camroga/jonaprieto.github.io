@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-09-26T11:43:36+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-22T23:15:10+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-15T10:34:33+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-09-22T23:15:10+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
 Some conventions used here
 ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question  and 🏁 : goal, and 🔧 :fixing).&lt;/p&gt;
 
@@ -144,7 +144,7 @@ which complicates a verification. Directed&lt;/p&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144&quot;&gt;Why are planar graphs so exceptional?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/&quot;&gt;Kalai’s Post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs&quot;&gt;Generalizations of Planar Graphs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-09-22T23:15:10+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-15T10:34:26+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 
@@ -325,9 +325,54 @@ For instance: &lt;code&gt;pre(u) &amp;lt; pre(v) &amp;lt; post(v) &amp;lt; post(
 
 &lt;h2 id=&quot;2018-09-21&quot;&gt;2018-09-21&lt;/h2&gt;
 &lt;ul&gt;
-  &lt;li&gt;Dijkstra works fir positive weights.&lt;/li&gt;
+  &lt;li&gt;Dijkstra work for positive weights.&lt;/li&gt;
   &lt;li&gt;Dijkstra uses a priority queue&lt;/li&gt;
   &lt;li&gt;O(sum deg(v) for v in V) = O (m + n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-10-01&quot;&gt;2018-10-01&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Chapter 5.1 (except the running time of path compression)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-10-05&quot;&gt;2018-10-05&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Chapter 5.1 Chapter 5.2, 5.3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-10-08&quot;&gt;2018-10-08&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Greedy Algorithm
+    &lt;ul&gt;
+      &lt;li&gt;Huffman encoding
+        &lt;ul&gt;
+          &lt;li&gt;encoding trees&lt;/li&gt;
+          &lt;li&gt;cost of the encoding tree&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Horn formulas
+        &lt;ul&gt;
+          &lt;li&gt;Satisfiability problem. Domain (True/False)&lt;/li&gt;
+          &lt;li&gt;A formula F in CNF is a Horn formula if every disjunction
+in F contains at least one positive literal (i.e., every clause
+has all literals occur negatively, or one literal is positive).&lt;/li&gt;
+          &lt;li&gt;Check Exercise 5.32&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-10-12&quot;&gt;2018-10-12&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Dynamic Programming
+    &lt;ul&gt;
+      &lt;li&gt;Fibonacci recursive definition&lt;/li&gt;
+      &lt;li&gt;Shortest path (DAG)&lt;/li&gt;
+      &lt;li&gt;Longest common subsequence&lt;/li&gt;
+      &lt;li&gt;Edit distance&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Just the agenda for INF234 at UiB. The book is (Dasgupta &amp;amp; Papadimitriou, 2006).</summary></entry><entry><title type="html">Simple Typed Lambda Calculus In Agda</title><link href="http://jonaprieto.github.io/type-theory/2018/08/17/notes-sltc/" rel="alternate" type="text/html" title="Simple Typed Lambda Calculus In Agda" /><published>2018-08-17T00:00:00+02:00</published><updated>2018-08-26T00:16:35+02:00</updated><id>http://jonaprieto.github.io/type-theory/2018/08/17/notes-sltc</id><content type="html" xml:base="http://jonaprieto.github.io/type-theory/2018/08/17/notes-sltc/">&lt;p&gt;We present a formalisation of the syntax in Agda for the &lt;em&gt;Simple Typed Lambda
 Calculus (STLC)&lt;/em&gt; with some of its properties and the description of the
 type-checking for this type system. We refactor the implementation by
