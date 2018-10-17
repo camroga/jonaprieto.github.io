@@ -131,7 +131,7 @@
     <a class="sidebar-nav-item" href="/about/">About</a>
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
     <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
-    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
 
@@ -191,7 +191,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/26918cd67f8d52ed536ff846e1e2624033ed85c4/_src/notes/2018-02-12-induction-on-natural-numbers.lagda">1f03698 </a> on  15 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/26918cd67f8d52ed536ff846e1e2624033ed85c4/_src/notes/2018-02-12-induction-on-natural-numbers.lagda">271c6d4 </a> on  17 Oct 2018
     </div>
   </div>
   
@@ -579,18 +579,17 @@ is indeed the induction hypothesis:</p>
 <h2 id="alternative-induction">Alternative induction</h2>
 
 <div class="exercise">
-Assuming the ordinary induction principle (i.e., <a href="#induction">indℕ</a>)
-derives the transfinite induction principle.<br />
+  <p>Assuming the ordinary induction principle (i.e., <a href="#induction">indℕ</a>)
+derives the transfinite induction principle.<br /></p>
 
-For a unary predicate $$P : \mathbb{N} \to \mathcal{U}$$, if
+  <p>For a unary predicate <script type="math/tex">P : \mathbb{N} \to \mathcal{U}</script>, if</p>
 
-<p class="equation">
-$$
-\prod\limits_{n : \mathbb{N}} \left ( \prod\limits_{k : \mathbb{N}} (k &lt; n \to P(k)) \to P(n) \right)
-$$
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
+\prod\limits_{n : \mathbb{N}} \left ( \prod\limits_{k : \mathbb{N}} (k < n \to P(k)) \to P(n) \right) %]]></script>
 </p>
 
-then for all $$n : \mathbb{N}$$, $$P(n)$$.
+  <p>then for all <script type="math/tex">n : \mathbb{N}</script>, <script type="math/tex">P(n)</script>.</p>
 </div>
 
 <p>To solve this problem, we need to define a type for the <em>less than</em> relationship
@@ -637,22 +636,20 @@ first part.</p>
       <a id="9941" class="Symbol">(</a><a id="9942" href="/type-theory/2018/02/12/induction-on-natural-numbers/#9570" class="Function">split-k&lt;sucn</a> <a id="9955" href="/type-theory/2018/02/12/induction-on-natural-numbers/#9847" class="Bound">k&lt;sucn</a><a id="9961" class="Symbol">)</a></pre>
 
 <div class="proof">
-Proof.<br />
-We use induction to get an inhabitant of the $$G$$ proposition.
-The induction was using pattern matching on $$n$$ in Agda.
-At the end, we use the hypothesis with this inhabitant of $$G$$.
+  <p>Proof.<br />
+We use induction to get an inhabitant of the <script type="math/tex">G</script> proposition.
+The induction was using pattern matching on <script type="math/tex">n</script> in Agda.
+At the end, we use the hypothesis with this inhabitant of <script type="math/tex">G</script>.</p>
 
-{: .equation }
-  $$
-  G : \prod\limits_{(n : \mathbb{N})}\ \left(\prod\limits_{(k : \mathbb{N})}\ ((k &lt; n) \to P (k))\right)
-  $$
+  <script type="math/tex; mode=display">% <![CDATA[
+G : \prod\limits_{(n : \mathbb{N})}\ \left(\prod\limits_{(k : \mathbb{N})}\ ((k < n) \to P (k))\right) %]]></script>
 
-where $$P : \mathbb{N} \to \mathcal{U}$$.
+  <p>where <script type="math/tex">P : \mathbb{N} \to \mathcal{U}</script>.</p>
 
-<br />
-<br />
+  <p><br />
+<br /></p>
 
-<pre class="Agda"><a id="10396" class="Comment">-- proof:</a>
+  <pre class="Agda"><a id="10396" class="Comment">-- proof:</a>
   <a id="ℕ-transInd.indℕ⇒transFindℕ"></a><a id="10408" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10408" class="Function">indℕ⇒transFindℕ</a>
     <a id="10428" class="Symbol">:</a> <a id="10430" class="Symbol">(</a><a id="10431" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10431" class="Bound">hyp</a> <a id="10435" class="Symbol">:</a> <a id="10437" class="Symbol">(</a><a id="10438" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10438" class="Bound">n</a> <a id="10440" class="Symbol">:</a> <a id="10442" href="/type-theory/2018/02/12/induction-on-natural-numbers/#741" class="Datatype">ℕ</a><a id="10443" class="Symbol">)</a> <a id="10445" class="Symbol">→</a> <a id="10447" class="Symbol">((</a><a id="10449" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10449" class="Bound">k</a> <a id="10451" class="Symbol">:</a> <a id="10453" href="/type-theory/2018/02/12/induction-on-natural-numbers/#741" class="Datatype">ℕ</a><a id="10454" class="Symbol">)</a> <a id="10456" class="Symbol">→</a> <a id="10458" class="Symbol">(</a><a id="10459" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10449" class="Bound">k</a> <a id="10461" href="/type-theory/2018/02/12/induction-on-natural-numbers/#9149" class="Datatype Operator">&lt;</a> <a id="10463" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10438" class="Bound">n</a><a id="10464" class="Symbol">)</a> <a id="10466" class="Symbol">→</a> <a id="10468" href="/type-theory/2018/02/12/induction-on-natural-numbers/#9124" class="Bound">P</a> <a id="10470" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10449" class="Bound">k</a><a id="10471" class="Symbol">)</a> <a id="10473" class="Symbol">→</a> <a id="10475" href="/type-theory/2018/02/12/induction-on-natural-numbers/#9124" class="Bound">P</a> <a id="10477" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10438" class="Bound">n</a><a id="10478" class="Symbol">)</a>
     <a id="10484" class="Symbol">→</a> <a id="10486" class="Symbol">((</a><a id="10488" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10488" class="Bound">n</a> <a id="10490" class="Symbol">:</a> <a id="10492" href="/type-theory/2018/02/12/induction-on-natural-numbers/#741" class="Datatype">ℕ</a><a id="10493" class="Symbol">)</a> <a id="10495" class="Symbol">→</a> <a id="10497" href="/type-theory/2018/02/12/induction-on-natural-numbers/#9124" class="Bound">P</a> <a id="10499" href="/type-theory/2018/02/12/induction-on-natural-numbers/#10488" class="Bound">n</a><a id="10500" class="Symbol">)</a>
@@ -711,7 +708,7 @@ us to define functions <code>f : ℕ → C</code> where <code>C : 𝒰</code> by
        data-bibtextag =""
        data-bibtexauthors =""
        data-year ="2018"
-       data-lastchecked ="2018-10-15"
+       data-lastchecked ="2018-10-17"
        data-originalyear ="2018-02-12"
        data-title ="Induction on Natural Numbers"
        data-url ="http://jonaprieto.github.io/type-theory/2018/02/12/induction-on-natural-numbers/"

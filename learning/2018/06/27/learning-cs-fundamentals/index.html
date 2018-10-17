@@ -131,7 +131,7 @@
     <a class="sidebar-nav-item" href="/about/">About</a>
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
     <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
-    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
 
@@ -191,7 +191,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/notes/2018-06-27-learning-cs-fundamentals.lagda">1f03698 </a> on  15 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/notes/2018-06-27-learning-cs-fundamentals.lagda">271c6d4 </a> on  17 Oct 2018
     </div>
   </div>
   
@@ -309,7 +309,8 @@ about computer science.</p>
 <p><a href="https://brilliant.org/practice/cs-recursion/?chapter=recursion">Link</a></p>
 
 <p>Binary Search:</p>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">binary_search</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="bp">False</span>
     <span class="k">else</span><span class="p">:</span>
@@ -322,7 +323,8 @@ about computer science.</p>
             <span class="k">return</span> <span class="n">binary_search</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">middle</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">item</span><span class="p">)</span>
 <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">103</span><span class="p">]</span>
 <span class="k">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="mi">42</span><span class="p">))</span></code></pre></figure>
+<span class="k">print</span><span class="p">(</span><span class="n">binary_search</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="mi">42</span><span class="p">))</span></code></pre>
+</figure>
 <h3 id="x-divide-and-conquer">[x] Divide-and-conquer</h3>
 
 <p><a href="https://brilliant.org/practice/divide-and-conquer/?chapter=recursion">Link</a></p>
@@ -356,7 +358,8 @@ will be to solve the same problem with the half size of the original in case the
 <p><a href="https://brilliant.org/practice/mergesort/?chapter=recursion">Link</a></p>
 
 <p><img src="/assets/png-images/2018-06-27-learning-cs-fundamentals-299c445c.png" alt="" /></p>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">left_idx</span><span class="p">,</span> <span class="n">right_idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
     <span class="k">while</span> <span class="n">left_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="ow">and</span> <span class="n">right_idx</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">):</span>
@@ -384,14 +387,16 @@ will be to solve the same problem with the half size of the original in case the
 
     <span class="n">left</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
     <span class="n">right</span> <span class="o">=</span> <span class="n">merge_sort</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">))</span></code></pre></figure>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">))</span></code></pre>
+</figure>
 <hr />
 <h3 id="x-quicksort">[x] Quicksort</h3>
 
 <p><a href="https://brilliant.org/practice/quicksort/?chapter=recursion">Link</a></p>
 
 <p>Does the pivot always be in the correct position (sorted) after the first partitioning? Yes, it does.</p>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">quickSort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">quickSort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
     <span class="n">less</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">pivotList</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">more</span> <span class="o">=</span> <span class="p">[]</span>
@@ -409,14 +414,17 @@ will be to solve the same problem with the half size of the original in case the
                 <span class="n">pivotList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
         <span class="n">less</span> <span class="o">=</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span>
         <span class="n">more</span> <span class="o">=</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">more</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">less</span> <span class="o">+</span> <span class="n">pivotList</span> <span class="o">+</span> <span class="n">more</span></code></pre></figure>
+        <span class="k">return</span> <span class="n">less</span> <span class="o">+</span> <span class="n">pivotList</span> <span class="o">+</span> <span class="n">more</span></code></pre>
+</figure>
 <h3 id="x-linked-list">[x] Linked-list</h3>
 
 <p><a href="https://brilliant.org/practice/linked-list/?chapter=recursion">Link</a></p>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">next</span> <span class="o">!=</span> <span class="n">null</span><span class="p">:</span>
         <span class="n">traverse</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">next</span><span class="p">)</span>
-    <span class="k">print</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span></code></pre></figure>
+    <span class="k">print</span> <span class="n">node</span><span class="o">.</span><span class="n">data</span></code></pre>
+</figure>
 <h3 id="x-stacks-and-queues">[x] stacks-and-queues</h3>
 
 <p><a href="https://brilliant.org/practice/stacks-and-queues/?chapter=stacks-and-queues">Link</a></p>
@@ -464,14 +472,16 @@ will be to solve the same problem with the half size of the original in case the
   <li>The number of children each node has in a tree is called the branching factor</li>
   <li>Each node has exactly one parent</li>
 </ul>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span> <span class="c1"># information that is being stored in the tree</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>   <span class="c1"># the left child (subtree)</span>
          <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span> <span class="c1"># the right child (subtree)</span>
 
      <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-         <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span></code></pre></figure>
+         <span class="k">return</span> <span class="n">node</span><span class="o">.</span><span class="n">value</span></code></pre>
+</figure>
 <p><img src="/assets/png-images/2018-06-27-learning-cs-fundamentals-366895d9.png" alt="" /></p>
 
 <ul>
@@ -499,27 +509,33 @@ will be to solve the same problem with the half size of the original in case the
 <ul>
   <li>Pre-order traversal (Root-Left-Right)</li>
 </ul>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">tree</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRootVal</span><span class="p">())</span>
         <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getLeftChild</span><span class="p">())</span>
-        <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRightChild</span><span class="p">())</span></code></pre></figure>
+        <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRightChild</span><span class="p">())</span></code></pre>
+</figure>
 <ul>
   <li>In-order traversal (Left-Root-Right)</li>
 </ul>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
       <span class="k">if</span> <span class="n">tree</span><span class="p">:</span>
           <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getLeftChild</span><span class="p">())</span>
           <span class="k">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRootVal</span><span class="p">())</span>
-          <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRightChild</span><span class="p">())</span></code></pre></figure>
+          <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRightChild</span><span class="p">())</span></code></pre>
+</figure>
 <ul>
   <li>Post-order traversal (Left-Right-Root)</li>
 </ul>
-<figure class="highlight"><pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
+<figure class="highlight">
+  <pre><code class="language-python" data-lang="python"><span></span><span class="k">def</span> <span class="nf">traverse</span><span class="p">(</span><span class="n">tree</span><span class="p">):</span>
       <span class="k">if</span> <span class="n">tree</span><span class="p">:</span>
           <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getLeftChild</span><span class="p">())</span>
           <span class="n">traverse</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRightChild</span><span class="p">())</span>
-          <span class="k">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRootVal</span><span class="p">())</span></code></pre></figure>
+          <span class="k">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">getRootVal</span><span class="p">())</span></code></pre>
+</figure>
 <p>A <strong>depth-first search</strong>, or <strong>DFS</strong>, is the strategy that goes down a branch all the way until a leaf is reached, processes said branch, and then moves on to a different branch. This type of algorithm generally uses a <strong>stack</strong> in order to keep track of visited nodes, as the last node seen is the next one to be visited and the rest are stored to be visited later.</p>
 
 <p>The <strong>breadth-first search</strong>, or <strong>BFS</strong>, is the counterpart to DFS in tree traversing techniques. It is a search algorithm that traverses down a tree using a queue as its data array, where elements are visited in a FIFO, first-in first-out, mechanism. This strategy is also called level-order traversal, as all nodes on a level are visited before proceeding to the next level.</p>

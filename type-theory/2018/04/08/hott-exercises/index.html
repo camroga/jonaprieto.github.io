@@ -131,7 +131,7 @@
     <a class="sidebar-nav-item" href="/about/">About</a>
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
     <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
-    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
 
@@ -191,7 +191,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/notes/2018-04-08-hott-exercises.lagda">1f03698 </a> on  15 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f63fa6c780164ee27b238ce85b886541e1374cfd/_src/notes/2018-04-08-hott-exercises.lagda">271c6d4 </a> on  17 Oct 2018
     </div>
   </div>
   
@@ -336,9 +336,9 @@ type-checked as a whole using Agda v2.5.3.</p>
 <h3 id="exercise-12">Exercise 1.2</h3>
 
 <div class="exercise">
-Derive the recursion principle for products $$\mathsf{rec}_{A\times B}$$
+  <p>Derive the recursion principle for products <script type="math/tex">\mathsf{rec}_{A\times B}</script>
 using only the projections, and verify that the definitional equalities
-are valid. Do the same for $$\Sigma$$-types.
+are valid. Do the same for <script type="math/tex">\Sigma</script>-types.</p>
 </div>
 
 <p>To solve this problem we need to know:</p>
@@ -348,55 +348,51 @@ are valid. Do the same for $$\Sigma$$-types.
     <p>The recursion principle for Σ-types:</p>
 
     <p class="equation">
-$$ \mathsf{rec}_{ A \times B}
-  : \prod\limits_{C : \mathcal{U}} (A \to B \to C) → A \times B \to C.
-$$
+<script type="math/tex">\mathsf{rec}_{ A \times B}
+  : \prod\limits_{C : \mathcal{U}} (A \to B \to C) → A \times B \to C.</script>
 </p>
   </li>
   <li>
     <p>The recursion principle for Σ-types:</p>
 
     <p class="equation">
-$$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)}
+<script type="math/tex">\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}
   : \prod\limits_{(C : U)} (\Pi_{(x : A)} B(x) \rightarrow C) \rightarrow
-    \sum_{(x : A)} B(x) \rightarrow C
-$$
+    \sum_{(x : A)} B(x) \rightarrow C</script>
 </p>
   </li>
 </ul>
 
 <div class="proof" id="proof-1.2">
-Proof.<br />
+  <p>Proof.<br />
 For products:<br />
 If we have the projections,
-$$\mathsf{proj}_1 : A \times B \to \mathsf{A}$$ and $$\mathsf{proj}_2 : A \times B \to \mathsf{B}$$,
-then $$\mathsf{rec}_2$$ is another inhabitant where
+<script type="math/tex">\mathsf{proj}_1 : A \times B \to \mathsf{A}</script> and <script type="math/tex">\mathsf{proj}_2 : A \times B \to \mathsf{B}</script>,
+then <script type="math/tex">\mathsf{rec}_2</script> is another inhabitant where</p>
 
-<p class="equation">
-$$
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
 \begin{align*}
-&amp;\mathsf{rec}_1 : \prod\limits_{C : \mathcal{U}} (A \to B \to C) \to A \times B \to C\\
-&amp;\mathsf{rec}_1~C~g~c~:\equiv~g~(\mathsf{proj}_1 c,~\mathsf{proj}_2 c).
-\end{align*}
-$$
+&\mathsf{rec}_1 : \prod\limits_{C : \mathcal{U}} (A \to B \to C) \to A \times B \to C\\
+&\mathsf{rec}_1~C~g~c~:\equiv~g~(\mathsf{proj}_1 c,~\mathsf{proj}_2 c).
+\end{align*} %]]></script>
 </p>
-By reflexivity, we prove the equality between $$\mathsf{rec}_{ A \times B}$$ and $$\mathsf{rec}_1$$.
+  <p>By reflexivity, we prove the equality between <script type="math/tex">\mathsf{rec}_{ A \times B}</script> and <script type="math/tex">\mathsf{rec}_1</script>.
 <br />
 <br />
 For sums:<br />
-The projections are $$\mathsf{proj}_1 : \sum_{x : A}  Bx \to \mathsf{A}$$ and
-$$\mathsf{proj}_2 :  \prod_{(p : \sum_{x : A}  Bx)} \to \mathsf{B} (\mathsf{proj}_1 p)$$.<br />
-By using these projections, we got another recursor defined as follows:
-<p class="equation">
-$$
+The projections are <script type="math/tex">\mathsf{proj}_1 : \sum_{x : A}  Bx \to \mathsf{A}</script> and
+<script type="math/tex">\mathsf{proj}_2 :  \prod_{(p : \sum_{x : A}  Bx)} \to \mathsf{B} (\mathsf{proj}_1 p)</script>.<br />
+By using these projections, we got another recursor defined as follows:</p>
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
 \begin{aling*}
-&amp;\mathsf{rec}_2 : \prod\limits_{C : \mathcal{U}}  (\prod_{x : A} Bx \to C) \to \sum\limits_{x : A} B x \to C\\
-&amp;\mathsf{rec}_2~C~g~c~=~g~(\mathsf{proj}_1 c)~(\mathsf{proj}_2 c)
-\end{align*}
-$$
+&\mathsf{rec}_2 : \prod\limits_{C : \mathcal{U}}  (\prod_{x : A} Bx \to C) \to \sum\limits_{x : A} B x \to C\\
+&\mathsf{rec}_2~C~g~c~=~g~(\mathsf{proj}_1 c)~(\mathsf{proj}_2 c)
+\end{align*} %]]></script>
 </p>
 
-By reflexivity, we prove the equality between $$\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}$$ and $$\mathsf{rec}_2$$.
+  <p>By reflexivity, we prove the equality between <script type="math/tex">\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}</script> and <script type="math/tex">\mathsf{rec}_2</script>.</p>
 </div>
 
 <hr />
@@ -464,9 +460,9 @@ in <code>(λ _ → B)</code>.</p>
 <h3 id="exercise-13">Exercise 1.3</h3>
 
 <p class="exercise">
-Derive the induction principle for products $$\mathsf{ind}_{A\times B}$$,
+Derive the induction principle for products <script type="math/tex">\mathsf{ind}_{A\times B}</script>,
 using only the projections and the propositional uniqueness principle
-$$\mathsf{uniq}_{A\times B}$$.
+<script type="math/tex">\mathsf{uniq}_{A\times B}</script>.
 Verify that the definitional equalities are valid.
 </p>
 
@@ -478,10 +474,9 @@ every element of <script type="math/tex">A\times B</script> is equal to a pair.<
 </ul>
 
 <p class="equation">
-  $$ \mathsf{uniq}_{A\times B}
+  <script type="math/tex">\mathsf{uniq}_{A\times B}
      : \prod_{(x : A \times B)} ((\mathsf{proj}_{1}(x) , \mathsf{proj}_{2}(x))
-       \equiv_{A\times B} x).
-  $$
+       \equiv_{A\times B} x).</script>
 </p>
 
 <p>Product type definition using <code>data</code>:</p>
@@ -526,10 +521,9 @@ every element of <script type="math/tex">A\times B</script> is equal to a pair.<
 <p>The induction principle for the product type:</p>
 
 <p class="equation">
-$$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
+<script type="math/tex">\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
   \left( \prod\limits_{x:A}\ \prod\limits_{y:B}\ \,C( (x,y) ) \right)
-  \to \prod\limits_{x:A \times B}\ \,C(x)
-$$
+  \to \prod\limits_{x:A \times B}\ \,C(x)</script>
 </p>
 
 <pre class="Agda"><a id="8299" class="Keyword">module</a> <a id="×-Ind₂"></a><a id="8306" href="/type-theory/2018/04/08/hott-exercises/#8306" class="Module">×-Ind₂</a> <a id="8313" class="Symbol">{</a><a id="8314" href="/type-theory/2018/04/08/hott-exercises/#8314" class="Bound">i</a> <a id="8316" href="/type-theory/2018/04/08/hott-exercises/#8316" class="Bound">j</a><a id="8317" class="Symbol">}{</a><a id="8319" href="/type-theory/2018/04/08/hott-exercises/#8319" class="Bound">A</a> <a id="8321" class="Symbol">:</a> <a id="8323" class="PrimitiveType">Set</a> <a id="8327" href="/type-theory/2018/04/08/hott-exercises/#8314" class="Bound">i</a><a id="8328" class="Symbol">}{</a><a id="8330" href="/type-theory/2018/04/08/hott-exercises/#8330" class="Bound">B</a> <a id="8332" class="Symbol">:</a> <a id="8334" class="PrimitiveType">Set</a> <a id="8338" href="/type-theory/2018/04/08/hott-exercises/#8316" class="Bound">j</a><a id="8339" class="Symbol">}</a> <a id="8341" class="Keyword">where</a>
@@ -548,8 +542,8 @@ $$
   <a id="8720" href="/type-theory/2018/04/08/hott-exercises/#8576" class="Function">ind-β</a> <a id="8726" href="/type-theory/2018/04/08/hott-exercises/#8726" class="Bound">C</a> <a id="8728" href="/type-theory/2018/04/08/hott-exercises/#8728" class="Bound">g</a> <a id="8730" href="/type-theory/2018/04/08/hott-exercises/#8730" class="Bound">x</a> <a id="8732" href="/type-theory/2018/04/08/hott-exercises/#8732" class="Bound">y</a> <a id="8734" class="Symbol">=</a> <a id="8736" href="/type-theory/2018/04/08/hott-exercises/#809" class="InductiveConstructor">refl</a></pre>
 
 <p class="exercise">
-Generalize $$\mathsf{uniq}_{A\times B}$$ to Σ-types, and do the same for
-$$\Sigma$$-types, i.e. show induction and verify the definitional equality
+Generalize <script type="math/tex">\mathsf{uniq}_{A\times B}</script> to Σ-types, and do the same for
+<script type="math/tex">\Sigma</script>-types, i.e. show induction and verify the definitional equality
 is valid.
 </p>
 
@@ -594,22 +588,21 @@ is valid.
 <h3 id="exercise-14">Exercise 1.4</h3>
 
 <div class="exercise">
-Assuming as given only the <em>iterator</em> for natural numbers
-<p class="equation">
-$$\mathsf{ite} : \prod\limits_{C:\mathcal{U}} C \to (C \to C) \to \mathbb{N} \to C $$
+  <p>Assuming as given only the <em>iterator</em> for natural numbers</p>
+  <p class="equation">
+<script type="math/tex">\mathsf{ite} : \prod\limits_{C:\mathcal{U}} C \to (C \to C) \to \mathbb{N} \to C</script>
 </p>
-with the defining equations
-<p class="equation">
-$$
+  <p>with the defining equations</p>
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
 \begin{align*}
-\mathsf{ite}(C,c_0,c_s,0)               &amp;\equiv c_0, \\
-\mathsf{ite}(C,c_0,c_s,\mathsf{suc}(n)) &amp;\equiv c_s(\mathsf{ite}(C,c_0,c_s,n)),
-\end{align*}
-$$
+\mathsf{ite}(C,c_0,c_s,0)               &\equiv c_0, \\
+\mathsf{ite}(C,c_0,c_s,\mathsf{suc}(n)) &\equiv c_s(\mathsf{ite}(C,c_0,c_s,n)),
+\end{align*} %]]></script>
 </p>
-derive a function having the type of the recursor $$\mathsf{rec}$$.
+  <p>derive a function having the type of the recursor <script type="math/tex">\mathsf{rec}</script>.
 Show that the defining equations of the recursor hold propositionally for this
-function, using the induction principle for $$\mathbb{N}$$.
+function, using the induction principle for <script type="math/tex">\mathbb{N}</script>.</p>
 </div>
 
 <p>To solve this problem, let us define the recursor and also the induction principle
@@ -695,12 +688,12 @@ induction to prove that.</p>
 
 <div class="exercise">
 
-Show that if we define
+  <p>Show that if we define</p>
 
-  $$A+B :\equiv \sum\limits_{(x : \mathbbbold{2})} \mathsf{rec}_{\mathbbbold{2}} (\mathcal{U}, A , B, x),$$
+  <script type="math/tex; mode=display">A+B :\equiv \sum\limits_{(x : \mathbbbold{2})} \mathsf{rec}_{\mathbbbold{2}} (\mathcal{U}, A , B, x),</script>
 
-then we can give a definition of $$\ind\limits_{A + B}$$ for which the
-definitional equalities holds.
+  <p>then we can give a definition of <script type="math/tex">\ind\limits_{A + B}</script> for which the
+definitional equalities holds.</p>
 
 </div>
 
@@ -804,9 +797,9 @@ rule of the disjunction conective also called <em>case analysis</em>. That’s f
 <h3 id="exercise-16">Exercise 1.6</h3>
 
 <div class="exercise" id="ex-1.6">
-Show that if we define $$A \times B :≡ \prod_{x:\mathbf{2}}\mathsf{rec}_{\mathbf{2}}\ (\mathcal{U}\, A\, B\, x)$$,
-then we can give a definition of $$\mathsf{ind}_{A\times B}$$ for which the definitional
-equalities propositionally (i.e. using equality types).
+  <p>Show that if we define <script type="math/tex">A \times B :≡ \prod_{x:\mathbf{2}}\mathsf{rec}_{\mathbf{2}}\ (\mathcal{U}\, A\, B\, x)</script>,
+then we can give a definition of <script type="math/tex">\mathsf{ind}_{A\times B}</script> for which the definitional
+equalities propositionally (i.e. using equality types).</p>
 </div>
 
 <pre class="Agda"><a id="16055" class="Keyword">module</a> <a id="×-Def₃"></a><a id="16062" href="/type-theory/2018/04/08/hott-exercises/#16062" class="Module">×-Def₃</a> <a id="16069" class="Keyword">where</a>
@@ -874,9 +867,9 @@ equalities propositionally (i.e. using equality types).
 
 <div class="exercise" id="exercise-1.8">
 
-Define multiplication and exponentiation using $$\mathsf{rec}{\mathbb{N}}$$.
-Verify that $$(\mathbb{N},+,0,\times,1)$$ is a semiring using only
-$$\ind{\mathbb{N}}$$.
+  <p>Define multiplication and exponentiation using <script type="math/tex">\mathsf{rec}{\mathbb{N}}</script>.
+Verify that <script type="math/tex">(\mathbb{N},+,0,\times,1)</script> is a semiring using only
+<script type="math/tex">\ind{\mathbb{N}}</script>.</p>
 
 </div>
 
@@ -923,9 +916,9 @@ Operation definitions:</p>
 
 <div class="exercise" id="exercise-1.9">
 
-Define the type family $$\mathsf{Fin} : \mathbb{N} \to \mathcal{U}$$ mentioned
-at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
-\prod_{n:\mathbb{N}} \mathsf{Fin}(n+1)$$ mentioned in Section 1.4.
+  <p>Define the type family <script type="math/tex">\mathsf{Fin} : \mathbb{N} \to \mathcal{U}</script> mentioned
+at the end of Section 1.3, and the dependent function <script type="math/tex">\mathsf{fmax} :
+\prod_{n:\mathbb{N}} \mathsf{Fin}(n+1)</script> mentioned in Section 1.4.</p>
 </div>
 
 <pre class="Agda"><a id="19014" class="Keyword">module</a> <a id="Ex1-9"></a><a id="19021" href="/type-theory/2018/04/08/hott-exercises/#19021" class="Module">Ex1-9</a> <a id="19027" class="Keyword">where</a>
@@ -964,7 +957,7 @@ at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
 <h3 id="exercise-111">Exercise 1.11</h3>
 
 <div class="exercise" id="exercise-1.11">
-Show that for any type $$A$$, we have $$\neg\neg\neg A \to \neg A$$.
+  <p>Show that for any type <script type="math/tex">A</script>, we have <script type="math/tex">\neg\neg\neg A \to \neg A</script>.</p>
 </div>
 
 <p>A propositional logic proof using <a href="http://github.com/jonaprieto/agda-prop">Agda-Prop</a>
@@ -993,11 +986,9 @@ library:</p>
 <h3 id="exercise-116">Exercise 1.16</h3>
 
 <div class="exercise" id="exercise-1.16">
-Show that addition of natural numbers is commutative:
-<p class="equation">
-$$
-\prod\limits_{i,j : \mathbb{N}}\ (i + j = j + i).
-$$
+  <p>Show that addition of natural numbers is commutative:</p>
+  <p class="equation">
+<script type="math/tex">\prod\limits_{i,j : \mathbb{N}}\ (i + j = j + i).</script>
 </p>
 </div>
 
@@ -1039,60 +1030,57 @@ $$
 <h3 id="exercise-26">Exercise 2.6</h3>
 
 <div class="exercise" id="exercise-2.6">
-Prove that if $$p : x \equiv y$$, then the function
-$$(p \cdot -) : (y \equiv z) \to (x \equiv z)$$ is an equivalence.
+  <p>Prove that if <script type="math/tex">p : x \equiv y</script>, then the function
+<script type="math/tex">(p \cdot -) : (y \equiv z) \to (x \equiv z)</script> is an equivalence.</p>
 </div>
 
 <p><img src="/assets/ipe-images/path-triangle.png" alt="path-triangle" width="%50" /></p>
 
 <div class="proof">
-Solution. <br />
+  <p>Solution. <br /></p>
 
-To show the equivalence, it sufficies to show a function
-$$g : x \equiv z \to y \equiv z$$ such that we can prove
-$$ (p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$ and
-$$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$.
+  <p>To show the equivalence, it sufficies to show a function
+<script type="math/tex">g : x \equiv z \to y \equiv z</script> such that we can prove
+<script type="math/tex">(p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}</script> and
+<script type="math/tex">g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}</script>.</p>
 
-Let's define the function $$g$$.
-<p class="equation">
-$$
+  <p>Let’s define the function <script type="math/tex">g</script>.</p>
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
 \begin{align*}
-&amp;g : x ≡ z → y ≡ z\\
-&amp;g~m~=~\mathsf{trans}~(\mathsf{sym}~p)~m
-\end{align*}
-$$
+&g : x ≡ z → y ≡ z\\
+&g~m~=~\mathsf{trans}~(\mathsf{sym}~p)~m
+\end{align*} %]]></script>
 </p>
-<br />
+  <p><br /></p>
 
-($$(p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$):
-Let be $$m : x ≡ z$$, we have,
+  <p>(<script type="math/tex">(p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}</script>):
+Let be <script type="math/tex">m : x ≡ z</script>, we have,</p>
 
-<p class="equation">
-$$
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
 \begin{align*}
-(p \cdot -) \circ g (m) &amp;= (p \cdot -)~(g~m)\\
-                        &amp;= (p \cdot -)~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
-                        &amp;= \mathsf{trans}~p~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
-                        &amp;= \mathsf{trans}~(\mathsf{trans}~p~(\mathsf{sym}~p))~m\\
-                        &amp;= \mathsf{trans}~\mathsf{refl}_{x≡z}~m\\
-                        &amp;= m
-\end{align*}
-$$
+(p \cdot -) \circ g (m) &= (p \cdot -)~(g~m)\\
+                        &= (p \cdot -)~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
+                        &= \mathsf{trans}~p~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
+                        &= \mathsf{trans}~(\mathsf{trans}~p~(\mathsf{sym}~p))~m\\
+                        &= \mathsf{trans}~\mathsf{refl}_{x≡z}~m\\
+                        &= m
+\end{align*} %]]></script>
 </p>
-<br />
-($$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$):
-Let be $$n : y ≡ z$$, we have,
+  <p><br />
+(<script type="math/tex">g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}</script>):
+Let be <script type="math/tex">n : y ≡ z</script>, we have,</p>
 
-<p class="equation">
-$$
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
 \begin{align*}
-g \circ (p \cdot -) n &amp;= g (\mathsf{trans}~p~n)\\
-                      &amp;= (\mathsf{trans}~(\mathsf{sym}~p)~(\mathsf{trans}~p~n)\\
-                      &amp;= \mathsf{trans}~(\mathsf{trans}~(\mathsf{sym}~p)~p)~n\\
-                      &amp;= \mathsf{trans}~\mathsf{refl}_{y ≡ z}~n\\
-                      &amp;= n.
-\end{align*}
-$$
+g \circ (p \cdot -) n &= g (\mathsf{trans}~p~n)\\
+                      &= (\mathsf{trans}~(\mathsf{sym}~p)~(\mathsf{trans}~p~n)\\
+                      &= \mathsf{trans}~(\mathsf{trans}~(\mathsf{sym}~p)~p)~n\\
+                      &= \mathsf{trans}~\mathsf{refl}_{y ≡ z}~n\\
+                      &= n.
+\end{align*} %]]></script>
 </p>
 
 </div>
@@ -1100,31 +1088,30 @@ $$
 <h3 id="exercise-210">Exercise 2.10</h3>
 
 <div class="exercise" id="exercise-2.10">
-Prove that ∑-types are associative, in that for any $$A : \mathcal{U}$$
-and families $$B : A  \to U$$ and $$C : \sum_{(x : A)} B(x) \to \mathcal{U}$$,
-we have
-<p class="equation">
-$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \simeq \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
+  <p>Prove that ∑-types are associative, in that for any <script type="math/tex">A : \mathcal{U}</script>
+and families <script type="math/tex">B : A  \to U</script> and <script type="math/tex">C : \sum_{(x : A)} B(x) \to \mathcal{U}</script>,
+we have</p>
+  <p class="equation">
+<script type="math/tex">\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \simeq \sum\limits_{p : \sum_{x:A} B(x)} C(p)</script>.
 </p>
 </div>
 
 <div class="proof" id="proof-2.10">
-Solution.<br />
-We can prove that the following functions $$f$$ and $$g$$ are inverses.
+  <p>Solution.<br />
+We can prove that the following functions <script type="math/tex">f</script> and <script type="math/tex">g</script> are inverses.</p>
 
-<p class="equation">
-$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
+  <p class="equation">
+<script type="math/tex">\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)</script>.
 </p>
-defined by $$f(a,b,c) :\equiv ((a,b),c)$$ and $$g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)$$.<br />
-Indeed,
-<p class="equation">
-$$
+  <p>defined by <script type="math/tex">f(a,b,c) :\equiv ((a,b),c)</script> and <script type="math/tex">g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)</script>.<br />
+Indeed,</p>
+  <p class="equation">
+<script type="math/tex">% <![CDATA[
 \begin{align*}
-(f \circ g) (z, c) &amp;:\equiv f (g (z,c))\\
-&amp;:\equiv f\,(\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)\\
-&amp;:\equiv ((\mathsf{proj}_1 z,\mathsf{proj}_{2} z), c)
-\end{align*}
-$$
+(f \circ g) (z, c) &:\equiv f (g (z,c))\\
+&:\equiv f\,(\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)\\
+&:\equiv ((\mathsf{proj}_1 z,\mathsf{proj}_{2} z), c)
+\end{align*} %]]></script>
 </p>
 </div>
 
@@ -1152,7 +1139,7 @@ $$
 <h3 id="exercise-213">Exercise 2.13</h3>
 
 <div class="exercise" id="exercise-2.13">
-Show that $$(2 \simeq 2) \simeq 2$$.
+  <p>Show that <script type="math/tex">(2 \simeq 2) \simeq 2</script>.</p>
 </div>
 
 <div class="proof">
@@ -1209,54 +1196,50 @@ The same argument works for the other case.  So <script type="math/tex">f</scrip
 
 <div class="exercise">
 
-  Suppose we add to type theory <a href="https://www.youtube.com/watch?v=IlfQjWqrK6I">the equality reflection
-  rule</a> which says that if there is an element $$p : \mathsf{Id}(x,y) $$,
-  then in fact $$ x :\equiv y$$. Prove that for any $$p : \mathsf{Id}(x,x)$$ we
-  have $$p \equiv \mathsf{refl}_x$$.
+  <p>Suppose we add to type theory <a href="https://www.youtube.com/watch?v=IlfQjWqrK6I">the equality reflection
+  rule</a> which says that if there is an element <script type="math/tex">p : \mathsf{Id}(x,y)</script>,
+  then in fact <script type="math/tex">x :\equiv y</script>. Prove that for any <script type="math/tex">p : \mathsf{Id}(x,x)</script> we
+  have <script type="math/tex">p \equiv \mathsf{refl}_x</script>.</p>
 
   <p class="equation">
-  $$
-    \begin{prooftree}
+  <script type="math/tex">\begin{prooftree}
     \AxiomC{$\vdash p : \mathsf{Id}(x, y)$}
     \RightLabel{$\mathsf{Eq}$}
     \UnaryInfC{$\vdash x \equiv y.$}
-    \end{prooftree}
-  $$
+    \end{prooftree}</script>
   </p>
 
 </div>
 
 <div class="proof">
-  Proof.<br />
-  We first fix the type of $$\mathsf{refl}_x$$ in order to apply effectively
-  path induction.<br />
+  <p>Proof.<br />
+  We first fix the type of <script type="math/tex">\mathsf{refl}_x</script> in order to apply effectively
+  path induction.<br /></p>
 
   <p class="equation">
-    $$
-    \begin{prooftree}
+    <script type="math/tex">\begin{prooftree}
     \AxiomC{$x : A, y : A, p : x = y ⊢ p : x = y$}
     \RightLabel{$\mathsf{Eq}$}
     \UnaryInfC{$x : A, y : A, p : x = y ⊢ x ≡ y$}
     \AxiomC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = x$}
     \BinaryInfC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = y.$}
-    \end{prooftree}
-    $$
+    \end{prooftree}</script>
   </p>
 
-  Now, $$\mathsf{refl}_x$$ and $$p : x = y$$ in the formulation of path induction
+  <p>Now, <script type="math/tex">\mathsf{refl}_x</script> and <script type="math/tex">p : x = y</script> in the formulation of path induction
   are well-typed. Therefore, by path induction, we show that
-  $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
-  \prod_{y : A} \prod_{p : x \equiv y }\ p \equiv \mathsf{refl}_{x}$$.
-  It sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and this is
-  $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x = \mathsf{refl}_x$$.
-  By the equation reflection rule, since we have an inhabitant of $$p \equiv
-  \mathsf{refl}_x$$, we conclude these terms are judgemental equal,i.e., $$p \equiv \mathsf{refl}_x$$.
+  <script type="math/tex">\mathsf{Id}(p,\mathsf{refl_{x}})</script>. Let be <script type="math/tex">x : A</script> and <script type="math/tex">C :\equiv
+  \prod_{y : A} \prod_{p : x \equiv y }\ p \equiv \mathsf{refl}_{x}</script>.
+  It sufficies to show and inhabitant of <script type="math/tex">C(x, \mathsf{refl}_{x})</script>, and this is
+  <script type="math/tex">\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x = \mathsf{refl}_x</script>.
+  By the equation reflection rule, since we have an inhabitant of <script type="math/tex">p \equiv
+  \mathsf{refl}_x</script>, we conclude these terms are judgemental equal,i.e., <script type="math/tex">p \equiv \mathsf{refl}_x</script>.</p>
 </div>
 
 <h3 id="exercise-217">Exercise 2.17</h3>
 
 <div class="exercise">
-<ul>
+  <ul>
   <li> Show that if $$A \simeq A$$  and $$B \simeq B'$$, then $$(A\times B) \simeq (A'\times B')$$. </li>
   <li> Give two proofs of this fact, one using univalence and one not using it, and show that the two proofs are equal.</li>
   <li> Formulate and prove analogous results for the other type formers: $$\Sigma$$, $$\to$$, $$\Pi$$, and $$+$$. </li>
@@ -1346,7 +1329,7 @@ is a dependent function of type</p>
 <h3 id="exercise-31">Exercise 3.1</h3>
 
 <div class="exercise">
-Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
+  <p>Prove that if <script type="math/tex">A\simeq B</script> and <script type="math/tex">A</script> is a set, then so is <script type="math/tex">B</script>.</p>
 </div>
 
 <div class="proof" id="proof-3.1">
@@ -1386,7 +1369,7 @@ will give us</p>
 <h3 id="exercise-32">Exercise 3.2</h3>
 
 <div class="exercise">
-Prove that if $$A$$ and $$B$$ are sets, then so is $$A+B$$.
+  <p>Prove that if <script type="math/tex">A</script> and <script type="math/tex">B</script> are sets, then so is <script type="math/tex">A+B</script>.</p>
 </div>
 
 <p>To solve this exercise, we should take a look of some results from Chapter 2,
@@ -1425,8 +1408,8 @@ encode-decode method to derive a proof term for 𝟘 from
 <h3 id="exercise-34">Exercise 3.4</h3>
 
 <div class="exercise">
-Show that $$A$$ is a mere proposition if and only
-if $$A\to A$$ is contractible.
+  <p>Show that <script type="math/tex">A</script> is a mere proposition if and only
+if <script type="math/tex">A\to A</script> is contractible.</p>
 </div>
 
 <div class="proof">

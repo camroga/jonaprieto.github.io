@@ -131,7 +131,7 @@
     <a class="sidebar-nav-item" href="/about/">About</a>
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
     <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
-    <!-- <span class="sidebar-nav-item">Currently v0.0.1</span> -->
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
 
@@ -191,7 +191,7 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/c4f28f442c4609eb0fe2795033803790551d3f6b/assets/png-images/2018-07-06-mini-hott.lagda">1f03698 </a> on  15 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/c4f28f442c4609eb0fe2795033803790551d3f6b/assets/png-images/2018-07-06-mini-hott.lagda">271c6d4 </a> on  17 Oct 2018
     </div>
   </div>
   
@@ -3667,7 +3667,7 @@ We based on the following Agda libraries.
        data-bibtextag =""
        data-bibtexauthors =""
        data-year ="2018"
-       data-lastchecked ="2018-10-15"
+       data-lastchecked ="2018-10-17"
        data-originalyear ="2018-07-06"
        data-title ="Mini HoTT library in Agda"
        data-url ="http://jonaprieto.github.io/assets/png-images/2018-07-06-mini-hott.lagda"
