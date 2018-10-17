@@ -1,5 +1,6 @@
-_site/
+blog/_site/
 .sass-cache/
+blog/.sass-cache/
 *.agdai
 .DS_Store
 .jekyll-metadata
