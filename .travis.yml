@@ -19,8 +19,10 @@ before_install:
   - npm install --global gulp
 
 script:
+  - pwd
   - cd blog && bundle install
   - make agda2html
   - cd blog && gulp build
   - pip3 install agda-pkg
+  - apkg init
   - apkg install agda-metis

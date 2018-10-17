@@ -74,6 +74,12 @@ $ brew install stack
 
 - `agda2html` ( run `make agda2html`, you will need `ghc` and `stack` of Haskell)
 
+- `ipe` ( to render the ipe figures, great tool )
+
+```
+$ brew install cask
+$ brew cask install ipe
+```
 
 - `npm` ( the package manager of javascript )
 
@@ -85,6 +91,12 @@ $ brew install npm
 
 ```
 $ npm install --global gulp
+```
+
+- `biber` ( to format the bibliography )
+
+```
+$ tlmgr install biber
 ```
 
 Once you have all these programs installed, to generate the site
