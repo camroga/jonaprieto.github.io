@@ -1,8 +1,8 @@
 The blog [![Build Status](https://travis-ci.org/jonaprieto/jonaprieto.github.io.svg?branch=sources)](https://travis-ci.org/jonaprieto/jonaprieto.github.io)
 ========
 
-<img src="https://github.com/jonaprieto/jonaprieto.github.io/raw/master/assets/blog.gif"
- alt="Jonaprieto blog" height=500 align="right" />
+<img src="https://github.com/jonaprieto/jonaprieto.github.io/raw/sources/assets/blog.gif"
+ alt="Jonaprieto blog" height=400 align="right" />
 
 This blog is intended to be an academic blog which means the blog posts try to
 follow the same structure as an academic paper including the references. You
