@@ -1,4 +1,6 @@
 blog/_site/
+blog/Gemfile.lock
+blog/package-lock.json
 .sass-cache/
 blog/.sass-cache/
 *.agdai

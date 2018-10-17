@@ -21,31 +21,22 @@ $ git clone -b sources --single-branch http://github.com/jonaprieto/jonaprieto.g
 $ cd jonaprieto.github.io
 ```
 
-The workflow is to push your changes to the branch `sources`. Using the Makefile,
-we run `make commit` and the command will make a commit on the sources branches,
-generate all the HTML files and push the changes in the master branch.
+The workflow is to push your changes to the branch `sources`.
 
-If you have everything installed, run this site locally by running
+If you have everything installed (read below), run this site locally by running
 
 ```
 $ make run
 ```
 
-Check the post in the folder `blog/_src/notes`.
+The posts are in the folder `blog/_src/notes`.
 
 Any error? follow the instructions below to check everything is right.
 I also recommend to check the Makefile.
 
 ### Local testing
 
-If you want to run this site on your machine, run the following command.
-
-```
-$ make run
-```
-
-To run this command, we need to have installed `gulp` and of course all the
-following requirements (omit any if you already had it):
+To run this site locally, we need to have installed some tools.
 
 - `ruby` ( the prog. language, it should be installed by default )
 
@@ -79,7 +70,7 @@ $ brew install agda
 $ brew install stack
 ```
 
-- `agda2html` ( run `make agda2html`, you will need `ghc` and `stack` of Haskell)
+- `agda2html` ( run `make agda2html`, you will need `ghc` and `stack` )
 
 - `ipe` ( to render the ipe figures, great tool )
 
@@ -100,14 +91,11 @@ $ brew install npm
 $ npm install --global gulp
 ```
 
-- `biber` ( to format the bibliography )
+- `biber` ( to format the bibliography, this is a latex requirement )
 
 ```
 $ tlmgr install biber
 ```
-
-Once you have all these programs installed, to generate the site
-run the following commands:
 
 - Install any missing dependency (ruby gems)
 
@@ -115,7 +103,8 @@ run the following commands:
 $ bundle install
 ```
 
-To run locally the site:
+Once you have **all** these programs installed, to generate the site
+run the following command:
 
 ```
 $ make run
@@ -126,12 +115,12 @@ $ make run
 ...
 ```
 
-After all of this, you should be able to run the site locally and expect reloads
-after changing any file which it's very cool. :)
+Now, we should to see the site locally and expect reloads
+after changing any file.
 
-# Where are the important files (the posts)
+# The files
 
-- The main folder is `blog/_src/notes`.
+- `blog/_src/notes` is there all the content is.
 - `blog/_bibliography/library.bib` is where I put all my references
 - `blog/assets` is where I put all the images but if they are `ipe` files, they are in
 the folder `blog/_src/ipe-images` because I convert them to png automatically.
@@ -159,5 +148,5 @@ For example:
 
 ## Pushing changes
 
+If you just cloned this repository, you may need to run `make init-master`.
 To push the changes, just run `make commit` and provide a good message.
-If it is the first time run `make init-master`.
