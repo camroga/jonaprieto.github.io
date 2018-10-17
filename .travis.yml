@@ -20,9 +20,8 @@ before_install:
 
 script:
   - pwd
-  - cd blog && bundle install
   - make agda2html
-  - cd blog && gulp build
+  - make build
   - pip3 install agda-pkg
   - apkg init
   - apkg install agda-metis
