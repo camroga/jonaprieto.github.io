@@ -9,6 +9,7 @@ follow the same structure as an academic paper including the references. You
 can print them out and they will look like an authentic paper, one of the
 major advantages is the version controlling, the integration with `git`.
 
+
 This blog is on Github and it has two branches:
 
   - `sources` : mainly to save all the codes.
@@ -26,7 +27,7 @@ $ make run
 
 Check the post in the folder `blog/_src/notes`.
 
-Any error? follow the instructions below.
+Any error? follow the instructions below to check everything is right.
 
 ### Local testing
 

@@ -15,9 +15,12 @@ before_install:
   - brew install ghc
   - brew install agda
   - brew install stack
-  - brew install npm
+  - brew upgrade node
+  - npm install --global gulp
 
 script:
+  - cd blog && bundle install
   - make agda2html
+  - cd blog && gulp build
   - pip3 install agda-pkg
-  - apkg install standard-library
+  - apkg install agda-metis

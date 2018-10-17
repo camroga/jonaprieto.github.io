@@ -14,7 +14,7 @@ gallery: true
 - completeness theorem
 - natural deduction vs ...
 - intuitionist logic
-  - kripe semantics
+  - Kripke semantics
 
 In progress.
 
