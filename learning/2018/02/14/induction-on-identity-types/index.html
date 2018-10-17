@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+      
+        Induction on Identity Types |
+      
+        jonaprieto
+    
+  </title><!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Induction on Identity Types" />
+<meta name="author" content="Jonathan Prieto-Cubides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this entry, we work with the Identity type, sometimes also called Equality type. This type only has one constructor, the constructor denoted by refl which represents the reflexivity property. Its definition in Agda is as follows:" />
+<meta property="og:description" content="In this entry, we work with the Identity type, sometimes also called Equality type. This type only has one constructor, the constructor denoted by refl which represents the reflexivity property. Its definition in Agda is as follows:" />
+<link rel="canonical" href="http://jonaprieto.github.io/learning/2018/02/14/induction-on-identity-types/" />
+<meta property="og:url" content="http://jonaprieto.github.io/learning/2018/02/14/induction-on-identity-types/" />
+<meta property="og:site_name" content="jonaprieto" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-14T00:00:00+01:00" />
+<script type="application/ld+json">
+{"description":"In this entry, we work with the Identity type, sometimes also called Equality type. This type only has one constructor, the constructor denoted by refl which represents the reflexivity property. Its definition in Agda is as follows:","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/02/14/induction-on-identity-types/","headline":"Induction on Identity Types","dateModified":"2018-10-17T13:37:28+02:00","datePublished":"2018-02-14T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/02/14/induction-on-identity-types/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta name="description" content="In this entry, we work with the Identity type, sometimes also called Equality type. This type only has one constructor, the constructor denoted by refl which...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="preload" as="script" href="/assets/main.js" >
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="preload" as="script" href="/assets/js/latex.js" >
+  
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+</head>
+
+
+
+
+  <body>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    <!--  -->
+    <!-- 
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/all/">All</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">List of references</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/plans/">Plans</a>
+        
+      
+     -->
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
+    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
+  </nav>
+</div>
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+
+
+<div class="post">
+
+  <div class="print-version">
+    <center>
+      <h1>Induction on Identity Types </h1><br/>
+        <div class="print-authors">
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">
+                
+                  Jonathan Prieto-Cubides
+                
+              </div>
+              <div class="print-author-affiliation">
+                
+                  University of Bergen
+                
+                </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="print-date">14 February 2018</div>
+        
+        
+    </center>
+  </div>
+
+  
+  No git information available
+  
+  <h1 class="post-title">Induction on Identity Types
+    <div class="github-links">
+      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io//_src/notes/2018-02-14-induction-on-identity-types.lagda" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob//_src/notes/2018-02-14-induction-on-identity-types.lagda" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/_src/notes/2018-02-14-induction-on-identity-types.lagda" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits//_src/notes/2018-02-14-induction-on-identity-types.lagda" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
+    </div>
+  </h1>
+  
+  <div class="toc">
+    <nav>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#martin-löf-rules-about-the-identity-type">Martin-Löf rules about the Identity type</a></li>
+  <li><a href="#path-induction">Path induction</a></li>
+  <li><a href="#based-path-induction">Based path induction</a></li>
+  <li><a href="#equivalence-between-path-induction-and-base-path-induction">Equivalence between path induction and base path induction</a></li>
+</ul>
+
+    </nav>
+  </div>
+  
+  <p>In this entry, we work with the Identity type, sometimes also called Equality type.
+This type only has one constructor, the constructor denoted by <code>refl</code> which represents
+the reflexivity property. Its definition in Agda is as follows:</p>
+
+<pre><code class="language-agda">data Id (A : Set) (x y : A) : Set where
+  refl : Id A x y
+</code></pre>
+
+<p>Nonetheless, its more common to find the definition in Agda as it follows,</p>
+
+<pre class="Agda"><a id="548" class="Keyword">infix</a> <a id="554" class="Number">4</a> <a id="556" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">_≡_</a>
+<a id="560" class="Keyword">data</a> <a id="_≡_"></a><a id="565" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">_≡_</a> <a id="569" class="Symbol">{</a><a id="570" href="/learning/2018/02/14/induction-on-identity-types/#570" class="Bound">a</a><a id="571" class="Symbol">}</a> <a id="573" class="Symbol">{</a><a id="574" href="/learning/2018/02/14/induction-on-identity-types/#574" class="Bound">A</a> <a id="576" class="Symbol">:</a> <a id="578" class="PrimitiveType">Set</a> <a id="582" href="/learning/2018/02/14/induction-on-identity-types/#570" class="Bound">a</a><a id="583" class="Symbol">}</a> <a id="585" class="Symbol">(</a><a id="586" href="/learning/2018/02/14/induction-on-identity-types/#586" class="Bound">x</a> <a id="588" class="Symbol">:</a> <a id="590" href="/learning/2018/02/14/induction-on-identity-types/#574" class="Bound">A</a><a id="591" class="Symbol">)</a> <a id="593" class="Symbol">:</a> <a id="595" href="/learning/2018/02/14/induction-on-identity-types/#574" class="Bound">A</a> <a id="597" class="Symbol">→</a> <a id="599" class="PrimitiveType">Set</a> <a id="603" href="/learning/2018/02/14/induction-on-identity-types/#570" class="Bound">a</a> <a id="605" class="Keyword">where</a>
+  <a id="613" class="Keyword">instance</a> <a id="_≡_.refl"></a><a id="622" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a> <a id="627" class="Symbol">:</a> <a id="629" href="/learning/2018/02/14/induction-on-identity-types/#586" class="Bound">x</a> <a id="631" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="633" href="/learning/2018/02/14/induction-on-identity-types/#586" class="Bound">x</a></pre>
+
+<p>instead of</p>
+
+<pre><code class="language-agda">infix 3 _≡_
+_≡_ : ∀ {A : Set} → (x y : A) → Id A x y
+x ≡ y = refl
+</code></pre>
+
+<p>In the Agda standard library, we find this type in the <code>Relation.Binary.PropositionalEquality</code> module.</p>
+
+<h3 id="martin-löf-rules-about-the-identity-type">Martin-Löf rules about the Identity type</h3>
+
+<ul>
+  <li>
+    <p><strong>ML1</strong>. For any type <code>X</code>, for each <code>a</code> and <code>b</code> of it, there is a type <code>a = b</code></p>
+  </li>
+  <li>
+    <p><strong>ML2</strong>. There is an element <code>refl x : x = x</code> for each <code>x : X</code></p>
+  </li>
+  <li>
+    <p><strong>ML3</strong>. Induction for equality:</p>
+
+    <blockquote>
+      <p>For any type <script type="math/tex">X</script> and for any element <script type="math/tex">a</script> of it, given a family of types <script type="math/tex">P(b,e)</script>
+  depending on parameters <script type="math/tex">b</script> of type <script type="math/tex">X</script> and <script type="math/tex">e</script> of type <script type="math/tex">a=b</script>, in order to
+  define elements <script type="math/tex">f(b,e) : P(b,e)</script> of all of them it suffices to provide an
+  element <script type="math/tex">p</script> of <script type="math/tex">P(a, refl\ a)</script>.  The resulting function <script type="math/tex">f</script> may be regarded as
+  having been completely defined by the single definition <script type="math/tex">f(a, refl\ a) := p</script>.</p>
+    </blockquote>
+
+    <blockquote>
+      <p>Intuitively, the induction principle for equality amounts to saying that the
+  element <script type="math/tex">refl a</script> <em>generates</em> the system of types <script type="math/tex">a=b</script>, as <script type="math/tex">b</script> ranges
+  over elements of <script type="math/tex">A</script>. Read more in <a href="#Grayson2017">(Grayson, 2017)</a>.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>In HoTT, the ML3 rule is interpreted in a different way. The identity type <code>a =
+b</code> is not longer the type that stands for proofs of the equality between <code>a</code> and
+<code>b</code>. Instead of it, an identity type becomes in the <em>path space</em> where each of
+inhabitants are just <em>paths</em> between points in the topological space associated
+to <code>A</code>. Read the full discussion in (missing reference).</p>
+
+<p>Before to jump to the next section, one comment before about the type theory of
+Agda. In <code>Agda</code>, the types follow a hierarchy by using what they call
+<a href="https://goo.gl/7TcwuL"><em>levels</em></a>. For instance, in the first level, level <code>0</code>,
+we find the <strong>small types</strong> which are of the <code>Set</code> type. Types of the level <code>1</code>
+are those formed by using some small types which means they have <code>Set 1</code> type
+and so on with <code>Set i</code> type.</p>
+
+<h3 id="path-induction">Path induction</h3>
+
+<p>We call <em>path</em> to the inhabitant <code>p</code> of the identity type, that is, <code>x ≡ y</code> for
+some <code>x</code> and <code>y</code> of type <code>A</code>. We can probably think that there is only one <code>p</code>,
+but there could be many identifications between <code>x</code> and <code>y</code> from the HoTT
+perspective, proof-relevant!, yeah.</p>
+
+<p><img src="/assets/ipe-images/path.png" alt="path" /></p>
+
+<p>As any other type, we have the elimination principle also called induction. We
+denote this rule by <code>pi</code> because it is the abbreviation of <em>path induction</em>.
+Other references call this <code>pi</code> as the <code>J</code> eliminator but please refer to <a href="https://goo.gl/Sm4ZAs"><code>J</code>
+rule</a> for a more detailed description.</p>
+
+<pre class="Agda"><a id="pi"></a><a id="3173" href="/learning/2018/02/14/induction-on-identity-types/#3173" class="Function">pi</a>
+  <a id="3178" class="Symbol">:</a> <a id="3180" class="Symbol">∀</a> <a id="3182" class="Symbol">{</a><a id="3183" href="/learning/2018/02/14/induction-on-identity-types/#3183" class="Bound">i</a><a id="3184" class="Symbol">}</a> <a id="3186" class="Symbol">{</a><a id="3187" href="/learning/2018/02/14/induction-on-identity-types/#3187" class="Bound">A</a> <a id="3189" class="Symbol">:</a> <a id="3191" class="PrimitiveType">Set</a><a id="3194" class="Symbol">}</a>
+  <a id="3198" class="Symbol">→</a> <a id="3200" class="Symbol">(</a><a id="3201" href="/learning/2018/02/14/induction-on-identity-types/#3201" class="Bound">C</a> <a id="3203" class="Symbol">:</a> <a id="3205" class="Symbol">(</a><a id="3206" href="/learning/2018/02/14/induction-on-identity-types/#3206" class="Bound">x</a> <a id="3208" href="/learning/2018/02/14/induction-on-identity-types/#3208" class="Bound">y</a> <a id="3210" class="Symbol">:</a> <a id="3212" href="/learning/2018/02/14/induction-on-identity-types/#3187" class="Bound">A</a><a id="3213" class="Symbol">)</a> <a id="3215" class="Symbol">→</a> <a id="3217" href="/learning/2018/02/14/induction-on-identity-types/#3206" class="Bound">x</a> <a id="3219" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="3221" href="/learning/2018/02/14/induction-on-identity-types/#3208" class="Bound">y</a> <a id="3223" class="Symbol">→</a> <a id="3225" class="PrimitiveType">Set</a> <a id="3229" href="/learning/2018/02/14/induction-on-identity-types/#3183" class="Bound">i</a><a id="3230" class="Symbol">)</a>
+  <a id="3234" class="Symbol">→</a> <a id="3236" class="Symbol">(∀</a> <a id="3239" class="Symbol">(</a><a id="3240" href="/learning/2018/02/14/induction-on-identity-types/#3240" class="Bound">x</a> <a id="3242" class="Symbol">:</a> <a id="3244" href="/learning/2018/02/14/induction-on-identity-types/#3187" class="Bound">A</a><a id="3245" class="Symbol">)</a> <a id="3247" class="Symbol">→</a> <a id="3249" href="/learning/2018/02/14/induction-on-identity-types/#3201" class="Bound">C</a> <a id="3251" href="/learning/2018/02/14/induction-on-identity-types/#3240" class="Bound">x</a> <a id="3253" href="/learning/2018/02/14/induction-on-identity-types/#3240" class="Bound">x</a> <a id="3255" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a><a id="3259" class="Symbol">)</a>
+  <a id="3263" class="Comment">-----------------------------------</a>
+  <a id="3301" class="Symbol">→</a> <a id="3303" class="Symbol">∀</a> <a id="3305" class="Symbol">(</a><a id="3306" href="/learning/2018/02/14/induction-on-identity-types/#3306" class="Bound">x</a> <a id="3308" href="/learning/2018/02/14/induction-on-identity-types/#3308" class="Bound">y</a> <a id="3310" class="Symbol">:</a> <a id="3312" href="/learning/2018/02/14/induction-on-identity-types/#3187" class="Bound">A</a><a id="3313" class="Symbol">)</a> <a id="3315" class="Symbol">(</a><a id="3316" href="/learning/2018/02/14/induction-on-identity-types/#3316" class="Bound">p</a> <a id="3318" class="Symbol">:</a> <a id="3320" href="/learning/2018/02/14/induction-on-identity-types/#3306" class="Bound">x</a> <a id="3322" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="3324" href="/learning/2018/02/14/induction-on-identity-types/#3308" class="Bound">y</a><a id="3325" class="Symbol">)</a> <a id="3327" class="Symbol">→</a> <a id="3329" href="/learning/2018/02/14/induction-on-identity-types/#3201" class="Bound">C</a> <a id="3331" href="/learning/2018/02/14/induction-on-identity-types/#3306" class="Bound">x</a> <a id="3333" href="/learning/2018/02/14/induction-on-identity-types/#3308" class="Bound">y</a> <a id="3335" href="/learning/2018/02/14/induction-on-identity-types/#3316" class="Bound">p</a></pre>
+
+<p>The computation rule using this rule is:</p>
+
+<pre class="Agda"><a id="3404" href="/learning/2018/02/14/induction-on-identity-types/#3173" class="Function">pi</a> <a id="3407" class="Symbol">{</a><a id="3408" href="/learning/2018/02/14/induction-on-identity-types/#3408" class="Bound">A</a><a id="3409" class="Symbol">}</a> <a id="3411" href="/learning/2018/02/14/induction-on-identity-types/#3411" class="Bound">C</a> <a id="3413" href="/learning/2018/02/14/induction-on-identity-types/#3413" class="Bound">c</a> <a id="3415" href="/learning/2018/02/14/induction-on-identity-types/#3415" class="Bound">x</a> <a id="3417" class="DottedPattern Symbol">.</a><a id="3418" href="/learning/2018/02/14/induction-on-identity-types/#3415" class="DottedPattern Bound">x</a> <a id="3420" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a> <a id="3425" class="Symbol">=</a> <a id="3427" href="/learning/2018/02/14/induction-on-identity-types/#3413" class="Bound">c</a> <a id="3429" href="/learning/2018/02/14/induction-on-identity-types/#3415" class="Bound">x</a></pre>
+
+<p>To understand this basic principle, let’s unpackage its definition.</p>
+
+<p>What <code>pi</code> is telling us is to construct something of the type <code>C</code>
+using information about the path <code>x ≡ y</code>, we need to provide that:</p>
+
+<ul>
+  <li>
+    <p><code>C</code> is able to construct new types from just three arguments: two points and
+one path.</p>
+  </li>
+  <li>
+    <p><code>C</code> must hold the <em>diagonal</em>, which it means that, we need to prove that
+<code>C x x refl</code> holds for all <code>x</code>.</p>
+  </li>
+</ul>
+
+<p>Then, as result, the property <code>C</code> holds <em>for all paths</em> in general.</p>
+
+<h3 id="based-path-induction">Based path induction</h3>
+
+<p>Another approach for the same principle is the <em>based path induction</em> that we
+abbreviate as <code>bpi</code>. The major difference is that we <em>fixed</em> the induction with
+one parameter, the variable <code>a</code> in the following definition.</p>
+
+<pre class="Agda foldable" until="7"><a id="bpi"></a><a id="4197" href="/learning/2018/02/14/induction-on-identity-types/#4197" class="Function">bpi</a>
+  <a id="4203" class="Symbol">:</a> <a id="4205" class="Symbol">∀</a> <a id="4207" class="Symbol">{</a><a id="4208" href="/learning/2018/02/14/induction-on-identity-types/#4208" class="Bound">i</a><a id="4209" class="Symbol">}</a> <a id="4211" class="Symbol">{</a><a id="4212" href="/learning/2018/02/14/induction-on-identity-types/#4212" class="Bound">A</a> <a id="4214" class="Symbol">:</a> <a id="4216" class="PrimitiveType">Set</a><a id="4219" class="Symbol">}</a>
+  <a id="4223" class="Symbol">→</a> <a id="4225" class="Symbol">(</a><a id="4226" href="/learning/2018/02/14/induction-on-identity-types/#4226" class="Bound">a</a> <a id="4228" class="Symbol">:</a> <a id="4230" href="/learning/2018/02/14/induction-on-identity-types/#4212" class="Bound">A</a><a id="4231" class="Symbol">)</a>   <a id="4235" class="Comment">-- Fixed</a>
+  <a id="4246" class="Symbol">→</a> <a id="4248" class="Symbol">(</a><a id="4249" href="/learning/2018/02/14/induction-on-identity-types/#4249" class="Bound">C</a> <a id="4251" class="Symbol">:</a> <a id="4253" class="Symbol">(</a><a id="4254" href="/learning/2018/02/14/induction-on-identity-types/#4254" class="Bound">y</a> <a id="4256" class="Symbol">:</a> <a id="4258" href="/learning/2018/02/14/induction-on-identity-types/#4212" class="Bound">A</a><a id="4259" class="Symbol">)</a> <a id="4261" class="Symbol">→</a> <a id="4263" href="/learning/2018/02/14/induction-on-identity-types/#4226" class="Bound">a</a> <a id="4265" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="4267" href="/learning/2018/02/14/induction-on-identity-types/#4254" class="Bound">y</a> <a id="4269" class="Symbol">→</a> <a id="4271" class="PrimitiveType">Set</a> <a id="4275" href="/learning/2018/02/14/induction-on-identity-types/#4208" class="Bound">i</a><a id="4276" class="Symbol">)</a>
+  <a id="4280" class="Symbol">→</a> <a id="4282" href="/learning/2018/02/14/induction-on-identity-types/#4249" class="Bound">C</a> <a id="4284" href="/learning/2018/02/14/induction-on-identity-types/#4226" class="Bound">a</a> <a id="4286" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a>
+  <a id="4293" class="Comment">-----------------------------</a>
+  <a id="4325" class="Symbol">→</a> <a id="4327" class="Symbol">(</a><a id="4328" href="/learning/2018/02/14/induction-on-identity-types/#4328" class="Bound">y</a> <a id="4330" class="Symbol">:</a> <a id="4332" href="/learning/2018/02/14/induction-on-identity-types/#4212" class="Bound">A</a><a id="4333" class="Symbol">)</a> <a id="4335" class="Symbol">(</a><a id="4336" href="/learning/2018/02/14/induction-on-identity-types/#4336" class="Bound">p</a> <a id="4338" class="Symbol">:</a> <a id="4340" href="/learning/2018/02/14/induction-on-identity-types/#4226" class="Bound">a</a> <a id="4342" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="4344" href="/learning/2018/02/14/induction-on-identity-types/#4328" class="Bound">y</a><a id="4345" class="Symbol">)</a> <a id="4347" class="Symbol">→</a> <a id="4349" href="/learning/2018/02/14/induction-on-identity-types/#4249" class="Bound">C</a> <a id="4351" href="/learning/2018/02/14/induction-on-identity-types/#4328" class="Bound">y</a> <a id="4353" href="/learning/2018/02/14/induction-on-identity-types/#4336" class="Bound">p</a>
+
+<a id="4356" href="/learning/2018/02/14/induction-on-identity-types/#4197" class="Function">bpi</a> <a id="4360" href="/learning/2018/02/14/induction-on-identity-types/#4360" class="Bound">a</a> <a id="4362" href="/learning/2018/02/14/induction-on-identity-types/#4362" class="Bound">C</a> <a id="4364" href="/learning/2018/02/14/induction-on-identity-types/#4364" class="Bound">c</a> <a id="4366" class="DottedPattern Symbol">.</a><a id="4367" href="/learning/2018/02/14/induction-on-identity-types/#4360" class="DottedPattern Bound">a</a> <a id="4369" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a> <a id="4374" class="Symbol">=</a> <a id="4376" href="/learning/2018/02/14/induction-on-identity-types/#4364" class="Bound">c</a></pre>
+
+<p><em>Remark</em>: The dot accompanying the variable <code>a</code> in the equation above is
+because in <code>Agda</code> we can tell to the type-checker that there is only one
+possible value that corresponds to that variable, which in this case, only can
+be the same <code>a</code>.</p>
+
+<p>Let us unpackage the <code>bpi</code> definition:</p>
+
+<ul>
+  <li>
+    <p>With the fixed endpoint <code>a</code>,</p>
+  </li>
+  <li>
+    <p>if we consider all paths which start with this <code>a</code>,</p>
+  </li>
+  <li>
+    <p>to have the property that for all <code>y:A</code> and for all paths <code>a ≡ y</code>. We only
+need to have <code>C a refl</code>, which it means, <code>C</code> always holds for the <em>base case</em>.</p>
+  </li>
+</ul>
+
+<h3 id="equivalence-between-path-induction-and-base-path-induction">Equivalence between path induction and base path induction</h3>
+
+<p>Path-induction and based path induction are <em>equivalent</em>.
+Let’s see a proof in Agda. Please click on each proof to expand it.</p>
+
+<p>Using <code>bpi</code> we prove the same as <code>pi</code> under the same assumptions.</p>
+
+<pre class="Agda foldable" until="5"><a id="bpi⇒pi"></a><a id="5213" href="/learning/2018/02/14/induction-on-identity-types/#5213" class="Function">bpi⇒pi</a>
+  <a id="5222" class="Symbol">:</a> <a id="5224" class="Symbol">∀</a> <a id="5226" class="Symbol">{</a><a id="5227" href="/learning/2018/02/14/induction-on-identity-types/#5227" class="Bound">A</a> <a id="5229" class="Symbol">:</a> <a id="5231" class="PrimitiveType">Set</a><a id="5234" class="Symbol">}</a>
+  <a id="5238" class="Symbol">→</a> <a id="5240" class="Symbol">(</a><a id="5241" href="/learning/2018/02/14/induction-on-identity-types/#5241" class="Bound">C</a> <a id="5243" class="Symbol">:</a> <a id="5245" class="Symbol">(</a><a id="5246" href="/learning/2018/02/14/induction-on-identity-types/#5246" class="Bound">x</a> <a id="5248" href="/learning/2018/02/14/induction-on-identity-types/#5248" class="Bound">y</a> <a id="5250" class="Symbol">:</a> <a id="5252" href="/learning/2018/02/14/induction-on-identity-types/#5227" class="Bound">A</a><a id="5253" class="Symbol">)</a> <a id="5255" class="Symbol">→</a> <a id="5257" href="/learning/2018/02/14/induction-on-identity-types/#5246" class="Bound">x</a> <a id="5259" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5261" href="/learning/2018/02/14/induction-on-identity-types/#5248" class="Bound">y</a> <a id="5263" class="Symbol">→</a> <a id="5265" class="PrimitiveType">Set</a><a id="5268" class="Symbol">)</a>
+  <a id="5272" class="Symbol">→</a> <a id="5274" class="Symbol">(</a><a id="5275" href="/learning/2018/02/14/induction-on-identity-types/#5275" class="Bound">c</a> <a id="5277" class="Symbol">:</a> <a id="5279" class="Symbol">(</a><a id="5280" href="/learning/2018/02/14/induction-on-identity-types/#5280" class="Bound">x</a> <a id="5282" class="Symbol">:</a> <a id="5284" href="/learning/2018/02/14/induction-on-identity-types/#5227" class="Bound">A</a><a id="5285" class="Symbol">)</a> <a id="5287" class="Symbol">→</a> <a id="5289" href="/learning/2018/02/14/induction-on-identity-types/#5241" class="Bound">C</a> <a id="5291" href="/learning/2018/02/14/induction-on-identity-types/#5280" class="Bound">x</a> <a id="5293" href="/learning/2018/02/14/induction-on-identity-types/#5280" class="Bound">x</a> <a id="5295" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a><a id="5299" class="Symbol">)</a>
+  <a id="5303" class="Symbol">→</a> <a id="5305" class="Symbol">(</a><a id="5306" href="/learning/2018/02/14/induction-on-identity-types/#5306" class="Bound">x</a> <a id="5308" href="/learning/2018/02/14/induction-on-identity-types/#5308" class="Bound">y</a> <a id="5310" class="Symbol">:</a> <a id="5312" href="/learning/2018/02/14/induction-on-identity-types/#5227" class="Bound">A</a><a id="5313" class="Symbol">)</a> <a id="5315" class="Symbol">(</a><a id="5316" href="/learning/2018/02/14/induction-on-identity-types/#5316" class="Bound">p</a> <a id="5318" class="Symbol">:</a> <a id="5320" href="/learning/2018/02/14/induction-on-identity-types/#5306" class="Bound">x</a> <a id="5322" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5324" href="/learning/2018/02/14/induction-on-identity-types/#5308" class="Bound">y</a><a id="5325" class="Symbol">)</a> <a id="5327" class="Symbol">→</a> <a id="5329" href="/learning/2018/02/14/induction-on-identity-types/#5241" class="Bound">C</a> <a id="5331" href="/learning/2018/02/14/induction-on-identity-types/#5306" class="Bound">x</a> <a id="5333" href="/learning/2018/02/14/induction-on-identity-types/#5308" class="Bound">y</a> <a id="5335" href="/learning/2018/02/14/induction-on-identity-types/#5316" class="Bound">p</a>
+
+<a id="5338" href="/learning/2018/02/14/induction-on-identity-types/#5213" class="Function">bpi⇒pi</a> <a id="5345" class="Symbol">{</a><a id="5346" href="/learning/2018/02/14/induction-on-identity-types/#5346" class="Bound">A</a><a id="5347" class="Symbol">}</a> <a id="5349" href="/learning/2018/02/14/induction-on-identity-types/#5349" class="Bound">C</a> <a id="5351" href="/learning/2018/02/14/induction-on-identity-types/#5351" class="Bound">c</a> <a id="5353" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a> <a id="5355" class="Symbol">=</a> <a id="5357" href="/learning/2018/02/14/induction-on-identity-types/#5451" class="Function">g</a>
+  <a id="5361" class="Keyword">where</a>
+    <a id="5371" href="/learning/2018/02/14/induction-on-identity-types/#5371" class="Function">C′</a> <a id="5374" class="Symbol">:</a> <a id="5376" class="Symbol">(</a><a id="5377" href="/learning/2018/02/14/induction-on-identity-types/#5377" class="Bound">y</a> <a id="5379" class="Symbol">:</a> <a id="5381" href="/learning/2018/02/14/induction-on-identity-types/#5346" class="Bound">A</a><a id="5382" class="Symbol">)</a> <a id="5384" class="Symbol">→</a> <a id="5386" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a> <a id="5388" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5390" href="/learning/2018/02/14/induction-on-identity-types/#5377" class="Bound">y</a> <a id="5392" class="Symbol">→</a> <a id="5394" class="PrimitiveType">Set</a>
+    <a id="5402" href="/learning/2018/02/14/induction-on-identity-types/#5371" class="Function">C′</a> <a id="5405" class="Symbol">=</a> <a id="5407" href="/learning/2018/02/14/induction-on-identity-types/#5349" class="Bound">C</a> <a id="5409" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a>
+
+    <a id="5416" href="/learning/2018/02/14/induction-on-identity-types/#5416" class="Function">c′</a> <a id="5419" class="Symbol">:</a> <a id="5421" href="/learning/2018/02/14/induction-on-identity-types/#5349" class="Bound">C</a> <a id="5423" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a> <a id="5425" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a> <a id="5427" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a>
+    <a id="5436" href="/learning/2018/02/14/induction-on-identity-types/#5416" class="Function">c′</a>  <a id="5440" class="Symbol">=</a> <a id="5442" href="/learning/2018/02/14/induction-on-identity-types/#5351" class="Bound">c</a> <a id="5444" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a>
+
+    <a id="5451" href="/learning/2018/02/14/induction-on-identity-types/#5451" class="Function">g</a> <a id="5453" class="Symbol">:</a> <a id="5455" class="Symbol">∀</a> <a id="5457" class="Symbol">(</a><a id="5458" href="/learning/2018/02/14/induction-on-identity-types/#5458" class="Bound">y</a> <a id="5460" class="Symbol">:</a> <a id="5462" href="/learning/2018/02/14/induction-on-identity-types/#5346" class="Bound">A</a><a id="5463" class="Symbol">)</a> <a id="5465" class="Symbol">(</a><a id="5466" href="/learning/2018/02/14/induction-on-identity-types/#5466" class="Bound">p</a> <a id="5468" class="Symbol">:</a> <a id="5470" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a> <a id="5472" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5474" href="/learning/2018/02/14/induction-on-identity-types/#5458" class="Bound">y</a><a id="5475" class="Symbol">)</a> <a id="5477" class="Symbol">→</a> <a id="5479" href="/learning/2018/02/14/induction-on-identity-types/#5371" class="Function">C′</a> <a id="5482" href="/learning/2018/02/14/induction-on-identity-types/#5458" class="Bound">y</a> <a id="5484" href="/learning/2018/02/14/induction-on-identity-types/#5466" class="Bound">p</a>
+    <a id="5490" href="/learning/2018/02/14/induction-on-identity-types/#5451" class="Function">g</a> <a id="5492" class="Symbol">=</a> <a id="5494" href="/learning/2018/02/14/induction-on-identity-types/#4197" class="Function">bpi</a> <a id="5498" href="/learning/2018/02/14/induction-on-identity-types/#5353" class="Bound">x</a> <a id="5500" href="/learning/2018/02/14/induction-on-identity-types/#5371" class="Function">C′</a> <a id="5503" href="/learning/2018/02/14/induction-on-identity-types/#5416" class="Function">c′</a></pre>
+
+<p>Similarly, the other direction from <code>pi</code> to <code>bpi</code>.</p>
+
+<pre class="Agda foldable" until="6"><a id="pi⇒bpi"></a><a id="5608" href="/learning/2018/02/14/induction-on-identity-types/#5608" class="Function">pi⇒bpi</a>
+  <a id="5617" class="Symbol">:</a> <a id="5619" class="Symbol">∀</a> <a id="5621" class="Symbol">{</a><a id="5622" href="/learning/2018/02/14/induction-on-identity-types/#5622" class="Bound">A</a> <a id="5624" class="Symbol">:</a> <a id="5626" class="PrimitiveType">Set</a><a id="5629" class="Symbol">}</a>
+  <a id="5633" class="Symbol">→</a> <a id="5635" class="Symbol">(</a><a id="5636" href="/learning/2018/02/14/induction-on-identity-types/#5636" class="Bound">a</a> <a id="5638" class="Symbol">:</a> <a id="5640" href="/learning/2018/02/14/induction-on-identity-types/#5622" class="Bound">A</a><a id="5641" class="Symbol">)</a>
+  <a id="5645" class="Symbol">→</a> <a id="5647" class="Symbol">(</a><a id="5648" href="/learning/2018/02/14/induction-on-identity-types/#5648" class="Bound">C</a> <a id="5650" class="Symbol">:</a> <a id="5652" class="Symbol">(</a><a id="5653" href="/learning/2018/02/14/induction-on-identity-types/#5653" class="Bound">y</a> <a id="5655" class="Symbol">:</a> <a id="5657" href="/learning/2018/02/14/induction-on-identity-types/#5622" class="Bound">A</a><a id="5658" class="Symbol">)</a> <a id="5660" class="Symbol">→</a> <a id="5662" href="/learning/2018/02/14/induction-on-identity-types/#5636" class="Bound">a</a> <a id="5664" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5666" href="/learning/2018/02/14/induction-on-identity-types/#5653" class="Bound">y</a> <a id="5668" class="Symbol">→</a> <a id="5670" class="PrimitiveType">Set</a><a id="5673" class="Symbol">)</a>
+  <a id="5677" class="Symbol">→</a> <a id="5679" class="Symbol">(</a><a id="5680" href="/learning/2018/02/14/induction-on-identity-types/#5680" class="Bound">c</a> <a id="5682" class="Symbol">:</a> <a id="5684" href="/learning/2018/02/14/induction-on-identity-types/#5648" class="Bound">C</a> <a id="5686" href="/learning/2018/02/14/induction-on-identity-types/#5636" class="Bound">a</a> <a id="5688" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a><a id="5692" class="Symbol">)</a>
+  <a id="5696" class="Symbol">→</a> <a id="5698" class="Symbol">∀</a> <a id="5700" class="Symbol">(</a><a id="5701" href="/learning/2018/02/14/induction-on-identity-types/#5701" class="Bound">y</a> <a id="5703" class="Symbol">:</a> <a id="5705" href="/learning/2018/02/14/induction-on-identity-types/#5622" class="Bound">A</a><a id="5706" class="Symbol">)</a> <a id="5708" class="Symbol">(</a><a id="5709" href="/learning/2018/02/14/induction-on-identity-types/#5709" class="Bound">p</a> <a id="5711" class="Symbol">:</a> <a id="5713" href="/learning/2018/02/14/induction-on-identity-types/#5636" class="Bound">a</a> <a id="5715" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5717" href="/learning/2018/02/14/induction-on-identity-types/#5701" class="Bound">y</a><a id="5718" class="Symbol">)</a> <a id="5720" class="Symbol">→</a> <a id="5722" href="/learning/2018/02/14/induction-on-identity-types/#5648" class="Bound">C</a> <a id="5724" href="/learning/2018/02/14/induction-on-identity-types/#5701" class="Bound">y</a> <a id="5726" href="/learning/2018/02/14/induction-on-identity-types/#5709" class="Bound">p</a>
+
+<a id="5729" href="/learning/2018/02/14/induction-on-identity-types/#5608" class="Function">pi⇒bpi</a> <a id="5736" class="Symbol">{</a><a id="5737" href="/learning/2018/02/14/induction-on-identity-types/#5737" class="Bound">A</a><a id="5738" class="Symbol">}</a> <a id="5740" href="/learning/2018/02/14/induction-on-identity-types/#5740" class="Bound">a</a> <a id="5742" href="/learning/2018/02/14/induction-on-identity-types/#5742" class="Bound">C</a> <a id="5744" href="/learning/2018/02/14/induction-on-identity-types/#5744" class="Bound">c</a> <a id="5746" href="/learning/2018/02/14/induction-on-identity-types/#5746" class="Bound">y</a> <a id="5748" href="/learning/2018/02/14/induction-on-identity-types/#5748" class="Bound">p</a> <a id="5750" class="Symbol">=</a> <a id="5752" href="/learning/2018/02/14/induction-on-identity-types/#5925" class="Function">f</a> <a id="5754" href="/learning/2018/02/14/induction-on-identity-types/#5740" class="Bound">a</a> <a id="5756" href="/learning/2018/02/14/induction-on-identity-types/#5746" class="Bound">y</a> <a id="5758" href="/learning/2018/02/14/induction-on-identity-types/#5748" class="Bound">p</a> <a id="5760" href="/learning/2018/02/14/induction-on-identity-types/#5742" class="Bound">C</a> <a id="5762" href="/learning/2018/02/14/induction-on-identity-types/#5744" class="Bound">c</a>
+  <a id="5766" class="Keyword">where</a>
+    <a id="5776" href="/learning/2018/02/14/induction-on-identity-types/#5776" class="Function">D</a> <a id="5778" class="Symbol">:</a> <a id="5780" class="Symbol">∀</a> <a id="5782" class="Symbol">(</a><a id="5783" href="/learning/2018/02/14/induction-on-identity-types/#5783" class="Bound">x</a> <a id="5785" href="/learning/2018/02/14/induction-on-identity-types/#5785" class="Bound">y</a> <a id="5787" class="Symbol">:</a> <a id="5789" href="/learning/2018/02/14/induction-on-identity-types/#5737" class="Bound">A</a><a id="5790" class="Symbol">)</a> <a id="5792" class="Symbol">→</a> <a id="5794" href="/learning/2018/02/14/induction-on-identity-types/#5783" class="Bound">x</a> <a id="5796" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5798" href="/learning/2018/02/14/induction-on-identity-types/#5785" class="Bound">y</a> <a id="5800" class="Symbol">→</a> <a id="5802" class="PrimitiveType">Set₁</a>
+    <a id="5811" href="/learning/2018/02/14/induction-on-identity-types/#5776" class="Function">D</a> <a id="5813" href="/learning/2018/02/14/induction-on-identity-types/#5813" class="Bound">x</a> <a id="5815" href="/learning/2018/02/14/induction-on-identity-types/#5815" class="Bound">y</a> <a id="5817" href="/learning/2018/02/14/induction-on-identity-types/#5817" class="Bound">p</a> <a id="5819" class="Symbol">=</a> <a id="5821" class="Symbol">(</a><a id="5822" href="/learning/2018/02/14/induction-on-identity-types/#5822" class="Bound">L</a> <a id="5824" class="Symbol">:</a> <a id="5826" class="Symbol">(</a><a id="5827" href="/learning/2018/02/14/induction-on-identity-types/#5827" class="Bound">z</a> <a id="5829" class="Symbol">:</a> <a id="5831" href="/learning/2018/02/14/induction-on-identity-types/#5737" class="Bound">A</a><a id="5832" class="Symbol">)</a> <a id="5834" class="Symbol">→</a> <a id="5836" href="/learning/2018/02/14/induction-on-identity-types/#5813" class="Bound">x</a> <a id="5838" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5840" href="/learning/2018/02/14/induction-on-identity-types/#5827" class="Bound">z</a> <a id="5842" class="Symbol">→</a> <a id="5844" class="PrimitiveType">Set</a><a id="5847" class="Symbol">)</a> <a id="5849" class="Symbol">→</a> <a id="5851" href="/learning/2018/02/14/induction-on-identity-types/#5822" class="Bound">L</a> <a id="5853" href="/learning/2018/02/14/induction-on-identity-types/#5813" class="Bound">x</a> <a id="5855" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a> <a id="5860" class="Symbol">→</a> <a id="5862" href="/learning/2018/02/14/induction-on-identity-types/#5822" class="Bound">L</a> <a id="5864" href="/learning/2018/02/14/induction-on-identity-types/#5815" class="Bound">y</a> <a id="5866" href="/learning/2018/02/14/induction-on-identity-types/#5817" class="Bound">p</a>
+
+    <a id="5873" href="/learning/2018/02/14/induction-on-identity-types/#5873" class="Function">d</a> <a id="5875" class="Symbol">:</a> <a id="5877" class="Symbol">∀</a> <a id="5879" class="Symbol">(</a><a id="5880" href="/learning/2018/02/14/induction-on-identity-types/#5880" class="Bound">x</a> <a id="5882" class="Symbol">:</a> <a id="5884" href="/learning/2018/02/14/induction-on-identity-types/#5737" class="Bound">A</a><a id="5885" class="Symbol">)</a> <a id="5887" class="Symbol">→</a> <a id="5889" href="/learning/2018/02/14/induction-on-identity-types/#5776" class="Function">D</a> <a id="5891" href="/learning/2018/02/14/induction-on-identity-types/#5880" class="Bound">x</a> <a id="5893" href="/learning/2018/02/14/induction-on-identity-types/#5880" class="Bound">x</a> <a id="5895" href="/learning/2018/02/14/induction-on-identity-types/#622" class="InductiveConstructor">refl</a>
+    <a id="5904" href="/learning/2018/02/14/induction-on-identity-types/#5873" class="Function">d</a> <a id="5906" class="Symbol">=</a> <a id="5908" class="Symbol">λ</a> <a id="5910" href="/learning/2018/02/14/induction-on-identity-types/#5910" class="Bound">x</a> <a id="5912" href="/learning/2018/02/14/induction-on-identity-types/#5912" class="Bound">C</a> <a id="5914" href="/learning/2018/02/14/induction-on-identity-types/#5914" class="Bound">c</a> <a id="5916" class="Symbol">→</a> <a id="5918" href="/learning/2018/02/14/induction-on-identity-types/#5914" class="Bound">c</a>
+
+    <a id="5925" href="/learning/2018/02/14/induction-on-identity-types/#5925" class="Function">f</a> <a id="5927" class="Symbol">:</a> <a id="5929" class="Symbol">∀</a> <a id="5931" class="Symbol">(</a><a id="5932" href="/learning/2018/02/14/induction-on-identity-types/#5932" class="Bound">x</a> <a id="5934" href="/learning/2018/02/14/induction-on-identity-types/#5934" class="Bound">y</a> <a id="5936" class="Symbol">:</a> <a id="5938" href="/learning/2018/02/14/induction-on-identity-types/#5737" class="Bound">A</a><a id="5939" class="Symbol">)</a> <a id="5941" class="Symbol">(</a><a id="5942" href="/learning/2018/02/14/induction-on-identity-types/#5942" class="Bound">p</a> <a id="5944" class="Symbol">:</a> <a id="5946" href="/learning/2018/02/14/induction-on-identity-types/#5932" class="Bound">x</a> <a id="5948" href="/learning/2018/02/14/induction-on-identity-types/#565" class="Datatype Operator">≡</a> <a id="5950" href="/learning/2018/02/14/induction-on-identity-types/#5934" class="Bound">y</a><a id="5951" class="Symbol">)</a> <a id="5953" class="Symbol">→</a> <a id="5955" href="/learning/2018/02/14/induction-on-identity-types/#5776" class="Function">D</a> <a id="5957" href="/learning/2018/02/14/induction-on-identity-types/#5932" class="Bound">x</a> <a id="5959" href="/learning/2018/02/14/induction-on-identity-types/#5934" class="Bound">y</a> <a id="5961" href="/learning/2018/02/14/induction-on-identity-types/#5942" class="Bound">p</a>
+    <a id="5967" href="/learning/2018/02/14/induction-on-identity-types/#5925" class="Function">f</a> <a id="5969" class="Symbol">=</a> <a id="5971" href="/learning/2018/02/14/induction-on-identity-types/#3173" class="Function">pi</a> <a id="5974" href="/learning/2018/02/14/induction-on-identity-types/#5776" class="Function">D</a> <a id="5976" href="/learning/2018/02/14/induction-on-identity-types/#5873" class="Function">d</a></pre>
+
+
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"><li><span id="Grayson2017">Grayson, D. R. (2017). An Introduction to Univalent Foundations for Mathematicians. Retrieved from http://arxiv.org/abs/1711.01477</span></li></ol>
+  </div>
+
+
+  
+
+</div>
+
+
+
+
+
+
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+<script src="/assets/jquery.min.js"></script>
+
+
+
+
+<!-- Script which renders TeX using tex.s2cms.ru -->
+<script src="//tex.s2cms.ru/latex.js"></script>
+<script type="text/javascript">
+ $("script[type='math/tex']").replaceWith(
+     function(){
+         var tex = $(this).text();
+         return "&zwnj;$$" + tex + "$$&zwnj;";
+     });
+ $("script[type='math/tex; mode=display']").replaceWith(
+     function(){
+         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
+         return "<p class=\"equation\">" +
+                 "$$" + tex + "$$" +
+                "</p>";
+     });
+</script>
+
+
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+
+<!-- FOLDABLE  -->
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+
+     var until = parseFloat($(this).attr('until'));
+     if ( isNaN(until) ) { until= 1; }
+     if ( until <= 0 ){
+       $(this).hide();
+     }
+     else{
+       var newHeight = ((1.3 * until) + 1.0) + "rem";
+       //                               ^^^----------- for the padding
+       //                ^^-- line-height
+
+       // console.log('afuera-until: ', until);
+       // console.log('afuera-newheight: ', newHeight );
+       $(this).css("padding", "0.5rem 1rem");
+       $(this).css("overflow", "hidden");
+       $(this).css("height", newHeight);
+       $(this).attr("original", "false");
+
+       $(this).click(function(){
+
+         // console.log('dentro-original: ', $(this).attr('original') );
+         // console.log('dentro-newheight: ', newHeight );
+
+         if ( $(this).attr('original') == "true" ) {
+           $(this).css("overflow", "hidden");
+           $(this).css("height", newHeight);
+           $(this).attr("original", "false");
+           $(this).css("padding", "0.5rem 1rem");
+           plus.show();
+         }
+         else {
+           $(this).height('auto');
+           $(this).attr("original", "true");
+           plus.hide();
+         }
+       });
+     }
+ });
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+  if ( $('div').hasClass('cited-references') ){
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
+    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
+  }
+</script>
+
+
+
+
+
+    <script>
+      (function(document) {
+        var toggle   = document.querySelector('.sidebar-toggle');
+        var sidebar  = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+
+    
+  </body>
+</html>
