@@ -1,7 +1,7 @@
 The blog [![Build Status](https://travis-ci.org/jonaprieto/jonaprieto.github.io.svg?branch=sources)](https://travis-ci.org/jonaprieto/jonaprieto.github.io)
 ========
 
-<img src="https://github.com/jonaprieto/jonaprieto.github.io/raw/sources/assets/blog.gif"
+<img src="https://www.dropbox.com/s/raw/rf8dg1dangte5vn/blog.gif?dl=0"
  alt="Jonaprieto blog" height=400 align="right" />
 
 This blog is intended to be an academic blog which means the blog posts try to
@@ -14,6 +14,13 @@ This blog is on Github and it has two branches:
 
   - `sources` : mainly to save all the codes.
   - `master` : static files for rendering on Github pages.
+
+## Clone this repository
+
+```
+$ git clone -b sources --single-branch http://github.com/jonaprieto/jonaprieto.github.io
+$ cd jonaprieto.github.io
+```
 
 The workflow is to push your changes to the branch `sources`. Using the Makefile,
 we run `make commit` and the command will make a commit on the sources branches,
