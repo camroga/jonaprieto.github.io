@@ -24,8 +24,8 @@ macos-setup: homebrew
 	brew install ghc
 	brew install agda
 	brew install stack
-  brew install cask
-  brew cask install ipe
+	brew install cask
+	brew cask install ipe
 	pip3 install agda-pkg && apkg install standard-library
 
 .PHONY: agda2html
@@ -36,7 +36,7 @@ agda2html:
 
 .PHONY: build
 build :
-  cd blog && bundle install
+	cd blog && bundle install
 	cd blog && gulp build
 
 .PHONY: run
