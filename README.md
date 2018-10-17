@@ -1,7 +1,7 @@
 The blog [![Build Status](https://travis-ci.org/jonaprieto/jonaprieto.github.io.svg?branch=sources)](https://travis-ci.org/jonaprieto/jonaprieto.github.io)
 ========
 
-<img src="https://uc5996e01e2bfe736143eb07ef4f.dl.dropboxusercontent.com/cd/0/inline/ATTud5z7nUgAZ1jhGtzSdmGuf2nfqRCwx6RY6VA55I9897uCJauXWmGIX1GaWUu3q1MnlJFsYpAge3YffmaS-Ck-wfTV_j0Mhk_Wb-UP-HhdmcM31u0SPnFhLW87-4Fnuw1CDzDe7HfNmKQXQOPYHz4eLnVBlFm-dLu06Ka6vKZNUExLLuYaHgQVSLltUFl1IKE/file"
+<img src="https://github.com/jonaprieto/assets/raw/master/blog.gif"
  alt="Jonaprieto blog" height=400 align="right" />
 
 This blog is intended to be an academic blog which means the blog posts try to
