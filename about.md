@@ -11,34 +11,31 @@ co-supervised by [Håkon Robbestad](http://staff.math.su.se/gylterud/).
 We are working on type theory and some connections with other branches
 of mathematics.
 
-Before, I lived two years in [Medellín, Colombia](https://www.google.no/search?q=medellin+colombia&newwindow=1&safe=active&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjb6-m_5MzdAhXLl4sKHcolC0AQ_AUIDigB&biw=1152&bih=638)
-where I did my Master
-under the
+Before this, I lived two years in [Medellín,
+Colombia](https://www.google.no/search?q=medellin+colombia&newwindow=1&safe=active&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjb6-m_5MzdAhXLl4sKHcolC0AQ_AUIDigB&biw=1152&bih=638)
+where I did my Master under the
 [advisory](http://www1.eafit.edu.co/asr/supervised-students.html) of [Andrés
 Sicard-Ramírez](http://www1.eafit.edu.co/asr/) in the group of the [Logic and
 Computation](http://scienti.colciencias.gov.co:8080/gruplac/jsp/visualiza/visualizagr.jsp?nro=00000000008091)
 research group in the Mathematical Sciences Department at [Universidad
-EAFIT](http://www.eafit.edu.co/). I've got my bachelor in mathematics from [Universidad
-Sergio Arboleda](https://www.usergioarboleda.edu.co).
-
-My current interests for research are mostly about the connections between computer
-science and mathematics such as verification, type theory, functional
-programming, logic and proof-assistants.
+EAFIT](http://www.eafit.edu.co/). And previously, I've got my bachelor in
+mathematics from [Universidad Sergio
+Arboleda](https://www.usergioarboleda.edu.co) and I also studied at UNAL.
 
 - [My Github](http://github.com/jonaprieto)
-- [My CV](http://github.com/jonaprieto/curriculum-vitae)
+- [My CV](https://github.com/jonaprieto/curriculum-vitae/raw/master/docs/cv.pdf)
 
 ### About this blog
 
 The sources of this blog are open source. The blog is using the following projects:
 
 - `github-pages`
-- `jekyll` with the my modified version of the minima theme
-- `algolia` provides the search engine plus modifications
+- `jekyll` with my modified version of the minima theme
+- `algolia` the search engine plus modifications
 - `agda` to type-check some experiments
-- `agda2html` for embedding `Agda` code in Html
-- `ipe` to draw all my pictures
-- Since April 2018 I changed to [https://tex.s2cms.com/](https://tex.s2cms.com/) to render `Latex` instead of `KaTeX`
+- `agda2html` for embedding `Agda` code in HTML
+- `ipe` to draw nice pictures
+-  Since April 2018 I changed to [https://tex.s2cms.com/](https://tex.s2cms.com/) to render `Latex` instead of `KaTeX`
 - `timelinejs` to show some test timelines
 - `linkify` to replace any url address to anchor tags
 - `yarn` for javascript dependencies

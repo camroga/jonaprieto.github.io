@@ -16,8 +16,8 @@ gist:
   noscript: false
 
 markdown: kramdown
-# kramdown:
-#   parse_block_html: true
+kramdown:
+  parse_block_html: true
 excerpt_separator: "\n\n"
 
 permalink: pretty
@@ -74,5 +74,4 @@ author:
   url:               https://github.com/jonaprieto
   email:             prieto.jona@gmail.com
 
-# Custom vars
-version:             0.0.1
+version:             0.0.2

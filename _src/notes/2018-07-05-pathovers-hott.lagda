@@ -19,6 +19,7 @@ linkify: true
 showcitation: true
 ---
 
+
 {: .only-website }
   *This is a work in progress jointly with Marc Bezem. Some of
   the following proofs are collapsed or hidden to reduce the size of the document.
@@ -62,9 +63,9 @@ some results about Σ-types that make the second proof of the
 equivalence a little shorter. We also believe they can be useful in other
 contexts.
 
-The correctness of this development has been type-checked by Agda v2.5.4. To be
-consistent with homotopy type theory, we tell Agda to not use Axiom K for
-type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
+The correctness of this development has been type-checked by `Agda v2.5.4`. To be
+consistent with homotopy type theory, we tell `Agda` to not use Axiom K for
+type-checking by using the option `without-K`. Without Axiom K, `Agda`'s `Set` is
 not a good name for universes in HoTT and we rename `Set` to `Type`.
 
 \begin{code}
@@ -77,7 +78,7 @@ Type : (ℓ : Level) → Set (lsuc ℓ)
 Type ℓ = Set ℓ
 \end{code}
 
-Now, let us define in Agda the homogeneous equality type and the heterogeneous
+Now, let us define in `Agda` the homogeneous equality type and the heterogeneous
 equality in order to define in different ways the PathOver type.
 
 ## Homogeneous equality
@@ -101,7 +102,7 @@ for equality between two elements a : A, b : B, along an equality `α : A == B`.
 Its terms are constructed by the reflexivity constructor which applies only when
 both the two types and the two terms are judgementally equal.
 
-We define in Agda the heterogeneous equality as `HEq` with a different subindex
+We define in `Agda` the heterogeneous equality as `HEq` with a different subindex
 for each definition. We start with the inductive definition `HEq₁` in the
 following.
 
@@ -1202,7 +1203,7 @@ As we mentioned above, Pathover can be defined in at least five different ways.
 An inductive definition, using the heterogeneous equality, transporting along
 homogeneous equalities and the last one by path-induction on the identity type.
 
-<ul>
+<ul markdown="1">
 
 <li>
 \begin{code}
@@ -1241,8 +1242,8 @@ PathOver₃
 PathOver₃ C α c₁ c₂ = transport C α c₁ == c₂
 \end{code}
 
-![path](/assets/ipe-images/pathover-3.png){: width="60%"}
-*Figure 2. Pathover₃.*
+<img src="/assets/ipe-images/pathover-3.png" alt="path" width="60%">
+<em>Figure 2. Pathover₃.</em>
 
 </li>
 
@@ -1260,8 +1261,9 @@ PathOver₄
 PathOver₄ C α c₁ c₂ = c₁ == transport C (α ⁻¹) c₂
 \end{code}
 
-![path](/assets/ipe-images/pathover-4.png){: width="60%"}{: width="60%"}
-*Figure 2. Pathover₄.*
+<img src="/assets/ipe-images/pathover-4.png" alt="path" width="60%">
+<em>Figure 3. Pathover₄.</em>
+
 </li>
 
 <li>
@@ -1534,7 +1536,7 @@ That is, `==[↓]-to-Σ α γ = (pair= α γ, m)`.
 
 However, we do not get any benefit as far as we know of the latter definition
 against the former definition and therefore, we have preferred the former which
-is simpler, elegant and exploits the pattern matching of Agda as well as in the
+is simpler, elegant and exploits the pattern matching of `Agda` as well as in the
 following homotopies.
 
 \begin{code}
