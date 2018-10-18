@@ -16,7 +16,6 @@ before_install:
 script:
   - pwd
   - make agda2html
-  - make build
   - pip3 install agda-pkg
   - apkg init
   - git clone http://github.com/agda/agda-stdlib
