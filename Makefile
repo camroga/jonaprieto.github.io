@@ -34,6 +34,7 @@ agda2html:
 	unzip -qq $(HOME)/agda2html-master.zip -d $(HOME)
 	cd $(HOME)/agda2html-master && stack install
 
+
 .PHONY: build
 build :
 	cd blog && bundle install

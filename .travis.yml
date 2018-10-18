@@ -25,4 +25,5 @@ script:
   - make build
   - pip3 install agda-pkg
   - apkg init
-  - apkg install agda-metis
+  - git clone http://github.com/agda/agda-stdlib
+  - cd agda-stdlib && apkg install --no-dependencies
