@@ -8,3 +8,4 @@ blog/.sass-cache/
 .jekyll-metadata
 node_modules/
 .#*
+blog/jekyll-algolia-record-too-big.log
