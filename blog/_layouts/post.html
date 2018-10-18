@@ -3,9 +3,9 @@ layout: default
 comments: true
 ---
 {% if page.agda %}
-  {% assign filepath = page.path | replace: '_posts', '_src/notes' | replace: '.md', '.lagda' %}
+  {% assign filepath = page.path | replace: '_posts', 'blog/_src/notes' | replace: '.md', '.lagda' %}
 {% else %}
-  {% assign filepath = page.path | replace: '_posts', '_src/notes' %}
+  {% assign filepath = page.path | replace: '_posts', 'blog/_src/notes' %}
 {% endif %}
 {% assign viewsource = site.github.repository_url | append: "/blob/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 {% assign editsource = site.github.repository_url | append: "/edit/sources/" | append: filepath %}

@@ -3,13 +3,6 @@
 os:
   osx
 
-cache:
-  bundler: true
-  timeout: 1500
-  directories:
-  - $HOME/.stack
-  - $HOME/.agda
-
 before_install:
   - brew update
   - brew install ghc

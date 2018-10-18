@@ -42,6 +42,7 @@ exclude:
   - .travis.yml
   - fix-references.sh
   - package.json
+  - package-lock.json
   - gulpfile.js
   - node_modules
 
