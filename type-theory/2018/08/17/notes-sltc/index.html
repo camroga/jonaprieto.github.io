@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-08-17T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"We present a formalisation of the syntax in Agda for the Simple Typed Lambda Calculus (STLC) with some of its properties and the description of the type-checking for this type system. We refactor the implementation by @gergoerdi for this calculus, in particular the Scopecheck and Typecheck module.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/type-theory/2018/08/17/notes-sltc/","headline":"Simple Typed Lambda Calculus In Agda","dateModified":"2018-10-15T10:33:42+02:00","datePublished":"2018-08-17T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/type-theory/2018/08/17/notes-sltc/"},"@context":"http://schema.org"}</script>
+{"description":"We present a formalisation of the syntax in Agda for the Simple Typed Lambda Calculus (STLC) with some of its properties and the description of the type-checking for this type system. We refactor the implementation by @gergoerdi for this calculus, in particular the Scopecheck and Typecheck module.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/type-theory/2018/08/17/notes-sltc/","headline":"Simple Typed Lambda Calculus In Agda","dateModified":"2018-10-18T16:30:05+02:00","datePublished":"2018-08-17T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/type-theory/2018/08/17/notes-sltc/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="We present a formalisation of the syntax in Agda for the Simple Typed Lambda Calculus (STLC) with some of its properties and the description of the type-chec...">
 
@@ -51,9 +51,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-
-  
-  <link rel="preload" as="script" href="/assets/js/latex.js" >
   
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -192,10 +189,7 @@
     </div>
   </div>
   
-  <h1 class="post-title">Simple Typed Lambda Calculus In Agda
-    <div class="github-links">
-      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-08-17-notes-sltc.lagda" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-08-17-notes-sltc.lagda" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-08-17-notes-sltc.lagda" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-08-17-notes-sltc.lagda" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
-    </div>
+  <h1 class="post-title" id="stickyTitle">Simple Typed Lambda Calculus In Agda
   </h1>
   
   <div class="toc">
@@ -793,11 +787,117 @@ If so, we got its respective construction for that lambda term.</p>
 
   
 
+  <div id="github-links">
+    <div class="view-source">
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-08-17-notes-sltc.lagda" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-08-17-notes-sltc.lagda" target="_blank">View source</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-08-17-notes-sltc.lagda" target="_blank">Edit</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-08-17-notes-sltc.lagda" target="_blank">History</a>
+      <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
+      
+    </div>
+  </div>
+
 </div>
 
 
 
 
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$'],['\\[','\\]']],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
+      TagSide: "left",
+      Macros: {
+        field: ['\\mathbb{#1}', 1],
+        C: ['\\field{C}'],
+        F: ['\\field{F}'],
+        N: ['\\field{N}'],
+        Q: ['\\field{Q}'],
+        R: ['\\field{R}'],
+        Z: ['\\field{Z}'],
+
+        zeros: ['\\mathbf{0}'],
+        ud: ['\\,\\mathrm{d}'],
+
+        vect:['\\boldsymbol{\\mathbf{#1}}',1],
+        abs: ['\\lvert#1\\rvert', 1],
+        abslr:['\\left\\lvert#1\\right\\rvert', 1],
+        norm: ['\\lVert#1\\rVert', 1],
+        normlr: ['\\left\\lVert#1\\right\\rVert', 1],
+
+        lcm: ['\\mathop{\\mathrm{lcm}}'],
+        interior: ['\\mathop{\\mathrm{int}}'],
+        exterior: ['\\mathop{\\mathrm{ext}}'],
+        volume: ['\\mathop{\\mathrm{vol}}'],
+
+        E: ['{\\rm I\\kern-.3em E}'],
+        Var: ['\\mathop{\\mathrm{Var}}'],
+        Cov: ['\\mathop{\\mathrm{Cov}}'],
+        Binom: ['\\mathop{\\mathrm{Binom}}'],
+        Exp: ['\\mathop{\\mathrm{Exp}}'],
+        Poi: ['\\mathop{\\mathrm{Poi}}'],
+
+        GL: ['\\mathrm{GL}'],
+        SL: ['\\mathrm{SL}'],
+        Aut: ['\\mathrm{Aut}'],
+        ker: ['\\mathrm{ker}'],
+        id: ['\\mathop{\\mathrm{id}}'],
+
+        Re: ['\\mathop{\\mathrm{Re}}'],
+        Im: ['\\mathop{\\mathrm{Im}}'],
+        Res: ['\\mathop{\\mathrm{Res}}'],
+      }
+    }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+>
+</script>
+
+
+
+<script>
+  // When the user scrolls the page, execute myFunction
+function stickyToogle(obj, sticky) {
+  if (window.pageYOffset > sticky) {
+    obj.classList.add("sticky");
+  } else {
+    obj.classList.remove("sticky");
+  }
+};
+
+// Get the header
+function stickyThing(idObj){
+  var obj = document.getElementById(idObj);
+  if (obj){
+    // Get the offset position of the navbar
+    stickyToogle(obj, obj.offsetTop);
+    // Add the sticky class to the obj when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  }
+};
+
+window.onscroll = function() {
+  stickyThing("stickyTitle");
+};
+
+</script>
 
 
 
@@ -810,25 +910,6 @@ If so, we got its respective construction for that lambda term.</p>
     
 <script src="/assets/jquery.min.js"></script>
 
-
-
-
-<!-- Script which renders TeX using tex.s2cms.ru -->
-<script src="//tex.s2cms.ru/latex.js"></script>
-<script type="text/javascript">
- $("script[type='math/tex']").replaceWith(
-     function(){
-         var tex = $(this).text();
-         return "&zwnj;$$" + tex + "$$&zwnj;";
-     });
- $("script[type='math/tex; mode=display']").replaceWith(
-     function(){
-         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
-         return "<p class=\"equation\">" +
-                 "$$" + tex + "$$" +
-                "</p>";
-     });
-</script>
 
 
 <script type="text/javascript">

@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-07-03T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"This will contain some thoughts about sat solving. See the references.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/07/03/sat-solving/","headline":"SAT solvers","dateModified":"2018-10-13T20:14:13+02:00","datePublished":"2018-07-03T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/07/03/sat-solving/"},"@context":"http://schema.org"}</script>
+{"description":"This will contain some thoughts about sat solving. See the references.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/07/03/sat-solving/","headline":"SAT solvers","dateModified":"2018-10-18T16:30:06+02:00","datePublished":"2018-07-03T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/07/03/sat-solving/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="This will contain some thoughts about sat solving. See the references.">
 
@@ -51,7 +51,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-
   
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -190,10 +189,7 @@
     </div>
   </div>
   
-  <h1 class="post-title">SAT solvers
-    <div class="github-links">
-      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-03-sat-solving.md" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-03-sat-solving.md" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-07-03-sat-solving.md" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-03-sat-solving.md" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
-    </div>
+  <h1 class="post-title" id="stickyTitle">SAT solvers
   </h1>
   
   <p>This will contain some thoughts about sat solving. See the references.</p>
@@ -222,11 +218,52 @@ such as backjumping (a form of non-chronological backtracking), conflict-driven 
 
   
 
+  <div id="github-links">
+    <div class="view-source">
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-03-sat-solving.md" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-03-sat-solving.md" target="_blank">View source</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-07-03-sat-solving.md" target="_blank">Edit</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-03-sat-solving.md" target="_blank">History</a>
+      <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
+      
+    </div>
+  </div>
+
 </div>
 
 
 
 
+
+
+
+
+
+<script>
+  // When the user scrolls the page, execute myFunction
+function stickyToogle(obj, sticky) {
+  if (window.pageYOffset > sticky) {
+    obj.classList.add("sticky");
+  } else {
+    obj.classList.remove("sticky");
+  }
+};
+
+// Get the header
+function stickyThing(idObj){
+  var obj = document.getElementById(idObj);
+  if (obj){
+    // Get the offset position of the navbar
+    stickyToogle(obj, obj.offsetTop);
+    // Add the sticky class to the obj when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  }
+};
+
+window.onscroll = function() {
+  stickyThing("stickyTitle");
+};
+
+</script>
 
 
 
@@ -238,8 +275,6 @@ such as backjumping (a form of non-chronological backtracking), conflict-driven 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
     
 <script src="/assets/jquery.min.js"></script>
-
-
 
 
 

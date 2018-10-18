@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-07-08T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"Interval analysis literature search.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/07/08/learning-interval-analysis-programs/","headline":"Intervals","dateModified":"2018-10-13T20:14:13+02:00","datePublished":"2018-07-08T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/07/08/learning-interval-analysis-programs/"},"@context":"http://schema.org"}</script>
+{"description":"Interval analysis literature search.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/07/08/learning-interval-analysis-programs/","headline":"Intervals","dateModified":"2018-10-18T16:30:06+02:00","datePublished":"2018-07-08T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/07/08/learning-interval-analysis-programs/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="Interval analysis literature search.">
 
@@ -51,7 +51,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
-
   
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
@@ -190,10 +189,7 @@
     </div>
   </div>
   
-  <h1 class="post-title">Intervals
-    <div class="github-links">
-      <small class="view-source"><a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" download target="_blank">Raw</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" target="_blank">View source</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" target="_blank">Edit</a><a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a></small>
-    </div>
+  <h1 class="post-title" id="stickyTitle">Intervals
   </h1>
   
   <div class="toc">
@@ -358,37 +354,26 @@ Equations.</p>
   Problems for Parametric ODEs</em> by Youdong Lin and Mark A. Stadtherr.</p>
 
   <p>To use this software in OSX, we should install <code>gcc</code> which also install <code>gfortran</code>:</p>
-  <figure class="highlight">
-    <pre><code class="language-bash" data-lang="bash"><span></span>$ brew install gcc</code></pre>
-  </figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ brew install gcc</code></pre></figure>
   <p>To find the binaries and libraries we will need to add the following locations
   to our <code>PATH</code> in our <code>~/.bash_profile</code> or <code>.bashrc</code> file</p>
-  <figure class="highlight">
-    <pre><code class="language-bash" data-lang="bash"><span></span>$ open ~/.bash_profile</code></pre>
-  </figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ open ~/.bash_profile</code></pre></figure>
   <p>And add the following three lines at the end of the opened file.</p>
-  <figure class="highlight">
-    <pre><code class="language-bash" data-lang="bash"><span></span>$ cat ~/.bash_profile
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ cat ~/.bash_profile
   ...
   <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/lib:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
   <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
-  <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/sbin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span></code></pre>
-  </figure>
+  <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/sbin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span></code></pre></figure>
   <p>Now, make sure the all <code>Makefile</code> in the sources use the <code>gcc</code> installed by
   Homebrew, which is, <code>CC = g++-8</code>.</p>
 
   <p>To install it:</p>
-  <figure class="highlight">
-    <pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> <span class="nb">source</span> <span class="o">&amp;&amp;</span> make</code></pre>
-  </figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> <span class="nb">source</span> <span class="o">&amp;&amp;</span> make</code></pre></figure>
   <p>To run the examples:</p>
-  <figure class="highlight">
-    <pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> example <span class="o">&amp;&amp;</span> make
-  $ cat example/LV1.h</code></pre>
-  </figure>
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ <span class="nb">cd</span> example <span class="o">&amp;&amp;</span> make
+  $ cat example/LV1.h</code></pre></figure>
   <p>So for instance with the ODE system of Lotka-Volterra, we got the following:</p>
-  <figure class="highlight">
-    <pre><code class="language-c--" data-lang="c++"><span></span>  <span class="c1">// Uncertain parameters and fixed initial states</span>
+  <figure class="highlight"><pre><code class="language-c--" data-lang="c++"><span></span>  <span class="c1">// Uncertain parameters and fixed initial states</span>
   <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T2</span><span class="o">&gt;</span>
   <span class="kt">void</span> <span class="n">func</span><span class="p">(</span><span class="n">T1</span> <span class="o">*</span><span class="n">yp</span><span class="p">,</span> <span class="k">const</span> <span class="n">T1</span> <span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="k">const</span> <span class="n">T2</span> <span class="o">*</span><span class="n">theta</span><span class="p">,</span> <span class="k">const</span> <span class="kt">double</span> <span class="o">*</span><span class="n">rpar</span><span class="p">)</span>
   <span class="p">{</span>
@@ -397,11 +382,9 @@ Equations.</p>
     <span class="n">yp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">rpar</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">;</span>
   <span class="p">}</span>
   <span class="cp">#endif</span>
-  </code></pre>
-  </figure>
+  </code></pre></figure>
   <p>Running the test for the above model, we got:</p>
-  <figure class="highlight">
-    <pre><code class="language-bash" data-lang="bash"><span></span>$ ./example/LV1test
+  <figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span></span>$ ./example/LV1test
   <span class="nv">t</span> <span class="o">=</span> <span class="m">1</span>
   y_1: <span class="m">5</span>.09407 <span class="o">[</span> <span class="m">75</span>.904003664541207, <span class="m">80</span>.998071424330519 <span class="o">]</span>
   y_2: <span class="m">6</span>.14852 <span class="o">[</span> <span class="m">63</span>.108029268335699, <span class="m">69</span>.256546553495951 <span class="o">]</span>
@@ -432,8 +415,7 @@ Equations.</p>
   <span class="nv">t</span> <span class="o">=</span> <span class="m">10</span>
   y_1: <span class="m">5</span>.10405 <span class="o">[</span> <span class="m">28</span>.981713172910908, <span class="m">34</span>.085764313658906 <span class="o">]</span>
   y_2: <span class="m">29</span>.923 <span class="o">[</span> <span class="m">137</span>.63384214240136, <span class="m">167</span>.55682926210102 <span class="o">]</span>
-  CPU time<span class="o">(</span>sec<span class="o">)</span> <span class="m">0</span>.049189</code></pre>
-  </figure>
+  CPU time<span class="o">(</span>sec<span class="o">)</span> <span class="m">0</span>.049189</code></pre></figure>
   <p>There are more examples in the sources! The sources were provided kindly by the
   authors to test in epidemiological models for Diana Lizarralde. </p>
 
@@ -447,11 +429,52 @@ Equations.</p>
 
   
 
+  <div id="github-links">
+    <div class="view-source">
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" target="_blank">View source</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" target="_blank">Edit</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-07-08-learning-interval-analysis-programs.md" target="_blank">History</a>
+      <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
+      
+    </div>
+  </div>
+
 </div>
 
 
 
 
+
+
+
+
+
+<script>
+  // When the user scrolls the page, execute myFunction
+function stickyToogle(obj, sticky) {
+  if (window.pageYOffset > sticky) {
+    obj.classList.add("sticky");
+  } else {
+    obj.classList.remove("sticky");
+  }
+};
+
+// Get the header
+function stickyThing(idObj){
+  var obj = document.getElementById(idObj);
+  if (obj){
+    // Get the offset position of the navbar
+    stickyToogle(obj, obj.offsetTop);
+    // Add the sticky class to the obj when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  }
+};
+
+window.onscroll = function() {
+  stickyThing("stickyTitle");
+};
+
+</script>
 
 
 
@@ -473,8 +496,6 @@ $('.references').linkify();
 $('.bibliography').linkify();
 $('.links').linkify();
 </script>
-
-
 
 
 <script type="text/javascript">
