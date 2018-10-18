@@ -18,7 +18,6 @@ before_install:
   - brew install cask
   - brew cask install ipe
   - brew upgrade node
-  - npm install --global gulp
 
 script:
   - pwd

@@ -37,6 +37,7 @@ agda2html:
 .PHONY: build
 build :
 	cd blog && bundle install
+	npm install gulp
 	cd blog && gulp build
 
 .PHONY: run
