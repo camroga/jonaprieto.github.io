@@ -8,6 +8,7 @@ comments: true
   {% assign filepath = page.path | replace: '_posts', 'blog/_src/notes' %}
 {% endif %}
 {% assign viewsource = site.github.repository_url | append: "/blob/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
+{% assign latestcommit = page.git.last_commit.short_sha %}
 {% assign editsource = site.github.repository_url | append: "/edit/sources/" | append: filepath %}
 {% assign history = site.github.repository_url | append: "/commits/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 {% assign raw = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
@@ -59,7 +60,7 @@ comments: true
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
             <a href="{{viewsource}}">
-              {{page.git.last_commit.message}}</a>
+              {{latestcommit}}</a>
       </div>
     </div>
 

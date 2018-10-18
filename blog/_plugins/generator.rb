@@ -117,8 +117,11 @@ module Jekyll
           'author_name' => author_name,
           'author_email' => author_email,
           'author_date' => author_date,
+          # 'commit_name' => commit_name,
+          # 'commit_email' => commit_email,
           'commit_date' => commit_date,
           'message' => message.gsub(/    /, '')
+          # 'changed_files' => changed_files.split("\n")
         }
       end
 
