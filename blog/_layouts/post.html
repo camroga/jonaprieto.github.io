@@ -60,12 +60,12 @@ comments: true
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
             <a href="{{viewsource}}">
-              {{latestcommit}}</a>
+              {{page.git.last_commit.message}}</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="{{viewsource}}">{{site.github.build_revision | slice: -7, 7}} </a> on  {{ site.time | date_to_string  }}
+      Latest commit <a href="{{viewsource}}">{{latestcommit}} </a> on  {{ site.time | date_to_string  }}
     </div>
   </div>
   {% else %}
