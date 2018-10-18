@@ -35,7 +35,7 @@ The sources of this blog are open source. The blog is using the following projec
 - `agda` to type-check some experiments
 - `agda2html` for embedding `Agda` code in HTML
 - `ipe` to draw nice pictures
--  Since April 2018 I changed to [https://tex.s2cms.com/](https://tex.s2cms.com/) to render `Latex` instead of `KaTeX`
+- `MathJax` to render equations
 - `timelinejs` to show some test timelines
 - `linkify` to replace any url address to anchor tags
 - `yarn` for javascript dependencies

@@ -12,25 +12,6 @@ $('.links').linkify();
 </script>
 {% endif %}
 
-{% if page.latex %}
-<!-- Script which renders TeX using tex.s2cms.ru -->
-<script src="//tex.s2cms.ru/latex.js"></script>
-<script type="text/javascript">
- $("script[type='math/tex']").replaceWith(
-     function(){
-         var tex = $(this).text();
-         return "&zwnj;$$" + tex + "$$&zwnj;";
-     });
- $("script[type='math/tex; mode=display']").replaceWith(
-     function(){
-         var tex = $(this).text().replace(/%.*?(\n|$)/g,"");
-         return "<p class=\"equation\">" +
-                 "$$" + tex + "$$" +
-                "</p>";
-     });
-</script>
-{% endif %}
-
 <script type="text/javascript">
 WebFontConfig = {
  google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }

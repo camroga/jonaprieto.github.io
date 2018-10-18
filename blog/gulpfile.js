@@ -3,6 +3,7 @@ var browserSync   = require('browser-sync').create();
 const reload      = browserSync.reload;
 const sass        = require('gulp-sass');
 const concat      = require('gulp-concat');
+const plumber     = require('gulp-plumber');
 
 const cssnano     = require('gulp-cssnano');
 const uglify      = require('gulp-uglify');
@@ -38,8 +39,10 @@ gulp.task('jekyll-rebuild', ['jekyll-dev'], function () {
 
 gulp.task('sass', function(){
   return gulp.src(['_sass/main.scss'])
+             .pipe(plumber())
              .pipe(sass({onError: browserSync.notify}))
              .pipe(concat('main.css'))
+             .pipe(plumber.stop())
              .pipe(gulp.dest('_site/assets'))
              .pipe(browserSync.reload({stream:true, message: "Sass updated!"}))
              .pipe(gulp.dest('assets'));
@@ -47,7 +50,9 @@ gulp.task('sass', function(){
 
 gulp.task('scripts', function() {
   return gulp.src(scriptFiles)
+             .pipe(plumber())
              .pipe(concat('main.js'))
+             .pipe(plumber.stop())
              .pipe(gulp.dest('_site/assets'))
              .pipe(browserSync.reload({stream:true}))
              .pipe(gulp.dest('assets'));
@@ -146,9 +151,11 @@ gulp.task('jekyll-algolia', function (done) {
 
 gulp.task('sass-prod', () => {
   return gulp.src(['_sass/main.scss'])
+             .pipe(plumber())
              .pipe(sass({onError: browserSync.notify}))
              .pipe(concat('main.css'))
              .pipe(cssnano())
+             .pipe(plumber.stop())
              .pipe(gulp.dest('_site/assets'))
              .pipe(browserSync.reload({stream:true}))
              .pipe(gulp.dest('assets'));
@@ -156,8 +163,10 @@ gulp.task('sass-prod', () => {
 
 gulp.task('scripts-prod', function() {
   return gulp.src(scriptFiles)
+             .pipe(plumber())
              .pipe(concat('main.js'))
              .pipe(uglify())
+             .pipe(plumber.stop())
              .pipe(gulp.dest('_site/assets'))
              .pipe(browserSync.reload({stream:true}))
              .pipe(gulp.dest('assets'));

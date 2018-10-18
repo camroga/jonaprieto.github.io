@@ -71,10 +71,7 @@ comments: true
   {% else %}
   No git information available
   {% endif %}
-  <h1 class="post-title">{{ page.title }}
-    <div class="github-links">
-      <small class="view-source"><a href="{{raw}}" download target="_blank">Raw</a><a href="{{viewsource}}" target="_blank">View source</a><a href="{{editsource}}" target="_blank">Edit</a><a href="{{history}}" target="_blank">History</a><a  href="#" onclick="window.print();return false;" target="_blank">Print</a>{% if page.showcitation %}<a  href="#citation">Cite</a>{% endif %}</small>
-    </div>
+  <h1 class="post-title" id="stickyTitle">{{ page.title }}
   </h1>
   {% if page.toc %}
   <div class="toc">
@@ -112,6 +109,18 @@ comments: true
   </div>
   {% endif %}
 
+  <div id="github-links">
+    <div class="view-source">
+      <a href="{{raw}}" download target="_blank">Raw</a>
+      <a href="{{viewsource}}" target="_blank">View source</a>
+      <a href="{{editsource}}" target="_blank">Edit</a>
+      <a href="{{history}}" target="_blank">History</a>
+      <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
+      {% if page.showcitation %}<a  href="#citation">Cite
+      </a>{% endif %}
+    </div>
+  </div>
+
 </div>
 
 
@@ -138,6 +147,35 @@ comments: true
   </ul>
 </div>
 {% endif %}
+
+{% include mathjax.html %}
+
+<script>
+  // When the user scrolls the page, execute myFunction
+function stickyToogle(obj, sticky) {
+  if (window.pageYOffset > sticky) {
+    obj.classList.add("sticky");
+  } else {
+    obj.classList.remove("sticky");
+  }
+};
+
+// Get the header
+function stickyThing(idObj){
+  var obj = document.getElementById(idObj);
+  if (obj){
+    // Get the offset position of the navbar
+    stickyToogle(obj, obj.offsetTop);
+    // Add the sticky class to the obj when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  }
+};
+
+window.onscroll = function() {
+  stickyThing("stickyTitle");
+};
+
+</script>
+
 {% if page.disqus %}
 <div id="disqus_thread"></div>
 <script>
