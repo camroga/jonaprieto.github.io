@@ -20,3 +20,7 @@ script:
   - apkg init
   - git clone http://github.com/agda/agda-stdlib
   - cd agda-stdlib && apkg install --no-dependencies
+
+branches:
+  only:
+    - sources

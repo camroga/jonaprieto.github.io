@@ -1,4 +1,5 @@
 require 'rbconfig'
+require 'pathname'
 
 module Jekyll
   module GitMetadata
@@ -61,8 +62,13 @@ module Jekyll
       end
 
       def page_data(relative_path = nil)
-        return if relative_path && !tracked_files.include?(relative_path)
-
+        if relative_path
+          realpath = Pathname("blog") + relative_path
+          realpath = realpath.to_path
+        else
+          realpath = relative_path
+        end
+        return if relative_path && !tracked_files.include?(realpath)
         authors = self.authors(relative_path)
         lines = self.lines(relative_path)
         {
