@@ -12,9 +12,7 @@ toc: true
 linkify: true
 ---
 
-This is my bitacora.
-Some conventions used here
-( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question  and 🏁 : goal, and 🔧 :fixing).
+Research meetings.
 
 ### Research topics
 
@@ -34,7 +32,7 @@ I'm working on the following.
 
 - 🚶 What is a *good* characterization for planar graphs. What really does
   *good* means? good from the verification point of view or to be most suitable
-  to use (depend, hott) type theory❓  
+  to use (depend, hott) type theory❓
 
   When $$ A : Type$$ when want to have a property like `isPlanar` such that it
   is not a proposition in the HoTT context.
@@ -44,16 +42,53 @@ I'm working on the following.
 
 --------
 
-### Meetings
+### Meetings with [M]arc and [H]åkon
 
 Showing the most recent to the oldest.
 
-#### **2018-10-17** and **2018-10-18**
+#### [H] **17-19** October
 
+1. Definitions for Graphs in HoTT:
 
+1.1. Option A
 
+\begin{code}
+-- Node : Set
+-- Edge : (x : C) → (P x → Node) → Set
+
+-- data Graph₁ : Set where
+--  ?
+\end{code}
+
+1.2. Option B
+
+\begin{code}
+-- Node : Set
+-- Edge : Node → Node → Set
+-- data Graph₂ : Set where
+--  α : ∀ {x y : Node} → Edge x y ≃ Edge y x
+--  -- α x x == id?
+\end{code}
+
+Now we choose which definition we use:
+
+\begin{code}
+-- Graph = Graph₂
+\end{code}
+
+2. The graphs we are intended to represent are:
+
+  - *Connected*
+  - *Undirected*
+  - *Multigraphs*
+
+In order to support the undirected property,
+the following are some proposed.
+
+2.1
 
 #### **2018-09-14**
+
 
 With Håkon:
 

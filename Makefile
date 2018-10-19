@@ -42,7 +42,7 @@ build :
 
 .PHONY: run
 run :
-	cd blog && make run
+	@cd blog && make run
 
 .PHONY: commit
 commit :

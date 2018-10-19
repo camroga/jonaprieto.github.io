@@ -73,6 +73,7 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
             ], ['jekyll-rebuild']);
   gulp.watch(['_src/notes/*'])
       .on('change', function(obj) {
+      plumber();
       var file = new Vinyl();
       file.path = obj.path;
       console.log('*****************************************************************************');
@@ -92,12 +93,12 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
                    , { stdio: 'inherit' }
                    )
              .on('close', function(){
-               console.log("[!] Updated file: " + outputpath);
+               console.log("[!] Updated file by copying: " + outputpath);
                console.log('*****************************************************************************');
                reload;
               });
       }
-      if ( file.extname == ".lagda" || file.extname){
+      if ( file.extname == ".lagda"){
         console.log("[!] Agda File.");
         var outputpath = file.base + '/_posts/' + file.stem + '.md';
         console.log("[!] Generating markdown: " + outputpath);
@@ -111,11 +112,12 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
                                   , {stdio: 'inherit'}
                                   )
                             .on('close', function(){
-                              console.log("[!] Updated file: " + outputpath);
+                              console.log("[!] Updated file by agda2html: " + outputpath);
                               console.log('*****************************************************************************');
                               reload;
                             });
       };
+      plumber.stop();
       })
       .on('unlink', function(obj) {
       console.log('[!] File ' + obj.path + ' was removed');
