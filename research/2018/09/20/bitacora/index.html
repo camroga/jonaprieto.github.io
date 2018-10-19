@@ -17,17 +17,17 @@
 <meta property="og:title" content="Bitacora" />
 <meta name="author" content="Jonathan Prieto-Cubides" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing)." />
-<meta property="og:description" content="This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing)." />
+<meta name="description" content="Research meetings." />
+<meta property="og:description" content="Research meetings." />
 <link rel="canonical" href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" />
 <meta property="og:url" content="http://jonaprieto.github.io/research/2018/09/20/bitacora/" />
 <meta property="og:site_name" content="jonaprieto" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-09-20T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/research/2018/09/20/bitacora/","headline":"Bitacora","dateModified":"2018-10-18T16:38:53+02:00","datePublished":"2018-09-20T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/research/2018/09/20/bitacora/"},"@context":"http://schema.org"}</script>
+{"description":"Research meetings.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/research/2018/09/20/bitacora/","headline":"Bitacora","dateModified":"2018-10-19T14:02:07+02:00","datePublished":"2018-09-20T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/research/2018/09/20/bitacora/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<meta name="description" content="This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).">
+<meta name="description" content="Research meetings.">
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="preload" as="script" href="/assets/main.js" >
@@ -179,13 +179,13 @@
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-09-20-bitacora.lagda">
-              Refactoring of many things</a>
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/6b83e949419096f721c5a92075463a3fe7dd1929/blog/_src/notes/2018-09-20-bitacora.lagda">
+              addding first comments of last meetings</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-09-20-bitacora.lagda">7e158e66 </a> on  18 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/6b83e949419096f721c5a92075463a3fe7dd1929/blog/_src/notes/2018-09-20-bitacora.lagda">6b83e949 </a> on  19 Oct 2018
     </div>
   </div>
   
@@ -197,7 +197,7 @@
     <h2 class="table-of-contents"> Table of Contents </h2>
       <ul>
   <li><a href="#research-topics">Research topics</a></li>
-  <li><a href="#meetings">Meetings</a></li>
+  <li><a href="#meetings-with-marc-and-håkon">Meetings with [M]arc and [H]åkon</a></li>
   <li><a href="#formalization-of-graphs">Formalization of graphs</a></li>
   <li><a href="#questions-and-related-blog-post">Questions and Related blog post</a></li>
 </ul>
@@ -205,9 +205,7 @@
     </nav>
   </div>
   
-  <p>This is my bitacora.
-Some conventions used here
-( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question  and 🏁 : goal, and 🔧 :fixing).</p>
+  <p>Research meetings.</p>
 
 <h3 id="research-topics">Research topics</h3>
 
@@ -242,11 +240,50 @@ is not a proposition in the HoTT context.</p>
 
 <hr />
 
-<h3 id="meetings">Meetings</h3>
+<h3 id="meetings-with-marc-and-håkon">Meetings with [M]arc and [H]åkon</h3>
 
 <p>Showing the most recent to the oldest.</p>
 
-<h4 id="2018-10-17-and-2018-10-18"><strong>2018-10-17</strong> and <strong>2018-10-18</strong></h4>
+<h4 id="h-17-19-october">[H] <strong>17-19</strong> October</h4>
+
+<ol>
+  <li>Definitions for Graphs in HoTT:</li>
+</ol>
+
+<p>1.1. Option A</p>
+
+<pre class="Agda"><a id="1355" class="Comment">-- Node : Set</a>
+<a id="1369" class="Comment">-- Edge : (x : C) → (P x → Node) → Set</a>
+
+<a id="1409" class="Comment">-- data Graph₁ : Set where</a>
+<a id="1436" class="Comment">--  ?</a></pre>
+
+<p>1.2. Option B</p>
+
+<pre class="Agda"><a id="1482" class="Comment">-- Node : Set</a>
+<a id="1496" class="Comment">-- Edge : Node → Node → Set</a>
+<a id="1524" class="Comment">-- data Graph₂ : Set where</a>
+<a id="1551" class="Comment">--  α : ∀ {x y : Node} → Edge x y ≃ Edge y x</a>
+<a id="1596" class="Comment">--  -- α x x == id?</a></pre>
+
+<p>Now we choose which definition we use:</p>
+
+<pre class="Agda"><a id="1681" class="Comment">-- Graph = Graph₂</a></pre>
+
+<ol>
+  <li>The graphs we are intended to represent are:</li>
+</ol>
+
+<ul>
+  <li><em>Connected</em></li>
+  <li><em>Undirected</em></li>
+  <li><em>Multigraphs</em></li>
+</ul>
+
+<p>In order to support the undirected property,
+the following are some proposed.</p>
+
+<p>2.1</p>
 
 <h4 id="2018-09-14"><strong>2018-09-14</strong></h4>
 
@@ -370,10 +407,10 @@ which complicates a verification. Directed</p>
 
   <div id="github-links">
     <div class="view-source">
-      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-09-20-bitacora.lagda" download target="_blank">Raw</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank">View source</a>
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/6b83e949419096f721c5a92075463a3fe7dd1929/blog/_src/notes/2018-09-20-bitacora.lagda" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/6b83e949419096f721c5a92075463a3fe7dd1929/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank">View source</a>
       <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank">Edit</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank">History</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/6b83e949419096f721c5a92075463a3fe7dd1929/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank">History</a>
       <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
       
     </div>

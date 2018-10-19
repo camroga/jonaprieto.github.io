@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-18T18:01:24+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-10-18T16:38:53+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;This is my bitacora.
-Some conventions used here
-( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question  and 🏁 : goal, and 🔧 :fixing).&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-19T14:03:21+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-10-19T14:02:07+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;Research meetings.&lt;/p&gt;
 
 &lt;h3 id=&quot;research-topics&quot;&gt;Research topics&lt;/h3&gt;
 
@@ -35,11 +33,50 @@ is not a proposition in the HoTT context.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h3 id=&quot;meetings&quot;&gt;Meetings&lt;/h3&gt;
+&lt;h3 id=&quot;meetings-with-marc-and-håkon&quot;&gt;Meetings with [M]arc and [H]åkon&lt;/h3&gt;
 
 &lt;p&gt;Showing the most recent to the oldest.&lt;/p&gt;
 
-&lt;h4 id=&quot;2018-10-17-and-2018-10-18&quot;&gt;&lt;strong&gt;2018-10-17&lt;/strong&gt; and &lt;strong&gt;2018-10-18&lt;/strong&gt;&lt;/h4&gt;
+&lt;h4 id=&quot;h-17-19-october&quot;&gt;[H] &lt;strong&gt;17-19&lt;/strong&gt; October&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Definitions for Graphs in HoTT:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;1.1. Option A&lt;/p&gt;
+
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;1355&quot; class=&quot;Comment&quot;&gt;-- Node : Set&lt;/a&gt;
+&lt;a id=&quot;1369&quot; class=&quot;Comment&quot;&gt;-- Edge : (x : C) → (P x → Node) → Set&lt;/a&gt;
+
+&lt;a id=&quot;1409&quot; class=&quot;Comment&quot;&gt;-- data Graph₁ : Set where&lt;/a&gt;
+&lt;a id=&quot;1436&quot; class=&quot;Comment&quot;&gt;--  ?&lt;/a&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.2. Option B&lt;/p&gt;
+
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;1482&quot; class=&quot;Comment&quot;&gt;-- Node : Set&lt;/a&gt;
+&lt;a id=&quot;1496&quot; class=&quot;Comment&quot;&gt;-- Edge : Node → Node → Set&lt;/a&gt;
+&lt;a id=&quot;1524&quot; class=&quot;Comment&quot;&gt;-- data Graph₂ : Set where&lt;/a&gt;
+&lt;a id=&quot;1551&quot; class=&quot;Comment&quot;&gt;--  α : ∀ {x y : Node} → Edge x y ≃ Edge y x&lt;/a&gt;
+&lt;a id=&quot;1596&quot; class=&quot;Comment&quot;&gt;--  -- α x x == id?&lt;/a&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now we choose which definition we use:&lt;/p&gt;
+
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;1681&quot; class=&quot;Comment&quot;&gt;-- Graph = Graph₂&lt;/a&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The graphs we are intended to represent are:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Connected&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Undirected&lt;/em&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Multigraphs&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In order to support the undirected property,
+the following are some proposed.&lt;/p&gt;
+
+&lt;p&gt;2.1&lt;/p&gt;
 
 &lt;h4 id=&quot;2018-09-14&quot;&gt;&lt;strong&gt;2018-09-14&lt;/strong&gt;&lt;/h4&gt;
 
@@ -147,7 +184,7 @@ which complicates a verification. Directed&lt;/p&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144&quot;&gt;Why are planar graphs so exceptional?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/&quot;&gt;Kalai’s Post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs&quot;&gt;Generalizations of Planar Graphs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">This is my bitacora. Some conventions used here ( 📆 : todo , 🚶 :‍ reading , ✍️ : writing , ❓ : question and 🏁 : goal, and 🔧 :fixing).</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-18T16:30:06+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research meetings.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-18T16:30:06+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 
