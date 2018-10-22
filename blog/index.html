@@ -4,3 +4,21 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
+
+<noscript>
+  {% for category in site.categories %}
+  {% capture cname %}{{ category | first }}{% endcapture %}
+  {% if cname != "learning" and cname != "tools" and cname != "thoughts" and cname != "research" %}
+    <div class="post-list">
+      {% for post in site.categories[cname] %}
+      <div class="algolia">
+        <div class="algolia-date">{{post.date  | date: '%d/%m/%Y'}} </div>
+        <div class="algolia-title"><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></div>
+        <div class="algolia-message"><small> {{post.git.last_commit.message}}</small></div>
+        <div class="algolia-modified"><a href="{{site.github.repository_url}}/commit/{{post.git.last_commit.long_sha}}">{{post.git.last_commit.commit_date | date: '%d/%m/%Y' }}</a></div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% endfor %}
+</noscript>

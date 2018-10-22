@@ -1696,7 +1696,7 @@ a.pagination-item:hover {
   .toc h2 {
     margin-left: -15px;
     border-bottom: 1px solid black;
-    font-weight: 550; }
+    font-weight: bold; }
   .toc code {
     background: none;
     font-family: inherit; }
