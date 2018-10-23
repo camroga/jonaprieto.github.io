@@ -5,7 +5,7 @@ date: "2018-04-08"
 latex: true
 references: true
 agda: true
-categories: type-theory, home
+categories: type-theory home
 toc: true
 
 ---

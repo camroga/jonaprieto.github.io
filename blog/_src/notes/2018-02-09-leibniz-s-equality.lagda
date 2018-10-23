@@ -2,7 +2,7 @@
 layout: "post"
 title: "Leibniz's Equality"
 date: "2018-02-09"
-categories: type-theory, home
+categories: type-theory home
 agda: true
 latex: true
 references: true
