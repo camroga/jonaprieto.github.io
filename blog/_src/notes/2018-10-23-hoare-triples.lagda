@@ -2,7 +2,7 @@
 layout: "post"
 title: "Hoare Triples in Agda"
 date: "2018-10-23"
-categories: learning
+categories: home
 published: true
 latex: true
 references: true
@@ -16,7 +16,7 @@ Based completely in the source code found in:
 
   - [https://github.com/alps-chalmers/agda101](https://github.com/alps-chalmers/agda101)
 
-Just minor changes for self-understanding.
+I just made minor changes for self-understanding. I don't claim authority of any class.
 
 ## Agda Imports
 
@@ -146,7 +146,7 @@ data LTL : Set where
 
 \end{code}
 
-- to string for LTL formulae, self explanatory
+To string for LTL formulae, self explanatory
 \begin{code}
 pLTL : LTL → String
 pLTL T' = "T'"
@@ -174,10 +174,10 @@ _=='_ : ℕ → ℕ → Bool
 0 ==' (suc y) = false
 suc x ==' 0 = false
 suc x ==' suc y = x ==' y
+\end{code}
 
-{-
-  Checks if LTL statements are identical, self explanatory
--}
+Checks if LTL statements are identical, self explanatory
+\begin{code}
 isEq : (φ : LTL) → (ψ : LTL) → Bool
 isEq T' T' = true
 isEq ⊥ ⊥   = true
@@ -323,7 +323,8 @@ Data type for actions, reference to what happened when translating the program
 data Action : Set where
   assign : Action  -- Assignment
   seq    : Action  -- Progress into block segment (see Program)
-  par    : Action  -- Progress into a parallel segment (see Program) --TODO: change to co_oc
+  par    : Action  -- Progress into a parallel segment (see Program)
+                   --TODO: change to co_oc
   while  : Action  -- Progress into a while loop (see Program)
   or'    : Action  -- Progress into an if statement (see Program)??
   inInf  : Action  -- TODO??
