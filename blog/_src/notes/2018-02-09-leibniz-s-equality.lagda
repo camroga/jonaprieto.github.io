@@ -2,13 +2,13 @@
 layout: "post"
 title: "Leibniz's Equality"
 date: "2018-02-09"
-categories: type-theory
+categories: type-theory, home
 agda: true
 latex: true
 references: true
 ---
 
-*Leibniz characterised the notion of equality as follows:
+*Leibniz characterized the notion of equality as follows:
   Given any $$x$$ and $$y$$, $$x \equiv y$$ if and only if, given any
   predicate $$P$$, $$P(x)$$ if and only if $$P(y)$$.*
 

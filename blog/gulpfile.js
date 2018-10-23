@@ -11,7 +11,7 @@ const imagemin    = require('gulp-imagemin');
 
 const child       = require('child_process');
 const gutil       = require('gulp-util');
-gutil.log = gutil.noop;
+gutil.log         = gutil.noop;
 
 const watch       = require('gulp-watch');
 var Vinyl         = require('vinyl');
@@ -121,6 +121,10 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
       })
       .on('unlink', function(obj) {
       console.log('[!] File ' + obj.path + ' was removed');
+      console.log('*****************************************************************************');
+      })
+      .on('error', function(obj) {
+      console.log('[!FATAL] : ' + obj);
       console.log('*****************************************************************************');
       });
   return;

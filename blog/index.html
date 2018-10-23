@@ -8,7 +8,7 @@ layout: home
 <noscript>
   {% for category in site.categories %}
   {% capture cname %}{{ category | first }}{% endcapture %}
-  {% if cname != "learning" and cname != "tools" and cname != "thoughts" and cname != "research" %}
+  {% if cname == "home" %}
     <div class="post-list">
       {% for post in site.categories[cname] %}
       <div class="algolia">

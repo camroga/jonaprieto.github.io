@@ -2,7 +2,7 @@
 layout: "post"
 title: "Mini HoTT library in Agda"
 date: "2018-07-06"
-categories: type-theory
+categories: type-theory, home
 author: "Jonathan Prieto-Cubides"
 author_affiliation: "University of Bergen"
 coauthor: "Marc Bezem"

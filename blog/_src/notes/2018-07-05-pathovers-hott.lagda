@@ -9,7 +9,7 @@ coauthor_affiliation: "University of Bergen"
 bibtexauthors: "Prieto-Cubides, Jonathan and Bezem, Marc"
 bibtextag: "prietobezem:pathovers"
 date: "2018-07-05"
-categories: type-theory
+categories: type-theory, home
 references: true
 toc: true
 agda: true
