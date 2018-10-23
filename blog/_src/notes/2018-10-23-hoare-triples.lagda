@@ -12,11 +12,13 @@ toc: true
 linkify: true
 ---
 
-Based completely in the source code found in:
+Based completely in {% cite Bergsten2017 %} and the source code found in:
 
   - [https://github.com/alps-chalmers/agda101](https://github.com/alps-chalmers/agda101)
 
-I just made minor changes for self-understanding. I don't claim authority of any class.
+{: .only-website }
+
+  I just made minor changes for self-understanding. I don't claim authority of any class.
 
 ## Agda Imports
 
@@ -32,6 +34,7 @@ open import Data.Vec    renaming (_++_ to _v++_) hiding (head)
 \end{code}
 
 ## Label
+
 \begin{code}
 {- a label is used as a reference to a code segment - see more in Program -}
 data Label : Set where
