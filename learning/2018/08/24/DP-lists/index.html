@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+      
+        dynamic programing problems |
+      
+        jonaprieto
+    
+  </title><!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="dynamic programing problems" />
+<meta name="author" content="Jonathan Prieto-Cubides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is through examples and this post is to list some problem and their recursive formulation." />
+<meta property="og:description" content="Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is through examples and this post is to list some problem and their recursive formulation." />
+<link rel="canonical" href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
+<meta property="og:url" content="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
+<meta property="og:site_name" content="jonaprieto" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-24T00:00:00+02:00" />
+<script type="application/ld+json">
+{"description":"Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is through examples and this post is to list some problem and their recursive formulation.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/","headline":"dynamic programing problems","dateModified":"2018-10-23T15:35:47+02:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta name="description" content="Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is...">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="preload" as="script" href="/assets/main.js" >
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+</head>
+
+
+
+
+  <body>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    <!--  -->
+    <!-- 
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/all/">All</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">List of references</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/plans/">Plans</a>
+        
+      
+     -->
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
+    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
+  </nav>
+</div>
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+
+
+
+<div class="post">
+
+  <div class="print-version">
+    <center>
+      <h1>dynamic programing problems </h1><br/>
+        <div class="print-authors">
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">
+                
+                  Jonathan Prieto-Cubides
+                
+              </div>
+              <div class="print-author-affiliation">
+                
+                  University of Bergen
+                
+                </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="print-date">24 August 2018</div>
+        
+        
+    </center>
+  </div>
+
+  
+  <div class="main-heading">
+    <div class="main-title">
+      <div class="main-title-prefix"> Latest change:</div>
+      <div class="main-commit-message">
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda">
+              adding drafts</a>
+      </div>
+    </div>
+
+    <div class="main-last-date">
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda">62b9d4fe </a> on  23 Oct 2018
+    </div>
+  </div>
+  
+  <h1 class="post-title" id="stickyTitle">dynamic programing problems
+  </h1>
+  
+  <div class="toc">
+    <nav>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#01-knapsack-problem">0–1 knapsack problem</a></li>
+  <li><a href="#3-partition-problem">3-partition problem</a></li>
+  <li><a href="#all-pairs-shortest-pathsfloyd-warshall-algorithm">All-pairs shortest paths — floyd warshall algorithm</a></li>
+  <li><a href="#calculate-size-of-the-largest-plus-of-1s-in-binary-matrix">Calculate size of the largest plus of 1’s in binary matrix</a></li>
+  <li><a href="#calculate-sum-of-all-elements-in-a-sub-matrix-in-constant-time">Calculate sum of all elements in a sub-matrix in constant time</a></li>
+  <li><a href="#check-if-given-string-is-interleaving-of-two-other-given-strings">Check if given string is interleaving of two other given strings</a></li>
+  <li><a href="#coin-change-problem-total-number-of-ways-to-get-the-denomination-of-coins">Coin change problem (total number of ways to get the denomination of coins)</a></li>
+  <li><a href="#coin-change-making-problem-unlimited-supply-of-coins">Coin change-making problem (unlimited supply of coins)</a></li>
+  <li><a href="#collect-maximum-points-in-a-matrix-by-satisfying-given-constraints">Collect maximum points in a matrix by satisfying given constraints</a></li>
+  <li><a href="#count-number-of-paths-in-a-matrix-with-given-cost-to-reach-destination-cell">Count number of paths in a matrix with given cost to reach destination cell</a></li>
+  <li><a href="#count-number-of-times-a-pattern-appears-in-given-string-as-a-subsequence">Count number of times a pattern appears in given string as a subsequence</a></li>
+  <li><a href="#count-total-possible-combinations-of-n-digit-numbers-in-a-mobile-keypad">Count total possible combinations of n-digit numbers in a mobile keypad</a></li>
+  <li><a href="#find-all-n-digit-binary-strings-without-any-consecutive-1s">Find all n-digit binary strings without any consecutive 1’s</a></li>
+  <li><a href="#find-longest-sequence-formed-by-adjacent-numbers-in-the-matrix">Find longest sequence formed by adjacent numbers in the matrix</a></li>
+  <li><a href="#find-maximum-sum-of-subsequence-with-no-adjacent-elements">Find maximum sum of subsequence with no adjacent elements</a></li>
+  <li><a href="#find-maximum-sum-submatrix-in-a-given-matrix">Find maximum sum submatrix in a given matrix</a></li>
+  <li><a href="#find-maximum-sum-submatrix-present-in-a-given-matrix">Find maximum sum submatrix present in a given matrix</a></li>
+  <li><a href="#find-minimum-cuts-needed-for-palindromic-partition-of-a-string">Find minimum cuts needed for palindromic partition of a string</a></li>
+  <li><a href="#find-optimal-cost-to-construct-binary-search-tree">Find optimal cost to construct binary search tree</a></li>
+  <li><a href="#find-probability-that-a-person-is-alive-after-taking-n-steps-on-an-island">Find probability that a person is alive after taking n steps on an island</a></li>
+  <li><a href="#find-size-of-largest-square-sub-matrix-of-1s-present-in-given-binary-matrix">Find size of largest square sub-matrix of 1’s present in given binary matrix</a></li>
+  <li><a href="#find-the-minimum-cost-to-reach-last-cell-of-the-matrix-from-its-first-cell">Find the minimum cost to reach last cell of the matrix from its first cell</a></li>
+  <li><a href="#implement-diff-utility">Implement diff utility</a></li>
+  <li><a href="#increasing-subsequence-with-maximum-sum">Increasing subsequence with maximum sum</a></li>
+  <li><a href="#longest-alternating-subsequence-problem">Longest alternating subsequence problem</a></li>
+  <li><a href="#longest-bitonic-subsequence">Longest bitonic subsequence</a></li>
+  <li><a href="#longest-common-subsequence">Longest common subsequence</a></li>
+  <li><a href="#longest-common-subsequence-1">Longest common subsequence</a></li>
+  <li><a href="#longest-common-substring-problem">Longest common substring problem</a></li>
+  <li><a href="#longest-increasing-subsequence-using-dynamic-programming">Longest increasing subsequence using dynamic programming</a></li>
+  <li><a href="#longest-palindromic-subsequence-using-dynamic-programming">Longest palindromic subsequence using dynamic programming</a></li>
+  <li><a href="#longest-repeated-subsequence-problem">Longest repeated subsequence problem</a></li>
+  <li><a href="#matrix-chain-multiplication-using-dynamic-programming">Matrix chain multiplication using dynamic programming</a></li>
+  <li><a href="#maximize-the-value-of-an-expression">Maximize the value of an expression</a></li>
+  <li><a href="#maximum-length-snake-sequence">Maximum length snake sequence</a></li>
+  <li><a href="#maximum-product-rod-cutting">Maximum product rod cutting</a></li>
+  <li><a href="#maximum-subarray-problem-kadanes-algorithm">Maximum subarray problem (kadane’s algorithm)</a></li>
+  <li><a href="#minimum-sum-partition-problem">Minimum sum partition problem</a></li>
+  <li><a href="#partition-problem">Partition problem</a></li>
+  <li><a href="#pots-of-gold-game-using-dynamic-programming">Pots of gold game using dynamic programming</a></li>
+  <li><a href="#rod-cutting-problem">Rod cutting problem</a></li>
+  <li><a href="#shortest-common-supersequence">Shortest common supersequence</a></li>
+  <li><a href="#shortest-common-supersequence-1">Shortest common supersequence</a></li>
+  <li><a href="#single-source-shortest-pathsbellman-ford-algorithm">Single-source shortest paths — bellman ford algorithm</a></li>
+  <li><a href="#subset-sum-problem">Subset sum problem</a></li>
+  <li><a href="#the-levenshtein-distance-edit-distance-problem">The levenshtein distance (edit distance) problem</a></li>
+  <li><a href="#total-possible-solutions-to-linear-equation-of-k-variables">Total possible solutions to linear equation of k variables</a></li>
+  <li><a href="#wildcard-pattern-matching">Wildcard pattern matching</a></li>
+  <li><a href="#word-break-problem">Word break problem</a></li>
+  <li><a href="#word-break-problem-1">Word break problem</a></li>
+</ul>
+
+    </nav>
+  </div>
+  
+  <p>Table filling or also called dynamic programming is a technique
+in the design of algorithms that really deserves to study.
+The way to study this technique is through examples and this
+post is to list some problem and their recursive formulation.</p>
+
+<p>Links of list similar:</p>
+<ul>
+  <li>https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP</li>
+  <li>https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3</li>
+</ul>
+
+<h2 id="01-knapsack-problem">0–1 knapsack problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="3-partition-problem">3-partition problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="all-pairs-shortest-pathsfloyd-warshall-algorithm">All-pairs shortest paths — floyd warshall algorithm</h2>
+
+<p>Pending…</p>
+
+<h2 id="calculate-size-of-the-largest-plus-of-1s-in-binary-matrix">Calculate size of the largest plus of 1’s in binary matrix</h2>
+
+<p>Pending…</p>
+
+<h2 id="calculate-sum-of-all-elements-in-a-sub-matrix-in-constant-time">Calculate sum of all elements in a sub-matrix in constant time</h2>
+
+<p>Pending…</p>
+
+<h2 id="check-if-given-string-is-interleaving-of-two-other-given-strings">Check if given string is interleaving of two other given strings</h2>
+
+<p>Pending…</p>
+
+<h2 id="coin-change-problem-total-number-of-ways-to-get-the-denomination-of-coins">Coin change problem (total number of ways to get the denomination of coins)</h2>
+
+<p>Pending…</p>
+
+<h2 id="coin-change-making-problem-unlimited-supply-of-coins">Coin change-making problem (unlimited supply of coins)</h2>
+
+<p>Pending…</p>
+
+<h2 id="collect-maximum-points-in-a-matrix-by-satisfying-given-constraints">Collect maximum points in a matrix by satisfying given constraints</h2>
+
+<p>Pending…</p>
+
+<h2 id="count-number-of-paths-in-a-matrix-with-given-cost-to-reach-destination-cell">Count number of paths in a matrix with given cost to reach destination cell</h2>
+
+<p>Pending…</p>
+
+<h2 id="count-number-of-times-a-pattern-appears-in-given-string-as-a-subsequence">Count number of times a pattern appears in given string as a subsequence</h2>
+
+<p>Pending…</p>
+
+<h2 id="count-total-possible-combinations-of-n-digit-numbers-in-a-mobile-keypad">Count total possible combinations of n-digit numbers in a mobile keypad</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-all-n-digit-binary-strings-without-any-consecutive-1s">Find all n-digit binary strings without any consecutive 1’s</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-longest-sequence-formed-by-adjacent-numbers-in-the-matrix">Find longest sequence formed by adjacent numbers in the matrix</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-maximum-sum-of-subsequence-with-no-adjacent-elements">Find maximum sum of subsequence with no adjacent elements</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-maximum-sum-submatrix-in-a-given-matrix">Find maximum sum submatrix in a given matrix</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-maximum-sum-submatrix-present-in-a-given-matrix">Find maximum sum submatrix present in a given matrix</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-minimum-cuts-needed-for-palindromic-partition-of-a-string">Find minimum cuts needed for palindromic partition of a string</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-optimal-cost-to-construct-binary-search-tree">Find optimal cost to construct binary search tree</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-probability-that-a-person-is-alive-after-taking-n-steps-on-an-island">Find probability that a person is alive after taking n steps on an island</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-size-of-largest-square-sub-matrix-of-1s-present-in-given-binary-matrix">Find size of largest square sub-matrix of 1’s present in given binary matrix</h2>
+
+<p>Pending…</p>
+
+<h2 id="find-the-minimum-cost-to-reach-last-cell-of-the-matrix-from-its-first-cell">Find the minimum cost to reach last cell of the matrix from its first cell</h2>
+
+<p>Pending…</p>
+
+<h2 id="implement-diff-utility">Implement diff utility</h2>
+
+<p>Pending…</p>
+
+<h2 id="increasing-subsequence-with-maximum-sum">Increasing subsequence with maximum sum</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-alternating-subsequence-problem">Longest alternating subsequence problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-bitonic-subsequence">Longest bitonic subsequence</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-common-subsequence">Longest common subsequence</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-common-subsequence-1">Longest common subsequence</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-common-substring-problem">Longest common substring problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-increasing-subsequence-using-dynamic-programming">Longest increasing subsequence using dynamic programming</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-palindromic-subsequence-using-dynamic-programming">Longest palindromic subsequence using dynamic programming</h2>
+
+<p>Pending…</p>
+
+<h2 id="longest-repeated-subsequence-problem">Longest repeated subsequence problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="matrix-chain-multiplication-using-dynamic-programming">Matrix chain multiplication using dynamic programming</h2>
+
+<p>Pending…</p>
+
+<h2 id="maximize-the-value-of-an-expression">Maximize the value of an expression</h2>
+
+<p>Pending…</p>
+
+<h2 id="maximum-length-snake-sequence">Maximum length snake sequence</h2>
+
+<p>Pending…</p>
+
+<h2 id="maximum-product-rod-cutting">Maximum product rod cutting</h2>
+
+<p>Pending…</p>
+
+<h2 id="maximum-subarray-problem-kadanes-algorithm">Maximum subarray problem (kadane’s algorithm)</h2>
+
+<p>Pending…</p>
+
+<h2 id="minimum-sum-partition-problem">Minimum sum partition problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="partition-problem">Partition problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="pots-of-gold-game-using-dynamic-programming">Pots of gold game using dynamic programming</h2>
+
+<p>Pending…</p>
+
+<h2 id="rod-cutting-problem">Rod cutting problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="shortest-common-supersequence">Shortest common supersequence</h2>
+
+<p>Pending…</p>
+
+<h2 id="shortest-common-supersequence-1">Shortest common supersequence</h2>
+
+<p>Pending…</p>
+
+<h2 id="single-source-shortest-pathsbellman-ford-algorithm">Single-source shortest paths — bellman ford algorithm</h2>
+
+<p>Pending…</p>
+
+<h2 id="subset-sum-problem">Subset sum problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="the-levenshtein-distance-edit-distance-problem">The levenshtein distance (edit distance) problem</h2>
+
+<p>Pending…</p>
+
+<h2 id="total-possible-solutions-to-linear-equation-of-k-variables">Total possible solutions to linear equation of k variables</h2>
+
+<p>Pending…</p>
+
+<h2 id="wildcard-pattern-matching">Wildcard pattern matching</h2>
+
+<p>Pending…</p>
+
+<h2 id="word-break-problem">Word break problem</h2>
+
+<p>Pending…</p>
+
+<p>Pending…</p>
+<h2 id="word-break-problem-1">Word break problem</h2>
+
+
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+
+
+  
+
+  <div id="github-links">
+    <div class="view-source">
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda" target="_blank">View source</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-10-23-DP-lists.lagda" target="_blank">Edit</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda" target="_blank">History</a>
+      <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$'],['\\[','\\]']],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
+      TagSide: "left",
+      Macros: {
+        field: ['\\mathbb{#1}', 1],
+        C: ['\\field{C}'],
+        F: ['\\field{F}'],
+        N: ['\\field{N}'],
+        Q: ['\\field{Q}'],
+        R: ['\\field{R}'],
+        Z: ['\\field{Z}'],
+
+        zeros: ['\\mathbf{0}'],
+        ud: ['\\,\\mathrm{d}'],
+
+        vect:['\\boldsymbol{\\mathbf{#1}}',1],
+        abs: ['\\lvert#1\\rvert', 1],
+        abslr:['\\left\\lvert#1\\right\\rvert', 1],
+        norm: ['\\lVert#1\\rVert', 1],
+        normlr: ['\\left\\lVert#1\\right\\rVert', 1],
+
+        lcm: ['\\mathop{\\mathrm{lcm}}'],
+        interior: ['\\mathop{\\mathrm{int}}'],
+        exterior: ['\\mathop{\\mathrm{ext}}'],
+        volume: ['\\mathop{\\mathrm{vol}}'],
+
+        E: ['{\\rm I\\kern-.3em E}'],
+        Var: ['\\mathop{\\mathrm{Var}}'],
+        Cov: ['\\mathop{\\mathrm{Cov}}'],
+        Binom: ['\\mathop{\\mathrm{Binom}}'],
+        Exp: ['\\mathop{\\mathrm{Exp}}'],
+        Poi: ['\\mathop{\\mathrm{Poi}}'],
+
+        GL: ['\\mathrm{GL}'],
+        SL: ['\\mathrm{SL}'],
+        Aut: ['\\mathrm{Aut}'],
+        ker: ['\\mathrm{ker}'],
+        id: ['\\mathop{\\mathrm{id}}'],
+
+        Re: ['\\mathop{\\mathrm{Re}}'],
+        Im: ['\\mathop{\\mathrm{Im}}'],
+        Res: ['\\mathop{\\mathrm{Res}}'],
+      }
+    }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+>
+</script>
+
+
+
+<script>
+  // When the user scrolls the page, execute myFunction
+function stickyToogle(obj, sticky) {
+  if (window.pageYOffset > sticky) {
+    obj.classList.add("sticky");
+  } else {
+    obj.classList.remove("sticky");
+  }
+};
+
+// Get the header
+function stickyThing(idObj){
+  var obj = document.getElementById(idObj);
+  if (obj){
+    // Get the offset position of the navbar
+    stickyToogle(obj, obj.offsetTop);
+    // Add the sticky class to the obj when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  }
+};
+
+window.onscroll = function() {
+  stickyThing("stickyTitle");
+};
+
+</script>
+
+
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+<script src="/assets/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+
+<!-- FOLDABLE  -->
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+
+     var until = parseFloat($(this).attr('until'));
+     if ( isNaN(until) ) { until= 1; }
+     if ( until <= 0 ){
+       $(this).hide();
+     }
+     else{
+       var newHeight = ((1.3 * until) + 1.0) + "rem";
+       //                               ^^^----------- for the padding
+       //                ^^-- line-height
+
+       // console.log('afuera-until: ', until);
+       // console.log('afuera-newheight: ', newHeight );
+       $(this).css("padding", "0.5rem 1rem");
+       $(this).css("overflow", "hidden");
+       $(this).css("height", newHeight);
+       $(this).attr("original", "false");
+
+       $(this).click(function(){
+
+         // console.log('dentro-original: ', $(this).attr('original') );
+         // console.log('dentro-newheight: ', newHeight );
+
+         if ( $(this).attr('original') == "true" ) {
+           $(this).css("overflow", "hidden");
+           $(this).css("height", newHeight);
+           $(this).attr("original", "false");
+           $(this).css("padding", "0.5rem 1rem");
+           plus.show();
+         }
+         else {
+           $(this).height('auto');
+           $(this).attr("original", "true");
+           plus.hide();
+         }
+       });
+     }
+ });
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+  if ( $('div').hasClass('cited-references') ){
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
+    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
+  }
+</script>
+
+
+
+
+
+    <script>
+      (function(document) {
+        var toggle   = document.querySelector('.sidebar-toggle');
+        var sidebar  = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+
+    
+    <script src="/assets/galleryjs/lightgallery.js"></script>
+
+    <script src="/assets/galleryjs/lg-thumbnail.min.js"></script>
+    <script src="/assets/galleryjs/lg-fullscreen.min.js"></script>
+
+    <script  type="text/javascript">
+      $(document).ready(function() {
+        $('.post img').wrap(function(){
+          return "<div class='gallery' data-src='" + $( this ).attr("src") + "'></div>";
+        });
+
+        lightGallery(document.querySelector('.post'),
+          { selector     : ".gallery"
+          // , mode         : 'slide'
+          , thumbnail    : true
+          , animateThumb: false
+          , closable     : true
+          , counter      : true
+          , enableTouch  : true
+          , enableDrag   : true
+          , showThumbByDefault   : false
+          , thumbWidth           : 90
+          , thumbMargin          : 5,
+          });
+      });
+    </script>
+    
+  </body>
+</html>
