@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+      
+        Leibniz's Equality |
+      
+        jonaprieto
+    
+  </title><!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="Leibniz’s Equality" />
+<meta name="author" content="Jonathan Prieto-Cubides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Leibniz characterized the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if ." />
+<meta property="og:description" content="Leibniz characterized the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if ." />
+<link rel="canonical" href="http://jonaprieto.github.io/type-theory,/home/2018/02/09/leibniz-s-equality/" />
+<meta property="og:url" content="http://jonaprieto.github.io/type-theory,/home/2018/02/09/leibniz-s-equality/" />
+<meta property="og:site_name" content="jonaprieto" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-02-09T00:00:00+01:00" />
+<script type="application/ld+json">
+{"description":"Leibniz characterized the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if .","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/type-theory,/home/2018/02/09/leibniz-s-equality/","headline":"Leibniz’s Equality","dateModified":"2018-10-23T13:23:52+02:00","datePublished":"2018-02-09T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/type-theory,/home/2018/02/09/leibniz-s-equality/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta name="description" content="Leibniz characterized the notion of equality as follows: Given any and , if and only if, given any predicate , if and only if .">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="preload" as="script" href="/assets/main.js" >
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+</head>
+
+
+
+
+  <body>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    <!--  -->
+    <!-- 
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/all/">All</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">List of references</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/plans/">Plans</a>
+        
+      
+     -->
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
+    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
+  </nav>
+</div>
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+
+
+
+<div class="post">
+
+  <div class="print-version">
+    <center>
+      <h1>Leibniz's Equality </h1><br/>
+        <div class="print-authors">
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">
+                
+                  Jonathan Prieto-Cubides
+                
+              </div>
+              <div class="print-author-affiliation">
+                
+                  University of Bergen
+                
+                </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="print-date">09 February 2018</div>
+        
+        
+    </center>
+  </div>
+
+  
+  <div class="main-heading">
+    <div class="main-title">
+      <div class="main-title-prefix"> Latest change:</div>
+      <div class="main-commit-message">
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/dea20c208a6427d94b005705d8ad0f2c70ee14cf/blog/_src/notes/2018-02-09-leibniz-s-equality.lagda">
+              first attempt for hoare triples in agda</a>
+      </div>
+    </div>
+
+    <div class="main-last-date">
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/dea20c208a6427d94b005705d8ad0f2c70ee14cf/blog/_src/notes/2018-02-09-leibniz-s-equality.lagda">dea20c20 </a> on  23 Oct 2018
+    </div>
+  </div>
+  
+  <h1 class="post-title" id="stickyTitle">Leibniz's Equality
+  </h1>
+  
+  <p><em>Leibniz characterized the notion of equality as follows:
+  Given any <script type="math/tex">x</script> and <script type="math/tex">y</script>, <script type="math/tex">x \equiv y</script> if and only if, given any
+  predicate <script type="math/tex">P</script>, <script type="math/tex">P(x)</script> if and only if <script type="math/tex">P(y)</script>.</em></p>
+
+<script type="math/tex; mode=display">\forallx \forally (x \equiv y \to \forall P \ (P(x) \Leftrightarrow P(y)))</script>
+
+<p>To denote the equality between two elements we use the symbol (<code>_≡_</code>).
+In Agda we will formalize such a notation of equality with <code>Eq</code> type.</p>
+
+<pre class="Agda"><a id="Eq"></a><a id="564" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="567" class="Symbol">:</a> <a id="569" class="Symbol">∀</a> <a id="571" class="Symbol">{</a><a id="572" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#572" class="Bound">A</a> <a id="574" class="Symbol">:</a> <a id="576" class="PrimitiveType">Set</a><a id="579" class="Symbol">}</a> <a id="581" class="Symbol">→</a> <a id="583" class="Symbol">(</a><a id="584" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#584" class="Bound">x</a> <a id="586" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#586" class="Bound">y</a> <a id="588" class="Symbol">:</a> <a id="590" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#572" class="Bound">A</a><a id="591" class="Symbol">)</a> <a id="593" class="Symbol">→</a> <a id="595" class="PrimitiveType">Set₁</a>
+<a id="600" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="603" class="Symbol">{</a><a id="604" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#604" class="Bound">A</a><a id="605" class="Symbol">}</a> <a id="607" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#607" class="Bound">x</a> <a id="609" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#609" class="Bound">y</a> <a id="611" class="Symbol">=</a> <a id="613" class="Symbol">(</a><a id="614" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#614" class="Bound">P</a> <a id="616" class="Symbol">:</a> <a id="618" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#604" class="Bound">A</a> <a id="620" class="Symbol">→</a> <a id="622" class="PrimitiveType">Set</a><a id="625" class="Symbol">)</a> <a id="627" class="Symbol">→</a> <a id="629" class="Symbol">(</a><a id="630" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#614" class="Bound">P</a> <a id="632" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#607" class="Bound">x</a> <a id="634" class="Symbol">→</a> <a id="636" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#614" class="Bound">P</a> <a id="638" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#609" class="Bound">y</a><a id="639" class="Symbol">)</a></pre>
+
+<p>We can think about this equality definition saying that <script type="math/tex">x</script> is equal to <script type="math/tex">y</script>
+if and only if every property (unary predicate variable <script type="math/tex">P</script>) that <script type="math/tex">x</script>
+satisfies, <script type="math/tex">y</script> satisfies as well.</p>
+
+<ul>
+  <li>Reflexivity</li>
+</ul>
+
+<pre class="Agda"><a id="refl"></a><a id="872" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#872" class="Function">refl</a> <a id="877" class="Symbol">:</a> <a id="879" class="Symbol">∀</a> <a id="881" class="Symbol">{</a><a id="882" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#882" class="Bound">A</a> <a id="884" class="Symbol">:</a> <a id="886" class="PrimitiveType">Set</a><a id="889" class="Symbol">}</a> <a id="891" class="Symbol">→</a> <a id="893" class="Symbol">(</a><a id="894" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#894" class="Bound">x</a> <a id="896" class="Symbol">:</a> <a id="898" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#882" class="Bound">A</a><a id="899" class="Symbol">)</a> <a id="901" class="Symbol">→</a> <a id="903" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="906" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#894" class="Bound">x</a> <a id="908" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#894" class="Bound">x</a>
+<a id="910" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#872" class="Function">refl</a> <a id="915" class="Symbol">{</a><a id="916" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#916" class="Bound">A</a><a id="917" class="Symbol">}</a> <a id="919" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#919" class="Bound">x</a> <a id="921" class="Symbol">=</a> <a id="923" class="Symbol">λ</a> <a id="925" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#925" class="Bound">P</a> <a id="927" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#927" class="Bound">Px₁</a> <a id="931" class="Symbol">→</a> <a id="933" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#927" class="Bound">Px₁</a></pre>
+
+<ul>
+  <li>Transitivity</li>
+</ul>
+
+<pre class="Agda"><a id="trans"></a><a id="978" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#978" class="Function">trans</a> <a id="984" class="Symbol">:</a> <a id="986" class="Symbol">∀</a> <a id="988" class="Symbol">{</a><a id="989" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#989" class="Bound">A</a> <a id="991" class="Symbol">:</a> <a id="993" class="PrimitiveType">Set</a><a id="996" class="Symbol">}</a> <a id="998" class="Symbol">→</a> <a id="1000" class="Symbol">(</a><a id="1001" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1001" class="Bound">x</a> <a id="1003" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1003" class="Bound">y</a> <a id="1005" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1005" class="Bound">z</a> <a id="1007" class="Symbol">:</a> <a id="1009" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#989" class="Bound">A</a><a id="1010" class="Symbol">)</a> <a id="1012" class="Symbol">→</a> <a id="1014" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="1017" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1001" class="Bound">x</a> <a id="1019" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1003" class="Bound">y</a> <a id="1021" class="Symbol">→</a> <a id="1023" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="1026" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1003" class="Bound">y</a> <a id="1028" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1005" class="Bound">z</a> <a id="1030" class="Symbol">→</a> <a id="1032" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="1035" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1001" class="Bound">x</a> <a id="1037" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1005" class="Bound">z</a>
+<a id="1039" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#978" class="Function">trans</a> <a id="1045" class="Symbol">{</a><a id="1046" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1046" class="Bound">A</a><a id="1047" class="Symbol">}</a> <a id="1049" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1049" class="Bound">x</a> <a id="1051" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1051" class="Bound">y</a> <a id="1053" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1053" class="Bound">z</a> <a id="1055" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1055" class="Bound">x≡y</a> <a id="1059" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1059" class="Bound">P₁</a> <a id="1062" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1062" class="Bound">y≡z</a> <a id="1066" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1066" class="Bound">P₂</a> <a id="1069" class="Symbol">=</a> <a id="1071" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1059" class="Bound">P₁</a> <a id="1074" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1062" class="Bound">y≡z</a> <a id="1078" class="Symbol">(</a><a id="1079" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1055" class="Bound">x≡y</a> <a id="1083" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1062" class="Bound">y≡z</a> <a id="1087" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1066" class="Bound">P₂</a><a id="1089" class="Symbol">)</a></pre>
+
+<ul>
+  <li>Symmetry</li>
+</ul>
+
+<pre class="Agda"><a id="sym"></a><a id="1128" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1128" class="Function">sym</a> <a id="1132" class="Symbol">:</a> <a id="1134" class="Symbol">∀</a> <a id="1136" class="Symbol">{</a><a id="1137" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1137" class="Bound">A</a> <a id="1139" class="Symbol">:</a> <a id="1141" class="PrimitiveType">Set</a><a id="1144" class="Symbol">}</a> <a id="1146" class="Symbol">→</a> <a id="1148" class="Symbol">(</a><a id="1149" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1149" class="Bound">x</a> <a id="1151" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1151" class="Bound">y</a> <a id="1153" class="Symbol">:</a> <a id="1155" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1137" class="Bound">A</a><a id="1156" class="Symbol">)</a> <a id="1158" class="Symbol">→</a> <a id="1160" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="1163" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1149" class="Bound">x</a> <a id="1165" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1151" class="Bound">y</a> <a id="1167" class="Symbol">→</a> <a id="1169" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#564" class="Function">Eq</a> <a id="1172" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1151" class="Bound">y</a> <a id="1174" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1149" class="Bound">x</a>
+<a id="1176" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1128" class="Function">sym</a> <a id="1180" class="Symbol">{</a><a id="1181" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1181" class="Bound">A</a><a id="1182" class="Symbol">}</a> <a id="1184" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1184" class="Bound">x</a> <a id="1186" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1186" class="Bound">y</a> <a id="1188" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1188" class="Bound">x≡y</a> <a id="1192" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1192" class="Bound">P</a> <a id="1194" class="Symbol">=</a> <a id="1196" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1188" class="Bound">x≡y</a> <a id="1200" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1225" class="Function">p₁</a> <a id="1203" class="Symbol">(λ</a> <a id="1206" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1206" class="Bound">z</a> <a id="1208" class="Symbol">→</a> <a id="1210" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1206" class="Bound">z</a><a id="1211" class="Symbol">)</a>
+  <a id="1215" class="Keyword">where</a>
+    <a id="1225" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1225" class="Function">p₁</a> <a id="1228" class="Symbol">:</a> <a id="1230" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1181" class="Bound">A</a> <a id="1232" class="Symbol">→</a> <a id="1234" class="PrimitiveType">Set</a>
+    <a id="1242" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1225" class="Function">p₁</a> <a id="1245" class="Symbol">=</a> <a id="1247" class="Symbol">λ</a> <a id="1249" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1249" class="Bound">z</a> <a id="1251" class="Symbol">→</a> <a id="1253" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1192" class="Bound">P</a> <a id="1255" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1249" class="Bound">z</a> <a id="1257" class="Symbol">→</a> <a id="1259" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1192" class="Bound">P</a> <a id="1261" href="/type-theory,/home/2018/02/09/leibniz-s-equality/#1184" class="Bound">x</a></pre>
+
+<blockquote>
+  <p>The principle of identity of indiscernibles states that two objects
+are identical if they have all the same properties.
+This is also known as “Leibniz’s Law”… in <a href="https://ncatlab.org/nlab/show/identity+of+indiscernibles">https://ncatlab.org/nlab/show/identity+of+indiscernibles</a></p>
+</blockquote>
+
+
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"></ol>
+  </div>
+
+
+  
+
+  <div id="github-links">
+    <div class="view-source">
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/dea20c208a6427d94b005705d8ad0f2c70ee14cf/blog/_src/notes/2018-02-09-leibniz-s-equality.lagda" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/dea20c208a6427d94b005705d8ad0f2c70ee14cf/blog/_src/notes/2018-02-09-leibniz-s-equality.lagda" target="_blank">View source</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-02-09-leibniz-s-equality.lagda" target="_blank">Edit</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/dea20c208a6427d94b005705d8ad0f2c70ee14cf/blog/_src/notes/2018-02-09-leibniz-s-equality.lagda" target="_blank">History</a>
+      <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$'],['\\[','\\]']],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js"],
+      TagSide: "left",
+      Macros: {
+        field: ['\\mathbb{#1}', 1],
+        C: ['\\field{C}'],
+        F: ['\\field{F}'],
+        N: ['\\field{N}'],
+        Q: ['\\field{Q}'],
+        R: ['\\field{R}'],
+        Z: ['\\field{Z}'],
+
+        zeros: ['\\mathbf{0}'],
+        ud: ['\\,\\mathrm{d}'],
+
+        vect:['\\boldsymbol{\\mathbf{#1}}',1],
+        abs: ['\\lvert#1\\rvert', 1],
+        abslr:['\\left\\lvert#1\\right\\rvert', 1],
+        norm: ['\\lVert#1\\rVert', 1],
+        normlr: ['\\left\\lVert#1\\right\\rVert', 1],
+
+        lcm: ['\\mathop{\\mathrm{lcm}}'],
+        interior: ['\\mathop{\\mathrm{int}}'],
+        exterior: ['\\mathop{\\mathrm{ext}}'],
+        volume: ['\\mathop{\\mathrm{vol}}'],
+
+        E: ['{\\rm I\\kern-.3em E}'],
+        Var: ['\\mathop{\\mathrm{Var}}'],
+        Cov: ['\\mathop{\\mathrm{Cov}}'],
+        Binom: ['\\mathop{\\mathrm{Binom}}'],
+        Exp: ['\\mathop{\\mathrm{Exp}}'],
+        Poi: ['\\mathop{\\mathrm{Poi}}'],
+
+        GL: ['\\mathrm{GL}'],
+        SL: ['\\mathrm{SL}'],
+        Aut: ['\\mathrm{Aut}'],
+        ker: ['\\mathrm{ker}'],
+        id: ['\\mathop{\\mathrm{id}}'],
+
+        Re: ['\\mathop{\\mathrm{Re}}'],
+        Im: ['\\mathop{\\mathrm{Im}}'],
+        Res: ['\\mathop{\\mathrm{Res}}'],
+      }
+    }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+>
+</script>
+
+
+
+<script>
+  // When the user scrolls the page, execute myFunction
+function stickyToogle(obj, sticky) {
+  if (window.pageYOffset > sticky) {
+    obj.classList.add("sticky");
+  } else {
+    obj.classList.remove("sticky");
+  }
+};
+
+// Get the header
+function stickyThing(idObj){
+  var obj = document.getElementById(idObj);
+  if (obj){
+    // Get the offset position of the navbar
+    stickyToogle(obj, obj.offsetTop);
+    // Add the sticky class to the obj when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  }
+};
+
+window.onscroll = function() {
+  stickyThing("stickyTitle");
+};
+
+</script>
+
+
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+<script src="/assets/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+
+<!-- FOLDABLE  -->
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $("<div></div>");
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight});
+     verLine.css({
+         'position'         : 'relative',
+         'height'           : lineHeight,
+         'width'            : '3px',
+         'background-color' : '#C1E0FF'});
+     horLine.css({
+         'position'         : 'relative',
+         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
+         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'height'           : '3px',
+         'width'            : lineHeight,
+         'background-color' : '#C1E0FF'});
+     plus.append(verLine);
+     plus.append(horLine);
+
+     var until = parseFloat($(this).attr('until'));
+     if ( isNaN(until) ) { until= 1; }
+     if ( until <= 0 ){
+       $(this).hide();
+     }
+     else{
+       var newHeight = ((1.3 * until) + 1.0) + "rem";
+       //                               ^^^----------- for the padding
+       //                ^^-- line-height
+
+       // console.log('afuera-until: ', until);
+       // console.log('afuera-newheight: ', newHeight );
+       $(this).css("padding", "0.5rem 1rem");
+       $(this).css("overflow", "hidden");
+       $(this).css("height", newHeight);
+       $(this).attr("original", "false");
+
+       $(this).click(function(){
+
+         // console.log('dentro-original: ', $(this).attr('original') );
+         // console.log('dentro-newheight: ', newHeight );
+
+         if ( $(this).attr('original') == "true" ) {
+           $(this).css("overflow", "hidden");
+           $(this).css("height", newHeight);
+           $(this).attr("original", "false");
+           $(this).css("padding", "0.5rem 1rem");
+           plus.show();
+         }
+         else {
+           $(this).height('auto');
+           $(this).attr("original", "true");
+           plus.hide();
+         }
+       });
+     }
+ });
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+  if ( $('div').hasClass('cited-references') ){
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
+    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
+  }
+</script>
+
+
+
+
+
+    <script>
+      (function(document) {
+        var toggle   = document.querySelector('.sidebar-toggle');
+        var sidebar  = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+
+    
+  </body>
+</html>
