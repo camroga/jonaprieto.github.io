@@ -7,27 +7,28 @@ references: true
 agda: true
 categories: type-theory home
 toc: true
-
+linkify: true
+gallery: true
 ---
+
+<noscript>
+**You need to turn on Javascript to see the content of this entry correctly.**<br/>
+</noscript>
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
 Many changes can appear running this experiment. Solutions are
-type-checked as a whole using Agda v2.5.3.
+type-checked as a whole using `Agda` `v2.5.3`.
 
 ## Requirements
 
--------------------------------------------------------------------------------
-
-Agda has a pragma to work with HoTT:
+`Agda` has a pragma to be compatible with HoTT:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
 \end{code}
 
--------------------------------------------------------------------------------
-
-Equality type definition also called Identity type:
+Equality type  also called Identity type can be defined as follows.
 
 \begin{code}
 infix 4 _≡_
@@ -86,19 +87,16 @@ J : ∀ {i j}{X : Set i}
 J P u x y p = J' (P x) (u x) y p
 \end{code}
 
------------------------------------------------------------------------------
-
 ## Chapter 1
 
 ### Exercise 1.1
 
-{: .exercise}
-  Given functions $$f : A \to B$$ and $$g:B\to C$$, define
-  their composite $$ g\circ f:A\to C$$.
-  Show that we have $$h \circ (g\circ f) \equiv (h\circ g)\circ f$$.
+{: .exercise }
+  Given functions $f : A \rightarrow B$ and $g : B \to C$, define
+  their composite $g\circ f:A\to C$.
+  Show that we have $h \circ (g\circ f) \equiv (h\circ g)\circ f$.
 
-
-We define the composition operation in Agda as follows.
+We define the composition operation in `Agda` as follows.
 
 \begin{code}
 _∘_ : ∀ {i j k} {A : Set i}{B : Set j}{C : Set k}
@@ -119,71 +117,65 @@ Then, the `∘-assoc` shows us that associativity of this composition holds.
 
 ### Exercise 1.2
 
-<div class="exercise">
-Derive the recursion principle for products $$\mathsf{rec}_{A\times B}$$
-using only the projections, and verify that the definitional equalities
-are valid. Do the same for $$\Sigma$$-types.
-</div>
+{: .exercise }
+  Derive the recursion principle for products $\rec_{A\times B}$
+  using only the projections, and verify that the definitional equalities
+  are valid. Do the same for $\Sigma$-types.
 
 To solve this problem we need to know:
 
   - The recursion principle for Σ-types:
 
-    <p class="equation">
-    $$ \mathsf{rec}_{ A \times B}
-      : \prod\limits_{C : \mathcal{U}} (A \to B \to C) → A \times B \to C.
-    $$
-    </p>
+    {:.eq}
+      $$ \rec_{ A \times B}
+        : \prod\limits_{C : \U} (A \to B \to C) → A \times B \to C.
+      $$
 
   - The recursion principle for Σ-types:
 
     <p class="equation">
-    $$ \mathsf{rec}_{\sum\limits_{(x : A) } B(x)}
+    $ \rec_{\sum\limits_{(x : A) } B(x)}
       : \prod\limits_{(C : U)} (\Pi_{(x : A)} B(x) \rightarrow C) \rightarrow
         \sum_{(x : A)} B(x) \rightarrow C
-    $$
+    $
     </p>
 
 <div class="proof" id="proof-1.2">
 Proof.<br/>
 For products:<br/>
 If we have the projections,
-$$\mathsf{proj}_1 : A \times B \to \mathsf{A}$$ and $$\mathsf{proj}_2 : A \times B \to \mathsf{B}$$,
-then $$\mathsf{rec}_2$$ is another inhabitant where
+$\proj_1 : A \times B \to \mathsf{A}$ and $\proj_2 : A \times B \to \mathsf{B}$,
+then $\rec_2$ is another inhabitant where
 
 <p class="equation">
-$$
+$
 \begin{align*}
-&\mathsf{rec}_1 : \prod\limits_{C : \mathcal{U}} (A \to B \to C) \to A \times B \to C\\
-&\mathsf{rec}_1~C~g~c~:\equiv~g~(\mathsf{proj}_1 c,~\mathsf{proj}_2 c).
+&\rec_1 : \prod\limits_{C : \U} (A \to B \to C) \to A \times B \to C\\
+&\rec_1~C~g~c~:\equiv~g~(\proj_1 c,~\proj_2 c).
 \end{align*}
-$$
+$
 </p>
-By reflexivity, we prove the equality between $$\mathsf{rec}_{ A \times B}$$ and $$\mathsf{rec}_1$$.
+By reflexivity, we prove the equality between $\rec_{ A \times B}$ and $\rec_1$.
 <br/>
 <br/>
 For sums:<br/>
-The projections are $$\mathsf{proj}_1 : \sum_{x : A}  Bx \to \mathsf{A}$$ and
-$$\mathsf{proj}_2 :  \prod_{(p : \sum_{x : A}  Bx)} \to \mathsf{B} (\mathsf{proj}_1 p)$$.<br/>
+The projections are $\proj_1 : \sum_{x : A}  Bx \to \mathsf{A}$ and
+$\proj_2 :  \prod {(p : \sum_{x : A}  Bx)} \to \mathsf{B} (\proj_1 p)$.<br/>
 By using these projections, we got another recursor defined as follows:
 <p class="equation">
 $$
-\begin{aling*}
-&\mathsf{rec}_2 : \prod\limits_{C : \mathcal{U}}  (\prod_{x : A} Bx \to C) \to \sum\limits_{x : A} B x \to C\\
-&\mathsf{rec}_2~C~g~c~=~g~(\mathsf{proj}_1 c)~(\mathsf{proj}_2 c)
+\begin{align*}
+&\rec_2 : \prod\limits_{C : \U}  (\prod_{x : A} Bx \to C) \to \sum\limits_{x : A} B x \to C\\
+&\rec_2~C~g~c~=~g~(\proj_1 c)~(\proj_2 c)
 \end{align*}
 $$
 </p>
 
-By reflexivity, we prove the equality between $$\mathsf{rec}_{\sum\limits_{(x : A) } B(x)}$$ and $$\mathsf{rec}_2$$.
+By reflexivity, we prove the equality between $\rec_{\sum\limits_{(x : A) } B(x)}$ and $\rec_2$.
 </div>
 
--------------------------------------------------------------------------------
-
-In Agda.<br>
-
-Let's add some machinery to handle levels of the universe needed for
-the following exercises including this one:
+Now, I'm gonna use the universe levels from Agda in
+the following exercises, including this one:
 
 \begin{code}
 open import Agda.Primitive
@@ -206,7 +198,7 @@ module Σ-Def₁ where
 -- _,_ : (proj₁ : A) → B proj₁ → Σ A B.
 \end{code}
 
-Its recursor with a function $$g : \prod_{(x : A)} B(x)\rightarrow C$$
+Its recursor with a function $g : \prod_{(x : A)} B(x)\rightarrow C$
 that we provide.
 
 \begin{code}
@@ -222,7 +214,6 @@ module Σ-Rec₁ {i j k}{A : Set i}{B : A → Set j}{C : Set k}
   rec-β x y = refl
 \end{code}
 
--------------------------------------------------------------------------------
 
 On the other hand, the product type is just a particular case of the sigma type
 when the codomain is not dependent, as we can see next by omitting the argument
@@ -236,7 +227,7 @@ module ×-Def₁ where
   A × B = Σ A (λ _ → B)
 \end{code}
 
-Its recursor with a function $$g : A \rightarrow B \rightarrow C$$ that we provide.
+Its recursor with a function $g : A \rightarrow B \rightarrow C$ that we provide.
 
 \begin{code}
 module ×-Rec₁ {i j k}{A : Set i}{B : Set j}{C : Set k} (g : A → B → C) where
@@ -255,22 +246,22 @@ module ×-Rec₁ {i j k}{A : Set i}{B : Set j}{C : Set k} (g : A → B → C) wh
 ### Exercise 1.3
 
 <p class="exercise">
-Derive the induction principle for products $$\mathsf{ind}_{A\times B}$$,
+Derive the induction principle for products $\mathsf{ind}_{A\times B}$,
 using only the projections and the propositional uniqueness principle
-$$\mathsf{uniq}_{A\times B}$$.
+$\mathsf{uniq}_{A\times B}$.
 Verify that the definitional equalities are valid.
 </p>
 
 To solve this problem, recall the uniqueness principle (Pp. 29. HoTT-Book)
 
 - The **propositional uniqueness principle** says that
-every element of $$A\times B$$ is equal to a pair.
+every element of $A\times B$ is equal to a pair.
 
 <p class="equation">
-  $$ \mathsf{uniq}_{A\times B}
-     : \prod_{(x : A \times B)} ((\mathsf{proj}_{1}(x) , \mathsf{proj}_{2}(x))
+  $ \mathsf{uniq}_{A\times B}
+     : \prod_{(x : A \times B)} ((\proj_{1}(x) , \proj_{2}(x))
        \equiv_{A\times B} x).
-  $$
+  $
 </p>
 
 Product type definition using `data`:
@@ -292,7 +283,7 @@ module ×-Def₂ where
   proj₂ (a , b) = b
 \end{code}
 
-Projections and $$\mathsf{uniq}_{A\times B}$$:
+Projections and $\mathsf{uniq}_{A\times B}$:
 
 \begin{code}
 module ×-Fun₂ {i j}{A : Set i}{B : Set j} where
@@ -319,10 +310,10 @@ module ×-Fun₂ {i j}{A : Set i}{B : Set j} where
 The induction principle for the product type:
 
 <p class="equation">
-$$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \mathcal{U}}
+$\mathsf{ind}_{A\times B} : \prod\limits_{C : A \times B \to \U}
   \left( \prod\limits_{x:A}\ \prod\limits_{y:B}\ \,C( (x,y) ) \right)
   \to \prod\limits_{x:A \times B}\ \,C(x)
-$$
+$
 </p>
 
 \begin{code}
@@ -343,8 +334,8 @@ module ×-Ind₂ {i j}{A : Set i}{B : Set j} where
 \end{code}
 
 <p class="exercise">
-Generalize $$\mathsf{uniq}_{A\times B}$$ to Σ-types, and do the same for
-$$\Sigma$$-types, i.e. show induction and verify the definitional equality
+Generalize $\mathsf{uniq}_{A\times B}$ to Σ-types, and do the same for
+$\Sigma$-types, i.e. show induction and verify that the definitional equality
 is valid.
 </p>
 
@@ -397,20 +388,20 @@ module Σ-Ind₂ {i j}{A : Set i}{B : A → Set j} where
 <div class="exercise">
 Assuming as given only the <em>iterator</em> for natural numbers
 <p class="equation">
-$$\mathsf{ite} : \prod\limits_{C:\mathcal{U}} C \to (C \to C) \to \mathbb{N} \to C $$
+$\mathsf{ite} : \prod\limits_{C:\U} C \to (C \to C) \to \N \to C $
 </p>
 with the defining equations
 <p class="equation">
-$$
+$
 \begin{align*}
 \mathsf{ite}(C,c_0,c_s,0)               &\equiv c_0, \\
 \mathsf{ite}(C,c_0,c_s,\mathsf{suc}(n)) &\equiv c_s(\mathsf{ite}(C,c_0,c_s,n)),
 \end{align*}
-$$
+$
 </p>
-derive a function having the type of the recursor $$\mathsf{rec}$$.
+derive a function having the type of the recursor $\rec$.
 Show that the defining equations of the recursor hold propositionally for this
-function, using the induction principle for $$\mathbb{N}$$.
+function, using the induction principle for $\N$.
 </div>
 
 To solve this problem, let us define the recursor and also the induction principle
@@ -504,20 +495,14 @@ module ex1-4 where
 
 ### Exercise 1.5
 
-<div class="exercise">
+{: .exercise}
 
-Show that if we define
+  Show that if we define $$A+B :\equiv \sum\limits_{(x : \two)} \rec_{\two} (\U, A , B, x),$$
+  then we can give a definition of $\ind_{A + B}$ for which the
+  definitional equalities holds.
 
-  $$A+B :\equiv \sum\limits_{(x : \mathbbbold{2})} \mathsf{rec}_{\mathbbbold{2}} (\mathcal{U}, A , B, x),$$
-
-then we can give a definition of $$\ind\limits_{A + B}$$ for which the
-definitional equalities holds.
-
-</div>
-
-To solve this problem, let us introduce the $$\mathcal{2}$$ type, that is, the
-type with two constructors also called **Bool**. The constructors are also called
-false and true respectively.
+To solve this problem, let me introduce the $\two$ type, which is, the
+type only two constructors, the **Booleans**.
 
 \begin{code}
 module 𝟚-Def₁ where
@@ -553,7 +538,7 @@ module 𝟚-Ind₁ where
   ind c₀ c₁ 𝟙 = c₁
 \end{code}
 
-The we define the **coproduct** $$A+B$$ as follows:
+The we define the **coproduct** $A+B$ as follows:
 
 \begin{code}
 module +-Def₁ where
@@ -629,8 +614,8 @@ module +-Ind₁ where
 ### Exercise 1.6
 
 <div class="exercise" id="ex-1.6">
-Show that if we define $$A \times B :≡ \prod_{x:\mathbf{2}}\mathsf{rec}_{\mathbf{2}}\ (\mathcal{U}\, A\, B\, x)$$,
-then we can give a definition of $$\mathsf{ind}_{A\times B}$$ for which the definitional
+Show that if we define $A \times B :≡ \prod_{x:\mathbf{2}}\rec_{\mathbf{2}}\ (\U\, A\, B\, x)$,
+then we can give a definition of $\mathsf{ind}_{A\times B}$ for which the definitional
 equalities propositionally (i.e. using equality types).
 </div>
 
@@ -701,9 +686,9 @@ module ×-Ind₃ where
 
 <div class="exercise" id="exercise-1.8">
 
-Define multiplication and exponentiation using $$\mathsf{rec}{\mathbb{N}}$$.
-Verify that $$(\mathbb{N},+,0,\times,1)$$ is a semiring using only
-$$\ind{\mathbb{N}}$$.
+Define multiplication and exponentiation using $\rec{\N}$.
+Verify that $(\N,+,0,\times,1)$ is a semiring using only
+$\ind{\N}$.
 
 </div>
 
@@ -730,9 +715,9 @@ module Ex1-8 where
 
 On the other hand, a **semiring** is a type? together with two binary operators S(+,*) satisfying the following conditions:
 
-1. Additive associativity: $$\prod_{a,b,c : S} (a+b)+c=a+(b+c)$$.
+1. Additive associativity: $\prod_{a,b,c : S} (a+b)+c=a+(b+c)$.
 
-2. Additive commutativity: $$\prod_{a,b : S}  a+b=b+a$$.
+2. Additive commutativity: $\prod_{a,b : S}  a+b=b+a$.
 
 3. Multiplicative associativity: $$\prod_{a,b,c : S} (a*b)*c=a*(b*c)$$.
 
@@ -746,9 +731,9 @@ $$\prod_{a,b,c : S} a*(b+c)=(a*b)+(a*c)\text{  and  } \prod_{a,b,c : S} (b+c)*a=
 
 <div class="exercise" id="exercise-1.9">
 
-Define the type family $$\mathsf{Fin} : \mathbb{N} \to \mathcal{U}$$ mentioned
-at the end of Section 1.3, and the dependent function $$\mathsf{fmax} :
-\prod_{n:\mathbb{N}} \mathsf{Fin}(n+1)$$ mentioned in Section 1.4.
+Define the type family $\mathsf{Fin} : \N \to \U$ mentioned
+at the end of Section 1.3, and the dependent function $\mathsf{fmax} :
+\prod_{n:\N} \mathsf{Fin}(n+1)$ mentioned in Section 1.4.
 </div>
 
 \begin{code}
@@ -789,7 +774,7 @@ module Ex1-9 where
 ### Exercise 1.11
 
 <div class="exercise" id="exercise-1.11">
-Show that for any type $$A$$, we have $$\neg\neg\neg A \to \neg A$$.
+Show that for any type $A$, we have $\neg\neg\neg A \to \neg A$.
 </div>
 
 A propositional logic proof using [Agda-Prop](http://github.com/jonaprieto/agda-prop)
@@ -823,11 +808,7 @@ $$
 
 <div class="exercise" id="exercise-1.16">
 Show that addition of natural numbers is commutative:
-<p class="equation">
-$$
-\prod\limits_{i,j : \mathbb{N}}\ (i + j = j + i).
-$$
-</p>
+$\prod\limits_{i,j : \N}\ (i + j = j + i).$
 </div>
 
 Hint: by induction twice.
@@ -870,60 +851,60 @@ module Ex1-16 where
 ### Exercise 2.6
 
 <div class="exercise" id="exercise-2.6">
-Prove that if $$p : x \equiv y$$, then the function
-$$(p \cdot -) : (y \equiv z) \to (x \equiv z)$$ is an equivalence.
+Prove that if $p : x \equiv y$, then the function
+$(p \cdot -) : (y \equiv z) \to (x \equiv z)$ is an equivalence.
 </div>
 
-![path-triangle](/assets/ipe-images/path-triangle.png){: width="%50" }
+![path-triangle](/assets/ipe-images/path-triangle.png){: width="%30" }
 
 <div class="proof">
 Solution. <br/>
 
-To show the equivalence, it sufficies to show a function
-$$g : x \equiv z \to y \equiv z$$ such that we can prove
-$$ (p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$ and
-$$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$.
+To show the equivalence, it suffices to show a function
+$g : x \equiv z \to y \equiv z$ such that we can prove
+$ (p \cdot -) \circ g \sim \id_{x \equiv z}$ and
+$ g \circ (p \cdot -) \sim \id_{y \equiv z}$.
 
-Let's define the function $$g$$.
+Let's define the function $g$.
 <p class="equation">
-$$
+$
 \begin{align*}
 &g : x ≡ z → y ≡ z\\
-&g~m~=~\mathsf{trans}~(\mathsf{sym}~p)~m
+&g~m~=~\trans~(\sym~p)~m
 \end{align*}
-$$
+$
 </p>
 <br/>
 
-($$(p \cdot -) \circ g \sim \mathsf{id}_{x \equiv z}$$):
-Let be $$m : x ≡ z$$, we have,
+($(p \cdot -) \circ g \sim \id_{x \equiv z}$):
+Let be $m : x ≡ z$, we have,
 
 <p class="equation">
-$$
+$
 \begin{align*}
 (p \cdot -) \circ g (m) &= (p \cdot -)~(g~m)\\
-                        &= (p \cdot -)~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
-                        &= \mathsf{trans}~p~(\mathsf{trans}~(\mathsf{sym}~p)~m)\\
-                        &= \mathsf{trans}~(\mathsf{trans}~p~(\mathsf{sym}~p))~m\\
-                        &= \mathsf{trans}~\mathsf{refl}_{x≡z}~m\\
+                        &= (p \cdot -)~(\trans~(\sym~p)~m)\\
+                        &= \trans~p~(\trans~(\sym~p)~m)\\
+                        &= \trans~(\trans~p~(\sym~p))~m\\
+                        &= \trans~\refl_{x≡z}~m\\
                         &= m
 \end{align*}
-$$
+$
 </p>
 <br/>
-($$ g \circ (p \cdot -) \sim \mathsf{id}_{y \equiv z}$$):
-Let be $$n : y ≡ z$$, we have,
+($ g \circ (p \cdot -) \sim \id_{y \equiv z}$):
+Let be $n : y ≡ z$, we have,
 
 <p class="equation">
-$$
+$
 \begin{align*}
-g \circ (p \cdot -) n &= g (\mathsf{trans}~p~n)\\
-                      &= (\mathsf{trans}~(\mathsf{sym}~p)~(\mathsf{trans}~p~n)\\
-                      &= \mathsf{trans}~(\mathsf{trans}~(\mathsf{sym}~p)~p)~n\\
-                      &= \mathsf{trans}~\mathsf{refl}_{y ≡ z}~n\\
+g \circ (p \cdot -) n &= g (\trans~p~n)\\
+                      &= (\trans~(\sym~p)~(\trans~p~n)\\
+                      &= \trans~(\trans~(\sym~p)~p)~n\\
+                      &= \trans~\refl_{y ≡ z}~n\\
                       &= n.
 \end{align*}
-$$
+$
 </p>
 
 </div>
@@ -932,31 +913,31 @@ $$
 ### Exercise 2.10
 
 <div class="exercise" id="exercise-2.10">
-Prove that ∑-types are associative, in that for any $$A : \mathcal{U}$$
-and families $$B : A  \to U$$ and $$C : \sum_{(x : A)} B(x) \to \mathcal{U}$$,
+Prove that ∑-types are associative, in that for any $A : \U$
+and families $B : A  \to U$ and $C : \sum_{(x : A)} B(x) \to \U$,
 we have
 <p class="equation">
-$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \simeq \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
+$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \simeq \sum\limits_{p : \sum_{x:A} B(x)} C(p)$.
 </p>
 </div>
 
 <div class="proof" id="proof-2.10">
 Solution.<br/>
-We can prove that the following functions $$f$$ and $$g$$ are inverses.
+We can prove that the following functions $f$ and $g$ are inverses.
 
 <p class="equation">
-$$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)$$.
+$\sum\limits_{(x : A)} \sum\limits_{(y : B(x))} C((x,y)) \overset{f}{\underset{g}{\rightleftarrows}} \sum\limits_{p : \sum_{x:A} B(x)} C(p)$.
 </p>
-defined by $$f(a,b,c) :\equiv ((a,b),c)$$ and $$g(z,c) :\equiv (\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)$$.<br/>
+defined by $f(a,b,c) :\equiv ((a,b),c)$ and $g(z,c) :\equiv (\proj_1 z,\proj_{2} z, c)$.<br/>
 Indeed,
 <p class="equation">
-$$
+$
 \begin{align*}
 (f \circ g) (z, c) &:\equiv f (g (z,c))\\
-&:\equiv f\,(\mathsf{proj}_1 z,\mathsf{proj}_{2} z, c)\\
-&:\equiv ((\mathsf{proj}_1 z,\mathsf{proj}_{2} z), c)
+&:\equiv f\,(\proj_1 z,\proj_{2} z, c)\\
+&:\equiv ((\proj_1 z,\proj_{2} z), c)
 \end{align*}
-$$
+$
 </p>
 </div>
 
@@ -987,162 +968,113 @@ module Σ-Fun₁ where
 ### Exercise 2.13
 
 <div class="exercise" id="exercise-2.13">
-Show that $$(2 \simeq 2) \simeq 2$$.
+Show that $(\two \simeq \two) \simeq \two$.
 </div>
 
 <div class="proof" markdown="1">
 Solution.<br/>
 
-The following text is from [jdoughertyii](https://github.com/jdoughertyii/hott-exercises/blob/master/Ch02.v).<br/>
-The result essentially says that $$2$$ is equivalent to itself in two ways:
+The following text is from [Jdoughertyii](https://github.com/jdoughertyii/hott-exercises/blob/master/Ch02.v).<br/>
+The result essentially says that $\two$ is equivalent to itself in two ways:
 the identity provides one equivalence, and negation gives the other.  So we
-first define these.  $$\mathsf{id}_{2}$$ is its own quasi-inverse; we have
-$$\mathsf{id}_{2} \circ \mathsf{id}_{2} \equiv \mathsf{id}_{2}$$, so $$\mathsf{id}_{2}
-\circ \mathsf{id}_{2}
-\sim \mathsf{id}_{2}$$ easily.  $$\lnot$$ is also its own quasi-inverse, since for
-any $$x$$, $$\lnot\lnot x = x$$.
-To show the result, we need to map $$\mathsf{id}_{2}$$ and $$\lnot$$ onto $$2$$ is
-a quasi-invertible way.  But we need to define this map on all of $$2
-\simeq 2$$.  So for any $$h : 2\simeq 2$$, let $$f(h) = h(0_{2})$$,
-and define $$g : 2 \to (2 \simeq 2)$$ by
+first define these.  $\id_{\two}$ is its own quasi-inverse; we have
+$\id_{\two} \circ \id_{\two} \equiv \id_{\two}$, so $\id_{\two}
+\circ \id_{\two}
+\sim \id_{\two}$ easily.  $\lnot$ is also its own quasi-inverse, since for
+any $x$, $\lnot\lnot x = x$.
+To show the result, we need to map $\id_{\two}$ and $\lnot$ onto $\two$ is
+a quasi-invertible way.  But we need to define this map on all of $\two \simeq \two$.
+So for any $h : \two\simeq \two$, let $f(h) = h(\zero_{\two})$, and define
+$g : \two \to (\two \simeq \two)$ by
 
-$$
-  g(0_{2}) = \mathsf{id}_{2}
-  \qquad\qquad
-  g(1_{2}) = \lnot
-$$
+{: .equation}
+  $$ g(\zero_{\two}) = \id_{\two}$$ and  $$g(\one_{\two}) = \lnot.$$
 
 To show that these are quasi-inverses,
 note first that whatever else is the case, an equivalence
-$$2 \simeq 2$$ can't be a constant function, which we can prove by a case
-analysis.  Each of $$f(0_{2})$$ and $$f(1_{2})$$ is in $$2$$, so it is
-either $$0_{2}$$ or $$1_{2}$$.  So we have the cases:
- - $$f(0_{2}) = f(1_{2})$$, in which case we can apply $$f^{-1}$$ to either side to get a contradiction, or
- - $$f(0_{2}) = \lnot f(1_{2})$$. In which case we have the result
-Showing that $$f \circ g \sim \mathsf{id}_{2}$$ is easy, since we can do it by
+$\two \simeq \two$ can't be a constant function, which we can prove by a case
+analysis. Each of $f(\zero_{\two})$ and $f(\one_{\two})$ is in $\two$, so it is
+either $\zero_{\two}$ or $\one_{\two}$.
+
+So we have the cases:
+ - $f(\zero_{\two}) = f(\one_{\two})$, in which case we can apply $f^{-1}$ to either side to get a contradiction, or
+ - $f(\zero_{\two}) = \lnot f(\one_{\two})$. In which case we have the result
+Showing that $f \circ g \sim \id_{\two}$ is easy, since we can do it by
 cases.  We have
 
 $$\begin{align*}
-  f(g(0_{2})) &= f(\mathsf{id}_{2}) = \mathsf{id}_{2}(0_{2}) = 0_{2}
+  f(g(\zero_{\two})) &= f(\id_{\two}) = \id_{\two}(\zero_{\two}) = \zero_{\two}
   \\
-  f(g(1_{2})) &= f(\lnot) = \lnot 0_{2} = 1_{2}
-\end{align*}%
-$$
+  f(g(\one_{\two})) &= f(\lnot) = \lnot \zero_{\two} = \one_{\two}
+\end{align*}$$
 
-For the other direction, suppose that $$h : 2 \simeq 2$$ and that
+For the other direction, suppose that $h : \two \simeq \two$ and that
 function extensionality holds.
-$$h(0_{2})$$ is either $$0_{2}$$ or $$1_{2}$$.  If the first, then
-because $$h$$ isn't constant we have $$h(1_{2}) = \lnot h(0_{2}) =
-1_{2}$$, hence $$h = \mathsf{id}_{2}$$.  Furthermore,
-$$
-  g(f(h)) = g(h(0_{2})) = g(0_{2}) = \mathsf{id}_{2} = h
-$$
-The same argument works for the other case.  So $$f$$ is an equivalence, and
-$$(2 \simeq 2) \simeq 2$$.
+$h(\zero_{\two})$ is either $\zero_{\two}$ or $\one_{\two}$.  If the first, then
+because $h$ isn't constant we have $h(\one_{\two}) = \lnot h(\zero_{\two}) =
+\one_{\two}$, hence $h = \id_{\two}$.  Furthermore,
+
+$$g(f(h)) = g(h(\zero_{\two})) = g(\zero_{\two}) = \id_\two = h$$
+
+The same argument works for the other case. So $f$ is an equivalence, and
+$(\two \simeq \two) \simeq \two$.
 
 </div>
 
 ### Exercise 2.14
 
-<div class="exercise">
+{: .exercise}
 
-  Suppose we add to type theory <a
-  href="https://www.youtube.com/watch?v=IlfQjWqrK6I">the equality reflection
-  rule</a> which says that if there is an element $$p : \mathsf{Id}(x,y) $$,
-  then in fact $$ x :\equiv y$$. Prove that for any $$p : \mathsf{Id}(x,x)$$ we
-  have $$p \equiv \mathsf{refl}_x$$.
+  Suppose we add to type theory [the equality reflection
+  rule](https://www.youtube.com/watch?v=IlfQjWqrK6I) which says that if there is
+  an element $p : \id(x,y) $, then in fact $ x :\equiv y$. Prove that
+  for any $p : \id(x,x)$ we have $p \equiv \refl_x$.
 
-  <p class="equation">
-  $$
-    \begin{prooftree}
-    \AxiomC{$\vdash p : \mathsf{Id}(x, y)$}
-    \RightLabel{$\mathsf{Eq}$}
-    \UnaryInfC{$\vdash x \equiv y.$}
-    \end{prooftree}
-  $$
-  </p>
+  ![path](/assets/latexit-images/hott-ex2.14.png){: width="%30" }
 
-</div>
 
-<div class="proof">
+{: .proof}
   Proof.<br/>
-  We first fix the type of $$\mathsf{refl}_x$$ in order to apply effectively
+  We first fix the type of $$\refl_x$$ in order to apply effectively
   path induction.<br/>
-
-  <p class="equation">
-    $$
-    \begin{prooftree}
-    \AxiomC{$x : A, y : A, p : x = y ⊢ p : x = y$}
-    \RightLabel{$\mathsf{Eq}$}
-    \UnaryInfC{$x : A, y : A, p : x = y ⊢ x ≡ y$}
-    \AxiomC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = x$}
-    \BinaryInfC{$x : A, y : A, p : x = y ⊢ \mathsf{refl}_x : x = y.$}
-    \end{prooftree}
-    $$
-  </p>
-
-  Now, $$\mathsf{refl}_x$$ and $$p : x = y$$ in the formulation of path induction
+  ![path](/assets/latexit-images/hott-ex2.14b.png)
+  Now, $$\refl_x$$ and $$p : x = y$$ in the formulation of path induction
   are well-typed. Therefore, by path induction, we show that
-  $$\mathsf{Id}(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
-  \prod_{y : A} \prod_{p : x \equiv y }\ p \equiv \mathsf{refl}_{x}$$.
-  It sufficies to show and inhabitant of $$C(x, \mathsf{refl}_{x})$$, and this is
-  $$\mathsf{refl}_{\mathsf{refl}_x} : \mathsf{refl}_x = \mathsf{refl}_x$$.
+  $$\id(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
+  \prod_{y : A} \prod_{p : x \equiv y }\ p \equiv \refl_{x}$$.
+  It sufficies to show and inhabitant of $$C(x, \refl_{x})$$, and this is
+  $$\refl_{\refl_x} : \refl_x = \refl_x$$.
   By the equation reflection rule, since we have an inhabitant of $$p \equiv
-  \mathsf{refl}_x$$, we conclude these terms are judgemental equal,i.e., $$p \equiv \mathsf{refl}_x$$.
-</div>
+  \refl_x$$, we conclude these terms are judgemental equal, i.e., $$p \equiv \refl_x$$.
 
 ### Exercise 2.17
 
 <div class="exercise">
 <ul>
-  <li> Show that if $$A \simeq A$$  and $$B \simeq B'$$, then $$(A\times B) \simeq (A'\times B')$$. </li>
+  <li> Show that if $A \simeq A$  and $B \simeq B'$, then $(A\times B) \simeq (A'\times B')$. </li>
   <li> Give two proofs of this fact, one using univalence and one not using it, and show that the two proofs are equal.</li>
-  <li> Formulate and prove analogous results for the other type formers: $$\Sigma$$, $$\to$$, $$\Pi$$, and $$+$$. </li>
+  <li> Formulate and prove analogous results for the other type formers: $\Sigma$, $\to$, $\Pi$, and $+$. </li>
 </ul>
 </div>
 
 <div class="proof" markdown="1">
-- Assuming univalence.
-<br/>
-$$
-\begin{prooftree}
-\AxiomC{$f : A \simeq A$}
-\RightLabel{$\mathsf{ua}$}
-\UnaryInfC{$A =_{\mathcal{U}} A$}
-\AxiomC{$g : B \simeq B'$}
-\RightLabel{$\mathsf{ua}$}
-\UnaryInfC{$B =_{\mathcal{U}} B'$}
-\RightLabel{$\mathsf{pair=}$}
-\BinaryInfC{$(A\times B) =_{\mathcal{U}} (A'\times B')$}
-\RightLabel{$\mathsf{idtoequiv}$}
-\UnaryInfC{$(A\times B) \simeq (A'\times B')$}
-\end{prooftree}
-$$
-
-- Without using univalence, it is easy to prove
-that the function $$h$$ defined as follows gives us the
-equivalence that we are looking for.
-
-$$
-\begin{align*}
-&h : (A\times B) \to (A'\times B')\\
-&h (a , b) = (f\, a, g\, b).
-\end{align*}
-$$
-
-With the inverse:
-
-$$
-\begin{align*}
-&h^{-1} : (A'\times B') \to (A\times B)\\
-&h^{-1} (a , b) = (f^{-1}\, a, g^{-1}\, b).
-\end{align*}
-$$
-
-To prove these proofs are equal it is sufficies to
-show these underlyding functions are equal.
-
-
+  Proof.<br/>
+  - Assuming Univalence.
+  ![path](/assets/latexit-images/hott-ex2.17.png){: width="%50" }
+  - Without Univalence, it is easy to prove
+  that the function $h$ defined as follows gives us the
+  equivalence that we are looking for.
+  $$\begin{align*}
+  &h : (A\times B) \to (A'\times B')\\
+  &h (a , b) = (f\, a, g\, b).
+  \end{align*}$$
+  With the inverse:
+  $$\begin{align*}
+  &h^{-1} : (A'\times B') \to (A\times B)\\
+  &h^{-1} (a , b) = (f^{-1}\, a, g^{-1}\, b).
+  \end{align*}$$
+  To prove these proofs are equal it is suffices to
+  show these underlying functions are equal.
 </div>
 
 ## Chapter 3
@@ -1151,62 +1083,53 @@ To solve the following exercises, let us recall a few things:
 
 - The *set* definition in HoTT:
 
-A type $$A$$ is a **set** if for all $$x, y : A$$ and
-all $$p, q : x \equiv y$$, we have $$ p \equiv q$$. In a proposition
+A type $A$ is a **set** if for all $x, y : A$ and
+all $p, q : x \equiv y$, we have $ p \equiv q$. In a proposition
 we have
 
-$$
-\mathsf{isSet}(A) :\equiv \prod\limits_{(x,y : A)}\prod\limits_{(p,q : x \equiv y)} (p \equiv q).
-$$
+$$\mathsf{isSet}(A) :\equiv \prod\limits_{(x,y : A)}\prod\limits_{(p,q : x \equiv y)} (p \equiv q).$$
 
-- The type for equivalence from $$A$$ to $$B$$
+- The type for equivalence from $A$ to $B$
 
-$$
-  (A \simeq B) :\equiv \sum\limits_{f : A \to B} \mathsf{isequiv}(f),
-$$
-
+$$ (A \simeq B) :\equiv \sum\limits_{f : A \to B} \mathsf{isequiv}(f), $$
 where
-
 $$
 \mathsf{isequiv(f)} :\equiv
-  \left (\sum\limits_{g : B \to A} (f \circ g \sim \mathsf{id}_{B})\right) \times
-  \left (\sum\limits_{h : B \to A} (h \circ f \sim \mathsf{id}_{A})\right)
+  \left (\sum\limits_{g : B \to A} (f \circ g \sim \id_{B})\right) \times
+  \left (\sum\limits_{h : B \to A} (h \circ f \sim \id_{A})\right)
 $$
 
 - The homotopy concept:
 
-Let $$f , g : \prod\limits_{(x:A)} P(x)$$ be two sections of a
-type family $$P : A \to \mathcal{U}$$. A **homotopy** from $$f$$ to $$g$$
+Let $f , g : \prod\limits_{(x:A)} P(x)$ be two sections of a
+type family $P : A \to \U$. A **homotopy** from $f$ to $g$
 is a dependent function of type
 
-$$
-(f \sim g) :\equiv \prod\limits_{x : A} (f(x) \equiv g(x)).
-$$
+$$(f \sim g) :\equiv \prod\limits_{x : A} (f(x) \equiv g(x)).$$
 
 ### Exercise 3.1
 
-<div class="exercise">
-Prove that if $$A\simeq B$$ and $$A$$ is a set, then so is $$B$$.
-</div>
+{: .exercise"}
+  Prove that if $A\simeq B$ and $A$ is a set, then so is $B$.
 
 
 <div class="proof" id="proof-3.1" markdown="1" >
-Proof 1.<br/>
-Let be $$x,y : B$$ and $$p : x \equiv_{B} y$$ and $$q : x \equiv_{B} y$$.
-We need to prove $$ p \equiv q$$.<br/>
-Since $$A\simeq B$$ then there is a function $$f : A \to B$$ and some
-$$g : B \to A$$ such that $$f \circ g \sim id_{B}$$.
-Using this function $$g$$ over the path $$p$$ we get
+Proof.<br/>
+Let be $x,y : B$ and $p : x \equiv_{B} y$ and $q : x \equiv_{B} y$.
+We need to prove $ p \equiv q$.<br/>
+Since $A\simeq B$ then there is a function $f : A \to B$ and some
+$g : B \to A$ such that $f \circ g \sim id_{B}$.
+Using this function $g$ over the path $p$ we get
 $$\mathsf{ap}_{g} p : g x \equiv_{A} g y$$.
-We do the same but this time over the path $$q$$, that is,
+
+We do the same but this time over the path $q$, that is,
 $$\mathsf{ap}_{g} q : g x \equiv_{A} g y$$.
-Because of $$A$$ is a set, we have a new path called
+Because of $A$ is a set, we have a new path called
 $$m :\mathsf{ap}_{g} p \equiv_{gx \equiv_{A} gy} \mathsf{ap}_{g} q$$. <br/>
 
-Now, an action over this path $$m$$
+Now, an action over this path $m$
 using the function $$\mathsf{ap}_{f} : x \equiv_{A} y \to f x \equiv_{B} f y$$
 will give us
-
 
 $$
 \mathsf{ap}_{\mathsf{ap}_{f}} m :
@@ -1221,7 +1144,7 @@ $$
 (\mathsf{ap}_{f}) (\mathsf{ap}_{g} p) \equiv (\mathsf{ap}_{f})  (\mathsf{ap}_{g} q) &=
   \mathsf{ap}_{f \circ g} p \equiv \mathsf{ap}_{f \circ g} q\\
   &=(\text{transporting by using} f \sim g)\\
-  &=\mathsf{ap}_{\mathsf{id}_{B}} p \equiv \mathsf{ap}_{\mathsf{id}_{B}} q\\
+  &=\mathsf{ap}_{\id_{B}} p \equiv \mathsf{ap}_{\id_{B}} q\\
   &=p \equiv q.
 \end{align*}
 $$
@@ -1231,9 +1154,8 @@ Then, we have the inhabitant, $$\mathsf{ap}_{\mathsf{ap}_{f}} m : p \equiv q$$.
 
 ### Exercise 3.2
 
-<div class="exercise">
-Prove that if $$A$$ and $$B$$ are sets, then so is $$A+B$$.
-</div>
+{: .exercise}
+  Prove that if $A$ and $B$ are sets, then so is $A+B$.
 
 To solve this exercise, we should take a look of some results from Chapter 2,
 Section 2.12.
@@ -1241,14 +1163,14 @@ Section 2.12.
 <div class="proof" id="proof-3.2" markdown="1">
 Proof.<br/>
 
-Let be $$x, y : A + B$$, and paths $$p : x \equiv y$$, $$q : x \equiv
-y$$. Let's get a path $$p \equiv q$$.  We proceed by case analysis. If
-$$x :\equiv \mathsf{inl} a$$ and $$y :\equiv \mathsf{inl} b$$, for
-some $$a, b : A$$ then $$\mathsf{ap}_{\mathsf{inl}^{-1}} p : a
+Let be $x, y : A + B$, and paths $p : x \equiv y$, $q : x \equiv
+y$. Let's get a path $p \equiv q$.  We proceed by case analysis. If
+$x :\equiv \mathsf{inl} a$ and $y :\equiv \mathsf{inl} b$, for
+some $a, b : A$ then $$\mathsf{ap}_{\mathsf{inl}^{-1}} p : a
 \equiv_{A} b$$ and $$\mathsf{ap}_{\mathsf{inl}^{-1}} q : a \equiv_{A}
 b$$.
 
-Since $$A$$ is a set, there is a path between these last two terms,
+Since $A$ is a set, there is a path between these last two terms,
 this is, $$m : \mathsf{ap}_{\mathsf{inl}^{-1}} p \equiv
 \mathsf{ap}_{\mathsf{inl}^{-1}} q$$.  Now, an action over this path
 $$m$$ using the $$\mathsf{inl}$$ function give us:
@@ -1264,17 +1186,14 @@ same reasoning, we prove the case $$x :\equiv \mathsf{inr} a$$ and $$y
 \mathsf{inl} a$$ and $$y :\equiv \mathsf{inr} b$$ and $$x :\equiv
 \mathsf{inr} a$$ and $$y :\equiv \mathsf{inl} b$$, we use the
 encode-decode method to derive a proof term for 𝟘 from
-$$p$$ and $$q$$. Then, we may conclude anything we wish, that is, $$p
-\equiv q$$.
+$p$ and $q$. Then, we may conclude anything we wish, that is, $p\equiv q$.
 </div>
-
 
 ### Exercise 3.4
 
-<div class="exercise">
-Show that $$A$$ is a mere proposition if and only
-if $$A\to A$$ is contractible.
-</div>
+{: .exercise }
+  Show that $A$ is a mere proposition if and only
+  if $A\to A$ is contractible.
 
 <div class="proof" markdown="1">
 Proof. <br/>
@@ -1287,12 +1206,12 @@ $$
 This is my proposed term:
 
 $$
-t :\equiv λ \mathsf{Aprop} \to (\mathsf{id}_{A}, λ (g : A \to A) \to \mathsf{funext} (\lambda (x : A) \to \mathsf{Aprop}~(\mathsf{id}~x)~(g~x)).
+t :\equiv λ \mathsf{Aprop} \to (\id_{A}, λ (g : A \to A) \to \mathsf{funext} (\lambda (x : A) \to \mathsf{Aprop}~(\mathsf{id}~x)~(g~x)).
 $$
 
-- If $$A → A$$ is contractible, all functions in this type are equal,
-then in particular given $$x, y : A$$, the constant functions $$f(w) \equiv x$$
-and $$g(w) \equiv y$$ are equal. Then, $$\mathsf{happly} (f =_{A \to A} g, w) : x = y$$.
+- If $A → A$ is contractible, all functions in this type are equal,
+then in particular given $x, y : A$, the constant functions $f(w) \equiv x$
+and $g(w) \equiv y$ are equal. Then, $\mathsf{happly} (f =_{A \to A} g, w) : x = y$.
 Therefore $$A$$ is a mere proposition.
 
 </div>
@@ -1306,8 +1225,7 @@ Therefore $$A$$ is a mere proposition.
 
   - {% reference Wadler2015PT %}
 
-  - [Capriotti's hott-exercises](https://github.com/pcapriotti/hott-exercises)
+  - By Capriotti [HoTT-Exercises](https://github.com/pcapriotti/hott-exercises) and [Agda-Base](https://github.com/pcapriotti/agda-base/)
 
-  - [Capriotti's agda-base](https://github.com/pcapriotti/agda-base/)
 </div>
 {::options parse_block_html="false" /}

@@ -71,6 +71,36 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
   gulp.watch(['*.html', '*.md', '_layouts/*.html', '_posts/*'
              , '_includes/*.html', '_drafts/*', '**/*.html'
             ], ['jekyll-rebuild']);
+
+  var latexit = function(obj) {
+    plumber();
+    var file = new Vinyl();
+    file.path = obj.path;
+    console.log('*****************************************************************************');
+    console.log('[!] Image File ' + file.basename + ' changed!');
+    var outputpath = file.base + '/assets/latexit-images/' + file.basename;
+    child.spawn( 'cp'
+               , [ file.path
+                 , outputpath
+                 ]
+               , { stdio: 'inherit' }
+               )
+         .on('close', function(){
+           console.log("[!] Updated file by copying: " + outputpath);
+           console.log('*****************************************************************************');
+           reload;
+          });
+    plumber.stop();
+  };
+
+  gulp.watch(['_src/latexit-images/*'])
+      .on('add',    latexit )
+      .on('change', latexit )
+      .on('unlink', function(obj) {
+        console.log('[!] File ' + obj.path + ' was removed');
+        console.log('*****************************************************************************');
+      });
+
   gulp.watch(['_src/notes/*'])
       .on('change', function(obj) {
       plumber();
