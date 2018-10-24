@@ -50,7 +50,7 @@ Using the flattening lemma we can prove this equivalence:
 The circle is the higher inductive type with one point and one no trivial path
 called *path* as we can see in the following picture.
 
-![path](/assets/ipe-images/circle.png){: width="%30" }
+![path](/assets/ipe-images/circle.png){: width="40%" }
 *Figure 1. The circle type `S¹`.*
 
 ### Definition
@@ -139,7 +139,7 @@ The `pS` type as the figure below shows, it is a circle with two edges
 in opposite direction between two points. Notice this HIT is just different
 form the suspension of booleans (Σ 2) by reversing one arrow.
 
-![path](/assets/ipe-images/tour-type.png){: width="%40" }
+![path](/assets/ipe-images/tour-type.png){: width="40%" }
 *Figure 2. `pS` Type.*
 
 <pre class="Agda">{% raw %}<a id="3259" class="Comment">-- Definition of pS type using an Agda hack.</a>
@@ -535,7 +535,7 @@ When it is the `base` case, `P base` is definitionally equal to the booleans `Bo
 When `P` is acting on `loop`, a path of type `Bool == Bool` is given
 by Univalence Axiom and the equivalence `neg`, the negation function for booleans.
 
-![path](/assets/ipe-images/Bid.png){: width="%40" }
+![path](/assets/ipe-images/Bid.png){: width="40%" }
 *Figure 3. `P` type family.*
 
 Let's define this type family formally.

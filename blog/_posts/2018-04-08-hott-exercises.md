@@ -963,14 +963,14 @@ $(\two \simeq \two) \simeq \two$.
   an element $p : \id(x,y) $, then in fact $ x :\equiv y$. Prove that
   for any $p : \id(x,x)$ we have $p \equiv \refl_x$.
 
-  ![path](/assets/latexit-images/hott-ex2.14.png){: width="%30" }
+  ![path](/assets/latexit-images/hott-ex2.14.png){: width="25%" }
 
 
 {: .proof}
   Proof.<br/>
   We first fix the type of $$\refl_x$$ in order to apply effectively
   path induction.<br/>
-  ![path](/assets/latexit-images/hott-ex2.14b.png)
+  ![path](/assets/latexit-images/hott-ex2.14b.png){: width="100%" }
   Now, $$\refl_x$$ and $$p : x = y$$ in the formulation of path induction
   are well-typed. Therefore, by path induction, we show that
   $$\id(p,\mathsf{refl_{x}})$$. Let be $$x : A$$ and $$C :\equiv
@@ -993,7 +993,7 @@ $(\two \simeq \two) \simeq \two$.
 <div class="proof" markdown="1">
   Proof.<br/>
   - Assuming Univalence.
-  ![path](/assets/latexit-images/hott-ex2.17.png){: width="%50" }
+  ![path](/assets/latexit-images/hott-ex2.17.png){: width="50%" }
   - Without Univalence, it is easy to prove
   that the function $h$ defined as follows gives us the
   equivalence that we are looking for.
