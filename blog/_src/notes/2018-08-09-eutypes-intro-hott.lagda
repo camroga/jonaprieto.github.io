@@ -234,3 +234,16 @@ equiv→bifun
           Σ ((a : A) → isContr (Σ B λ b → R a b)) (λ _ → ((b : B) → isContr (Σ A λ a → R a b))))
 equiv→bifun f p = {!  !}
 \end{code}
+
+
+\begin{code}
+pr : ∀ {l} {A B : Type l} → isSet (A ≃ B)
+pr {l}{A}{B} x .x p idp =
+  begin
+    p
+      ==⟨ {!   !} ⟩
+    {!   !}
+      ==⟨ {!   !} ⟩
+    idp
+    ∎
+\end{code}

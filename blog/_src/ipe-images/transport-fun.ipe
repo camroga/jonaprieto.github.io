@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20180322162347" modified="D:20180802185203"/>
+<info created="D:20180322162347" modified="D:20181025231929"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -372,10 +372,10 @@ h
 359.772 675.461 l
 </path>
 <use name="mark/disk(sx)" pos="362.044 675.4" size="normal" stroke="darkred"/>
-<text matrix="1 0 0 1 -0.92498 -1.5958" transformations="translations" pos="301.129 722.37" stroke="black" type="label" width="5.694" height="4.289" depth="0" valign="baseline" style="math">x</text>
-<text matrix="1 0 0 1 -186.558 -29.1051" transformations="translations" pos="354 694" stroke="black" type="label" width="47.208" height="8.381" depth="2.49" valign="baseline" style="math">\mathsf{tr}^{A} (p^{-1}, x)
+<text matrix="1 0 0 1 -0.92498 -1.5958" transformations="translations" pos="301.129 722.37" stroke="black" type="label" width="5.266" height="4.289" depth="0" valign="baseline" style="math">a</text>
+<text matrix="1 0 0 1 -186.558 -29.1051" transformations="translations" pos="354 694" stroke="black" type="label" width="46.781" height="8.381" depth="2.49" valign="baseline" style="math">\mathsf{tr}^{A} (p^{-1}, a)
 </text>
-<text matrix="1 0 0 1 -88.7778 -32.3762" transformations="translations" pos="354 694" stroke="black" type="label" width="56.479" height="8.381" depth="2.49" valign="baseline" style="math">f~\mathsf{tr}^{A} (p^{-1}, x)</text>
-<text matrix="1 0 0 1 15.4889 -22.7063" transformations="translations" pos="354 694" stroke="black" type="label" width="87.665" height="8.381" depth="2.49" valign="baseline" style="math">\mathsf{tr}^{B}(p, f~\mathsf{tr}^{A} (p^{-1}, x))</text>
+<text matrix="1 0 0 1 -88.7778 -32.3762" transformations="translations" pos="354 694" stroke="black" type="label" width="56.051" height="8.381" depth="2.49" valign="baseline" style="math">f~\mathsf{tr}^{A} (p^{-1}, a)</text>
+<text matrix="1 0 0 1 15.4889 -22.7063" transformations="translations" pos="354 694" stroke="black" type="label" width="87.238" height="8.381" depth="2.49" valign="baseline" style="math">\mathsf{tr}^{B}(p, f~\mathsf{tr}^{A} (p^{-1}, a))</text>
 </page>
 </ipe>

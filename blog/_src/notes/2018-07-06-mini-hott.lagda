@@ -1,4 +1,4 @@
----
+¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬---
 layout: "post"
 title: "Mini HoTT library in Agda"
 date: "2018-07-06"
@@ -172,6 +172,22 @@ Boolean type, two constants true and false
 data Bool : Type₀ where
   true  : Bool
   false : Bool
+\end{code}
+
+Synonyms:
+\begin{code}
+𝟚  = Bool
+𝟘₂ = false
+𝟙₂ = true
+\end{code}
+
+We find many times writing the negation function, then let's
+make it available:
+
+\begin{code}
+neg¬ : Bool → Bool
+neg¬ true  = false
+neg¬ false = true
 \end{code}
 
 *Booleans can be also defined using the coproduct.*
@@ -890,7 +906,7 @@ coe
   ---------
   → (A → B)
 
-coe p A = transport (λ X → X) p A
+coe p a = transport (λ X → X) p a
 \end{code}
 
 ### Pathover
@@ -3445,13 +3461,6 @@ module FundGroupCircle where
 
   preserves-composition : ∀ n m → loops (n +ᶻ m) == loops n · loops m
   preserves-composition n m = z-act+ (Ω-st S¹ base) n m loop
-\end{code}
-
-## Examples
-
-\begin{code}
-pr : ∀ {l} {A B : Type l} → isSet A → isSet B → isSet (A == B)
-pr {_}{A}{B} is-setA is-setB x y p q = {! is-setA  !}
 \end{code}
 
 ## Agda references
