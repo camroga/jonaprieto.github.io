@@ -98,7 +98,7 @@ Path = _==_
 ## Heterogeneous equality
 
 The heterogeneous equality as it is defined in {% cite Licata2015 %} is a type
-for equality between two elements a : A, b : B, along an equality `α : A == B`.
+for equality between two elements `a : A`, `b : B`, along an equality `α : A == B`.
 Its terms are constructed by the reflexivity constructor which applies only when
 both the two types and the two terms are judgementally equal.
 
