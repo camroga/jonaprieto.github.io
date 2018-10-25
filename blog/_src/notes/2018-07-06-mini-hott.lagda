@@ -37,7 +37,7 @@ Please check out the references at the end of this article.
 \begin{code}
 {-# OPTIONS --without-K #-}
 
-open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ ) public
+open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ )
 
 Type : (ℓ : Level) → Set (lsuc ℓ)
 Type ℓ = Set ℓ
@@ -3445,6 +3445,13 @@ module FundGroupCircle where
 
   preserves-composition : ∀ n m → loops (n +ᶻ m) == loops n · loops m
   preserves-composition n m = z-act+ (Ω-st S¹ base) n m loop
+\end{code}
+
+## Examples
+
+\begin{code}
+pr : ∀ {l} {A B : Type l} → isSet A → isSet B → isSet (A == B)
+pr {_}{A}{B} is-setA is-setB x y p q = {! is-setA  !}
 \end{code}
 
 ## Agda references
