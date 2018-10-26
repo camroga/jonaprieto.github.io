@@ -70,75 +70,14 @@
         Im: ['\\mathop{\\mathrm{Im}}'],
         Res: ['\\mathop{\\mathrm{Res}}'],
 
-        // Marc Bezem commands from INF329
-        depi       : ['\\Pi{#1{:}#2.\\,#3}',3],
-        sigm       : ['\\Sigma{#1{:}#2.\\,#3}',3],
-        subs       : ['\\{#1{:}#2\\mid#3\\}',3],
-        lam        : ['\\lambda{#1.\\,#2}',2],
-        lamt       : ['\\lambda{#1{:}#2.\\,#3}',3],
-        sbr        : ['[\\![#1]\\!]',1],
-        pbr        : ['(\\!(#1)\\!)',1],
-        semr       : ['[\\![#1]\\!]_{\\rho}',1],
-        semrO      : ['[\\![#1]\\!]^{\\Omega}_{\\rho}',1],
-        sems       : ['[\\![#1]\\!]_{\\sigma}',1],
-        vsbr       : ['{[\\![#1]\\!]}_0',1],
-        psbr       : ['{[\\![#1]\\!]}_1',1],
 
-        red        : ['~~{\\to}~~'],
-        unphsi     : ['{\\univ_{\\varphi\\psi}}'],
-        unphis     : ['{\\univ_{\\varphi_0\\varphi_1}}'],
-        unpsis     : ['{\\univ_{\\psi_0\\psi_1}}'],
-        extfs      : ['{\\ext_{f_0 f_1}}'],
-        extas      : ['{\\ext_{a_0 a_1}}'],
-        apO        : ['{ap_\\Omega}'],
-        eqA        : ['{eq_A}'],
-        ra         : ['\\rightarrow'],
-        la         : ['\\leftarrow'],
-        lra        : ['\\leftrightarrow'],
-        rtr        : ['\\stackrel{*}{\\to}'],
-        ltr        : ['\\stackrel{*}{\\leftarrow}'],
-        semO       : ['{[\\![#1]\\!]^{\\Omega}}', 1],
-        foo        : ['\\mathit{foo}'],
-        SN         : ['\\mathit{SN}'],
-        GamU       : ['\\Gamma_{\\!U}'],
-        Ex         : ['\\mathsf{Ex}'],
-        Tr         : ['\\mathrm{T}'],
-        Fa         : ['\\mathrm{F}'],
-        TEXT       : ['{\\mathrm{TEXT}}'],
-        Nat        : ['\\mathbb{N}'],
-        Int        : ['\\mathbb{Z}'],
-        Rat        : ['\\mathbb{Q}'],
-        Rea        : ['\\mathbb{R}'],
-        cL         : ['\\mathcal{L}'],
-        cP         : ['\\mathcal{P}'],
-        cnum       : ['\\underline{#1}',1],
-        set        : ['\\{#1\\}',1],
-        seg        : ['[#1.\\,.#2]',2],
-        pair       : ['\\langle #1,#2\\rangle',2],
-        dom        : ['\\mathit{dom}'],
-        range      : ['\\mathit{range}'],
-        tru        : ['\\mathsf{true}'],
-        fal        : ['\\mathsf{false}'],
-        Id         : ['\\mathsf{I}'],
-        UU         : ['{\\cal U}'],
-        VV         : ['{\\cal V}'],
-        Uo         : ['\\UU_0'],
-        Uu         : ['\\UU_1'],
-        bfnull     : ['\\mathbf{0}'],
-        bfone      : ['\\mathbf{1}'],
-        elone      : ['\\star'],
-        bftwo      : ['\\mathbf{2}'],
-
-        ct         : ['\\mathchoice{\\mathbin{\\raisebox{0.5ex}{$\\displaystyle\\centerdot$}}}%
-                     {\\mathbin{\\raisebox{0.5ex}{$\\centerdot$}}}%
-                     {\\mathbin{\\raisebox{0.25ex}{$\\scriptstyle\\,\\centerdot\\,$}}}%
-                     {\\mathbin{\\raisebox{0.1ex}{$\\scriptscriptstyle\\,\\centerdot\\,$}}}'],
-
-        opp        : ['\\mathord{#1^{-1}}',1],
-        leaveout   : ['{}',1],
 
         Node : ['\\mathsf{Node}'],
         Edge : ['\\mathsf{Edge}'],
+
+        minimize : ['\\mathsf{minimize}'],
+        maximize : ['\\mathsf{maximize}'],
+        st : ['\\mathsf{st}']
 
       }
     }
@@ -147,7 +86,7 @@
 <script
   type="text/javascript"
   charset="utf-8"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 >
 </script>
 {% endif %}
