@@ -1,4 +1,4 @@
-¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬---
+---
 layout: "post"
 title: "Mini HoTT library in Agda"
 date: "2018-07-06"
@@ -162,6 +162,20 @@ infixr 80 _+_
 data _+_ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (B : Type ℓⱼ) : Type (ℓᵢ ⊔ ℓⱼ) where
   inl : A → A + B
   inr : B → A + B
+\end{code}
+
+### Implication and Biconditional type
+
+\begin{code}
+-- Implication.
+data _⇒_ {ℓ}(A B : Type ℓ) : Type ℓ where
+  fun : (A → B) → A ⇒ B
+\end{code}
+
+\begin{code}
+-- Biconditional.
+_⇔_ : ∀ {ℓ} → Type ℓ → Type ℓ → Type ℓ
+A ⇔ B = (A ⇒ B) × (B ⇒ A)
 \end{code}
 
 ### Boolean
@@ -2550,6 +2564,7 @@ module Truncation where
             ---------
             → ∥ A ∥ → P
   trunc-rec _ f !∣ x ∣ = f x
+open Truncation public
 \end{code}
 
 ## Set truncation

@@ -12,266 +12,166 @@ toc: true
 linkify: true
 ---
 
-Research meetings.
+Research happens every day!
 
-\begin{code}
-{-# OPTIONS --without-K #-}
-open import 2018-07-06-mini-hott
-\end{code}
+## Topics
 
-### Research topics
+**(Homotopy) Type Theory**
 
-The goals and topics can change along the time, nowadays
-I'm working on the following.
-
-**(homotopy) type theory**
-
-- [pathovers](http://tinyurl.com/pathorvers): proofs finished, fixing the writing ✍️
-- [circle equivalences](http://tinyurl.com/pathorvers): removing a postulate  ✍️
-- [mini-hott](http://tinyurl.com/mini-hott): a Mini-HoTT library for Agda ✍️
+- [Pathovers](http://tinyurl.com/pathorvers): proofs finished, fixing the writing ✍️
+- [Circle equivalences](http://tinyurl.com/pathorvers): removing a postulate  ✍️
+- [Mini-HoTT](http://tinyurl.com/mini-hott): a Mini-HoTT library for Agda ✍️
 - A HIT can be seen as graph where each point-constructor is a node,
   each path-constructor is an edge. By changing the direction of one edge,
   can we get another HIT equivalent?
 
-**Formal graph theory**
+**(Formal) Graph Theory**
 
-- What is a *good* characterization for planar graphs. What really does
-  *good* means? good from the verification point of view or to be most suitable
-  to use (depend, hott) type theory?
-
-  When $$ A : Type$$ when want to have a property like `isPlanar` such that it
-  is not a proposition in the HoTT context.
+- What is a *good* characterization for planar graphs? What really does *good* means?
+- The goal here is to came up with a property `isPlanar` to not be a proposition in the `HoTT` context.
 
 {:.equation }
   $$ \sum_{g:\mathsf{Graph}(A)}~\mathsf{isPlanar_{A}(g)}.$$
 
---------
-
-### Meetings with [M]arc and [H]åkon
-
-Showing the most recent to the oldest.
-
-#### [H] **17-19** October
-
-1. Definitions for Graphs in HoTT:
-\begin{code}
-module _ where
-module C₂ where
-\end{code}
-
-Let's define first an auxiliary type for the this approach.
-
-{: .foldable until="3"}
-\begin{code}
-  -- C₂ HIT
-  data !C₂ : Set where
-    !* : !C₂
-
-  C₂ : Type₀
-  C₂ = !C₂
-
-  * : C₂
-  * = !*
-
-  postulate
-    t : * == *
-    q : t · t == refl *
-    trunc : (x y : C₂)(α β : x == y)(ε δ : α == β) → ε == δ
-    -- C₂ is h-level 3, h-groupoid?
-
-  -- Def. Recursion on points:
-  C₂-rec
-    : ∀ {ℓ}
-    → (A : Type ℓ)
-    → (a : A)
-    → (p : a == a)
-    --------------
-    → (C₂ → A)
-
-  C₂-rec A a p !* = a
-
-  -- Postulate. Recursion on paths:
-  postulate
-    C₂-βrec
-      : ∀ {ℓ}
-      → (A : Type ℓ)
-      → (a : A)
-      → (p : a == a)
-      -----------------------------
-      → ap (C₂-rec A a p) t == p
-
-  -- Def.  Induction principle on points:
-  C₂-ind
-    : ∀ {ℓ} (P : C₂ → Type ℓ)
-    → (x : P *)
-    → (x == x [ P ↓ t ])
-    ------------------------
-    → ((t : C₂) → P t)
-
-  C₂-ind P x p !* = x
-  -- Postulate. Induction principle on paths:
-  postulate
-    C₂-βind
-      : ∀ {ℓ} (P : C₂ → Type ℓ)
-      → (x : P *)
-      → (p : x == x [ P ↓ t ])
-      -------------------------------
-      → apd (C₂-ind P x p) t == p
-\end{code}
-
-Now, we define the type family for
-
-{: .foldable until="2"}
-\begin{code}
-  -- P₂ Type family
-  P₂ : C₂ → Set
-
-  neg-eq : 𝟚 ≃ 𝟚
-  neg-eq = qinv-≃ neg¬ (neg¬ , h , h)
-    where
-      h : neg¬ ∘ neg¬ ∼ id
-      h true  = idp
-      h false = idp
-
-  P₂ = C₂-rec Type₀ 𝟚 (ua neg-eq)
-
-  -- Defs.
-  flip₁ : tr P₂ t false == true
-  flip₁ = transport-ua P₂ t neg-eq (C₂-βrec Type₀ 𝟚 (ua neg-eq)) false
-
-  flip₂ : tr P₂ t true == false
-  flip₂ = transport-ua P₂ t neg-eq (C₂-βrec Type₀ 𝟚 (ua neg-eq)) true
-
-  postulate
-    tr-inv-t : ∀ {x} → transport P₂ (! t) x == neg¬ x
-    -- Check the article tinyurl.com/circle-puzzle, it has how to remove this
-
-\end{code}
-
-A *graph* can be defined by using two constructors: `Node` and `Edge`.
+## Progress
 
 \begin{code}
-module GraphForm₁ where
-  open C₂
+{-# OPTIONS --without-K #-}
+
+open import 2018-07-06-mini-hott
+open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ )
+
+_ = Set
 \end{code}
 
-- A set of vertices:
+## Graphs
+
+{: .only-website }
+  *This is a work in progress jointly with Håkon Robbestad. Some of
+  the following proofs are collapsed or hidden to reduce the size of the document.
+  Nevertheless, the reader can click on them to open the full description.
+  Pictures are also clickable.*
+
+{: .hide }
+  - *[M]arc and [H]åkon*
+  - 2018-10-26
+    - We were checking the first definitions in Agda
+    - We discuss why A=B is a Set when A and B are sets
+    - `Π (x:A) B x` is a Set as long as $B$ is a Set
+    - `Σ A B` is a Set as long as $A$ and $B$ is a Set
+    - `A → B` is a Set when B is a Set.
+    - contr => isProp => isSet
+
+  - 2018-09-17 and 2018-09-19:
+    - We discuss how to formalize a graph when it's undirected
+  - 2018-09-14
+     - [H] We review the lemmas for the *flattening lemma*. We went through Lemma 6.12.1 to Lemma 6.12.7.
+     - I commented a little bit the MacLane’s cycle-space and Tutte’s theorem
+       which relies on the idea of contractible version of the graphs to use
+       later the Kuratowski theorem.
+  - 2018-09-07
+    - We sketch briefly **alga** or *the algebra of graphs* described in (\cite{Mokhov2017}).
+    - We review the inductive definition for graphs in {% cite Tammet1996 %},
+    we wanted to have a predicate like $$ \sum_{g:\mathsf{Graph}}~\mathsf{isPlanar(g)}$$
+    - Håkon also pointed out MacLane's planar graph characterization to
+    review in future sessions.
+    - [M] Making some improvements to [Pathovers' article](http://tinyurl.com/pathovers).
+
+Our goal will consist to formalise the particular case when the graph is
+
+- *connected*,
+- *undirected*, and
+- no *multi-graphs*.
+
+## Approach A
+
+![path](/assets/ipe-images/graph-approach1.png){: width="40%" }
+*Figure 1. Connected, undirected, no multi-graphs.*
+
+### Graph definition
+
+\begin{code}
+module Approach₁ {ℓ} where
+
+  record Graph : Type (lsuc ℓ) where
+    constructor graph
+    field
+      -- G = (V, E)
+      Node : Type ℓ
+      Edge : Node → Node → Type ℓ
+
+      -- Properties
+      -- ==========
+
+      -- The vertices form a set.
+      NodeIsSet : isSet Node
+      -- No multi-graphs.
+      EdgeisProp : ∀ {x y : Node} → isProp (Edge x y)
+      -- Undirected.
+      α : ∀ {x y : Node} → Edge x y ⇔ Edge y x
+      -- α : ∀ {x y : Node} → Edge x y == Edge y x
+      -- α-id : ∀ {x : Node} → ≃-to-→ (α {x = x}{y = x}) == id
+\end{code}
+
+
+\begin{code}
+Graph = Approach₁.Graph
+\end{code}
+
+### Cyclic definition
+
+![path](/assets/ipe-images/cyclic.png){: width="40%" }
+*Figure 2. Cyclic relation `R`.*
+
+Now, let's define cycle orders:
+
+\begin{code}
+module CyclicForm {ℓᵢ ℓⱼ} where
+
+  record Cyclic (A : Type ℓᵢ)
+                (R : A → A → A → Type ℓⱼ)
+                : Type (ℓᵢ ⊔ ℓⱼ) where
+    field
+
+      RisProp : ∀ {a b c : A} → isProp (R a b c)
+
+      axiom₀
+        : ∀ {a b c : A}
+        → R a b c
+        → R a c b
+        ---------
+        → b == c
+
+      axiom₁
+        : ∀ {a b : A}
+        → R a b b
+
+      axiom₂
+        : ∀ {a b c : A}
+        → R a b c
+        ---------
+        → R b c a
+
+      axiom₃
+        : ∀ {a b c d : A}
+        → R a b c
+        → R a c d
+        ---------
+        → R a b d
+
+      axiomₓ
+        : ∀ {a b c : A} → ∥ (R a b c) + (R a c b) ∥
+\end{code}
+
 \begin{code}
   -- Def.
-  postulate
-    Node : Set
+  -- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)
+  -- CyclicIsProp x y = {!   !}
 \end{code}
 
-- A set of edges:
+### State-of-art
 
-{: .eq }
-  $$ \Edge :≡ \sum_{x : C₂} ~\Node^{P₂~x}$$
-
-\begin{code}
-  -- Def.
-  postulate
-    -- Edge : (x : C₂) → (P₂ x → Node) → Set
-    Edge : Σ C₂ (λ x → (P₂ x) → Node) → Set
-\end{code}
-
-\begin{code}
-  -- Ex.
-  postulate
-    x : Node
-    y : Node
-
-  x-y : P₂ * → Node
-  x-y true  = x
-  x-y false = y
-
-  y-x : P₂ * → Node
-  y-x true  = y
-  y-x false = x
-
-  e1 = Edge (* , x-y)
-  e2 = Edge (* , y-x)
-
-
-  e1=e2 : e1 == e2
-  e1=e2 = ap Edge (pair= (t , η))
-    where
-      lem : (x : P₂ *) → x-y (neg¬ x) == y-x x
-      lem true  = idp
-      lem false = idp
-
-      η : tr (λ x → P₂ x → Node) t x-y == y-x
-      η =
-        begin
-          tr (λ x → P₂ x → Node) t x-y
-            ==⟨ transport-fun t x-y ⟩
-          (λ x → tr (λ _ → Node) t (x-y (tr P₂ (! t) x)))
-            ==⟨ funext (λ x → transport-const t (x-y (tr P₂ (! t) x))) ⟩
-          (λ x → x-y (tr P₂ (! t) x))
-            ==⟨ funext (λ x → ap x-y tr-inv-t) ⟩
-          (λ x → x-y (neg¬ x))
-            ==⟨ funext (λ x → lem x) ⟩
-          y-x
-        ∎
-\end{code}
-
-1.2. Option B
-
-\begin{code}
--- Node : Set
--- Edge : Node → Node → Set
--- data Graph₂ : Set where
---  α : ∀ {x y : Node} → Edge x y ≃ Edge y x
---  -- α x x == id?
-\end{code}
-
-Now we choose which definition we use:
-
-\begin{code}
--- Graph = Graph₂
-\end{code}
-
-2. The graphs we are intended to represent are:
-
-  - *Connected*
-  - *Undirected*
-  - *Multigraphs*
-
-In order to support the undirected property,
-the following are some proposed.
-
-2.1
-
-#### **2018-09-14**
-
-With Håkon:
-
-- HoTT stuff: we review the lemmas for the flattening lemma. We went
-through Lemma 6.12.1 to Lemma 6.12.7.
-- Graphs: I commented a little bit the MacLane's cycle-space and
-Tutte's theorem which relies on the idea of contractible version of the graphs
-to use later the Kuratowski theorem.
-
-With Marc:
-- Working on [the circle article](http://tinyurl.com/circle-hott) to remove the postulated lemmas
-
-
-#### **2018-09-07**
-
-With Håkon:
-- We sketch briefly **alga** or *the algebra of graphs* described in (\cite{Mokhov2017}).
-- We review the inductive definition for graphs in {% cite Tammet1996 %},
-we wanted to have a predicate like $$ \sum_{g:\mathsf{Graph}}~\mathsf{isPlanar(g)}$$
-- Håkon also pointed out MacLane's planar graph characterization to
-review in future sessions.
-
-With Marc:
-- Making some improvements to [Pathovers' article](http://tinyurl.com/pathovers).
-
---------
-
-### Formalization of graphs
-
-- Papers relevant to formalizations of graphs:
+Papers relevant to formalizations of graphs:
 
 **Inductive definitions**. Using inductive definitions allows us to
 have for free an inductive principle to prove properties.
@@ -280,37 +180,38 @@ reason about their constructions. Which it's taking care of the order of the ste
 in the construction. So, how can we have a relation between these constructions
 in such a away, a graph can be obtained by (homotopic?) constructions?.
 
-#### {% cite yamamoto %}
+- {% cite yamamoto %}
 
 In this paper, the authors show as their main result, the formalization of the
 Euler formula. To achieve this they define inductively planar graphs by using the notion
 of cycles. The formalization was done in `HOL`.
 
 
-#### {% cite BauerN02 %}
+- {% cite BauerN02 %}
 
 This paper is about the formalization of the [Five-Colour
 theorem](https://en.wikipedia.org/wiki/Five_color_theorem). In this, the authors
 show an inductive definition for **near triangulations** in order to define
 inductively planar graphs. This definition has three constructors:
 
-  ![](/assets/png-images/2018-09-20-meetings-fde76f5f.png)
-  ![](/assets/png-images/2018-09-20-meetings-4fc8e00a.png)
+  ![](/assets/png-images/2018-09-20-meetings-fde76f5f.png){: width="40%" }
+  ![](/assets/png-images/2018-09-20-meetings-4fc8e00a.png){: width="40%" }
 
-Some results:
-  - Any planar graph has at least a vertex of at least degree less or equals five.
-  - Idem for near triangulations.
+  - Some results:
+    - Any planar graph has at least a vertex of at least degree less or equals five.
+    - Idem for near triangulations.
 
-#### {% cite Bauer %}
+- {% cite Bauer %}
+
 Continuing with near triangulations, Bauer in this thesis has an extra
 constructor for it.
 
-![](/assets/png-images/2018-09-20-bitacora-c68ebbd9.png)
+![](/assets/png-images/2018-09-20-bitacora-c68ebbd9.png){: width="40%" }
 
 He ends up Chapter 2 with the following summary of formalizations of
 planar graphs.
 
-  ![](/assets/png-images/2018-09-20-bitacora-485765ed.png)
+  ![](/assets/png-images/2018-09-20-bitacora-485765ed.png){: width="40%" }
 
   > Triangles vs. Polygons: The definition using triangles is by far eas- ier.
   > This simplifies proofs about the construction. If faces of arbi- trary
@@ -319,11 +220,6 @@ planar graphs.
   > operations to delete edges in order to construct non-triangular graphs,
   > which complicates a verification. Directed
 
-#### {% cite Mokhov2017 %}
-
-Alga. Missing description.
-
---------
 
 ### Questions and Related blog post
 

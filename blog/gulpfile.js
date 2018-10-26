@@ -58,6 +58,19 @@ gulp.task('scripts', function() {
              .pipe(gulp.dest('assets'));
 });
 
+gulp.task('ipe-images', () => function(){
+	return gulp.src('assets/ipe-images/*.png')
+          	 .pipe(imagemin())
+             .pipe(gulp.dest('_site/assets/ipe-images'))
+             .pipe(browserSync.reload())
+});
+
+gulp.task('png-images', () => function(){
+	return gulp.src('assets/png-images/*.png')
+          	 .pipe(imagemin())
+          	 .pipe(gulp.dest('_site/assets/png-images'))
+});
+
 gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
   browserSync.init({ browser: 'chrome'
                    , open: false
@@ -68,6 +81,7 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
 
   gulp.watch(['_sass/**/*.scss','_sass/*.scss'], ['sass']);
   gulp.watch(['_js/**/*.js'], ['scripts']);
+  gulp.watch(['_src/ipe-images/*'], ['ipe-images']);
   gulp.watch(['*.html', '*.md', '_layouts/*.html', '_posts/*'
              , '_includes/*.html', '_drafts/*', '**/*.html'
             ], ['jekyll-rebuild']);
@@ -158,18 +172,6 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
       console.log('*****************************************************************************');
       });
   return;
-});
-
-gulp.task('ipe-images', () => function(){
-	return gulp.src('assets/ipe-images/*.png')
-          	 .pipe(imagemin())
-             .pipe(gulp.dest('_site/assets/ipe-images'))
-});
-
-gulp.task('png-images', () => function(){
-	return gulp.src('assets/png-images/*.png')
-          	 .pipe(imagemin())
-          	 .pipe(gulp.dest('_site/assets/png-images'))
 });
 
 // Production
