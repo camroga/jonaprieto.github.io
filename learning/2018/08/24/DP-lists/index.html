@@ -17,17 +17,17 @@
 <meta property="og:title" content="dynamic programing problems" />
 <meta name="author" content="Jonathan Prieto-Cubides" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is through examples and this post is to list some problem and their recursive formulation." />
-<meta property="og:description" content="Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is through examples and this post is to list some problem and their recursive formulation." />
+<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems." />
+<meta property="og:description" content="We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems." />
 <link rel="canonical" href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
 <meta property="og:url" content="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
 <meta property="og:site_name" content="jonaprieto" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-08-24T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is through examples and this post is to list some problem and their recursive formulation.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/","headline":"dynamic programing problems","dateModified":"2018-10-23T15:35:47+02:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/"},"@context":"http://schema.org"}</script>
+{"description":"We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/","headline":"dynamic programing problems","dateModified":"2018-10-26T13:31:41+02:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<meta name="description" content="Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is...">
+<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems.">
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="preload" as="script" href="/assets/main.js" >
@@ -179,13 +179,13 @@
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda">
-              adding drafts</a>
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md">
+              dp problem added</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda">62b9d4fe </a> on  26 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md">d892d4f0 </a> on  26 Oct 2018
     </div>
   </div>
   
@@ -196,7 +196,7 @@
     <nav>
     <h2 class="table-of-contents"> Table of Contents </h2>
       <ul>
-  <li><a href="#01-knapsack-problem">0–1 knapsack problem</a></li>
+  <li><a href="#01-knapsack-problem">0–1 Knapsack problem</a></li>
   <li><a href="#3-partition-problem">3-partition problem</a></li>
   <li><a href="#all-pairs-shortest-pathsfloyd-warshall-algorithm">All-pairs shortest paths — floyd warshall algorithm</a></li>
   <li><a href="#calculate-size-of-the-largest-plus-of-1s-in-binary-matrix">Calculate size of the largest plus of 1’s in binary matrix</a></li>
@@ -246,6 +246,7 @@
   <li><a href="#wildcard-pattern-matching">Wildcard pattern matching</a></li>
   <li><a href="#word-break-problem">Word break problem</a></li>
   <li><a href="#word-break-problem-1">Word break problem</a></li>
+  <li><a href="#maximum-weight-independent-problem">Maximum Weight Independent Problem</a></li>
 </ul>
 
     </nav>
@@ -256,28 +257,74 @@
   **You need to turn on Javascript to see the content of this entry correctly.**<br/>
   </noscript>
   
-  <p>Table filling or also called dynamic programming is a technique
-in the design of algorithms that really deserves to study.
-The way to study this technique is through examples and this
-post is to list some problem and their recursive formulation.</p>
+  <p>We study dynamic programming through examples.
+My goal here is to keep a list of recursion formulation
+of some common problems.</p>
 
 <p>Links of list similar:</p>
 <ul>
-  <li>https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP</li>
-  <li>https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3</li>
+  <li><a href="https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP">matthewsamuel95/ACM-ICPC-Algorithms</a></li>
+  <li><a href="https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3">top-50-dynamic-programming-practice-problems</a></li>
 </ul>
 
-<h2 id="01-knapsack-problem">0–1 knapsack problem</h2>
+<h2 id="01-knapsack-problem">0–1 Knapsack problem</h2>
 
-<p>Pending…</p>
+<div class="exercise">
+  <p>Maximize the sum of the values of the items in the knapsack so that the sum of
+the weights is less than or equal to the knapsack’s capacity.</p>
+
+  <p>Given:</p>
+  <ul>
+    <li>a set of <script type="math/tex">n</script> items numbered from $1$ up to $n$,</li>
+    <li>each item has a weight <script type="math/tex">w_i</script> and a value <script type="math/tex">v_i</script>,</li>
+    <li>the bag has a maximum weight capacity $W$.</li>
+  </ul>
+
+  <p>Solve:</p>
+
+  <script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+    \maximize &\sum_{i=1}^n v_i x_i \\
+    \st.      &\sum_{i=1}^n w_i x_i \leq W\\
+              &x_i \in \{0,1\}.
+    \end{align*} %]]></script>
+
+  <p>Here $x_i$ represents the number of instances of item $i$ to include in the knapsack.</p>
+</div>
+
+<div class="proof">
+  <p><strong>Formulation.</strong></p>
+
+  <p>Define $f(i,w)$ to be the maximum value that can be attained with <strong>weight less
+than or equal</strong> to $w$ using items up to $i$ (first $i$ items).</p>
+
+  <p>We can define $f(i,w)$ recursively as follows:</p>
+
+  <script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  f(i, w) =
+  \begin{cases}
+  0                                         &\text{if }i = 0,\\
+  f(i-1,\,w)                                &\text{if }w_i > w,\\
+  \max\{f(i-1,\,w),\,f(i-1,w-w_i)+v_i \}   &\text{otherwise}.
+  \end{cases}
+  \end{align*} %]]></script>
+
+  <p>The solution can then be found by calling $f(n,W)$.</p>
+</div>
+
+<p>Variations:</p>
+
+<ul>
+  <li><em>bounded knapsack problem (BKP)</em>:  $0\leq x_{i}\leq c$</li>
+  <li><em>unbounded knapsack problem (UKP)</em>: $x_{i}\geq 0$</li>
+</ul>
 
 <h2 id="3-partition-problem">3-partition problem</h2>
 
 <p>Pending…</p>
 
 <h2 id="all-pairs-shortest-pathsfloyd-warshall-algorithm">All-pairs shortest paths — floyd warshall algorithm</h2>
-
-<p>Pending…</p>
 
 <h2 id="calculate-size-of-the-largest-plus-of-1s-in-binary-matrix">Calculate size of the largest plus of 1’s in binary matrix</h2>
 
@@ -466,6 +513,8 @@ post is to list some problem and their recursive formulation.</p>
 <p>Pending…</p>
 <h2 id="word-break-problem-1">Word break problem</h2>
 
+<h2 id="maximum-weight-independent-problem">Maximum Weight Independent Problem</h2>
+
 
   <div class="cited-references" markdown="1">
   <ol class="bibliography"></ol>
@@ -476,10 +525,10 @@ post is to list some problem and their recursive formulation.</p>
 
   <div id="github-links">
     <div class="view-source">
-      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda" download target="_blank">Raw</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda" target="_blank">View source</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-10-23-DP-lists.lagda" target="_blank">Edit</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/62b9d4fe67ad93d21977ebef11844fbf86e786be/blog/_src/notes/2018-10-23-DP-lists.lagda" target="_blank">History</a>
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">View source</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">Edit</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">History</a>
       <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
       
     </div>
@@ -564,75 +613,14 @@ post is to list some problem and their recursive formulation.</p>
         Im: ['\\mathop{\\mathrm{Im}}'],
         Res: ['\\mathop{\\mathrm{Res}}'],
 
-        // Marc Bezem commands from INF329
-        depi       : ['\\Pi{#1{:}#2.\\,#3}',3],
-        sigm       : ['\\Sigma{#1{:}#2.\\,#3}',3],
-        subs       : ['\\{#1{:}#2\\mid#3\\}',3],
-        lam        : ['\\lambda{#1.\\,#2}',2],
-        lamt       : ['\\lambda{#1{:}#2.\\,#3}',3],
-        sbr        : ['[\\![#1]\\!]',1],
-        pbr        : ['(\\!(#1)\\!)',1],
-        semr       : ['[\\![#1]\\!]_{\\rho}',1],
-        semrO      : ['[\\![#1]\\!]^{\\Omega}_{\\rho}',1],
-        sems       : ['[\\![#1]\\!]_{\\sigma}',1],
-        vsbr       : ['{[\\![#1]\\!]}_0',1],
-        psbr       : ['{[\\![#1]\\!]}_1',1],
 
-        red        : ['~~{\\to}~~'],
-        unphsi     : ['{\\univ_{\\varphi\\psi}}'],
-        unphis     : ['{\\univ_{\\varphi_0\\varphi_1}}'],
-        unpsis     : ['{\\univ_{\\psi_0\\psi_1}}'],
-        extfs      : ['{\\ext_{f_0 f_1}}'],
-        extas      : ['{\\ext_{a_0 a_1}}'],
-        apO        : ['{ap_\\Omega}'],
-        eqA        : ['{eq_A}'],
-        ra         : ['\\rightarrow'],
-        la         : ['\\leftarrow'],
-        lra        : ['\\leftrightarrow'],
-        rtr        : ['\\stackrel{*}{\\to}'],
-        ltr        : ['\\stackrel{*}{\\leftarrow}'],
-        semO       : ['{[\\![#1]\\!]^{\\Omega}}', 1],
-        foo        : ['\\mathit{foo}'],
-        SN         : ['\\mathit{SN}'],
-        GamU       : ['\\Gamma_{\\!U}'],
-        Ex         : ['\\mathsf{Ex}'],
-        Tr         : ['\\mathrm{T}'],
-        Fa         : ['\\mathrm{F}'],
-        TEXT       : ['{\\mathrm{TEXT}}'],
-        Nat        : ['\\mathbb{N}'],
-        Int        : ['\\mathbb{Z}'],
-        Rat        : ['\\mathbb{Q}'],
-        Rea        : ['\\mathbb{R}'],
-        cL         : ['\\mathcal{L}'],
-        cP         : ['\\mathcal{P}'],
-        cnum       : ['\\underline{#1}',1],
-        set        : ['\\{#1\\}',1],
-        seg        : ['[#1.\\,.#2]',2],
-        pair       : ['\\langle #1,#2\\rangle',2],
-        dom        : ['\\mathit{dom}'],
-        range      : ['\\mathit{range}'],
-        tru        : ['\\mathsf{true}'],
-        fal        : ['\\mathsf{false}'],
-        Id         : ['\\mathsf{I}'],
-        UU         : ['{\\cal U}'],
-        VV         : ['{\\cal V}'],
-        Uo         : ['\\UU_0'],
-        Uu         : ['\\UU_1'],
-        bfnull     : ['\\mathbf{0}'],
-        bfone      : ['\\mathbf{1}'],
-        elone      : ['\\star'],
-        bftwo      : ['\\mathbf{2}'],
-
-        ct         : ['\\mathchoice{\\mathbin{\\raisebox{0.5ex}{$\\displaystyle\\centerdot$}}}%
-                     {\\mathbin{\\raisebox{0.5ex}{$\\centerdot$}}}%
-                     {\\mathbin{\\raisebox{0.25ex}{$\\scriptstyle\\,\\centerdot\\,$}}}%
-                     {\\mathbin{\\raisebox{0.1ex}{$\\scriptscriptstyle\\,\\centerdot\\,$}}}'],
-
-        opp        : ['\\mathord{#1^{-1}}',1],
-        leaveout   : ['{}',1],
 
         Node : ['\\mathsf{Node}'],
         Edge : ['\\mathsf{Edge}'],
+
+        minimize : ['\\mathsf{minimize}'],
+        maximize : ['\\mathsf{maximize}'],
+        st : ['\\mathsf{st}']
 
       }
     }
@@ -641,7 +629,7 @@ post is to list some problem and their recursive formulation.</p>
 <script
   type="text/javascript"
   charset="utf-8"
-  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 >
 </script>
 
@@ -698,74 +686,6 @@ WebFontConfig = {
    })(document);
 </script>
 
-
-<!-- FOLDABLE  -->
-<script type="text/javascript">
- $('pre.foldable').each(function(){
-     var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div></div>");
-     var horLine = $("<div></div>");
-     var verLine = $("<div></div>");
-     $(this).prepend(plus);
-     plus.css({
-         'position'         : 'relative',
-         'float'            : 'right',
-         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
-
-     var until = parseFloat($(this).attr('until'));
-     if ( isNaN(until) ) { until= 1; }
-     if ( until <= 0 ){
-       $(this).hide();
-     }
-     else{
-       var newHeight = ((1.3 * until) + 1.0) + "rem";
-       //                               ^^^----------- for the padding
-       //                ^^-- line-height
-
-       // console.log('afuera-until: ', until);
-       // console.log('afuera-newheight: ', newHeight );
-       $(this).css("padding", "0.5rem 1rem");
-       $(this).css("overflow", "hidden");
-       $(this).css("height", newHeight);
-       $(this).attr("original", "false");
-
-       $(this).click(function(){
-
-         // console.log('dentro-original: ', $(this).attr('original') );
-         // console.log('dentro-newheight: ', newHeight );
-
-         if ( $(this).attr('original') == "true" ) {
-           $(this).css("overflow", "hidden");
-           $(this).css("height", newHeight);
-           $(this).attr("original", "false");
-           $(this).css("padding", "0.5rem 1rem");
-           plus.show();
-         }
-         else {
-           $(this).height('auto');
-           $(this).attr("original", "true");
-           plus.hide();
-         }
-       });
-     }
- });
-</script>
 
 
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-26T00:01:12+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T16:41:36+02:00</updated><id>http://jonaprieto.github.io/home/2018/10/23/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-26T13:32:25+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T16:41:36+02:00</updated><id>http://jonaprieto.github.io/home/2018/10/23/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/alps-chalmers/agda101&quot;&gt;https://github.com/alps-chalmers/agda101&lt;/a&gt;&lt;/li&gt;
@@ -442,7 +442,7 @@ truths)&lt;/p&gt;
 &lt;a id=&quot;19314&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19320&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19321&quot; href=&quot;/home/2018/10/23/hoare-triples/#18492&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19326&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19327&quot; href=&quot;/home/2018/10/23/hoare-triples/#7131&quot; class=&quot;InductiveConstructor&quot;&gt;□-e&lt;/a&gt; &lt;a id=&quot;19331&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;         &lt;a id=&quot;19343&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19345&quot; class=&quot;String&quot;&gt;&amp;quot;□-e&amp;quot;&lt;/a&gt;
 &lt;a id=&quot;19351&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19357&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19358&quot; href=&quot;/home/2018/10/23/hoare-triples/#18492&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19363&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19364&quot; href=&quot;/home/2018/10/23/hoare-triples/#7156&quot; class=&quot;InductiveConstructor&quot;&gt;□-∧-e₁&lt;/a&gt; &lt;a id=&quot;19371&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;      &lt;a id=&quot;19380&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19382&quot; class=&quot;String&quot;&gt;&amp;quot;□-∧-e₁&amp;quot;&lt;/a&gt;
 &lt;a id=&quot;19391&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19397&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19398&quot; href=&quot;/home/2018/10/23/hoare-triples/#18492&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19403&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19404&quot; href=&quot;/home/2018/10/23/hoare-triples/#7181&quot; class=&quot;InductiveConstructor&quot;&gt;□-∧-e₂&lt;/a&gt; &lt;a id=&quot;19411&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;      &lt;a id=&quot;19420&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19422&quot; class=&quot;String&quot;&gt;&amp;quot;□-∧-e₂&amp;quot;&lt;/a&gt;
-&lt;a id=&quot;19431&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19437&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19438&quot; href=&quot;/home/2018/10/23/hoare-triples/#18563&quot; class=&quot;InductiveConstructor&quot;&gt;customR&lt;/a&gt; &lt;a id=&quot;19446&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;19448&quot; href=&quot;/home/2018/10/23/hoare-triples/#19448&quot; class=&quot;Bound&quot;&gt;x₁&lt;/a&gt; &lt;a id=&quot;19451&quot; href=&quot;/home/2018/10/23/hoare-triples/#19451&quot; class=&quot;Bound&quot;&gt;x₂&lt;/a&gt;&lt;a id=&quot;19453&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;      &lt;a id=&quot;19460&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19462&quot; class=&quot;String&quot;&gt;&amp;quot;Custom &amp;quot;&lt;/a&gt; &lt;a id=&quot;19472&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.String.Base.html#1101&quot; class=&quot;Function Operator&quot;&gt;s++&lt;/a&gt; &lt;a id=&quot;19476&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.Nat.Show.html#951&quot; class=&quot;Function&quot;&gt;Show.show&lt;/a&gt; &lt;a id=&quot;19486&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;/pre&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Based completely in (missing reference) and the source code found in:</summary></entry><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-10-25T23:59:20+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;Research meetings.&lt;/p&gt;
+&lt;a id=&quot;19431&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19437&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19438&quot; href=&quot;/home/2018/10/23/hoare-triples/#18563&quot; class=&quot;InductiveConstructor&quot;&gt;customR&lt;/a&gt; &lt;a id=&quot;19446&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;19448&quot; href=&quot;/home/2018/10/23/hoare-triples/#19448&quot; class=&quot;Bound&quot;&gt;x₁&lt;/a&gt; &lt;a id=&quot;19451&quot; href=&quot;/home/2018/10/23/hoare-triples/#19451&quot; class=&quot;Bound&quot;&gt;x₂&lt;/a&gt;&lt;a id=&quot;19453&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;      &lt;a id=&quot;19460&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19462&quot; class=&quot;String&quot;&gt;&amp;quot;Custom &amp;quot;&lt;/a&gt; &lt;a id=&quot;19472&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.String.Base.html#1101&quot; class=&quot;Function Operator&quot;&gt;s++&lt;/a&gt; &lt;a id=&quot;19476&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.Nat.Show.html#951&quot; class=&quot;Function&quot;&gt;Show.show&lt;/a&gt; &lt;a id=&quot;19486&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;/pre&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Based completely in (missing reference) and the source code found in:</summary></entry><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-10-26T00:03:40+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;Research meetings.&lt;/p&gt;
 
 &lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;210&quot; class=&quot;Symbol&quot;&gt;{-#&lt;/a&gt; &lt;a id=&quot;214&quot; class=&quot;Keyword&quot;&gt;OPTIONS&lt;/a&gt; &lt;a id=&quot;222&quot; class=&quot;Option&quot;&gt;--without-K&lt;/a&gt; &lt;a id=&quot;234&quot; class=&quot;Symbol&quot;&gt;#-}&lt;/a&gt;
 &lt;a id=&quot;238&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;243&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;250&quot; href=&quot;/2018/07/06/mini-hott/&quot; class=&quot;Module&quot;&gt;2018-07-06-mini-hott&lt;/a&gt;&lt;/pre&gt;
@@ -768,28 +768,74 @@ which complicates a verification. Directed&lt;/p&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144&quot;&gt;Why are planar graphs so exceptional?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/&quot;&gt;Kalai’s Post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs&quot;&gt;Generalizations of Planar Graphs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research meetings.</summary></entry><entry><title type="html">dynamic programing problems</title><link href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" rel="alternate" type="text/html" title="dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-23T15:35:47+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/">&lt;p&gt;Table filling or also called dynamic programming is a technique
-in the design of algorithms that really deserves to study.
-The way to study this technique is through examples and this
-post is to list some problem and their recursive formulation.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research meetings.</summary></entry><entry><title type="html">dynamic programing problems</title><link href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" rel="alternate" type="text/html" title="dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-26T13:31:41+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/">&lt;p&gt;We study dynamic programming through examples.
+My goal here is to keep a list of recursion formulation
+of some common problems.&lt;/p&gt;
 
 &lt;p&gt;Links of list similar:&lt;/p&gt;
 &lt;ul&gt;
-  &lt;li&gt;https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP&lt;/li&gt;
-  &lt;li&gt;https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP&quot;&gt;matthewsamuel95/ACM-ICPC-Algorithms&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3&quot;&gt;top-50-dynamic-programming-practice-problems&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;01-knapsack-problem&quot;&gt;0–1 knapsack problem&lt;/h2&gt;
+&lt;h2 id=&quot;01-knapsack-problem&quot;&gt;0–1 Knapsack problem&lt;/h2&gt;
 
-&lt;p&gt;Pending…&lt;/p&gt;
+&lt;div class=&quot;exercise&quot;&gt;
+  &lt;p&gt;Maximize the sum of the values of the items in the knapsack so that the sum of
+the weights is less than or equal to the knapsack’s capacity.&lt;/p&gt;
+
+  &lt;p&gt;Given:&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;a set of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; items numbered from $1$ up to $n$,&lt;/li&gt;
+    &lt;li&gt;each item has a weight &lt;script type=&quot;math/tex&quot;&gt;w_i&lt;/script&gt; and a value &lt;script type=&quot;math/tex&quot;&gt;v_i&lt;/script&gt;,&lt;/li&gt;
+    &lt;li&gt;the bag has a maximum weight capacity $W$.&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;Solve:&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+    \maximize &amp;\sum_{i=1}^n v_i x_i \\
+    \st.      &amp;\sum_{i=1}^n w_i x_i \leq W\\
+              &amp;x_i \in \{0,1\}.
+    \end{align*} %]]&gt;&lt;/script&gt;
+
+  &lt;p&gt;Here $x_i$ represents the number of instances of item $i$ to include in the knapsack.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;proof&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Formulation.&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;Define $f(i,w)$ to be the maximum value that can be attained with &lt;strong&gt;weight less
+than or equal&lt;/strong&gt; to $w$ using items up to $i$ (first $i$ items).&lt;/p&gt;
+
+  &lt;p&gt;We can define $f(i,w)$ recursively as follows:&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  f(i, w) =
+  \begin{cases}
+  0                                         &amp;\text{if }i = 0,\\
+  f(i-1,\,w)                                &amp;\text{if }w_i &gt; w,\\
+  \max\{f(i-1,\,w),\,f(i-1,w-w_i)+v_i \}   &amp;\text{otherwise}.
+  \end{cases}
+  \end{align*} %]]&gt;&lt;/script&gt;
+
+  &lt;p&gt;The solution can then be found by calling $f(n,W)$.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Variations:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;bounded knapsack problem (BKP)&lt;/em&gt;:  $0\leq x_{i}\leq c$&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;unbounded knapsack problem (UKP)&lt;/em&gt;: $x_{i}\geq 0$&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;3-partition-problem&quot;&gt;3-partition problem&lt;/h2&gt;
 
 &lt;p&gt;Pending…&lt;/p&gt;
 
 &lt;h2 id=&quot;all-pairs-shortest-pathsfloyd-warshall-algorithm&quot;&gt;All-pairs shortest paths — floyd warshall algorithm&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
 
 &lt;h2 id=&quot;calculate-size-of-the-largest-plus-of-1s-in-binary-matrix&quot;&gt;Calculate size of the largest plus of 1’s in binary matrix&lt;/h2&gt;
 
@@ -976,7 +1022,9 @@ post is to list some problem and their recursive formulation.&lt;/p&gt;
 &lt;p&gt;Pending…&lt;/p&gt;
 
 &lt;p&gt;Pending…&lt;/p&gt;
-&lt;h2 id=&quot;word-break-problem-1&quot;&gt;Word break problem&lt;/h2&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Table filling or also called dynamic programming is a technique in the design of algorithms that really deserves to study. The way to study this technique is through examples and this post is to list some problem and their recursive formulation.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-23T11:37:19+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;word-break-problem-1&quot;&gt;Word break problem&lt;/h2&gt;
+
+&lt;h2 id=&quot;maximum-weight-independent-problem&quot;&gt;Maximum Weight Independent Problem&lt;/h2&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-26T11:32:39+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 
@@ -1219,6 +1267,17 @@ has all literals occur negatively, or one literal is positive).&lt;/li&gt;
           &lt;li&gt;Unlimited supply&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-10-22-1&quot;&gt;2018-10-22&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;DP:
+    &lt;ul&gt;
+      &lt;li&gt;Shortest reliable path&lt;/li&gt;
+      &lt;li&gt;All-pair shortest path&lt;/li&gt;
+      &lt;li&gt;Party problem (Maximum weight independent set problem)&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Just the agenda for INF234 at UiB. The book is (Dasgupta &amp;amp; Papadimitriou, 2006).</summary></entry><entry><title type="html">Simple Typed Lambda Calculus In Agda</title><link href="http://jonaprieto.github.io/type-theory/home/2018/08/17/notes-sltc/" rel="alternate" type="text/html" title="Simple Typed Lambda Calculus In Agda" /><published>2018-08-17T00:00:00+02:00</published><updated>2018-10-23T21:23:12+02:00</updated><id>http://jonaprieto.github.io/type-theory/home/2018/08/17/notes-sltc</id><content type="html" xml:base="http://jonaprieto.github.io/type-theory/home/2018/08/17/notes-sltc/">&lt;p&gt;We present a formalisation of the syntax in Agda for the &lt;em&gt;Simple Typed Lambda
