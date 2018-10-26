@@ -1,0 +1,204 @@
+Let's define first an auxiliary type for the this approach.
+
+\begin{code}
+module _ where
+\end{code}
+
+{: .foldable until="3"}
+\begin{code}
+module C₂ where
+  -- C₂ HIT
+  private
+    data !C₂ : Set where
+      !* : !C₂
+
+  C₂ : Type₀
+  C₂ = !C₂
+
+  * : C₂
+  * = !*
+
+  postulate
+    t : * == *
+    q : t · t == refl *
+
+    C₂-groupoid : (x y : C₂)(α β : x == y)(ε δ : α == β) → ε == δ
+    -- C₂ is h-level 3, h-groupoid?
+
+  -- Def. Recursion on points:
+  postulate
+    C₂-rec
+      : ∀ {ℓ}
+      → (A : Type ℓ)
+      → (a : A)
+      → (p : a == a)
+      → (k : p · p == refl a)
+      --------------
+      → (C₂ → A)
+
+  -- C₂-rec A a p !* _ = a
+--
+--   -- Postulate. Recursion on paths:
+--   postulate
+--     C₂-βrec
+--       : ∀ {ℓ}
+--       → (A : Type ℓ)
+--       → (a : A)
+--       → (p : a == a)
+--       → (k : p · p == refl a)
+--       -- -----------------------------
+--       → ap (C₂-rec A a p)  ? == ?
+--
+--   -- Postulate. Recursion on paths for q
+--
+--   postulate
+--     C₂-βrec₂
+--       : ∀ {ℓ}
+--       → (A : Type ℓ)
+--       → (a : A)
+--       → (p : a == a)
+--       → (k : p · p == refl a)
+--       -----------------------------
+--       → ap ? ? == k
+--
+--   -- postulate
+--   --   C₂-βrec
+--   --     : ∀ {ℓ}
+--   --     → (A : Type ℓ)
+--   --     → (a : A)
+--   --     → (p : a == a)
+--   --     → (k : p · p == relf a)
+--   --     -----------------------------
+--   --     → ap (C₂-rec A a p) t _==
+--
+--   -- Def.  Induction principle on points:
+--   C₂-ind
+--     : ∀ {ℓ} (P : C₂ → Type ℓ)
+--     → (x : P *)
+--     → (x == x [ P ↓ t ])
+--     ------------------------
+--     → ((t : C₂) → P t)
+--
+--   C₂-ind P x p !* = x
+--   -- Postulate. Induction principle on paths:
+--   postulate
+--     C₂-βind
+--       : ∀ {ℓ} (P : C₂ → Type ℓ)
+--       → (x : P *)
+--       → (p : x == x [ P ↓ t ])
+--       -------------------------------
+--       → apd (C₂-ind P x p) t == p
+-- \end{code}
+--
+-- Now, we define the type family for
+--
+-- {: .foldable until="2"}
+-- \begin{code}
+--   -- P₂ Type family
+--   P₂ : C₂ → Set
+--
+--   neg-eq : 𝟚 ≃ 𝟚
+--   neg-eq = qinv-≃ neg¬ (neg¬ , h , h)
+--     where
+--       h : neg¬ ∘ neg¬ ∼ id
+--       h true  = idp
+--       h false = idp
+--
+--   P₂ = C₂-rec Type₀ 𝟚 (ua neg-eq)
+--
+--   -- Defs.
+--   flip₁ : tr P₂ t false == true
+--   flip₁ = transport-ua P₂ t neg-eq (C₂-βrec Type₀ 𝟚 (ua neg-eq)) false
+--
+--   flip₂ : tr P₂ t true == false
+--   flip₂ = transport-ua P₂ t neg-eq (C₂-βrec Type₀ 𝟚 (ua neg-eq)) true
+--
+--   postulate
+--     tr-inv-t : ∀ {x} → transport P₂ (! t) x == neg¬ x
+--     -- Check the article tinyurl.com/circle-puzzle, it has how to remove this
+
+\end{code}
+
+A *graph* can be defined by using two constructors: `Node` and `Edge`.
+
+\begin{code}
+-- module GraphForm₁ {ℓ} where
+--   open C₂
+\end{code}
+
+- A set of vertices:
+
+\begin{code}
+  -- Def.
+  -- postulate
+    -- Node : Type ℓ
+    -- NodeisSet : isSet Node
+\end{code}
+
+- A set of edges:
+
+{: .eq }
+  $$ \Edge :≡ \sum_{x : C₂} ~{P₂~x}\to\Node$$
+
+\begin{code}
+  -- Def.
+  -- Edge : Σ C₂ (λ x → (P₂ x) → Node) → Set
+\end{code}
+
+\begin{code}
+  -- -- Graph₁
+  -- record Graph : Type (lsuc ℓ) where
+  --   constructor graph
+  --   field
+  --     Node : Type ℓ
+  --     NodeisSet : isSet Node
+  --     Edge : Σ C₂ (λ x → (P₂ x) → Node) → Set
+\end{code}
+
+\begin{code}
+  -- data X : Set where
+  --   x : X
+  --   y : X
+  --
+  -- g : Graph
+  -- g = graph ? ? ?
+  --
+  -- Ex.
+  -- postulate
+    -- Node : Type ℓ
+    -- Edge : Σ C₂ (λ x → (P₂ x) → Node) → Set
+    -- x : Node
+    -- y : Node
+  --
+  -- x-y : P₂ * → Node
+  -- x-y true  = x
+  -- x-y false = y
+  --
+  -- y-x : P₂ * → Node
+  -- y-x true  = y
+  -- y-x false = x
+  --
+  -- e1 = Edge (* , x-y)
+  -- e2 = Edge (* , y-x)
+  --
+  -- e1=e2 : Edge (* , x-y) == Edge (* , y-x)
+  -- e1=e2 = ap Edge (pair= (t , η))
+  --   where
+  --     lem : (x : P₂ *) → x-y (neg¬ x) == y-x x
+  --     lem true  = idp
+  --     lem false = idp
+  --
+  --     η : tr (λ x → P₂ x → Node) t x-y == y-x
+  --     η =
+  --       begin
+  --         tr (λ x → P₂ x → Node) t x-y
+  --           ==⟨ transport-fun t x-y ⟩
+  --         (λ x → tr (λ _ → Node) t (x-y (tr P₂ (! t) x)))
+  --           ==⟨ funext (λ x → transport-const t (x-y (tr P₂ (! t) x))) ⟩
+  --         (λ x → x-y (tr P₂ (! t) x))
+  --           ==⟨ funext (λ x → ap x-y tr-inv-t) ⟩
+  --         (λ x → x-y (neg¬ x))
+  --           ==⟨ funext (λ x → lem x) ⟩
+  --         y-x
+  --       ∎
+\end{code}

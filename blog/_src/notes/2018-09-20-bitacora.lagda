@@ -28,10 +28,18 @@ Research happens every day!
 **(Formal) Graph Theory**
 
 - What is a *good* characterization for planar graphs? What really does *good* means?
-- The goal here is to came up with a property `isPlanar` to not be a proposition in the `HoTT` context.
+- The goal here is to came up with a property `isPlanar` to not be a h-proposition in the `HoTT` context.
+
+{: .hide }
+  - Porque NO tiene que ser h-prop?
+    - Revisar el Sigma type. Que solamente hay una prueba de que el planar es grafo es planar, que
+    seria equivalente a decir que solo hay un embedding, lo cual no es verdad en general.
 
 {:.equation }
   $$ \sum_{g:\mathsf{Graph}(A)}~\mathsf{isPlanar_{A}(g)}.$$
+
+Given a graph $g$, an inhabitant of $\mathsf{isPlanar_{A}(g)}$ is a proof
+that the graph $g$ is planar.
 
 ## Progress
 
@@ -79,16 +87,16 @@ _ = Set
 
 Our goal will consist to formalise the particular case when the graph is
 
-- *connected*,
-- *undirected*, and
-- no *multi-graphs*.
+- *undirected*,
+- no *multi-graphs*, and
+- connected.
 
 ## Approach A
 
 ![path](/assets/ipe-images/graph-approach1.png){: width="40%" }
 *Figure 1. Connected, undirected, no multi-graphs.*
 
-### Graph definition
+### Undirected and no multi-graph definition
 
 \begin{code}
 module Approach₁ {ℓ} where
@@ -106,11 +114,34 @@ module Approach₁ {ℓ} where
       -- The vertices form a set.
       NodeIsSet : isSet Node
       -- No multi-graphs.
-      EdgeisProp : ∀ {x y : Node} → isProp (Edge x y)
+      EdgeIsProp : ∀ {x y : Node} → isProp (Edge x y)
       -- Undirected.
       α : ∀ {x y : Node} → Edge x y ⇔ Edge y x
       -- α : ∀ {x y : Node} → Edge x y == Edge y x
       -- α-id : ∀ {x : Node} → ≃-to-→ (α {x = x}{y = x}) == id
+
+  open Graph public
+\end{code}
+
+To consider connected graph, we can define what is a `Path`.
+
+\begin{code}
+
+
+  -- Path Def.
+  data gPath : ∀ {G : Graph} → Node G → Node G → Type {!   !} where
+    edge
+      :  ∀ {G : Graph} {x y : Node G}
+      → Edge G x y
+      ----------
+      → gPath x y
+
+    cons
+      : ∀ {G : Graph} { x y z : Node G}
+      → gPath x y → Edge G y z
+      ---------------------
+      → gPath x z
+
 \end{code}
 
 
@@ -120,6 +151,10 @@ Graph = Approach₁.Graph
 
 ### Cyclic definition
 
+The reason to define a cyclic relation is that the faces or regions can be defined by
+*combinatorial maps* or also called *rotation systems*.
+
+
 ![path](/assets/ipe-images/cyclic.png){: width="40%" }
 *Figure 2. Cyclic relation `R`.*
 
@@ -128,8 +163,8 @@ Now, let's define cycle orders:
 \begin{code}
 module CyclicForm {ℓᵢ ℓⱼ} where
 
-  record Cyclic (A : Type ℓᵢ)
-                (R : A → A → A → Type ℓⱼ)
+  record Cyclic (A : Type ℓᵢ)             -- Carrier
+                (R : A → A → A → Type ℓⱼ) -- Clockwise
                 : Type (ℓᵢ ⊔ ℓⱼ) where
     field
 
@@ -168,6 +203,13 @@ module CyclicForm {ℓᵢ ℓⱼ} where
   -- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)
   -- CyclicIsProp x y = {!   !}
 \end{code}
+
+\begin{code}
+module Out where
+  g = Graph
+
+\end{code}
+
 
 ### State-of-art
 
