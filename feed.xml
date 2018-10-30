@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-30T14:11:25+01:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T16:41:36+02:00</updated><id>http://jonaprieto.github.io/home/2018/10/23/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-30T16:27:48+01:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T16:41:36+02:00</updated><id>http://jonaprieto.github.io/home/2018/10/23/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/alps-chalmers/agda101&quot;&gt;https://github.com/alps-chalmers/agda101&lt;/a&gt;&lt;/li&gt;
@@ -748,17 +748,18 @@ which complicates a verification. Directed&lt;/p&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144&quot;&gt;Why are planar graphs so exceptional?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/&quot;&gt;Kalai’s Post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs&quot;&gt;Generalizations of Planar Graphs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research happens every day!</summary></entry><entry><title type="html">Dynamic programing problems</title><link href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" rel="alternate" type="text/html" title="Dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-30T14:10:51+01:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/">&lt;p&gt;We study dynamic programming through examples. My goal here is to keep a list of
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research happens every day!</summary></entry><entry><title type="html">Dynamic programing problems</title><link href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" rel="alternate" type="text/html" title="Dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-30T16:27:22+01:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/">&lt;p&gt;We study dynamic programming through examples. My goal here is to keep a list of
 the recursion formulation for each problem as a help to solve the problem and
 similars. I’m not interested &lt;em&gt;really&lt;/em&gt; neither in the implementation nor a very
-long description, just the explicit recursion function. The complexity for each
-solution is left to the reader.&lt;/p&gt;
+long description, just an recursion function that solves the problem and gives
+enough sights. The complexity for each solution is left to the reader.&lt;/p&gt;
 
-&lt;p&gt;Links of list similar:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP&quot;&gt;matthewsamuel95/ACM-ICPC-Algorithms&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3&quot;&gt;top-50-dynamic-programming-practice-problems&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;div class=&quot;hide&quot;&gt;
+  Put a complete list of links
+  Links of list similar:
+  - [matthewsamuel95/ACM-ICPC-Algorithms](https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP)
+  - [top-50-dynamic-programming-practice-problems](https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3)
+&lt;/div&gt;
 
 &lt;h2 id=&quot;01-knapsack&quot;&gt;0–1 Knapsack&lt;/h2&gt;
 
@@ -845,6 +846,8 @@ with the first $i$ items available.&lt;/p&gt;
   \end{align*}$$
 &lt;/div&gt;
 
+  &lt;p&gt;The recursive formulation of the solution is as follows:&lt;/p&gt;
+
   &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align*}
   f(i, p, q) =
@@ -863,6 +866,60 @@ with the first $i$ items available.&lt;/p&gt;
   &lt;p&gt;The answer then can be found by computing $f(n, \frac{S}{3}, \frac{S}{3})$.
 The sets $I$ and $J$ can be found by using an auxiliary array to register if which
 set we put each element.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;sequence-alignment&quot;&gt;Sequence alignment&lt;/h2&gt;
+
+&lt;div class=&quot;exercise&quot;&gt;
+  &lt;p&gt;Find the highest cost for an &lt;em&gt;alignment&lt;/em&gt; of two
+strings $x$ and $y$ based on a scoring matrix $\delta$ of $(N+1\times N+1)$ where
+$N$ is the size of the alphabet with an extra character &lt;code&gt;-&lt;/code&gt; for gaps.&lt;/p&gt;
+
+  &lt;p&gt;An alignment is a way of matching up the two strings. It also needs to follow
+the rules:&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;The characters of each string must appear in order in the align&lt;/li&gt;
+    &lt;li&gt;Each column of the alignment must contain a character from at least one of the strings&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;proof&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Recursion:&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;Define $f(i,j)$ to be the maximum score for an alignment
+that can be obtained when we attempt to align the strings $x$, $y$
+in one of three possible ways in the following. The gaps are represented by &lt;code&gt;-&lt;/code&gt;.&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+x_i&amp;\cdot \cdots x_{n}\\
+y_j&amp;\cdot \cdots. \\[3mm]
+x_i&amp;\cdot \cdots \cdot \cdot \cdots x_{n}\\
+-&amp;\cdot \cdots \cdot y_j\cdot \cdots. \\[3mm]
+-&amp;\cdot \cdots \cdot x_i\cdot \cdots \cdot x_{n}\\
+y_j&amp;\cdot \cdots \cdot \cdots.\\
+\end{align*} %]]&gt;&lt;/script&gt;
+
+  &lt;p&gt;We can define $f(i,j)$ recursively as follows, moving us from left to right
+with the strings to respect their order. The first argument $i$ is about the position in the string $x$,
+and the argument $j$ is about the position in the string $y$ in the following definition.&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  f(i, j) =
+  \begin{cases}
+  0  &amp;\text{ if } i &gt; n \and j &gt; m, \\
+  \max \begin{cases}
+  \delta(x_i,y_i) + f(i+1,j+1)  &amp;\text{if } i \leq n \and j \leq m,\\
+  \delta(x_{i},-) + f(i+1, j)   &amp;\text{if } i \leq n, \\
+  \delta(-,y_{j}) + f(i, j+1)   &amp;\text{if } j \leq m
+  \end{cases}
+   &amp;\text{ otherwise.}       
+  \end{cases}
+  \end{align*} %]]&gt;&lt;/script&gt;
+
+  &lt;p&gt;The solution can then be found by calling $f(1,1)$.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;!-- - All-pairs shortest paths — Floyd-Warshall algorithm --&gt;
@@ -908,13 +965,46 @@ set we put each element.&lt;/p&gt;
 &lt;!-- - Shortest common supersequence --&gt;
 &lt;!-- - Single-source shortest paths — bellman ford algorithm --&gt;
 &lt;!-- - Subset sum problem --&gt;
-&lt;!-- - The levenshtein distance (edit distance) problem --&gt;
+
+&lt;h2 id=&quot;edit-distance&quot;&gt;Edit distance&lt;/h2&gt;
+
+&lt;div class=&quot;exercise&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt;&lt;br /&gt; Given two strings $x$ and
+$y$ on an alphabet Σ, the &lt;em&gt;edit distance&lt;/em&gt; or also called &lt;em&gt;levenshtein distance&lt;/em&gt;
+between $x$ and $y$ is the minimum-weight series of edit operations that
+transforms $x$ into $y$. The operations available are &lt;em&gt;insertion&lt;/em&gt;, &lt;em&gt;deletion&lt;/em&gt;,
+and &lt;em&gt;substitution&lt;/em&gt;. The cost for all these operations is given by the functions
+$w_\mathrm{ins}$,$w_\mathrm{del}$ and $w_\mathrm{subs}$ well-defined.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;proof&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Recursion:&lt;/strong&gt;&lt;br /&gt;
+The edit distance between of $x = x_1\ldots x_n$ and $y = y_1\ldots
+y_m$ is given by the recurrence $f(n,m)$ defined as follows.&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  f(i,j) = \begin{cases}
+  \sum_{k=1}^{i} w_\mathrm{del}(x_{k})  &amp;\text{ if } 1 \leq i \leq m \and j = 0,\\
+  \sum_{k=1}^{j} w_\mathrm{ins}(y_{k})  &amp;\text{ if } 1 \leq j \leq m \and i = 0,\\
+  \min \begin{cases}
+  f(i-1, j-1)                                  &amp;\text{ if } x_i = x_j,\\
+  f(i-1, j-1) + w_\mathrm{subs}(a_{i}, b_j)  &amp;\text{ fix } x_i,\\
+  f(i-1, j) + w_\mathrm{del}(a_{i})     &amp;\text{ delete }x_i, \\              
+  f(i, j-1) + w_\mathrm{ins}(b_{j})     &amp;\text{ insert }y_j. \\              
+  \end{cases} &amp; \text{ otherwise .}
+  \end{cases}
+  \end{align*} %]]&gt;&lt;/script&gt;
+
+  &lt;p&gt;The edit distance is found by calling $f(n,m)$ for the given strings $x$ and $y$.&lt;/p&gt;
+&lt;/div&gt;
+
 &lt;!-- - Total possible solutions to linear equation of k variables --&gt;
 &lt;!-- - Wildcard pattern matching --&gt;
 &lt;!-- - Word break problem --&gt;
 &lt;!-- - Word break problem --&gt;
 
-&lt;h2 id=&quot;maximum-weight-independent-problem&quot;&gt;Maximum Weight Independent Problem&lt;/h2&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-29T13:34:25+01:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- -Maximum Weight Independent Problem --&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just an recursion function that solves the problem and gives enough sights. The complexity for each solution is left to the reader.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-29T13:34:25+01:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 

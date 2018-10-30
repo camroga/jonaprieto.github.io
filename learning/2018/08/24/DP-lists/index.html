@@ -17,15 +17,15 @@
 <meta property="og:title" content="Dynamic programing problems" />
 <meta name="author" content="Jonathan Prieto-Cubides" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader." />
-<meta property="og:description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader." />
+<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just an recursion function that solves the problem and gives enough sights. The complexity for each solution is left to the reader." />
+<meta property="og:description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just an recursion function that solves the problem and gives enough sights. The complexity for each solution is left to the reader." />
 <link rel="canonical" href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
 <meta property="og:url" content="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
 <meta property="og:site_name" content="jonaprieto" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-08-24T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/","headline":"Dynamic programing problems","dateModified":"2018-10-30T14:10:51+01:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/"},"@context":"http://schema.org"}</script>
+{"description":"We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just an recursion function that solves the problem and gives enough sights. The complexity for each solution is left to the reader.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/","headline":"Dynamic programing problems","dateModified":"2018-10-30T16:27:22+01:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem an...">
 
@@ -179,13 +179,13 @@
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md">
-              dp problem added</a>
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/e36a138495c8eca28635ed55d00a8776e522ef8d/blog/_src/notes/2018-10-23-DP-lists.md">
+              [ dp-list ] edit-distance added</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md">d892d4f0 </a> on  30 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/e36a138495c8eca28635ed55d00a8776e522ef8d/blog/_src/notes/2018-10-23-DP-lists.md">e36a1384 </a> on  30 Oct 2018
     </div>
   </div>
   
@@ -198,7 +198,8 @@
       <ul>
   <li><a href="#01-knapsack">0–1 Knapsack</a></li>
   <li><a href="#3-partition">3-partition</a></li>
-  <li><a href="#maximum-weight-independent-problem">Maximum Weight Independent Problem</a></li>
+  <li><a href="#sequence-alignment">Sequence alignment</a></li>
+  <li><a href="#edit-distance">Edit distance</a></li>
 </ul>
 
     </nav>
@@ -212,14 +213,15 @@
   <p>We study dynamic programming through examples. My goal here is to keep a list of
 the recursion formulation for each problem as a help to solve the problem and
 similars. I’m not interested <em>really</em> neither in the implementation nor a very
-long description, just the explicit recursion function. The complexity for each
-solution is left to the reader.</p>
+long description, just an recursion function that solves the problem and gives
+enough sights. The complexity for each solution is left to the reader.</p>
 
-<p>Links of list similar:</p>
-<ul>
-  <li><a href="https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP">matthewsamuel95/ACM-ICPC-Algorithms</a></li>
-  <li><a href="https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3">top-50-dynamic-programming-practice-problems</a></li>
-</ul>
+<div class="hide">
+  Put a complete list of links
+  Links of list similar:
+  - [matthewsamuel95/ACM-ICPC-Algorithms](https://github.com/matthewsamuel95/ACM-ICPC-Algorithms/tree/master/DP)
+  - [top-50-dynamic-programming-practice-problems](https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3)
+</div>
 
 <h2 id="01-knapsack">0–1 Knapsack</h2>
 
@@ -306,6 +308,8 @@ with the first $i$ items available.</p>
   \end{align*}$$
 </div>
 
+  <p>The recursive formulation of the solution is as follows:</p>
+
   <script type="math/tex; mode=display">% <![CDATA[
 \begin{align*}
   f(i, p, q) =
@@ -324,6 +328,60 @@ with the first $i$ items available.</p>
   <p>The answer then can be found by computing $f(n, \frac{S}{3}, \frac{S}{3})$.
 The sets $I$ and $J$ can be found by using an auxiliary array to register if which
 set we put each element.</p>
+</div>
+
+<h2 id="sequence-alignment">Sequence alignment</h2>
+
+<div class="exercise">
+  <p>Find the highest cost for an <em>alignment</em> of two
+strings $x$ and $y$ based on a scoring matrix $\delta$ of $(N+1\times N+1)$ where
+$N$ is the size of the alphabet with an extra character <code>-</code> for gaps.</p>
+
+  <p>An alignment is a way of matching up the two strings. It also needs to follow
+the rules:</p>
+
+  <ul>
+    <li>The characters of each string must appear in order in the align</li>
+    <li>Each column of the alignment must contain a character from at least one of the strings</li>
+  </ul>
+</div>
+
+<div class="proof">
+  <p><strong>Recursion:</strong></p>
+
+  <p>Define $f(i,j)$ to be the maximum score for an alignment
+that can be obtained when we attempt to align the strings $x$, $y$
+in one of three possible ways in the following. The gaps are represented by <code>-</code>.</p>
+
+  <script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+x_i&\cdot \cdots x_{n}\\
+y_j&\cdot \cdots. \\[3mm]
+x_i&\cdot \cdots \cdot \cdot \cdots x_{n}\\
+-&\cdot \cdots \cdot y_j\cdot \cdots. \\[3mm]
+-&\cdot \cdots \cdot x_i\cdot \cdots \cdot x_{n}\\
+y_j&\cdot \cdots \cdot \cdots.\\
+\end{align*} %]]></script>
+
+  <p>We can define $f(i,j)$ recursively as follows, moving us from left to right
+with the strings to respect their order. The first argument $i$ is about the position in the string $x$,
+and the argument $j$ is about the position in the string $y$ in the following definition.</p>
+
+  <script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  f(i, j) =
+  \begin{cases}
+  0  &\text{ if } i > n \and j > m, \\
+  \max \begin{cases}
+  \delta(x_i,y_i) + f(i+1,j+1)  &\text{if } i \leq n \and j \leq m,\\
+  \delta(x_{i},-) + f(i+1, j)   &\text{if } i \leq n, \\
+  \delta(-,y_{j}) + f(i, j+1)   &\text{if } j \leq m
+  \end{cases}
+   &\text{ otherwise.}       
+  \end{cases}
+  \end{align*} %]]></script>
+
+  <p>The solution can then be found by calling $f(1,1)$.</p>
 </div>
 
 <!-- - All-pairs shortest paths — Floyd-Warshall algorithm -->
@@ -369,13 +427,46 @@ set we put each element.</p>
 <!-- - Shortest common supersequence -->
 <!-- - Single-source shortest paths — bellman ford algorithm -->
 <!-- - Subset sum problem -->
-<!-- - The levenshtein distance (edit distance) problem -->
+
+<h2 id="edit-distance">Edit distance</h2>
+
+<div class="exercise">
+  <p><strong>Problem:</strong><br /> Given two strings $x$ and
+$y$ on an alphabet Σ, the <em>edit distance</em> or also called <em>levenshtein distance</em>
+between $x$ and $y$ is the minimum-weight series of edit operations that
+transforms $x$ into $y$. The operations available are <em>insertion</em>, <em>deletion</em>,
+and <em>substitution</em>. The cost for all these operations is given by the functions
+$w_\mathrm{ins}$,$w_\mathrm{del}$ and $w_\mathrm{subs}$ well-defined.</p>
+</div>
+
+<div class="proof">
+  <p><strong>Recursion:</strong><br />
+The edit distance between of $x = x_1\ldots x_n$ and $y = y_1\ldots
+y_m$ is given by the recurrence $f(n,m)$ defined as follows.</p>
+
+  <script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  f(i,j) = \begin{cases}
+  \sum_{k=1}^{i} w_\mathrm{del}(x_{k})  &\text{ if } 1 \leq i \leq m \and j = 0,\\
+  \sum_{k=1}^{j} w_\mathrm{ins}(y_{k})  &\text{ if } 1 \leq j \leq m \and i = 0,\\
+  \min \begin{cases}
+  f(i-1, j-1)                                  &\text{ if } x_i = x_j,\\
+  f(i-1, j-1) + w_\mathrm{subs}(a_{i}, b_j)  &\text{ fix } x_i,\\
+  f(i-1, j) + w_\mathrm{del}(a_{i})     &\text{ delete }x_i, \\              
+  f(i, j-1) + w_\mathrm{ins}(b_{j})     &\text{ insert }y_j. \\              
+  \end{cases} & \text{ otherwise .}
+  \end{cases}
+  \end{align*} %]]></script>
+
+  <p>The edit distance is found by calling $f(n,m)$ for the given strings $x$ and $y$.</p>
+</div>
+
 <!-- - Total possible solutions to linear equation of k variables -->
 <!-- - Wildcard pattern matching -->
 <!-- - Word break problem -->
 <!-- - Word break problem -->
 
-<h2 id="maximum-weight-independent-problem">Maximum Weight Independent Problem</h2>
+<!-- -Maximum Weight Independent Problem -->
 
 
   <div class="cited-references" markdown="1">
@@ -387,10 +478,10 @@ set we put each element.</p>
 
   <div id="github-links">
     <div class="view-source">
-      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md" download target="_blank">Raw</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">View source</a>
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/e36a138495c8eca28635ed55d00a8776e522ef8d/blog/_src/notes/2018-10-23-DP-lists.md" download target="_blank">Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/e36a138495c8eca28635ed55d00a8776e522ef8d/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">View source</a>
       <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">Edit</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">History</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/e36a138495c8eca28635ed55d00a8776e522ef8d/blog/_src/notes/2018-10-23-DP-lists.md" target="_blank">History</a>
       <a  href="#" onclick="window.print();return false;" target="_blank">Print</a>
       
     </div>
@@ -561,15 +652,6 @@ WebFontConfig = {
 
 
 
-
-<script type="text/javascript">
-  if ( $('div').hasClass('cited-references') ){
-    $('.cited-references').append( $('.references').html() );
-    $('.references').hide();
-    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
-    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
-  }
-</script>
 
 
 
