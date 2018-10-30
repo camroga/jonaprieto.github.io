@@ -1692,6 +1692,9 @@ module Equivalence where
     ≃-to-→ = lemap
     fun≃   = lemap
 
+    infixl 70 _∙
+    _∙ = lemap
+
     remap : A ≃ B → (B → A)
     remap (f , contrf) b = π₁ (π₁ (contrf b))
 

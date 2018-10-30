@@ -91,7 +91,7 @@ Our goal will consist to formalise the particular case when the graph is
 - no *multi-graphs*, and
 - connected.
 
-#### Approach A
+#### First Approach
 
 ![path](/assets/ipe-images/graph-approach1.png){: width="40%" }
 *Figure 1. Connected, undirected, no multi-graphs.*
@@ -125,8 +125,10 @@ module Approach₁ {ℓ} where
 
 \end{code}
 
-For connected graph, we need to define the type `Path` to allow us
-saying that two nodes are connected by a *path*.
+For connected graphs, we need to define the type `Path` to allow us
+establish the connectedness property which says that a graph is *connected* if
+for any pair of nodes there is a path between them. A *path* is a sequence of
+edges that shares endpoint and starting point.
 
 \begin{code}
 
@@ -141,37 +143,46 @@ module ConnectedGraph
     edge
       : ∀ {x y : Node G}
       → Edge G x y
-      ----------
+      ------------
       → Path x y
 
     cons
       : ∀ { x y z : Node G}
       → Path x y → Edge G y z
-      ---------------------
+      ------------------------
       → Path x z
 
   record Graph : Type (lsuc ℓ) where
-    constructor graph
+    constructor connectedGraph
     field
       connected
         : ∀ {x y : Node G}
-        -----------
+        ------------------
         → Path x y
+
   open Graph public
 \end{code}
 
-- *Out* type
+❓ Our notion of *path* seems to be the *walk* notion. should we impose the predicate to not repeat vertices
+
+- Rotation systems
+
+Let's define the `Out` type to attempt define what a rotation system is.
 
 ![path](/assets/ipe-images/bitacora-out.png){: width="40%" }
-*Figure 3. Out $x$ when $x : \Node\,G$ for a graph $G$.*
+*Figure 3. $\mathsf{Out}\,x$ when $x : \Node\,G$ in a graph $G$.*
 
 \begin{code}
-  -- Def. Alt2
+  -- Def.
   Out : Node G → Type ℓ
   Out = λ (x : Node G) → Σ (Node G) (λ y → Edge G y x)
+\end{code}
 
-  OutR : ∀ {x : Node G} → Out x → Out x → Out x → Type ℓ
-  OutR = {!   !}
+❓ I forgot the purpose of `OutR`.
+\begin{code}
+  -- Relation.
+  postulate
+    OutR : ∀ {x : Node G} → Out x → Out x → Out x → Type ℓ
 
   postulate
     OutRIsProp : ∀ {x : Node G}{a b c : Out x} → isProp (OutR a b c)
@@ -179,7 +190,7 @@ module ConnectedGraph
 \end{code}
 
 
-#### Cyclic definition
+#### Cyclics
 
 The reason to define a cyclic relation is that the faces or regions can be defined by
 *combinatorial maps* or also called *rotation systems*.
@@ -188,7 +199,7 @@ The reason to define a cyclic relation is that the faces or regions can be defin
 ![path](/assets/ipe-images/cyclic.png){: width="40%" }
 *Figure 2. Cyclic relation `R`.*
 
-Now, let's define cycle orders:
+Therefore, we present first an attempt to define cycle orders:
 
 \begin{code}
 module CyclicForm {ℓᵢ ℓⱼ} where
@@ -209,6 +220,7 @@ module CyclicForm {ℓᵢ ℓⱼ} where
 
       axiom₁
         : ∀ {a b : A}
+        -------------
         → R a b b
 
       axiom₂
@@ -232,18 +244,37 @@ module CyclicForm {ℓᵢ ℓⱼ} where
   -- Def.
   -- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)
   -- CyclicIsProp x y = {!   !}
+
+  -- ∀ {x : Node G} → Cyclic (Out x) (OutR {x})
 \end{code}
 
+❓ How to define $\Face\ G$ for $G : \Graph\ A$.
 
 #### Isomorphisms
 
 \begin{code}
-module IsoGraphs where
-  -- open Graph
-  -- record Iso where
-    -- field
-      -- α : Node
+module Isomorphism {ℓ} where
 
+   module UGraph = Approach₁ {ℓ}       -- Undirected, no-multigraphs graphs
+   module CGraph = ConnectedGraph {ℓ}  -- Connected graphs
+   open UGraph
+   -- open CGraph
+
+   -- Isomorphism between two Connected graphs cG and cH.
+   Iso
+    : ∀ {uG uH : UGraph.Graph}
+    → (cG : CGraph.Graph uG)
+    → (cH : CGraph.Graph uH)
+    → Type ℓ
+
+   Iso {uG}{uH} cG cH =
+    Σ (Node uG ≃ Node uH)
+      (λ α → (x y : Node uG) → Edge uG x y ⇔ Edge uH ( (α ∙) x) ( (α ∙) y))
+
+    -- Agda Questions:
+    -- 1. What to remove these parenthesis (α ∙)
+    -- 2. How to avoid ∀ {G H : BGraphs.Graph } in the definition, it's that possible?
+    -- 3. Better names! I don't like some like the module names.
 
 \end{code}
 
