@@ -46,13 +46,13 @@ that the graph $g$ is planar.
 \begin{code}
 {-# OPTIONS --without-K #-}
 
-open import 2018-07-06-mini-hott
+open import 2018-07-06-mini-hott hiding (Path)
 open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ )
 
 _ = Set
 \end{code}
 
-## Graphs
+### Graphs
 
 {: .only-website }
   *This is a work in progress jointly with Håkon Robbestad. Some of
@@ -91,7 +91,7 @@ Our goal will consist to formalise the particular case when the graph is
 - no *multi-graphs*, and
 - connected.
 
-## Approach A
+#### Approach A
 
 ![path](/assets/ipe-images/graph-approach1.png){: width="40%" }
 *Figure 1. Connected, undirected, no multi-graphs.*
@@ -113,43 +113,73 @@ module Approach₁ {ℓ} where
 
       -- The vertices form a set.
       NodeIsSet : isSet Node
+
       -- No multi-graphs.
       EdgeIsProp : ∀ {x y : Node} → isProp (Edge x y)
+
       -- Undirected.
-      α : ∀ {x y : Node} → Edge x y ⇔ Edge y x
+      undirected : ∀ {x y : Node} → Edge x y ⇔ Edge y x
       -- α : ∀ {x y : Node} → Edge x y == Edge y x
       -- α-id : ∀ {x : Node} → ≃-to-→ (α {x = x}{y = x}) == id
+  open Graph public
 
+\end{code}
+
+For connected graph, we need to define the type `Path` to allow us
+saying that two nodes are connected by a *path*.
+
+\begin{code}
+
+module ConnectedGraph
+  {ℓ} (G : Approach₁.Graph {ℓ})
+  where
+
+  open Approach₁.Graph public
+
+  -- Path Def.
+  data Path : Node G → Node G → Type ℓ where
+    edge
+      : ∀ {x y : Node G}
+      → Edge G x y
+      ----------
+      → Path x y
+
+    cons
+      : ∀ { x y z : Node G}
+      → Path x y → Edge G y z
+      ---------------------
+      → Path x z
+
+  record Graph : Type (lsuc ℓ) where
+    constructor graph
+    field
+      connected
+        : ∀ {x y : Node G}
+        -----------
+        → Path x y
   open Graph public
 \end{code}
 
-To consider connected graph, we can define what is a `Path`.
+- *Out* type
+
+![path](/assets/ipe-images/bitacora-out.png){: width="40%" }
+*Figure 3. Out $x$ when $x : \Node\,G$ for a graph $G$.*
 
 \begin{code}
+  -- Def. Alt2
+  Out : Node G → Type ℓ
+  Out = λ (x : Node G) → Σ (Node G) (λ y → Edge G y x)
 
+  OutR : ∀ {x : Node G} → Out x → Out x → Out x → Type ℓ
+  OutR = {!   !}
 
-  -- Path Def.
-  data gPath : ∀ {G : Graph} → Node G → Node G → Type {!   !} where
-    edge
-      :  ∀ {G : Graph} {x y : Node G}
-      → Edge G x y
-      ----------
-      → gPath x y
-
-    cons
-      : ∀ {G : Graph} { x y z : Node G}
-      → gPath x y → Edge G y z
-      ---------------------
-      → gPath x z
-
+  postulate
+    OutRIsProp : ∀ {x : Node G}{a b c : Out x} → isProp (OutR a b c)
+  -- Each node has incident nodes.
 \end{code}
 
 
-\begin{code}
-Graph = Approach₁.Graph
-\end{code}
-
-### Cyclic definition
+#### Cyclic definition
 
 The reason to define a cyclic relation is that the faces or regions can be defined by
 *combinatorial maps* or also called *rotation systems*.
@@ -204,14 +234,20 @@ module CyclicForm {ℓᵢ ℓⱼ} where
   -- CyclicIsProp x y = {!   !}
 \end{code}
 
+
+#### Isomorphisms
+
 \begin{code}
-module Out where
-  g = Graph
+module IsoGraphs where
+  -- open Graph
+  -- record Iso where
+    -- field
+      -- α : Node
+
 
 \end{code}
 
-
-### State-of-art
+### Related papers
 
 Papers relevant to formalizations of graphs:
 
@@ -263,7 +299,7 @@ planar graphs.
   > which complicates a verification. Directed
 
 
-### Questions and Related blog post
+### Related links
 
 - 📆 https://mathoverflow.net/questions/278015/number-of-non-equivalent-graph-embeddings
 - 📆 https://mathoverflow.net/questions/134010/embeddings-of-graphs-into-surfaces?rq=1
