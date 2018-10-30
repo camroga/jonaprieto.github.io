@@ -8,26 +8,26 @@
   <title>
     
       
-        dynamic programing problems |
+        Dynamic programing problems |
       
         jonaprieto
     
   </title><!-- Begin Jekyll SEO tag v2.5.0 -->
 <meta name="generator" content="Jekyll v3.8.4" />
-<meta property="og:title" content="dynamic programing problems" />
+<meta property="og:title" content="Dynamic programing problems" />
 <meta name="author" content="Jonathan Prieto-Cubides" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems." />
-<meta property="og:description" content="We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems." />
+<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader." />
+<meta property="og:description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader." />
 <link rel="canonical" href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
 <meta property="og:url" content="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" />
 <meta property="og:site_name" content="jonaprieto" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-08-24T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/","headline":"dynamic programing problems","dateModified":"2018-10-26T13:31:41+02:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/"},"@context":"http://schema.org"}</script>
+{"description":"We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/","headline":"Dynamic programing problems","dateModified":"2018-10-30T14:10:51+01:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/08/24/DP-lists/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems.">
+<meta name="description" content="We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem an...">
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="preload" as="script" href="/assets/main.js" >
@@ -150,7 +150,7 @@
 
   <div class="print-version">
     <center>
-      <h1>dynamic programing problems </h1><br/>
+      <h1>Dynamic programing problems </h1><br/>
         <div class="print-authors">
           <div class="print-info">
             <div class="print-author">
@@ -185,67 +185,19 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md">d892d4f0 </a> on  26 Oct 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/d892d4f00199f0d5506fb4faf622be86460ec279/blog/_src/notes/2018-10-23-DP-lists.md">d892d4f0 </a> on  30 Oct 2018
     </div>
   </div>
   
-  <h1 class="post-title" id="stickyTitle">dynamic programing problems
+  <h1 class="post-title" id="stickyTitle">Dynamic programing problems
   </h1>
   
   <div class="toc">
     <nav>
     <h2 class="table-of-contents"> Table of Contents </h2>
       <ul>
-  <li><a href="#01-knapsack-problem">0–1 Knapsack problem</a></li>
-  <li><a href="#3-partition-problem">3-partition problem</a></li>
-  <li><a href="#all-pairs-shortest-pathsfloyd-warshall-algorithm">All-pairs shortest paths — floyd warshall algorithm</a></li>
-  <li><a href="#calculate-size-of-the-largest-plus-of-1s-in-binary-matrix">Calculate size of the largest plus of 1’s in binary matrix</a></li>
-  <li><a href="#calculate-sum-of-all-elements-in-a-sub-matrix-in-constant-time">Calculate sum of all elements in a sub-matrix in constant time</a></li>
-  <li><a href="#check-if-given-string-is-interleaving-of-two-other-given-strings">Check if given string is interleaving of two other given strings</a></li>
-  <li><a href="#coin-change-problem-total-number-of-ways-to-get-the-denomination-of-coins">Coin change problem (total number of ways to get the denomination of coins)</a></li>
-  <li><a href="#coin-change-making-problem-unlimited-supply-of-coins">Coin change-making problem (unlimited supply of coins)</a></li>
-  <li><a href="#collect-maximum-points-in-a-matrix-by-satisfying-given-constraints">Collect maximum points in a matrix by satisfying given constraints</a></li>
-  <li><a href="#count-number-of-paths-in-a-matrix-with-given-cost-to-reach-destination-cell">Count number of paths in a matrix with given cost to reach destination cell</a></li>
-  <li><a href="#count-number-of-times-a-pattern-appears-in-given-string-as-a-subsequence">Count number of times a pattern appears in given string as a subsequence</a></li>
-  <li><a href="#count-total-possible-combinations-of-n-digit-numbers-in-a-mobile-keypad">Count total possible combinations of n-digit numbers in a mobile keypad</a></li>
-  <li><a href="#find-all-n-digit-binary-strings-without-any-consecutive-1s">Find all n-digit binary strings without any consecutive 1’s</a></li>
-  <li><a href="#find-longest-sequence-formed-by-adjacent-numbers-in-the-matrix">Find longest sequence formed by adjacent numbers in the matrix</a></li>
-  <li><a href="#find-maximum-sum-of-subsequence-with-no-adjacent-elements">Find maximum sum of subsequence with no adjacent elements</a></li>
-  <li><a href="#find-maximum-sum-submatrix-in-a-given-matrix">Find maximum sum submatrix in a given matrix</a></li>
-  <li><a href="#find-maximum-sum-submatrix-present-in-a-given-matrix">Find maximum sum submatrix present in a given matrix</a></li>
-  <li><a href="#find-minimum-cuts-needed-for-palindromic-partition-of-a-string">Find minimum cuts needed for palindromic partition of a string</a></li>
-  <li><a href="#find-optimal-cost-to-construct-binary-search-tree">Find optimal cost to construct binary search tree</a></li>
-  <li><a href="#find-probability-that-a-person-is-alive-after-taking-n-steps-on-an-island">Find probability that a person is alive after taking n steps on an island</a></li>
-  <li><a href="#find-size-of-largest-square-sub-matrix-of-1s-present-in-given-binary-matrix">Find size of largest square sub-matrix of 1’s present in given binary matrix</a></li>
-  <li><a href="#find-the-minimum-cost-to-reach-last-cell-of-the-matrix-from-its-first-cell">Find the minimum cost to reach last cell of the matrix from its first cell</a></li>
-  <li><a href="#implement-diff-utility">Implement diff utility</a></li>
-  <li><a href="#increasing-subsequence-with-maximum-sum">Increasing subsequence with maximum sum</a></li>
-  <li><a href="#longest-alternating-subsequence-problem">Longest alternating subsequence problem</a></li>
-  <li><a href="#longest-bitonic-subsequence">Longest bitonic subsequence</a></li>
-  <li><a href="#longest-common-subsequence">Longest common subsequence</a></li>
-  <li><a href="#longest-common-subsequence-1">Longest common subsequence</a></li>
-  <li><a href="#longest-common-substring-problem">Longest common substring problem</a></li>
-  <li><a href="#longest-increasing-subsequence-using-dynamic-programming">Longest increasing subsequence using dynamic programming</a></li>
-  <li><a href="#longest-palindromic-subsequence-using-dynamic-programming">Longest palindromic subsequence using dynamic programming</a></li>
-  <li><a href="#longest-repeated-subsequence-problem">Longest repeated subsequence problem</a></li>
-  <li><a href="#matrix-chain-multiplication-using-dynamic-programming">Matrix chain multiplication using dynamic programming</a></li>
-  <li><a href="#maximize-the-value-of-an-expression">Maximize the value of an expression</a></li>
-  <li><a href="#maximum-length-snake-sequence">Maximum length snake sequence</a></li>
-  <li><a href="#maximum-product-rod-cutting">Maximum product rod cutting</a></li>
-  <li><a href="#maximum-subarray-problem-kadanes-algorithm">Maximum subarray problem (kadane’s algorithm)</a></li>
-  <li><a href="#minimum-sum-partition-problem">Minimum sum partition problem</a></li>
-  <li><a href="#partition-problem">Partition problem</a></li>
-  <li><a href="#pots-of-gold-game-using-dynamic-programming">Pots of gold game using dynamic programming</a></li>
-  <li><a href="#rod-cutting-problem">Rod cutting problem</a></li>
-  <li><a href="#shortest-common-supersequence">Shortest common supersequence</a></li>
-  <li><a href="#shortest-common-supersequence-1">Shortest common supersequence</a></li>
-  <li><a href="#single-source-shortest-pathsbellman-ford-algorithm">Single-source shortest paths — bellman ford algorithm</a></li>
-  <li><a href="#subset-sum-problem">Subset sum problem</a></li>
-  <li><a href="#the-levenshtein-distance-edit-distance-problem">The levenshtein distance (edit distance) problem</a></li>
-  <li><a href="#total-possible-solutions-to-linear-equation-of-k-variables">Total possible solutions to linear equation of k variables</a></li>
-  <li><a href="#wildcard-pattern-matching">Wildcard pattern matching</a></li>
-  <li><a href="#word-break-problem">Word break problem</a></li>
-  <li><a href="#word-break-problem-1">Word break problem</a></li>
+  <li><a href="#01-knapsack">0–1 Knapsack</a></li>
+  <li><a href="#3-partition">3-partition</a></li>
   <li><a href="#maximum-weight-independent-problem">Maximum Weight Independent Problem</a></li>
 </ul>
 
@@ -257,9 +209,11 @@
   <h6>You need to turn on Javascript to see the content of this entry correctly.<h6><br/>
   </noscript>
 
-  <p>We study dynamic programming through examples.
-My goal here is to keep a list of recursion formulation
-of some common problems.</p>
+  <p>We study dynamic programming through examples. My goal here is to keep a list of
+the recursion formulation for each problem as a help to solve the problem and
+similars. I’m not interested <em>really</em> neither in the implementation nor a very
+long description, just the explicit recursion function. The complexity for each
+solution is left to the reader.</p>
 
 <p>Links of list similar:</p>
 <ul>
@@ -267,33 +221,34 @@ of some common problems.</p>
   <li><a href="https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3">top-50-dynamic-programming-practice-problems</a></li>
 </ul>
 
-<h2 id="01-knapsack-problem">0–1 Knapsack problem</h2>
+<h2 id="01-knapsack">0–1 Knapsack</h2>
 
 <div class="exercise">
-  <p>Maximize the sum of the values of the items in the knapsack so that the sum of
+  <p><strong>Problem:</strong><br />
+Maximize the sum of the values of the items in the knapsack so that the sum of
 the weights is less than or equal to the knapsack’s capacity.</p>
+</div>
 
-  <p>Given:</p>
-  <ul>
-    <li>a set of <script type="math/tex">n</script> items numbered from $1$ up to $n$,</li>
-    <li>each item has a weight <script type="math/tex">w_i</script> and a value <script type="math/tex">v_i</script>,</li>
-    <li>the bag has a maximum weight capacity $W$.</li>
-  </ul>
+<p><strong>Explicit Formulation:</strong></p>
 
-  <p>Solve:</p>
+<p>Given</p>
+<ul>
+  <li>a set of <script type="math/tex">n</script> items numbered from $1$ up to $n$,</li>
+  <li>each item has a weight <script type="math/tex">w_i</script> and a value <script type="math/tex">v_i</script>,</li>
+  <li>the bag has a maximum weight capacity $W$.</li>
+</ul>
 
-  <script type="math/tex; mode=display">% <![CDATA[
+<script type="math/tex; mode=display">% <![CDATA[
 \begin{align*}
     \maximize &\sum_{i=1}^n v_i x_i \\
     \st.      &\sum_{i=1}^n w_i x_i \leq W\\
               &x_i \in \{0,1\}.
     \end{align*} %]]></script>
 
-  <p>Here $x_i$ represents the number of instances of item $i$ to include in the knapsack.</p>
-</div>
+<p>Here $x_i$ represents the number of instances of item $i$ to include in the knapsack.</p>
 
 <div class="proof">
-  <p><strong>Formulation.</strong></p>
+  <p><strong>Recursion:</strong></p>
 
   <p>Define $f(i,w)$ to be the maximum value that can be attained with <strong>weight less
 than or equal</strong> to $w$ using items up to $i$ (first $i$ items).</p>
@@ -320,198 +275,105 @@ than or equal</strong> to $w$ using items up to $i$ (first $i$ items).</p>
   <li><em>unbounded knapsack problem (UKP)</em>: $x_{i}\geq 0$</li>
 </ul>
 
-<h2 id="3-partition-problem">3-partition problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="all-pairs-shortest-pathsfloyd-warshall-algorithm">All-pairs shortest paths — floyd warshall algorithm</h2>
-
-<h2 id="calculate-size-of-the-largest-plus-of-1s-in-binary-matrix">Calculate size of the largest plus of 1’s in binary matrix</h2>
-
-<p>Pending…</p>
-
-<h2 id="calculate-sum-of-all-elements-in-a-sub-matrix-in-constant-time">Calculate sum of all elements in a sub-matrix in constant time</h2>
-
-<p>Pending…</p>
-
-<h2 id="check-if-given-string-is-interleaving-of-two-other-given-strings">Check if given string is interleaving of two other given strings</h2>
-
-<p>Pending…</p>
-
-<h2 id="coin-change-problem-total-number-of-ways-to-get-the-denomination-of-coins">Coin change problem (total number of ways to get the denomination of coins)</h2>
-
-<p>Pending…</p>
-
-<h2 id="coin-change-making-problem-unlimited-supply-of-coins">Coin change-making problem (unlimited supply of coins)</h2>
-
-<p>Pending…</p>
-
-<h2 id="collect-maximum-points-in-a-matrix-by-satisfying-given-constraints">Collect maximum points in a matrix by satisfying given constraints</h2>
-
-<p>Pending…</p>
-
-<h2 id="count-number-of-paths-in-a-matrix-with-given-cost-to-reach-destination-cell">Count number of paths in a matrix with given cost to reach destination cell</h2>
-
-<p>Pending…</p>
-
-<h2 id="count-number-of-times-a-pattern-appears-in-given-string-as-a-subsequence">Count number of times a pattern appears in given string as a subsequence</h2>
-
-<p>Pending…</p>
-
-<h2 id="count-total-possible-combinations-of-n-digit-numbers-in-a-mobile-keypad">Count total possible combinations of n-digit numbers in a mobile keypad</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-all-n-digit-binary-strings-without-any-consecutive-1s">Find all n-digit binary strings without any consecutive 1’s</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-longest-sequence-formed-by-adjacent-numbers-in-the-matrix">Find longest sequence formed by adjacent numbers in the matrix</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-maximum-sum-of-subsequence-with-no-adjacent-elements">Find maximum sum of subsequence with no adjacent elements</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-maximum-sum-submatrix-in-a-given-matrix">Find maximum sum submatrix in a given matrix</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-maximum-sum-submatrix-present-in-a-given-matrix">Find maximum sum submatrix present in a given matrix</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-minimum-cuts-needed-for-palindromic-partition-of-a-string">Find minimum cuts needed for palindromic partition of a string</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-optimal-cost-to-construct-binary-search-tree">Find optimal cost to construct binary search tree</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-probability-that-a-person-is-alive-after-taking-n-steps-on-an-island">Find probability that a person is alive after taking n steps on an island</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-size-of-largest-square-sub-matrix-of-1s-present-in-given-binary-matrix">Find size of largest square sub-matrix of 1’s present in given binary matrix</h2>
-
-<p>Pending…</p>
-
-<h2 id="find-the-minimum-cost-to-reach-last-cell-of-the-matrix-from-its-first-cell">Find the minimum cost to reach last cell of the matrix from its first cell</h2>
-
-<p>Pending…</p>
-
-<h2 id="implement-diff-utility">Implement diff utility</h2>
-
-<p>Pending…</p>
-
-<h2 id="increasing-subsequence-with-maximum-sum">Increasing subsequence with maximum sum</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-alternating-subsequence-problem">Longest alternating subsequence problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-bitonic-subsequence">Longest bitonic subsequence</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-common-subsequence">Longest common subsequence</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-common-subsequence-1">Longest common subsequence</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-common-substring-problem">Longest common substring problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-increasing-subsequence-using-dynamic-programming">Longest increasing subsequence using dynamic programming</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-palindromic-subsequence-using-dynamic-programming">Longest palindromic subsequence using dynamic programming</h2>
-
-<p>Pending…</p>
-
-<h2 id="longest-repeated-subsequence-problem">Longest repeated subsequence problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="matrix-chain-multiplication-using-dynamic-programming">Matrix chain multiplication using dynamic programming</h2>
-
-<p>Pending…</p>
-
-<h2 id="maximize-the-value-of-an-expression">Maximize the value of an expression</h2>
-
-<p>Pending…</p>
-
-<h2 id="maximum-length-snake-sequence">Maximum length snake sequence</h2>
-
-<p>Pending…</p>
-
-<h2 id="maximum-product-rod-cutting">Maximum product rod cutting</h2>
-
-<p>Pending…</p>
-
-<h2 id="maximum-subarray-problem-kadanes-algorithm">Maximum subarray problem (kadane’s algorithm)</h2>
-
-<p>Pending…</p>
-
-<h2 id="minimum-sum-partition-problem">Minimum sum partition problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="partition-problem">Partition problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="pots-of-gold-game-using-dynamic-programming">Pots of gold game using dynamic programming</h2>
-
-<p>Pending…</p>
-
-<h2 id="rod-cutting-problem">Rod cutting problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="shortest-common-supersequence">Shortest common supersequence</h2>
-
-<p>Pending…</p>
-
-<h2 id="shortest-common-supersequence-1">Shortest common supersequence</h2>
-
-<p>Pending…</p>
-
-<h2 id="single-source-shortest-pathsbellman-ford-algorithm">Single-source shortest paths — bellman ford algorithm</h2>
-
-<p>Pending…</p>
-
-<h2 id="subset-sum-problem">Subset sum problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="the-levenshtein-distance-edit-distance-problem">The levenshtein distance (edit distance) problem</h2>
-
-<p>Pending…</p>
-
-<h2 id="total-possible-solutions-to-linear-equation-of-k-variables">Total possible solutions to linear equation of k variables</h2>
-
-<p>Pending…</p>
-
-<h2 id="wildcard-pattern-matching">Wildcard pattern matching</h2>
-
-<p>Pending…</p>
-
-<h2 id="word-break-problem">Word break problem</h2>
-
-<p>Pending…</p>
-
-<p>Pending…</p>
-<h2 id="word-break-problem-1">Word break problem</h2>
+<h2 id="3-partition">3-partition</h2>
+
+<div class="exercise">
+  <p><strong>Problem:</strong><br />
+Given integers $a_1, \cdots a_n$, we want to determine
+whether it is possible to partition of ${1,\cdots, n}$ into three disjoint subsets
+$I$ , $J$, $K$ such that</p>
+
+  <p class="equation"><script type="math/tex">\begin{equation*}
+  \sum_{i\in I} a_i = \sum_{j\in J} a_j = \sum_{k\in K} a_k = \frac{1}{3}\sum_{i=1}^n a_i.
+  \end{equation*}</script></p>
+</div>
+
+<div class="proof">
+  <p><strong>Recursion:</strong><br /></p>
+  <ul>
+    <li>Assume that <script type="math/tex">S = \sum_{i=1}^n a_i</script> is divisible by $3$, otherwise we can’t make such a partition.</li>
+  </ul>
+
+  <p>For this decision problem, we define $f(i, p, q)$ to be $\true$ if we are able to find
+two disjoint sets $I$ and $J$ such that each sum $p$ and $q$ respectively
+with the first $i$ items available.</p>
+
+  <div class="equation">
+  $$\begin{align*}
+  \sum_{i\in I} a_i &amp;= p,\\
+  \sum_{j\in J} a_j &amp;= q,\\
+  I \sqcup J &amp;= \{1, \cdots, m\}.
+  \end{align*}$$
+</div>
+
+  <script type="math/tex; mode=display">% <![CDATA[
+\begin{align*}
+  f(i, p, q) =
+  \begin{cases}
+  \false                                     &\text{if }i = 0,\\
+  \true                                      &\text{if }i = 1 \and p = q = 0,\\
+  \true                                      &\text{if }i = 1 \and a_i = p,\\
+  \true                                      &\text{if }i = 1 \and a_i = q,\\
+  \false                                     &\text{if }i = 1,\\
+  \true                                      &\text{if }f(i-1, p , q),\\
+  \underbrace{f(i-1,p - a_i, q)}_{i\in I \and i\not\in J}
+  \or \underbrace{f(i-1,p, q-a_i)}_{i\not\in I \and i\in J} \}   &\text{otherwise}.
+  \end{cases}
+  \end{align*} %]]></script>
+
+  <p>The answer then can be found by computing $f(n, \frac{S}{3}, \frac{S}{3})$.
+The sets $I$ and $J$ can be found by using an auxiliary array to register if which
+set we put each element.</p>
+</div>
+
+<!-- - All-pairs shortest paths — Floyd-Warshall algorithm -->
+<!-- - Calculate size of the largest plus of 1’s in binary matrix -->
+<!-- - Calculate sum of all elements in a sub-matrix in constant time -->
+<!-- - Check if given string is interleaving of two other given strings -->
+<!-- - Coin change problem (total number of ways to get the denomination of coins) -->
+<!-- - Coin change-making problem (unlimited supply of coins) -->
+<!-- - Collect maximum points in a matrix by satisfying given constraints -->
+<!-- - Count number of paths in a matrix with given cost to reach destination cell -->
+<!-- - Count number of times a pattern appears in given string as a subsequence -->
+<!-- - Count total possible combinations of n-digit numbers in a mobile keypad -->
+<!-- - Find all n-digit binary strings without any consecutive 1’s -->
+<!-- - Find longest sequence formed by adjacent numbers in the matrix -->
+<!-- - Find maximum sum of subsequence with no adjacent elements -->
+<!-- - Find maximum sum submatrix in a given matrix -->
+<!-- - Find maximum sum submatrix present in a given matrix -->
+<!-- - Find minimum cuts needed for palindromic partition of a string -->
+<!-- - Find optimal cost to construct binary search tree -->
+<!-- - Find probability that a person is alive after taking n steps on an island -->
+<!-- - Find size of largest square sub-matrix of 1’s present in given binary matrix -->
+<!-- - Find the minimum cost to reach last cell of the matrix from its first cell -->
+<!-- - Implement diff utility -->
+<!-- - Increasing subsequence with maximum sum -->
+<!-- - Longest alternating subsequence problem -->
+<!-- - Longest bitonic subsequence -->
+<!-- - Longest common subsequence -->
+<!-- - Longest common subsequence -->
+<!-- - Longest common substring problem -->
+<!-- - Longest increasing subsequence using dynamic programming -->
+<!-- - Longest palindromic subsequence using dynamic programming -->
+<!-- - Longest repeated subsequence problem -->
+<!-- - Matrix chain multiplication using dynamic programming -->
+<!-- - Maximize the value of an expression -->
+<!-- - Maximum length snake sequence -->
+<!-- - Maximum product rod cutting -->
+<!-- - Maximum subarray problem (kadane’s algorithm) -->
+<!-- - Minimum sum partition problem -->
+<!-- - Partition problem -->
+<!-- - Pots of gold game using dynamic programming -->
+<!-- - Rod cutting problem -->
+<!-- - Shortest common supersequence -->
+<!-- - Shortest common supersequence -->
+<!-- - Single-source shortest paths — bellman ford algorithm -->
+<!-- - Subset sum problem -->
+<!-- - The levenshtein distance (edit distance) problem -->
+<!-- - Total possible solutions to linear equation of k variables -->
+<!-- - Wildcard pattern matching -->
+<!-- - Word break problem -->
+<!-- - Word break problem -->
 
 <h2 id="maximum-weight-independent-problem">Maximum Weight Independent Problem</h2>
 
@@ -573,6 +435,9 @@ than or equal</strong> to $w$ using items up to $i$ (first $i$ items).</p>
         two: ['\\field{2}'],
         id: ['\\mathsf{Id}'],
 
+        true: ['\\mathsf{true}'],
+        false: ['\\mathsf{false}'],
+
         proj: ['\\mathsf{proj}'],
 
         trans: ['\\mathsf{trans}'],
@@ -620,7 +485,12 @@ than or equal</strong> to $w$ using items up to $i$ (first $i$ items).</p>
 
         minimize : ['\\mathsf{minimize}'],
         maximize : ['\\mathsf{maximize}'],
-        st : ['\\mathsf{st}']
+        st : ['\\mathsf{st}'],
+
+        and : ['\\,\\wedge\\, '],
+        or : ['\\,\\vee\\,']
+
+
 
       }
     }

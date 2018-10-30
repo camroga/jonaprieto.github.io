@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-26T19:57:14+02:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T16:41:36+02:00</updated><id>http://jonaprieto.github.io/home/2018/10/23/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-10-30T14:11:25+01:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-10-23T16:41:36+02:00</updated><id>http://jonaprieto.github.io/home/2018/10/23/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/home/2018/10/23/hoare-triples/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/alps-chalmers/agda101&quot;&gt;https://github.com/alps-chalmers/agda101&lt;/a&gt;&lt;/li&gt;
@@ -442,7 +442,7 @@ truths)&lt;/p&gt;
 &lt;a id=&quot;19314&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19320&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19321&quot; href=&quot;/home/2018/10/23/hoare-triples/#18492&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19326&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19327&quot; href=&quot;/home/2018/10/23/hoare-triples/#7131&quot; class=&quot;InductiveConstructor&quot;&gt;□-e&lt;/a&gt; &lt;a id=&quot;19331&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;         &lt;a id=&quot;19343&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19345&quot; class=&quot;String&quot;&gt;&amp;quot;□-e&amp;quot;&lt;/a&gt;
 &lt;a id=&quot;19351&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19357&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19358&quot; href=&quot;/home/2018/10/23/hoare-triples/#18492&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19363&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19364&quot; href=&quot;/home/2018/10/23/hoare-triples/#7156&quot; class=&quot;InductiveConstructor&quot;&gt;□-∧-e₁&lt;/a&gt; &lt;a id=&quot;19371&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;      &lt;a id=&quot;19380&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19382&quot; class=&quot;String&quot;&gt;&amp;quot;□-∧-e₁&amp;quot;&lt;/a&gt;
 &lt;a id=&quot;19391&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19397&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19398&quot; href=&quot;/home/2018/10/23/hoare-triples/#18492&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19403&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19404&quot; href=&quot;/home/2018/10/23/hoare-triples/#7181&quot; class=&quot;InductiveConstructor&quot;&gt;□-∧-e₂&lt;/a&gt; &lt;a id=&quot;19411&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;      &lt;a id=&quot;19420&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19422&quot; class=&quot;String&quot;&gt;&amp;quot;□-∧-e₂&amp;quot;&lt;/a&gt;
-&lt;a id=&quot;19431&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19437&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19438&quot; href=&quot;/home/2018/10/23/hoare-triples/#18563&quot; class=&quot;InductiveConstructor&quot;&gt;customR&lt;/a&gt; &lt;a id=&quot;19446&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;19448&quot; href=&quot;/home/2018/10/23/hoare-triples/#19448&quot; class=&quot;Bound&quot;&gt;x₁&lt;/a&gt; &lt;a id=&quot;19451&quot; href=&quot;/home/2018/10/23/hoare-triples/#19451&quot; class=&quot;Bound&quot;&gt;x₂&lt;/a&gt;&lt;a id=&quot;19453&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;      &lt;a id=&quot;19460&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19462&quot; class=&quot;String&quot;&gt;&amp;quot;Custom &amp;quot;&lt;/a&gt; &lt;a id=&quot;19472&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.String.Base.html#1101&quot; class=&quot;Function Operator&quot;&gt;s++&lt;/a&gt; &lt;a id=&quot;19476&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.Nat.Show.html#951&quot; class=&quot;Function&quot;&gt;Show.show&lt;/a&gt; &lt;a id=&quot;19486&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;/pre&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Based completely in (missing reference) and the source code found in:</summary></entry><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-10-26T19:56:49+02:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;Research happens every day!&lt;/p&gt;
+&lt;a id=&quot;19431&quot; href=&quot;/home/2018/10/23/hoare-triples/#18698&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19437&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19438&quot; href=&quot;/home/2018/10/23/hoare-triples/#18563&quot; class=&quot;InductiveConstructor&quot;&gt;customR&lt;/a&gt; &lt;a id=&quot;19446&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;19448&quot; href=&quot;/home/2018/10/23/hoare-triples/#19448&quot; class=&quot;Bound&quot;&gt;x₁&lt;/a&gt; &lt;a id=&quot;19451&quot; href=&quot;/home/2018/10/23/hoare-triples/#19451&quot; class=&quot;Bound&quot;&gt;x₂&lt;/a&gt;&lt;a id=&quot;19453&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;      &lt;a id=&quot;19460&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19462&quot; class=&quot;String&quot;&gt;&amp;quot;Custom &amp;quot;&lt;/a&gt; &lt;a id=&quot;19472&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.String.Base.html#1101&quot; class=&quot;Function Operator&quot;&gt;s++&lt;/a&gt; &lt;a id=&quot;19476&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.Nat.Show.html#951&quot; class=&quot;Function&quot;&gt;Show.show&lt;/a&gt; &lt;a id=&quot;19486&quot; href=&quot;/home/2018/10/23/hoare-triples/#19446&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;/pre&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Based completely in (missing reference) and the source code found in:</summary></entry><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/research/2018/09/20/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-10-28T12:49:51+01:00</updated><id>http://jonaprieto.github.io/research/2018/09/20/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/research/2018/09/20/bitacora/">&lt;p&gt;Research happens every day!&lt;/p&gt;
 
 &lt;h2 id=&quot;topics&quot;&gt;Topics&lt;/h2&gt;
 
@@ -482,12 +482,12 @@ that the graph $g$ is planar.&lt;/p&gt;
 
 &lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;1333&quot; class=&quot;Symbol&quot;&gt;{-#&lt;/a&gt; &lt;a id=&quot;1337&quot; class=&quot;Keyword&quot;&gt;OPTIONS&lt;/a&gt; &lt;a id=&quot;1345&quot; class=&quot;Option&quot;&gt;--without-K&lt;/a&gt; &lt;a id=&quot;1357&quot; class=&quot;Symbol&quot;&gt;#-}&lt;/a&gt;
 
-&lt;a id=&quot;1362&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;1367&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;1374&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/&quot; class=&quot;Module&quot;&gt;2018-07-06-mini-hott&lt;/a&gt;
-&lt;a id=&quot;1395&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;1400&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;1407&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html&quot; class=&quot;Module&quot;&gt;Agda.Primitive&lt;/a&gt; &lt;a id=&quot;1422&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;1428&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt; &lt;a id=&quot;1430&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#408&quot; class=&quot;Postulate&quot;&gt;Level&lt;/a&gt; &lt;a id=&quot;1436&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1438&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#627&quot; class=&quot;Primitive&quot;&gt;lsuc&lt;/a&gt;&lt;a id=&quot;1442&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1444&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#611&quot; class=&quot;Primitive&quot;&gt;lzero&lt;/a&gt;&lt;a id=&quot;1449&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1451&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;_⊔_&lt;/a&gt; &lt;a id=&quot;1455&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+&lt;a id=&quot;1362&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;1367&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;1374&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/&quot; class=&quot;Module&quot;&gt;2018-07-06-mini-hott&lt;/a&gt; &lt;a id=&quot;1395&quot; class=&quot;Keyword&quot;&gt;hiding&lt;/a&gt; &lt;a id=&quot;1402&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;1403&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#6870&quot; class=&quot;Function&quot;&gt;Path&lt;/a&gt;&lt;a id=&quot;1407&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+&lt;a id=&quot;1409&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;1414&quot; class=&quot;Keyword&quot;&gt;import&lt;/a&gt; &lt;a id=&quot;1421&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html&quot; class=&quot;Module&quot;&gt;Agda.Primitive&lt;/a&gt; &lt;a id=&quot;1436&quot; class=&quot;Keyword&quot;&gt;using&lt;/a&gt; &lt;a id=&quot;1442&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt; &lt;a id=&quot;1444&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#408&quot; class=&quot;Postulate&quot;&gt;Level&lt;/a&gt; &lt;a id=&quot;1450&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1452&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#627&quot; class=&quot;Primitive&quot;&gt;lsuc&lt;/a&gt;&lt;a id=&quot;1456&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1458&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#611&quot; class=&quot;Primitive&quot;&gt;lzero&lt;/a&gt;&lt;a id=&quot;1463&quot; class=&quot;Symbol&quot;&gt;;&lt;/a&gt; &lt;a id=&quot;1465&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;_⊔_&lt;/a&gt; &lt;a id=&quot;1469&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-&lt;a id=&quot;1458&quot; href=&quot;/research/2018/09/20/bitacora/#1458&quot; class=&quot;Function&quot;&gt;_&lt;/a&gt; &lt;a id=&quot;1460&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1462&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;/pre&gt;
+&lt;a id=&quot;1472&quot; href=&quot;/research/2018/09/20/bitacora/#1472&quot; class=&quot;Function&quot;&gt;_&lt;/a&gt; &lt;a id=&quot;1474&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;1476&quot; class=&quot;PrimitiveType&quot;&gt;Set&lt;/a&gt;&lt;/pre&gt;
 
-&lt;h2 id=&quot;graphs&quot;&gt;Graphs&lt;/h2&gt;
+&lt;h3 id=&quot;graphs&quot;&gt;Graphs&lt;/h3&gt;
 
 &lt;p class=&quot;only-website&quot;&gt;&lt;em&gt;This is a work in progress jointly with Håkon Robbestad. Some of
   the following proofs are collapsed or hidden to reduce the size of the document.
@@ -539,55 +539,88 @@ review in future sessions.&lt;/li&gt;
   &lt;li&gt;connected.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;approach-a&quot;&gt;Approach A&lt;/h2&gt;
+&lt;h4 id=&quot;approach-a&quot;&gt;Approach A&lt;/h4&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/ipe-images/graph-approach1.png&quot; alt=&quot;path&quot; width=&quot;40%&quot; /&gt;
 &lt;em&gt;Figure 1. Connected, undirected, no multi-graphs.&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;undirected-and-no-multi-graph-definition&quot;&gt;Undirected and no multi-graph definition&lt;/h3&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;3304&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;Approach₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3311&quot; href=&quot;/research/2018/09/20/bitacora/#3311&quot; class=&quot;Module&quot;&gt;Approach₁&lt;/a&gt; &lt;a id=&quot;3321&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3322&quot; href=&quot;/research/2018/09/20/bitacora/#3322&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;&lt;a id=&quot;3323&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3325&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;3321&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;Approach₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3328&quot; href=&quot;/research/2018/09/20/bitacora/#3328&quot; class=&quot;Module&quot;&gt;Approach₁&lt;/a&gt; &lt;a id=&quot;3338&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3339&quot; href=&quot;/research/2018/09/20/bitacora/#3339&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;&lt;a id=&quot;3340&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3342&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
 
-  &lt;a id=&quot;3334&quot; class=&quot;Keyword&quot;&gt;record&lt;/a&gt; &lt;a id=&quot;Approach₁.Graph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3341&quot; href=&quot;/research/2018/09/20/bitacora/#3341&quot; class=&quot;Record&quot;&gt;Graph&lt;/a&gt; &lt;a id=&quot;3347&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3349&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;3354&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3355&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#627&quot; class=&quot;Primitive&quot;&gt;lsuc&lt;/a&gt; &lt;a id=&quot;3360&quot; href=&quot;/research/2018/09/20/bitacora/#3322&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;&lt;a id=&quot;3361&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3363&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-    &lt;a id=&quot;3373&quot; class=&quot;Keyword&quot;&gt;constructor&lt;/a&gt; &lt;a id=&quot;Approach₁.Graph.graph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3385&quot; href=&quot;/research/2018/09/20/bitacora/#3385&quot; class=&quot;InductiveConstructor&quot;&gt;graph&lt;/a&gt;
-    &lt;a id=&quot;3395&quot; class=&quot;Keyword&quot;&gt;field&lt;/a&gt;
-      &lt;a id=&quot;3407&quot; class=&quot;Comment&quot;&gt;-- G = (V, E)&lt;/a&gt;
-      &lt;a id=&quot;Approach₁.Graph.Node&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3427&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;3432&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3434&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;3439&quot; href=&quot;/research/2018/09/20/bitacora/#3322&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;
-      &lt;a id=&quot;Approach₁.Graph.Edge&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3447&quot; href=&quot;/research/2018/09/20/bitacora/#3447&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3452&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3454&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;3459&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3461&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;3466&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3468&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;3473&quot; href=&quot;/research/2018/09/20/bitacora/#3322&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;
+  &lt;a id=&quot;3351&quot; class=&quot;Keyword&quot;&gt;record&lt;/a&gt; &lt;a id=&quot;Approach₁.Graph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3358&quot; href=&quot;/research/2018/09/20/bitacora/#3358&quot; class=&quot;Record&quot;&gt;Graph&lt;/a&gt; &lt;a id=&quot;3364&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3366&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;3371&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3372&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#627&quot; class=&quot;Primitive&quot;&gt;lsuc&lt;/a&gt; &lt;a id=&quot;3377&quot; href=&quot;/research/2018/09/20/bitacora/#3339&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;&lt;a id=&quot;3378&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;3380&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+    &lt;a id=&quot;3390&quot; class=&quot;Keyword&quot;&gt;constructor&lt;/a&gt; &lt;a id=&quot;Approach₁.Graph.graph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3402&quot; href=&quot;/research/2018/09/20/bitacora/#3402&quot; class=&quot;InductiveConstructor&quot;&gt;graph&lt;/a&gt;
+    &lt;a id=&quot;3412&quot; class=&quot;Keyword&quot;&gt;field&lt;/a&gt;
+      &lt;a id=&quot;3424&quot; class=&quot;Comment&quot;&gt;-- G = (V, E)&lt;/a&gt;
+      &lt;a id=&quot;Approach₁.Graph.Node&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3444&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;3449&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3451&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;3456&quot; href=&quot;/research/2018/09/20/bitacora/#3339&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;
+      &lt;a id=&quot;Approach₁.Graph.Edge&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3464&quot; href=&quot;/research/2018/09/20/bitacora/#3464&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3469&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3471&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;3476&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3478&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;3483&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3485&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;3490&quot; href=&quot;/research/2018/09/20/bitacora/#3339&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;
 
-      &lt;a id=&quot;3482&quot; class=&quot;Comment&quot;&gt;-- Properties&lt;/a&gt;
-      &lt;a id=&quot;3502&quot; class=&quot;Comment&quot;&gt;-- ==========&lt;/a&gt;
+      &lt;a id=&quot;3499&quot; class=&quot;Comment&quot;&gt;-- Properties&lt;/a&gt;
+      &lt;a id=&quot;3519&quot; class=&quot;Comment&quot;&gt;-- ==========&lt;/a&gt;
 
-      &lt;a id=&quot;3523&quot; class=&quot;Comment&quot;&gt;-- The vertices form a set.&lt;/a&gt;
-      &lt;a id=&quot;Approach₁.Graph.NodeIsSet&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3557&quot; href=&quot;/research/2018/09/20/bitacora/#3557&quot; class=&quot;Field&quot;&gt;NodeIsSet&lt;/a&gt; &lt;a id=&quot;3567&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3569&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#40791&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;3575&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt;
-      &lt;a id=&quot;3586&quot; class=&quot;Comment&quot;&gt;-- No multi-graphs.&lt;/a&gt;
-      &lt;a id=&quot;Approach₁.Graph.EdgeIsProp&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3612&quot; href=&quot;/research/2018/09/20/bitacora/#3612&quot; class=&quot;Field&quot;&gt;EdgeIsProp&lt;/a&gt; &lt;a id=&quot;3623&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3625&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;3627&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3628&quot; href=&quot;/research/2018/09/20/bitacora/#3628&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3630&quot; href=&quot;/research/2018/09/20/bitacora/#3630&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3632&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3634&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt;&lt;a id=&quot;3638&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3640&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3642&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#39801&quot; class=&quot;Function&quot;&gt;isProp&lt;/a&gt; &lt;a id=&quot;3649&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3650&quot; href=&quot;/research/2018/09/20/bitacora/#3447&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3655&quot; href=&quot;/research/2018/09/20/bitacora/#3628&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3657&quot; href=&quot;/research/2018/09/20/bitacora/#3630&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;3658&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
-      &lt;a id=&quot;3666&quot; class=&quot;Comment&quot;&gt;-- Undirected.&lt;/a&gt;
-      &lt;a id=&quot;Approach₁.Graph.α&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3687&quot; href=&quot;/research/2018/09/20/bitacora/#3687&quot; class=&quot;Field&quot;&gt;α&lt;/a&gt; &lt;a id=&quot;3689&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3691&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;3693&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3694&quot; href=&quot;/research/2018/09/20/bitacora/#3694&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3696&quot; href=&quot;/research/2018/09/20/bitacora/#3696&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3698&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3700&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt;&lt;a id=&quot;3704&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3706&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3708&quot; href=&quot;/research/2018/09/20/bitacora/#3447&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3713&quot; href=&quot;/research/2018/09/20/bitacora/#3694&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3715&quot; href=&quot;/research/2018/09/20/bitacora/#3696&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3717&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#3424&quot; class=&quot;Function Operator&quot;&gt;⇔&lt;/a&gt; &lt;a id=&quot;3719&quot; href=&quot;/research/2018/09/20/bitacora/#3447&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3724&quot; href=&quot;/research/2018/09/20/bitacora/#3696&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3726&quot; href=&quot;/research/2018/09/20/bitacora/#3694&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;
-      &lt;a id=&quot;3734&quot; class=&quot;Comment&quot;&gt;-- α : ∀ {x y : Node} → Edge x y == Edge y x&lt;/a&gt;
-      &lt;a id=&quot;3785&quot; class=&quot;Comment&quot;&gt;-- α-id : ∀ {x : Node} → ≃-to-→ (α {x = x}{y = x}) == id&lt;/a&gt;
+      &lt;a id=&quot;3540&quot; class=&quot;Comment&quot;&gt;-- The vertices form a set.&lt;/a&gt;
+      &lt;a id=&quot;Approach₁.Graph.NodeIsSet&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3574&quot; href=&quot;/research/2018/09/20/bitacora/#3574&quot; class=&quot;Field&quot;&gt;NodeIsSet&lt;/a&gt; &lt;a id=&quot;3584&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3586&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#40791&quot; class=&quot;Function&quot;&gt;isSet&lt;/a&gt; &lt;a id=&quot;3592&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt;
 
-  &lt;a id=&quot;3845&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3850&quot; href=&quot;/research/2018/09/20/bitacora/#3341&quot; class=&quot;Module&quot;&gt;Graph&lt;/a&gt; &lt;a id=&quot;3856&quot; class=&quot;Keyword&quot;&gt;public&lt;/a&gt;&lt;/pre&gt;
+      &lt;a id=&quot;3604&quot; class=&quot;Comment&quot;&gt;-- No multi-graphs.&lt;/a&gt;
+      &lt;a id=&quot;Approach₁.Graph.EdgeIsProp&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3630&quot; href=&quot;/research/2018/09/20/bitacora/#3630&quot; class=&quot;Field&quot;&gt;EdgeIsProp&lt;/a&gt; &lt;a id=&quot;3641&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3643&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;3645&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3646&quot; href=&quot;/research/2018/09/20/bitacora/#3646&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3648&quot; href=&quot;/research/2018/09/20/bitacora/#3648&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3650&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3652&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt;&lt;a id=&quot;3656&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3658&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3660&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#39801&quot; class=&quot;Function&quot;&gt;isProp&lt;/a&gt; &lt;a id=&quot;3667&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;3668&quot; href=&quot;/research/2018/09/20/bitacora/#3464&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3673&quot; href=&quot;/research/2018/09/20/bitacora/#3646&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3675&quot; href=&quot;/research/2018/09/20/bitacora/#3648&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;3676&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-&lt;p&gt;To consider connected graph, we can define what is a &lt;code&gt;Path&lt;/code&gt;.&lt;/p&gt;
+      &lt;a id=&quot;3685&quot; class=&quot;Comment&quot;&gt;-- Undirected.&lt;/a&gt;
+      &lt;a id=&quot;Approach₁.Graph.undirected&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3706&quot; href=&quot;/research/2018/09/20/bitacora/#3706&quot; class=&quot;Field&quot;&gt;undirected&lt;/a&gt; &lt;a id=&quot;3717&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3719&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;3721&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3722&quot; href=&quot;/research/2018/09/20/bitacora/#3722&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3724&quot; href=&quot;/research/2018/09/20/bitacora/#3724&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3726&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3728&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt;&lt;a id=&quot;3732&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3734&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3736&quot; href=&quot;/research/2018/09/20/bitacora/#3464&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3741&quot; href=&quot;/research/2018/09/20/bitacora/#3722&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;3743&quot; href=&quot;/research/2018/09/20/bitacora/#3724&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3745&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#3424&quot; class=&quot;Function Operator&quot;&gt;⇔&lt;/a&gt; &lt;a id=&quot;3747&quot; href=&quot;/research/2018/09/20/bitacora/#3464&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;3752&quot; href=&quot;/research/2018/09/20/bitacora/#3724&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;3754&quot; href=&quot;/research/2018/09/20/bitacora/#3722&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;
+      &lt;a id=&quot;3762&quot; class=&quot;Comment&quot;&gt;-- α : ∀ {x y : Node} → Edge x y == Edge y x&lt;/a&gt;
+      &lt;a id=&quot;3813&quot; class=&quot;Comment&quot;&gt;-- α-id : ∀ {x : Node} → ≃-to-→ (α {x = x}{y = x}) == id&lt;/a&gt;
+  &lt;a id=&quot;3872&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;3877&quot; href=&quot;/research/2018/09/20/bitacora/#3358&quot; class=&quot;Module&quot;&gt;Graph&lt;/a&gt; &lt;a id=&quot;3883&quot; class=&quot;Keyword&quot;&gt;public&lt;/a&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;3954&quot; class=&quot;Comment&quot;&gt;-- Path Def.&lt;/a&gt;
-  &lt;a id=&quot;3969&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;Approach₁.gPath&quot;&gt;&lt;/a&gt;&lt;a id=&quot;3974&quot; href=&quot;/research/2018/09/20/bitacora/#3974&quot; class=&quot;Datatype&quot;&gt;gPath&lt;/a&gt; &lt;a id=&quot;3980&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3982&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;3984&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;3985&quot; href=&quot;/research/2018/09/20/bitacora/#3985&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;3987&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;3989&quot; href=&quot;/research/2018/09/20/bitacora/#3341&quot; class=&quot;Record&quot;&gt;Graph&lt;/a&gt;&lt;a id=&quot;3994&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;3996&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;3998&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4003&quot; href=&quot;/research/2018/09/20/bitacora/#3985&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4005&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4007&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4012&quot; href=&quot;/research/2018/09/20/bitacora/#3985&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4014&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4016&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4021&quot; class=&quot;UnsolvedMeta Symbol&quot;&gt;{!   !}&lt;/a&gt; &lt;a id=&quot;4029&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-    &lt;a id=&quot;Approach₁.gPath.edge&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4039&quot; href=&quot;/research/2018/09/20/bitacora/#4039&quot; class=&quot;UnsolvedConstraint InductiveConstructor&quot;&gt;edge&lt;/a&gt;
-      &lt;a id=&quot;4050&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt;  &lt;a id=&quot;4053&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4055&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4056&quot; href=&quot;/research/2018/09/20/bitacora/#4056&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4057&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4058&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;:&lt;/a&gt;&lt;a id=&quot;4059&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4060&quot; href=&quot;/research/2018/09/20/bitacora/#3341&quot; class=&quot;UnsolvedConstraint Record&quot;&gt;Graph&lt;/a&gt;&lt;a id=&quot;4065&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;}&lt;/a&gt;&lt;a id=&quot;4066&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4067&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4068&quot; href=&quot;/research/2018/09/20/bitacora/#4068&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4069&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4070&quot; href=&quot;/research/2018/09/20/bitacora/#4070&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;4071&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4072&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;:&lt;/a&gt;&lt;a id=&quot;4073&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4074&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;UnsolvedConstraint Field&quot;&gt;Node&lt;/a&gt;&lt;a id=&quot;4078&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4079&quot; href=&quot;/research/2018/09/20/bitacora/#4056&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4080&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;}&lt;/a&gt;
-      &lt;a id=&quot;4088&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4090&quot; href=&quot;/research/2018/09/20/bitacora/#3447&quot; class=&quot;UnsolvedConstraint Field&quot;&gt;Edge&lt;/a&gt;&lt;a id=&quot;4094&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4095&quot; href=&quot;/research/2018/09/20/bitacora/#4056&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4096&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4097&quot; href=&quot;/research/2018/09/20/bitacora/#4068&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4098&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4099&quot; href=&quot;/research/2018/09/20/bitacora/#4070&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;y&lt;/a&gt;
-      &lt;a id=&quot;4107&quot; class=&quot;Comment&quot;&gt;----------&lt;/a&gt;
-      &lt;a id=&quot;4124&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;→&lt;/a&gt;&lt;a id=&quot;4125&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4126&quot; href=&quot;/research/2018/09/20/bitacora/#3974&quot; class=&quot;UnsolvedMeta UnsolvedConstraint Datatype&quot;&gt;gPath&lt;/a&gt;&lt;a id=&quot;4131&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4132&quot; href=&quot;/research/2018/09/20/bitacora/#4068&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4133&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4134&quot; href=&quot;/research/2018/09/20/bitacora/#4070&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;y&lt;/a&gt;
+&lt;p&gt;For connected graph, we need to define the type &lt;code&gt;Path&lt;/code&gt; to allow us
+saying that two nodes are connected by a &lt;em&gt;path&lt;/em&gt;.&lt;/p&gt;
 
-    &lt;a id=&quot;Approach₁.gPath.cons&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4141&quot; href=&quot;/research/2018/09/20/bitacora/#4141&quot; class=&quot;UnsolvedConstraint InductiveConstructor&quot;&gt;cons&lt;/a&gt;
-      &lt;a id=&quot;4152&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4154&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4156&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4157&quot; href=&quot;/research/2018/09/20/bitacora/#4157&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4158&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4159&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;:&lt;/a&gt;&lt;a id=&quot;4160&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4161&quot; href=&quot;/research/2018/09/20/bitacora/#3341&quot; class=&quot;UnsolvedConstraint Record&quot;&gt;Graph&lt;/a&gt;&lt;a id=&quot;4166&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;}&lt;/a&gt;&lt;a id=&quot;4167&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4168&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4169&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4170&quot; href=&quot;/research/2018/09/20/bitacora/#4170&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4171&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4172&quot; href=&quot;/research/2018/09/20/bitacora/#4172&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;4173&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4174&quot; href=&quot;/research/2018/09/20/bitacora/#4174&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;z&lt;/a&gt;&lt;a id=&quot;4175&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4176&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;:&lt;/a&gt;&lt;a id=&quot;4177&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4178&quot; href=&quot;/research/2018/09/20/bitacora/#3427&quot; class=&quot;UnsolvedConstraint Field&quot;&gt;Node&lt;/a&gt;&lt;a id=&quot;4182&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4183&quot; href=&quot;/research/2018/09/20/bitacora/#4157&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4184&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;}&lt;/a&gt;
-      &lt;a id=&quot;4192&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4194&quot; href=&quot;/research/2018/09/20/bitacora/#3974&quot; class=&quot;UnsolvedMeta UnsolvedConstraint Datatype&quot;&gt;gPath&lt;/a&gt;&lt;a id=&quot;4199&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4200&quot; href=&quot;/research/2018/09/20/bitacora/#4170&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4201&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4202&quot; href=&quot;/research/2018/09/20/bitacora/#4172&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;4203&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4204&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;→&lt;/a&gt;&lt;a id=&quot;4205&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4206&quot; href=&quot;/research/2018/09/20/bitacora/#3447&quot; class=&quot;UnsolvedConstraint Field&quot;&gt;Edge&lt;/a&gt;&lt;a id=&quot;4210&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4211&quot; href=&quot;/research/2018/09/20/bitacora/#4157&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4212&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4213&quot; href=&quot;/research/2018/09/20/bitacora/#4172&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;y&lt;/a&gt;&lt;a id=&quot;4214&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4215&quot; href=&quot;/research/2018/09/20/bitacora/#4174&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;z&lt;/a&gt;
-      &lt;a id=&quot;4223&quot; class=&quot;Comment&quot;&gt;---------------------&lt;/a&gt;
-      &lt;a id=&quot;4251&quot; class=&quot;UnsolvedConstraint Symbol&quot;&gt;→&lt;/a&gt;&lt;a id=&quot;4252&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4253&quot; href=&quot;/research/2018/09/20/bitacora/#3974&quot; class=&quot;UnsolvedMeta UnsolvedConstraint Datatype&quot;&gt;gPath&lt;/a&gt;&lt;a id=&quot;4258&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4259&quot; href=&quot;/research/2018/09/20/bitacora/#4170&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4260&quot; class=&quot;UnsolvedConstraint&quot;&gt; &lt;/a&gt;&lt;a id=&quot;4261&quot; href=&quot;/research/2018/09/20/bitacora/#4174&quot; class=&quot;UnsolvedConstraint Bound&quot;&gt;z&lt;/a&gt;&lt;/pre&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;4034&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;ConnectedGraph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4041&quot; href=&quot;/research/2018/09/20/bitacora/#4041&quot; class=&quot;Module&quot;&gt;ConnectedGraph&lt;/a&gt;
+  &lt;a id=&quot;4058&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4059&quot; href=&quot;/research/2018/09/20/bitacora/#4059&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;&lt;a id=&quot;4060&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4062&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4063&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4065&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4067&quot; href=&quot;/research/2018/09/20/bitacora/#3358&quot; class=&quot;Record&quot;&gt;Approach₁.Graph&lt;/a&gt; &lt;a id=&quot;4083&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4084&quot; href=&quot;/research/2018/09/20/bitacora/#4059&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;&lt;a id=&quot;4085&quot; class=&quot;Symbol&quot;&gt;})&lt;/a&gt;
+  &lt;a id=&quot;4090&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;Graph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4290&quot; href=&quot;/research/2018/09/20/bitacora/#4290&quot; class=&quot;Function&quot;&gt;Graph&lt;/a&gt; &lt;a id=&quot;4296&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4298&quot; href=&quot;/research/2018/09/20/bitacora/#3341&quot; class=&quot;Record&quot;&gt;Approach₁.Graph&lt;/a&gt;&lt;/pre&gt;
+  &lt;a id=&quot;4099&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;4104&quot; href=&quot;/research/2018/09/20/bitacora/#3358&quot; class=&quot;Module&quot;&gt;Approach₁.Graph&lt;/a&gt; &lt;a id=&quot;4120&quot; class=&quot;Keyword&quot;&gt;public&lt;/a&gt;
 
-&lt;h3 id=&quot;cyclic-definition&quot;&gt;Cyclic definition&lt;/h3&gt;
+  &lt;a id=&quot;4130&quot; class=&quot;Comment&quot;&gt;-- Path Def.&lt;/a&gt;
+  &lt;a id=&quot;4145&quot; class=&quot;Keyword&quot;&gt;data&lt;/a&gt; &lt;a id=&quot;ConnectedGraph.Path&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4150&quot; href=&quot;/research/2018/09/20/bitacora/#4150&quot; class=&quot;Datatype&quot;&gt;Path&lt;/a&gt; &lt;a id=&quot;4155&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4157&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4162&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4164&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4166&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4171&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4173&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4175&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4180&quot; href=&quot;/research/2018/09/20/bitacora/#4059&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt; &lt;a id=&quot;4182&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+    &lt;a id=&quot;ConnectedGraph.Path.edge&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4192&quot; href=&quot;/research/2018/09/20/bitacora/#4192&quot; class=&quot;InductiveConstructor&quot;&gt;edge&lt;/a&gt;
+      &lt;a id=&quot;4203&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4205&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4207&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4208&quot; href=&quot;/research/2018/09/20/bitacora/#4208&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4210&quot; href=&quot;/research/2018/09/20/bitacora/#4210&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4212&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4214&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4219&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4220&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+      &lt;a id=&quot;4228&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4230&quot; href=&quot;/research/2018/09/20/bitacora/#3464&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;4235&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4237&quot; href=&quot;/research/2018/09/20/bitacora/#4208&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4239&quot; href=&quot;/research/2018/09/20/bitacora/#4210&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;
+      &lt;a id=&quot;4247&quot; class=&quot;Comment&quot;&gt;----------&lt;/a&gt;
+      &lt;a id=&quot;4264&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4266&quot; href=&quot;/research/2018/09/20/bitacora/#4150&quot; class=&quot;Datatype&quot;&gt;Path&lt;/a&gt; &lt;a id=&quot;4271&quot; href=&quot;/research/2018/09/20/bitacora/#4208&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4273&quot; href=&quot;/research/2018/09/20/bitacora/#4210&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;
+
+    &lt;a id=&quot;ConnectedGraph.Path.cons&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4280&quot; href=&quot;/research/2018/09/20/bitacora/#4280&quot; class=&quot;InductiveConstructor&quot;&gt;cons&lt;/a&gt;
+      &lt;a id=&quot;4291&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4293&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4295&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt; &lt;a id=&quot;4297&quot; href=&quot;/research/2018/09/20/bitacora/#4297&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4299&quot; href=&quot;/research/2018/09/20/bitacora/#4299&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4301&quot; href=&quot;/research/2018/09/20/bitacora/#4301&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt; &lt;a id=&quot;4303&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4305&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4310&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4311&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+      &lt;a id=&quot;4319&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4321&quot; href=&quot;/research/2018/09/20/bitacora/#4150&quot; class=&quot;Datatype&quot;&gt;Path&lt;/a&gt; &lt;a id=&quot;4326&quot; href=&quot;/research/2018/09/20/bitacora/#4297&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4328&quot; href=&quot;/research/2018/09/20/bitacora/#4299&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4330&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4332&quot; href=&quot;/research/2018/09/20/bitacora/#3464&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;4337&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4339&quot; href=&quot;/research/2018/09/20/bitacora/#4299&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4341&quot; href=&quot;/research/2018/09/20/bitacora/#4301&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt;
+      &lt;a id=&quot;4349&quot; class=&quot;Comment&quot;&gt;---------------------&lt;/a&gt;
+      &lt;a id=&quot;4377&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4379&quot; href=&quot;/research/2018/09/20/bitacora/#4150&quot; class=&quot;Datatype&quot;&gt;Path&lt;/a&gt; &lt;a id=&quot;4384&quot; href=&quot;/research/2018/09/20/bitacora/#4297&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4386&quot; href=&quot;/research/2018/09/20/bitacora/#4301&quot; class=&quot;Bound&quot;&gt;z&lt;/a&gt;
+
+  &lt;a id=&quot;4391&quot; class=&quot;Keyword&quot;&gt;record&lt;/a&gt; &lt;a id=&quot;ConnectedGraph.Graph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4398&quot; href=&quot;/research/2018/09/20/bitacora/#4398&quot; class=&quot;Record&quot;&gt;Graph&lt;/a&gt; &lt;a id=&quot;4404&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4406&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4411&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4412&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#627&quot; class=&quot;Primitive&quot;&gt;lsuc&lt;/a&gt; &lt;a id=&quot;4417&quot; href=&quot;/research/2018/09/20/bitacora/#4059&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;&lt;a id=&quot;4418&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4420&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+    &lt;a id=&quot;4430&quot; class=&quot;Keyword&quot;&gt;constructor&lt;/a&gt; &lt;a id=&quot;ConnectedGraph.Graph.graph&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4442&quot; href=&quot;/research/2018/09/20/bitacora/#4442&quot; class=&quot;InductiveConstructor&quot;&gt;graph&lt;/a&gt;
+    &lt;a id=&quot;4452&quot; class=&quot;Keyword&quot;&gt;field&lt;/a&gt;
+      &lt;a id=&quot;ConnectedGraph.Graph.connected&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4464&quot; href=&quot;/research/2018/09/20/bitacora/#4464&quot; class=&quot;Field&quot;&gt;connected&lt;/a&gt;
+        &lt;a id=&quot;4482&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4484&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4486&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4487&quot; href=&quot;/research/2018/09/20/bitacora/#4487&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4489&quot; href=&quot;/research/2018/09/20/bitacora/#4489&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4491&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4493&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4498&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4499&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+        &lt;a id=&quot;4509&quot; class=&quot;Comment&quot;&gt;-----------&lt;/a&gt;
+        &lt;a id=&quot;4529&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4531&quot; href=&quot;/research/2018/09/20/bitacora/#4150&quot; class=&quot;Datatype&quot;&gt;Path&lt;/a&gt; &lt;a id=&quot;4536&quot; href=&quot;/research/2018/09/20/bitacora/#4487&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4538&quot; href=&quot;/research/2018/09/20/bitacora/#4489&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt;
+  &lt;a id=&quot;4542&quot; class=&quot;Keyword&quot;&gt;open&lt;/a&gt; &lt;a id=&quot;4547&quot; href=&quot;/research/2018/09/20/bitacora/#4398&quot; class=&quot;Module&quot;&gt;Graph&lt;/a&gt; &lt;a id=&quot;4553&quot; class=&quot;Keyword&quot;&gt;public&lt;/a&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;Out&lt;/em&gt; type&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/ipe-images/bitacora-out.png&quot; alt=&quot;path&quot; width=&quot;40%&quot; /&gt;
+&lt;em&gt;Figure 3. Out $x$ when $x : \Node\,G$ for a graph $G$.&lt;/em&gt;&lt;/p&gt;
+
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;4720&quot; class=&quot;Comment&quot;&gt;-- Def. Alt2&lt;/a&gt;
+  &lt;a id=&quot;ConnectedGraph.Out&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4735&quot; href=&quot;/research/2018/09/20/bitacora/#4735&quot; class=&quot;Function&quot;&gt;Out&lt;/a&gt; &lt;a id=&quot;4739&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4741&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4746&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4748&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4750&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4755&quot; href=&quot;/research/2018/09/20/bitacora/#4059&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;
+  &lt;a id=&quot;4759&quot; href=&quot;/research/2018/09/20/bitacora/#4735&quot; class=&quot;Function&quot;&gt;Out&lt;/a&gt; &lt;a id=&quot;4763&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4765&quot; class=&quot;Symbol&quot;&gt;λ&lt;/a&gt; &lt;a id=&quot;4767&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4768&quot; href=&quot;/research/2018/09/20/bitacora/#4768&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4770&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4772&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4777&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4778&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4780&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4782&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#2417&quot; class=&quot;Record&quot;&gt;Σ&lt;/a&gt; &lt;a id=&quot;4784&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4785&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4790&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4791&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4793&quot; class=&quot;Symbol&quot;&gt;(λ&lt;/a&gt; &lt;a id=&quot;4796&quot; href=&quot;/research/2018/09/20/bitacora/#4796&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4798&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4800&quot; href=&quot;/research/2018/09/20/bitacora/#3464&quot; class=&quot;Field&quot;&gt;Edge&lt;/a&gt; &lt;a id=&quot;4805&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt; &lt;a id=&quot;4807&quot; href=&quot;/research/2018/09/20/bitacora/#4796&quot; class=&quot;Bound&quot;&gt;y&lt;/a&gt; &lt;a id=&quot;4809&quot; href=&quot;/research/2018/09/20/bitacora/#4768&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4810&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+
+  &lt;a id=&quot;ConnectedGraph.OutR&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4815&quot; href=&quot;/research/2018/09/20/bitacora/#4815&quot; class=&quot;Function&quot;&gt;OutR&lt;/a&gt; &lt;a id=&quot;4820&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4822&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4824&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4825&quot; href=&quot;/research/2018/09/20/bitacora/#4825&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4827&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4829&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4834&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4835&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4837&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4839&quot; href=&quot;/research/2018/09/20/bitacora/#4735&quot; class=&quot;Function&quot;&gt;Out&lt;/a&gt; &lt;a id=&quot;4843&quot; href=&quot;/research/2018/09/20/bitacora/#4825&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4845&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4847&quot; href=&quot;/research/2018/09/20/bitacora/#4735&quot; class=&quot;Function&quot;&gt;Out&lt;/a&gt; &lt;a id=&quot;4851&quot; href=&quot;/research/2018/09/20/bitacora/#4825&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4853&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4855&quot; href=&quot;/research/2018/09/20/bitacora/#4735&quot; class=&quot;Function&quot;&gt;Out&lt;/a&gt; &lt;a id=&quot;4859&quot; href=&quot;/research/2018/09/20/bitacora/#4825&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4861&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4863&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4868&quot; href=&quot;/research/2018/09/20/bitacora/#4059&quot; class=&quot;Bound&quot;&gt;ℓ&lt;/a&gt;
+  &lt;a id=&quot;4872&quot; href=&quot;/research/2018/09/20/bitacora/#4815&quot; class=&quot;Function&quot;&gt;OutR&lt;/a&gt; &lt;a id=&quot;4877&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;4879&quot; class=&quot;Symbol&quot;&gt;{!   !}&lt;/a&gt;
+
+  &lt;a id=&quot;4890&quot; class=&quot;Keyword&quot;&gt;postulate&lt;/a&gt;
+    &lt;a id=&quot;ConnectedGraph.OutRIsProp&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4904&quot; href=&quot;/research/2018/09/20/bitacora/#4904&quot; class=&quot;Postulate&quot;&gt;OutRIsProp&lt;/a&gt; &lt;a id=&quot;4915&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4917&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4919&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4920&quot; href=&quot;/research/2018/09/20/bitacora/#4920&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;4922&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4924&quot; href=&quot;/research/2018/09/20/bitacora/#3444&quot; class=&quot;Field&quot;&gt;Node&lt;/a&gt; &lt;a id=&quot;4929&quot; href=&quot;/research/2018/09/20/bitacora/#4063&quot; class=&quot;Bound&quot;&gt;G&lt;/a&gt;&lt;a id=&quot;4930&quot; class=&quot;Symbol&quot;&gt;}{&lt;/a&gt;&lt;a id=&quot;4932&quot; href=&quot;/research/2018/09/20/bitacora/#4932&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4934&quot; href=&quot;/research/2018/09/20/bitacora/#4934&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;4936&quot; href=&quot;/research/2018/09/20/bitacora/#4936&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;4938&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4940&quot; href=&quot;/research/2018/09/20/bitacora/#4735&quot; class=&quot;Function&quot;&gt;Out&lt;/a&gt; &lt;a id=&quot;4944&quot; href=&quot;/research/2018/09/20/bitacora/#4920&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;a id=&quot;4945&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4947&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4949&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#39801&quot; class=&quot;Function&quot;&gt;isProp&lt;/a&gt; &lt;a id=&quot;4956&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4957&quot; href=&quot;/research/2018/09/20/bitacora/#4815&quot; class=&quot;Function&quot;&gt;OutR&lt;/a&gt; &lt;a id=&quot;4962&quot; href=&quot;/research/2018/09/20/bitacora/#4932&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4964&quot; href=&quot;/research/2018/09/20/bitacora/#4934&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;4966&quot; href=&quot;/research/2018/09/20/bitacora/#4936&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;&lt;a id=&quot;4967&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+  &lt;a id=&quot;4971&quot; class=&quot;Comment&quot;&gt;-- Each node has incident nodes.&lt;/a&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;cyclic-definition&quot;&gt;Cyclic definition&lt;/h4&gt;
 
 &lt;p&gt;The reason to define a cyclic relation is that the faces or regions can be defined by
 &lt;em&gt;combinatorial maps&lt;/em&gt; or also called &lt;em&gt;rotation systems&lt;/em&gt;.&lt;/p&gt;
@@ -597,50 +630,55 @@ review in future sessions.&lt;/li&gt;
 
 &lt;p&gt;Now, let’s define cycle orders:&lt;/p&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;4628&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;CyclicForm&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4635&quot; href=&quot;/research/2018/09/20/bitacora/#4635&quot; class=&quot;Module&quot;&gt;CyclicForm&lt;/a&gt; &lt;a id=&quot;4646&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4647&quot; href=&quot;/research/2018/09/20/bitacora/#4647&quot; class=&quot;Bound&quot;&gt;ℓᵢ&lt;/a&gt; &lt;a id=&quot;4650&quot; href=&quot;/research/2018/09/20/bitacora/#4650&quot; class=&quot;Bound&quot;&gt;ℓⱼ&lt;/a&gt;&lt;a id=&quot;4652&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4654&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;5320&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;CyclicForm&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5327&quot; href=&quot;/research/2018/09/20/bitacora/#5327&quot; class=&quot;Module&quot;&gt;CyclicForm&lt;/a&gt; &lt;a id=&quot;5338&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5339&quot; href=&quot;/research/2018/09/20/bitacora/#5339&quot; class=&quot;Bound&quot;&gt;ℓᵢ&lt;/a&gt; &lt;a id=&quot;5342&quot; href=&quot;/research/2018/09/20/bitacora/#5342&quot; class=&quot;Bound&quot;&gt;ℓⱼ&lt;/a&gt;&lt;a id=&quot;5344&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;5346&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
 
-  &lt;a id=&quot;4663&quot; class=&quot;Keyword&quot;&gt;record&lt;/a&gt; &lt;a id=&quot;CyclicForm.Cyclic&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4670&quot; href=&quot;/research/2018/09/20/bitacora/#4670&quot; class=&quot;Record&quot;&gt;Cyclic&lt;/a&gt; &lt;a id=&quot;4677&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4678&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4680&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4682&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4687&quot; href=&quot;/research/2018/09/20/bitacora/#4647&quot; class=&quot;Bound&quot;&gt;ℓᵢ&lt;/a&gt;&lt;a id=&quot;4689&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;             &lt;a id=&quot;4703&quot; class=&quot;Comment&quot;&gt;-- Carrier&lt;/a&gt;
-                &lt;a id=&quot;4730&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4731&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;4733&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4735&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4737&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4739&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4741&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4743&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;4745&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4747&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4752&quot; href=&quot;/research/2018/09/20/bitacora/#4650&quot; class=&quot;Bound&quot;&gt;ℓⱼ&lt;/a&gt;&lt;a id=&quot;4754&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4756&quot; class=&quot;Comment&quot;&gt;-- Clockwise&lt;/a&gt;
-                &lt;a id=&quot;4785&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4787&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;4792&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4793&quot; href=&quot;/research/2018/09/20/bitacora/#4647&quot; class=&quot;Bound&quot;&gt;ℓᵢ&lt;/a&gt; &lt;a id=&quot;4796&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;⊔&lt;/a&gt; &lt;a id=&quot;4798&quot; href=&quot;/research/2018/09/20/bitacora/#4650&quot; class=&quot;Bound&quot;&gt;ℓⱼ&lt;/a&gt;&lt;a id=&quot;4800&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;4802&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-    &lt;a id=&quot;4812&quot; class=&quot;Keyword&quot;&gt;field&lt;/a&gt;
+  &lt;a id=&quot;5355&quot; class=&quot;Keyword&quot;&gt;record&lt;/a&gt; &lt;a id=&quot;CyclicForm.Cyclic&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5362&quot; href=&quot;/research/2018/09/20/bitacora/#5362&quot; class=&quot;Record&quot;&gt;Cyclic&lt;/a&gt; &lt;a id=&quot;5369&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5370&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;5372&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5374&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;5379&quot; href=&quot;/research/2018/09/20/bitacora/#5339&quot; class=&quot;Bound&quot;&gt;ℓᵢ&lt;/a&gt;&lt;a id=&quot;5381&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;             &lt;a id=&quot;5395&quot; class=&quot;Comment&quot;&gt;-- Carrier&lt;/a&gt;
+                &lt;a id=&quot;5422&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5423&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5425&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5427&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;5429&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5431&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;5433&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5435&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt; &lt;a id=&quot;5437&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5439&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;5444&quot; href=&quot;/research/2018/09/20/bitacora/#5342&quot; class=&quot;Bound&quot;&gt;ℓⱼ&lt;/a&gt;&lt;a id=&quot;5446&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;5448&quot; class=&quot;Comment&quot;&gt;-- Clockwise&lt;/a&gt;
+                &lt;a id=&quot;5477&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5479&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#1208&quot; class=&quot;Function&quot;&gt;Type&lt;/a&gt; &lt;a id=&quot;5484&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5485&quot; href=&quot;/research/2018/09/20/bitacora/#5339&quot; class=&quot;Bound&quot;&gt;ℓᵢ&lt;/a&gt; &lt;a id=&quot;5488&quot; href=&quot;https://agda.github.io/agda-stdlib/Agda.Primitive.html#657&quot; class=&quot;Primitive Operator&quot;&gt;⊔&lt;/a&gt; &lt;a id=&quot;5490&quot; href=&quot;/research/2018/09/20/bitacora/#5342&quot; class=&quot;Bound&quot;&gt;ℓⱼ&lt;/a&gt;&lt;a id=&quot;5492&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;5494&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+    &lt;a id=&quot;5504&quot; class=&quot;Keyword&quot;&gt;field&lt;/a&gt;
 
-      &lt;a id=&quot;CyclicForm.Cyclic.RisProp&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4825&quot; href=&quot;/research/2018/09/20/bitacora/#4825&quot; class=&quot;Field&quot;&gt;RisProp&lt;/a&gt; &lt;a id=&quot;4833&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4835&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4837&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4838&quot; href=&quot;/research/2018/09/20/bitacora/#4838&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4840&quot; href=&quot;/research/2018/09/20/bitacora/#4840&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;4842&quot; href=&quot;/research/2018/09/20/bitacora/#4842&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;4844&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4846&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;4847&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;4849&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4851&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#39801&quot; class=&quot;Function&quot;&gt;isProp&lt;/a&gt; &lt;a id=&quot;4858&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;4859&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;4861&quot; href=&quot;/research/2018/09/20/bitacora/#4838&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4863&quot; href=&quot;/research/2018/09/20/bitacora/#4840&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;4865&quot; href=&quot;/research/2018/09/20/bitacora/#4842&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;&lt;a id=&quot;4866&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
+      &lt;a id=&quot;CyclicForm.Cyclic.RisProp&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5517&quot; href=&quot;/research/2018/09/20/bitacora/#5517&quot; class=&quot;Field&quot;&gt;RisProp&lt;/a&gt; &lt;a id=&quot;5525&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5527&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5529&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5530&quot; href=&quot;/research/2018/09/20/bitacora/#5530&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5532&quot; href=&quot;/research/2018/09/20/bitacora/#5532&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5534&quot; href=&quot;/research/2018/09/20/bitacora/#5534&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5536&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5538&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5539&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;5541&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5543&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#39801&quot; class=&quot;Function&quot;&gt;isProp&lt;/a&gt; &lt;a id=&quot;5550&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5551&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5553&quot; href=&quot;/research/2018/09/20/bitacora/#5530&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5555&quot; href=&quot;/research/2018/09/20/bitacora/#5532&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5557&quot; href=&quot;/research/2018/09/20/bitacora/#5534&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;&lt;a id=&quot;5558&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;
 
-      &lt;a id=&quot;CyclicForm.Cyclic.axiom₀&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4875&quot; href=&quot;/research/2018/09/20/bitacora/#4875&quot; class=&quot;Field&quot;&gt;axiom₀&lt;/a&gt;
-        &lt;a id=&quot;4890&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4892&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;4894&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;4895&quot; href=&quot;/research/2018/09/20/bitacora/#4895&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4897&quot; href=&quot;/research/2018/09/20/bitacora/#4897&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;4899&quot; href=&quot;/research/2018/09/20/bitacora/#4899&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;4901&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;4903&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;4904&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-        &lt;a id=&quot;4914&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4916&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;4918&quot; href=&quot;/research/2018/09/20/bitacora/#4895&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4920&quot; href=&quot;/research/2018/09/20/bitacora/#4897&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;4922&quot; href=&quot;/research/2018/09/20/bitacora/#4899&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
-        &lt;a id=&quot;4932&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4934&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;4936&quot; href=&quot;/research/2018/09/20/bitacora/#4895&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;4938&quot; href=&quot;/research/2018/09/20/bitacora/#4899&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;4940&quot; href=&quot;/research/2018/09/20/bitacora/#4897&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;
-        &lt;a id=&quot;4950&quot; class=&quot;Comment&quot;&gt;---------&lt;/a&gt;
-        &lt;a id=&quot;4968&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;4970&quot; href=&quot;/research/2018/09/20/bitacora/#4897&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;4972&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#6727&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;4975&quot; href=&quot;/research/2018/09/20/bitacora/#4899&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
+      &lt;a id=&quot;CyclicForm.Cyclic.axiom₀&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5567&quot; href=&quot;/research/2018/09/20/bitacora/#5567&quot; class=&quot;Field&quot;&gt;axiom₀&lt;/a&gt;
+        &lt;a id=&quot;5582&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5584&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5586&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5587&quot; href=&quot;/research/2018/09/20/bitacora/#5587&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5589&quot; href=&quot;/research/2018/09/20/bitacora/#5589&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5591&quot; href=&quot;/research/2018/09/20/bitacora/#5591&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5593&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5595&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5596&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+        &lt;a id=&quot;5606&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5608&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5610&quot; href=&quot;/research/2018/09/20/bitacora/#5587&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5612&quot; href=&quot;/research/2018/09/20/bitacora/#5589&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5614&quot; href=&quot;/research/2018/09/20/bitacora/#5591&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
+        &lt;a id=&quot;5624&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5626&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5628&quot; href=&quot;/research/2018/09/20/bitacora/#5587&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5630&quot; href=&quot;/research/2018/09/20/bitacora/#5591&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5632&quot; href=&quot;/research/2018/09/20/bitacora/#5589&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;
+        &lt;a id=&quot;5642&quot; class=&quot;Comment&quot;&gt;---------&lt;/a&gt;
+        &lt;a id=&quot;5660&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5662&quot; href=&quot;/research/2018/09/20/bitacora/#5589&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5664&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#6727&quot; class=&quot;Datatype Operator&quot;&gt;==&lt;/a&gt; &lt;a id=&quot;5667&quot; href=&quot;/research/2018/09/20/bitacora/#5591&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
 
-      &lt;a id=&quot;CyclicForm.Cyclic.axiom₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;4984&quot; href=&quot;/research/2018/09/20/bitacora/#4984&quot; class=&quot;Field&quot;&gt;axiom₁&lt;/a&gt;
-        &lt;a id=&quot;4999&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5001&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5003&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5004&quot; href=&quot;/research/2018/09/20/bitacora/#5004&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5006&quot; href=&quot;/research/2018/09/20/bitacora/#5006&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5008&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5010&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5011&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-        &lt;a id=&quot;5021&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5023&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5025&quot; href=&quot;/research/2018/09/20/bitacora/#5004&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5027&quot; href=&quot;/research/2018/09/20/bitacora/#5006&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5029&quot; href=&quot;/research/2018/09/20/bitacora/#5006&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;
+      &lt;a id=&quot;CyclicForm.Cyclic.axiom₁&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5676&quot; href=&quot;/research/2018/09/20/bitacora/#5676&quot; class=&quot;Field&quot;&gt;axiom₁&lt;/a&gt;
+        &lt;a id=&quot;5691&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5693&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5695&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5696&quot; href=&quot;/research/2018/09/20/bitacora/#5696&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5698&quot; href=&quot;/research/2018/09/20/bitacora/#5698&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5700&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5702&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5703&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+        &lt;a id=&quot;5713&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5715&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5717&quot; href=&quot;/research/2018/09/20/bitacora/#5696&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5719&quot; href=&quot;/research/2018/09/20/bitacora/#5698&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5721&quot; href=&quot;/research/2018/09/20/bitacora/#5698&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;
 
-      &lt;a id=&quot;CyclicForm.Cyclic.axiom₂&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5038&quot; href=&quot;/research/2018/09/20/bitacora/#5038&quot; class=&quot;Field&quot;&gt;axiom₂&lt;/a&gt;
-        &lt;a id=&quot;5053&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5055&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5057&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5058&quot; href=&quot;/research/2018/09/20/bitacora/#5058&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5060&quot; href=&quot;/research/2018/09/20/bitacora/#5060&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5062&quot; href=&quot;/research/2018/09/20/bitacora/#5062&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5064&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5066&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5067&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-        &lt;a id=&quot;5077&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5079&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5081&quot; href=&quot;/research/2018/09/20/bitacora/#5058&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5083&quot; href=&quot;/research/2018/09/20/bitacora/#5060&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5085&quot; href=&quot;/research/2018/09/20/bitacora/#5062&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
-        &lt;a id=&quot;5095&quot; class=&quot;Comment&quot;&gt;---------&lt;/a&gt;
-        &lt;a id=&quot;5113&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5115&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5117&quot; href=&quot;/research/2018/09/20/bitacora/#5060&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5119&quot; href=&quot;/research/2018/09/20/bitacora/#5062&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5121&quot; href=&quot;/research/2018/09/20/bitacora/#5058&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;
+      &lt;a id=&quot;CyclicForm.Cyclic.axiom₂&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5730&quot; href=&quot;/research/2018/09/20/bitacora/#5730&quot; class=&quot;Field&quot;&gt;axiom₂&lt;/a&gt;
+        &lt;a id=&quot;5745&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5747&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5749&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5750&quot; href=&quot;/research/2018/09/20/bitacora/#5750&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5752&quot; href=&quot;/research/2018/09/20/bitacora/#5752&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5754&quot; href=&quot;/research/2018/09/20/bitacora/#5754&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5756&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5758&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5759&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+        &lt;a id=&quot;5769&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5771&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5773&quot; href=&quot;/research/2018/09/20/bitacora/#5750&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5775&quot; href=&quot;/research/2018/09/20/bitacora/#5752&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5777&quot; href=&quot;/research/2018/09/20/bitacora/#5754&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
+        &lt;a id=&quot;5787&quot; class=&quot;Comment&quot;&gt;---------&lt;/a&gt;
+        &lt;a id=&quot;5805&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5807&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5809&quot; href=&quot;/research/2018/09/20/bitacora/#5752&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5811&quot; href=&quot;/research/2018/09/20/bitacora/#5754&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5813&quot; href=&quot;/research/2018/09/20/bitacora/#5750&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt;
 
-      &lt;a id=&quot;CyclicForm.Cyclic.axiom₃&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5130&quot; href=&quot;/research/2018/09/20/bitacora/#5130&quot; class=&quot;Field&quot;&gt;axiom₃&lt;/a&gt;
-        &lt;a id=&quot;5145&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5147&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5149&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5150&quot; href=&quot;/research/2018/09/20/bitacora/#5150&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5152&quot; href=&quot;/research/2018/09/20/bitacora/#5152&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5154&quot; href=&quot;/research/2018/09/20/bitacora/#5154&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5156&quot; href=&quot;/research/2018/09/20/bitacora/#5156&quot; class=&quot;Bound&quot;&gt;d&lt;/a&gt; &lt;a id=&quot;5158&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5160&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5161&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
-        &lt;a id=&quot;5171&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5173&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5175&quot; href=&quot;/research/2018/09/20/bitacora/#5150&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5177&quot; href=&quot;/research/2018/09/20/bitacora/#5152&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5179&quot; href=&quot;/research/2018/09/20/bitacora/#5154&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
-        &lt;a id=&quot;5189&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5191&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5193&quot; href=&quot;/research/2018/09/20/bitacora/#5150&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5195&quot; href=&quot;/research/2018/09/20/bitacora/#5154&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5197&quot; href=&quot;/research/2018/09/20/bitacora/#5156&quot; class=&quot;Bound&quot;&gt;d&lt;/a&gt;
-        &lt;a id=&quot;5207&quot; class=&quot;Comment&quot;&gt;---------&lt;/a&gt;
-        &lt;a id=&quot;5225&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5227&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5229&quot; href=&quot;/research/2018/09/20/bitacora/#5150&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5231&quot; href=&quot;/research/2018/09/20/bitacora/#5152&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5233&quot; href=&quot;/research/2018/09/20/bitacora/#5156&quot; class=&quot;Bound&quot;&gt;d&lt;/a&gt;
+      &lt;a id=&quot;CyclicForm.Cyclic.axiom₃&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5822&quot; href=&quot;/research/2018/09/20/bitacora/#5822&quot; class=&quot;Field&quot;&gt;axiom₃&lt;/a&gt;
+        &lt;a id=&quot;5837&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5839&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5841&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5842&quot; href=&quot;/research/2018/09/20/bitacora/#5842&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5844&quot; href=&quot;/research/2018/09/20/bitacora/#5844&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5846&quot; href=&quot;/research/2018/09/20/bitacora/#5846&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5848&quot; href=&quot;/research/2018/09/20/bitacora/#5848&quot; class=&quot;Bound&quot;&gt;d&lt;/a&gt; &lt;a id=&quot;5850&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5852&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5853&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt;
+        &lt;a id=&quot;5863&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5865&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5867&quot; href=&quot;/research/2018/09/20/bitacora/#5842&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5869&quot; href=&quot;/research/2018/09/20/bitacora/#5844&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5871&quot; href=&quot;/research/2018/09/20/bitacora/#5846&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;
+        &lt;a id=&quot;5881&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5883&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5885&quot; href=&quot;/research/2018/09/20/bitacora/#5842&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5887&quot; href=&quot;/research/2018/09/20/bitacora/#5846&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5889&quot; href=&quot;/research/2018/09/20/bitacora/#5848&quot; class=&quot;Bound&quot;&gt;d&lt;/a&gt;
+        &lt;a id=&quot;5899&quot; class=&quot;Comment&quot;&gt;---------&lt;/a&gt;
+        &lt;a id=&quot;5917&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5919&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5921&quot; href=&quot;/research/2018/09/20/bitacora/#5842&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5923&quot; href=&quot;/research/2018/09/20/bitacora/#5844&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5925&quot; href=&quot;/research/2018/09/20/bitacora/#5848&quot; class=&quot;Bound&quot;&gt;d&lt;/a&gt;
 
-      &lt;a id=&quot;CyclicForm.Cyclic.axiomₓ&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5242&quot; href=&quot;/research/2018/09/20/bitacora/#5242&quot; class=&quot;Field&quot;&gt;axiomₓ&lt;/a&gt;
-        &lt;a id=&quot;5257&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5259&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5261&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5262&quot; href=&quot;/research/2018/09/20/bitacora/#5262&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5264&quot; href=&quot;/research/2018/09/20/bitacora/#5264&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5266&quot; href=&quot;/research/2018/09/20/bitacora/#5266&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5268&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5270&quot; href=&quot;/research/2018/09/20/bitacora/#4678&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5271&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;5273&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5275&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#60228&quot; class=&quot;Function Operator&quot;&gt;∥&lt;/a&gt; &lt;a id=&quot;5277&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5278&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5280&quot; href=&quot;/research/2018/09/20/bitacora/#5262&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5282&quot; href=&quot;/research/2018/09/20/bitacora/#5264&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5284&quot; href=&quot;/research/2018/09/20/bitacora/#5266&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;&lt;a id=&quot;5285&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;5287&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#3135&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;5289&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5290&quot; href=&quot;/research/2018/09/20/bitacora/#4731&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5292&quot; href=&quot;/research/2018/09/20/bitacora/#5262&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5294&quot; href=&quot;/research/2018/09/20/bitacora/#5266&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5296&quot; href=&quot;/research/2018/09/20/bitacora/#5264&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;5297&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;5299&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#60228&quot; class=&quot;Function Operator&quot;&gt;∥&lt;/a&gt;&lt;/pre&gt;
+      &lt;a id=&quot;CyclicForm.Cyclic.axiomₓ&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5934&quot; href=&quot;/research/2018/09/20/bitacora/#5934&quot; class=&quot;Field&quot;&gt;axiomₓ&lt;/a&gt;
+        &lt;a id=&quot;5949&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5951&quot; class=&quot;Symbol&quot;&gt;∀&lt;/a&gt; &lt;a id=&quot;5953&quot; class=&quot;Symbol&quot;&gt;{&lt;/a&gt;&lt;a id=&quot;5954&quot; href=&quot;/research/2018/09/20/bitacora/#5954&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5956&quot; href=&quot;/research/2018/09/20/bitacora/#5956&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5958&quot; href=&quot;/research/2018/09/20/bitacora/#5958&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5960&quot; class=&quot;Symbol&quot;&gt;:&lt;/a&gt; &lt;a id=&quot;5962&quot; href=&quot;/research/2018/09/20/bitacora/#5370&quot; class=&quot;Bound&quot;&gt;A&lt;/a&gt;&lt;a id=&quot;5963&quot; class=&quot;Symbol&quot;&gt;}&lt;/a&gt; &lt;a id=&quot;5965&quot; class=&quot;Symbol&quot;&gt;→&lt;/a&gt; &lt;a id=&quot;5967&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#60228&quot; class=&quot;Function Operator&quot;&gt;∥&lt;/a&gt; &lt;a id=&quot;5969&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5970&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5972&quot; href=&quot;/research/2018/09/20/bitacora/#5954&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5974&quot; href=&quot;/research/2018/09/20/bitacora/#5956&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt; &lt;a id=&quot;5976&quot; href=&quot;/research/2018/09/20/bitacora/#5958&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt;&lt;a id=&quot;5977&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;5979&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#3135&quot; class=&quot;Datatype Operator&quot;&gt;+&lt;/a&gt; &lt;a id=&quot;5981&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;5982&quot; href=&quot;/research/2018/09/20/bitacora/#5423&quot; class=&quot;Bound&quot;&gt;R&lt;/a&gt; &lt;a id=&quot;5984&quot; href=&quot;/research/2018/09/20/bitacora/#5954&quot; class=&quot;Bound&quot;&gt;a&lt;/a&gt; &lt;a id=&quot;5986&quot; href=&quot;/research/2018/09/20/bitacora/#5958&quot; class=&quot;Bound&quot;&gt;c&lt;/a&gt; &lt;a id=&quot;5988&quot; href=&quot;/research/2018/09/20/bitacora/#5956&quot; class=&quot;Bound&quot;&gt;b&lt;/a&gt;&lt;a id=&quot;5989&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt; &lt;a id=&quot;5991&quot; href=&quot;/type-theory/home/2018/07/06/mini-hott/#60228&quot; class=&quot;Function Operator&quot;&gt;∥&lt;/a&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;5328&quot; class=&quot;Comment&quot;&gt;-- Def.&lt;/a&gt;
-  &lt;a id=&quot;5338&quot; class=&quot;Comment&quot;&gt;-- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)&lt;/a&gt;
-  &lt;a id=&quot;5389&quot; class=&quot;Comment&quot;&gt;-- CyclicIsProp x y = {!   !}&lt;/a&gt;&lt;/pre&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;6020&quot; class=&quot;Comment&quot;&gt;-- Def.&lt;/a&gt;
+  &lt;a id=&quot;6030&quot; class=&quot;Comment&quot;&gt;-- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)&lt;/a&gt;
+  &lt;a id=&quot;6081&quot; class=&quot;Comment&quot;&gt;-- CyclicIsProp x y = {!   !}&lt;/a&gt;&lt;/pre&gt;
 
-&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;5444&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;Out&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5451&quot; href=&quot;/research/2018/09/20/bitacora/#5451&quot; class=&quot;Module&quot;&gt;Out&lt;/a&gt; &lt;a id=&quot;5455&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
-  &lt;a id=&quot;Out.g&quot;&gt;&lt;/a&gt;&lt;a id=&quot;5463&quot; href=&quot;/research/2018/09/20/bitacora/#5463&quot; class=&quot;Function&quot;&gt;g&lt;/a&gt; &lt;a id=&quot;5465&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;5467&quot; href=&quot;/research/2018/09/20/bitacora/#4290&quot; class=&quot;Function&quot;&gt;Graph&lt;/a&gt;&lt;/pre&gt;
+&lt;h4 id=&quot;isomorphisms&quot;&gt;Isomorphisms&lt;/h4&gt;
 
-&lt;h3 id=&quot;state-of-art&quot;&gt;State-of-art&lt;/h3&gt;
+&lt;pre class=&quot;Agda&quot;&gt;&lt;a id=&quot;6156&quot; class=&quot;Keyword&quot;&gt;module&lt;/a&gt; &lt;a id=&quot;IsoGraphs&quot;&gt;&lt;/a&gt;&lt;a id=&quot;6163&quot; href=&quot;/research/2018/09/20/bitacora/#6163&quot; class=&quot;Module&quot;&gt;IsoGraphs&lt;/a&gt; &lt;a id=&quot;6173&quot; class=&quot;Keyword&quot;&gt;where&lt;/a&gt;
+  &lt;a id=&quot;6181&quot; class=&quot;Comment&quot;&gt;-- open Graph&lt;/a&gt;
+  &lt;a id=&quot;6197&quot; class=&quot;Comment&quot;&gt;-- record Iso where&lt;/a&gt;
+    &lt;a id=&quot;6221&quot; class=&quot;Comment&quot;&gt;-- field&lt;/a&gt;
+      &lt;a id=&quot;6236&quot; class=&quot;Comment&quot;&gt;-- α : Node&lt;/a&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;related-papers&quot;&gt;Related papers&lt;/h3&gt;
 
 &lt;p&gt;Papers relevant to formalizations of graphs:&lt;/p&gt;
 
@@ -700,7 +738,7 @@ operations to delete edges in order to construct non-triangular graphs,
 which complicates a verification. Directed&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;questions-and-related-blog-post&quot;&gt;Questions and Related blog post&lt;/h3&gt;
+&lt;h3 id=&quot;related-links&quot;&gt;Related links&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;📆 https://mathoverflow.net/questions/278015/number-of-non-equivalent-graph-embeddings&lt;/li&gt;
@@ -710,9 +748,11 @@ which complicates a verification. Directed&lt;/p&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144&quot;&gt;Why are planar graphs so exceptional?&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/&quot;&gt;Kalai’s Post&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;📆 &lt;a href=&quot;https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs&quot;&gt;Generalizations of Planar Graphs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research happens every day!</summary></entry><entry><title type="html">dynamic programing problems</title><link href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" rel="alternate" type="text/html" title="dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-26T13:31:41+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/">&lt;p&gt;We study dynamic programming through examples.
-My goal here is to keep a list of recursion formulation
-of some common problems.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research happens every day!</summary></entry><entry><title type="html">Dynamic programing problems</title><link href="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/" rel="alternate" type="text/html" title="Dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-30T14:10:51+01:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/DP-lists/">&lt;p&gt;We study dynamic programming through examples. My goal here is to keep a list of
+the recursion formulation for each problem as a help to solve the problem and
+similars. I’m not interested &lt;em&gt;really&lt;/em&gt; neither in the implementation nor a very
+long description, just the explicit recursion function. The complexity for each
+solution is left to the reader.&lt;/p&gt;
 
 &lt;p&gt;Links of list similar:&lt;/p&gt;
 &lt;ul&gt;
@@ -720,33 +760,34 @@ of some common problems.&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://medium.com/@codingfreak/top-50-dynamic-programming-practice-problems-4208fed71aa3&quot;&gt;top-50-dynamic-programming-practice-problems&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;01-knapsack-problem&quot;&gt;0–1 Knapsack problem&lt;/h2&gt;
+&lt;h2 id=&quot;01-knapsack&quot;&gt;0–1 Knapsack&lt;/h2&gt;
 
 &lt;div class=&quot;exercise&quot;&gt;
-  &lt;p&gt;Maximize the sum of the values of the items in the knapsack so that the sum of
+  &lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt;&lt;br /&gt;
+Maximize the sum of the values of the items in the knapsack so that the sum of
 the weights is less than or equal to the knapsack’s capacity.&lt;/p&gt;
+&lt;/div&gt;
 
-  &lt;p&gt;Given:&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;a set of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; items numbered from $1$ up to $n$,&lt;/li&gt;
-    &lt;li&gt;each item has a weight &lt;script type=&quot;math/tex&quot;&gt;w_i&lt;/script&gt; and a value &lt;script type=&quot;math/tex&quot;&gt;v_i&lt;/script&gt;,&lt;/li&gt;
-    &lt;li&gt;the bag has a maximum weight capacity $W$.&lt;/li&gt;
-  &lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Explicit Formulation:&lt;/strong&gt;&lt;/p&gt;
 
-  &lt;p&gt;Solve:&lt;/p&gt;
+&lt;p&gt;Given&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;a set of &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; items numbered from $1$ up to $n$,&lt;/li&gt;
+  &lt;li&gt;each item has a weight &lt;script type=&quot;math/tex&quot;&gt;w_i&lt;/script&gt; and a value &lt;script type=&quot;math/tex&quot;&gt;v_i&lt;/script&gt;,&lt;/li&gt;
+  &lt;li&gt;the bag has a maximum weight capacity $W$.&lt;/li&gt;
+&lt;/ul&gt;
 
-  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
 \begin{align*}
     \maximize &amp;\sum_{i=1}^n v_i x_i \\
     \st.      &amp;\sum_{i=1}^n w_i x_i \leq W\\
               &amp;x_i \in \{0,1\}.
     \end{align*} %]]&gt;&lt;/script&gt;
 
-  &lt;p&gt;Here $x_i$ represents the number of instances of item $i$ to include in the knapsack.&lt;/p&gt;
-&lt;/div&gt;
+&lt;p&gt;Here $x_i$ represents the number of instances of item $i$ to include in the knapsack.&lt;/p&gt;
 
 &lt;div class=&quot;proof&quot;&gt;
-  &lt;p&gt;&lt;strong&gt;Formulation.&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Recursion:&lt;/strong&gt;&lt;/p&gt;
 
   &lt;p&gt;Define $f(i,w)$ to be the maximum value that can be attained with &lt;strong&gt;weight less
 than or equal&lt;/strong&gt; to $w$ using items up to $i$ (first $i$ items).&lt;/p&gt;
@@ -773,200 +814,107 @@ than or equal&lt;/strong&gt; to $w$ using items up to $i$ (first $i$ items).&lt;
   &lt;li&gt;&lt;em&gt;unbounded knapsack problem (UKP)&lt;/em&gt;: $x_{i}\geq 0$&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;3-partition-problem&quot;&gt;3-partition problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;all-pairs-shortest-pathsfloyd-warshall-algorithm&quot;&gt;All-pairs shortest paths — floyd warshall algorithm&lt;/h2&gt;
-
-&lt;h2 id=&quot;calculate-size-of-the-largest-plus-of-1s-in-binary-matrix&quot;&gt;Calculate size of the largest plus of 1’s in binary matrix&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;calculate-sum-of-all-elements-in-a-sub-matrix-in-constant-time&quot;&gt;Calculate sum of all elements in a sub-matrix in constant time&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;check-if-given-string-is-interleaving-of-two-other-given-strings&quot;&gt;Check if given string is interleaving of two other given strings&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;coin-change-problem-total-number-of-ways-to-get-the-denomination-of-coins&quot;&gt;Coin change problem (total number of ways to get the denomination of coins)&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;coin-change-making-problem-unlimited-supply-of-coins&quot;&gt;Coin change-making problem (unlimited supply of coins)&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;collect-maximum-points-in-a-matrix-by-satisfying-given-constraints&quot;&gt;Collect maximum points in a matrix by satisfying given constraints&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;count-number-of-paths-in-a-matrix-with-given-cost-to-reach-destination-cell&quot;&gt;Count number of paths in a matrix with given cost to reach destination cell&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;count-number-of-times-a-pattern-appears-in-given-string-as-a-subsequence&quot;&gt;Count number of times a pattern appears in given string as a subsequence&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;count-total-possible-combinations-of-n-digit-numbers-in-a-mobile-keypad&quot;&gt;Count total possible combinations of n-digit numbers in a mobile keypad&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-all-n-digit-binary-strings-without-any-consecutive-1s&quot;&gt;Find all n-digit binary strings without any consecutive 1’s&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-longest-sequence-formed-by-adjacent-numbers-in-the-matrix&quot;&gt;Find longest sequence formed by adjacent numbers in the matrix&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-maximum-sum-of-subsequence-with-no-adjacent-elements&quot;&gt;Find maximum sum of subsequence with no adjacent elements&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-maximum-sum-submatrix-in-a-given-matrix&quot;&gt;Find maximum sum submatrix in a given matrix&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-maximum-sum-submatrix-present-in-a-given-matrix&quot;&gt;Find maximum sum submatrix present in a given matrix&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-minimum-cuts-needed-for-palindromic-partition-of-a-string&quot;&gt;Find minimum cuts needed for palindromic partition of a string&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-optimal-cost-to-construct-binary-search-tree&quot;&gt;Find optimal cost to construct binary search tree&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-probability-that-a-person-is-alive-after-taking-n-steps-on-an-island&quot;&gt;Find probability that a person is alive after taking n steps on an island&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-size-of-largest-square-sub-matrix-of-1s-present-in-given-binary-matrix&quot;&gt;Find size of largest square sub-matrix of 1’s present in given binary matrix&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;find-the-minimum-cost-to-reach-last-cell-of-the-matrix-from-its-first-cell&quot;&gt;Find the minimum cost to reach last cell of the matrix from its first cell&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;implement-diff-utility&quot;&gt;Implement diff utility&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;increasing-subsequence-with-maximum-sum&quot;&gt;Increasing subsequence with maximum sum&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-alternating-subsequence-problem&quot;&gt;Longest alternating subsequence problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-bitonic-subsequence&quot;&gt;Longest bitonic subsequence&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-common-subsequence&quot;&gt;Longest common subsequence&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-common-subsequence-1&quot;&gt;Longest common subsequence&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-common-substring-problem&quot;&gt;Longest common substring problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-increasing-subsequence-using-dynamic-programming&quot;&gt;Longest increasing subsequence using dynamic programming&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-palindromic-subsequence-using-dynamic-programming&quot;&gt;Longest palindromic subsequence using dynamic programming&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;longest-repeated-subsequence-problem&quot;&gt;Longest repeated subsequence problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;matrix-chain-multiplication-using-dynamic-programming&quot;&gt;Matrix chain multiplication using dynamic programming&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;maximize-the-value-of-an-expression&quot;&gt;Maximize the value of an expression&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;maximum-length-snake-sequence&quot;&gt;Maximum length snake sequence&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;maximum-product-rod-cutting&quot;&gt;Maximum product rod cutting&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;maximum-subarray-problem-kadanes-algorithm&quot;&gt;Maximum subarray problem (kadane’s algorithm)&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;minimum-sum-partition-problem&quot;&gt;Minimum sum partition problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;partition-problem&quot;&gt;Partition problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;pots-of-gold-game-using-dynamic-programming&quot;&gt;Pots of gold game using dynamic programming&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;rod-cutting-problem&quot;&gt;Rod cutting problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;shortest-common-supersequence&quot;&gt;Shortest common supersequence&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;shortest-common-supersequence-1&quot;&gt;Shortest common supersequence&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;single-source-shortest-pathsbellman-ford-algorithm&quot;&gt;Single-source shortest paths — bellman ford algorithm&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;subset-sum-problem&quot;&gt;Subset sum problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;the-levenshtein-distance-edit-distance-problem&quot;&gt;The levenshtein distance (edit distance) problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;total-possible-solutions-to-linear-equation-of-k-variables&quot;&gt;Total possible solutions to linear equation of k variables&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;wildcard-pattern-matching&quot;&gt;Wildcard pattern matching&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;h2 id=&quot;word-break-problem&quot;&gt;Word break problem&lt;/h2&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-
-&lt;p&gt;Pending…&lt;/p&gt;
-&lt;h2 id=&quot;word-break-problem-1&quot;&gt;Word break problem&lt;/h2&gt;
-
-&lt;h2 id=&quot;maximum-weight-independent-problem&quot;&gt;Maximum Weight Independent Problem&lt;/h2&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">We study dynamic programming through examples. My goal here is to keep a list of recursion formulation of some common problems.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-26T11:32:39+02:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;3-partition&quot;&gt;3-partition&lt;/h2&gt;
+
+&lt;div class=&quot;exercise&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Problem:&lt;/strong&gt;&lt;br /&gt;
+Given integers $a_1, \cdots a_n$, we want to determine
+whether it is possible to partition of ${1,\cdots, n}$ into three disjoint subsets
+$I$ , $J$, $K$ such that&lt;/p&gt;
+
+  &lt;p class=&quot;equation&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;\begin{equation*}
+  \sum_{i\in I} a_i = \sum_{j\in J} a_j = \sum_{k\in K} a_k = \frac{1}{3}\sum_{i=1}^n a_i.
+  \end{equation*}&lt;/script&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;proof&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Recursion:&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Assume that &lt;script type=&quot;math/tex&quot;&gt;S = \sum_{i=1}^n a_i&lt;/script&gt; is divisible by $3$, otherwise we can’t make such a partition.&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;For this decision problem, we define $f(i, p, q)$ to be $\true$ if we are able to find
+two disjoint sets $I$ and $J$ such that each sum $p$ and $q$ respectively
+with the first $i$ items available.&lt;/p&gt;
+
+  &lt;div class=&quot;equation&quot;&gt;
+  $$\begin{align*}
+  \sum_{i\in I} a_i &amp;amp;= p,\\
+  \sum_{j\in J} a_j &amp;amp;= q,\\
+  I \sqcup J &amp;amp;= \{1, \cdots, m\}.
+  \end{align*}$$
+&lt;/div&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  f(i, p, q) =
+  \begin{cases}
+  \false                                     &amp;\text{if }i = 0,\\
+  \true                                      &amp;\text{if }i = 1 \and p = q = 0,\\
+  \true                                      &amp;\text{if }i = 1 \and a_i = p,\\
+  \true                                      &amp;\text{if }i = 1 \and a_i = q,\\
+  \false                                     &amp;\text{if }i = 1,\\
+  \true                                      &amp;\text{if }f(i-1, p , q),\\
+  \underbrace{f(i-1,p - a_i, q)}_{i\in I \and i\not\in J}
+  \or \underbrace{f(i-1,p, q-a_i)}_{i\not\in I \and i\in J} \}   &amp;\text{otherwise}.
+  \end{cases}
+  \end{align*} %]]&gt;&lt;/script&gt;
+
+  &lt;p&gt;The answer then can be found by computing $f(n, \frac{S}{3}, \frac{S}{3})$.
+The sets $I$ and $J$ can be found by using an auxiliary array to register if which
+set we put each element.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- - All-pairs shortest paths — Floyd-Warshall algorithm --&gt;
+&lt;!-- - Calculate size of the largest plus of 1’s in binary matrix --&gt;
+&lt;!-- - Calculate sum of all elements in a sub-matrix in constant time --&gt;
+&lt;!-- - Check if given string is interleaving of two other given strings --&gt;
+&lt;!-- - Coin change problem (total number of ways to get the denomination of coins) --&gt;
+&lt;!-- - Coin change-making problem (unlimited supply of coins) --&gt;
+&lt;!-- - Collect maximum points in a matrix by satisfying given constraints --&gt;
+&lt;!-- - Count number of paths in a matrix with given cost to reach destination cell --&gt;
+&lt;!-- - Count number of times a pattern appears in given string as a subsequence --&gt;
+&lt;!-- - Count total possible combinations of n-digit numbers in a mobile keypad --&gt;
+&lt;!-- - Find all n-digit binary strings without any consecutive 1’s --&gt;
+&lt;!-- - Find longest sequence formed by adjacent numbers in the matrix --&gt;
+&lt;!-- - Find maximum sum of subsequence with no adjacent elements --&gt;
+&lt;!-- - Find maximum sum submatrix in a given matrix --&gt;
+&lt;!-- - Find maximum sum submatrix present in a given matrix --&gt;
+&lt;!-- - Find minimum cuts needed for palindromic partition of a string --&gt;
+&lt;!-- - Find optimal cost to construct binary search tree --&gt;
+&lt;!-- - Find probability that a person is alive after taking n steps on an island --&gt;
+&lt;!-- - Find size of largest square sub-matrix of 1’s present in given binary matrix --&gt;
+&lt;!-- - Find the minimum cost to reach last cell of the matrix from its first cell --&gt;
+&lt;!-- - Implement diff utility --&gt;
+&lt;!-- - Increasing subsequence with maximum sum --&gt;
+&lt;!-- - Longest alternating subsequence problem --&gt;
+&lt;!-- - Longest bitonic subsequence --&gt;
+&lt;!-- - Longest common subsequence --&gt;
+&lt;!-- - Longest common subsequence --&gt;
+&lt;!-- - Longest common substring problem --&gt;
+&lt;!-- - Longest increasing subsequence using dynamic programming --&gt;
+&lt;!-- - Longest palindromic subsequence using dynamic programming --&gt;
+&lt;!-- - Longest repeated subsequence problem --&gt;
+&lt;!-- - Matrix chain multiplication using dynamic programming --&gt;
+&lt;!-- - Maximize the value of an expression --&gt;
+&lt;!-- - Maximum length snake sequence --&gt;
+&lt;!-- - Maximum product rod cutting --&gt;
+&lt;!-- - Maximum subarray problem (kadane’s algorithm) --&gt;
+&lt;!-- - Minimum sum partition problem --&gt;
+&lt;!-- - Partition problem --&gt;
+&lt;!-- - Pots of gold game using dynamic programming --&gt;
+&lt;!-- - Rod cutting problem --&gt;
+&lt;!-- - Shortest common supersequence --&gt;
+&lt;!-- - Shortest common supersequence --&gt;
+&lt;!-- - Single-source shortest paths — bellman ford algorithm --&gt;
+&lt;!-- - Subset sum problem --&gt;
+&lt;!-- - The levenshtein distance (edit distance) problem --&gt;
+&lt;!-- - Total possible solutions to linear equation of k variables --&gt;
+&lt;!-- - Wildcard pattern matching --&gt;
+&lt;!-- - Word break problem --&gt;
+&lt;!-- - Word break problem --&gt;
+
+&lt;h2 id=&quot;maximum-weight-independent-problem&quot;&gt;Maximum Weight Independent Problem&lt;/h2&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just the explicit recursion function. The complexity for each solution is left to the reader.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-10-29T13:34:25+01:00</updated><id>http://jonaprieto.github.io/learning/2018/08/24/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/learning/2018/08/24/learning-inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 
@@ -1220,6 +1168,19 @@ has all literals occur negatively, or one literal is positive).&lt;/li&gt;
       &lt;li&gt;Shortest reliable path&lt;/li&gt;
       &lt;li&gt;All-pair shortest path&lt;/li&gt;
       &lt;li&gt;Party problem (Maximum weight independent set problem)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;End of DP&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-10-22-2&quot;&gt;2018-10-22&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Linear Programming:
+    &lt;ul&gt;
+      &lt;li&gt;Optimization problem with linear constraints&lt;/li&gt;
+      &lt;li&gt;Simplex Algorithm (simplex because that is another name for polytope in geometry)&lt;/li&gt;
+      &lt;li&gt;Express the maxflow problem as a linear problem&lt;/li&gt;
+      &lt;li&gt;Ford-Fulkerson Algorithm&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Just the agenda for INF234 at UiB. The book is (Dasgupta &amp;amp; Papadimitriou, 2006).</summary></entry><entry><title type="html">Simple Typed Lambda Calculus In Agda</title><link href="http://jonaprieto.github.io/type-theory/home/2018/08/17/notes-sltc/" rel="alternate" type="text/html" title="Simple Typed Lambda Calculus In Agda" /><published>2018-08-17T00:00:00+02:00</published><updated>2018-10-23T21:23:12+02:00</updated><id>http://jonaprieto.github.io/type-theory/home/2018/08/17/notes-sltc</id><content type="html" xml:base="http://jonaprieto.github.io/type-theory/home/2018/08/17/notes-sltc/">&lt;p&gt;We present a formalisation of the syntax in Agda for the &lt;em&gt;Simple Typed Lambda
