@@ -85,13 +85,14 @@ _ = Set
     review in future sessions.
     - [M] Making some improvements to [Pathovers' article](http://tinyurl.com/pathovers).
 
-Our goal will consist to formalise the particular case when the graph is
+
+#### First Approach
+
+For this part, our goal will consist to formalise the notion of graph when they are:
 
 - *undirected*,
 - no *multi-graphs*, and
 - connected.
-
-#### First Approach
 
 ![path](/assets/ipe-images/graph-approach1.png){: width="40%" }
 *Figure 1. Connected, undirected, no multi-graphs.*
@@ -99,14 +100,14 @@ Our goal will consist to formalise the particular case when the graph is
 ### Undirected and no multi-graph definition
 
 \begin{code}
-module Approach₁ {ℓ} where
+module BaseGraph {ℓ} where
 
-  record Graph : Type (lsuc ℓ) where
+  record Graph : Type {!   !} where
     constructor graph
     field
-      -- G = (V, E)
-      Node : Type ℓ
-      Edge : Node → Node → Type ℓ
+      -- G = (Node, Edge)
+      Node : Type {!   !}
+      Edge : Node → Node → Type {!   !}
 
       -- Properties
       -- ==========
@@ -118,25 +119,88 @@ module Approach₁ {ℓ} where
       EdgeIsProp : ∀ {x y : Node} → isProp (Edge x y)
 
       -- Undirected.
-      undirected : ∀ {x y : Node} → Edge x y ⇔ Edge y x
-      -- α : ∀ {x y : Node} → Edge x y == Edge y x
-      -- α-id : ∀ {x : Node} → ≃-to-→ (α {x = x}{y = x}) == id
+      undirected : ∀ {x y : Node} → Edge x y → Edge y x
+
   open Graph public
 
 \end{code}
 
+#### Isomorphisms
+
+Let be $G, H : \Graph$. A *graph map* is a pair $(α, β)$ that consists of a *vertex function*
+$α : \Node G → \Node H$ and an edge function $\beta_\alpha : \Edge G \to \Edge H$ such
+that *incidence* for each vertex in $G$ is preserved in $H$ by means of $β$ using
+$α$ for vertex correspondence.
+
+{: .foldable until="7" }
+\begin{code}
+module Isomorphism {ℓ} where
+
+  open BaseGraph {ℓ}
+
+  _≃Iso_ : Graph → Graph → Type {!   !}
+  G ≃Iso H =
+    Σ (Node G ≃ Node H)                                                 -- α
+      (λ α → (x y : Node G) → Edge G x y ⇔ Edge H ((α ∙) x) ((α ∙) y))  -- β
+
+  -- Remarks: Edge is propositional.
+  -- Agda Question:
+  -- What to remove these parenthesis (α ∙)
+\end{code}
+
+A graph map $(α, β)$ is called an *isomorphism* if $(α, β) : \Iso{G}{H}$  i.e., if both its vertex
+function and its edge function are equivalences.
+Two graphs $G$ and $H$ are *isomorphic* when $\Iso{G}{H}$ holds.
+
+
+\begin{code}
+  -- Thm.
+  thm : ∀ {G H : Graph} → (G == H) ≃ (G ≃Iso H)
+  thm {G}{H} = qinv-≃ f (g , H₁ , H₂)
+    where
+      f : G == H → G ≃Iso H
+      f p = (idtoeqv (ap Node p) , λ x y → fun t₁ , fun t₂)
+        where
+          t₁ : ∀ {x y : Node G}
+            → Edge G x y
+            → Edge H ((idtoeqv (ap Node p) ∙) x) ((idtoeqv (ap Node p) ∙) y)
+          t₁ e = {!   !} 
+
+          t₂
+            : ∀ {x y : Node G}
+            → Edge H ((idtoeqv (ap Node p) ∙) x) ((idtoeqv (ap Node p) ∙) y)
+            → Edge G x y
+          t₂ e = {!   !}
+
+      g : G ≃Iso H → G == H
+      g (α , β) =  {! ua  !}
+
+      H₁ : f ∘ g ∼ id
+      H₁ (α , β) = {! x  !}
+
+      H₂ : g ∘ f ∼ id
+      H₂ eq = {!   !}
+
+\end{code}
+#### Connected graphs
+
 For connected graphs, we need to define the type `Path` to allow us
-establish the connectedness property which says that a graph is *connected* if
-for any pair of nodes there is a path between them. A *path* is a sequence of
-edges that shares endpoint and starting point.
+to establish the *connectedness* property which says that a graph is *connected* if
+for any pair of nodes there is a path between them.
+
+*Definition*. A *path* is a non-empty graph P =(V,E) of the form
+
+![path](/assets/ipe-images/graph-connected.png){: width="40%" }
+*Figure 3. Connected Graphs. Green graph is the path built by $α : \Path x\,y$ and $β : \Edge y z$, this is the
+`cons` constructor in $\Path$ data type.*
 
 \begin{code}
 
 module ConnectedGraph
-  {ℓ} (G : Approach₁.Graph {ℓ})
+  {ℓ} (G : BaseGraph.Graph {ℓ})
   where
 
-  open Approach₁.Graph public
+  open BaseGraph.Graph public
 
   -- Path Def.
   data Path : Node G → Node G → Type ℓ where
@@ -190,7 +254,7 @@ Let's define the `Out` type to attempt define what a rotation system is.
 \end{code}
 
 
-#### Cyclics
+#### Cycles
 
 The reason to define a cyclic relation is that the faces or regions can be defined by
 *combinatorial maps* or also called *rotation systems*.
@@ -248,35 +312,12 @@ module CyclicForm {ℓᵢ ℓⱼ} where
   -- ∀ {x : Node G} → Cyclic (Out x) (OutR {x})
 \end{code}
 
-❓ How to define $\Face\ G$ for $G : \Graph\ A$.
+- Mention what is *dart*
 
-#### Isomorphisms
+❓ How to define $\Face\ G$ for $G : \Graph\ A$. (In progress)
 
-\begin{code}
-module Isomorphism {ℓ} where
+❓ How to *decide* if the faces make up (compatibility property). (In progress)
 
-   module UGraph = Approach₁ {ℓ}       -- Undirected, no-multigraphs graphs
-   module CGraph = ConnectedGraph {ℓ}  -- Connected graphs
-   open UGraph
-   -- open CGraph
-
-   -- Isomorphism between two Connected graphs cG and cH.
-   Iso
-    : ∀ {uG uH : UGraph.Graph}
-    → (cG : CGraph.Graph uG)
-    → (cH : CGraph.Graph uH)
-    → Type ℓ
-
-   Iso {uG}{uH} cG cH =
-    Σ (Node uG ≃ Node uH)
-      (λ α → (x y : Node uG) → Edge uG x y ⇔ Edge uH ( (α ∙) x) ( (α ∙) y))
-
-    -- Agda Questions:
-    -- 1. What to remove these parenthesis (α ∙)
-    -- 2. How to avoid ∀ {G H : BGraphs.Graph } in the definition, it's that possible?
-    -- 3. Better names! I don't like some like the module names.
-
-\end{code}
 
 ### Related papers
 
@@ -332,10 +373,12 @@ planar graphs.
 
 ### Related links
 
-- 📆 https://mathoverflow.net/questions/278015/number-of-non-equivalent-graph-embeddings
-- 📆 https://mathoverflow.net/questions/134010/embeddings-of-graphs-into-surfaces?rq=1
-- 📆 Ricard Williams, Noam Zeilberger and Peter Heinig: https://goo.gl/xrn9im
-- 📆 [Algebraic proof of Five-Color Theorem using chromatic polynomials by Birkhoff and Lewis in 1946](https://mathoverflow.net/questions/206270/algebraic-proof-of-five-color-theorem-using-chromatic-polynomials-by-birkhoff-an?rq=1)
-- 📆 [Why are planar graphs so exceptional?](https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144)
-- 📆 [Kalai's Post](https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/)
-- 📆 [Generalizations of Planar Graphs](https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs)
+- [Face-walks in rotation systems for graphs](https://cstheory.stackexchange.com/questions/11838/face-walks-in-rotation-systems-for-graphs/11845)
+- https://mathoverflow.net/questions/278015/number-of-non-equivalent-graph-embeddings
+- https://mathoverflow.net/questions/134010/embeddings-of-graphs-into-surfaces?rq=1
+- Ricard Williams, Noam Zeilberger and Peter Heinig: https://goo.gl/xrn9im
+- [Algebraic proof of Five-Color Theorem using chromatic polynomials by Birkhoff and Lewis in 1946](https://mathoverflow.net/questions/206270/algebraic-proof-of-five-color-theorem-using-chromatic-polynomials-by-birkhoff-an?rq=1)
+- [Why are planar graphs so exceptional?](https://mathoverflow.net/questions/7114/why-are-planar-graphs-so-exceptional/7144#7144)
+- [Kalai's Post](https://gilkalai.wordpress.com/2009/12/03/why-planar-graphs-are-so-exceptional/)
+- [Generalizations of Planar Graphs](https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs)
+- [Complexity of isotopy of embedded graphs](https://cstheory.stackexchange.com/questions/41546/complexity-of-isotopy-of-embedded-graphs)

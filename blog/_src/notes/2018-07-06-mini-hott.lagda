@@ -2372,14 +2372,14 @@ module UnivalenceLemmas {ℓ} where
 - The identity equivalence creates the trivial path.
 {: .foldable}
 \begin{code}
-  postulate
-    ua-id : {A : Type ℓ} → ua idEqv == refl A
-    -- ua-id {A} =
-    --   begin
-    --     ua idEqv              ==⟨ ap ua (sameEqv (refl id)) ⟩
-    --     ua (idtoeqv (refl A)) ==⟨ ua-η (refl A) ⟩
-    --     refl A
-    --   ∎
+  -- postulate
+  ua-id : {A : Type ℓ} → ua idEqv == refl A
+  ua-id {A} =
+    begin
+      ua idEqv              ==⟨ ap ua (sameEqv (refl id)) ⟩
+      ua (idtoeqv (refl A)) ==⟨ ua-η (refl A) ⟩
+      refl A
+    ∎
 
     -- The composition of equivalences is preserved into composition
     -- of equalities.
@@ -2412,15 +2412,14 @@ module UnivalenceLemmas {ℓ} where
 - Inverses are preserved
 {: .foldable}
 \begin{code}
-  postulate
-    ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A
-    -- ua-inv-r α =
-    --   begin
-    --     ua α · ua (invEqv α)      ==⟨ inv (ua-comp α (invEqv α)) ⟩
-    --     ua (compEqv α (invEqv α)) ==⟨ ap ua (compEqv-inv α) ⟩
-    --     ua idEqv                  ==⟨ ua-id ⟩
-    --     refl _
-    --   ∎
+  ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A
+  ua-inv-r α =
+    begin
+      ua α · ua (invEqv α)      ==⟨ inv (ua-comp α (invEqv α)) ⟩
+      ua (compEqv α (invEqv α)) ==⟨ ap ua (compEqv-inv α) ⟩
+      ua idEqv                  ==⟨ ua-id ⟩
+      refl _
+    ∎
 \end{code}
 
 - Missing description
