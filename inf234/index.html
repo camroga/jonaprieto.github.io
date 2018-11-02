@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    
+      
+        INF234 |
+      
+        jonaprieto
+    
+  </title><!-- Begin Jekyll SEO tag v2.5.0 -->
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="INF234" />
+<meta name="author" content="Jonathan Prieto-Cubides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Just the agenda for INF234 at UiB. The book is (Dasgupta &amp; Papadimitriou, 2006)." />
+<meta property="og:description" content="Just the agenda for INF234 at UiB. The book is (Dasgupta &amp; Papadimitriou, 2006)." />
+<link rel="canonical" href="http://jonaprieto.github.io/inf234/" />
+<meta property="og:url" content="http://jonaprieto.github.io/inf234/" />
+<meta property="og:site_name" content="jonaprieto" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-08-24T00:00:00+02:00" />
+<script type="application/ld+json">
+{"description":"Just the agenda for INF234 at UiB. The book is (Dasgupta &amp; Papadimitriou, 2006).","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/inf234/","headline":"INF234","dateModified":"2018-11-02T17:25:54+01:00","datePublished":"2018-08-24T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/inf234/"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<meta name="description" content="Just the agenda for INF234 at UiB. The book is (Dasgupta &amp;amp; Papadimitriou, 2006).">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="preload" as="script" href="/assets/main.js" >
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114360791-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-114360791-1');
+  </script>
+
+  
+</head>
+
+
+
+
+  <body>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item" >
+    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="/">Home</a>
+
+    <!--  -->
+    <!-- 
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/about/">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/all/">All</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/references/">List of references</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="/plans/">Plans</a>
+        
+      
+     -->
+
+    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
+    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
+  </nav>
+</div>
+
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
+            <a href="/" title="Home">jonaprieto</a>
+            <small style="text-decoration:left">∷ WorkInProgress</small>
+          </h3>
+        </div>
+      
+      <div class="container content">
+        
+
+
+
+
+
+
+<div class="post">
+
+  <div class="print-version">
+    <center>
+      <h1>INF234 </h1><br/>
+        <div class="print-authors">
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">
+                
+                  Jonathan Prieto-Cubides
+                
+              </div>
+              <div class="print-author-affiliation">
+                
+                  University of Bergen
+                
+                </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="print-date">24 August 2018</div>
+        
+        
+    </center>
+  </div>
+
+  
+  <div class="main-heading">
+    <div class="main-title">
+      <div class="main-title-prefix">Latest change:</div>
+      <div class="main-commit-message">
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f42f7d7e18c1724642edd549dfb33f331685c391/blog/_src/notes/2018-08-24-learning-inf234.lagda">
+              [ bitacora ] Adding lemmas 2 nov</a>
+      </div>
+    </div>
+
+    <div class="main-last-date">
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f42f7d7e18c1724642edd549dfb33f331685c391/blog/_src/notes/2018-08-24-learning-inf234.lagda">f42f7d7e </a> on  02 Nov 2018
+    </div>
+  </div>
+  
+  <h1 class="post-title" id="stickyTitle"><svg height="22" class="octicon octicon-bookmark" viewBox="0 0 10 16" version="1.1" width="13" aria-hidden="true"><path fill-rule="evenodd" d="M9 0H1C.27 0 0 .27 0 1v15l5-3.09L10 16V1c0-.73-.27-1-1-1zm-.78 4.25L6.36 5.61l.72 2.16c.06.22-.02.28-.2.17L5 6.6 3.12 7.94c-.19.11-.25.05-.2-.17l.72-2.16-1.86-1.36c-.17-.16-.14-.23.09-.23l2.3-.03.7-2.16h.25l.7 2.16 2.3.03c.23 0 .27.08.09.23h.01z"/></svg> INF234
+  </h1>
+  
+  <div class="toc">
+    <nav>
+    <h2 class="table-of-contents"> Table of Contents </h2>
+      <ul>
+  <li><a href="#2018-08-21">2018-08-21</a></li>
+  <li><a href="#2018-08-24">2018-08-24</a></li>
+  <li><a href="#2018-08-31">2018-08-31</a></li>
+  <li><a href="#2018-09-03">2018-09-03</a></li>
+  <li><a href="#2018-09-07">2018-09-07</a></li>
+  <li><a href="#2018-09-10">2018-09-10</a></li>
+  <li><a href="#2018-09-14">2018-09-14</a></li>
+  <li><a href="#2018-09-17">2018-09-17</a></li>
+  <li><a href="#2018-09-21">2018-09-21</a></li>
+  <li><a href="#2018-10-01">2018-10-01</a></li>
+  <li><a href="#2018-10-05">2018-10-05</a></li>
+  <li><a href="#2018-10-08">2018-10-08</a></li>
+  <li><a href="#2018-10-12">2018-10-12</a></li>
+  <li><a href="#2018-10-22">2018-10-22</a></li>
+  <li><a href="#2018-10-22-1">2018-10-22</a></li>
+  <li><a href="#2018-10-22-2">2018-10-22</a></li>
+</ul>
+
+    </nav>
+  </div>
+  
+
+  <noscript>
+  <h6>You need to turn on Javascript to see the content of this entry correctly.<h6><br/>
+  </noscript>
+
+  <p>Just the agenda for INF234 at UiB. The book is <a href="#Dasgupta2006">(Dasgupta &amp; Papadimitriou, 2006)</a>.</p>
+
+<h2 id="2018-08-21">2018-08-21</h2>
+
+<ul>
+  <li>Introduction and Syllabus</li>
+  <li>Big-Oh rules</li>
+</ul>
+
+<p>Exercise set 1 - for the exercise sessions on August 27-30</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />http://dm.compsciclub.ru/app/quiz-opposite-colors</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />http://dm.compsciclub.ru/app/quiz-clock-game</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />http://dm.compsciclub.ru/app/quiz-hanoi-towers</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Exercise 0.1.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Exercise 0.2.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Exercise 0.3.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 2.3. Recurrence substitution.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 2.4. Master theorem.</li>
+</ul>
+
+<p><img src="/assets/png-images/2018-08-24-learning-inf234-4b485241.png" alt="" /></p>
+
+<h2 id="2018-08-24">2018-08-24</h2>
+
+<ul>
+  <li>Big-Oh rules</li>
+  <li>Omega, and small big-oh.</li>
+  <li>Divide and Conquer
+    <ul>
+      <li>Sorting problem. Runtime analysis.</li>
+      <li>T(n) = a T(n/b) + O(n^a) where a is the branching factor, b is the size of the problems.</li>
+      <li>Geometric series: 1 + r + r^2 + … + r^t = (1 - r^(t+1))/(1 - r)
+        <ul>
+          <li>if r &lt; 1, the sums tends to be 1 / (1 - r).</li>
+        </ul>
+      </li>
+      <li>MergeSort algorithm</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2018-08-31">2018-08-31</h2>
+
+<ul>
+  <li>Master Theorem (and proof) (some logarithms rules viewed)</li>
+</ul>
+
+<h2 id="2018-09-03">2018-09-03</h2>
+
+<ul class="task-list">
+  <li>Review the formulation of the master algorithm</li>
+  <li>Divide &amp; conquer algorithm to find the median of an array of integers.</li>
+  <li>Selection pivot algorithm to improve the median selection algorithm.
+    <ul>
+      <li>https://brilliant.org/wiki/median-finding-algorithm/</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 2.5. Master Theorem</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 2.12. Recurrence substitution.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 2.14. Just use Mergesort and remove naively the duplicates</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 2.13. Catalan Numbers (Nice one).</li>
+</ul>
+
+<p>If <script type="math/tex">B_{n+2}</script> is the number of full binary trees with exactly n vertices,
+then, we can compute recursively the solution by following that’s equal to</p>
+
+<script type="math/tex; mode=display">B_{n+2} = \sum_{k=1}^{n} B_{k} B_{n+1-k}</script>
+
+<p>where, <script type="math/tex">B_{k} = 0</script> when k is odd and <script type="math/tex">B_1 = 1</script>.</p>
+
+<h2 id="2018-09-07">2018-09-07</h2>
+
+<ul class="task-list">
+  <li>
+    <p>Class was Introduction to Graphs, DFS, explore method, pre and post numbers</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 2.20.
+    <ul>
+      <li>Algorithm: counting sort.</li>
+      <li>Why not \Omega(nlog n)? because is not based on comparisons.</li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Exercise 2.23.
+    <ul>
+      <li>a) Algorithm Majority
+        <pre><code>def Majority(A):
+if len(A) == 1:
+ return A[0]
+half1 =  Majority(first half)
+half2 =  Majority(second half)
+check half1 in all the array to be the majority element
+if it's not check with half2 in all the array
+else: there is no majority element
+</code></pre>
+      </li>
+      <li>b) Algorithm: <a href="https://www.cs.utexas.edu/~moore/best-ideas/mjrty/example.html#step13">MJRTY - A Fast Majority Vote Algorithm</a></li>
+    </ul>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Exercise 3.1: Just perform a DFS</li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Exercise 3.2
+<img src="/assets/png-images/2018-08-24-learning-inf234-850e4ac8.png" alt="" /></p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Exercise 3.3.
+Kahn’ Topological Sort algorithm:
+<img src="/assets/png-images/2018-08-24-learning-inf234-6fa99409.png" alt="" />
+    <ul>
+      <li>Sources (A,B) and the sinks (G, H)</li>
+      <li>How many toposorts the graph has? 8.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2018-09-10">2018-09-10</h2>
+
+<ul>
+  <li>DFS, DFS tree, DFS forest construction in O(n + m) where n is #vertices and m is #edges
+    <ul>
+      <li>👨‍🎓 When drawing always make the arrows (dotted) to point out the exploration traces.</li>
+      <li>tree edges are the first edges in the DFS from parent to child, if the child
+is already discovered then a edge parent-child becomes a forward edge.</li>
+    </ul>
+  </li>
+  <li>Connected Component in O(n+m):
+    <ul>
+      <li>Run a DFS for all vertices, if a vertex is unvisited the there is a component
+with that vertex, and continue with next vertex.</li>
+    </ul>
+  </li>
+  <li><strong>Check the type of edges</strong>:</li>
+</ul>
+
+<p>Review the pre/post numbers for each vertex in the exploration of the graph:
+For instance: <code>pre(u) &lt; pre(v) &lt; post(v) &lt; post(u)</code>:
+<img src="/assets/png-images/2018-08-24-learning-inf234-05b9e04d.png" alt="" /></p>
+
+<p>And then we have:</p>
+
+<p><img src="/assets/png-images/2018-08-24-learning-inf234-64d0ba82.png" alt="" /></p>
+
+<ul>
+  <li>DAG (Directed acyclic graphs) ( a cycle has not repeated points)</li>
+</ul>
+
+<h2 id="2018-09-14">2018-09-14</h2>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm">Tarjan’ Strongly connected component algorithm</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Kosaraju%27s_algorithm">Kosaraju’ Strongly connected component algorithm</a>
+    <ul>
+      <li>meta graph (DFS too)</li>
+    </ul>
+  </li>
+</ul>
+
+<pre><code>  Kosaraju's Algorithm:
+
+  1. For each vertex u of the graph, mark u as unvisited. Let L be empty.
+  2. For each vertex u of the graph do Visit(u), where Visit(u) is the recursive subroutine:
+      If u is unvisited then:
+        - Mark u as visited.
+        - For each out-neighbour v of u, do Visit(v).
+        - Prepend u to L.
+      Otherwise do nothing.
+  3. For each element u of L in order, do Assign(u,u) where Assign(u,root) is the recursive subroutine:
+     If u has not been assigned to a component then:
+      - Assign u as belonging to the component whose root is root.
+      - For each in-neighbour v of u, do Assign(v,root).
+    Otherwise do nothing.
+</code></pre>
+
+<h2 id="2018-09-17">2018-09-17</h2>
+<ul>
+  <li>BFS (breath-first search) correctness of the algorithm</li>
+  <li>Correctness of Dijkstra Algorithm</li>
+  <li>Run the Dijkstra algorithm on paper for a small example</li>
+</ul>
+
+<h2 id="2018-09-21">2018-09-21</h2>
+<ul>
+  <li>Dijkstra work for positive weights.</li>
+  <li>Dijkstra uses a priority queue</li>
+  <li>O(sum deg(v) for v in V) = O (m + n)</li>
+</ul>
+
+<h2 id="2018-10-01">2018-10-01</h2>
+<ul>
+  <li>Chapter 5.1 (except the running time of path compression)</li>
+</ul>
+
+<h2 id="2018-10-05">2018-10-05</h2>
+<ul>
+  <li>Chapter 5.1 Chapter 5.2, 5.3</li>
+</ul>
+
+<h2 id="2018-10-08">2018-10-08</h2>
+<ul>
+  <li>Greedy Algorithm
+    <ul>
+      <li>Huffman encoding
+        <ul>
+          <li>encoding trees</li>
+          <li>cost of the encoding tree</li>
+        </ul>
+      </li>
+      <li>Horn formulas
+        <ul>
+          <li>Satisfiability problem. Domain (True/False)</li>
+          <li>A formula F in CNF is a Horn formula if every disjunction
+in F contains at least one positive literal (i.e., every clause
+has all literals occur negatively, or one literal is positive).</li>
+          <li>Check Exercise 5.32</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2018-10-12">2018-10-12</h2>
+<ul>
+  <li>Dynamic Programming
+    <ul>
+      <li>Fibonacci recursive definition</li>
+      <li>Shortest path (DAG)</li>
+      <li>Longest common subsequence</li>
+      <li>Edit distance</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2018-10-22">2018-10-22</h2>
+<ul>
+  <li>Previous week for the exam and the solution.</li>
+  <li>Today:
+    <ul>
+      <li>Edit Distance problem</li>
+      <li>Knapsack problem:
+        <ul>
+          <li>Limited supply</li>
+          <li>Unlimited supply</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2018-10-22-1">2018-10-22</h2>
+<ul>
+  <li>DP:
+    <ul>
+      <li>Shortest reliable path</li>
+      <li>All-pair shortest path</li>
+      <li>Party problem (Maximum weight independent set problem)</li>
+    </ul>
+  </li>
+  <li>End of DP</li>
+</ul>
+
+<h2 id="2018-10-22-2">2018-10-22</h2>
+<ul>
+  <li>Linear Programming:
+    <ul>
+      <li>Optimization problem with linear constraints</li>
+      <li>Simplex Algorithm (simplex because that is another name for polytope in geometry)</li>
+      <li>Express the maxflow problem as a linear problem</li>
+      <li>Ford-Fulkerson Algorithm</li>
+    </ul>
+  </li>
+</ul>
+
+
+  <div class="cited-references" markdown="1">
+  <ol class="bibliography"><li><span id="Dasgupta2006">Dasgupta, S., &amp; Papadimitriou, C. H. (2006). Algorithms. <i>Book</i>.</span></li></ol>
+  </div>
+
+
+  
+
+  <div id="github-links">
+    <div class="view-source">
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/f42f7d7e18c1724642edd549dfb33f331685c391/blog/_src/notes/2018-08-24-learning-inf234.lagda" download target="_blank"><svg height="12" class="octicon octicon-file-code right left" viewBox="0 0 12 16" version="1.1" width="9" aria-hidden="true"><path fill-rule="evenodd" d="M8.5 1H1c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V4.5L8.5 1zM11 14H1V2h7l3 3v9zM5 6.98L3.5 8.5 5 10l-.5 1L2 8.5 4.5 6l.5.98zM7.5 6L10 8.5 7.5 11l-.5-.98L8.5 8.5 7 7l.5-1z"/></svg> Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/f42f7d7e18c1724642edd549dfb33f331685c391/blog/_src/notes/2018-08-24-learning-inf234.lagda" target="_blank"><svg height="12" class="octicon octicon-mark-github right left" viewBox="0 0 16 16" version="1.1" width="12" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Github</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-08-24-learning-inf234.lagda" target="_blank"><svg height="12" class="octicon octicon-pencil right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg> Edit</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/f42f7d7e18c1724642edd549dfb33f331685c391/blog/_src/notes/2018-08-24-learning-inf234.lagda" target="_blank"><svg height="12" class="octicon octicon-history right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M8 13H6V6h5v2H8v5zM7 1C4.81 1 2.87 2.02 1.59 3.59L0 2v4h4L2.5 4.5C3.55 3.17 5.17 2.3 7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-.34.03-.67.09-1H.08C.03 7.33 0 7.66 0 8c0 3.86 3.14 7 7 7s7-3.14 7-7-3.14-7-7-7z"/></svg> History</a>
+      <a  href="#" onclick="window.print();return false;" target="_blank"><svg height="12" class="octicon octicon-file-pdf right left" viewBox="0 0 12 16" version="1.1" width="9" aria-hidden="true"><path fill-rule="evenodd" d="M8.5 1H1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V4.5L8.5 1zM1 2h4a.68.68 0 0 0-.31.2 1.08 1.08 0 0 0-.23.47 4.22 4.22 0 0 0-.09 1.47c.06.609.173 1.211.34 1.8A21.78 21.78 0 0 1 3.6 8.6c-.5 1-.8 1.66-.91 1.84a7.156 7.156 0 0 0-.69.3c-.362.165-.699.38-1 .64V2zm4.42 4.8a5.65 5.65 0 0 0 1.17 2.09c.275.237.595.417.94.53-.64.09-1.23.2-1.81.33-.618.15-1.223.347-1.81.59s.22-.44.61-1.25c.365-.74.67-1.51.91-2.3l-.01.01zM11 14H1.5a.743.743 0 0 1-.17 0 2.12 2.12 0 0 0 .73-.44 10.14 10.14 0 0 0 1.78-2.38c.31-.13.58-.23.81-.31l.42-.14c.45-.13.94-.23 1.44-.33s1-.16 1.48-.2c.447.216.912.394 1.39.53.403.11.814.188 1.23.23h.38V14H11zm0-4.86a3.743 3.743 0 0 0-.64-.28 4.221 4.221 0 0 0-.75-.11c-.411.003-.822.03-1.23.08a3 3 0 0 1-1-.64 6.07 6.07 0 0 1-1.29-2.33c.111-.661.178-1.33.2-2 .02-.25.02-.5 0-.75a1.05 1.05 0 0 0-.2-.88.82.82 0 0 0-.61-.23H8l3 3v4.14z"/></svg> Print</a>
+      
+
+      <a href="mailto:prieto.jona@gmail.com?Subject=[ ?]INF234 - Commit f42f7d7e" target="_top"><svg height="12" class="octicon octicon-mail right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg> Send Mail</a>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- https://octicons.github.com/ -->
+
+
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$'],['\\[','\\]']],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] },
+    TeX: {
+      equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js","AMScd.js","color.js"],
+      TagSide: "left",
+      Macros: {
+        field: ['\\mathbb{#1}', 1],
+        C: ['\\field{C}'],
+        F: ['\\field{F}'],
+        N: ['\\field{N}'],
+        Q: ['\\field{Q}'],
+        R: ['\\field{R}'],
+        Z: ['\\field{Z}'],
+
+        U: ['\\mathcal{U}'],
+        to: ['\\rightarrow'],
+        zero: ['\\field{0}'],
+        one: ['\\field{1}'],
+        two: ['\\field{2}'],
+        id: ['\\mathsf{Id}'],
+
+        true: ['\\mathsf{true}'],
+        false: ['\\mathsf{false}'],
+
+        proj: ['\\mathsf{proj}'],
+
+        trans: ['\\mathsf{trans}'],
+        refl: ['\\mathsf{refl}'],
+        sym: ['\\mathsf{sym}'],
+
+        Fin:['\\mathsf{Fin}\\,'],
+        ind: ['\\mathsf{ind}'],
+        rec:['\\mathsf{rec}'],
+
+        zeros: ['\\mathbf{0}'],
+        ud: ['\\,\\mathrm{d}'],
+
+        vect:['\\boldsymbol{\\mathbf{#1}}',1],
+        abs: ['\\lvert#1\\rvert', 1],
+        abslr:['\\left\\lvert#1\\right\\rvert', 1],
+        norm: ['\\lVert#1\\rVert', 1],
+        normlr: ['\\left\\lVert#1\\right\\rVert', 1],
+
+        lcm: ['\\mathop{\\mathrm{lcm}}'],
+        interior: ['\\mathop{\\mathrm{int}}'],
+        exterior: ['\\mathop{\\mathrm{ext}}'],
+        volume: ['\\mathop{\\mathrm{vol}}'],
+
+        E: ['{\\rm I\\kern-.3em E}'],
+        Var: ['\\mathop{\\mathrm{Var}}'],
+        Cov: ['\\mathop{\\mathrm{Cov}}'],
+        Binom: ['\\mathop{\\mathrm{Binom}}'],
+        Exp: ['\\mathop{\\mathrm{Exp}}'],
+        Poi: ['\\mathop{\\mathrm{Poi}}'],
+
+        GL: ['\\mathrm{GL}'],
+        SL: ['\\mathrm{SL}'],
+        Aut: ['\\mathrm{Aut}'],
+        ker: ['\\mathrm{ker}'],
+
+        Re: ['\\mathop{\\mathrm{Re}}'],
+        Im: ['\\mathop{\\mathrm{Im}}'],
+        Res: ['\\mathop{\\mathrm{Res}}'],
+
+
+
+        Type : ['\\mathsf{Type}\\,'],
+        Iso : ['{#1}\\,\\simeq_{\\mathsf{Iso}}{#2}\\,',2],
+        Graph : ['\\mathsf{Graph}\\,'],
+        Face : ['\\mathsf{Face}\\,'],
+        Node : ['\\mathsf{Node}\\,'],
+        Edge : ['\\mathsf{Edge}\\,'],
+        Path : ['\\mathsf{Path}\\,'],
+
+        minimize : ['\\mathsf{minimize}'],
+        maximize : ['\\mathsf{maximize}'],
+        st : ['\\mathsf{st}'],
+
+        and : ['\\,\\wedge\\, '],
+        or : ['\\,\\vee\\,']
+
+
+
+      }
+    }
+  });
+</script>
+<script
+  type="text/javascript"
+  charset="utf-8"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+>
+</script>
+
+
+
+<script>
+  // When the user scrolls the page, execute myFunction
+function stickyToogle(obj, sticky) {
+  if (window.pageYOffset > sticky) {
+    obj.classList.add("sticky");
+  } else {
+    obj.classList.remove("sticky");
+  }
+};
+
+// Get the header
+function stickyThing(idObj){
+  var obj = document.getElementById(idObj);
+  if (obj){
+    // Get the offset position of the navbar
+    stickyToogle(obj, obj.offsetTop);
+    // Add the sticky class to the obj when you reach its scroll position. Remove "sticky" when you leave the scroll position
+  }
+};
+
+window.onscroll = function() {
+  stickyThing("stickyTitle");
+};
+
+</script>
+
+
+
+      </div>
+      
+      </div>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+<script src="/assets/jquery.min.js"></script>
+
+
+
+<script type="text/javascript">
+WebFontConfig = {
+ google: { families: [ 'PT+Serif:400,700,400italic:latin', 'PT+Sans:400:latin' ] }
+};
+(function(d) {
+      var wf = d.createElement('script'), s = d.scripts[0];
+      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+      wf.async = true;
+      s.parentNode.insertBefore(wf, s);
+   })(document);
+</script>
+
+
+<!-- FOLDABLE  -->
+<script type="text/javascript">
+ $('pre.foldable').each(function(){
+     var lineHeight = parseFloat($(this).css('line-height'));
+     var plus    = $('<div><svg height="12" class="octicon octicon-fold" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M7 9l3 3H8v3H6v-3H4l3-3zm3-6H8V0H6v3H4l3 3 3-3zm4 2c0-.55-.45-1-1-1h-2.5l-1 1h3l-2 2h-7l-2-2h3l-1-1H1c-.55 0-1 .45-1 1l2.5 2.5L0 10c0 .55.45 1 1 1h2.5l1-1h-3l2-2h7l2 2h-3l1 1H13c.55 0 1-.45 1-1l-2.5-2.5L14 5z"/></svg></div>');
+     var horLine = $("<div></div>");
+     var verLine = $("<div></div>");
+     $(this).prepend(plus);
+     plus.css({
+         'position'         : 'relative',
+         'float'            : 'right',
+         'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
+         'width'            : lineHeight,
+         'height'           : lineHeight
+       });
+
+     var until = parseFloat($(this).attr('until'));
+     if ( isNaN(until) ) { until= 1; }
+     if ( until <= 0 ){
+       $(this).hide();
+     }
+     else{
+       var newHeight = ((1.2 * until) + 0.7) + "rem";
+       //                               ^^^----------- for the padding
+       //                ^^-- line-height
+
+       // console.log('afuera-until: ', until);
+       // console.log('afuera-newheight: ', newHeight );
+       $(this).css("padding", "0.5rem 1rem");
+       $(this).css("overflow", "hidden");
+       $(this).css("height", newHeight);
+       $(this).attr("original", "false");
+
+       $(this).click(function(){
+
+         // console.log('dentro-original: ', $(this).attr('original') );
+         // console.log('dentro-newheight: ', newHeight );
+
+         if ( $(this).attr('original') == "true" ) {
+           $(this).css("overflow", "hidden");
+           $(this).css("height", newHeight);
+           $(this).attr("original", "false");
+           $(this).css("padding", "0.5rem 1rem");
+           // plus.show();
+         }
+         else {
+           $(this).height('auto');
+           $(this).attr("original", "true");
+           // plus.hide();
+         }
+       });
+     }
+ });
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+  if ( $('div').hasClass('cited-references') ){
+    $('.cited-references').append( $('.references').html() );
+    $('.references').hide();
+    $(".cited-references").prepend("<h2 id='refs'>References</h2>");
+    $(".toc nav>ul").append("<li><a href='#refs'>References</a></li>");
+  }
+</script>
+
+
+
+
+
+    <script>
+      (function(document) {
+        var toggle   = document.querySelector('.sidebar-toggle');
+        var sidebar  = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+
+    
+    <script src="/assets/galleryjs/lightgallery.js"></script>
+
+    <script src="/assets/galleryjs/lg-thumbnail.min.js"></script>
+    <script src="/assets/galleryjs/lg-fullscreen.min.js"></script>
+
+    <script  type="text/javascript">
+      $(document).ready(function() {
+        $('.post img').wrap(function(){
+          return "<div class='gallery' data-src='" + $( this ).attr("src") + "'></div>";
+        });
+
+        lightGallery(document.querySelector('.post'),
+          { selector     : ".gallery"
+          // , mode         : 'slide'
+          , thumbnail    : true
+          , animateThumb: false
+          , closable     : true
+          , counter      : true
+          , enableTouch  : true
+          , enableDrag   : true
+          , showThumbByDefault   : false
+          , thumbWidth           : 90
+          , thumbMargin          : 5,
+          });
+      });
+    </script>
+    
+  </body>
+</html>
