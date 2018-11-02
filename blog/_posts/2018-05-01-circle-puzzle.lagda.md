@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /circle-hott/
 title: "Circle Equivalences"
 date: "2018-05-01"
 author: "Jonathan Prieto-Cubides"
@@ -42,6 +43,7 @@ Using the flattening lemma we can prove this equivalence:
 
 \begin{code}
 {-# OPTIONS --without-K #-}
+open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ )
 
 open import 2018-07-06-mini-hott
 module _ where

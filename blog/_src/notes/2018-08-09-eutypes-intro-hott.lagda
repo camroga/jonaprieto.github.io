@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /hott-eutypes/
 title: "EUTypes 2018 - HoTT"
 date: "2018-07-06"
 categories: learning
@@ -97,20 +98,20 @@ contr-if-inhabited→prop {A} g x y = contr→prop (g x) x y
 \end{code}
 
 \begin{code}
-prop→set : {A : Set} → isProp A → isSet A
-prop→set  {A = A} f a _ p q = lemma p · inv (lemma q)
-  where
-    triang : {y z : A} {p : y == z} → (f a y) · p == f a z
-    triang {y}{p = idp} = inv (·-runit (f a y))
-
-    lemma : {y z : A} (p : y == z) → p == ! (f a y) · (f a z)
-    lemma {y} {z} p =
-      begin
-        p                       ==⟨ ap (_· p) (inv (·-linv (f a y))) ⟩
-        ! (f a y) · f a y · p   ==⟨ ·-assoc (! (f a y)) (f a y) p ⟩
-        ! (f a y) · (f a y · p) ==⟨ ap (! (f a y) ·_) triang ⟩
-        ! (f a y) · (f a z)
-      ∎
+-- prop→set : {A : Set} → isProp A → isSet A
+-- prop→set  {A = A} f a _ p q = lemma p · inv (lemma q)
+--   where
+--     triang : {y z : A} {p : y == z} → (f a y) · p == f a z
+--     triang {y}{p = idp} = inv (·-runit (f a y))
+--
+--     lemma : {y z : A} (p : y == z) → p == ! (f a y) · (f a z)
+--     lemma {y} {z} p =
+--       begin
+--         p                       ==⟨ ap (_· p) (inv (·-linv (f a y))) ⟩
+--         ! (f a y) · f a y · p   ==⟨ ·-assoc (! (f a y)) (f a y) p ⟩
+--         ! (f a y) · (f a y · p) ==⟨ ap (! (f a y) ·_) triang ⟩
+--         ! (f a y) · (f a z)
+--       ∎
 \end{code}
 
 ## Exercise 2: here is another characterisation of propositions
@@ -173,9 +174,9 @@ contr-is-contr {A} (c , p) = (c , p) , ctr
 \end{code}
 
 \begin{code}
-prop-is-prop-always : {A : Set} → isProp (isProp A)
-prop-is-prop-always {A} =
-  λ x y → funext (λ a → funext (λ b → prop→set x a b (x a b) (y a b)))
+-- prop-is-prop-always : {A : Set} → isProp (isProp A)
+-- prop-is-prop-always {A} =
+--   λ x y → funext (λ a → funext (λ b → prop→set x a b (x a b) (y a b)))
 \end{code}
 
 \begin{code}

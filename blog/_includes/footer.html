@@ -29,7 +29,7 @@ WebFontConfig = {
 <script type="text/javascript">
  $('pre.foldable').each(function(){
      var lineHeight = parseFloat($(this).css('line-height'));
-     var plus    = $("<div></div>");
+     var plus    = $('<div>{% octicon fold height:12 %}</div>');
      var horLine = $("<div></div>");
      var verLine = $("<div></div>");
      $(this).prepend(plus);
@@ -38,21 +38,8 @@ WebFontConfig = {
          'float'            : 'right',
          'right'            : '-' + (0.5 * lineHeight - 1.5) + 'px',
          'width'            : lineHeight,
-         'height'           : lineHeight});
-     verLine.css({
-         'position'         : 'relative',
-         'height'           : lineHeight,
-         'width'            : '3px',
-         'background-color' : '#C1E0FF'});
-     horLine.css({
-         'position'         : 'relative',
-         'top'              : '-' + (0.5 * lineHeight + 1.5) + 'px',
-         'left'             : '-' + (0.5 * lineHeight - 1.5) + 'px',
-         'height'           : '3px',
-         'width'            : lineHeight,
-         'background-color' : '#C1E0FF'});
-     plus.append(verLine);
-     plus.append(horLine);
+         'height'           : lineHeight
+       });
 
      var until = parseFloat($(this).attr('until'));
      if ( isNaN(until) ) { until= 1; }
@@ -60,7 +47,7 @@ WebFontConfig = {
        $(this).hide();
      }
      else{
-       var newHeight = ((1.3 * until) + 1.0) + "rem";
+       var newHeight = ((1.2 * until) + 0.7) + "rem";
        //                               ^^^----------- for the padding
        //                ^^-- line-height
 
@@ -81,12 +68,12 @@ WebFontConfig = {
            $(this).css("height", newHeight);
            $(this).attr("original", "false");
            $(this).css("padding", "0.5rem 1rem");
-           plus.show();
+           // plus.show();
          }
          else {
            $(this).height('auto');
            $(this).attr("original", "true");
-           plus.hide();
+           // plus.hide();
          }
        });
      }
@@ -127,6 +114,7 @@ $('#citation pre').each(function(){
 
     var pre           = $(this);
     var title         = $(this).data('title');
+    var title         = $(this).data('title');
     var id            = $(this).data('url');
     var year          = $(this).data('year');
     var lastchecked   = $(this).data('lastchecked');
@@ -138,6 +126,11 @@ $('#citation pre').each(function(){
 
     if (bibtexauthors == ""){
       bibtexauthors = "Prieto-Cubides, Jonathan";
+    }
+
+    if (bibtextag == "")
+    {
+      bibtextag = "prieto" + lastchecked
     }
 
     pre.append(

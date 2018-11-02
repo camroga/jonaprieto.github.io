@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /path-algebra/
 title: "Path Algebra in HoTT"
 date: "2018-02-16"
 latex: true

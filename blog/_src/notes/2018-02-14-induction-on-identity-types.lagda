@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /induction-identity-types/
 title: "Induction on Identity Types"
 date: "2018-02-14"
 categories: learning

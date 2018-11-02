@@ -8,6 +8,8 @@ baseurl:             ''
 timezone:            'Europe/Oslo'
 # paginate:            100
 
+permalink: /:title/
+
 affiliation: 'University of Bergen'
 email:  'jcu043@uib.no'
 

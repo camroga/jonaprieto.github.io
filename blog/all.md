@@ -22,5 +22,3 @@ algolia: true
 
 {% endfor %}
 </div>
-
-{% include algolia-all.html %}

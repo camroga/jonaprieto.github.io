@@ -1,6 +1,7 @@
 ---
 layout: "post"
-title: "Mini HoTT library in Agda"
+permalink: /mini-hott/
+title: "Mini HoTT Library in Agda"
 date: "2018-07-06"
 categories: type-theory home
 author: "Jonathan Prieto-Cubides"
@@ -14,101 +15,123 @@ agda: true
 gallery: true
 latex: true
 references: true
+linkify: true
 showcitation: true
 ---
 
 ## Introduction
 
-This is a basic overview of homotopy type theory (HoTT) formalized in Agda. It's
-only one file and has been type-checked by Agda 2.5.4. No other libraries are
-required to type-check this file.
+This is a basic overview of homotopy type theory (HoTT) formalized in `Agda`. It
+is only one file and has been type-checked by `Agda 2.5.4`. No other libraries
+are required to type-check this file. This library is full of synonyms for types
+and constructors, their names intend to be the common names found in the
+literature but also to be *mnemotechnic* names.
+
+![path](/assets/png-images/mini-hott.jpeg){: width="220px" align="right" }
 
 {: .only-website }
 
-  **URL link**: [https://tinyurl.com/mini-hott](https://tinyurl.com/mini-hott).
+  **URL link**: [https://jonaprieto.github.io/mini-hott/](https://jonaprieto.github.io/mini-hott/).
 
-To be consistent with homotopy type theory, we tell Agda to not use Axiom K for
-type-checking by using the option `without-K`. Without Axiom K, Agda's `Set` is
-not a good name for universes in HoTT and we rename `Set` to `Type`.
-
-This code is working in progress and it's for my own learning purposes.
-Please check out the references at the end of this article.
+To be consistent with homotopy type theory, we tell `Agda` to not use *Axiom K* for
+type-checking by using the option `without-K`.
 
 \begin{code}
 {-# OPTIONS --without-K #-}
+\end{code}
 
+This code is working in progress and it's only for learning purposes. We have
+based it on other similar developments. Please check out the references at the
+end of this article.
+
+## Basic types
+
+Without Axiom K, `Agda`'s `Set` is not a good name for universes in HoTT and we
+rename `Set` to `Type`. Our type judgments then will include the universe level
+as one explicit argument.
+
+\begin{code}
 open import Agda.Primitive using ( Level ; lsuc; lzero; _⊔_ )
+\end{code}
+Note that `l ⊔ q` is the maximum of two hierarchy levels `l` and `q` and we
+use this later on to define types in full generality.
 
+\begin{code}
 Type : (ℓ : Level) → Set (lsuc ℓ)
 Type ℓ = Set ℓ
+\end{code}
 
+\begin{code}
 Type₀ : Type (lsuc lzero)
 Type₀ = Type lzero
 \end{code}
 
-## Basic types
-
 ### Empty type
 
-The Empty type, representing falsehood.
+A datatype without *constructors* is the *empty type*. This represents  the *falsehood*.
 
 \begin{code}
--- A datatype without constructors is the empty type.
 data ⊥ {ℓᵢ} : Type ℓᵢ where
+\end{code}
 
--- synonyms of ⊥
+Synonyms of ⊥:
+\begin{code}
 Empty = ⊥
 𝟘     = ⊥
 \end{code}
 
-Its eliminator:
+Its *eliminator* principle also called *Ex falso quodlibet*:
 
 \begin{code}
--- Ex falso quodlibet
 exfalso
-  : ∀ {ℓ ℓᵢ} {A : Type ℓ} → ⊥ {ℓᵢ} → A
+  : ∀ {ℓ ℓᵢ} {A : Type ℓ}
+  → ⊥ {ℓᵢ}
+  --------
+  → A
 
 exfalso ()
-
--- synonyms of exfalso
-Empty-elim = exfalso
-⊥-elim     = exfalso
 \end{code}
 
-A useful convention
-\begin{code}
--- Negation
-¬
-  : ∀ {ℓ} → Type ℓ → Type ℓ
+Synonyms of `exfalso` rule:
 
+\begin{code}
+Empty-elim = exfalso
+⊥-elim     = exfalso
+𝟘-elim     = exfalso
+\end{code}
+
+The negation function:
+\begin{code}
+¬ : ∀ {ℓ} → Type ℓ → Type ℓ
 ¬ A = (A → ⊥ {lzero})
 \end{code}
 
 ### Unit type
 
-The unit type is defined as record so that we also get the η-rule
-definitionally.
+The *unit type* is defined as a record to get also the $η$-rule
+definitionally. This type has no elimination rule.
 
-No elimination rule.
 \begin{code}
 record ⊤ : Type₀ where
   constructor ★
 
 {-# BUILTIN UNIT ⊤ #-}
+\end{code}
 
--- synonyms for the data constructor
-unit = ★
-
--- synonyms for the Unit type
+Synonyms for the Unit type:
+\begin{code}
 Unit = ⊤
 𝟙    = ⊤
 \end{code}
 
+Synonyms for the data constructor:
+\begin{code}
+unit = ★
+\end{code}
+
 ### Σ-type
 
-Sigma types are a particular case of records, but records can be constructed
-using only sigma types. Note that l ⊔ q is the maximum of two hierarchy levels l
-and q. This way, we define sigma types in full generality, at each universe.
+We define Sigma types as a particular case of [*Records* in `Agda`.](https://tinyurl.com/agda-records)
 
 \begin{code}
 infixr 60 _,_
@@ -118,15 +141,24 @@ record Σ {ℓᵢ ℓⱼ} (A : Type ℓᵢ)(C : A → Type ℓⱼ) : Type (ℓ�
     π₁ : A
     π₂ : C π₁
 
-  -- synonyms for data constructors
-  proj₁ = π₁
-  proj₂ = π₂
-  fst   = π₁
-  snd   = π₂
 open Σ public
 \end{code}
 
+Synonyms for its data constructors:
+
+\begin{code}
+proj₁ = π₁
+proj₂ = π₂
+
+pr₁   = π₁
+pr₂   = π₂
+
+fst   = π₁
+snd   = π₂
+\end{code}
+
 ### Π-types
+
 Shorter notation for Π-types.
 
 \begin{code}
@@ -141,7 +173,7 @@ Shorter notation for Π-types.
 
 ### Product type
 
-Product type as a particular case of the sigma
+Product type as a particular case of the sigma.
 
 \begin{code}
 _×_
@@ -153,7 +185,7 @@ _×_
 A × B = Σ A (λ _ → B)
 \end{code}
 
-### Coproduct
+### Coproduct type
 
 Sum types as inductive types
 
@@ -164,7 +196,7 @@ data _+_ {ℓᵢ ℓⱼ} (A : Type ℓᵢ) (B : Type ℓⱼ) : Type (ℓᵢ ⊔ 
   inr : B → A + B
 \end{code}
 
-### Implication and Biconditional type
+### Implication type
 
 \begin{code}
 -- Implication.
@@ -172,13 +204,15 @@ data _⇒_ {ℓ}(A B : Type ℓ) : Type ℓ where
   fun : (A → B) → A ⇒ B
 \end{code}
 
+### Biconditional type
+
 \begin{code}
 -- Biconditional.
 _⇔_ : ∀ {ℓ} → Type ℓ → Type ℓ → Type ℓ
 A ⇔ B = (A ⇒ B) × (B ⇒ A)
 \end{code}
 
-### Boolean
+### Boolean type
 
 Boolean type, two constants true and false
 
@@ -923,6 +957,18 @@ coe
 coe p a = transport (λ X → X) p a
 \end{code}
 
+
+\begin{code}
+tr₂ : {i j k : Level}
+    → (A : Type i)
+    → (B : A → Type j)
+    → (C : (x : A) → (b : B x) → Type k)
+    → ∀ {a₁ a₂ : A}{b₁ : B a₁}{b₂ : B a₂}
+    → (p : a₁ == a₂)
+    → (q : tr B p b₁ == b₂)
+    → C a₁ b₁ → C a₂ b₂
+tr₂ A B C idp idp = id
+\end{code}
 ### Pathover
 
 Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
@@ -1611,7 +1657,7 @@ h-naturality-id {f = f} {x = x} H =
   ∎
 \end{code}
 
-## .... REVIWING .... BELOW
+## **[ DANGER ] BELOW WITHOUT DOUBLE CHECK**
 
 ## Fibers
 
@@ -2359,6 +2405,7 @@ module Univalence where
 
     ua-η : (p : A == B) → ua (idtoeqv p) == p
     ua-η p = rlmap-inverse eqvUnivalence
+
   open UnivalenceAxiom public
 open Univalence public
 \end{code}
@@ -2494,6 +2541,21 @@ module TransportUA where
     -----------------
     → transport B p == (fun≃ e)
   funext-transport-ua B p e x₁ = funext (transport-ua B p e x₁)
+
+  postulate
+    ua-coe
+      : ∀ {ℓ} {A B : Type ℓ}
+      → (α : A ≃ B)
+      → (∀ x → (coe (ua α) x) == ((α ∙) x))
+  -- ua-coe α x =
+  --   begin
+  --     (coe (ua α) x)
+  --       ==⟨ idp ⟩
+  --     transport (λ X → X) (ua α) x
+  --       ==⟨ {!   !} ⟩
+  --     {!   !}
+  --       ==⟨ {!   !} ⟩
+  --     {!   !}
 open TransportUA public
 \end{code}
 
@@ -3480,11 +3542,51 @@ module FundGroupCircle where
   preserves-composition n m = z-act+ (Ω-st S¹ base) n m loop
 \end{code}
 
+
+## Auxiliary stuff
+
+\begin{code}
+prop→set :  ∀ {ℓ}{A : Type ℓ} → isProp A → isSet A
+prop→set  {A = A} f a _ p q = lemma p · inv (lemma q)
+  where
+    triang : {y z : A} {p : y == z} → (f a y) · p == f a z
+    triang {y}{p = idp} = inv (·-runit (f a y))
+
+    lemma : {y z : A} (p : y == z) → p == ! (f a y) · (f a z)
+    lemma {y} {z} p =
+      begin
+        p                       ==⟨ ap (_· p) (inv (·-linv (f a y))) ⟩
+        ! (f a y) · f a y · p   ==⟨ ·-assoc (! (f a y)) (f a y) p ⟩
+        ! (f a y) · (f a y · p) ==⟨ ap (! (f a y) ·_) triang ⟩
+        ! (f a y) · (f a z)
+      ∎
+\end{code}
+
+\begin{code}
+postulate
+  pi-is-prop : ∀ {ℓ k}{A : Type ℓ}  {B : A → Type k} → (∀ a → isProp (B a)) → (isProp (∀ a → B a))
+  set-is-prop-always : ∀ {ℓ}{A : Type ℓ} → isProp (isSet A)
+
+prop-is-prop-always :  ∀ {ℓ}{A : Type ℓ} → isProp (isProp A)
+prop-is-prop-always {_}{A} =
+  λ x y → funext (λ a → funext (λ b → prop→set x a b (x a b) (y a b)))
+
+ispropA-B : ∀ {ℓ} {A B : Type ℓ} →  isProp A → isProp B → (A ⇔ B) → A == B
+ispropA-B propA propB (fun f , fun g) = ua (qinv-≃ f (g , (λ x → propB _ _) , (λ x → propA _ _)))
+
+
+postulate
+  ispropA×B :  ∀ {ℓ} {A B : Type ℓ} →  isProp A → isProp B → isProp (A × B)
+
+  propEqvIsprop : ∀ {ℓ} {A B : Type ℓ} → isProp A → isProp B → isProp (A == B)
+-- ispropA×B = ?
+\end{code}
+
 ## Agda references
 
 We based on the following Agda libraries.
 
 {: .links}
 
-  - (Mostly all base code at the beginning was taken from) basic homotopy type theory in Agda: [agda-hott](https://mroman42.github.io/ctlc/agda-hott/Total.html).
-  - Higher Inductive types in `hott-agda` from https://github.com/dlicata335/hott-agda/
+  - We took and modified the base code of Agda-HoTT: https://mroman42.github.io/ctlc/agda-hott/Total.html
+  - Higher Inductive Types were defined as it was in `Hott-Agda` from https://github.com/dlicata335/hott-agda/

@@ -52,6 +52,6 @@ sym {A} x y x≡y P = x≡y p₁ (λ z → z)
     p₁ = λ z → P z → P x
 \end{code}
 
-> The principle of identity of indiscernibles states that two objects
+> The principle of identity of indiscernible states that two objects
 are identical if they have all the same properties.
 This is also known as “Leibniz’s Law”... in [https://ncatlab.org/nlab/show/identity+of+indiscernibles](https://ncatlab.org/nlab/show/identity+of+indiscernibles)

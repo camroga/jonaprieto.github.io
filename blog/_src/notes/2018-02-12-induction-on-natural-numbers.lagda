@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /induction-natural-numbers/
 title: "Induction on Natural Numbers"
 date: "2018-02-12"
 toc: true

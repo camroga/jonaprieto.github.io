@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /pathovers/
 title: "Pathovers"
 use_site_title : false
 author: "Jonathan Prieto-Cubides"

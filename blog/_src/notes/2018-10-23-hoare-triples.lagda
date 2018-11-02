@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /hoare-agda/
 title: "Hoare Triples in Agda"
 date: "2018-10-23"
 categories: home

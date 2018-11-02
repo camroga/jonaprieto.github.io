@@ -1,5 +1,6 @@
 ---
 layout: "post"
+permalink: /stlc-agda/
 title: "Simple Typed Lambda Calculus In Agda"
 date: "2018-08-17"
 categories: type-theory home

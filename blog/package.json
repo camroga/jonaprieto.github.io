@@ -18,7 +18,8 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-plumber": "^1.2.0",
     "gulp-sass": "^4.0.1",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.1",
+    "octicons": "^8.1.0"
   },
   "devDependencies": {
     "gulp-util": "^3.0.8",

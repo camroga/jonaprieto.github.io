@@ -1,6 +1,7 @@
 ---
 layout: "post"
-title: "HoTT exercises"
+permalink: /hott-exercises/
+title: "HoTT Exercises"
 date: "2018-04-08"
 latex: true
 references: true
@@ -10,10 +11,6 @@ toc: true
 linkify: true
 gallery: true
 ---
-
-<noscript>
-**You need to turn on Javascript to see the content of this entry correctly.**<br/>
-</noscript>
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.
 The idea is to unpackage all as long as possible to get a better understanding.
