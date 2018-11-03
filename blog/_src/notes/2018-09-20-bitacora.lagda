@@ -110,37 +110,45 @@ module BaseGraph {ℓ} where
 
 ### Lemmas
 
-{: .foldable until="15"}
+{: .foldable until="21"}
 \begin{code}
   -- Lem.
   lem₀'
-    : ∀ { G H : Graph}
-    → Σ ((Node G == Node H)) (λ α →
-        Σ (tr (λ X → (X → X → Type ℓ)) α (Edge G) == Edge H) λ β
-        → (tr isSet α (NodeIsSet G) == NodeIsSet H)
-        × (tr₂ (Type ℓ)
-            (λ X  → X → X → Type ℓ)
+    : ∀ {G H : Graph}
+    → Σ (Node G == Node H) (λ α →
+        Σ (tr (λ X → (X → X → Type ℓ)) α (Edge G) == Edge H) (λ β →
+          (tr isSet α (NodeIsSet G) == NodeIsSet H)
+        × (tr₂
+            (Type ℓ)
+            (λ X → X → X → Type ℓ)
             (λ X R → (x y : X) → isProp (R x y))
-             α β (EdgeIsProp G) == (EdgeIsProp H)
-        × (tr₂ (Type ℓ)
-         (λ X  → X → X → Type ℓ)
-         (λ X R → (x y : X) →  R x y → R y x))
-          α β (undirected G) == (undirected H)))
-    ≃  G == H
+            α
+            β
+            (EdgeIsProp G) == (EdgeIsProp H)
+        × (tr₂
+            (Type ℓ)
+            (λ X  → X → X → Type ℓ)
+            (λ X R → (x y : X) →  R x y → R y x))
+            α
+            β
+            (undirected G) == (undirected H))))
+    ≃ G == H
 
-  lem₀' =  qinv-≃
-    (λ {(idp , (idp , (idp , (idp , idp)))) → idp })
-    ((λ {idp → idp , idp , (idp , (idp , idp))}) , (λ {idp →  idp}) , λ { (idp , (idp , (idp , (idp , idp))))  →  idp})
+  lem₀' = qinv-≃
+    ( λ {(idp , (idp , (idp , (idp , idp)))) → idp })      -- Fun. Equiv.
+    ((λ {idp → idp , idp , (idp , (idp , idp))})          -- Fun. Inverse
+      , (λ {idp →  idp})                                  -- Homotopy
+      , λ { (idp , (idp , (idp , (idp , idp))))  →  idp}  -- Homotopy
+    )
 \end{code}
 
 {: .foldable until="17"}
 \begin{code}
   -- Lem.
   lem₁'
-    : ∀ { G H : Graph}
-    → Σ ((Node G == Node H)) (λ α →
+    : ∀ {G H : Graph}
+    → Σ (Node G == Node H) (λ α →
         (tr (λ X → (X → X → Type ℓ)) α (Edge G) == Edge H))
-
     ≃  Σ ((Node G == Node H)) (λ α →
         Σ (tr (λ X → (X → X → Type ℓ)) α (Edge G) == Edge H) λ β
         → (tr isSet α (NodeIsSet G) == NodeIsSet H)
@@ -153,12 +161,14 @@ module BaseGraph {ℓ} where
          (λ X R → (x y : X) →  R x y → R y x))
           α β (undirected G) == (undirected H)))
 
-  lem₁' {G}{H} = qinv-≃ (λ { (α , β) →
+  lem₁' {G}{H} = qinv-≃
+    (λ { (α , β) →   -- Fun. Equiv.
       (α
         , (β
-          , (set-is-prop-always _ _) --
+          , (set-is-prop-always _ _)
           , (pi-is-prop (λ x → pi-is-prop λ x → prop-is-prop-always) _ _)
-          , pi-is-prop ((λ x → pi-is-prop λ x → pi-is-prop λ x → EdgeIsProp H _ _)) _ _)) })
+          , pi-is-prop ((λ x → pi-is-prop λ x → pi-is-prop λ x → EdgeIsProp H _ _)) _ _))})
+
       ((λ {(α , (β , _)) → α , β})
         , (λ {(α , (β , _))
           → pair= (idp
@@ -181,7 +191,7 @@ module BaseGraph {ℓ} where
                     (prop→set
                       (pi-is-prop
                         (λ a → pi-is-prop λ b → pi-is-prop λ e → EdgeIsProp H _ _)) _ _)) _ _)) })
-        , (λ {(α , β) → idp } ))
+        , (λ {(α , β) → idp} ))
 \end{code}
 
 {: .foldable until="7"}

@@ -17,7 +17,7 @@ comments: true
 
   <div class="print-version">
     <center>
-      <h1>{{ page.title }} </h1><br/>
+      <h1>{{ page.title }}</h1><br/>
         <div class="print-authors">
           <div class="print-info">
             <div class="print-author">
@@ -47,6 +47,16 @@ comments: true
             </div>
           </div>
           {% endif %}
+          {% if page.coauthor2 %}
+          <div class="print-info">
+            <div class="print-author">
+              <div class="print-author-name">{{ page.coauthor2}}</div>
+              {% if page.coauthor2_affiliation %}
+              <div class="print-author-affiliation">{{ page.coauthor2_affiliation}}</div>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
         </div>
         <div class="print-date">{{ page.date | date_to_long_string }}</div>
         {% if page.abstract %}<div class="print-abstract">{{page.abstract}}</div>{% endif %}
@@ -69,21 +79,22 @@ comments: true
     </div>
   </div>
   {% else %}
-  No git information available
+  No git information available.
   {% endif %}
   <h1 class="post-title" id="stickyTitle">{% octicon bookmark height:22 %} {{ page.title }}
   </h1>
-  {% if page.toc %}
+
+  <!-- {% if page.toc %}
   <div class="toc">
     <nav>
     <h2 class="table-of-contents"> Table of Contents </h2>
       {% include toc.html html=content %}
     </nav>
   </div>
-  {% endif %}
+  {% endif %} -->
 
   <noscript>
-  <h6>You need to turn on Javascript to see the content of this entry correctly.<h6><br/>
+  <div style="font-size:16px;font-weight:700; color:red;">{% octicon alert height:18 %} Javascript is disabled, please activate it to see correctly this post.</div><br/>
   </noscript>
 
   {{ content }}

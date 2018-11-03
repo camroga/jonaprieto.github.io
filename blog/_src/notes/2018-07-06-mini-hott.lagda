@@ -8,7 +8,9 @@ author: "Jonathan Prieto-Cubides"
 author_affiliation: "University of Bergen"
 coauthor: "Marc Bezem"
 coauthor_affiliation: "University of Bergen"
-bibtexauthors: "Prieto-Cubides, Jonathan and Bezem, Marc"
+coauthor2: "Håkon Robbestad"
+coauthor2_affiliation: "University of Bergen"
+bibtexauthors: "Prieto-Cubides, Jonathan. Bezem, Marc. Robbestad, Håkon."
 bibtextag: "prietobezem:mini-hot"
 toc: true
 agda: true
@@ -24,8 +26,8 @@ showcitation: true
 This is a basic overview of homotopy type theory (HoTT) formalized in `Agda`. It
 is only one file and has been type-checked by `Agda 2.5.4`. No other libraries
 are required to type-check this file. This library is full of synonyms for types
-and constructors, their names intend to be the common names found in the
-literature but also to be *mnemotechnic* names.
+and constructors, their names intend to be *mnemotechnic* but also to be as they
+can be found in the literature.
 
 ![path](/assets/png-images/mini-hott.jpeg){: width="220px" align="right" }
 
@@ -238,9 +240,9 @@ neg¬ true  = false
 neg¬ false = true
 \end{code}
 
-*Booleans can be also defined using the coproduct.*
+*Booleans can be also defined using the Coproduct.*
 
-### Natural numbers
+### Natural numbers type
 
 Natural numbers are the initial algebra for a constant and a
 successor function. The `BUILTIN` declaration allows us to use
@@ -3588,5 +3590,5 @@ We based on the following Agda libraries.
 
 {: .links}
 
-  - We took and modified the base code of Agda-HoTT: https://mroman42.github.io/ctlc/agda-hott/Total.html
+  - We took as our base code of Agda-HoTT: https://mroman42.github.io/ctlc/agda-hott/Total.html
   - Higher Inductive Types were defined as it was in `Hott-Agda` from https://github.com/dlicata335/hott-agda/

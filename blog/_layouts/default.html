@@ -35,11 +35,12 @@
       {% endif %}
       </div>
     </div>
-
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    {% if page.toc %}
+    <label for="sidebar-checkbox" class="sidebar-toggle"> Content </label>
+    {% endif %}
     {% include footer.html %}
 
-    <script>
+    <!-- <script>
       (function(document) {
         var toggle   = document.querySelector('.sidebar-toggle');
         var sidebar  = document.querySelector('#sidebar');
@@ -48,14 +49,15 @@
         document.addEventListener('click', function(e) {
           var target = e.target;
 
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
+          // if(!checkbox.checked ||
+          //    sidebar.contains(target) ||
+          //    (target === checkbox || target === toggle)) return;
+          //
+          if(target === toggle)
           checkbox.checked = false;
         }, false);
       })(document);
-    </script>
+    </script> -->
 
     {% if page.gallery %}
     <script src="{{site.baseurl}}/assets/galleryjs/lightgallery.js"></script>
