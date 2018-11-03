@@ -76,11 +76,11 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item" >
-    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+    <p style="text-decoration:left">Plans</p>
   </div>
-
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">Home</a>
+    
+
 
     <!--  -->
     <!-- 
@@ -119,9 +119,9 @@
       
      -->
 
-    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/about/">About</a> -->
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
-    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a> -->
     <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
@@ -143,13 +143,13 @@
   <div class="main-title">
     <div class="main-title-prefix"> Latest change:</div>
     <div class="main-commit-message">
-          <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f42f7d7e18c1724642edd549dfb33f331685c391">
-            [ bitacora ] Adding lemmas 2 nov</a>
+          <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9e61da2d2d0bf3a015b74d3e6dc8d741f8346c93">
+            Cosmetics. Mostly new sidebar. ;)</a>
     </div>
   </div>
 
   <div class="main-last-date">
-    Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f42f7d7e18c1724642edd549dfb33f331685c391">685c391 </a> on  02 Nov 2018
+    Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9e61da2d2d0bf3a015b74d3e6dc8d741f8346c93">8346c93 </a> on  03 Nov 2018
   </div>
 </div>
 
@@ -291,8 +291,7 @@ search.start();
       
       </div>
     </div>
-
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
     
 <script src="/assets/jquery.min.js"></script>
 
@@ -320,7 +319,7 @@ WebFontConfig = {
 
 
 
-    <script>
+    <!-- <script>
       (function(document) {
         var toggle   = document.querySelector('.sidebar-toggle');
         var sidebar  = document.querySelector('#sidebar');
@@ -329,14 +328,15 @@ WebFontConfig = {
         document.addEventListener('click', function(e) {
           var target = e.target;
 
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
+          // if(!checkbox.checked ||
+          //    sidebar.contains(target) ||
+          //    (target === checkbox || target === toggle)) return;
+          //
+          if(target === toggle)
           checkbox.checked = false;
         }, false);
       })(document);
-    </script>
+    </script> -->
 
     
   </body>

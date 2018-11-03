@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-06-27T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"Just for fun, let’s to follow the Brilliant chapters about computer science.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/06/27/learning-cs-fundamentals/","headline":"CS Basics","dateModified":"2018-11-02T17:25:54+01:00","datePublished":"2018-06-27T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/06/27/learning-cs-fundamentals/"},"@context":"http://schema.org"}</script>
+{"description":"Just for fun, let’s to follow the Brilliant chapters about computer science.","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/learning/2018/06/27/learning-cs-fundamentals/","headline":"CS Basics","dateModified":"2018-11-03T13:37:02+01:00","datePublished":"2018-06-27T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/learning/2018/06/27/learning-cs-fundamentals/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="Just for fun, let’s to follow the Brilliant chapters about computer science.">
 
@@ -78,11 +78,112 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item" >
-    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+    <p style="text-decoration:left">CS Basics</p>
   </div>
-
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">Home</a>
+    <ul id="toc-id" class="toc-class">
+  <li class="sidebar-toc-item"><a href="#" class="sidebar-nav-item"> Table of Contents </a>
+    <ul>
+      <li class="sidebar-toc-item"><a href="#introduction" class="sidebar-nav-item">Introduction</a></li>
+      <li class="sidebar-toc-item"><a href="#x-recursion" class="sidebar-nav-item">[x] Recursion</a></li>
+      <li class="sidebar-toc-item"><a href="#x-divide-and-conquer" class="sidebar-nav-item">[x] Divide-and-conquer</a></li>
+      <li class="sidebar-toc-item"><a href="#x-mergesort" class="sidebar-nav-item">[x] Mergesort</a></li>
+      <li class="sidebar-toc-item"><a href="#x-quicksort" class="sidebar-nav-item">[x] Quicksort</a></li>
+      <li class="sidebar-toc-item"><a href="#x-linked-list" class="sidebar-nav-item">[x] Linked-list</a></li>
+      <li class="sidebar-toc-item"><a href="#x-stacks-and-queues" class="sidebar-nav-item">[x] stacks-and-queues</a></li>
+      <li class="sidebar-toc-item"><a href="#x-stacks-2" class="sidebar-nav-item">[x] stacks-2</a></li>
+      <li class="sidebar-toc-item"><a href="#x-queues" class="sidebar-nav-item">[x] queues</a></li>
+      <li class="sidebar-toc-item"><a href="#--binary-trees-2" class="sidebar-nav-item">[ ] Binary-trees-2</a></li>
+      <li class="sidebar-toc-item"><a href="#x-binary-trees" class="sidebar-nav-item">[x] Binary trees</a></li>
+      <li class="sidebar-toc-item"><a href="#x-traversals" class="sidebar-nav-item">[x] Traversals</a></li>
+      <li class="sidebar-toc-item"><a href="#x-binary-search-trees-2" class="sidebar-nav-item">[x] binary-search-trees-2</a></li>
+      <li class="sidebar-toc-item"><a href="#--tree-rotations" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/tree-rotations/?chapter=binary-trees">tree-rotations</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--red-black-trees" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/red-black-trees/?chapter=binary-trees">red-black-trees</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--heaps" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/heaps/?chapter=heaps-2">heaps</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--priority-queues" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/priority-queues/?chapter=heaps-2">priority-queues</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--binary-heaps" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/binary-heaps/?chapter=heaps-2">binary-heaps</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--heapsort" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/heapsort/?chapter=heaps-2">heapsort</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--treaps" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/treaps/?chapter=heaps-2">treaps</a></a></li>
+    </ul>
+  </li>
+  <li class="sidebar-toc-item"><a href="#algorithms" class="sidebar-nav-item">Algorithms</a>
+    <ul>
+      <li class="sidebar-toc-item"><a href="#--algorithms" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/algorithms/?chapter=algorithms">algorithms</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--intro-to-computation" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/intro-to-computation/?chapter=algorithms">intro-to-computation</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--a-naive-approach" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/a-naive-approach/?chapter=algorithms">a-naive-approach</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--real-world-application" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/real-world-application/?chapter=algorithms">real-world-application</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--sorting" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/sorting/?chapter=sorting">sorting</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--introduction-to-sorting" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/introduction-to-sorting/?chapter=sorting">introduction-to-sorting</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--insertion-sort-2" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/insertion-sort-2/?chapter=sorting">insertion-sort-2</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--mergesort-2" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/mergesort-2/?chapter=sorting">mergesort-2</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--quicksort-2" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/quicksort-2/?chapter=sorting">quicksort-2</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--radix-sort" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/radix-sort/?chapter=sorting">radix-sort</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--graphs" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/graphs/?chapter=graphs-2">graphs</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--introduction-to-graphs" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/introduction-to-graphs/?chapter=graphs-2&amp;p=1">introduction-to-graphs</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--trees-2" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/trees-2/?chapter=graphs-2">trees-2</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--breadth-first-search-2" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/breadth-first-search-2/?chapter=graphs-2">breadth-first-search-2</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--minimum-spanning-trees" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/minimum-spanning-trees/?chapter=graphs-2">minimum-spanning-trees</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--strings" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/strings/?chapter=strings-2">strings</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--introduction-to-string-algorithms" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/introduction-to-string-algorithms/?chapter=strings-2">introduction-to-string-algorithms</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--substring-search-algorithms" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/substring-search-algorithms/?chapter=strings-2">substring-search-algorithms</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--deterministic-finite-automaton" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/deterministic-finite-automaton/?chapter=strings-2">deterministic-finite-automaton</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--knuth-morris-pratt-algorithm" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/knuth-morris-pratt-algorithm/?chapter=strings-2">knuth-morris-pratt-algorithm</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--tries-2" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/tries-2/?chapter=strings-2">tries-2</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--dynamic-programming" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/dynamic-programming/?chapter=dynamic-programming-2">dynamic-programming</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--dynamic-programming-introduction" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/dynamic-programming-introduction/?chapter=dynamic-programming-2">dynamic-programming-introduction</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--dynamic-programming-tiling-problem" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/dynamic-programming-tiling-problem/?chapter=dynamic-programming-2">dynamic-programming-tiling-problem</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--dynamic-programming-binary-tree" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/dynamic-programming-binary-tree/?chapter=dynamic-programming-2">dynamic-programming-binary-tree</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--dynamic-programming-envelopes" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/dynamic-programming-envelopes/?chapter=dynamic-programming-2&amp;p=1">dynamic-programming-envelopes</a></a></li>
+    </ul>
+  </li>
+  <li class="sidebar-toc-item"><a href="#computer-memory" class="sidebar-nav-item">Computer Memory</a>
+    <ul>
+      <li class="sidebar-toc-item"><a href="#x-introduction-to-memory" class="sidebar-nav-item">[x] <a href="https://brilliant.org/practice/introduction-to-memory/?chapter=introduction-to-memory">introduction-to-memory</a></a></li>
+      <li class="sidebar-toc-item"><a href="#x-storing-data-in-a-computer" class="sidebar-nav-item">[x] <a href="https://brilliant.org/practice/storing-data-in-a-computer/?chapter=introduction-to-memory">storing-data-in-a-computer</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--working-in-binary-decimal-and-hexadecimal" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/working-in-binary-decimal-and-hexadecimal/?chapter=introduction-to-memory">working-in-binary-decimal-and-hexadecimal</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--linear-memory-model" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/linear-memory-model/?chapter=introduction-to-memory">linear-memory-model</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--memory-layout" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/memory-layout/?chapter=introduction-to-memory">memory-layout</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--coursesmemorymemory-of-programs" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/courses/memory/memory-of-programs/">courses/memory/memory-of-programs/</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--memory-of-programs" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/memory-of-programs/?chapter=memory-of-programs">memory-of-programs</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--the-source-file-compiler-and-executable-file" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/the-source-file-compiler-and-executable-file/?chapter=memory-of-programs">the-source-file-compiler-and-executable-file</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--memory-segments" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/memory-segments/?chapter=memory-of-programs">memory-segments</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--the-code-segment-and-static-segment" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/the-code-segment-and-static-segment/?chapter=memory-of-programs">the-code-segment-and-static-segment</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--the-stack-segment" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/the-stack-segment/?chapter=memory-of-programs">the-stack-segment</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--the-heap-segment" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/the-heap-segment/?chapter=memory-of-programs">the-heap-segment</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--virtual-memory" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/virtual-memory/?chapter=virtual-memory">virtual-memory</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--processes" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/processes/?chapter=virtual-memory">processes</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--virtual-memory-and-physical-memory" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/virtual-memory-and-physical-memory/?chapter=virtual-memory">virtual-memory-and-physical-memory</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--memory-pages" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/memory-pages/?chapter=virtual-memory">memory-pages</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--mmu-and-the-os" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/mmu-and-the-os/?chapter=virtual-memory">mmu-and-the-os</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--techniques-for-performance" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/techniques-for-performance/?chapter=techniques-for-performance">techniques-for-performance</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--page-cache" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/page-cache/?chapter=techniques-for-performance">page-cache</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--memory-mapping" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/memory-mapping/?chapter=techniques-for-performance">memory-mapping</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--demand-load" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/demand-load/?chapter=techniques-for-performance">demand-load</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--page-sharing-and-copy-on-write" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/page-sharing-and-copy-on-write/?chapter=techniques-for-performance">page-sharing-and-copy-on-write</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--shared-libraries" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/shared-libraries/?chapter=shared-libraries">shared-libraries</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--libraries" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/libraries/?chapter=shared-libraries">libraries</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--relocation" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/relocation/?chapter=shared-libraries">relocation</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--position-independent-code" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/position-independent-code/?chapter=shared-libraries">position-independent-code</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--procedure-linkage-table" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/procedure-linkage-table/?chapter=shared-libraries">procedure-linkage-table</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--caching" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/caching/?chapter=caching">caching</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--caching-overview" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/caching-overview/?chapter=caching">caching-overview</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--details-of-caching" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/details-of-caching/?chapter=caching">details-of-caching</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--practice-uses-of-caching" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/practice-uses-of-caching/?chapter=caching">practice-uses-of-caching</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--dram-sram-and-cpu-caches" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/dram-sram-and-cpu-caches/?chapter=caching">dram-sram-and-cpu-caches</a></a></li>
+      <li class="sidebar-toc-item"><a href="#--computer-memory-architecture" class="sidebar-nav-item">[ ] <a href="https://brilliant.org/practice/computer-memory-architecture/?chapter=caching">computer-memory-architecture</a></a></li>
+      <li class="sidebar-toc-item"><a href="#additional-practice" class="sidebar-nav-item"><a href="https://brilliant.org/computer-science/">Additional Practice</a></a>
+        <ul>
+          <li class="sidebar-toc-item"><a href="#types-and-data-structures" class="sidebar-nav-item">Types and Data Structures</a></li>
+          <li class="sidebar-toc-item"><a href="#algorithms-1" class="sidebar-nav-item">Algorithms</a></li>
+          <li class="sidebar-toc-item"><a href="#programming-languages" class="sidebar-nav-item">Programming Languages</a></li>
+          <li class="sidebar-toc-item"><a href="#cryptography-and-simulations" class="sidebar-nav-item">Cryptography and Simulations</a></li>
+          <li class="sidebar-toc-item"><a href="#machine-learning" class="sidebar-nav-item">Machine Learning</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
 
     <!--  -->
     <!-- 
@@ -121,9 +222,9 @@
       
      -->
 
-    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/about/">About</a> -->
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
-    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a> -->
     <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
@@ -150,7 +251,7 @@
 
   <div class="print-version">
     <center>
-      <h1>CS Basics </h1><br/>
+      <h1>CS Basics</h1><br/>
         <div class="print-authors">
           <div class="print-info">
             <div class="print-author">
@@ -166,6 +267,7 @@
                 </div>
             </div>
           </div>
+          
           
         </div>
         <div class="print-date">27 June 2018</div>
@@ -185,13 +287,14 @@
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-06-27-learning-cs-fundamentals.lagda">7e158e66 </a> on  02 Nov 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/7e158e66860ed398425876ceb142cbb4b2dcc292/blog/_src/notes/2018-06-27-learning-cs-fundamentals.lagda">7e158e66 </a> on  03 Nov 2018
     </div>
   </div>
   
   <h1 class="post-title" id="stickyTitle"><svg height="22" class="octicon octicon-bookmark" viewBox="0 0 10 16" version="1.1" width="13" aria-hidden="true"><path fill-rule="evenodd" d="M9 0H1C.27 0 0 .27 0 1v15l5-3.09L10 16V1c0-.73-.27-1-1-1zm-.78 4.25L6.36 5.61l.72 2.16c.06.22-.02.28-.2.17L5 6.6 3.12 7.94c-.19.11-.25.05-.2-.17l.72-2.16-1.86-1.36c-.17-.16-.14-.23.09-.23l2.3-.03.7-2.16h.25l.7 2.16 2.3.03c.23 0 .27.08.09.23h.01z"/></svg> CS Basics
   </h1>
-  
+
+  <!-- 
   <div class="toc">
     <nav>
     <h2 class="table-of-contents"> Table of Contents </h2>
@@ -288,10 +391,10 @@
 
     </nav>
   </div>
-  
+   -->
 
   <noscript>
-  <h6>You need to turn on Javascript to see the content of this entry correctly.<h6><br/>
+  <div style="font-size:16px;font-weight:700; color:red;"><svg height="18" class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="18" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"/></svg> Javascript is disabled, please activate it to see correctly this post.</div><br/>
   </noscript>
 
   <p>Just for fun, let’s to follow the <a href="https://brilliant.org">Brilliant</a> chapters
@@ -879,8 +982,9 @@ window.onscroll = function() {
       
       </div>
     </div>
-
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+    <label for="sidebar-checkbox" class="sidebar-toggle"> Content </label>
+    
     
 <script src="/assets/jquery.min.js"></script>
 
@@ -972,7 +1076,7 @@ WebFontConfig = {
 
 
 
-    <script>
+    <!-- <script>
       (function(document) {
         var toggle   = document.querySelector('.sidebar-toggle');
         var sidebar  = document.querySelector('#sidebar');
@@ -981,14 +1085,15 @@ WebFontConfig = {
         document.addEventListener('click', function(e) {
           var target = e.target;
 
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
+          // if(!checkbox.checked ||
+          //    sidebar.contains(target) ||
+          //    (target === checkbox || target === toggle)) return;
+          //
+          if(target === toggle)
           checkbox.checked = false;
         }, false);
       })(document);
-    </script>
+    </script> -->
 
     
   </body>

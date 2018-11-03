@@ -74,11 +74,11 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item" >
-    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+    <p style="text-decoration:left"></p>
   </div>
-
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">Home</a>
+    
+
 
     <!--  -->
     <!-- 
@@ -117,9 +117,9 @@
       
      -->
 
-    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/about/">About</a> -->
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
-    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a> -->
     <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
@@ -130,7 +130,7 @@
           <h3 class="masthead-title">
             <a href="https://github.com/jonaprieto"><img alt="@jonaprieto" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/1428088?s=40&amp;v=4" height="20" width="20"></a>
             <a href="/" title="Home">jonaprieto</a>
-            <small style="text-decoration:left">∷ WorkInProgress<span class="modifications">(<span class="additions">+656685</span>/<span class="substractions">-461406</span>)</span>
+            <small style="text-decoration:left">∷ WorkInProgress<span class="modifications">(<span class="additions">+666544</span>/<span class="substractions">-464773</span>)</span>
             </small>
           </h3>
         </div>
@@ -142,14 +142,14 @@
     <div class="main-title">
       <div class="main-title-prefix"> Latest change:</div>
       <div class="main-commit-message">
-        <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f42f7d7e18c1724642edd549dfb33f331685c391">
-          [ bitacora ] Adding lemmas 2 nov
+        <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9e61da2d2d0bf3a015b74d3e6dc8d741f8346c93">
+          Cosmetics. Mostly new sidebar. ;)
         </a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f42f7d7e18c1724642edd549dfb33f331685c391">685c391 </a> on  02 Nov 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9e61da2d2d0bf3a015b74d3e6dc8d741f8346c93">8346c93 </a> on  03 Nov 2018
     </div>
   </div>
   
@@ -190,8 +190,8 @@
       <div class="algolia">
         <div class="algolia-date">06/07/2018 </div>
         <div class="algolia-title"><a href="/mini-hott/">Mini HoTT Library in Agda</a></div>
-        <div class="algolia-message"><small> [ bitacora ] Adding lemmas 2 nov</small></div>
-        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f42f7d7e18c1724642edd549dfb33f331685c391">02/11/2018</a></div>
+        <div class="algolia-message"><small> Cosmetics. Mostly new sidebar. ;)</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9e61da2d2d0bf3a015b74d3e6dc8d741f8346c93">03/11/2018</a></div>
       </div>
       
       <div class="algolia">
@@ -199,6 +199,13 @@
         <div class="algolia-title"><a href="/pathovers/">Pathovers</a></div>
         <div class="algolia-message"><small> [ bitacora ] Adding lemmas 2 nov</small></div>
         <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/f42f7d7e18c1724642edd549dfb33f331685c391">02/11/2018</a></div>
+      </div>
+      
+      <div class="algolia">
+        <div class="algolia-date">01/05/2018 </div>
+        <div class="algolia-title"><a href="/circle-hott/">Circle Equivalences</a></div>
+        <div class="algolia-message"><small> Cosmetics. Mostly new sidebar. ;)</small></div>
+        <div class="algolia-modified"><a href="http://github.com/jonaprieto/jonaprieto.github.io/commit/9e61da2d2d0bf3a015b74d3e6dc8d741f8346c93">03/11/2018</a></div>
       </div>
       
       <div class="algolia">
@@ -377,8 +384,7 @@ search.start();
       
       </div>
     </div>
-
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
     
 <script src="/assets/jquery.min.js"></script>
 
@@ -406,7 +412,7 @@ WebFontConfig = {
 
 
 
-    <script>
+    <!-- <script>
       (function(document) {
         var toggle   = document.querySelector('.sidebar-toggle');
         var sidebar  = document.querySelector('#sidebar');
@@ -415,14 +421,15 @@ WebFontConfig = {
         document.addEventListener('click', function(e) {
           var target = e.target;
 
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
+          // if(!checkbox.checked ||
+          //    sidebar.contains(target) ||
+          //    (target === checkbox || target === toggle)) return;
+          //
+          if(target === toggle)
           checkbox.checked = false;
         }, false);
       })(document);
-    </script>
+    </script> -->
 
     
   </body>

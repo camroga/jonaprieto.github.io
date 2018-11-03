@@ -76,11 +76,11 @@
 <!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item" >
-    <p style="text-decoration:left">Jonathan Prieto-Cubides</p>
+    <p style="text-decoration:left">404: Page not found</p>
   </div>
-
   <nav class="sidebar-nav">
-    <a class="sidebar-nav-item" href="/">Home</a>
+    
+
 
     <!--  -->
     <!-- 
@@ -119,9 +119,9 @@
       
      -->
 
-    <a class="sidebar-nav-item" href="/about/">About</a>
+    <!-- <a class="sidebar-nav-item" href="/about/">About</a> -->
     <!-- <a class="sidebar-nav-item" href="/plans/">Plans</a> -->
-    <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a>
+    <!-- <a class="sidebar-nav-item" href="http://github.com/jonaprieto/jonaprieto.github.io">GitHub</a> -->
     <!-- <span class="sidebar-nav-item">Currently v0.0.2</span> -->
   </nav>
 </div>
@@ -145,8 +145,7 @@
       
       </div>
     </div>
-
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
     
 <script src="/assets/jquery.min.js"></script>
 
@@ -174,7 +173,7 @@ WebFontConfig = {
 
 
 
-    <script>
+    <!-- <script>
       (function(document) {
         var toggle   = document.querySelector('.sidebar-toggle');
         var sidebar  = document.querySelector('#sidebar');
@@ -183,14 +182,15 @@ WebFontConfig = {
         document.addEventListener('click', function(e) {
           var target = e.target;
 
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
+          // if(!checkbox.checked ||
+          //    sidebar.contains(target) ||
+          //    (target === checkbox || target === toggle)) return;
+          //
+          if(target === toggle)
           checkbox.checked = false;
         }, false);
       })(document);
-    </script>
+    </script> -->
 
     
   </body>
