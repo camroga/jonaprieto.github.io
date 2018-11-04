@@ -240,7 +240,7 @@ module BaseGraph {ℓ} where
       ,  -- f ∘ g ∼ id_B
         (λ { (idp , y) → pair= ({!   !} , {!   !}) })
       , -- g ∘ f ∼ id_A
-      λ { (idp , idp) → pair= (idp , {!   !}) })
+      λ { (idp , idp) → pair= (idp , {!  !}) })
 \end{code}
 
 {: .foldable until="15"}
