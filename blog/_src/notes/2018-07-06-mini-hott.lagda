@@ -790,10 +790,9 @@ involution {p = idp} = idp
 \begin{code}
 ·-cancellation
   : ∀ {ℓ} {A : Type ℓ} {a : A}
-  → (p : a == a) → (q : a == a)
-  → p · q == p
-  -------------------
-  →      q == refl a
+  → (p : a == a) → (q : a == a) → p · q == p
+  -----------------------------------------
+  → q == refl a
 
 ·-cancellation {a = a} p q α =
     begin
@@ -956,16 +955,20 @@ coe
 coe p a = transport (λ X → X) p a
 \end{code}
 
-
+{: .foldable until="11"}
 \begin{code}
-tr₂ : {i j k : Level}
-    → (A : Type i)
-    → (B : A → Type j)
-    → (C : (x : A) → (b : B x) → Type k)
-    → ∀ {a₁ a₂ : A}{b₁ : B a₁}{b₂ : B a₂}
-    → (p : a₁ == a₂)
-    → (q : tr B p b₁ == b₂)
-    → C a₁ b₁ → C a₂ b₂
+tr₂
+  : {i j k : Level}
+  → (A : Type i)
+  → (B : A → Type j)
+  → (C : (x : A) → (b : B x) → Type k)
+  → ∀ {a₁ a₂ : A}{b₁ : B a₁}{b₂ : B a₂}
+  → (p : a₁ == a₂)
+  → (q : tr B p b₁ == b₂)
+  → C a₁ b₁
+  -----------------------
+  → C a₂ b₂
+
 tr₂ A B C idp idp = id
 \end{code}
 ### Pathover
@@ -981,7 +984,8 @@ also denoted by `PathOver C α c₁ c₂`.
 
 \begin{code}
 PathOver
-  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}(C : A → Type ℓⱼ) {a₁ a₂ : A}
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
+  → (C : A → Type ℓⱼ) {a₁ a₂ : A}
   → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂)
   ----------------------------------------
   → Type ℓⱼ
@@ -1121,7 +1125,7 @@ transport-eq-fun-r
   → (g : A → B) {x y : A}
   → (p : x == y)
   → (q : b == g x)
-  ------------------------------------------------
+  -----------------------------------------
   → tr (λ z → b == g z) p q == q · (ap g p)
 
 transport-eq-fun-r {b = b} g p q =
@@ -1172,7 +1176,7 @@ coe-inv-r
   : ∀ {ℓ} {A B : Type ℓ}
   → (p : A == B)
   → (a : A)
-  -----------------------------------------------------------
+  ---------------------------------------------
   → tr (λ v → v) (! p) (tr (λ v → v) p a) == a
 
 coe-inv-r idp b = idp
@@ -1206,7 +1210,8 @@ transport-family-id idp u = idp
 {: .foldable until="6" }
 \begin{code}
 transport-fun
-  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X} {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
+  : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X}
+  → {A : X → Type ℓⱼ} {B : X → Type ℓₖ}
   → (p : x == y)
   → (f : A x → B x)
   -----------------------------------------------------------------
@@ -1317,7 +1322,7 @@ Two dependent pairs are equal if they are componentwise equal.
 \begin{code}
   -- Lemma.
   Σ-componentwise
-    : {v w : Σ A P}
+    : ∀ {v w : Σ A P}
     → v == w
     ----------------------------------------------
     → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
@@ -1329,7 +1334,7 @@ Two dependent pairs are equal if they are componentwise equal.
 \begin{code}
   -- Lemma.
   Σ-bycomponents
-    : {v w : Σ A P}
+    : ∀ {v w : Σ A P}
     → Σ (π₁ v == π₁ w) (λ p → (p ✶) (π₂ v) == π₂ w)
     -----------------------------------------------
     → v == w
@@ -1360,7 +1365,7 @@ A trivial consequence is the following identification:
   uppt (a , b) = idp
 \end{code}
 
-{: .foldable until="6"}
+{: .foldable until="7"}
 \begin{code}
 -- Lemma.
   Σ-ap-π₁
@@ -1627,6 +1632,9 @@ square commutative diagram.
     → H x · ap g p == ap f p · H y
 
   h-naturality {x = x} H idp = ! (·-runit (H x))
+\end{code}
+
+\begin{code}
 open Naturality
 \end{code}
 
@@ -1634,6 +1642,7 @@ A particular case of naturality on the identity function.
 
 {: .foldable until="5"}
 \begin{code}
+-- Lemma.
 h-naturality-id
   : ∀ {ℓ} {A : Type ℓ} {f : A → A} → {x : A}
   → (H : f ∼ id)
@@ -2117,7 +2126,7 @@ The equivalence types are indeed equivalence
 
 {: .foldable until="6" }
 \begin{code}
-  -- Lem.
+  -- Lemma.
   qinv-inv
     : ∀ {ℓ} {A B : Type ℓ}
     → Σ (A → B) qinv
@@ -2129,7 +2138,7 @@ The equivalence types are indeed equivalence
 
 Equivalence types are equivalence relations.
 
-{ : .foldable until="4" }
+{: .foldable until="4" }
 \begin{code}
   idEqv
     : ∀ {ℓ} {A : Type ℓ}
@@ -2143,8 +2152,9 @@ Equivalence types are equivalence relations.
   A≃A    = idEqv
 \end{code}
 
+{: .foldable until="7"}
 \begin{code}
-  -- Lem.
+  -- Lemma.
   compEqv
     : ∀ {ℓ} {A B C : Type ℓ}
     → A ≃ B
@@ -2364,7 +2374,7 @@ module Sets where
 open Sets public
 \end{code}
 
-### `hProp` and `hSet` lemmas
+### Proposition and Set lemmas
 
 \begin{code}
 module hLevelLemmas where
@@ -2377,7 +2387,7 @@ For any type, $A : \Type$,
 
 {: .foldable until="6"}
 \begin{code}
-  -- Lem. Propositions are Sets.
+  -- Lemma. Propositions are Sets.
   propIsSet
     : ∀ {ℓ} {A : Type ℓ}
     → isProp A
@@ -2406,7 +2416,7 @@ For any type, $A : \Type$,
 
 {: .foldable until="5"}
 \begin{code}
-  -- Lem. Propositions are propositions.
+  -- Lemma. Propositions are propositions.
   propIsProp
     :  ∀ {ℓ}{A : Type ℓ}
     --------------------
@@ -2428,7 +2438,7 @@ proposition.
 
 {: .foldable until="6"}
 \begin{code}
-  -- Lem.
+  -- Lemma.
   isProp-pi
     : ∀ {ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : A → Type ℓⱼ}
     → ((a : A) → isProp (B a))
@@ -2441,24 +2451,37 @@ proposition.
   Π-isProp   = isProp-pi
 \end{code}
 
+{: .foldable until="6"}
 \begin{code}
-  -- Lem.
+  -- Lemma.
   ispropA-B
     : ∀ {ℓ} {A B : Type ℓ}
-    →  isProp A → isProp B
-    ----------------------
-    → (A ⇔ B) → A == B
+    →  isProp A → isProp B → (A ⇔ B)
+    -------------------------------
+    → A == B
 
   ispropA-B propA propB (fun f , fun g) =
     ua (qinv-≃ f (g , (λ x → propB _ _) , (λ x → propA _ _)))
 
-  postulate
-    propEqvIsprop : ∀ {ℓ} {A B : Type ℓ} → isProp A → isProp B → isProp (A == B)
+  -- Synonyms
+  props-⇔-to-== = ispropA-B
 \end{code}
 
 {: .foldable until="6"}
 \begin{code}
-  -- Lem.
+  -- Lemma.
+  propEqvIsprop
+    : ∀ {ℓ} {A B : Type ℓ}
+    → isProp A → isProp B
+    ---------------------
+    → isProp (A == B)
+
+  propEqvIsprop {ℓ} {A}{B} = {! ispropA-B {A = A}  !}
+\end{code}
+
+{: .foldable until="4"}
+\begin{code}
+  -- Lemma.
   setIsProp
     : ∀ {ℓ} {A : Type ℓ}
     → isProp (isSet A)
@@ -2474,9 +2497,10 @@ proposition.
 \end{code}
 
 The product of propositions is itself a proposition.
+
 {: .foldable until="6"}
 \begin{code}
-  -- Lem.
+  -- Lemma.
   isProp-prod
     : ∀ {ℓᵢ ℓⱼ} → {A : Type ℓᵢ} → {B : Type ℓⱼ}
     → isProp A → isProp B
@@ -2494,7 +2518,7 @@ Product of sets is a set.
 
 {: .foldable until="6" }
 \begin{code}
-  -- Lem.
+  -- Lemma.
   isSet-prod
     : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} → {B : Type ℓⱼ}
     → isSet A → isSet B
@@ -2580,7 +2604,7 @@ open EquivalenceProp public
 
 {: .foldable until="6"}
 \begin{code}
--- Lem.
+-- Lemma.
 compEqv-inv
   : ∀ {ℓ} {A B : Type ℓ}
   → (α : A ≃ B)

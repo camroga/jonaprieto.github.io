@@ -221,6 +221,34 @@ module BaseGraph {ℓ} where
 
 {: .foldable until="10"}
 \begin{code}
+  -- LemAux:
+  lemAux
+    : ∀ {G H : Graph}
+    → (α : Node G == Node H)
+    → (tr (λ X → (X → X → Type ℓ)) α (Edge G) == Edge H)
+      ≃
+      (∀ (x y : Node G)
+          → Edge G x y == Edge H (coe α x) (coe α y))
+  lemAux {G}{H} idp = qinv-≃
+    f ( g , -- g
+      H₁
+      , H₂)
+    where
+      f : tr (λ X → (X → X → Type ℓ)) idp (Edge G) == Edge H
+        → (∀ x y → Edge G x y == Edge H (coe idp x) (coe idp y))
+      f idp x y = idp
+
+      g : (∀ x y → Edge G x y == Edge H (coe idp x) (coe idp y))
+        → tr (λ X → (X → X → Type ℓ)) idp (Edge G) == Edge H
+      g k = funext (λ x → funext λ y → k x y)
+
+      H₁ : f ∘ g ∼ id
+      H₁ k = {!   !}
+
+      H₂ : g ∘ f ∼ id
+      H₂ idp = {! (g ∘ f) idp == id idp  !}
+
+
   -- Lem.
   lem₂'
     : ∀ {G H : Graph}
@@ -234,9 +262,9 @@ module BaseGraph {ℓ} where
 
   lem₂' {G}{H} = qinv-≃
     -- f : A → B
-    (λ { (idp , idp) → idp  , λ x y → idp })
+    (λ { (idp , idp) → idp  , λ x y → happly (happly idp y) x }) -- or just idp?
     -- g : B → A
-    ((λ {(idp , k) → (idp , funext (λ x → funext (λ y → k x y)))})
+    ((λ {(idp , k) → (idp , funext (λ x → funext (λ y → k x y)) )})
       ,  -- f ∘ g ∼ id_B
         (λ { (idp , y) → pair= ({!   !} , {!   !}) })
       , -- g ∘ f ∼ id_A
