@@ -74,7 +74,7 @@ open import 2018-07-06-mini-hott hiding (Path)
 In this part, the goal consists to formalise the notion of a *graph*. We
 are particularly interested in graphs:
 
-- *undirected*,
+- *Undirected*,
 - no *multi-graphs*, and
 - *connected*.
 
@@ -103,10 +103,35 @@ module BaseGraph {ℓ} where
       EdgeIsProp : ∀ (x y : Node) → isProp (Edge x y)
 
       -- Undirected.
-      undirected : ∀ (x y : Node) → Edge x y → Edge y x
+      Undirected : ∀ (x y : Node) → Edge x y → Edge y x
 
   open Graph public
 \end{code}
+
+### Example
+\begin{code}
+  -- .
+  -- data G4 : Type ℓ where
+  --   v₁ v₂ v₃ v₄ : G4
+  --
+  -- e : G4 → G4 → Type ℓ
+  -- e v₁ v₂ = v₁ == v₂
+  -- e v₁ x₃ = v₁ == v₃
+  -- e v₂ x₃ = v₂ == v₃
+  -- e v₂ x₄ = v₂ == v₄
+  -- e v₂ v₁ = v₂ == v₁
+  -- e x₃ v₁ = v₃ == v₁
+  -- e x₃ v₂ = v₃ == v₂
+  -- e x₄ v₂ = v₄ == v₂
+  --
+  -- Example : Graph
+  -- Node Example = G4
+  -- Edge Example = e
+  -- NodeIsSet Example = λ u v → λ { idp q → {!   !}}
+  -- EdgeIsProp Example = λ u v → {!   !}
+  -- Undirected Example = {!   !}
+\end{code}
+
 
 ### Lemmas
 
@@ -131,7 +156,7 @@ module BaseGraph {ℓ} where
             (λ X R → (x y : X) →  R x y → R y x))
             α
             β
-            (undirected G) == (undirected H))))
+            (Undirected G) == (Undirected H))))
     ≃ G == H
 
   lem₀' = qinv-≃
@@ -159,7 +184,7 @@ module BaseGraph {ℓ} where
         × (tr₂ (Type ℓ)
          (λ X  → X → X → Type ℓ)
          (λ X R → (x y : X) →  R x y → R y x))
-          α β (undirected G) == (undirected H)))
+          α β (Undirected G) == (Undirected H)))
 
   lem₁' {G}{H} = qinv-≃
     (λ { (α , β) →   -- Fun. Equiv.
@@ -194,24 +219,35 @@ module BaseGraph {ℓ} where
         , (λ {(α , β) → idp} ))
 \end{code}
 
-{: .foldable until="7"}
+{: .foldable until="10"}
 \begin{code}
   -- Lem.
   lem₂'
-    : ∀ { G H : Graph}
-    → Σ ((Node G == Node H)) (λ α →
+    : ∀ {G H : Graph}
+    → -- A :
+      Σ (Node G == Node H) (λ α →
         (tr (λ X → (X → X → Type ℓ)) α (Edge G) == Edge H))
-    ≃ Σ ((Node G == Node H)) (λ α →
-        (∀ x y → Edge G x y == Edge H (coe α x) (coe α y)))
+    ≃ -- B:
+      Σ (Node G == Node H) (λ α →
+        (∀ (x y : Node G)
+            → Edge G x y == Edge H (coe α x) (coe α y)))
 
-  lem₂' = {!   !}
+  lem₂' {G}{H} = qinv-≃
+    -- f : A → B
+    (λ { (idp , idp) → idp  , λ x y → idp })
+    -- g : B → A
+    ((λ {(idp , k) → (idp , funext (λ x → funext (λ y → k x y)))})
+      ,  -- f ∘ g ∼ id_B
+        (λ { (idp , y) → pair= ({!   !} , {!   !}) })
+      , -- g ∘ f ∼ id_A
+      λ { (idp , idp) → pair= (idp , {!   !}) })
 \end{code}
 
 {: .foldable until="15"}
 \begin{code}
   -- Lem.
   lem₀
-    : ∀ { G H : Graph}
+    : ∀ {G H : Graph}
     → (α : Node G == Node H)
     → (β : tr (λ X → (X → X → Type ℓ)) α (Edge G) == Edge H)
     → (tr isSet α (NodeIsSet G) == NodeIsSet H)
@@ -222,7 +258,7 @@ module BaseGraph {ℓ} where
     → tr₂ (Type ℓ)
        (λ X  → X → X → Type ℓ)
        (λ X R → (x y : X) →  R x y → R y x)
-        α β (undirected G) == (undirected H)
+        α β (Undirected G) == (Undirected H)
     →  G == H
 
   lem₀ idp idp idp idp idp = idp
@@ -240,14 +276,14 @@ module BaseGraph {ℓ} where
   lem₁ {G}{H} α β = lem₀ α β
     (set-is-prop-always _ _)
     (pi-is-prop (λ x → pi-is-prop λ x → prop-is-prop-always) _ _) -- EdgeIsProp
-    (pi-is-prop (λ x → pi-is-prop λ x → pi-is-prop λ x → EdgeIsProp H _ _) _ _) -- undirected case
+    (pi-is-prop (λ x → pi-is-prop λ x → pi-is-prop λ x → EdgeIsProp H _ _) _ _) -- Undirected case
 \end{code}
 
 {: .foldable until="6"}
 \begin{code}
   -- Lem.
   lem₂
-    : ∀ { G H : Graph}
+    : ∀ {G H : Graph}
     → (α : Node G == Node H)
     → (β :  ∀ x y → Edge G x y == Edge H (coe α x) (coe α y))
     →  G == H
@@ -298,7 +334,7 @@ module Isomorphism {ℓ} where
 
   open BaseGraph {ℓ}
 
-  _≃Iso_ : Graph → Graph → Type {!   !}
+  _≃Iso_ : Graph → Graph → Type ℓ
   G ≃Iso H =
     Σ (Node G ≃ Node H)                                                 -- α
       (λ α → (x y : Node G) → Edge G x y ⇔ Edge H ((α ∙) x) ((α ∙) y))  -- β
@@ -564,7 +600,7 @@ planar graphs.
     - contr => isProp => isSet
 
   - 2018-09-17 and 2018-09-19:
-    - We discuss how to formalize a graph when it's undirected
+    - We discuss how to formalize a graph when it's Undirected
   - 2018-09-14
      - [H] We review the lemmas for the *flattening lemma*. We went through Lemma 6.12.1 to Lemma 6.12.7.
      - I commented a little bit the MacLane’s cycle-space and Tutte’s theorem

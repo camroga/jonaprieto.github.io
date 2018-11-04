@@ -31,10 +31,6 @@ can be found in the literature.
 
 ![path](/assets/png-images/mini-hott.jpeg){: width="220px" align="right" }
 
-{: .only-website }
-
-  **URL link**: [https://jonaprieto.github.io/mini-hott/](https://jonaprieto.github.io/mini-hott/).
-
 To be consistent with homotopy type theory, we tell `Agda` to not use *Axiom K* for
 type-checking by using the option `without-K`.
 
@@ -133,7 +129,7 @@ unit = ★
 
 ### Σ-type
 
-We define Sigma types as a particular case of [*Records* in `Agda`.](https://tinyurl.com/agda-records)
+We define Sigma types as a particular case of records in [`Agda`.](https://tinyurl.com/agda-records)
 
 \begin{code}
 infixr 60 _,_
@@ -175,7 +171,7 @@ Shorter notation for Π-types.
 
 ### Product type
 
-Product type as a particular case of the sigma.
+Product type as a particular case of the Sigma type.
 
 \begin{code}
 _×_
@@ -540,6 +536,7 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
 Definitional equals:
 
 \begin{code}
+  --
   _==⟨⟩_
     : ∀ (x {y} : A)
     → x == y → x == y
@@ -795,8 +792,8 @@ involution {p = idp} = idp
   : ∀ {ℓ} {A : Type ℓ} {a : A}
   → (p : a == a) → (q : a == a)
   → p · q == p
-  -----------------------------
-  → q == refl a
+  -------------------
+  →      q == refl a
 
 ·-cancellation {a = a} p q α =
     begin
@@ -915,7 +912,7 @@ Finally, when we invert a path composition this is what we got.
 
 ## Transport
 
-![path](/assets/ipe-images/transport-fiber-minihott.png){: width="60%" }
+![path](/assets/ipe-images/transport-fiber-minihott.png){: width="50%" align="right" }
 
 {: .foldable until="6" }
 \begin{code}
@@ -980,7 +977,7 @@ path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
 a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
 also denoted by `PathOver C α c₁ c₂`.
 
-![path](/assets/ipe-images/pathover-3-minihott.png){: width="60%" }
+![path](/assets/ipe-images/pathover-3-minihott.png){: width="50%" align="right" }
 
 \begin{code}
 PathOver
