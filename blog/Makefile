@@ -20,12 +20,11 @@ _posts/%.md : _src/notes/%.md
 	- cp $< $@
   - @echo "==================================================================="
 
-
 _posts/%.md : _src/notes/%.lagda
 	- time agda2html --version
 	- time agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
+	- gulp reload
   - @echo "==================================================================="
-#
 
 assets/ipe-images/%.png : _src/ipe-images/%.ipe
 	iperender -png -resolution 400 $< $@

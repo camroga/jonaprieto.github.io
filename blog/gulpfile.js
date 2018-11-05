@@ -71,6 +71,11 @@ gulp.task('png-images', () => function(){
           	 .pipe(gulp.dest('_site/assets/png-images'))
 });
 
+gulp.task('reload', () => function(){
+  return gulp.pipe(browserSync.reload())
+});
+
+
 gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
   browserSync.init({ browser: 'chrome'
                    , open: false
@@ -145,21 +150,22 @@ gulp.task('browser-sync', ['sass', 'scripts', 'jekyll-dev'], function() {
       if ( file.extname == ".lagda"){
         console.log("[!] Agda File.");
         var outputpath = file.base + '/_posts/' + file.stem + '.md';
-        console.log("[!] Generating markdown: " + outputpath);
-        var agda2html = child.spawn( 'agda2html'
-                                  , [ '--link-to-agda-stdlib'
-                                    , '--link-to-local-agda-names'
-                                    , '--use-jekyll=_posts/'
-                                    , '-i' , file.path
-                                    , '-o' , outputpath
-                                    ]
-                                  , {stdio: 'inherit'}
-                                  )
-                            .on('close', function(){
-                              console.log("[!] Updated file by agda2html: " + outputpath);
-                              console.log('*****************************************************************************');
-                              reload;
-                            });
+        console.log("[!] Waiting for the markdown: " + outputpath);
+        // console.log("[!] Generating markdown: " + outputpath);
+        // var agda2html = child.spawn( 'agda2html'
+        //                           , [ '--link-to-agda-stdlib'
+        //                             , '--link-to-local-agda-names'
+        //                             , '--use-jekyll=_posts/'
+        //                             , '-i' , file.path
+        //                             , '-o' , outputpath
+        //                             ]
+        //                           , {stdio: 'inherit'}
+        //                           )
+        //                     .on('close', function(){
+        //                       console.log("[!] Updated file by agda2html: " + outputpath);
+        //                       console.log('*****************************************************************************');
+        //                       reload;
+        //                     });
       };
       plumber.stop();
       })

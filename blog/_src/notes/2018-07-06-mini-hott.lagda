@@ -298,9 +298,11 @@ cst b = λ _ → b
 
 A more sophisticated composition function that can handle dependent functions.
 
+{: .foldable until="7" }
 \begin{code}
 _∘_
-  : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
+  : ∀ {ℓᵢ ℓⱼ ℓₖ}
+  → {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
   → (g : {a : A} → Π (B a) (C a))
   → (f : Π A B)
   -------------------------------
@@ -313,7 +315,8 @@ infixr 80 _∘_
 Synonym for composition (diagrammatic version)
 \begin{code}
 _//_
-  : ∀ {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
+  : ∀ {ℓᵢ ℓⱼ ℓₖ}
+  → {A : Type ℓᵢ} {B : A → Type ℓⱼ} {C : (a : A) → (B a → Type ℓₖ)}
   → (f : Π A B)
   → (g : {a : A} → Π (B a) (C a))
   -------------------------------
@@ -362,7 +365,6 @@ uncurry f (x , y) = f x y
 ### Instance search
 
 \begin{code}
--- how to use it ❓
 ⟨⟩
   : ∀ {i} {A : Type i} {{a : A}} → A
 
@@ -453,7 +455,7 @@ _·_ idp q = q
 infixl 50 _·_
 \end{code}
 
-![path](/assets/ipe-images/path-concatenation.png){: width="60%" }
+![path](/assets/ipe-images/path-concatenation.png){: width="60%" align="right" }
 
 #### Inverse of paths
 
@@ -536,7 +538,7 @@ module EquationalReasoning {ℓᵢ} {A : Type ℓᵢ} where
 Definitional equals:
 
 \begin{code}
-  --
+  -- Reasoning.
   _==⟨⟩_
     : ∀ (x {y} : A)
     → x == y → x == y
@@ -1207,7 +1209,7 @@ transport-family-id
 transport-family-id idp u = idp
 \end{code}
 
-{: .foldable until="6" }
+{: .foldable until="7" }
 \begin{code}
 transport-fun
   : ∀ {ℓᵢ ℓⱼ ℓₖ} {X : Type ℓᵢ} {x y : X}
@@ -1562,7 +1564,8 @@ open Homotopy public
 ### Composition with homotopies
 
 \begin{code}
-module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ} {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} where
+module HomotopyComposition {ℓᵢ ℓⱼ ℓₖ}
+  {A : Type ℓᵢ} {B : Type ℓⱼ} {C : Type ℓₖ} where
 \end{code}
 
 {: .foldable until="8"}
@@ -1635,12 +1638,12 @@ square commutative diagram.
 \end{code}
 
 \begin{code}
-open Naturality
+open Naturality public
 \end{code}
 
 A particular case of naturality on the identity function.
 
-{: .foldable until="5"}
+{: .foldable until="6"}
 \begin{code}
 -- Lemma.
 h-naturality-id
@@ -1665,16 +1668,16 @@ h-naturality-id {f = f} {x = x} H =
   ∎
 \end{code}
 
-## **[ DANGER ] BELOW WITHOUT DOUBLE CHECK**
-
-## Fibers
-
-Contractible types with a center of contraction.
+## Fiber type
 
 \begin{code}
 module Fibers {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  where
+\end{code}
 
-  -- The fiber of a map over a point is given by
+The *fiber* type of a map over a point is given by a Sigma type.
+
+\begin{code}
+  -- Fiber
   fib
     : (f : A → B)
     → (b : B)
@@ -1682,31 +1685,86 @@ module Fibers {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}  where
     → Type (ℓᵢ ⊔ ℓⱼ)
 
   fib f b = Σ A (λ a → f a == b)
+\end{code}
 
+A function applied over the fiber returns the original point
 
-  -- A function applied over the fiber returns the original point
-  fib-eq : {f : A → B} → {b : B} → (h : fib f b) → f (π₁ h) == b
+\begin{code}
+  -- Lemma.
+  fib-eq
+    : ∀ {f : A → B} {b : B}
+    → (h : fib f b)
+    ---------------
+    → f (π₁ h) == b
+
   fib-eq (a , α) = α
+\end{code}
 
-  -- Each point is on the fiber of its image
-  fib-image : {f : A → B} → {a : A} → fib f (f a)
+Each point is on the fiber of its image.
+
+{: .foldable until="4"}
+\begin{code}
+  -- Lemma.
+  fib-image
+    :  ∀ {f : A → B} → {a : A}
+    → fib f (f a)
+
   fib-image {f} {a} = a , refl (f a)
+\end{code}
 
+\begin{code}
 open Fibers public
 \end{code}
 
 ## Contractible types
 
 \begin{code}
--- Contractible.  Contractible types with a center of contraction.
 module Contractible where
+\end{code}
 
-  -- Contractible types. A contractible type is a type such that every
-  -- element is equal to a center of contraction.
-  isContr : ∀ {ℓ}  (A : Type ℓ) → Type ℓ
+A *contractible* type is a type such that **every**
+element is equal to a point, the *center* of contraction.
+
+\begin{code}
+  -- Def.
+  isContr
+    : ∀ {ℓ}
+    → (A : Type ℓ)
+    --------------
+    → Type ℓ
+
   isContr A = Σ A (λ a → ((x : A) → a == x))
-open Contractible public
 
+\end{code}
+
+If a type is contractible, any of its points is a center of contraction:
+
+\begin{code}
+  -- Lemma.
+  allAreCenter
+    : ∀ {ℓ} {A : Type ℓ}
+    → (c₁ : A) → (f : (x : A) → c₁ == x)
+    → (∀ (c₂ : A) → (∀ (x : A) → c₂ == x))
+  allAreCenter c₁ f c₂ x = ! (f c₂) · (f x)
+
+\end{code}
+
+\begin{code}
+open Contractible public
+\end{code}
+
+## Contractible maps.
+
+A map is *contractible* if the fiber in any point is contractible, that is, each
+element has a unique preimage.
+
+\begin{code}
+isContrMap
+  : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ}
+  → (f : A → B)
+  → Type (ℓᵢ ⊔ ℓⱼ)
+
+isContrMap {B = B} f = (b : B) → isContr (fib f b)
 \end{code}
 
 ## Equivalence
@@ -1714,12 +1772,7 @@ open Contractible public
 \begin{code}
 module Equivalence where
 
-  module DefinitionOfEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
-    -- Contractible maps. A map is contractible if the fiber in any
-    -- point is contractible, that is, each element has a unique
-    -- preimage.
-    isContrMap : (f : A → B) → Type (ℓᵢ ⊔ ℓⱼ)
-    isContrMap f = (b : B) → isContr (fib f b)
+  module DefinitionOfEquivalence  {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {B : Type ℓⱼ} where
 \end{code}
 
 \begin{code}
@@ -2155,51 +2208,57 @@ Equivalence types are equivalence relations.
 {: .foldable until="7"}
 \begin{code}
   -- Lemma.
-  compEqv
+  ≃-trans
     : ∀ {ℓ} {A B C : Type ℓ}
     → A ≃ B
     → B ≃ C
     -------
     → A ≃ C
 
-  compEqv {A = A} {C = C} eq-f eq-g = qinv-≃ (π₁ qcomp) (π₂ qcomp)
+  ≃-trans {A = A} {C = C} eq-f eq-g = qinv-≃ (π₁ qcomp) (π₂ qcomp)
    where
      qcomp : Σ (A → C) qinv
      qcomp = qinv-comp (≃-qinv eq-f) (≃-qinv eq-g)
 
   -- Synonyms
-  ≃-trans = compEqv
+  compEqv = ≃-trans
 \end{code}
 
-{: .foldable until="
+{: .foldable until="5"}
 \begin{code}
-  invEqv
+  ≃-sym
     : ∀ {ℓ} {A B : Type ℓ}
     → A ≃ B
     -------
     → B ≃ A
-  invEqv {ℓ} {A} {B} eq-f = qinv-≃ (π₁ qcinv) (π₂ qcinv)
+
+  ≃-sym {ℓ} {A} {B} eq-f = qinv-≃ (π₁ qcinv) (π₂ qcinv)
    where
      qcinv : Σ (B → A) qinv
      qcinv = qinv-inv (≃-qinv eq-f)
 
   -- Synonyms
-  ≃-sym  = invEqv
-  ≃-flip = invEqv
+  invEqv = ≃-sym
+  ≃-flip = ≃-sym
 \end{code}
 
 \begin{code}
 open EquivalenceProperties public
 \end{code}
 
-
 ## Equivalence with Sigma type
 
 \begin{code}
 module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ} where
+\end{code}
 
-  pair=Equiv : {v w : Σ A P}
+{: .foldable until="4"}
+\begin{code}
+  -- Lemma.
+  pair=Equiv
+    : {v w : Σ A P}
     → Σ (π₁ v == π₁ w) (λ p → tr (λ a → P a) p (π₂ v) == π₂ w) ≃ v == w
+
   pair=Equiv = qinv-≃ Σ-bycomponents (Σ-componentwise , HΣ₁ , HΣ₂)
     where
       HΣ₁ : Σ-bycomponents ∘ Σ-componentwise ∼ id
@@ -2232,13 +2291,21 @@ module SigmaEquivalence {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : A → Type ℓⱼ
       → {γ : transport P β c₁ == c₂}
       → g {α = α}{β = β}{γ} ∘ f {α = α}{β = β}{γ} ∼ id
     g-f {β = idp} {γ = idp} idp = idp
+\end{code}
 
-  ap-π₁-pair=Equiv : {a₁ a₂ : A} {c₁ : P a₁} {c₂ : P a₂}
+{: .foldable until="6"}
+\begin{code}
+  -- Lemma
+  ap-π₁-pair=Equiv
+    : {a₁ a₂ : A} {c₁ : P a₁} {c₂ : P a₂}
     → (α : a₁ == a₂)
     → (γ : Σ (a₁ == a₂) (λ α' → transport P α' c₁ == c₂))
-    → (ap π₁ (pair= γ) == α) ≃ π₁ γ == α
-  ap-π₁-pair=Equiv {a₁ = a₁} α (β , γ) = qinv-≃ f (g , f-g , g-f)
+    → (ap π₁ (pair= γ) == α) ≃ (π₁ γ == α)
 
+  ap-π₁-pair=Equiv {a₁ = a₁} α (β , γ) = qinv-≃ f (g , f-g , g-f)
+\end{code}
+
+\begin{code}
 open SigmaEquivalence public
 \end{code}
 
@@ -2340,18 +2407,28 @@ first levels are:
 
 ### Propositions
 
-A type is a *mere proposition* if any two inhabitants of the type are equal.
-
 \begin{code}
 module Propositions where
+\end{code}
 
-  isProp : ∀ {ℓ}  (A : Type ℓ) → Type ℓ
+A type is a *mere proposition* if any two inhabitants of the type are equal.
+
+{: .foldable until="5"}
+\begin{code}
+  -- Def.
+  isProp
+    : ∀ {ℓ} (A : Type ℓ) → Type ℓ
+
   isProp A = ((x y : A) → x == y)
+\end{code}
 
+\begin{code}
   -- The type of mere propositions
   hProp : ∀ {ℓ} → Type (lsuc ℓ)
   hProp {ℓ} = Σ (Type ℓ) isProp
+\end{code}
 
+\begin{code}
 open Propositions public
 \end{code}
 
@@ -2470,13 +2547,13 @@ proposition.
 {: .foldable until="6"}
 \begin{code}
   -- Lemma.
-  propEqvIsprop
-    : ∀ {ℓ} {A B : Type ℓ}
-    → isProp A → isProp B
-    ---------------------
-    → isProp (A == B)
-
-  propEqvIsprop {ℓ} {A}{B} = {! ispropA-B {A = A}  !}
+  -- propEqvIsprop
+  --   : ∀ {ℓ} {A B : Type ℓ}
+  --   → isProp A → isProp B
+  --   ---------------------
+  --   → isProp (A == B)
+  --
+  -- propEqvIsprop {ℓ} {A} {B} x x₁ x₂ y = {!   !}
 \end{code}
 
 {: .foldable until="4"}
@@ -2554,10 +2631,11 @@ Product of sets is a set.
   -- Synonyms
   isContr→isProp = contrIsProp
 \end{code}
+To be contractible is itself a proposition.
 
 {: .foldable until="5"}
 \begin{code}
-  -- To be contractible is itself a proposition.
+  -- Lemma 3.11.3 in HoTT-Book.
   isContrIsProp
     : ∀ {ℓ} {A : Type ℓ}
     --------------------
@@ -2605,16 +2683,16 @@ open EquivalenceProp public
 {: .foldable until="6"}
 \begin{code}
 -- Lemma.
-compEqv-inv
+≃-trans-inv
   : ∀ {ℓ} {A B : Type ℓ}
   → (α : A ≃ B)
   -----------------------------
   → ≃-trans α (≃-flip α) == A≃A
 
-compEqv-inv α = sameEqv (
+≃-trans-inv α = sameEqv (
  begin
-   π₁ (compEqv α (invEqv α)) ==⟨ refl _ ⟩
-   π₁ (invEqv α) ∘ π₁ α     ==⟨ funext (rlmap-inverse-h α) ⟩
+   π₁ (≃-trans α (≃-sym α)) ==⟨ refl _ ⟩
+   π₁ (≃-sym α) ∘ π₁ α     ==⟨ funext (rlmap-inverse-h α) ⟩
    id
  ∎)
 \end{code}
@@ -2630,7 +2708,7 @@ module EquivalenceReasoning where
 
   infixr 2 _≃⟨_⟩_
   _≃⟨_⟩_ : ∀ {ℓ} (A : Type ℓ) {B C : Type ℓ} → A ≃ B → B ≃ C → A ≃ C
-  _ ≃⟨ e₁ ⟩ e₂ = compEqv e₁ e₂
+  _ ≃⟨ e₁ ⟩ e₂ = ≃-trans e₁ e₂
   --
   infix  3 _≃∎
   _≃∎ :  ∀ {ℓ} (A : Type ℓ) → A ≃ A
@@ -2652,7 +2730,6 @@ module UnivalenceLemmas {ℓ} where
 - The identity equivalence creates the trivial path.
 {: .foldable}
 \begin{code}
-  -- postulate
   ua-id : {A : Type ℓ} → ua idEqv == refl A
   ua-id {A} =
     begin
@@ -2668,18 +2745,24 @@ module UnivalenceLemmas {ℓ} where
 {: .foldable}
 \begin{code}
   postulate
-    ua-comp : {A B C : Type ℓ} → (α : A ≃ B) → (β : B ≃ C) → ua (compEqv α β) == ua α · ua β
+    ua-comp
+      : {A B C : Type ℓ}
+      → (α : A ≃ B)
+      → (β : B ≃ C)
+      ---------------------------------
+      → ua (≃-trans α β) == ua α · ua β
+
     -- ua-comp α β =
     --   begin
-    --     ua (compEqv α β)                               ==⟨ ap (λ x → ua (compEqv x β)) (inv (ua-β α)) ⟩
-    --     ua (compEqv (idtoeqv (ua α)) β)                ==⟨ ap (λ x → ua (compEqv (idtoeqv (ua α)) x))
+    --     ua (≃-trans α β)                               ==⟨ ap (λ x → ua (≃-trans x β)) (inv (ua-β α)) ⟩
+    --     ua (≃-trans (idtoeqv (ua α)) β)                ==⟨ ap (λ x → ua (≃-trans (idtoeqv (ua α)) x))
     --                                                        (inv (ua-β β)) ⟩
-    --     ua (compEqv (idtoeqv (ua α)) (idtoeqv (ua β))) ==⟨ ap ua lemma ⟩
+    --     ua (≃-trans (idtoeqv (ua α)) (idtoeqv (ua β))) ==⟨ ap ua lemma ⟩
     --     ua (idtoeqv (ua α · ua β))                     ==⟨ ua-η (ua α · ua β) ⟩
     --     ua α · ua β
     --   ∎
     --   where
-    --     lemma : compEqv (idtoeqv (ua α)) (idtoeqv (ua β)) == idtoeqv (ua α · ua β)
+    --     lemma : ≃-trans (idtoeqv (ua α)) (idtoeqv (ua β)) == idtoeqv (ua α · ua β)
     --     lemma = sameEqv (
     --       begin
     --         π₁ (idtoeqv (ua β)) ∘ π₁ (idtoeqv (ua α))                 ==⟨ refl _ ⟩
@@ -2692,11 +2775,14 @@ module UnivalenceLemmas {ℓ} where
 - Inverses are preserved
 {: .foldable}
 \begin{code}
-  ua-inv-r : {A B : Type ℓ} → (α : A ≃ B) → ua α · ua (invEqv α) == refl A
+  ua-inv-r
+    : {A B : Type ℓ}
+    → (α : A ≃ B)
+    → ua α · ua (≃-sym α) == refl A
   ua-inv-r α =
     begin
-      ua α · ua (invEqv α)      ==⟨ inv (ua-comp α (invEqv α)) ⟩
-      ua (compEqv α (invEqv α)) ==⟨ ap ua (compEqv-inv α) ⟩
+      ua α · ua (≃-sym α)      ==⟨ inv (ua-comp α (≃-sym α)) ⟩
+      ua (≃-trans α (≃-sym α)) ==⟨ ap ua (≃-trans-inv α) ⟩
       ua idEqv                  ==⟨ ua-id ⟩
       refl _
     ∎
@@ -2706,12 +2792,12 @@ module UnivalenceLemmas {ℓ} where
 {: .foldable}
 \begin{code}
   postulate
-    ua-inv : {A B : Type ℓ} → (α : A ≃ B) → ua (invEqv α) == inv (ua α)
+    ua-inv : {A B : Type ℓ} → (α : A ≃ B) → ua (≃-sym α) == inv (ua α)
     -- ua-inv α =
     --   begin
-    --     ua (invEqv α)                       ==⟨ ap (_· ua (invEqv α)) (inv (·-linv (ua α))) ⟩
-    --     inv (ua α) · ua α · ua (invEqv α)   ==⟨ ·-assoc (inv (ua α)) _ _ ⟩
-    --     inv (ua α) · (ua α · ua (invEqv α)) ==⟨ ap (inv (ua α) ·_) (ua-inv-r α) ⟩
+    --     ua (≃-sym α)                       ==⟨ ap (_· ua (≃-sym α)) (inv (·-linv (ua α))) ⟩
+    --     inv (ua α) · ua α · ua (≃-sym α)   ==⟨ ·-assoc (inv (ua α)) _ _ ⟩
+    --     inv (ua α) · (ua α · ua (≃-sym α)) ==⟨ ap (inv (ua α) ·_) (ua-inv-r α) ⟩
     --     inv (ua α) · refl _                 ==⟨ inv (·-runit (inv ((ua α)))) ⟩
     --     inv (ua α)
     --   ∎
@@ -2852,7 +2938,8 @@ module Truncation where
   ∣ x ∣ = !∣ x ∣
 
   -- Any two elements of the truncated type are equal
-  postulate trunc : ∀ {ℓ} {A : Type ℓ} → isProp ∥ A ∥
+  postulate
+    trunc : ∀ {ℓ} {A : Type ℓ} → isProp ∥ A ∥
 
   -- Recursion principle
   trunc-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ}
@@ -2885,7 +2972,8 @@ module SetTruncation where
   ∣ x ∣₀ = !∣ x ∣₀
 
   -- Any two equalities on the truncated type are equal
-  postulate strunc : ∀ {ℓ} {A : Type ℓ} → isSet ∥ A ∥₀
+  postulate
+    strunc : ∀ {ℓ} {A : Type ℓ} → isSet ∥ A ∥₀
 
   -- Recursion principle
   strunc-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {P : Type ℓⱼ} → isSet P → (A → P) → ∥ A ∥₀ → P
@@ -2921,11 +3009,20 @@ module Quotients where
   [ a ] = ![ a ]
 
   -- Equalities induced by the relation
-  postulate Req : ∀ {ℓ} {A : Type ℓ} {r : QRel A}
-                 → {a b : A} → R {{r}} a b → [ a ] {r} == [ b ]
+  postulate
+    Req
+      : ∀ {ℓ} {A : Type ℓ} {r : QRel A}
+      → {a b : A}
+      → R {{r}} a b
+      --------------------
+      → [ a ] {r} == [ b ]
 
   -- The quotient of a set is again a set
-  postulate Rtrunc : ∀ {ℓ} {A : Type ℓ} {r : QRel A} → isSet (A / r)
+  postulate
+    Rtrunc
+      : ∀ {ℓ} {A : Type ℓ} {r : QRel A}
+      ---------------
+      → isSet (A / r)
 
   -- Recursion principle
   QRel-rec : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ} {r : QRel A} {B : Type ℓⱼ}
@@ -3703,8 +3800,8 @@ module FundGroupCircle where
         ==⟨ ap (λ u → transport (λ a → a) (inv u) n) (S¹-βrec _ ℤ (ua zequiv-succ)) ⟩
       transport (λ a → a) (inv (ua zequiv-succ)) n
         ==⟨ ap (λ u → transport (λ a → a) u n) (inv (ua-inv zequiv-succ)) ⟩
-      transport (λ a → a) (ua (invEqv zequiv-succ)) n
-        ==⟨ ap (λ e → (lemap e) n) ((ua-β (invEqv zequiv-succ))) ⟩
+      transport (λ a → a) (ua (≃-sym zequiv-succ)) n
+        ==⟨ ap (λ e → (lemap e) n) ((ua-β (≃-sym zequiv-succ))) ⟩
       zpred n
     ∎
 

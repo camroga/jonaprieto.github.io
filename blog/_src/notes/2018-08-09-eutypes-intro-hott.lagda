@@ -248,3 +248,14 @@ pr {l}{A}{B} x .x p idp =
     idp
     ∎
 \end{code}
+
+\begin{code}
+pep
+  : ∀ {ℓ} {A B : Type ℓ}
+  →  isProp A → isProp B → (A ⇔ B)
+  -------------------------------
+  → A == B
+
+pep propA propB (fun f , fun g) =
+  ua (qinv-≃ f (g , (λ x → propB _ _) , (λ x → propA _ _)))
+\end{code}

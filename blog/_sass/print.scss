@@ -78,18 +78,19 @@
     }
     @page {
       size:A4;
-      margin-left: 3cm;
-      margin-right: 3cm;
+      margin-left: 2.7cm;
+      margin-right: 2.7cm;
       margin-top: 2.5cm;
       margin-bottom: 2.4cm;
     }
     //
     @page :first {
-      margin-left: 3cm;
-      margin-right: 3cm;
+      margin-left: 2.7cm;
+      margin-right: 2.7cm;
       margin-top: 3cm;
       margin-bottom: 2.4cm;
     }
+    .sidebar-toggle { display: none; }
     //
     //
     //
