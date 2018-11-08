@@ -11,7 +11,7 @@ coauthor_affiliation: "University of Bergen"
 coauthor2: "Håkon Robbestad"
 coauthor2_affiliation: "University of Bergen"
 bibtexauthors: "Prieto-Cubides, Jonathan. Bezem, Marc. Robbestad, Håkon."
-bibtextag: "prietobezem:mini-hot"
+bibtextag: "prieto-bezem-robbestad:mini-hott"
 toc: true
 agda: true
 gallery: true
@@ -973,6 +973,7 @@ tr₂
 
 tr₂ A B C idp idp = id
 \end{code}
+
 ### Pathover
 
 Let be `A : Type`, `a₁, a₂ : A`, `C : A → Type`, `c₁ : C a₁` and `c₂ : C a₂`.
@@ -982,14 +983,15 @@ path `α : a₁ = a₂` of the point `c₁ : C a₁` and the point `c₂` in the
 a₂`. That is, a pathover is a term that inhabit the type `transport C α c₁ = c₂`
 also denoted by `PathOver C α c₁ c₂`.
 
-![path](/assets/ipe-images/pathover-3-minihott.png){: width="50%" align="right" }
+![path](/assets/ipe-images/pathover-3-minihott.png){: width="45%" align="right" }
 
 \begin{code}
 PathOver
   : ∀ {ℓᵢ ℓⱼ} {A : Type ℓᵢ}
   → (C : A → Type ℓⱼ) {a₁ a₂ : A}
-  → (α : a₁ == a₂) (c₁ : C a₁) (c₂ : C a₂)
-  ----------------------------------------
+  → (α : a₁ == a₂)
+  → (c₁ : C a₁) → (c₂ : C a₂)
+  ------------------------------
   → Type ℓⱼ
 
 PathOver C α c₁ c₂ = tr C α c₁ == c₂
@@ -2526,6 +2528,7 @@ proposition.
 
   pi-is-prop = isProp-pi
   Π-isProp   = isProp-pi
+  piIsProp   = isProp-pi
 \end{code}
 
 {: .foldable until="6"}

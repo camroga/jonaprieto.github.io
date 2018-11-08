@@ -459,28 +459,26 @@ module ConnectedGraph
 
 - Rotation systems
 
-Let's define the `Out` type to attempt define what a rotation system is.
+Let's define the `Star` type to attempt define what a rotation system is.
 
 ![path](/assets/ipe-images/bitacora-out.png){: width="40%" }
-*Figure 3. $\mathsf{Out}\,x$ when $x : \Node\,G$ in a graph $G$.*
+*Figure 3. $\mathsf{Star}\,x$ when $x : \Node\,G$ in a graph $G$.*
 
 \begin{code}
   -- Def.
-  Out : Node G → Type ℓ
-  Out = λ (x : Node G) → Σ (Node G) (λ y → Edge G y x)
+  Star : Node G → Type ℓ
+  Star = λ (x : Node G) → Σ (Node G) (λ y → Edge G y x)
 \end{code}
 
-❓ I forgot the purpose of `OutR`.
 \begin{code}
   -- Relation.
   postulate
-    OutR : ∀ {x : Node G} → Out x → Out x → Out x → Type ℓ
+    StarR : ∀ {x : Node G} → Star x → Star x → Star x → Type ℓ
 
   postulate
-    OutRIsProp : ∀ {x : Node G}{a b c : Out x} → isProp (OutR a b c)
+    StarRIsProp : ∀ {x : Node G}{a b c : Star x} → isProp (StarR a b c)
   -- Each node has incident nodes.
 \end{code}
-
 
 #### Cycles
 
@@ -537,7 +535,7 @@ module CyclicForm {ℓᵢ ℓⱼ} where
   -- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)
   -- CyclicIsProp x y = {!   !}
 
-  -- ∀ {x : Node G} → Cyclic (Out x) (OutR {x})
+  -- ∀ {x : Node G} → Cyclic (Star x) (StarR {x})
 \end{code}
 
 - Mention what is *dart*
@@ -612,7 +610,8 @@ planar graphs.
   - [Generalizations of Planar Graphs](https://mathoverflow.net/questions/7650/generalizations-of-planar-graphs)
   - [Complexity of isotopy of embedded graphs](https://cstheory.stackexchange.com/questions/41546/complexity-of-isotopy-of-embedded-graphs)
 
-
+  - [Graph Embeddings and Symmetries- author: Jozef Širáň](http://tinyurl.com/y8w78v32)
+  - [Beyond Planarity of Graphs - author: Bojan Mohar](http://tinyurl.com/y9dkdzzw)
 
 {: .hide }
   - *[M]arc and [H]åkon*
