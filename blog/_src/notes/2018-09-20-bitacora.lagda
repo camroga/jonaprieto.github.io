@@ -540,10 +540,8 @@ module CyclicForm {ℓᵢ ℓⱼ} where
 
 - Mention what is *dart*
 
-❓ How to define $\Face\ G$ for $G : \Graph\ A$. (In progress)
-
-❓ How to *decide* if the faces make up (compatibility property). (In progress)
-
+❓ How to define $\Face\ G$ for $G : \Graph\ A$. (In progress session 9/11/18)
+❓ How to *decide* if the faces make up (compatibility property). (In progress  9/11/18)
 
 ### Related papers
 
@@ -612,12 +610,16 @@ planar graphs.
 
   - [Graph Embeddings and Symmetries- author: Jozef Širáň](http://tinyurl.com/y8w78v32)
   - [Beyond Planarity of Graphs - author: Bojan Mohar](http://tinyurl.com/y9dkdzzw)
+  - [Definition Clarification Of Graph Embeddings](http://tinyurl.com/y7kruofw)
+
 
 {: .hide }
   - *[M]arc and [H]åkon*
+
+  - 2018-11-9
+    - We discuss theorem 3.2.2, some topological stuff
   - 2018-10-31, 2018-11-2
     - Proving some lemmas to have isomorphism between graphs.
-
   - 2018-10-26
     - We were checking the first definitions in Agda about graphs
     - We discuss why A=B is a Set when A and B are sets
