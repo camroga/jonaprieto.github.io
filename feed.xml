@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-11-08T14:16:33+01:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/hoare-agda/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-11-03T13:37:20+01:00</updated><id>http://jonaprieto.github.io/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/hoare-agda/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-11-09T11:58:12+01:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/hoare-agda/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-11-03T13:37:20+01:00</updated><id>http://jonaprieto.github.io/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/hoare-agda/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/alps-chalmers/agda101&quot;&gt;https://github.com/alps-chalmers/agda101&lt;/a&gt;&lt;/li&gt;
@@ -1046,7 +1046,7 @@ review in future sessions.&lt;/li&gt;
       &lt;li&gt;[M] Making some improvements to &lt;a href=&quot;http://tinyurl.com/pathovers&quot;&gt;Pathovers’ article&lt;/a&gt;.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research happens every day!</summary></entry><entry><title type="html">Dynamic programing problems</title><link href="http://jonaprieto.github.io/dp/" rel="alternate" type="text/html" title="Dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-11-03T13:37:02+01:00</updated><id>http://jonaprieto.github.io/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/dp/">&lt;p&gt;We study dynamic programming through examples. My goal here is to keep a list of
+&lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Research happens every day!</summary></entry><entry><title type="html">Dynamic programing problems</title><link href="http://jonaprieto.github.io/dp/" rel="alternate" type="text/html" title="Dynamic programing problems" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-11-09T11:57:38+01:00</updated><id>http://jonaprieto.github.io/DP-lists</id><content type="html" xml:base="http://jonaprieto.github.io/dp/">&lt;p&gt;We study dynamic programming through examples. My goal here is to keep a list of
 the recursion formulation for each problem as a help to solve the problem and
 similars. I’m not interested &lt;em&gt;really&lt;/em&gt; neither in the implementation nor a very
 long description, just an recursion function that solves the problem and gives
@@ -1150,14 +1150,12 @@ with the first $i$ items available.&lt;/p&gt;
 \begin{align*}
   f(i, p, q) =
   \begin{cases}
-  \false                                     &amp;\text{if }i = 0,\\
-  \true                                      &amp;\text{if }i = 1 \and p = q = 0,\\
-  \true                                      &amp;\text{if }i = 1 \and a_i = p,\\
-  \true                                      &amp;\text{if }i = 1 \and a_i = q,\\
-  \false                                     &amp;\text{if }i = 1,\\
-  \true                                      &amp;\text{if }f(i-1, p , q),\\
+  \true                                      &amp;\text{if }i = p = q = 0,\\
+  \false                                     &amp;\text{if }i = 0 \\
   \underbrace{f(i-1,p - a_i, q)}_{i\in I \and i\not\in J}
-  \or \underbrace{f(i-1,p, q-a_i)}_{i\not\in I \and i\in J} \}   &amp;\text{otherwise}.
+  \or \underbrace{f(i-1,p, q-a_i)}_{i\not\in I \and i\in J} \}
+  \or \underbrace{f(i-1,p, q)}_{i\not\in I \and i\not \in J \and i \in K} \}
+     &amp;\text{otherwise}.
   \end{cases}
   \end{align*} %]]&gt;&lt;/script&gt;
 
@@ -1219,6 +1217,36 @@ and the argument $j$ is about the position in the string $y$ in the following de
 
   &lt;p&gt;The solution can then be found by calling $f(1,1)$.&lt;/p&gt;
 &lt;/div&gt;
+
+&lt;h2 id=&quot;maximum-sum-of-a-contiguous-subsequence&quot;&gt;Maximum sum of a contiguous subsequence&lt;/h2&gt;
+
+&lt;div class=&quot;exercise&quot;&gt;
+  &lt;p&gt;Let $S = [s_1 ,s_2 ,\cdots,s_n]$ be a sequence of integers.&lt;/p&gt;
+
+  &lt;p&gt;A &lt;em&gt;contiguous subsequence&lt;/em&gt; of $S$ consists of consecutive elements of S.
+We want to find a contiguous subsequence of $S$ that has the maximum sum.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;proof&quot;&gt;
+  &lt;p&gt;&lt;strong&gt;Recursion:&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;Define $f(i)$ to be the maximum subsequence from the beginning to the $i$-position.&lt;/p&gt;
+
+  &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align*}
+  f(i) =
+  \begin{cases}
+  s_1  &amp;\text{ if } i = 1, \\
+  \max \{ f(i-1) + s_i, f(i-1) \} &amp;\text{ otherwise. }
+  \end{cases}
+  \end{align*} %]]&gt;&lt;/script&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;Remark&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Also known as Maximum subarray problem (&lt;a href=&quot;http://tinyurl.com/ofqyrnx&quot;&gt;&lt;em&gt;Kadane&lt;/em&gt;’s algorithm&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;!-- - All-pairs shortest paths — Floyd-Warshall algorithm --&gt;
 &lt;!-- - Calculate size of the largest plus of 1’s in binary matrix --&gt;
@@ -1302,7 +1330,7 @@ y_m$ is given by the recurrence $f(n,m)$ defined as follows.&lt;/p&gt;
 &lt;!-- - Word break problem --&gt;
 &lt;!-- - Word break problem --&gt;
 
-&lt;!-- -Maximum Weight Independent Problem --&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just an recursion function that solves the problem and gives enough sights. The complexity for each solution is left to the reader.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-11-03T13:37:02+01:00</updated><id>http://jonaprieto.github.io/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- -Maximum Weight Independent Problem --&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">We study dynamic programming through examples. My goal here is to keep a list of the recursion formulation for each problem as a help to solve the problem and similars. I’m not interested really neither in the implementation nor a very long description, just an recursion function that solves the problem and gives enough sights. The complexity for each solution is left to the reader.</summary></entry><entry><title type="html">INF234</title><link href="http://jonaprieto.github.io/inf234/" rel="alternate" type="text/html" title="INF234" /><published>2018-08-24T00:00:00+02:00</published><updated>2018-11-09T11:57:36+01:00</updated><id>http://jonaprieto.github.io/learning-inf234</id><content type="html" xml:base="http://jonaprieto.github.io/inf234/">&lt;p&gt;Just the agenda for INF234 at UiB. The book is &lt;a href=&quot;#Dasgupta2006&quot;&gt;(Dasgupta &amp;amp; Papadimitriou, 2006)&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;2018-08-21&quot;&gt;2018-08-21&lt;/h2&gt;
 
@@ -1571,6 +1599,17 @@ has all literals occur negatively, or one literal is positive).&lt;/li&gt;
       &lt;li&gt;Ford-Fulkerson Algorithm&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-11-05&quot;&gt;2018-11-05&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bipartite matchings and Max-flow min cut property.&lt;/li&gt;
+  &lt;li&gt;NP problems (Section 8.1-8.2)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2018-11-08&quot;&gt;2018-11-08&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Exams review of the solutions&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Just the agenda for INF234 at UiB. The book is (Dasgupta &amp;amp; Papadimitriou, 2006).</summary></entry><entry><title type="html">Simple Typed Lambda Calculus In Agda</title><link href="http://jonaprieto.github.io/stlc-agda/" rel="alternate" type="text/html" title="Simple Typed Lambda Calculus In Agda" /><published>2018-08-17T00:00:00+02:00</published><updated>2018-11-03T13:37:19+01:00</updated><id>http://jonaprieto.github.io/notes-sltc</id><content type="html" xml:base="http://jonaprieto.github.io/stlc-agda/">&lt;p&gt;We present a formalisation of the syntax in Agda for the &lt;em&gt;Simple Typed Lambda
 Calculus (STLC)&lt;/em&gt; with some of its properties and the description of the
 type-checking for this type system. We refactor the implementation by
