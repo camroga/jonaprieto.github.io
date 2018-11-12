@@ -351,10 +351,10 @@ module BaseGraph {ℓ} where
 
 #### Isomorphisms
 
-Let be $G, H : \Graph$. A *graph map* is a pair $(α, β)$ that consists of a *vertex function*
-$α : \Node G → \Node H$ and an edge function $\beta_\alpha : \Edge G \to \Edge H$ such
-that *incidence* for each vertex in $G$ is preserved in $H$ by means of $β$ using
-$α$ for vertex correspondence.
+Let be $G, H : \Graph$. A *graph map* is a pair $(α, β)$ that consists of a
+*vertex function* $α : \Node G → \Node H$ and an edge function $\beta_\alpha :
+\Edge G \to \Edge H$ such that *incidence* for each vertex in $G$ is preserved
+in $H$ by means of $β$ using $α$ for vertex correspondence.
 
 {: .foldable until="8" }
 \begin{code}
@@ -413,14 +413,12 @@ Two graphs $G$ and $H$ are *isomorphic* when $\Iso{G}{H}$ holds.
 
 #### Connected graphs
 
-For connected graphs, we need to define the type `Path` to allow us
+For connected graphs, we need to define the type `Walk` to allow us
 to establish the *connectedness* property which says that a graph is *connected* if
-for any pair of nodes there is a path between them.
-
+for any pair of nodes there is a *walk* between them.
 
 ![path](/assets/ipe-images/graph-connected.png){: width="40%" }
-*Figure 3. Connected Graphs. Green graph is the path built by $α : \Path x\,y$ and $β : \Edge y z$, this is the
-`cons` constructor in $\Path$ data type.*
+*Figure 3. In this graph, the green graph is a walk built up with $α : \Walk x\,y$ and $β : \Edge y z$.
 
 \begin{code}
 
@@ -430,19 +428,17 @@ module ConnectedGraph
 
   open BaseGraph.Graph public
 
-  -- Path Def.
-  data Path : Node G → Node G → Type ℓ where
-    edge
-      : ∀ {x y : Node G}
-      → Edge G x y
-      ------------
-      → Path x y
+  -- Def.
+  data Walk : Node G → Node G → Type ℓ where
+    ⟨_⟩
+      : ∀ {x : Node G}
+      → Walk x x
 
-    cons
+    _⊙_
       : ∀ { x y z : Node G}
-      → Path x y → Edge G y z
+      → Walk x y → Edge G y z
       ------------------------
-      → Path x z
+      → Walk x z
 
   record Graph : Type (lsuc ℓ) where
     constructor connectedGraph
@@ -450,46 +446,57 @@ module ConnectedGraph
       connected
         : ∀ {x y : Node G}
         ------------------
-        → Path x y
+        → Walk x y
 
   open Graph public
-\end{code}
 
-❓ Our notion of *path* seems to be the *walk* notion. should we impose the predicate to not repeat vertices
+  -- Syntax.
+  _⇢_ : ( x y : Node G) → Type ℓ
+  x ⇢ y = Walk x y
+\end{code}
 
 - Rotation systems
 
-Let's define the `Star` type to attempt define what a rotation system is.
+Let's define the `Star` type to attempt define in the following the concept of a rotation system.
 
 ![path](/assets/ipe-images/bitacora-out.png){: width="40%" }
 *Figure 3. $\mathsf{Star}\,x$ when $x : \Node\,G$ in a graph $G$.*
 
 \begin{code}
   -- Def.
-  Star : Node G → Type ℓ
+  Star
+    : Node G
+    --------
+    → Type ℓ
+
   Star = λ (x : Node G) → Σ (Node G) (λ y → Edge G y x)
 \end{code}
 
 \begin{code}
   -- Relation.
   postulate
-    StarR : ∀ {x : Node G} → Star x → Star x → Star x → Type ℓ
+    StarRelation : ∀ {x : Node G} → Star x → Star x → Star x → Type ℓ
 
   postulate
-    StarRIsProp : ∀ {x : Node G}{a b c : Star x} → isProp (StarR a b c)
+    StarRelationIsProp : ∀ {x : Node G} {a b c : Star x} → isProp (StarRelation a b c)
   -- Each node has incident nodes.
 \end{code}
 
 #### Cycles
 
 The reason to define a cyclic relation is that the faces or regions can be defined by
-*combinatorial maps* or also called *rotation systems*.
+using these orders. The terminology is *combinatorial maps* also called *rotation systems*.
+
+Put here the rotation system definition from the notes and also *face walks*.
+Show the theorem 3.2.2. (G graph + R : RotationSystem) => Embedding in *some* surface.
+❓ Still missing how to determine the output of T3.2.2. is a sphere.
+
 
 
 ![path](/assets/ipe-images/cyclic.png){: width="40%" }
 *Figure 2. Cyclic relation `R`.*
 
-Therefore, we present first an attempt to define cycle orders:
+Our first attempt to define this cycle relation (order):
 
 \begin{code}
 module CyclicForm {ℓᵢ ℓⱼ} where
@@ -535,7 +542,7 @@ module CyclicForm {ℓᵢ ℓⱼ} where
   -- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)
   -- CyclicIsProp x y = {!   !}
 
-  -- ∀ {x : Node G} → Cyclic (Star x) (StarR {x})
+  -- ∀ {x : Node G} → Cyclic (Star x) (StarRelation {x})
 \end{code}
 
 - Mention what is *dart*
@@ -620,7 +627,7 @@ planar graphs.
     - We discuss theorem 3.2.2, some topological stuff. How can we determine the surface
     given by the aforementioned theorem is indeed a sphere. After having that, we can punch it with "needle" to
     have a planar graph in R^2.
-    
+
   - 2018-10-31, 2018-11-2
     - Proving some lemmas to have isomorphism between graphs.
   - 2018-10-26

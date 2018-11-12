@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20181026161816" modified="D:20181026185237"/>
+<info created="D:20181026161816" modified="D:20181112193938"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -263,11 +263,11 @@ h
 <use matrix="1 0 0 1 -24 24" name="mark/disk(sx)" pos="320 720" size="normal" stroke="black"/>
 <use matrix="1 0 0 1 48 24" name="mark/disk(sx)" pos="272 624" size="normal" stroke="black"/>
 <use matrix="1 0 0 1 128 -88" name="mark/disk(sx)" pos="160 688" size="normal" stroke="black"/>
-<path stroke="brown" pen="fat" arrow="normal/normal">
+<path stroke="darkred" pen="fat" arrow="normal/tiny">
 208 784 m
 296 744 l
 </path>
-<path stroke="brown" pen="fat" arrow="normal/normal">
+<path stroke="darkred" pen="fat" arrow="normal/tiny">
 296 744 m
 320 648 l
 </path>
@@ -276,10 +276,10 @@ h
 320 648 m
 288 600 l
 </path>
-<text matrix="-0.494757 -0.869031 0.869031 -0.494757 -354.314 1188" transformations="translations" pos="144 784" stroke="darkgreen" type="label" width="32.191" height="8.302" depth="0" valign="baseline" size="large" style="math">R\,a\,b\,d</text>
-<path stroke="darkgreen" dash="dashed" pen="fat" arrow="normal/normal">
+<text matrix="0.0378658 0.999283 -0.999283 0.0378658 1065.62 471.775" pos="144 784" stroke="darkgreen" type="label" width="32.191" height="8.302" depth="0" valign="baseline" size="large" style="math">R\,a\,b\,d</text>
+<path stroke="darkgreen" dash="dashed" pen="fat" arrow="normal/tiny">
 296 744 m
-288 600 l
+287.89 602.625 l
 </path>
 <use name="mark/disk(sx)" pos="208 608" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="168 664" size="normal" stroke="black"/>
@@ -300,6 +300,61 @@ h
 <path stroke="black" pen="heavier">
 176 744 m
 208 784 l
+</path>
+<use matrix="1 0 0 1 -32 -16" name="mark/disk(sx)" pos="256 704" size="normal" stroke="lightgray"/>
+<text matrix="1 0 0 1 -38.2849 -18.7536" transformations="translations" pos="252 708" stroke="lightgray" type="label" width="5.694" height="4.289" depth="0" valign="baseline" style="math">x</text>
+<text matrix="1 0 0 1 -57.7456 -4.66033" transformations="translations" pos="268 736" stroke="lightgray" type="label" width="5.266" height="4.289" depth="0" valign="baseline" style="math">a</text>
+<text matrix="1 0 0 1 -24.131 -25.9024" transformations="translations" pos="288 700" stroke="lightgray" type="label" width="4.311" height="4.289" depth="0" valign="baseline" style="math">c</text>
+<text matrix="1 0 0 1 15.0324 -54.5222" transformations="translations" pos="228 700" stroke="lightgray" type="label" width="5.185" height="6.918" depth="0" valign="baseline" style="math">d</text>
+<path stroke="lightgray">
+224 688 m
+208 784 l
+</path>
+<path stroke="lightgray">
+223.896 688.624 m
+296 744 l
+</path>
+<text matrix="1 0 0 1 -7.24365 -27.3818" transformations="translations" pos="268 736" stroke="lightgray" type="label" width="4.276" height="6.918" depth="0" valign="baseline" style="math">b</text>
+<path stroke="lightgray">
+224 688 m
+176 744 l
+</path>
+<path stroke="lightgray">
+224 688 m
+168 664 l
+</path>
+<path stroke="lightgray">
+224 688 m
+208 608 l
+</path>
+<path stroke="lightgray">
+223.896 688.624 m
+288 600 l
+</path>
+<path stroke="lightgray">
+224 688 m
+320 648 l
+</path>
+<use name="mark/disk(sx)" pos="208 784" size="normal" stroke="darkred"/>
+<use name="mark/disk(sx)" pos="176 744" size="normal" stroke="black"/>
+<use name="mark/disk(sx)" pos="168 664" size="normal" stroke="black"/>
+<use name="mark/disk(sx)" pos="208 608" size="normal" stroke="black"/>
+<use name="mark/disk(sx)" pos="288 600" size="normal" stroke="black"/>
+<use name="mark/disk(sx)" pos="320 648" size="normal" stroke="black"/>
+<use name="mark/disk(sx)" pos="296 744" size="normal" stroke="darkred"/>
+<path stroke="darkred" pen="fat" arrow="normal/tiny">
+208 784 m
+296 744 l
+</path>
+<path stroke="darkred" pen="fat" arrow="normal/tiny">
+296 744 m
+320 648 l
+</path>
+<use name="mark/disk(sx)" pos="208 784" size="normal" stroke="darkred"/>
+<use name="mark/disk(sx)" pos="296 744" size="normal" stroke="darkred"/>
+<path stroke="lightgray" dash="dotted" arrow="normal/tiny">
+202.939 712.44 m
+28.2975 0 0 -28.2975 223.271 692.758 199.68 677.132 a
 </path>
 </page>
 </ipe>

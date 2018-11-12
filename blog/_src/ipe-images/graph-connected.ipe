@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20181026161816" modified="D:20181031102705"/>
+<info created="D:20181026161816" modified="D:20181112192324"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -304,7 +304,7 @@ h
 292 760 l
 </path>
 <text matrix="0.551242 0.834346 -0.834346 0.551242 708.146 81.7813" pos="276 724" stroke="darkgreen" type="label" width="41.237" height="5.535" depth="1.55" valign="baseline" size="footnote" style="math">\beta : \mathsf{Edge}\,y\,z</text>
-<text matrix="0.901449 0.432884 -0.432884 0.901449 291.44 -20.8727" pos="212 672" stroke="darkgreen" type="label" width="41.231" height="5.535" depth="1.55" valign="baseline" size="footnote" style="math">\alpha : \mathsf{Path}\, x\,y</text>
+<text matrix="0.901449 0.432884 -0.432884 0.901449 291.44 -20.8727" pos="212 672" stroke="darkgreen" type="label" width="42.546" height="5.535" depth="1.55" valign="baseline" size="footnote" style="math">\alpha : \mathsf{Walk}\, x\,y</text>
 <path stroke="darkgreen" dash="dotted" opacity="75%">
 160 656 m
 256 704 l
