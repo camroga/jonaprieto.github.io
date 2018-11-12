@@ -237,6 +237,9 @@ code {
   font-family: -webkit-pictograph, cursive, monospace, serif;
   background: ghostwhite; }
 
+#toc-id code {
+  background: none !important; }
+
 pre {
   display: block;
   margin-top: 0;
