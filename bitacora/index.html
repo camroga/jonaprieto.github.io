@@ -25,7 +25,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-09-20T00:00:00+02:00" />
 <script type="application/ld+json">
-{"description":"Research happens every day!","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/bitacora/","headline":"Bitacora","dateModified":"2018-11-09T18:05:10+01:00","datePublished":"2018-09-20T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/bitacora/"},"@context":"http://schema.org"}</script>
+{"description":"Research happens every day!","author":{"@type":"Person","name":"Jonathan Prieto-Cubides"},"@type":"BlogPosting","url":"http://jonaprieto.github.io/bitacora/","headline":"Bitacora","dateModified":"2018-11-12T19:58:17+01:00","datePublished":"2018-09-20T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://jonaprieto.github.io/bitacora/"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <meta name="description" content="Research happens every day!">
 
@@ -203,13 +203,13 @@
     <div class="main-title">
       <div class="main-title-prefix">Latest change:</div>
       <div class="main-commit-message">
-            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/601895aafbf6c093e016ce449070bcab028fb048/blog/_src/notes/2018-09-20-bitacora.lagda">
-              question added</a>
+            <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/474ffe0eb96a6606be9e961de6a1e61711126d5a/blog/_src/notes/2018-09-20-bitacora.lagda">
+              [ bitacora ] some updates</a>
       </div>
     </div>
 
     <div class="main-last-date">
-      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/601895aafbf6c093e016ce449070bcab028fb048/blog/_src/notes/2018-09-20-bitacora.lagda">601895aa </a> on  09 Nov 2018
+      Latest commit <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/474ffe0eb96a6606be9e961de6a1e61711126d5a/blog/_src/notes/2018-09-20-bitacora.lagda">474ffe0e </a> on  12 Nov 2018
     </div>
   </div>
   
@@ -564,10 +564,10 @@ are particularly interested in graphs:</p>
 
 <h4 id="isomorphisms">Isomorphisms</h4>
 
-<p>Let be $G, H : \Graph$. A <em>graph map</em> is a pair $(α, β)$ that consists of a <em>vertex function</em>
-$α : \Node G → \Node H$ and an edge function $\beta_\alpha : \Edge G \to \Edge H$ such
-that <em>incidence</em> for each vertex in $G$ is preserved in $H$ by means of $β$ using
-$α$ for vertex correspondence.</p>
+<p>Let be $G, H : \Graph$. A <em>graph map</em> is a pair $(α, β)$ that consists of a
+<em>vertex function</em> $α : \Node G → \Node H$ and an edge function $\beta_\alpha :
+\Edge G \to \Edge H$ such that <em>incidence</em> for each vertex in $G$ is preserved
+in $H$ by means of $β$ using $α$ for vertex correspondence.</p>
 
 <pre class="Agda foldable" until="8"><a id="9949" class="Keyword">module</a> <a id="Isomorphism"></a><a id="9956" href="/bitacora/#9956" class="Module">Isomorphism</a> <a id="9968" class="Symbol">{</a><a id="9969" href="/bitacora/#9969" class="Bound">ℓ</a><a id="9970" class="Symbol">}</a> <a id="9972" class="Keyword">where</a>
 
@@ -616,119 +616,126 @@ Two graphs $G$ and $H$ are <em>isomorphic</em> when $\Iso{G}{H}$ holds.</p>
 
 <h4 id="connected-graphs">Connected graphs</h4>
 
-<p>For connected graphs, we need to define the type <code>Path</code> to allow us
+<p>For connected graphs, we need to define the type <code>Walk</code> to allow us
 to establish the <em>connectedness</em> property which says that a graph is <em>connected</em> if
-for any pair of nodes there is a path between them.</p>
+for any pair of nodes there is a <em>walk</em> between them.</p>
 
 <p><img src="/assets/ipe-images/graph-connected.png" alt="path" width="40%" />
-<em>Figure 3. Connected Graphs. Green graph is the path built by $α : \Path x\,y$ and $β : \Edge y z$, this is the
-<code>cons</code> constructor in $\Path$ data type.</em></p>
+*Figure 3. In this graph, the green graph is a walk built up with $α : \Walk x\,y$ and $β : \Edge y z$.</p>
 
-<pre class="Agda"><a id="11600" class="Keyword">module</a> <a id="ConnectedGraph"></a><a id="11607" href="/bitacora/#11607" class="Module">ConnectedGraph</a>
-  <a id="11624" class="Symbol">{</a><a id="11625" href="/bitacora/#11625" class="Bound">ℓ</a><a id="11626" class="Symbol">}</a> <a id="11628" class="Symbol">(</a><a id="11629" href="/bitacora/#11629" class="Bound">G</a> <a id="11631" class="Symbol">:</a> <a id="11633" href="/bitacora/#2533" class="Record">BaseGraph.Graph</a> <a id="11649" class="Symbol">{</a><a id="11650" href="/bitacora/#11625" class="Bound">ℓ</a><a id="11651" class="Symbol">})</a>
-  <a id="11656" class="Keyword">where</a>
+<pre class="Agda"><a id="11551" class="Keyword">module</a> <a id="ConnectedGraph"></a><a id="11558" href="/bitacora/#11558" class="Module">ConnectedGraph</a>
+  <a id="11575" class="Symbol">{</a><a id="11576" href="/bitacora/#11576" class="Bound">ℓ</a><a id="11577" class="Symbol">}</a> <a id="11579" class="Symbol">(</a><a id="11580" href="/bitacora/#11580" class="Bound">G</a> <a id="11582" class="Symbol">:</a> <a id="11584" href="/bitacora/#2533" class="Record">BaseGraph.Graph</a> <a id="11600" class="Symbol">{</a><a id="11601" href="/bitacora/#11576" class="Bound">ℓ</a><a id="11602" class="Symbol">})</a>
+  <a id="11607" class="Keyword">where</a>
 
-  <a id="11665" class="Keyword">open</a> <a id="11670" href="/bitacora/#2533" class="Module">BaseGraph.Graph</a> <a id="11686" class="Keyword">public</a>
+  <a id="11616" class="Keyword">open</a> <a id="11621" href="/bitacora/#2533" class="Module">BaseGraph.Graph</a> <a id="11637" class="Keyword">public</a>
 
-  <a id="11696" class="Comment">-- Path Def.</a>
-  <a id="11711" class="Keyword">data</a> <a id="ConnectedGraph.Path"></a><a id="11716" href="/bitacora/#11716" class="Datatype">Path</a> <a id="11721" class="Symbol">:</a> <a id="11723" href="/bitacora/#2625" class="Field">Node</a> <a id="11728" href="/bitacora/#11629" class="Bound">G</a> <a id="11730" class="Symbol">→</a> <a id="11732" href="/bitacora/#2625" class="Field">Node</a> <a id="11737" href="/bitacora/#11629" class="Bound">G</a> <a id="11739" class="Symbol">→</a> <a id="11741" href="/mini-hott/#1813" class="Function">Type</a> <a id="11746" href="/bitacora/#11625" class="Bound">ℓ</a> <a id="11748" class="Keyword">where</a>
-    <a id="ConnectedGraph.Path.edge"></a><a id="11758" href="/bitacora/#11758" class="InductiveConstructor">edge</a>
-      <a id="11769" class="Symbol">:</a> <a id="11771" class="Symbol">∀</a> <a id="11773" class="Symbol">{</a><a id="11774" href="/bitacora/#11774" class="Bound">x</a> <a id="11776" href="/bitacora/#11776" class="Bound">y</a> <a id="11778" class="Symbol">:</a> <a id="11780" href="/bitacora/#2625" class="Field">Node</a> <a id="11785" href="/bitacora/#11629" class="Bound">G</a><a id="11786" class="Symbol">}</a>
-      <a id="11794" class="Symbol">→</a> <a id="11796" href="/bitacora/#2645" class="Field">Edge</a> <a id="11801" href="/bitacora/#11629" class="Bound">G</a> <a id="11803" href="/bitacora/#11774" class="Bound">x</a> <a id="11805" href="/bitacora/#11776" class="Bound">y</a>
-      <a id="11813" class="Comment">------------</a>
-      <a id="11832" class="Symbol">→</a> <a id="11834" href="/bitacora/#11716" class="Datatype">Path</a> <a id="11839" href="/bitacora/#11774" class="Bound">x</a> <a id="11841" href="/bitacora/#11776" class="Bound">y</a>
+  <a id="11647" class="Comment">-- Def.</a>
+  <a id="11657" class="Keyword">data</a> <a id="ConnectedGraph.Walk"></a><a id="11662" href="/bitacora/#11662" class="Datatype">Walk</a> <a id="11667" class="Symbol">:</a> <a id="11669" href="/bitacora/#2625" class="Field">Node</a> <a id="11674" href="/bitacora/#11580" class="Bound">G</a> <a id="11676" class="Symbol">→</a> <a id="11678" href="/bitacora/#2625" class="Field">Node</a> <a id="11683" href="/bitacora/#11580" class="Bound">G</a> <a id="11685" class="Symbol">→</a> <a id="11687" href="/mini-hott/#1813" class="Function">Type</a> <a id="11692" href="/bitacora/#11576" class="Bound">ℓ</a> <a id="11694" class="Keyword">where</a>
+    <a id="ConnectedGraph.Walk.⟨_⟩"></a><a id="11704" href="/bitacora/#11704" class="InductiveConstructor Operator">⟨_⟩</a>
+      <a id="11714" class="Symbol">:</a> <a id="11716" class="Symbol">∀</a> <a id="11718" class="Symbol">{</a><a id="11719" href="/bitacora/#11719" class="Bound">x</a> <a id="11721" class="Symbol">:</a> <a id="11723" href="/bitacora/#2625" class="Field">Node</a> <a id="11728" href="/bitacora/#11580" class="Bound">G</a><a id="11729" class="Symbol">}</a>
+      <a id="11737" class="Symbol">→</a> <a id="11739" href="/bitacora/#11662" class="Datatype">Walk</a> <a id="11744" href="/bitacora/#11719" class="Bound">x</a> <a id="11746" href="/bitacora/#11719" class="Bound">x</a>
 
-    <a id="ConnectedGraph.Path.cons"></a><a id="11848" href="/bitacora/#11848" class="InductiveConstructor">cons</a>
-      <a id="11859" class="Symbol">:</a> <a id="11861" class="Symbol">∀</a> <a id="11863" class="Symbol">{</a> <a id="11865" href="/bitacora/#11865" class="Bound">x</a> <a id="11867" href="/bitacora/#11867" class="Bound">y</a> <a id="11869" href="/bitacora/#11869" class="Bound">z</a> <a id="11871" class="Symbol">:</a> <a id="11873" href="/bitacora/#2625" class="Field">Node</a> <a id="11878" href="/bitacora/#11629" class="Bound">G</a><a id="11879" class="Symbol">}</a>
-      <a id="11887" class="Symbol">→</a> <a id="11889" href="/bitacora/#11716" class="Datatype">Path</a> <a id="11894" href="/bitacora/#11865" class="Bound">x</a> <a id="11896" href="/bitacora/#11867" class="Bound">y</a> <a id="11898" class="Symbol">→</a> <a id="11900" href="/bitacora/#2645" class="Field">Edge</a> <a id="11905" href="/bitacora/#11629" class="Bound">G</a> <a id="11907" href="/bitacora/#11867" class="Bound">y</a> <a id="11909" href="/bitacora/#11869" class="Bound">z</a>
-      <a id="11917" class="Comment">------------------------</a>
-      <a id="11948" class="Symbol">→</a> <a id="11950" href="/bitacora/#11716" class="Datatype">Path</a> <a id="11955" href="/bitacora/#11865" class="Bound">x</a> <a id="11957" href="/bitacora/#11869" class="Bound">z</a>
+    <a id="ConnectedGraph.Walk._⊙_"></a><a id="11753" href="/bitacora/#11753" class="InductiveConstructor Operator">_⊙_</a>
+      <a id="11763" class="Symbol">:</a> <a id="11765" class="Symbol">∀</a> <a id="11767" class="Symbol">{</a> <a id="11769" href="/bitacora/#11769" class="Bound">x</a> <a id="11771" href="/bitacora/#11771" class="Bound">y</a> <a id="11773" href="/bitacora/#11773" class="Bound">z</a> <a id="11775" class="Symbol">:</a> <a id="11777" href="/bitacora/#2625" class="Field">Node</a> <a id="11782" href="/bitacora/#11580" class="Bound">G</a><a id="11783" class="Symbol">}</a>
+      <a id="11791" class="Symbol">→</a> <a id="11793" href="/bitacora/#11662" class="Datatype">Walk</a> <a id="11798" href="/bitacora/#11769" class="Bound">x</a> <a id="11800" href="/bitacora/#11771" class="Bound">y</a> <a id="11802" class="Symbol">→</a> <a id="11804" href="/bitacora/#2645" class="Field">Edge</a> <a id="11809" href="/bitacora/#11580" class="Bound">G</a> <a id="11811" href="/bitacora/#11771" class="Bound">y</a> <a id="11813" href="/bitacora/#11773" class="Bound">z</a>
+      <a id="11821" class="Comment">------------------------</a>
+      <a id="11852" class="Symbol">→</a> <a id="11854" href="/bitacora/#11662" class="Datatype">Walk</a> <a id="11859" href="/bitacora/#11769" class="Bound">x</a> <a id="11861" href="/bitacora/#11773" class="Bound">z</a>
 
-  <a id="11962" class="Keyword">record</a> <a id="ConnectedGraph.Graph"></a><a id="11969" href="/bitacora/#11969" class="Record">Graph</a> <a id="11975" class="Symbol">:</a> <a id="11977" href="/mini-hott/#1813" class="Function">Type</a> <a id="11982" class="Symbol">(</a><a id="11983" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#627" class="Primitive">lsuc</a> <a id="11988" href="/bitacora/#11625" class="Bound">ℓ</a><a id="11989" class="Symbol">)</a> <a id="11991" class="Keyword">where</a>
-    <a id="12001" class="Keyword">constructor</a> <a id="ConnectedGraph.Graph.connectedGraph"></a><a id="12013" href="/bitacora/#12013" class="InductiveConstructor">connectedGraph</a>
-    <a id="12032" class="Keyword">field</a>
-      <a id="ConnectedGraph.Graph.connected"></a><a id="12044" href="/bitacora/#12044" class="Field">connected</a>
-        <a id="12062" class="Symbol">:</a> <a id="12064" class="Symbol">∀</a> <a id="12066" class="Symbol">{</a><a id="12067" href="/bitacora/#12067" class="Bound">x</a> <a id="12069" href="/bitacora/#12069" class="Bound">y</a> <a id="12071" class="Symbol">:</a> <a id="12073" href="/bitacora/#2625" class="Field">Node</a> <a id="12078" href="/bitacora/#11629" class="Bound">G</a><a id="12079" class="Symbol">}</a>
-        <a id="12089" class="Comment">------------------</a>
-        <a id="12116" class="Symbol">→</a> <a id="12118" href="/bitacora/#11716" class="Datatype">Path</a> <a id="12123" href="/bitacora/#12067" class="Bound">x</a> <a id="12125" href="/bitacora/#12069" class="Bound">y</a>
+  <a id="11866" class="Keyword">record</a> <a id="ConnectedGraph.Graph"></a><a id="11873" href="/bitacora/#11873" class="Record">Graph</a> <a id="11879" class="Symbol">:</a> <a id="11881" href="/mini-hott/#1813" class="Function">Type</a> <a id="11886" class="Symbol">(</a><a id="11887" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#627" class="Primitive">lsuc</a> <a id="11892" href="/bitacora/#11576" class="Bound">ℓ</a><a id="11893" class="Symbol">)</a> <a id="11895" class="Keyword">where</a>
+    <a id="11905" class="Keyword">constructor</a> <a id="ConnectedGraph.Graph.connectedGraph"></a><a id="11917" href="/bitacora/#11917" class="InductiveConstructor">connectedGraph</a>
+    <a id="11936" class="Keyword">field</a>
+      <a id="ConnectedGraph.Graph.connected"></a><a id="11948" href="/bitacora/#11948" class="Field">connected</a>
+        <a id="11966" class="Symbol">:</a> <a id="11968" class="Symbol">∀</a> <a id="11970" class="Symbol">{</a><a id="11971" href="/bitacora/#11971" class="Bound">x</a> <a id="11973" href="/bitacora/#11973" class="Bound">y</a> <a id="11975" class="Symbol">:</a> <a id="11977" href="/bitacora/#2625" class="Field">Node</a> <a id="11982" href="/bitacora/#11580" class="Bound">G</a><a id="11983" class="Symbol">}</a>
+        <a id="11993" class="Comment">------------------</a>
+        <a id="12020" class="Symbol">→</a> <a id="12022" href="/bitacora/#11662" class="Datatype">Walk</a> <a id="12027" href="/bitacora/#11971" class="Bound">x</a> <a id="12029" href="/bitacora/#11973" class="Bound">y</a>
 
-  <a id="12130" class="Keyword">open</a> <a id="12135" href="/bitacora/#11969" class="Module">Graph</a> <a id="12141" class="Keyword">public</a></pre>
+  <a id="12034" class="Keyword">open</a> <a id="12039" href="/bitacora/#11873" class="Module">Graph</a> <a id="12045" class="Keyword">public</a>
 
-<p>❓ Our notion of <em>path</em> seems to be the <em>walk</em> notion. should we impose the predicate to not repeat vertices</p>
+  <a id="12055" class="Comment">-- Syntax.</a>
+  <a id="ConnectedGraph._⇢_"></a><a id="12068" href="/bitacora/#12068" class="Function Operator">_⇢_</a> <a id="12072" class="Symbol">:</a> <a id="12074" class="Symbol">(</a> <a id="12076" href="/bitacora/#12076" class="Bound">x</a> <a id="12078" href="/bitacora/#12078" class="Bound">y</a> <a id="12080" class="Symbol">:</a> <a id="12082" href="/bitacora/#2625" class="Field">Node</a> <a id="12087" href="/bitacora/#11580" class="Bound">G</a><a id="12088" class="Symbol">)</a> <a id="12090" class="Symbol">→</a> <a id="12092" href="/mini-hott/#1813" class="Function">Type</a> <a id="12097" href="/bitacora/#11576" class="Bound">ℓ</a>
+  <a id="12101" href="/bitacora/#12101" class="Bound">x</a> <a id="12103" href="/bitacora/#12068" class="Function Operator">⇢</a> <a id="12105" href="/bitacora/#12105" class="Bound">y</a> <a id="12107" class="Symbol">=</a> <a id="12109" href="/bitacora/#11662" class="Datatype">Walk</a> <a id="12114" href="/bitacora/#12101" class="Bound">x</a> <a id="12116" href="/bitacora/#12105" class="Bound">y</a></pre>
 
 <ul>
   <li>Rotation systems</li>
 </ul>
 
-<p>Let’s define the <code>Star</code> type to attempt define what a rotation system is.</p>
+<p>Let’s define the <code>Star</code> type to attempt define in the following the concept of a rotation system.</p>
 
 <p><img src="/assets/ipe-images/bitacora-out.png" alt="path" width="40%" />
 <em>Figure 3. $\mathsf{Star}\,x$ when $x : \Node\,G$ in a graph $G$.</em></p>
 
-<pre class="Agda"><a id="12508" class="Comment">-- Def.</a>
-  <a id="ConnectedGraph.Star"></a><a id="12518" href="/bitacora/#12518" class="Function">Star</a> <a id="12523" class="Symbol">:</a> <a id="12525" href="/bitacora/#2625" class="Field">Node</a> <a id="12530" href="/bitacora/#11629" class="Bound">G</a> <a id="12532" class="Symbol">→</a> <a id="12534" href="/mini-hott/#1813" class="Function">Type</a> <a id="12539" href="/bitacora/#11625" class="Bound">ℓ</a>
-  <a id="12543" href="/bitacora/#12518" class="Function">Star</a> <a id="12548" class="Symbol">=</a> <a id="12550" class="Symbol">λ</a> <a id="12552" class="Symbol">(</a><a id="12553" href="/bitacora/#12553" class="Bound">x</a> <a id="12555" class="Symbol">:</a> <a id="12557" href="/bitacora/#2625" class="Field">Node</a> <a id="12562" href="/bitacora/#11629" class="Bound">G</a><a id="12563" class="Symbol">)</a> <a id="12565" class="Symbol">→</a> <a id="12567" href="/mini-hott/#3046" class="Record">Σ</a> <a id="12569" class="Symbol">(</a><a id="12570" href="/bitacora/#2625" class="Field">Node</a> <a id="12575" href="/bitacora/#11629" class="Bound">G</a><a id="12576" class="Symbol">)</a> <a id="12578" class="Symbol">(λ</a> <a id="12581" href="/bitacora/#12581" class="Bound">y</a> <a id="12583" class="Symbol">→</a> <a id="12585" href="/bitacora/#2645" class="Field">Edge</a> <a id="12590" href="/bitacora/#11629" class="Bound">G</a> <a id="12592" href="/bitacora/#12581" class="Bound">y</a> <a id="12594" href="/bitacora/#12553" class="Bound">x</a><a id="12595" class="Symbol">)</a></pre>
+<pre class="Agda"><a id="12393" class="Comment">-- Def.</a>
+  <a id="ConnectedGraph.Star"></a><a id="12403" href="/bitacora/#12403" class="Function">Star</a>
+    <a id="12412" class="Symbol">:</a> <a id="12414" href="/bitacora/#2625" class="Field">Node</a> <a id="12419" href="/bitacora/#11580" class="Bound">G</a>
+    <a id="12425" class="Comment">--------</a>
+    <a id="12438" class="Symbol">→</a> <a id="12440" href="/mini-hott/#1813" class="Function">Type</a> <a id="12445" href="/bitacora/#11576" class="Bound">ℓ</a>
 
-<pre class="Agda"><a id="12624" class="Comment">-- Relation.</a>
-  <a id="12639" class="Keyword">postulate</a>
-    <a id="ConnectedGraph.StarR"></a><a id="12653" href="/bitacora/#12653" class="Postulate">StarR</a> <a id="12659" class="Symbol">:</a> <a id="12661" class="Symbol">∀</a> <a id="12663" class="Symbol">{</a><a id="12664" href="/bitacora/#12664" class="Bound">x</a> <a id="12666" class="Symbol">:</a> <a id="12668" href="/bitacora/#2625" class="Field">Node</a> <a id="12673" href="/bitacora/#11629" class="Bound">G</a><a id="12674" class="Symbol">}</a> <a id="12676" class="Symbol">→</a> <a id="12678" href="/bitacora/#12518" class="Function">Star</a> <a id="12683" href="/bitacora/#12664" class="Bound">x</a> <a id="12685" class="Symbol">→</a> <a id="12687" href="/bitacora/#12518" class="Function">Star</a> <a id="12692" href="/bitacora/#12664" class="Bound">x</a> <a id="12694" class="Symbol">→</a> <a id="12696" href="/bitacora/#12518" class="Function">Star</a> <a id="12701" href="/bitacora/#12664" class="Bound">x</a> <a id="12703" class="Symbol">→</a> <a id="12705" href="/mini-hott/#1813" class="Function">Type</a> <a id="12710" href="/bitacora/#11625" class="Bound">ℓ</a>
+  <a id="12450" href="/bitacora/#12403" class="Function">Star</a> <a id="12455" class="Symbol">=</a> <a id="12457" class="Symbol">λ</a> <a id="12459" class="Symbol">(</a><a id="12460" href="/bitacora/#12460" class="Bound">x</a> <a id="12462" class="Symbol">:</a> <a id="12464" href="/bitacora/#2625" class="Field">Node</a> <a id="12469" href="/bitacora/#11580" class="Bound">G</a><a id="12470" class="Symbol">)</a> <a id="12472" class="Symbol">→</a> <a id="12474" href="/mini-hott/#3046" class="Record">Σ</a> <a id="12476" class="Symbol">(</a><a id="12477" href="/bitacora/#2625" class="Field">Node</a> <a id="12482" href="/bitacora/#11580" class="Bound">G</a><a id="12483" class="Symbol">)</a> <a id="12485" class="Symbol">(λ</a> <a id="12488" href="/bitacora/#12488" class="Bound">y</a> <a id="12490" class="Symbol">→</a> <a id="12492" href="/bitacora/#2645" class="Field">Edge</a> <a id="12497" href="/bitacora/#11580" class="Bound">G</a> <a id="12499" href="/bitacora/#12488" class="Bound">y</a> <a id="12501" href="/bitacora/#12460" class="Bound">x</a><a id="12502" class="Symbol">)</a></pre>
 
-  <a id="12715" class="Keyword">postulate</a>
-    <a id="ConnectedGraph.StarRIsProp"></a><a id="12729" href="/bitacora/#12729" class="Postulate">StarRIsProp</a> <a id="12741" class="Symbol">:</a> <a id="12743" class="Symbol">∀</a> <a id="12745" class="Symbol">{</a><a id="12746" href="/bitacora/#12746" class="Bound">x</a> <a id="12748" class="Symbol">:</a> <a id="12750" href="/bitacora/#2625" class="Field">Node</a> <a id="12755" href="/bitacora/#11629" class="Bound">G</a><a id="12756" class="Symbol">}{</a><a id="12758" href="/bitacora/#12758" class="Bound">a</a> <a id="12760" href="/bitacora/#12760" class="Bound">b</a> <a id="12762" href="/bitacora/#12762" class="Bound">c</a> <a id="12764" class="Symbol">:</a> <a id="12766" href="/bitacora/#12518" class="Function">Star</a> <a id="12771" href="/bitacora/#12746" class="Bound">x</a><a id="12772" class="Symbol">}</a> <a id="12774" class="Symbol">→</a> <a id="12776" href="/mini-hott/#52461" class="Function">isProp</a> <a id="12783" class="Symbol">(</a><a id="12784" href="/bitacora/#12653" class="Postulate">StarR</a> <a id="12790" href="/bitacora/#12758" class="Bound">a</a> <a id="12792" href="/bitacora/#12760" class="Bound">b</a> <a id="12794" href="/bitacora/#12762" class="Bound">c</a><a id="12795" class="Symbol">)</a>
-  <a id="12799" class="Comment">-- Each node has incident nodes.</a></pre>
+<pre class="Agda"><a id="12531" class="Comment">-- Relation.</a>
+  <a id="12546" class="Keyword">postulate</a>
+    <a id="ConnectedGraph.StarRelation"></a><a id="12560" href="/bitacora/#12560" class="Postulate">StarRelation</a> <a id="12573" class="Symbol">:</a> <a id="12575" class="Symbol">∀</a> <a id="12577" class="Symbol">{</a><a id="12578" href="/bitacora/#12578" class="Bound">x</a> <a id="12580" class="Symbol">:</a> <a id="12582" href="/bitacora/#2625" class="Field">Node</a> <a id="12587" href="/bitacora/#11580" class="Bound">G</a><a id="12588" class="Symbol">}</a> <a id="12590" class="Symbol">→</a> <a id="12592" href="/bitacora/#12403" class="Function">Star</a> <a id="12597" href="/bitacora/#12578" class="Bound">x</a> <a id="12599" class="Symbol">→</a> <a id="12601" href="/bitacora/#12403" class="Function">Star</a> <a id="12606" href="/bitacora/#12578" class="Bound">x</a> <a id="12608" class="Symbol">→</a> <a id="12610" href="/bitacora/#12403" class="Function">Star</a> <a id="12615" href="/bitacora/#12578" class="Bound">x</a> <a id="12617" class="Symbol">→</a> <a id="12619" href="/mini-hott/#1813" class="Function">Type</a> <a id="12624" href="/bitacora/#11576" class="Bound">ℓ</a>
+
+  <a id="12629" class="Keyword">postulate</a>
+    <a id="ConnectedGraph.StarRelationIsProp"></a><a id="12643" href="/bitacora/#12643" class="Postulate">StarRelationIsProp</a> <a id="12662" class="Symbol">:</a> <a id="12664" class="Symbol">∀</a> <a id="12666" class="Symbol">{</a><a id="12667" href="/bitacora/#12667" class="Bound">x</a> <a id="12669" class="Symbol">:</a> <a id="12671" href="/bitacora/#2625" class="Field">Node</a> <a id="12676" href="/bitacora/#11580" class="Bound">G</a><a id="12677" class="Symbol">}</a> <a id="12679" class="Symbol">{</a><a id="12680" href="/bitacora/#12680" class="Bound">a</a> <a id="12682" href="/bitacora/#12682" class="Bound">b</a> <a id="12684" href="/bitacora/#12684" class="Bound">c</a> <a id="12686" class="Symbol">:</a> <a id="12688" href="/bitacora/#12403" class="Function">Star</a> <a id="12693" href="/bitacora/#12667" class="Bound">x</a><a id="12694" class="Symbol">}</a> <a id="12696" class="Symbol">→</a> <a id="12698" href="/mini-hott/#52461" class="Function">isProp</a> <a id="12705" class="Symbol">(</a><a id="12706" href="/bitacora/#12560" class="Postulate">StarRelation</a> <a id="12719" href="/bitacora/#12680" class="Bound">a</a> <a id="12721" href="/bitacora/#12682" class="Bound">b</a> <a id="12723" href="/bitacora/#12684" class="Bound">c</a><a id="12724" class="Symbol">)</a>
+  <a id="12728" class="Comment">-- Each node has incident nodes.</a></pre>
 
 <h4 id="cycles">Cycles</h4>
 
 <p>The reason to define a cyclic relation is that the faces or regions can be defined by
-<em>combinatorial maps</em> or also called <em>rotation systems</em>.</p>
+using these orders. The terminology is <em>combinatorial maps</em> also called <em>rotation systems</em>.</p>
+
+<p>Put here the rotation system definition from the notes and also <em>face walks</em>.
+Show the theorem 3.2.2. (G graph + R : RotationSystem) =&gt; Embedding in <em>some</em> surface.
+❓ Still missing how to determine the output of T3.2.2. is a sphere.</p>
 
 <p><img src="/assets/ipe-images/cyclic.png" alt="path" width="40%" />
 <em>Figure 2. Cyclic relation <code>R</code>.</em></p>
 
-<p>Therefore, we present first an attempt to define cycle orders:</p>
+<p>Our first attempt to define this cycle relation (order):</p>
 
-<pre class="Agda"><a id="13167" class="Keyword">module</a> <a id="CyclicForm"></a><a id="13174" href="/bitacora/#13174" class="Module">CyclicForm</a> <a id="13185" class="Symbol">{</a><a id="13186" href="/bitacora/#13186" class="Bound">ℓᵢ</a> <a id="13189" href="/bitacora/#13189" class="Bound">ℓⱼ</a><a id="13191" class="Symbol">}</a> <a id="13193" class="Keyword">where</a>
+<pre class="Agda"><a id="13361" class="Keyword">module</a> <a id="CyclicForm"></a><a id="13368" href="/bitacora/#13368" class="Module">CyclicForm</a> <a id="13379" class="Symbol">{</a><a id="13380" href="/bitacora/#13380" class="Bound">ℓᵢ</a> <a id="13383" href="/bitacora/#13383" class="Bound">ℓⱼ</a><a id="13385" class="Symbol">}</a> <a id="13387" class="Keyword">where</a>
 
-  <a id="13202" class="Keyword">record</a> <a id="CyclicForm.Cyclic"></a><a id="13209" href="/bitacora/#13209" class="Record">Cyclic</a> <a id="13216" class="Symbol">(</a><a id="13217" href="/bitacora/#13217" class="Bound">A</a> <a id="13219" class="Symbol">:</a> <a id="13221" href="/mini-hott/#1813" class="Function">Type</a> <a id="13226" href="/bitacora/#13186" class="Bound">ℓᵢ</a><a id="13228" class="Symbol">)</a>             <a id="13242" class="Comment">-- Carrier</a>
-                <a id="13269" class="Symbol">(</a><a id="13270" href="/bitacora/#13270" class="Bound">R</a> <a id="13272" class="Symbol">:</a> <a id="13274" href="/bitacora/#13217" class="Bound">A</a> <a id="13276" class="Symbol">→</a> <a id="13278" href="/bitacora/#13217" class="Bound">A</a> <a id="13280" class="Symbol">→</a> <a id="13282" href="/bitacora/#13217" class="Bound">A</a> <a id="13284" class="Symbol">→</a> <a id="13286" href="/mini-hott/#1813" class="Function">Type</a> <a id="13291" href="/bitacora/#13189" class="Bound">ℓⱼ</a><a id="13293" class="Symbol">)</a> <a id="13295" class="Comment">-- Clockwise</a>
-                <a id="13324" class="Symbol">:</a> <a id="13326" href="/mini-hott/#1813" class="Function">Type</a> <a id="13331" class="Symbol">(</a><a id="13332" href="/bitacora/#13186" class="Bound">ℓᵢ</a> <a id="13335" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#657" class="Primitive Operator">⊔</a> <a id="13337" href="/bitacora/#13189" class="Bound">ℓⱼ</a><a id="13339" class="Symbol">)</a> <a id="13341" class="Keyword">where</a>
-    <a id="13351" class="Keyword">field</a>
+  <a id="13396" class="Keyword">record</a> <a id="CyclicForm.Cyclic"></a><a id="13403" href="/bitacora/#13403" class="Record">Cyclic</a> <a id="13410" class="Symbol">(</a><a id="13411" href="/bitacora/#13411" class="Bound">A</a> <a id="13413" class="Symbol">:</a> <a id="13415" href="/mini-hott/#1813" class="Function">Type</a> <a id="13420" href="/bitacora/#13380" class="Bound">ℓᵢ</a><a id="13422" class="Symbol">)</a>             <a id="13436" class="Comment">-- Carrier</a>
+                <a id="13463" class="Symbol">(</a><a id="13464" href="/bitacora/#13464" class="Bound">R</a> <a id="13466" class="Symbol">:</a> <a id="13468" href="/bitacora/#13411" class="Bound">A</a> <a id="13470" class="Symbol">→</a> <a id="13472" href="/bitacora/#13411" class="Bound">A</a> <a id="13474" class="Symbol">→</a> <a id="13476" href="/bitacora/#13411" class="Bound">A</a> <a id="13478" class="Symbol">→</a> <a id="13480" href="/mini-hott/#1813" class="Function">Type</a> <a id="13485" href="/bitacora/#13383" class="Bound">ℓⱼ</a><a id="13487" class="Symbol">)</a> <a id="13489" class="Comment">-- Clockwise</a>
+                <a id="13518" class="Symbol">:</a> <a id="13520" href="/mini-hott/#1813" class="Function">Type</a> <a id="13525" class="Symbol">(</a><a id="13526" href="/bitacora/#13380" class="Bound">ℓᵢ</a> <a id="13529" href="https://agda.github.io/agda-stdlib/Agda.Primitive.html#657" class="Primitive Operator">⊔</a> <a id="13531" href="/bitacora/#13383" class="Bound">ℓⱼ</a><a id="13533" class="Symbol">)</a> <a id="13535" class="Keyword">where</a>
+    <a id="13545" class="Keyword">field</a>
 
-      <a id="CyclicForm.Cyclic.RisProp"></a><a id="13364" href="/bitacora/#13364" class="Field">RisProp</a> <a id="13372" class="Symbol">:</a> <a id="13374" class="Symbol">∀</a> <a id="13376" class="Symbol">{</a><a id="13377" href="/bitacora/#13377" class="Bound">a</a> <a id="13379" href="/bitacora/#13379" class="Bound">b</a> <a id="13381" href="/bitacora/#13381" class="Bound">c</a> <a id="13383" class="Symbol">:</a> <a id="13385" href="/bitacora/#13217" class="Bound">A</a><a id="13386" class="Symbol">}</a> <a id="13388" class="Symbol">→</a> <a id="13390" href="/mini-hott/#52461" class="Function">isProp</a> <a id="13397" class="Symbol">(</a><a id="13398" href="/bitacora/#13270" class="Bound">R</a> <a id="13400" href="/bitacora/#13377" class="Bound">a</a> <a id="13402" href="/bitacora/#13379" class="Bound">b</a> <a id="13404" href="/bitacora/#13381" class="Bound">c</a><a id="13405" class="Symbol">)</a>
+      <a id="CyclicForm.Cyclic.RisProp"></a><a id="13558" href="/bitacora/#13558" class="Field">RisProp</a> <a id="13566" class="Symbol">:</a> <a id="13568" class="Symbol">∀</a> <a id="13570" class="Symbol">{</a><a id="13571" href="/bitacora/#13571" class="Bound">a</a> <a id="13573" href="/bitacora/#13573" class="Bound">b</a> <a id="13575" href="/bitacora/#13575" class="Bound">c</a> <a id="13577" class="Symbol">:</a> <a id="13579" href="/bitacora/#13411" class="Bound">A</a><a id="13580" class="Symbol">}</a> <a id="13582" class="Symbol">→</a> <a id="13584" href="/mini-hott/#52461" class="Function">isProp</a> <a id="13591" class="Symbol">(</a><a id="13592" href="/bitacora/#13464" class="Bound">R</a> <a id="13594" href="/bitacora/#13571" class="Bound">a</a> <a id="13596" href="/bitacora/#13573" class="Bound">b</a> <a id="13598" href="/bitacora/#13575" class="Bound">c</a><a id="13599" class="Symbol">)</a>
 
-      <a id="CyclicForm.Cyclic.axiom₀"></a><a id="13414" href="/bitacora/#13414" class="Field">axiom₀</a>
-        <a id="13429" class="Symbol">:</a> <a id="13431" class="Symbol">∀</a> <a id="13433" class="Symbol">{</a><a id="13434" href="/bitacora/#13434" class="Bound">a</a> <a id="13436" href="/bitacora/#13436" class="Bound">b</a> <a id="13438" href="/bitacora/#13438" class="Bound">c</a> <a id="13440" class="Symbol">:</a> <a id="13442" href="/bitacora/#13217" class="Bound">A</a><a id="13443" class="Symbol">}</a>
-        <a id="13453" class="Symbol">→</a> <a id="13455" href="/bitacora/#13270" class="Bound">R</a> <a id="13457" href="/bitacora/#13434" class="Bound">a</a> <a id="13459" href="/bitacora/#13436" class="Bound">b</a> <a id="13461" href="/bitacora/#13438" class="Bound">c</a>
-        <a id="13471" class="Symbol">→</a> <a id="13473" href="/bitacora/#13270" class="Bound">R</a> <a id="13475" href="/bitacora/#13434" class="Bound">a</a> <a id="13477" href="/bitacora/#13438" class="Bound">c</a> <a id="13479" href="/bitacora/#13436" class="Bound">b</a>
-        <a id="13489" class="Comment">---------</a>
-        <a id="13507" class="Symbol">→</a> <a id="13509" href="/bitacora/#13436" class="Bound">b</a> <a id="13511" href="/mini-hott/#7440" class="Datatype Operator">==</a> <a id="13514" href="/bitacora/#13438" class="Bound">c</a>
+      <a id="CyclicForm.Cyclic.axiom₀"></a><a id="13608" href="/bitacora/#13608" class="Field">axiom₀</a>
+        <a id="13623" class="Symbol">:</a> <a id="13625" class="Symbol">∀</a> <a id="13627" class="Symbol">{</a><a id="13628" href="/bitacora/#13628" class="Bound">a</a> <a id="13630" href="/bitacora/#13630" class="Bound">b</a> <a id="13632" href="/bitacora/#13632" class="Bound">c</a> <a id="13634" class="Symbol">:</a> <a id="13636" href="/bitacora/#13411" class="Bound">A</a><a id="13637" class="Symbol">}</a>
+        <a id="13647" class="Symbol">→</a> <a id="13649" href="/bitacora/#13464" class="Bound">R</a> <a id="13651" href="/bitacora/#13628" class="Bound">a</a> <a id="13653" href="/bitacora/#13630" class="Bound">b</a> <a id="13655" href="/bitacora/#13632" class="Bound">c</a>
+        <a id="13665" class="Symbol">→</a> <a id="13667" href="/bitacora/#13464" class="Bound">R</a> <a id="13669" href="/bitacora/#13628" class="Bound">a</a> <a id="13671" href="/bitacora/#13632" class="Bound">c</a> <a id="13673" href="/bitacora/#13630" class="Bound">b</a>
+        <a id="13683" class="Comment">---------</a>
+        <a id="13701" class="Symbol">→</a> <a id="13703" href="/bitacora/#13630" class="Bound">b</a> <a id="13705" href="/mini-hott/#7440" class="Datatype Operator">==</a> <a id="13708" href="/bitacora/#13632" class="Bound">c</a>
 
-      <a id="CyclicForm.Cyclic.axiom₁"></a><a id="13523" href="/bitacora/#13523" class="Field">axiom₁</a>
-        <a id="13538" class="Symbol">:</a> <a id="13540" class="Symbol">∀</a> <a id="13542" class="Symbol">{</a><a id="13543" href="/bitacora/#13543" class="Bound">a</a> <a id="13545" href="/bitacora/#13545" class="Bound">b</a> <a id="13547" class="Symbol">:</a> <a id="13549" href="/bitacora/#13217" class="Bound">A</a><a id="13550" class="Symbol">}</a>
-        <a id="13560" class="Comment">-------------</a>
-        <a id="13582" class="Symbol">→</a> <a id="13584" href="/bitacora/#13270" class="Bound">R</a> <a id="13586" href="/bitacora/#13543" class="Bound">a</a> <a id="13588" href="/bitacora/#13545" class="Bound">b</a> <a id="13590" href="/bitacora/#13545" class="Bound">b</a>
+      <a id="CyclicForm.Cyclic.axiom₁"></a><a id="13717" href="/bitacora/#13717" class="Field">axiom₁</a>
+        <a id="13732" class="Symbol">:</a> <a id="13734" class="Symbol">∀</a> <a id="13736" class="Symbol">{</a><a id="13737" href="/bitacora/#13737" class="Bound">a</a> <a id="13739" href="/bitacora/#13739" class="Bound">b</a> <a id="13741" class="Symbol">:</a> <a id="13743" href="/bitacora/#13411" class="Bound">A</a><a id="13744" class="Symbol">}</a>
+        <a id="13754" class="Comment">-------------</a>
+        <a id="13776" class="Symbol">→</a> <a id="13778" href="/bitacora/#13464" class="Bound">R</a> <a id="13780" href="/bitacora/#13737" class="Bound">a</a> <a id="13782" href="/bitacora/#13739" class="Bound">b</a> <a id="13784" href="/bitacora/#13739" class="Bound">b</a>
 
-      <a id="CyclicForm.Cyclic.axiom₂"></a><a id="13599" href="/bitacora/#13599" class="Field">axiom₂</a>
-        <a id="13614" class="Symbol">:</a> <a id="13616" class="Symbol">∀</a> <a id="13618" class="Symbol">{</a><a id="13619" href="/bitacora/#13619" class="Bound">a</a> <a id="13621" href="/bitacora/#13621" class="Bound">b</a> <a id="13623" href="/bitacora/#13623" class="Bound">c</a> <a id="13625" class="Symbol">:</a> <a id="13627" href="/bitacora/#13217" class="Bound">A</a><a id="13628" class="Symbol">}</a>
-        <a id="13638" class="Symbol">→</a> <a id="13640" href="/bitacora/#13270" class="Bound">R</a> <a id="13642" href="/bitacora/#13619" class="Bound">a</a> <a id="13644" href="/bitacora/#13621" class="Bound">b</a> <a id="13646" href="/bitacora/#13623" class="Bound">c</a>
-        <a id="13656" class="Comment">---------</a>
-        <a id="13674" class="Symbol">→</a> <a id="13676" href="/bitacora/#13270" class="Bound">R</a> <a id="13678" href="/bitacora/#13621" class="Bound">b</a> <a id="13680" href="/bitacora/#13623" class="Bound">c</a> <a id="13682" href="/bitacora/#13619" class="Bound">a</a>
+      <a id="CyclicForm.Cyclic.axiom₂"></a><a id="13793" href="/bitacora/#13793" class="Field">axiom₂</a>
+        <a id="13808" class="Symbol">:</a> <a id="13810" class="Symbol">∀</a> <a id="13812" class="Symbol">{</a><a id="13813" href="/bitacora/#13813" class="Bound">a</a> <a id="13815" href="/bitacora/#13815" class="Bound">b</a> <a id="13817" href="/bitacora/#13817" class="Bound">c</a> <a id="13819" class="Symbol">:</a> <a id="13821" href="/bitacora/#13411" class="Bound">A</a><a id="13822" class="Symbol">}</a>
+        <a id="13832" class="Symbol">→</a> <a id="13834" href="/bitacora/#13464" class="Bound">R</a> <a id="13836" href="/bitacora/#13813" class="Bound">a</a> <a id="13838" href="/bitacora/#13815" class="Bound">b</a> <a id="13840" href="/bitacora/#13817" class="Bound">c</a>
+        <a id="13850" class="Comment">---------</a>
+        <a id="13868" class="Symbol">→</a> <a id="13870" href="/bitacora/#13464" class="Bound">R</a> <a id="13872" href="/bitacora/#13815" class="Bound">b</a> <a id="13874" href="/bitacora/#13817" class="Bound">c</a> <a id="13876" href="/bitacora/#13813" class="Bound">a</a>
 
-      <a id="CyclicForm.Cyclic.axiom₃"></a><a id="13691" href="/bitacora/#13691" class="Field">axiom₃</a>
-        <a id="13706" class="Symbol">:</a> <a id="13708" class="Symbol">∀</a> <a id="13710" class="Symbol">{</a><a id="13711" href="/bitacora/#13711" class="Bound">a</a> <a id="13713" href="/bitacora/#13713" class="Bound">b</a> <a id="13715" href="/bitacora/#13715" class="Bound">c</a> <a id="13717" href="/bitacora/#13717" class="Bound">d</a> <a id="13719" class="Symbol">:</a> <a id="13721" href="/bitacora/#13217" class="Bound">A</a><a id="13722" class="Symbol">}</a>
-        <a id="13732" class="Symbol">→</a> <a id="13734" href="/bitacora/#13270" class="Bound">R</a> <a id="13736" href="/bitacora/#13711" class="Bound">a</a> <a id="13738" href="/bitacora/#13713" class="Bound">b</a> <a id="13740" href="/bitacora/#13715" class="Bound">c</a>
-        <a id="13750" class="Symbol">→</a> <a id="13752" href="/bitacora/#13270" class="Bound">R</a> <a id="13754" href="/bitacora/#13711" class="Bound">a</a> <a id="13756" href="/bitacora/#13715" class="Bound">c</a> <a id="13758" href="/bitacora/#13717" class="Bound">d</a>
-        <a id="13768" class="Comment">---------</a>
-        <a id="13786" class="Symbol">→</a> <a id="13788" href="/bitacora/#13270" class="Bound">R</a> <a id="13790" href="/bitacora/#13711" class="Bound">a</a> <a id="13792" href="/bitacora/#13713" class="Bound">b</a> <a id="13794" href="/bitacora/#13717" class="Bound">d</a>
+      <a id="CyclicForm.Cyclic.axiom₃"></a><a id="13885" href="/bitacora/#13885" class="Field">axiom₃</a>
+        <a id="13900" class="Symbol">:</a> <a id="13902" class="Symbol">∀</a> <a id="13904" class="Symbol">{</a><a id="13905" href="/bitacora/#13905" class="Bound">a</a> <a id="13907" href="/bitacora/#13907" class="Bound">b</a> <a id="13909" href="/bitacora/#13909" class="Bound">c</a> <a id="13911" href="/bitacora/#13911" class="Bound">d</a> <a id="13913" class="Symbol">:</a> <a id="13915" href="/bitacora/#13411" class="Bound">A</a><a id="13916" class="Symbol">}</a>
+        <a id="13926" class="Symbol">→</a> <a id="13928" href="/bitacora/#13464" class="Bound">R</a> <a id="13930" href="/bitacora/#13905" class="Bound">a</a> <a id="13932" href="/bitacora/#13907" class="Bound">b</a> <a id="13934" href="/bitacora/#13909" class="Bound">c</a>
+        <a id="13944" class="Symbol">→</a> <a id="13946" href="/bitacora/#13464" class="Bound">R</a> <a id="13948" href="/bitacora/#13905" class="Bound">a</a> <a id="13950" href="/bitacora/#13909" class="Bound">c</a> <a id="13952" href="/bitacora/#13911" class="Bound">d</a>
+        <a id="13962" class="Comment">---------</a>
+        <a id="13980" class="Symbol">→</a> <a id="13982" href="/bitacora/#13464" class="Bound">R</a> <a id="13984" href="/bitacora/#13905" class="Bound">a</a> <a id="13986" href="/bitacora/#13907" class="Bound">b</a> <a id="13988" href="/bitacora/#13911" class="Bound">d</a>
 
-      <a id="CyclicForm.Cyclic.axiomₓ"></a><a id="13803" href="/bitacora/#13803" class="Field">axiomₓ</a>
-        <a id="13818" class="Symbol">:</a> <a id="13820" class="Symbol">∀</a> <a id="13822" class="Symbol">{</a><a id="13823" href="/bitacora/#13823" class="Bound">a</a> <a id="13825" href="/bitacora/#13825" class="Bound">b</a> <a id="13827" href="/bitacora/#13827" class="Bound">c</a> <a id="13829" class="Symbol">:</a> <a id="13831" href="/bitacora/#13217" class="Bound">A</a><a id="13832" class="Symbol">}</a> <a id="13834" class="Symbol">→</a> <a id="13836" href="/mini-hott/#65556" class="Function Operator">∥</a> <a id="13838" class="Symbol">(</a><a id="13839" href="/bitacora/#13270" class="Bound">R</a> <a id="13841" href="/bitacora/#13823" class="Bound">a</a> <a id="13843" href="/bitacora/#13825" class="Bound">b</a> <a id="13845" href="/bitacora/#13827" class="Bound">c</a><a id="13846" class="Symbol">)</a> <a id="13848" href="/mini-hott/#3818" class="Datatype Operator">+</a> <a id="13850" class="Symbol">(</a><a id="13851" href="/bitacora/#13270" class="Bound">R</a> <a id="13853" href="/bitacora/#13823" class="Bound">a</a> <a id="13855" href="/bitacora/#13827" class="Bound">c</a> <a id="13857" href="/bitacora/#13825" class="Bound">b</a><a id="13858" class="Symbol">)</a> <a id="13860" href="/mini-hott/#65556" class="Function Operator">∥</a></pre>
+      <a id="CyclicForm.Cyclic.axiomₓ"></a><a id="13997" href="/bitacora/#13997" class="Field">axiomₓ</a>
+        <a id="14012" class="Symbol">:</a> <a id="14014" class="Symbol">∀</a> <a id="14016" class="Symbol">{</a><a id="14017" href="/bitacora/#14017" class="Bound">a</a> <a id="14019" href="/bitacora/#14019" class="Bound">b</a> <a id="14021" href="/bitacora/#14021" class="Bound">c</a> <a id="14023" class="Symbol">:</a> <a id="14025" href="/bitacora/#13411" class="Bound">A</a><a id="14026" class="Symbol">}</a> <a id="14028" class="Symbol">→</a> <a id="14030" href="/mini-hott/#65556" class="Function Operator">∥</a> <a id="14032" class="Symbol">(</a><a id="14033" href="/bitacora/#13464" class="Bound">R</a> <a id="14035" href="/bitacora/#14017" class="Bound">a</a> <a id="14037" href="/bitacora/#14019" class="Bound">b</a> <a id="14039" href="/bitacora/#14021" class="Bound">c</a><a id="14040" class="Symbol">)</a> <a id="14042" href="/mini-hott/#3818" class="Datatype Operator">+</a> <a id="14044" class="Symbol">(</a><a id="14045" href="/bitacora/#13464" class="Bound">R</a> <a id="14047" href="/bitacora/#14017" class="Bound">a</a> <a id="14049" href="/bitacora/#14021" class="Bound">c</a> <a id="14051" href="/bitacora/#14019" class="Bound">b</a><a id="14052" class="Symbol">)</a> <a id="14054" href="/mini-hott/#65556" class="Function Operator">∥</a></pre>
 
-<pre class="Agda"><a id="13889" class="Comment">-- Def.</a>
-  <a id="13899" class="Comment">-- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)</a>
-  <a id="13950" class="Comment">-- CyclicIsProp x y = {!   !}</a>
+<pre class="Agda"><a id="14083" class="Comment">-- Def.</a>
+  <a id="14093" class="Comment">-- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)</a>
+  <a id="14144" class="Comment">-- CyclicIsProp x y = {!   !}</a>
 
-  <a id="13983" class="Comment">-- ∀ {x : Node G} → Cyclic (Star x) (StarR {x})</a></pre>
+  <a id="14177" class="Comment">-- ∀ {x : Node G} → Cyclic (Star x) (StarRelation {x})</a></pre>
 
 <ul>
   <li>Mention what is <em>dart</em></li>
@@ -880,14 +887,14 @@ review in future sessions.</li>
 
   <div id="github-links">
     <div class="view-source">
-      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/601895aafbf6c093e016ce449070bcab028fb048/blog/_src/notes/2018-09-20-bitacora.lagda" download target="_blank"><svg height="12" class="octicon octicon-file-code right left" viewBox="0 0 12 16" version="1.1" width="9" aria-hidden="true"><path fill-rule="evenodd" d="M8.5 1H1c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V4.5L8.5 1zM11 14H1V2h7l3 3v9zM5 6.98L3.5 8.5 5 10l-.5 1L2 8.5 4.5 6l.5.98zM7.5 6L10 8.5 7.5 11l-.5-.98L8.5 8.5 7 7l.5-1z"/></svg> Raw</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/601895aafbf6c093e016ce449070bcab028fb048/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank"><svg height="12" class="octicon octicon-mark-github right left" viewBox="0 0 16 16" version="1.1" width="12" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Github</a>
+      <a href="https://raw.githubusercontent.com/jonaprieto/jonaprieto.github.io/474ffe0eb96a6606be9e961de6a1e61711126d5a/blog/_src/notes/2018-09-20-bitacora.lagda" download target="_blank"><svg height="12" class="octicon octicon-file-code right left" viewBox="0 0 12 16" version="1.1" width="9" aria-hidden="true"><path fill-rule="evenodd" d="M8.5 1H1c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V4.5L8.5 1zM11 14H1V2h7l3 3v9zM5 6.98L3.5 8.5 5 10l-.5 1L2 8.5 4.5 6l.5.98zM7.5 6L10 8.5 7.5 11l-.5-.98L8.5 8.5 7 7l.5-1z"/></svg> Raw</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/blob/474ffe0eb96a6606be9e961de6a1e61711126d5a/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank"><svg height="12" class="octicon octicon-mark-github right left" viewBox="0 0 16 16" version="1.1" width="12" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> Github</a>
       <a href="http://github.com/jonaprieto/jonaprieto.github.io/edit/sources/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank"><svg height="12" class="octicon octicon-pencil right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg> Edit</a>
-      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/601895aafbf6c093e016ce449070bcab028fb048/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank"><svg height="12" class="octicon octicon-history right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M8 13H6V6h5v2H8v5zM7 1C4.81 1 2.87 2.02 1.59 3.59L0 2v4h4L2.5 4.5C3.55 3.17 5.17 2.3 7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-.34.03-.67.09-1H.08C.03 7.33 0 7.66 0 8c0 3.86 3.14 7 7 7s7-3.14 7-7-3.14-7-7-7z"/></svg> History</a>
+      <a href="http://github.com/jonaprieto/jonaprieto.github.io/commits/474ffe0eb96a6606be9e961de6a1e61711126d5a/blog/_src/notes/2018-09-20-bitacora.lagda" target="_blank"><svg height="12" class="octicon octicon-history right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M8 13H6V6h5v2H8v5zM7 1C4.81 1 2.87 2.02 1.59 3.59L0 2v4h4L2.5 4.5C3.55 3.17 5.17 2.3 7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-.34.03-.67.09-1H.08C.03 7.33 0 7.66 0 8c0 3.86 3.14 7 7 7s7-3.14 7-7-3.14-7-7-7z"/></svg> History</a>
       <a  href="#" onclick="window.print();return false;" target="_blank"><svg height="12" class="octicon octicon-file-pdf right left" viewBox="0 0 12 16" version="1.1" width="9" aria-hidden="true"><path fill-rule="evenodd" d="M8.5 1H1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V4.5L8.5 1zM1 2h4a.68.68 0 0 0-.31.2 1.08 1.08 0 0 0-.23.47 4.22 4.22 0 0 0-.09 1.47c.06.609.173 1.211.34 1.8A21.78 21.78 0 0 1 3.6 8.6c-.5 1-.8 1.66-.91 1.84a7.156 7.156 0 0 0-.69.3c-.362.165-.699.38-1 .64V2zm4.42 4.8a5.65 5.65 0 0 0 1.17 2.09c.275.237.595.417.94.53-.64.09-1.23.2-1.81.33-.618.15-1.223.347-1.81.59s.22-.44.61-1.25c.365-.74.67-1.51.91-2.3l-.01.01zM11 14H1.5a.743.743 0 0 1-.17 0 2.12 2.12 0 0 0 .73-.44 10.14 10.14 0 0 0 1.78-2.38c.31-.13.58-.23.81-.31l.42-.14c.45-.13.94-.23 1.44-.33s1-.16 1.48-.2c.447.216.912.394 1.39.53.403.11.814.188 1.23.23h.38V14H11zm0-4.86a3.743 3.743 0 0 0-.64-.28 4.221 4.221 0 0 0-.75-.11c-.411.003-.822.03-1.23.08a3 3 0 0 1-1-.64 6.07 6.07 0 0 1-1.29-2.33c.111-.661.178-1.33.2-2 .02-.25.02-.5 0-.75a1.05 1.05 0 0 0-.2-.88.82.82 0 0 0-.61-.23H8l3 3v4.14z"/></svg> Print</a>
       
 
-      <a href="mailto:prieto.jona@gmail.com?Subject=[ ?]Bitacora - Commit 601895aa" target="_top"><svg height="12" class="octicon octicon-mail right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg> Send Mail</a>
+      <a href="mailto:prieto.jona@gmail.com?Subject=[ ?]Bitacora - Commit 474ffe0e" target="_top"><svg height="12" class="octicon octicon-mail right left" viewBox="0 0 14 16" version="1.1" width="10" aria-hidden="true"><path fill-rule="evenodd" d="M0 4v8c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H1c-.55 0-1 .45-1 1zm13 0L7 9 1 4h12zM1 5.5l4 3-4 3v-6zM2 12l3.5-3L7 10.5 8.5 9l3.5 3H2zm11-.5l-4-3 4-3v6z"/></svg> Send Mail</a>
 
     </div>
   </div>
@@ -985,6 +992,7 @@ review in future sessions.</li>
         Node : ['\\mathsf{Node}\\,'],
         Edge : ['\\mathsf{Edge}\\,'],
         Path : ['\\mathsf{Path}\\,'],
+        Walk : ['\\mathsf{Walk}\\,'],
 
         isContr:['\\mathsf{isContr{#1}}',1],
         isProp:['\\mathsf{isProp{#1}}',1],
