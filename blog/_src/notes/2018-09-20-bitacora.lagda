@@ -84,7 +84,7 @@ are particularly interested in graphs:
 #### Undirected and no multi-graphs
 
 \begin{code}
-module BaseGraph {ℓ} where
+module Base {ℓ} where
 
   record Graph : Type (lsuc ℓ) where
     constructor graph
@@ -109,31 +109,38 @@ module BaseGraph {ℓ} where
 \end{code}
 
 ### Example
+
 \begin{code}
-  -- .
-  -- data G4 : Type ℓ where
-  --   v₁ v₂ v₃ v₄ : G4
-  --
-  -- e : G4 → G4 → Type ℓ
-  -- e v₁ v₂ = v₁ == v₂
-  -- e v₁ x₃ = v₁ == v₃
-  -- e v₂ x₃ = v₂ == v₃
-  -- e v₂ x₄ = v₂ == v₄
-  -- e v₂ v₁ = v₂ == v₁
-  -- e x₃ v₁ = v₃ == v₁
-  -- e x₃ v₂ = v₃ == v₂
-  -- e x₄ v₂ = v₄ == v₂
-  --
-  -- Example : Graph
-  -- Node Example = G4
-  -- Edge Example = e
-  -- NodeIsSet Example = λ u v → λ { idp q → {!   !}}
-  -- EdgeIsProp Example = λ u v → {!   !}
-  -- Undirected Example = {!   !}
+-- .
+-- data G4 : Type ℓ where
+--   v₁ v₂ v₃ v₄ : G4
+--
+-- e : G4 → G4 → Type ℓ
+-- e v₁ v₂ = v₁ == v₂
+-- e v₁ x₃ = v₁ == v₃
+-- e v₂ x₃ = v₂ == v₃
+-- e v₂ x₄ = v₂ == v₄
+-- e v₂ v₁ = v₂ == v₁
+-- e x₃ v₁ = v₃ == v₁
+-- e x₃ v₂ = v₃ == v₂
+-- e x₄ v₂ = v₄ == v₂
+--
+-- Example : Graph
+-- Node Example = G4
+-- Edge Example = e
+-- NodeIsSet Example = λ u v → λ { idp q → {!   !}}
+-- EdgeIsProp Example = λ u v → {!   !}
+-- Undirected Example = {!   !}
 \end{code}
 
 
+
 ### Lemmas
+
+\begin{code}
+module Lemmas {ℓ} where
+  open Base {ℓ}
+\end{code}
 
 {: .foldable until="21"}
 \begin{code}
@@ -160,12 +167,13 @@ module BaseGraph {ℓ} where
     ≃ G == H
 
   lem₀' = qinv-≃
-    ( λ {(idp , (idp , (idp , (idp , idp)))) → idp })      -- Fun. Equiv.
+    ( λ {(idp , (idp , (idp , (idp , idp)))) → idp })     -- Fun. Equiv.
     ((λ {idp → idp , idp , (idp , (idp , idp))})          -- Fun. Inverse
       , (λ {idp →  idp})                                  -- Homotopy
       , λ { (idp , (idp , (idp , (idp , idp))))  →  idp}  -- Homotopy
     )
 \end{code}
+
 
 {: .foldable until="17"}
 \begin{code}
@@ -218,6 +226,9 @@ module BaseGraph {ℓ} where
                         (λ a → pi-is-prop λ b → pi-is-prop λ e → EdgeIsProp H _ _)) _ _)) _ _)) })
         , (λ {(α , β) → idp} ))
 \end{code}
+
+
+
 
 {: .foldable until="10"}
 \begin{code}
@@ -349,6 +360,10 @@ module BaseGraph {ℓ} where
            (β x y))
 \end{code}
 
+\begin{code}
+open Lemmas
+\end{code}
+
 #### Isomorphisms
 
 Let be $G, H : \Graph$. A *graph map* is a pair $(α, β)$ that consists of a
@@ -360,21 +375,22 @@ in $H$ by means of $β$ using $α$ for vertex correspondence.
 \begin{code}
 module Isomorphism {ℓ} where
 
-  open BaseGraph {ℓ}
+  open Base {ℓ}
 
   _≃Iso_ : Graph → Graph → Type ℓ
   G ≃Iso H =
-    Σ (Node G ≃ Node H)                                                 -- α
-      (λ α → (x y : Node G) → Edge G x y ⇔ Edge H ((α ∙) x) ((α ∙) y))  -- β
+    Σ (Node G ≃ Node H)
+      (λ α → (x y : Node G)                        -- α
+       → Edge G x y ⇔ Edge H ((α ∙) x) ((α ∙) y))  -- β
 
   -- Remarks: Edge is propositional.
   -- Agda Question:
   -- What to remove these parenthesis (α ∙)
 \end{code}
 
-A graph map $(α, β)$ is called an *isomorphism* if $(α, β) : \Iso{G}{H}$  i.e., if both its vertex
-function and its edge function are equivalences.
-Two graphs $G$ and $H$ are *isomorphic* when $\Iso{G}{H}$ holds.
+A graph map $(α, β)$ is called an *isomorphism* if $(α, β) : \Iso{G}{H}$  i.e.,
+if both its vertex function and its edge function are equivalences. Two graphs
+$G$ and $H$ are *isomorphic* when $\Iso{G}{H}$ holds.
 
 {: .foldable until="5"}
 \begin{code}
@@ -413,23 +429,28 @@ Two graphs $G$ and $H$ are *isomorphic* when $\Iso{G}{H}$ holds.
 
 #### Connected graphs
 
+##### Walks
+
+
 For connected graphs, we need to define the type `Walk` to allow us
 to establish the *connectedness* property which says that a graph is *connected* if
 for any pair of nodes there is a *walk* between them.
+
+:TODO Walk definition goes here.
 
 ![path](/assets/ipe-images/graph-connected.png){: width="40%" }
 *Figure 3. In this graph, the green graph is a walk built up with $α : \Walk x\,y$ and $β : \Edge y z$.
 
 \begin{code}
-
-module ConnectedGraph
-  {ℓ} (G : BaseGraph.Graph {ℓ})
+module Walks {ℓ}
+  {G : Base.Graph {ℓ}}
   where
 
-  open BaseGraph.Graph public
+  open Base {ℓ}
 
   -- Def.
   data Walk : Node G → Node G → Type ℓ where
+
     ⟨_⟩
       : ∀ {x : Node G}
       → Walk x x
@@ -440,24 +461,47 @@ module ConnectedGraph
       ------------------------
       → Walk x z
 
-  record Graph : Type (lsuc ℓ) where
-    constructor connectedGraph
-    field
-      connected
-        : ∀ {x y : Node G}
-        ------------------
-        → Walk x y
-
-  open Graph public
-
   -- Syntax.
-  _⇢_ : ( x y : Node G) → Type ℓ
-  x ⇢ y = Walk x y
+  syntax Walk x y = x ⇢ y
 \end{code}
 
-- Rotation systems
+##### Connected graphs
 
-Let's define the `Star` type to attempt define in the following the concept of a rotation system.
+:TODO connectedness property definition goes here.
+
+{: .foldable until="1"}
+\begin{code}
+module Connected {ℓ} {G : Base.Graph {ℓ}} where
+
+  open Base {ℓ}
+  open Walks {ℓ}
+\end{code}
+
+\begin{code}
+  -- Pred.
+  Connected : (G : Graph) → Type ℓ
+  Connected G = ∀ {x y : Node G} → Walk {G} x y
+
+  ConnectedGraph : Type (lsuc ℓ)
+  ConnectedGraph = Σ Graph Connected
+\end{code}
+
+##### Rotation systems
+
+:TODO Rotation definition goes here
+
+{: .foldable  until="1"}
+\begin{code}
+module RotationSystem {ℓ}
+  {G : Base.Graph {ℓ}}
+  where
+
+  open Base {ℓ}
+  open Walks {ℓ}
+\end{code}
+
+:TODO Star Definition goes here
+:TODO Link Definition goes here
 
 ![path](/assets/ipe-images/bitacora-out.png){: width="40%" }
 *Figure 3. $\mathsf{Star}\,x$ when $x : \Node\,G$ in a graph $G$.*
@@ -473,16 +517,18 @@ Let's define the `Star` type to attempt define in the following the concept of a
 \end{code}
 
 \begin{code}
-  -- Relation.
-  postulate
-    StarRelation : ∀ {x : Node G} → Star x → Star x → Star x → Type ℓ
-
-  postulate
-    StarRelationIsProp : ∀ {x : Node G} {a b c : Star x} → isProp (StarRelation a b c)
+  -- -- Relation.
+  -- postulate
+  --   StarRelation : ∀ {x : Node G} → Star x → Star x → Star x → Type ℓ
+  --
+  -- postulate
+  --   StarRelationIsProp : ∀ {x : Node G} {a b c : Star x} → isProp (StarRelation a b c)
   -- Each node has incident nodes.
 \end{code}
 
 #### Cycles
+
+:TODO Face and region definition goes here.
 
 The reason to define a cyclic relation is that the faces or regions can be defined by
 using these orders. The terminology is *combinatorial maps* also called *rotation systems*.
@@ -497,6 +543,8 @@ Show the theorem 3.2.2. (G graph + R : RotationSystem) => Embedding in *some* su
 *Figure 2. Cyclic relation `R`.*
 
 Our first attempt to define this cycle relation (order):
+
+:TODO Face-Walks Definition goes here.
 
 \begin{code}
 module CyclicForm {ℓᵢ ℓⱼ} where
@@ -539,18 +587,22 @@ module CyclicForm {ℓᵢ ℓⱼ} where
 
 \begin{code}
   -- Def.
-  -- CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)
-  -- CyclicIsProp x y = {!   !}
+  CyclicIsProp : ∀ {A}{R} → isProp (Cyclic A R)
+  CyclicIsProp x y = {!   !}
 
   -- ∀ {x : Node G} → Cyclic (Star x) (StarRelation {x})
 \end{code}
 
-- Mention what is *dart*
+:TODO *dart* definition goes here
 
 ❓ How to define $\Face\ G$ for $G : \Graph\ A$. (In progress session 9/11/18)
+
+:TODO compatibility definition goes here.
 ❓ How to *decide* if the faces make up (compatibility property). (In progress  9/11/18)
 
-### Related papers
+
+
+### Related work
 
 Papers relevant to formalizations of graphs:
 
