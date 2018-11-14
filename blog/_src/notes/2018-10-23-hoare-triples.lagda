@@ -10,6 +10,7 @@ references: true
 agda: true
 gallery: true
 toc: true
+home: false
 linkify: true
 ---
 

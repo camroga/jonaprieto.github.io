@@ -7,6 +7,7 @@ published: true
 latex: true
 references: true
 gallery: true
+home: false
 ---
 
 - resolution

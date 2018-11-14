@@ -1,6 +1,5 @@
 ---
 layout: "post"
-permalink: /circle-hott/
 title: "Circle Equivalences"
 date: "2018-05-01"
 author: "Jonathan Prieto-Cubides"
@@ -9,13 +8,14 @@ coauthor: "Marc Bezem"
 coauthor_affiliation: "University of Bergen"
 bibtexauthors: "Prieto-Cubides, Jonathan and Bezem, Marc"
 bibtextag: "prietobezem:circle"
-categories: type-theory home
+categories: type-theory
 references: true
 toc: true
 agda: true
 gallery: true
 latex: true
 showcitation: true
+home: true
 ---
 
 {: .only-website }

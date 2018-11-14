@@ -11,6 +11,7 @@ agda: true
 gallery: true
 toc: true
 linkify: true
+home: false
 ---
 
 Research happens _every day_!

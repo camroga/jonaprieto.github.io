@@ -7,6 +7,7 @@ published: true
 latex: true
 references: true
 agda: true
+home: false
 ---
 
 Texts from many sources. See a good list of resources to learn

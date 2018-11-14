@@ -5,6 +5,7 @@ date: "2018-07-03"
 categories: learning
 published: true
 references: true
+home: false
 ---
 
 This will contain some thoughts about sat solving. See the references.

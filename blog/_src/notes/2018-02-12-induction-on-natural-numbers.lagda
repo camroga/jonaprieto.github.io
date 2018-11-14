@@ -4,11 +4,12 @@ permalink: /induction-natural-numbers/
 title: "Induction on Natural Numbers"
 date: "2018-02-12"
 toc: true
-categories: type-theory home
+categories: type-theory
 latex: true
 references: true
 agda: true
 showcitation: true
+home: true
 ---
 
 ## Introduction

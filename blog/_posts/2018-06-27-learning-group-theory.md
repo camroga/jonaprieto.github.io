@@ -7,6 +7,7 @@ published: true
 latex: true
 references: true
 agda: true
+home: false
 ---
 
 My plan to learn some group theory from Brilliant.

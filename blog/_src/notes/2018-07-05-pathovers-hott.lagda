@@ -1,6 +1,5 @@
 ---
 layout: "post"
-permalink: /pathovers/
 title: "Pathovers"
 use_site_title : false
 author: "Jonathan Prieto-Cubides"
@@ -10,7 +9,7 @@ coauthor_affiliation: "University of Bergen"
 bibtexauthors: "Prieto-Cubides, Jonathan and Bezem, Marc"
 bibtextag: "prietobezem:pathovers"
 date: "2018-07-05"
-categories: type-theory home
+categories: type-theory
 references: true
 toc: true
 agda: true
@@ -18,6 +17,7 @@ gallery: true
 latex: true
 linkify: true
 showcitation: true
+home: true
 ---
 
 

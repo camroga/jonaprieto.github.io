@@ -3,6 +3,7 @@ srcNotesMd   := $(wildcard _src/notes/*.md)
 
 mdNotesAgda  := $(subst _src/notes,_posts,$(subst .lagda,.md,$(srcNotesAgda)))
 mdNotesMd    := $(subst _src/notes,_posts,$(srcNotesMd))
+agdaCodes    := $(subst _src/notes,agda,$(srcNotesAgda))
 
 ipeImages    := $(wildcard _src/ipe-images/*.ipe)
 ipeImagesPNG := $(subst _src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
@@ -10,6 +11,7 @@ ipeImagesPNG := $(subst _src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(
 all:  $(mdNotesAgda) \
       $(mdNotesMd) \
       $(ipeImagesPNG) \
+      $(agdaCodes) \
       _posts/
 
 _posts/ :
@@ -18,13 +20,18 @@ _posts/ :
 
 _posts/%.md : _src/notes/%.md
 	- cp $< $@
-  - @echo "==================================================================="
+	- @echo "==================================================================="
+
+agda/%.lagda : _src/notes/%.lagda
+	- @echo "==================================================================="
+	- grep -v -e "\w" -e '^\\begin{code}$' -e '^\\end{code}$' $< > $@
+	- @echo "==================================================================="
 
 _posts/%.md : _src/notes/%.lagda
 	- time agda2html --version
 	- time agda2html --verbose --link-to-agda-stdlib --use-jekyll=_posts/ -i $< -o $@
 	- gulp reload
-  - @echo "==================================================================="
+	- @echo "==================================================================="
 
 assets/ipe-images/%.png : _src/ipe-images/%.ipe
 	iperender -png -resolution 400 $< $@

@@ -4,6 +4,7 @@ title: "Latex tricks"
 date: "2018-01-30"
 categories: learning
 linkify: true
+home: false
 ---
 
 A collection of useful tricks and snippets to use in Latex.

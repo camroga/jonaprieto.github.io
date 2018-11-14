@@ -10,6 +10,7 @@ categories: type-theory home
 toc: true
 linkify: true
 gallery: true
+home: true
 ---
 
 This is a self-contained version of some solutions for HoTT-Book's exercises.

@@ -3,6 +3,7 @@ layout: "post"
 title: "Jekyll Atom tricks"
 date: "2018-01-30"
 categories: tools
+home: false
 ---
 
 To work with this blog by writing the posts using Atom, I found the following tool

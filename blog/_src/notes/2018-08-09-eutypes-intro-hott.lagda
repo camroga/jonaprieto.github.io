@@ -8,6 +8,7 @@ toc: true
 agda: true
 latex: true
 linkify: true
+home: false
 ---
 
 This file contains the exercises of *An Introduction
