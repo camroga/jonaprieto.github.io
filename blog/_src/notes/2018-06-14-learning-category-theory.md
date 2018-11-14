@@ -5,7 +5,7 @@ date: "2018-06-14"
 categories: learning
 gallery: true
 latex: true
-home: false
+
 ---
 
 

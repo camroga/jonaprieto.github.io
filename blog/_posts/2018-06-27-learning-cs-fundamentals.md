@@ -8,7 +8,7 @@ toc: true
 latex: true
 references: true
 agda: true
-home: false
+
 ---
 
 Just for fun, let's to follow the [Brilliant](https://brilliant.org) chapters

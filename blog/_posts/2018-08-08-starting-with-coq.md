@@ -4,7 +4,7 @@ title: "Coq playground"
 date: "2018-08-08"
 categories: learning
 coq: true
-home: false
+
 ---
 
 This is just a test and it's not working.

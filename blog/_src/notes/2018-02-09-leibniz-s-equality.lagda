@@ -6,7 +6,7 @@ categories: type-theory
 agda: true
 latex: true
 references: true
-home: false
+
 ---
 
 *Leibniz characterized the notion of equality as follows:

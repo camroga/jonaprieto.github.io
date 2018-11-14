@@ -6,7 +6,7 @@ categories: learning
 published: true
 toc: true
 references: true
-home: false
+
 ---
 
 

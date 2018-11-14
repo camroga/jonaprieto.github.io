@@ -8,7 +8,7 @@ references: true
 agda: true
 gallery: true
 categories: learning
-home: false
+
 ---
 
 In Univalence we have a different interpretation of type theory {% cite hottbook

@@ -7,7 +7,7 @@ published: true
 latex: true
 references: true
 agda: true
-home: false
+
 ---
 
 <div class="references" markdown="1">

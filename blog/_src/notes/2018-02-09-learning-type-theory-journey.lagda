@@ -6,7 +6,7 @@ categories: learning
 latex: true
 references: true
 agda: true
-home: false
+
 ---
 
 Type theory

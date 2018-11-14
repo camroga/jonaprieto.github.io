@@ -7,7 +7,7 @@ categories: type-theory home
 toc: true
 agda: true
 latex: true
-home: false
+
 ---
 
 We present a formalisation of the syntax in Agda for the *Simple Typed Lambda

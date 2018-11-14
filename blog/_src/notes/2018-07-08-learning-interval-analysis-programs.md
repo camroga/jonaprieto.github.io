@@ -6,7 +6,7 @@ categories: learning
 published: true
 toc: true
 linkify: true
-home: false
+
 ---
 
 Interval analysis literature search.
