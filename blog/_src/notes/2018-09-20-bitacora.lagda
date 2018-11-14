@@ -603,6 +603,8 @@ module CyclicForm {ℓᵢ ℓⱼ} where
 
 
 
+<div class="hide" markdown="1">
+
 ### Related work
 
 Papers relevant to formalizations of graphs:
@@ -654,6 +656,7 @@ planar graphs.
   > operations to delete edges in order to construct non-triangular graphs,
   > which complicates a verification. Directed
 
+</div>
 
 ### Related links
 
