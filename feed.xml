@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-11-14T19:41:05+01:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/hoare-agda/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-11-14T17:20:05+01:00</updated><id>http://jonaprieto.github.io/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/hoare-agda/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://jonaprieto.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="http://jonaprieto.github.io/" rel="alternate" type="text/html" /><updated>2018-11-14T19:43:10+01:00</updated><id>http://jonaprieto.github.io/</id><title type="html">jonaprieto</title><subtitle>Jonathan Prieto-Cubides</subtitle><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><entry><title type="html">Hoare Triples in Agda</title><link href="http://jonaprieto.github.io/hoare-agda/" rel="alternate" type="text/html" title="Hoare Triples in Agda" /><published>2018-10-23T00:00:00+02:00</published><updated>2018-11-14T17:20:05+01:00</updated><id>http://jonaprieto.github.io/hoare-triples</id><content type="html" xml:base="http://jonaprieto.github.io/hoare-agda/">&lt;p&gt;Based completely in (missing reference) and the source code found in:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/alps-chalmers/agda101&quot;&gt;https://github.com/alps-chalmers/agda101&lt;/a&gt;&lt;/li&gt;
@@ -442,7 +442,7 @@ truths)&lt;/p&gt;
 &lt;a id=&quot;19366&quot; href=&quot;/hoare-agda/#18750&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19372&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19373&quot; href=&quot;/hoare-agda/#18544&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19378&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19379&quot; href=&quot;/hoare-agda/#7183&quot; class=&quot;InductiveConstructor&quot;&gt;□-e&lt;/a&gt; &lt;a id=&quot;19383&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;         &lt;a id=&quot;19395&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19397&quot; class=&quot;String&quot;&gt;&amp;quot;□-e&amp;quot;&lt;/a&gt;
 &lt;a id=&quot;19403&quot; href=&quot;/hoare-agda/#18750&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19409&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19410&quot; href=&quot;/hoare-agda/#18544&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19415&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19416&quot; href=&quot;/hoare-agda/#7208&quot; class=&quot;InductiveConstructor&quot;&gt;□-∧-e₁&lt;/a&gt; &lt;a id=&quot;19423&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;      &lt;a id=&quot;19432&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19434&quot; class=&quot;String&quot;&gt;&amp;quot;□-∧-e₁&amp;quot;&lt;/a&gt;
 &lt;a id=&quot;19443&quot; href=&quot;/hoare-agda/#18750&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19449&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19450&quot; href=&quot;/hoare-agda/#18544&quot; class=&quot;InductiveConstructor&quot;&gt;ltlR&lt;/a&gt; &lt;a id=&quot;19455&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19456&quot; href=&quot;/hoare-agda/#7233&quot; class=&quot;InductiveConstructor&quot;&gt;□-∧-e₂&lt;/a&gt; &lt;a id=&quot;19463&quot; class=&quot;Symbol&quot;&gt;_))&lt;/a&gt;      &lt;a id=&quot;19472&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19474&quot; class=&quot;String&quot;&gt;&amp;quot;□-∧-e₂&amp;quot;&lt;/a&gt;
-&lt;a id=&quot;19483&quot; href=&quot;/hoare-agda/#18750&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19489&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19490&quot; href=&quot;/hoare-agda/#18615&quot; class=&quot;InductiveConstructor&quot;&gt;customR&lt;/a&gt; &lt;a id=&quot;19498&quot; href=&quot;/hoare-agda/#19498&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;19500&quot; href=&quot;/hoare-agda/#19500&quot; class=&quot;Bound&quot;&gt;x₁&lt;/a&gt; &lt;a id=&quot;19503&quot; href=&quot;/hoare-agda/#19503&quot; class=&quot;Bound&quot;&gt;x₂&lt;/a&gt;&lt;a id=&quot;19505&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;      &lt;a id=&quot;19512&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19514&quot; class=&quot;String&quot;&gt;&amp;quot;Custom &amp;quot;&lt;/a&gt; &lt;a id=&quot;19524&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.String.Base.html#1101&quot; class=&quot;Function Operator&quot;&gt;s++&lt;/a&gt; &lt;a id=&quot;19528&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.Nat.Show.html#951&quot; class=&quot;Function&quot;&gt;Show.show&lt;/a&gt; &lt;a id=&quot;19538&quot; href=&quot;/hoare-agda/#19498&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;/pre&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Based completely in (missing reference) and the source code found in:</summary></entry><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-11-14T17:19:54+01:00</updated><id>http://jonaprieto.github.io/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/bitacora/">&lt;p&gt;Research happens &lt;em&gt;every day&lt;/em&gt;!&lt;/p&gt;
+&lt;a id=&quot;19483&quot; href=&quot;/hoare-agda/#18750&quot; class=&quot;Function&quot;&gt;pRule&lt;/a&gt; &lt;a id=&quot;19489&quot; class=&quot;Symbol&quot;&gt;(&lt;/a&gt;&lt;a id=&quot;19490&quot; href=&quot;/hoare-agda/#18615&quot; class=&quot;InductiveConstructor&quot;&gt;customR&lt;/a&gt; &lt;a id=&quot;19498&quot; href=&quot;/hoare-agda/#19498&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt; &lt;a id=&quot;19500&quot; href=&quot;/hoare-agda/#19500&quot; class=&quot;Bound&quot;&gt;x₁&lt;/a&gt; &lt;a id=&quot;19503&quot; href=&quot;/hoare-agda/#19503&quot; class=&quot;Bound&quot;&gt;x₂&lt;/a&gt;&lt;a id=&quot;19505&quot; class=&quot;Symbol&quot;&gt;)&lt;/a&gt;      &lt;a id=&quot;19512&quot; class=&quot;Symbol&quot;&gt;=&lt;/a&gt; &lt;a id=&quot;19514&quot; class=&quot;String&quot;&gt;&amp;quot;Custom &amp;quot;&lt;/a&gt; &lt;a id=&quot;19524&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.String.Base.html#1101&quot; class=&quot;Function Operator&quot;&gt;s++&lt;/a&gt; &lt;a id=&quot;19528&quot; href=&quot;https://agda.github.io/agda-stdlib/Data.Nat.Show.html#951&quot; class=&quot;Function&quot;&gt;Show.show&lt;/a&gt; &lt;a id=&quot;19538&quot; href=&quot;/hoare-agda/#19498&quot; class=&quot;Bound&quot;&gt;x&lt;/a&gt;&lt;/pre&gt;</content><author><name>Jonathan Prieto-Cubides</name><email>prieto.jona@gmail.com</email></author><summary type="html">Based completely in (missing reference) and the source code found in:</summary></entry><entry><title type="html">Bitacora</title><link href="http://jonaprieto.github.io/bitacora/" rel="alternate" type="text/html" title="Bitacora" /><published>2018-09-20T00:00:00+02:00</published><updated>2018-11-14T19:43:00+01:00</updated><id>http://jonaprieto.github.io/bitacora</id><content type="html" xml:base="http://jonaprieto.github.io/bitacora/">&lt;p&gt;Research happens &lt;em&gt;every day&lt;/em&gt;!&lt;/p&gt;
 
 &lt;h2 id=&quot;topics&quot;&gt;Topics&lt;/h2&gt;
 
@@ -963,65 +963,69 @@ Show the theorem 3.2.2. (G graph + R : RotationSystem) =&amp;gt; Embedding in &l
 &lt;p&gt;:TODO compatibility definition goes here.
 ❓ How to &lt;em&gt;decide&lt;/em&gt; if the faces make up (compatibility property). (In progress  9/11/18)&lt;/p&gt;
 
-&lt;h3 id=&quot;related-work&quot;&gt;Related work&lt;/h3&gt;
+&lt;div class=&quot;hide&quot;&gt;
 
-&lt;p&gt;Papers relevant to formalizations of graphs:&lt;/p&gt;
+  &lt;h3 id=&quot;related-work&quot;&gt;Related work&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;Inductive definitions&lt;/strong&gt;. Using inductive definitions allows us to
+  &lt;p&gt;Papers relevant to formalizations of graphs:&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;Inductive definitions&lt;/strong&gt;. Using inductive definitions allows us to
 have for free an inductive principle to prove properties.
 One issue using these kind of definitions is the difficulty that represents to
 reason about their constructions. Which it’s taking care of the order of the step
 in the construction. So, how can we have a relation between these constructions
 in such a away, a graph can be obtained by (homotopic?) constructions?.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#yamamoto&quot;&gt;(Yamamoto, Nishizaki, Hagiya, &amp;amp; Toda, 1995)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#yamamoto&quot;&gt;(Yamamoto, Nishizaki, Hagiya, &amp;amp; Toda, 1995)&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 
-&lt;p&gt;In this paper, the authors show as their main result, the formalization of the
+  &lt;p&gt;In this paper, the authors show as their main result, the formalization of the
 Euler formula. To achieve this they define inductively planar graphs by using the notion
 of cycles. The formalization was done in &lt;code&gt;HOL&lt;/code&gt;.&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;#BauerN02&quot;&gt;(Bauer &amp;amp; Nipkow, 2002)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#BauerN02&quot;&gt;(Bauer &amp;amp; Nipkow, 2002)&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 
-&lt;p&gt;This paper is about the formalization of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Five_color_theorem&quot;&gt;Five-Colour
+  &lt;p&gt;This paper is about the formalization of the &lt;a href=&quot;https://en.wikipedia.org/wiki/Five_color_theorem&quot;&gt;Five-Colour
 theorem&lt;/a&gt;. In this, the authors
 show an inductive definition for &lt;strong&gt;near triangulations&lt;/strong&gt; in order to define
 inductively planar graphs. This definition has three constructors:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-meetings-fde76f5f.png&quot; alt=&quot;&quot; width=&quot;40%&quot; /&gt;
+  &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-meetings-fde76f5f.png&quot; alt=&quot;&quot; width=&quot;40%&quot; /&gt;
   &lt;img src=&quot;/assets/png-images/2018-09-20-meetings-4fc8e00a.png&quot; alt=&quot;&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;Some results:
-    &lt;ul&gt;
-      &lt;li&gt;Any planar graph has at least a vertex of at least degree less or equals five.&lt;/li&gt;
-      &lt;li&gt;Idem for near triangulations.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#Bauer&quot;&gt;(Bauer, 2005)&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Some results:
+      &lt;ul&gt;
+        &lt;li&gt;Any planar graph has at least a vertex of at least degree less or equals five.&lt;/li&gt;
+        &lt;li&gt;Idem for near triangulations.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#Bauer&quot;&gt;(Bauer, 2005)&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
 
-&lt;p&gt;Continuing with near triangulations, Bauer in this thesis has an extra
+  &lt;p&gt;Continuing with near triangulations, Bauer in this thesis has an extra
 constructor for it.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-bitacora-c68ebbd9.png&quot; alt=&quot;&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-bitacora-c68ebbd9.png&quot; alt=&quot;&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;He ends up Chapter 2 with the following summary of formalizations of
+  &lt;p&gt;He ends up Chapter 2 with the following summary of formalizations of
 planar graphs.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-bitacora-485765ed.png&quot; alt=&quot;&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;img src=&quot;/assets/png-images/2018-09-20-bitacora-485765ed.png&quot; alt=&quot;&quot; width=&quot;40%&quot; /&gt;&lt;/p&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;Triangles vs. Polygons: The definition using triangles is by far eas- ier.
+  &lt;blockquote&gt;
+    &lt;p&gt;Triangles vs. Polygons: The definition using triangles is by far eas- ier.
 This simplifies proofs about the construction. If faces of arbi- trary
 length can be added, the graph modifications and proofs about those are more
 complex. On the other hand, a formalization based on triangles requires
 operations to delete edges in order to construct non-triangular graphs,
 which complicates a verification. Directed&lt;/p&gt;
-&lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+
+&lt;/div&gt;
 
 &lt;h3 id=&quot;related-links&quot;&gt;Related links&lt;/h3&gt;
 
