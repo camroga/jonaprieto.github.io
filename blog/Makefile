@@ -3,7 +3,7 @@ srcNotesMd   := $(wildcard _src/notes/*.md)
 
 mdNotesAgda  := $(subst _src/notes,_posts,$(subst .lagda,.md,$(srcNotesAgda)))
 mdNotesMd    := $(subst _src/notes,_posts,$(srcNotesMd))
-agdaCodes    := $(subst _src/notes,agda,$(srcNotesAgda))
+agdaCodes    := $(subst _src/notes,agda,$(subst .lagda,.agda,$(srcNotesAgda)))
 
 ipeImages    := $(wildcard _src/ipe-images/*.ipe)
 ipeImagesPNG := $(subst _src/ipe-images/,assets/ipe-images/,$(subst .ipe,.png,$(ipeImages)))
@@ -22,9 +22,9 @@ _posts/%.md : _src/notes/%.md
 	- cp $< $@
 	- @echo "==================================================================="
 
-agda/%.lagda : _src/notes/%.lagda
+agda/%.agda : _src/notes/%.lagda
 	- @echo "==================================================================="
-	- grep -v -e "\w" -e '^\\begin{code}$' -e '^\\end{code}$' $< > $@
+	- gsed -n '/\\begin/,/\\end/ {/{code}/!p}' $< > $@
 	- @echo "==================================================================="
 
 _posts/%.md : _src/notes/%.lagda

@@ -10,7 +10,7 @@ const search = instantsearch({
       'title',
       'content',
     ],
-    facetFilters: ['type:post', "home:true"]
+    facetFilters: ['type:post', "home"]
   },
   searchFunction: function(helper) {
     if (helper.getState().query === '') {

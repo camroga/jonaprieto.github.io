@@ -4,6 +4,7 @@ comments: true
 ---
 {% if page.agda %}
   {% assign filepath = page.path | replace: '_posts', 'blog/_src/notes' | replace: '.md', '.lagda' %}
+  {% assign rawagda  = page.path | replace: '_posts', 'blog/agda' | replace: '.md', '.agda' %}
 {% else %}
   {% assign filepath = page.path | replace: '_posts', 'blog/_src/notes' %}
 {% endif %}
@@ -12,6 +13,7 @@ comments: true
 {% assign editsource = site.github.repository_url | append: "/edit/sources/" | append: filepath %}
 {% assign history = site.github.repository_url | append: "/commits/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
 {% assign raw = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" | append: page.git.last_commit.long_sha | append: "/" | append: filepath %}
+{% assign agdaCode = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" | append: page.git.last_commit.long_sha | append: "/" | append: rawagda %}
 
 <div class="post">
 
@@ -127,7 +129,12 @@ comments: true
 
   <div id="github-links">
     <div class="view-source">
-      <a href="{{raw}}" download target="_blank">{% octicon file-code height:12 class:"right left" %} Raw</a>
+      {% if page.agda %}
+        <a href="{{raw}}" download target="_blank">{% octicon file height:12 class:"right left" %} Raw + Agda</a>
+        <a href="{{agdaCode}}" download target="_blank">{% octicon file-code height:12 class:"right left" %} Agda </a>
+      {% else %}
+        <a href="{{raw}}" download target="_blank">{% octicon file height:12 class:"right left" %} Raw</a>
+      {% endif %}
       <a href="{{viewsource}}" target="_blank">{% octicon mark-github height:12 class:"right left" %} Github</a>
       <a href="{{editsource}}" target="_blank">{% octicon pencil height:12 class:"right left" %} Edit</a>
       <a href="{{history}}" target="_blank">{% octicon history height:12 class:"right left" %} History</a>
